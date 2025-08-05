@@ -1,0 +1,19 @@
+{"log":
+ [{"message":
+   ".> LEAN_PATH=/home/dwyte/Zer0proof/.lake/build/lib/lean /home/dwyte/.elan/toolchains/leanprover--lean4---v4.20.1/bin/lean /home/dwyte/Zer0proof/DevTest.lean -R /home/dwyte/Zer0proof -o /home/dwyte/Zer0proof/.lake/build/lib/lean/DevTest.olean -i /home/dwyte/Zer0proof/.lake/build/lib/lean/DevTest.ilean -c /home/dwyte/Zer0proof/.lake/build/ir/DevTest.c --json",
+   "level": "trace"}],
+ "inputs":
+ [["DevTest:deps",
+   [["deps",
+     [["Zer0proof/devtest:extraDep", [["@Zer0proof:extraDep", "1723"]]],
+      ["import oleans", "1723"]]],
+    ["libs",
+     [["import dynlibs", "1723"],
+      ["package external libraries", "1723"],
+      ["module dynlibs", "1723"],
+      ["module plugins", "1723"]]]]],
+  ["Lean 4.20.0, commit b02228b03f655c0cd051d82280ad5758359ec8ba",
+   "309479851529972037"],
+  ["Module.leanArgs: #[]", "1723"],
+  ["/home/dwyte/Zer0proof/DevTest.lean", "14381051192777635751"]],
+ "depHash": "2682083603592143254"}
