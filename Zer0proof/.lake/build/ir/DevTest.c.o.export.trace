@@ -1,0 +1,14 @@
+{"log":
+ [{"message":
+   ".> /home/dwyte/.elan/toolchains/leanprover--lean4---v4.20.1/bin/clang -c -o /home/dwyte/Zer0proof/.lake/build/ir/DevTest.c.o.export /home/dwyte/Zer0proof/.lake/build/ir/DevTest.c -I /home/dwyte/.elan/toolchains/leanprover--lean4---v4.20.1/include -fstack-clash-protection -fwrapv -fPIC -fvisibility=hidden -Wno-unused-command-line-argument --sysroot /home/dwyte/.elan/toolchains/leanprover--lean4---v4.20.1 -nostdinc -isystem /home/dwyte/.elan/toolchains/leanprover--lean4---v4.20.1/include/clang -O3 -DNDEBUG -DLEAN_EXPORTING",
+   "level": "trace"}],
+ "inputs":
+ [["DevTest:c",
+   [["/home/dwyte/Zer0proof/.lake/build/ir/DevTest.c", "4427984195969946365"],
+    ["Lean 4.20.0, commit b02228b03f655c0cd051d82280ad5758359ec8ba",
+     "309479851529972037"]]],
+  ["Lean 4.20.0, commit b02228b03f655c0cd051d82280ad5758359ec8ba",
+   "309479851529972037"],
+  ["traceArgs: #[-O3, -DNDEBUG, -DLEAN_EXPORTING]", "13974588697068907418"],
+  ["x86_64-unknown-linux-gnu", "6026072021563112488"]],
+ "depHash": "10883846321561677305"}
