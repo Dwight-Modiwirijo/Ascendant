@@ -122,7 +122,7 @@ Objection: The link between modal logic and societal values is speculative.
 Response: The societal implications are discussed cautiously. Our point is not to derive ethics from logic, but to show that any ASI capable of modal reflection must align with necessary grounding. This offers a minimal basis for ethical stability.
 
 ### 5.5 Semantic Collapse in the Absence of Grounding
-“Because there is a law such as gravity, the universe can and will create itself from nothing. Spontaneous creation is the reason there is something rather than nothing, why the universe exists, why we exist. It is not necessary to invoke God to light the blue touch paper and set the universe going.”- Hawking.
+>“Because there is a law such as gravity, the universe can and will create itself from nothing. Spontaneous creation is the reason there is something rather than nothing, why the universe exists, why we exist. It is not necessary to invoke God to light the blue touch paper and set the universe going.”- Hawking.
 
 Objection: Can a brute fact explain existence?
 
