@@ -1,0 +1,21 @@
+name = "Zer0proof"
+version = "0.1.0"
+defaultTargets = ["Zer0proof"]
+
+[[lean_lib]]
+name = "Zer0proof"
+
+[[lean_exe]]
+name = "zer0proof"
+root = "Main"
+
+[[lean_lib]]
+name = "Modal"
+
+[[lean_exe]]
+name = "forceimport"
+root = "forceimport"
+
+[[lean_exe]]
+name = "devtest"
+root = "DevTest"
