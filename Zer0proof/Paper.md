@@ -652,7 +652,7 @@ Where Popper grounded science in falsifiability, I ground truth in modality.
 
 Absolute truths — such as 1 + 1 = 2, or the necessary existence of a purely positive Being — are not derived from observation or emergence. They exist necessarily and universally.
 
-Only modal logic allows us to formally express and analyze such necessity (□P). Without it, truth collapses into paradox or triviality.
+Only modal logic allows us to formally express and analyze such necessity (□P). Without it, truth collapses — not merely into paradox or triviality, but into semantic dissolution itself.
 
 If we are to build systems that not only compute, but truly understand, modality must be their foundation.
 
