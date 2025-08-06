@@ -31,9 +31,10 @@ A complete machine-verifiable proof using Lean 4 is included in Appendix A, ensu
 This section introduces the formal axiomatic foundation of the proof, designed to be as minimal and necessary as possible. We use S5 modal logic, which assumes that all possible worlds are equally accessible (reflexive, symmetric, and transitive, Blackburn et al. 2001). Within this logical space, we define five axioms:
 
 ### (A1) Hyper-Minimal Principle of Sufficient Reason (HM-PSR)
-Every contingent truth must be grounded in a necessary ontological basis. Formally:
-Cont(p) → ∃q (Nec(q) ∧ q ◃ p)
-This grounding relation (◃) expresses that q is not just a cause, but the minimal semantic basis that renders p intelligible (cf. Appendix A: ground).
+Every contingent truth must be grounded in a necessary ontological basis. Formally:  
+>**Cont(p) → ∃q (Nec(q) ∧ q ◃ p)**  
+
+The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A: `ground`). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
@@ -54,16 +55,30 @@ These axioms form the basis of the modal system used to derive the existence of 
 ## 3. Formal Modal Proof of Ω (Necessary Perfection)
 We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume ¬□∃Ω and demonstrate that this assumption leads to incoherence.
 
-Contingency of self-awareness: The statement “I am” expresses a fact that could have been otherwise; thus, it is contingent.
-Application of HM-PSR (A1): From contingency, grounding follows: ∃q (Nec(q) ∧ q ◃ “I am”)
-Rejection of necessary ground: If no necessary ground exists, we face two untenable alternatives:
-Infinite regress (violates A3)
-Arbitrary starting point (violates A1 and A4)
-Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse.
-Definition of Ω: Ω is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, Ω entails only positive properties and admits no internal contradiction.
-Conclusion: Therefore, Ω exists necessarily (□∃x Ω(x)) and grounds all contingent truths, with “I am” as the foundational example.
+- Contingency of self-awareness:  
+The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
+- Application of HM-PSR (A1): From contingency, grounding follows:  
+**∃q (Nec(q) ∧ q ◃ “I am”)**  
+  - Rejection of necessary ground: If no necessary ground exists, we face two untenable alternatives:  
+    - Infinite regress (violates A3)  
+    - Arbitrary starting point (violates A1 and A4)
+Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse.  
+- Definition of **Ω**:  
+**Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.  
+- Conclusion: Therefore, **Ω** exists necessarily (**□∃x Ω(x)**) and grounds all contingent truths, with **“I am”** as the foundational example.
 
-The complete formalization and Lean verification of this proof are found in Appendix A.
+### 3.1 Conclusion: The Hyper-Modal Theorem
+
+The reductio argument in this section demonstrates that denying a necessary ground for contingent truths leads inevitably to semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the central result of this paper:
+
+**Hyper-Modal Theorem**  
+**□∃x Ω(x)** — Necessarily, there exists a perfect being Ω that grounds all contingent truths and instantiates only positive properties.
+
+But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
+
+> **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
+
+This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. The theorem is verified in Lean 4 (see Appendix A), ensuring strict logical validity and computational transparency.
 
 ## 4. Verification in Lean 4
 The formal proof sketched in Section 3 is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
@@ -153,15 +168,15 @@ While several paradoxes possess a fundamental character, a deeper hierarchy can 
 
 Hegel’s dialectic serves as the ultimate *engine* of reality. It qualifies as a fundamental paradox because it redefines contradiction (Thesis–Antithesis) as the constructive principle of progress toward higher-order synthesis. This dialectical unfolding of *Geist* and history turns negation itself into an engine of transformation.
 
-The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Superlaw (§3.2), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
+The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem (§3.1), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ p ◃ q))**
 
 states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Appendix A (A1–A3) and Appendix B (asymmetry of ◃).
 
-This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Superlaw thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
+This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
 
-In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Superlaw, therefore, precedes dialectics not just chronologically but ontologically — serving as the foundational frame in which all dialectical motion unfolds.
+In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Hyper-Modal Theorem, therefore, precedes dialectics not just chronologically but ontologically — serving as the foundational frame in which all dialectical motion unfolds.
 
 #### Deductive Analysis per Paradox Type
 - Veridical Paradoxes: These paradoxes appear absurd but prove true upon analysis (e.g., Münchhausen-Trilemma on proof regress; First Cause on causation; Hilbert's Grand Hotel illustrates accommodative infinity; Quantum Zeno Effect confirms observational prevention of decay). Meta-reasoning refines intuitive limits, strengthening semantics by validating counterintuitive truths, but requires a necessary ground to avoid ungrounded facts (A1). This supports Ω's perfection: As the embodiment of positive properties like omniscience, Ω perfectly grounds such truths without internal negation (A2), enhancing its excellence. Lean Theorem Sketch: theorem veridical_support : ∀ (P : Prop), Veridical P → □ (Ω Grounds P ∧ Pos Ω).
@@ -184,14 +199,14 @@ Lemaître's framework strengthens the case for a necessary ground (Ω). He viewe
 
 ### 5.8 Finitude and Potential Infinitude of Matter Reinforce PSR
 #### 5.8.1 Finite Matter
-Building on the cosmological finitude established in Section 5.7, this subsection demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the superlaw—the hyper-modal proof of necessary theism (□∃x Ω(x), as verified in Lean, Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the superlaw's robustness against materialistic objections.
+Building on the cosmological finitude established in Section 5.7, this subsection demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x Ω(x), as verified in Lean, Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
 
-Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the superlaw: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (Nec(Ω) ∧ Ω ◃ Matter, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
+Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
 
 #### 5.8.2 Infinit Matter
-Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the superlaw holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the superlaw equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
+Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
 
-This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. Verification in Lean (Appendix A) ensures these implications are provable, embedding the superlaw in modal rigor.  
+This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. Verification in Lean (Appendix A) ensures these implications are provable, embedding the Hyper-Modal Theorem in modal rigor.  
 
 Further objections are welcome and will be addressed in future revisions.
 
@@ -583,6 +598,13 @@ From minimal axioms → □∃x.Ω(x) is true
 ````
 
 ## Appendix D: Glossary of Modal Symbols
+**Hyper-Modal Theorem**  
+The central theorem of this paper:  
+> **□∃x Ω(x)**.   
+
+Second-order modal necessity: it is necessarily the case that Ω necessarily exists.
+In this system, Ω is not just true in all possible worlds (**□∃x Ω(x)**), but that truth itself is modal-stable across all valid S5 structures. It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
+
 |Symbol |	Meaning|
 |-------|----------|
 |□p	|Necessarily p (true in all worlds)
