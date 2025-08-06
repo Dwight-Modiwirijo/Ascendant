@@ -34,12 +34,12 @@ This section introduces the formal axiomatic foundation of the proof, designed t
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
 >**Cont(p) → ∃q (Nec(q) ∧ q ◃ p)**  
 
-The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A: `ground`). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
+The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.2: `ground`). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
 Formalization: Pos(P) ≡ ¬∃Q (Q → ¬P)
-This avoids circularity and contingent dependence (cf. Appendix A, perfect_positivity).
+This avoids circularity and contingent dependence (see Appendix A.2: `perfect_positivity`).
 
 ### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
@@ -78,7 +78,7 @@ But the strength of this conclusion goes further: since each inference is either
 
 > **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
 
-This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. The theorem is verified in Lean 4 (see Appendix A), ensuring strict logical validity and computational transparency.
+This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. The theorem is verified in Lean 4 (see Appendix A.4), ensuring strict logical validity and computational transparency.
 
 ## 4. Verification in Lean 4
 The formal proof sketched in Section 3 is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
@@ -153,7 +153,7 @@ Example: “If rain is wet, then 1 + 1 = 2” is true (because the conclusion is
 
 ### 5.6 Paradox types and the perfection of Ω
 
-This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω—the minimal necessary entity that bundles all positive properties (Pos(P)) under Axiom A2 (Perfect Positivity: Pos(P) ≡ ¬∃Q (Q → ¬P), ensuring no internal negation or contradiction). The argument is structured for later verification in Lean (e.g., as theorems in S5 modal logic, building on Appendix A). We define Ω formally as □∃x (Ω(x) ∧ ∀P (Pos(P) → x instantiates P)), where paradoxes act as indicators of systemic incompleteness (per Section 5.1, Gödel extrapolation). For each type in the table, we show: (1) the paradox reveals a limit requiring meta-reasoning (A5: Meta-Logical Closure); (2) this strengthens semantics; (3) it converges on Ω as a perfect ground (per A1: Hyper-Modal Principle of Sufficient Reason and A3: Anti-Regress), avoiding semantic collapse (Section 5.5). Collectively, this proves the theorem: ∀T ∀P (ParadoxType(T) ∧ Paradox(P, T) → Strengthens(Perfection(Ω))).
+This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω—the minimal necessary entity that bundles all positive properties (Pos(P)) under Axiom A2 (Perfect Positivity: Pos(P) ≡ ¬∃Q (Q → ¬P), ensuring no internal negation or contradiction). The argument is structured for later verification in Lean (e.g., as theorems in S5 modal logic, building on Appendix A). We define Ω formally as □∃x (Ω(x) ∧ ∀P (Pos(P) → x instantiates P)), where paradoxes act as indicators of systemic incompleteness per Section 5.1 (Gödel extrapolation). For each type in the table, we show: (1) the paradox reveals a limit requiring meta-reasoning (A5: Meta-Logical Closure); (2) this strengthens semantics; (3) it converges on Ω as a perfect ground (per A1: Hyper-Modal Principle of Sufficient Reason and A3: Anti-Regress), avoiding semantic collapse (Section 5.5). Collectively, this proves the theorem: ∀T ∀P (ParadoxType(T) ∧ Paradox(P, T) → Strengthens(Perfection(Ω))).
 | **Paradox Type** | **Paradoxes** |
 |------------------|---------------|
 | **Veridical**<br/>(A paradox that seems absurd but is ultimately true, revealing counterintuitive truths) | *Hilbert's Grand Hotel* (an infinite hotel can accommodate more guests, illustrating properties of infinity);<br/>*First Cause Paradox* (if everything has a cause, what caused the first?);<br/>*Quantum Zeno Effect* (constant observation prevents decay, a verified quantum phenomenon); <br/>*Münchhausen-Trilemma* (proofs end in regress, circle, or dogma). |
@@ -168,11 +168,11 @@ While several paradoxes possess a fundamental character, a deeper hierarchy can 
 
 Hegel’s dialectic serves as the ultimate *engine* of reality. It qualifies as a fundamental paradox because it redefines contradiction (Thesis–Antithesis) as the constructive principle of progress toward higher-order synthesis. This dialectical unfolding of *Geist* and history turns negation itself into an engine of transformation.
 
-The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem (§3.1), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
+The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem (Section 3.1), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ p ◃ q))**
 
-states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Appendix A (A1–A3) and Appendix B (asymmetry of ◃).
+states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Appendix A.3 (A1–A3) and Section 5.2 (asymmetry of ◃).
 
 This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
 
@@ -206,7 +206,7 @@ Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's si
 #### 5.8.2 Infinit Matter
 Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
 
-This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. Verification in Lean (Appendix A) ensures these implications are provable, embedding the Hyper-Modal Theorem in modal rigor.  
+This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. Verification in Lean (Appendix A.5) ensures these implications are provable, embedding the Hyper-Modal Theorem in modal rigor.  
 
 Further objections are welcome and will be addressed in future revisions.
 
@@ -544,7 +544,7 @@ Which asserts:
 
 □[P] = All contingent truths necessarily require necessary grounding
 □¬[Q] = It is necessarily false that necessary truths require contingent grounding
-This asymmetry is crucial: reversing the direction would violate the modal structure and produce contradiction. See Section 5.2 for discussion and Appendix A for Lean-backed verification.
+This asymmetry is crucial: reversing the direction would violate the modal structure and produce contradiction. Expands on Section 5.2 (with full derivation) and Appendix A.5 for Lean-backed verification.
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -580,7 +580,7 @@ Each rejection either leads to a logical explosion (infinite derivability), a se
 
 Q.E.D.
 
-### C.2 Visual Flow of Section 3
+#### C.2 Visual Flow of Section 3
 ````
 START: I_am is contingent
     ↓
@@ -597,7 +597,7 @@ Therefore, □(I_am ◃ Ω)
 From minimal axioms → □∃x.Ω(x) is true
 ````
 
-## Appendix D: Glossary of Modal Symbols
+### Appendix D: Glossary of Modal Symbols
 **Hyper-Modal Theorem**  
 The central theorem of this paper:  
 > **□∃x Ω(x)**.   
@@ -616,7 +616,7 @@ In this system, Ω is not just true in all possible worlds (**□∃x Ω(x)**), 
 
 See main text for contextual definitions and formal usage.
 
-## Appendix E: Objections & Replies
+### Appendix E: Objections & Replies
 #### Anti‑S5 (Modal Collapse) Objection  
 Objection: S5’s axiom ◇□φ → □φ collapses possibility into necessity.  
 Reply: Our axioms target positive, grounding predicates; collapse applies only inside that   restricted fragment. Contingent truths (e.g., material facts) remain genuinely contingent   because they lack Positive status.  
@@ -634,7 +634,7 @@ Objection: This is merely a variant of Gödel’s and Plantinga’s ontological 
 Reply: Our Hyper‑Minimal PSR and Lean verification make the proof syntactically shorter (~150 LOC) and machine-checkable, a goal only met for Gödel’s version in 2013, Benzmüller and Paleo (2013).
 #### Modal Reflection in ASI
 Objection: An ASI might develop an entirely materialist ontology and ignore Ω.  
-Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack   epistemic coherence.  
+Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see Section 5.6, paradox table, for how paradoxes reinforce this convergence).  
 #### Gödel Overreach
 Objection: Gödel’s incompleteness theorems apply to arithmetic, not metaphysics.  
 Reply: We use Gödel analogically, to highlight that any system capable of expressing truth must reference external foundations. This is a meta-logical structure, not a direct application.  
@@ -645,7 +645,7 @@ Reply: Sections 2 and 5 clarify: Cont(p) := ◇p ∧ ◇¬p, and all contingent 
 Objection: The conclusion supports classical theism, undermining neutrality.  
 Reply: Section 6 frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
 
-## Appendix F : Epilogue
+### Appendix F : Epilogue
 >“A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory (as people often think) but a vice. Every genuine test of a theory is an attempt to falsify it, or refute it.” — Karl Popper
 
 Where Popper grounded science in falsifiability, I ground truth in modality.
