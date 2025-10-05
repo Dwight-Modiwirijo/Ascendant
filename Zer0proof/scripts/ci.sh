@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ ! -f lakefile.lean ]; then
+  echo "[CI] Not in repo root (lakefile.lean missing). PWD=$(pwd)" >&2
+  exit 1
+fi
+ 
 echo "[CI] Versions"
 lean --version || true
 lake --version || true
@@ -14,12 +19,21 @@ if grep -R -nE "sorry|admit|Ess|Barcan|Loeb|GL|instance .* Positive|choose" AltR
 fi
 
 echo "[CI] Blocklist (public)"
+
 if grep -R -nE "NecessaryExistence|□∃|◇□|Box \(∃|Dia \(.*Box" AltRoute/*.lean; then
   echo "[CI] blocklist: strong public claim found" >&2; exit 1
 fi
 
 echo "[CI] AxiomsCheck"
-lake env lean -R . scripts/AxiomsCheck.lean > axioms.out
+set +e
+lake env lean -R . scripts/AxiomsCheck.lean >axioms.out 2>&1
+AX=0
+set -e
+if [  -ne 0 ]; then
+  echo "[CI] AxiomsCheck FAILED (exit ). Dumping axioms.out:"
+  sed -n "1,200p" axioms.out
+  exit 
+fi
 
 # Whitelist: alleen PosPossibility voor de twee hoofdstellingen
 if grep -q "'AltRoute\.necPossible_of_Pos'.*depends on axioms: \[AltRoute\.PosPossibility\]" axioms.out \
