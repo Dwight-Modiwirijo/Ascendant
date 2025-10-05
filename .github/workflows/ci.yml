@@ -7,7 +7,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Zer0proof   # <<< run alles in submap
+        working-directory: Zer0proof  # voer alles in deze submap uit
 
     steps:
       - uses: actions/checkout@v4
