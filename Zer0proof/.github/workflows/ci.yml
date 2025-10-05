@@ -1,0 +1,25 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan (Lean toolchain)
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain=none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Use toolchain from lean-toolchain
+        run: |
+          TOOLCHAIN="$(cat lean-toolchain)"
+          ~/.elan/bin/elan toolchain install "$TOOLCHAIN"
+          ~/.elan/bin/elan override set "$TOOLCHAIN"
+          ~/.elan/bin/lean --version
+          ~/.elan/bin/lake --version || true
+
+      - name: Run CI script
+        run: bash scripts/ci.sh
