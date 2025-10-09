@@ -7,7 +7,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Zer0proof  # voer alles in deze submap uit
+        working-directory: Zer0proof
 
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +24,7 @@ jobs:
           ~/.elan/bin/elan toolchain install "$TOOLCHAIN"
           ~/.elan/bin/elan override set "$TOOLCHAIN"
           ~/.elan/bin/lean --version
+          ~/.elan/bin/lake --version || true
 
       - name: Run CI script
         run: bash scripts/ci.sh
