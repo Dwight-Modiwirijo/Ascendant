@@ -6,6 +6,7 @@ package «Zer0proof» where
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.20.1" -- match toolchain
 
+
 @[default_target] lean_lib AltRoute where
   roots := #[`AltRoute.Interface, `AltRoute.PublicTests]
 
@@ -15,4 +16,9 @@ lean_lib NoExport_NecessaryExistence where
 
 -- Private library (no default_target; not built in public CI)
 lean_lib AltRoutePrivate where
-  srcDir := "AltRoute/Private"
+  roots := #[
+    `AltRoute.Private.AltRoutePrivate,
+    `AltRoute.Private.Successor.Types,
+    `AltRoute.Private.Successor.Bridge,
+    `AltRoute.Private.Successor.Chain
+  ]
