@@ -31,3 +31,5 @@ lake update && lake build
 # run axiom footprint report
 lake env lean -R . scripts/AxiomsCheck.lean
 
+mkdir -p .lake/build/lib/lean/AltRoute/Private/Successor
+lake env lean --root=.   -o .lake/build/lib/lean/AltRoute/Private/Successor/Types.olean   AltRoute/Private/Successor/Types.lean
