@@ -1,6 +1,11 @@
-/- Root module for the *private* code. Nothing is re-exported publicly. -/
-namespace AltRoute
-namespace Private
--- (intentionally empty; submodules are imported elsewhere)
-end Private
-end AltRoute
+/-
+  AltRoute/Private/AltRoutePrivate.lean
+  -------------------------------------
+  Thin wrapper to ensure the private bridge is built.
+-/
+import AltRoute.Private.Successor.Bridge
+set_option autoImplicit false
+
+namespace AltRoute.Private
+-- no extra content; we just force building the private bridge
+end AltRoute.Private
