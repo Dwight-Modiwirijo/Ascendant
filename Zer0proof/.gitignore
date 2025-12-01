@@ -1,62 +1,30 @@
-# Lake & build
+############################
+# Lake & Lean build output #
+############################
+
 .lake/
 _lake/
-*.olean
 *.ilean
 *.c
 *.trace
 
-# Output/artefacts
-dist/
-axioms.out
-SHA256SUMS
-*.tar.gz
+##################
+# Build artefacts #
+##################
 
-# OS/IDE
+# Lokale analyse-output, maar NIET die in dist/
+axioms.out
+
+################
+# OS / editor  #
+################
+
 .DS_Store
 *.swp
-# Build / artefacts
-.lake/
-dist/
-dist-private/
-*.olean
-*.ilean
-*.c
-*.trace
-axioms.out
-SHA256SUMS
-*.zip
 
+###############
 # Keys / secrets
-paper
-paper.pub
-# Build / artefacts
-.lake/
-dist/
-dist-private/
-*.olean
-*.ilean
-*.c
-*.trace
-axioms.out
-SHA256SUMS
-*.zip
+###############
 
-# Keys / secrets
-paper
-paper.pub
-# Build / artefacts
-.lake/
-dist/
-dist-private/
-*.olean
-*.ilean
-*.c
-*.trace
-axioms.out
-SHA256SUMS
-*.zip
-
-# Keys / secrets
 paper
 paper.pub
