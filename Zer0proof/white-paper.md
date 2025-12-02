@@ -80,18 +80,18 @@ MA is not an existing construct from the literature, but an **original algebra**
 ## 3.4 Cardinality
 Although Ascendant.Zero reduces the search space from uncountable (ℵ₁) to countable (ℵ₀), the transformation is more fundamental:
 
-Standard LLM space (ℵ₁):
-• Continuous vector space ℝⁿ
-• No inherent structure
-• Truth has measure zero
-• Random sampling fails
+Standard LLM space (ℵ₁):  
+• Continuous vector space ℝⁿ  
+• No inherent structure  
+• Truth has measure zero  
+• Random sampling fails  
 
-Ascendant.Zero space (ℵ₀):
-• Well-founded graph toward Ω
-• Anti-regress (A3) guaranteed
-• Metric: Distance(x, Ω) via MA
-• Ordered by proximity to Ω
-• Convergence provable
+Ascendant.Zero space (ℵ₀):  
+• Well-founded graph toward Ω  
+• Anti-regress (A3) guaranteed  
+• Metric: Distance(x, Ω) via MA  
+• Ordered by proximity to Ω  
+• Convergence provable  
 
 **Summary:**
 
@@ -294,19 +294,19 @@ In the roadmap, it is therefore natural to:
 2. and subsequently move the most critical parts of the Nihillucinator and MA evaluation to a dedicated OPU on FPGA hardware.
 
 # 6. Conclusion
-Ascendant.Zero offers a fundamentally new approach to AI architecture:
+Ascendant.Zero offers a fundamentally new approach to AI architecture:  
 
-• Formal verification (Lean 4, zero sorry)
-• Structural anti-hallucination (ARES)
-• Hardware-grounded truth (OPU)
-• Epistemic evolution (Tₙ→Tₙ₊₁)
+• Formal verification (Lean 4, zero sorry)  
+• Structural anti-hallucination (ARES)  
+• Hardware-grounded truth (OPU)  
+• Epistemic evolution (Tₙ→Tₙ₊₁)  
 
 The system transforms the search space from uncountable chaos (ℵ₁) to countable, Ω-structured order (ℵ₀), whereby hallucinations are structurally excluded rather than statistically minimized.
 
-Status:
-• Theory: Complete and formally verified
-• Implementation: Software MVP in development
-• Hardware: FPGA layer planned as next phase
+Status:  
+• Theory: Complete and formally verified  
+• Implementation: Software MVP in development  
+• Hardware: FPGA layer planned as next phase  
 
 ## 6.1 Comparison
 
