@@ -318,4 +318,4 @@ Status:
 | TI evolution   | ✗     | ✗      | ✓              |
 | Cardinality    | ℵ₁    | ℵ₁     | ℵ₀             |
 
-*Ground-truth error on tasks with objective/verifiable labels. Ascendant.Zero value is an architecture-driven target, to be empirically validated. If a query cannot be grounded in the formal kernel or trusted data, Ascendant.Zero falls back to a constrained mode: it reports only what can be supported by verifiable sources, and explicitly states that further analysis would be speculative.*
+*Ground-truth error on tasks with objective/verifiable labels (e.g. math theorems, numeric facts, empirical measurements — not theory-level interpretations). Ascendant.Zero value is an architecture-driven target, to be empirically validated. If a query cannot be grounded in the formal kernel or trusted data, Ascendant.Zero falls back to a constrained mode: it reports only what can be supported by verifiable sources, and explicitly states that further analysis would be speculative.*
