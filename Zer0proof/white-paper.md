@@ -310,10 +310,12 @@ Status:
 
 ## 6.1 Comparison
 
-| Feature        | GPT-4 | Claude | Ascendant.Zero |
+| Feature        | GPT-4 | Claude | Ascendant.Zero  |
 |:---------------|:-----:|:------:|:--------------:|
-| Hallucination  | 15%+  | 10%+   | <5%            |
+| Hallucination  | 15%+  | 10%+   | Target <5%           |
 | Lean verification | ✗   | ✗      | ✓              |
 | FPGA grounding | ✗     | ✗      | ✓              |
 | TI evolution   | ✗     | ✗      | ✓              |
 | Cardinality    | ℵ₁    | ℵ₁     | ℵ₀             |
+
+*Ground-truth error on tasks with objective/verifiable labels. Ascendant.Zero value is an architecture-driven target, to be empirically validated.*
