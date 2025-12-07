@@ -25,7 +25,7 @@ This approach offers a bottom-up alternative to traditional ontological argument
 We distinguish our method through three components:
 
 A constructive framework of minimal modal axioms: the Hyper-Minimal Principle of Sufficient Reason (HM-PSR), Perfect Positivity, Anti-Regress, Logical Necessity, and Meta-Logical Closure.
-A formal proof of necessary perfection, fully implemented and verified in Lean 4.
+A formal core proof of necessary existence and uniqueness, implemented and verified in Lean 4, together with a perfection schema articulated at the conceptual level.
 A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.
 This paper proceeds as follows:
 
@@ -47,12 +47,12 @@ Every contingent truth must be grounded in a necessary ontological basis. Formal
 >**Cont(p) → ∃q (Nec(q) ∧ q ◃ p)**  
 
 *Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
-The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.2: `ground`). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
+The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
 Formalization: Pos(P) ≡ ¬∃Q (Q → ¬P)
-This avoids circularity and contingent dependence (see Appendix A.2: `perfect_positivity`).
+This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
 
 ### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
@@ -166,10 +166,10 @@ But the strength of this conclusion goes further: since each inference is either
 
 > **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
 
-This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. The theorem is verified in Lean 4 (see Appendix A.4), ensuring strict logical validity and computational transparency.
+This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x Ω(x) with full mechanical rigor, ensuring logical validity and computational transparency.
 
 ## 4. Verification in Lean 4
-The formal proof sketched in Section 3 is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
+The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
 
 Error Elimination: Every logical dependency, including modal transitions, grounding relations, and definitions of contingency and necessity, is mechanically checked by the Lean compiler.
 Computational Transparency: Unlike traditional metaphysical arguments, which may rest on interpretive ambiguity, this formalization allows any competent logician to inspect the proof down to its atomic axioms.
@@ -178,7 +178,7 @@ The Lean implementation models S5 modal logic using Kripke semantics. The access
 The complete Lean 4 source code of the formal system, including modal operators, grounding relations, axioms, and twelve reductio theorems, is available publicly on GitHub:
 https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/superlaw.lean
 
-All code is available in Appendix A.
+Key core definitions and representative theorems are reproduced in Appendix A; the full development is available on GitHub.
 
 ## 5. Objections and Responses
 This section addresses several common critiques of modal and Gödelian ontological arguments, as well as concerns specific to this paper.
@@ -287,14 +287,14 @@ Lemaître's framework strengthens the case for a necessary ground (Ω). He viewe
 
 ### 5.8 Finitude and Potential Infinitude of Matter Reinforce PSR
 #### 5.8.1 Finite Matter
-Building on the cosmological finitude established in Section 5.7, this subsection demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x Ω(x), as verified in Lean, Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
+Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x Ω(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
 
 Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
 
-#### 5.8.2 Infinit Matter
+#### 5.8.2 Infinite Matter
 Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
 
-This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. Verification in Lean (Appendix A.5) ensures these implications are provable, embedding the Hyper-Modal Theorem in modal rigor.  
+This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. The Lean framework in Appendix A.6 shows that these implications can, in principle, be internalised and mechanically proved, embedding the Hyper-Modal Theorem in explicit modal rigor.  
 
 Further objections are welcome and will be addressed in future revisions.
 
@@ -701,7 +701,7 @@ end HyperModal
 This appendix presents the complete modal-semantic framework underlying the Alternative Route.
 Whereas the Alt Route uses a successor-based grounding structure, the HyperModal system provides the global modal semantics and grounding axioms that justify the ontological closure the Alt Route depends on.
 
-The following foundations are fully implemented and verified in Lean 4.
+The following foundations are fully formalized in Lean 4 (definitions and axioms, together with a suite of reductio theorems).
 
 ---
 
@@ -826,7 +826,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
 10. **No Necessary Grounded in Contingent:**
     No necessary truth can be grounded in a contingent one.
 
-These axioms form the basis for the reductio framework and the grounding results in Appendix 6B and 6C.
+These axioms form the basis for the reductio framework and the grounding results in Appendix C (C.1–C.3).
 
 ---
 
@@ -881,7 +881,7 @@ This suite provides **absolute modal inevitability**:
 the system is not merely consistent but *logically forced*.
 
 ---
-#### **B.2.3: Formal Derivation of Modal Asymmetry
+#### B.2.3 Formal Derivation of Modal Asymmetry
 This appendix contains the full derivation of the modal asymmetry principle that grounds the proof:
 
 Let:
@@ -903,7 +903,7 @@ Which asserts:
 
 □[P] = All contingent truths necessarily require necessary grounding
 □¬[Q] = It is necessarily false that necessary truths require contingent grounding
-This asymmetry is crucial: reversing the direction would violate the modal structure and produce contradiction. Expands on Section 5.2 (with full derivation) and Appendix A.5 for Lean-backed verification.
+This asymmetry is crucial: reversing the direction would violate the modal structure and produce contradiction. Expands on Section 5.2 (with full derivation) and Appendix A.6 for Lean-backed verification.
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -916,14 +916,14 @@ Thus, the modal system respects Gödel’s insight by embedding the boundary bet
 This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced..
 
 ---
-## Appendix C: Consciousness, Logic, and Anti-Material Grounding Theorems**
+## Appendix C: Consciousness, Logic, and Anti-Material Grounding Theorems
 
 This appendix presents the three most philosophically significant theorems in the HyperModal system.
 Each is fully machine-verified in Lean and corresponds directly to core claims of the paper.
 
 ---
 
-### **C.1 Consciousness Grounded in Ω**
+### C.1 Consciousness Grounded in Ω
 
 Assume:
 
@@ -981,7 +981,7 @@ This aligns with the Gödelian non-emergence principle in your main text.
 
 ---
 
-### **C.3 Systematic Reductio: Materialist Contradiction**
+### C.3 Systematic Reductio: Materialist Contradiction
 
 Assume:
 
@@ -1002,10 +1002,10 @@ Thus:
 
 ---
 
-### Appendix C: Reductio Suite Summary
+## Appendix D: Reductio Suite Summary
 This appendix summarizes the twelve formal reductio arguments derived from the Lean-verified axioms in Appendix A. Each reductio demonstrates that rejecting one axiom leads to contradiction, collapse, or modal incoherence.
 
-#### C.1 Axiom Rejection and Consequences (Summary Table)
+### D.1 Axiom Rejection and Consequences (Summary Table)
 
 | Axiom / Principle Rejected | 	Consequence of Rejection |
 |----------------------------|---------------------------|
@@ -1026,7 +1026,7 @@ Each rejection either leads to a logical explosion (infinite derivability), a se
 
 Q.E.D.
 
-#### C.2 Visual Flow of Section 3
+### D.2 Visual Flow of Section 3
 ````
 START: I_am is contingent
     ↓
@@ -1043,7 +1043,7 @@ Therefore, □(I_am ◃ Ω)
 From minimal axioms → □∃x.Ω(x) is true
 ````
 
-### Appendix D: Glossary of Modal Symbols
+## Appendix E: Glossary of Modal Symbols
 **Hyper-Modal Theorem**  
 The central theorem of this paper:  
 > **□∃x Ω(x)**.   
@@ -1062,36 +1062,36 @@ In this system, Ω is not just true in all possible worlds (**□∃x Ω(x)**), 
 
 See main text for contextual definitions and formal usage.
 
-### Appendix E: Objections & Replies
-#### Anti‑S5 (Modal Collapse) Objection  
+## Appendix F: Objections & Replies
+### Anti‑S5 (Modal Collapse) Objection  
 Objection: S5’s axiom ◇□φ → □φ collapses possibility into necessity.  
 Reply: Our axioms target positive, grounding predicates; collapse applies only inside that   restricted fragment. Contingent truths (e.g., material facts) remain genuinely contingent   because they lack Positive status.  
-#### PSR‑Skepticism
+### PSR‑Skepticism
 Objection: The Principle of Sufficient Reason is controversial; brute facts might exist.  
 Reply: Denying PSR triggers the reductio lemma hyper_minimal_PSR_reductio, yielding ⊥; moreover, it forfeits the very meaning of ‘explanation’ and ‘ground.’    
-#### “Grounding is Subjective”
+### “Grounding is Subjective”
 Objection: Ground‑relation p ◃ q is metaphysically vague.  
 Reply: In our formalism, ground is extensional (q→p) ∧ minimal‑necessitation; Lean verifies asymmetry. Vague metaphysics is replaced by precise modal criteria.  
-#### Materialist Reduction
+### Materialist Reduction
 Objection: Logic might be emergent from physical brains.  
 Reply: Theorem anti_material_grounding formalises that no necessary fact can be grounded in a contingent substrate; Lean proves ¬(Logic ◃ Material).  
-#### Gödel/Plantinga Redundancy
+### Gödel/Plantinga Redundancy
 Objection: This is merely a variant of Gödel’s and Plantinga’s ontological proofs.
 Reply: Our Hyper‑Minimal PSR and Lean verification make the proof syntactically shorter (~150 LOC) and machine-checkable, a goal only met for Gödel’s version in 2013, Benzmüller and Paleo (2013).
-#### Modal Reflection in ASI
+### Modal Reflection in ASI
 Objection: An ASI might develop an entirely materialist ontology and ignore Ω.  
 Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see Section 5.6, paradox table, for how paradoxes reinforce this convergence).  
-#### Gödel Overreach
+### Gödel Overreach
 Objection: Gödel’s incompleteness theorems apply to arithmetic, not metaphysics.  
 Reply: We use Gödel analogically, to highlight that any system capable of expressing truth must reference external foundations. This is a meta-logical structure, not a direct application.  
-#### Contingency/Necessity Ambiguity
+### Contingency/Necessity Ambiguity
 Objection: The modal distinction is inconsistently applied.  
 Reply: Sections 2 and 5 clarify: Cont(p) := ◇p ∧ ◇¬p, and all contingent truths are grounded in necessary ones by A1. Appendix B formalizes this asymmetry.  
-#### Theological Overreach
+### Theological Overreach
 Objection: The conclusion supports classical theism, undermining neutrality.  
 Reply: Section 6 frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
 
-### Appendix F: Successor Function of Grounding (Constructive Form)
+## Appendix G: Successor Function of Grounding (Constructive Form)
 
 In the formal system developed above, the **anti‑regress axiom**
 
@@ -1104,7 +1104,7 @@ This axiom mirrors the **structure** of the classical Peano successor function, 
 
 ---
 
-#### F.1 Analogy to the Peano Successor
+### G.1 Analogy to the Peano Successor
 
 | Aspect    | Peano Successor            | Grounding Successor (Anti‑Regress)   |
 | --------- | -------------------------- | ------------------------------------ |
@@ -1117,7 +1117,7 @@ The **successor‑like** pattern appears in the form `f (n + 1)` but serves the 
 
 ---
 
-#### F.2 Constructive Successor Function
+### G.2 Constructive Successor Function
 
 A *constructive* operator can express this relationship explicitly:
 
@@ -1139,7 +1139,7 @@ def succGround (p : W → Prop) : Option (W → Prop) :=
 
 ---
 
-#### F.3 Conceptual Interpretation
+### G.3 Conceptual Interpretation
 
 Every explanatory chain can be viewed as a finite sequence:
 
@@ -1153,7 +1153,7 @@ Thus, while the anti‑regress axiom excludes infinite descent, `succGround` mod
 
 ---
 
-### Appendix G : Epilogue
+## Appendix H : Epilogue
 >“A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory (as people often think) but a vice. Every genuine test of a theory is an attempt to falsify it, or refute it.” — Karl Popper
 
 Where Popper grounded science in falsifiability, I ground truth in modality.
@@ -1211,6 +1211,6 @@ Tegmark, Max. *Our Mathematical Universe: My Quest for the Ultimate Nature of Re
 Turing, Alan M. *On Computable Numbers, with an Application to the Entscheidungsproblem.* Proceedings of the London Mathematical Society, 1936. https://doi.org/10.1112/plms/s2-42.1.230
 
 ### Author
-Dwight S. Modiwirijo, Independent Scholar .NET Developer. No funding declared.
+Dwight S. Modiwirijo, Independent scholar and .NET developer. No funding declared.
 
 e-mail: dwight.modiwirijo@gmx.com
