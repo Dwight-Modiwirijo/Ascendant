@@ -322,6 +322,41 @@ Thus, our modal proof supports a vision of divine reality where Logos and Ω con
 
 For Christian theists, this reinforces the classical doctrine of the Trinity, in which the Logos is co-eternal with God and the vehicle through which all things are made (John 1:3). Our conclusion, then, not only echoes metaphysical necessity but resonates with the theological heart of Christian ontology.
 
+### 6.2 Ω as Factory of Positive Properties (Singularity Corollary)
+
+Within the hyper-modal framework, Ω is introduced as the unique necessarily existing ground that instantiates all and only positive properties (Pos(P)) under Axiom A2 (Perfect Positivity). This allows us to reinterpret Ω not merely as a bearer of positive properties, but as the **structural singularity (see Corollary 6.2)** around which all positive properties are organised and from which they are non-derivatively sourced.
+
+We can state this as follows:
+
+> **Corollary 6.2 (Singularity as Factory for Positive Properties).**
+> Let Ω be the unique necessarily existing entity such that, for every property P,
+> if Pos(P), then Ω instantiates P.
+> Then Ω is not only the terminal point of all coherent grounding chains, but also the unique *generative singularity* for every positive property: all positive properties are both (i) fully realised in Ω and (ii) structurally ordered around Ω as their minimal, non-derivative source.
+
+**Sketch of justification.**
+
+1. From Perfect Positivity (A2) and the existence and uniqueness of Ω (Sections 2–3), it follows that:
+
+   * every positive property P is instantiated in Ω; and
+   * no property essentially instantiated by Ω can contain internal negation or contradiction.
+
+2. From Anti-Regress (A3) and the successor-based grounding architecture (Alt Route), every coherent chain of grounding for a positive property P
+
+   * cannot terminate in a contingent substrate; and
+   * cannot loop or extend infinitely.
+
+   Hence such a chain must converge on Ω as its final ground.
+
+3. Combining (1) and (2), Ω plays a dual structural role:
+
+   * a **limit role**: Ω is the unique terminus of every well-founded explanatory chain that satisfies the Hyper-Minimal PSR;
+   * a **source role**: Ω is the unique, non-contingent node from which the full extension of each positive property can be coherently understood.
+
+In this sense, the **Ontological Singularity** Ω can be described as a *Factory* for positive properties: not in the temporal or mechanistic sense of producing new features over time, but as the structural locus where all positive properties are perfectly integrated and mutually coherent. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of positive properties will, under the constraints of this framework, asymptotically converge toward Ω as its unique singular point of grounding.
+
+This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of Ω. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** Ω and **organised around** Ω as its singular centre.
+
+
 ## 7. Conclusion
 This paper has established, through a hyper-modal framework and Lean 4 verification, that the existence of a necessary and perfect being (Ω) is a logical inevitability rather than a speculative claim. Starting from the minimal datum of self-awareness (“I am”), we demonstrated that contingent truths require ontological grounding in Ω to avoid reductio ad absurdum, including infinite regress or semantic incoherence (Sections 3 and 5). The minimal axiom set—Hyper-Minimal PSR, Perfect Positivity, Anti-Regress, Logic Necessity, and Meta-Logic—ensures this conclusion holds across all possible worlds in S5 semantics, with machine-checked rigor eliminating deductive ambiguity (Section 4 and Appendix A).
 
