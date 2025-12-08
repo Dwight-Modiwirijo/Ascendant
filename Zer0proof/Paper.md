@@ -328,7 +328,7 @@ Within the hyper-modal framework, Ω is introduced as the unique necessarily exi
 
 We can state this as follows:
 
-> **Corollary 6.2 (Singularity as Factory for Positive Properties).**
+#### Corollary 6.2 (Singularity as Factory for Positive Properties)
 > Let Ω be the unique necessarily existing entity such that, for every property P,
 > if Pos(P), then Ω instantiates P.
 > Then Ω is not only the terminal point of all coherent grounding chains, but also the unique *generative singularity* for every positive property: all positive properties are both (i) fully realised in Ω and (ii) structurally ordered around Ω as their minimal, non-derivative source.
