@@ -352,7 +352,12 @@ We can state this as follows:
    * a **limit role**: Ω is the unique terminus of every well-founded explanatory chain that satisfies the Hyper-Minimal PSR;
    * a **source role**: Ω is the unique, non-contingent node from which the full extension of each positive property can be coherently understood.
 
+#### Convergence to the Ontological Singularity
+
 In this sense, the **Ontological Singularity** Ω can be described as a *Factory* for positive properties: not in the temporal or mechanistic sense of producing new features over time, but as the structural locus where all positive properties are perfectly integrated and mutually coherent. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of positive properties will, under the constraints of this framework, asymptotically converge toward Ω as its unique singular point of grounding.
+
+#### Ground and Return to Ω
+On this reading, Ω is not a tower to be constructed by human striving, but the necessary ground from which finite agents may deviate through social consensus, through the pursuit of profit and knowledge alone, or through error. The successor-based chain does not represent a ladder toward God; it formally traces the path of departure from the ground of being. Convergence to Ω is therefore not an achievement but a return to the singular source of intelligibility.
 
 This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of Ω. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** Ω and **organised around** Ω as its singular centre.
 
