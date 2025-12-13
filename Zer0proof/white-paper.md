@@ -352,13 +352,16 @@ Where:
 
 > Metric-like intuition only; no global world-to-world metric is assumed unless $d(w_1,w_2)$ is explicitly defined.
 
-#### Measure Equivalence
+### Measure Definition (Equivalence)
+
+We define the measure as the successor-distance to \(\Omega\):
 
 $$
-\text{meas}(w) = d(w, \Omega)
+\mathrm{meas}(w) \;:=\; d(w,\Omega).
 $$
 
-The measure from Section 2.2.2 is exactly the distance to $\Omega$.
+That is, throughout this work the “measure” is simply a shorthand for the distance to $\Omega$.
+
 
 ---
 ## 2. Cost Function for the FPGA
