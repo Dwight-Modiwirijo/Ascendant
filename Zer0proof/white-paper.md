@@ -319,3 +319,148 @@ Status:
 | Cardinality    | ℵ₁    | ℵ₁     | ℵ₀             |
 
 *Ground-truth error on tasks with objective/verifiable labels (e.g. math theorems, numeric facts, empirical measurements — not theory-level interpretations). Ascendant.Zero value is an architecture-driven target, to be empirically validated. If a query cannot be grounded in the formal kernel or trusted data, Ascendant.Zero falls back to a constrained mode: it reports only what can be supported by verifiable sources, and explicitly states that further analysis would be speculative.*
+
+---  
+
+# Addendum
+## Contingent Core Mappings toward Singularity
+
+### 1. Distance Function to Ω
+
+#### Definition
+
+For any world $w$ in the modal frame, the distance to $\Omega$ is defined as:
+
+$$
+d(w, \Omega) = \inf \{ n \in \mathbb{N} \mid S^n(w) = \Omega \}
+$$
+
+Where:
+- $S$ is the successor function in the grounding chain
+- $S^n$ denotes $n$-fold application of $S$
+- $\Omega$ is the unique fixed point where $S(\Omega) = \Omega$
+
+#### Properties (metric-like intuition)
+
+| Property | Formula |
+|----------|---------|
+| Ω is self-grounded | $d(\Omega, \Omega) = 0$ |
+| Finite termination (well-founded domain) | $\forall w \in W_{\mathrm{wf}}:\ d(w, \Omega) < \infty$ |
+| Strict decrease | $\forall w \neq \Omega:\ d(S(w), \Omega) < d(w, \Omega)$ |
+| Successor-distance (optional) | $d(w_1,w_2) := \inf\{\,n \in \mathbb{N}\mid S^n(w_1)=w_2\,\}$ if reachable, else $\infty$ |
+| Triangle inequality (optional) | $d(w_1,\Omega)\le d(w_1,w_2)+d(w_2,\Omega)$ |
+
+> Metric-like intuition only; no global world-to-world metric is assumed unless $d(w_1,w_2)$ is explicitly defined.
+
+#### Measure Equivalence
+
+$$
+\text{meas}(w) = d(w, \Omega)
+$$
+
+The measure from Section 2.2.2 is exactly the distance to $\Omega$.
+
+---
+## 2. Cost Function for the FPGA
+The expression below is included solely as an illustrative ML-oriented formulation. It should not be interpreted as implementing, approximating, or revealing the Ω-directed transcendence required by the full MA framework.
+
+The FPGA does not observe raw modality, but configurations that realize worlds.  
+A natural cost function therefore combines:
+
+- the metaphysical distance to $\Omega$, and  
+- the hardware cost of a configuration (time, energy, gates, etc.).
+
+Let $\text{config}$ be a hardware configuration that realizes a set of worlds $W_{\text{config}}$.  
+Then a simple cost function can be defined as:
+
+$$
+\mathcal{C}(\text{config}) \;=\;
+\mathbb{E}_{w \in W_{\text{config}}}\!\big[\text{distance}(w, \Omega)\big]
+\;+\;
+\lambda \cdot \text{HwCost}(\text{config}).
+$$
+
+- If all worlds of a configuration terminate in $\Omega$, then  
+  $\text{distance}(w,\Omega) = 0$ and the cost consists solely of hardware cost.
+- As soon as a configuration allows worlds with $\text{distance}(w,\Omega) = \infty$,  
+  the cost diverges and the configuration is effectively rejected in practice.
+
+Here $\lambda$ is a tunable factor balancing metaphysical purity against hardware efficiency.
+
+
+## 3. Modality–Algebra Mapping
+
+The modal structure used in the formal kernel admits a direct algebraic interpretation.  
+This mapping does not introduce new semantics, but makes explicit how modal operators,
+grounding relations, and convergence toward $\Omega$ are represented algebraically.
+
+### Core Correspondence
+
+| Modal Logic (S5) | Algebraic Structure | Interpretation |
+|------------------|---------------------|----------------|
+| $\Box \varphi$ | $\bigwedge_{w \in W} \varphi(w)$ | Necessity as universal meet |
+| $\Diamond \varphi$ | $\bigvee_{w \in W} \varphi(w)$ | Possibility as existential join |
+| $w \xrightarrow{R} v$ | $R(w,v) = 1$ | Accessibility relation |
+| $\Omega$ | Fixed point $f(\Omega) = \Omega$ | Necessary ground |
+| $p \triangleleft q$ | $q \Rightarrow p$ with rank decrease | Grounding relation |
+
+### Accessibility Structure (S5)
+
+Under S5, the accessibility relation is an equivalence relation.  
+For a finite set of worlds $W = \{w_1,\dots,w_n\}$, this can be represented as:
+
+$$
+R =
+\begin{pmatrix}
+1 & 1 & \cdots & 1 \\
+1 & 1 & \cdots & 1 \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & 1 & \cdots & 1
+\end{pmatrix}
+$$
+
+All worlds are mutually accessible.
+
+### Grounding as a Well-Founded Order
+
+The grounding relation $\triangleleft$ induces a well-founded partial order:
+
+$$
+(G,\triangleleft) \cong (\mathbb{N}, <) \quad \text{with top element } \Omega
+$$
+
+| Algebraic Property | Modal Meaning |
+|--------------------|--------------|
+| Well-foundedness | Anti-regress |
+| Unique minimum | Uniqueness of $\Omega$ |
+| Strict descent | $d(S(w),\Omega) < d(w,\Omega)$ |
+| Finite chains | Guaranteed convergence |
+
+### Truth Valuation
+
+For a proposition $\varphi$ at world $w$:
+
+$$
+V : W \times \text{Prop} \to \{0,1\}
+$$
+
+Modal operators reduce to algebraic extrema:
+
+$$
+V(w,\Box\varphi) = \min_{v \in W} V(v,\varphi)
+$$
+
+$$
+V(w,\Diamond\varphi) = \max_{v \in W} V(v,\varphi)
+$$
+
+### Fixed-Point Characterization
+
+The ground point $\Omega$ satisfies:
+
+$$
+\Omega = \bigwedge \{\, w \in W \mid S(w) = w \,\}
+$$
+
+By uniqueness, this meet is a singleton.
+---
