@@ -374,10 +374,12 @@ Let $\text{config}$ be a hardware configuration that realizes a set of worlds $W
 Then a simple cost function can be defined as:
 
 $$
-\mathcal{C}(\text{config}) \;=\;
-\mathbb{E}_{w \in W_{\text{config}}}\!\big[\text{distance}(w, \Omega)\big]
+\mathcal{C}(\text{config})
+\;=\;
+\mathbb{E}_{w \in W_{\text{config}}}
+\big[ \mathrm{distance}(w,\Omega) \big]
 \;+\;
-\lambda \cdot \text{HwCost}(\text{config}).
+\lambda \cdot \mathrm{HwCost}(\text{config}) .
 $$
 
 - If all worlds of a configuration terminate in $\Omega$, then  
