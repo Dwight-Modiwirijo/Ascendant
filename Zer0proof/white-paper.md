@@ -365,7 +365,7 @@ That is, throughout this work the “measure” is simply a shorthand for the di
 
 ---
 ## 2. Cost Function for the FPGA
-The expression below is included solely as an illustrative ML-oriented formulation. It should not be interpreted as implementing, approximating, or revealing the Ω-directed transcendence required by the full MA framework.
+The expression below is included solely as an illustrative ML-oriented formulation. It should not be interpreted as implementing, approximating, or revealing the Ω-directed **transcendence required** by the full MA framework.
 
 The FPGA does not observe raw modality, but configurations that realize worlds.  
 A natural cost function therefore combines:
