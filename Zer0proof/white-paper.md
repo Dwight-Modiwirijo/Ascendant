@@ -354,7 +354,7 @@ Where:
 
 ### Measure Definition (Equivalence)
 
-We define the measure as the successor-distance to \(\Omega\):
+We define the measure as the successor-distance to $\Omega$:
 
 $$
 \mathrm{meas}(w) \;:=\; d(w,\Omega).
