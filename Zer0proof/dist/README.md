@@ -35,7 +35,7 @@ it needs to expose enough structure to justify the step that triggers the S5 bri
 
 This argument is valid **only under the S5 axioms** encoded by the `Modal` interface.
 If a different modal system is used, `◇□p → □p` may fail, and the strategy must be revised.
-We formally prove the weaker statement, but the logic enforces the stronger conclusion:  □◇∃x + S5 + (definition of  Ω) → □∃x.  
+Formally: the public layer establishes the weaker modal form □◇∃x … (compatibility with Ω under S5), while S5 + the Ω-framework enforces the stronger consequence □∃x ….
 
 ---
 This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package.  
