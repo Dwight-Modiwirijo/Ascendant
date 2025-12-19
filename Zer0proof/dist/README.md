@@ -57,11 +57,7 @@ approach, but into incoherence.**
 
 ### The Proof Strategy
 
-Formally: the public layer establishes the weaker modal form **□◇∃x** 
-(necessary possibility of Ω under S5), while S5 + the Ω-framework 
-enforces the stronger consequence **□∃x** (necessary existence).
-
-Formally: the public layer establishes the weaker modal form □◇∃x … (compatibility with Ω under S5), while S5 + the Ω-framework enforces the stronger consequence □∃x ….
+Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of Ω under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence).
 
 ---
 This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package.  
