@@ -31,10 +31,36 @@ necessary framework (i.e., that it is not ruled out by the kernel's axioms and i
 So the public certificate does not need to expose the entire internal route to `□p`;
 it needs to expose enough structure to justify the step that triggers the S5 bridge.
 
-### Important scope note
+#### Important Scope Note
 
-This argument is valid **only under the S5 axioms** encoded by the `Modal` interface.
-If a different modal system is used, `◇□p → □p` may fail, and the strategy must be revised.
+This argument is valid only under the S5 axioms encoded by the `Modal` interface. 
+This certificate is therefore scoped to S5 modal logic.
+
+#### Why S5 Modal Logic?
+
+S5 is not a design preference but a **logical necessity** for this framework.
+
+#### Critical Requirements
+
+* **Axiom 5** (◇p → □◇p): Ensures modal stability across worlds
+* **Bridge principle** (◇□p → □p): Collapses necessary possibility to necessity
+* **Reflexivity (T) + Transitivity (4)**: Guarantees convergence
+
+#### Why Weaker Systems Fail
+
+* **S4**: Lacks symmetry (axiom 5); cannot bridge ◇□ to □
+* **K/T**: Insufficient structure for grounding chains
+* **Non-modal logic**: Cannot express necessity at all
+
+**Without S5, the grounding mechanism collapses—not into a different valid 
+approach, but into incoherence.**
+
+### The Proof Strategy
+
+Formally: the public layer establishes the weaker modal form **□◇∃x** 
+(necessary possibility of Ω under S5), while S5 + the Ω-framework 
+enforces the stronger consequence **□∃x** (necessary existence).
+
 Formally: the public layer establishes the weaker modal form □◇∃x … (compatibility with Ω under S5), while S5 + the Ω-framework enforces the stronger consequence □∃x ….
 
 ---
@@ -56,6 +82,9 @@ The goal of this README is precision: each attack vector is listed together with
 | 6 | Accidental export of strong claims | Prevented                    | NoExport_* CI guard             |
 | 7 | Namespace / symbol shadowing       | Mitigated                    | Pinned toolchain + minimal API  |
 | 8 | Artifact tampering                 | Prevented                    | Reproducible builds + hashes    |
+
+Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (ARES) provide runtime guarantees beyond the Lean verification layer and remain private.”
+
 
 ---
 
