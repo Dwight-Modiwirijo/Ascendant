@@ -357,7 +357,7 @@ Where:
 We define the measure as the successor-distance to $\Omega$:
 
 $$
-\mathrm{meas}(w) \;:=\; d(w,\Omega).
+\mathrm{meas}(w) :=  d(w,\Omega).
 $$
 
 That is, throughout this work the “measure” is simply a shorthand for the distance to $\Omega$.
@@ -376,13 +376,7 @@ A natural cost function therefore combines:
 Let $\text{config}$ be a hardware configuration that realizes a set of worlds $W_{\text{config}}$.  
 Then a simple cost function can be defined as:
 
-$$
-\mathcal{C}(\text{config})
-\;=\;
-\mathbb{E}_{w \in W_{\text{config}}}
-\big[ \mathrm{distance}(w,\Omega) \big]
-\;+\;
-\lambda \cdot \mathrm{HwCost}(\text{config}) .
+$$\mathcal{C}(\text{config}) =\mathbb{E}_{w \in W_{\text{config}}}\big[ \mathrm{distance}(w,\Omega) \big]+\lambda \cdot\mathrm{HwCost}(\text{config})
 $$
 
 - If all worlds of a configuration terminate in $\Omega$, then  
