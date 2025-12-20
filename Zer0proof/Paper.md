@@ -370,7 +370,7 @@ Key implications include a refutation of materialist emergence (e.g., via anti-m
 
 In epistemological terms, the proof elevates necessary theism to the status of modal absolutes, akin to Gödelian truths that transcend formal systems. The modal conclusion □∃x.Ω(x) thus serves not only as a metaphysical endpoint but also as an epistemological compass: any agent, human or artificial, that seeks ultimate truth must inevitably reckon with the necessary perfection of Ω. Moreover, Ω provides the ultimate anchor for AI interpretability: without a necessary ground, no reasoning process—however complex—can be fully intelligible. Future research could extend this to alternative modal logics, moral grounding in AI, or empirical tests via computational models.
 
-### 7.2 The Undeniability of Ω: A Necessary Ontological Complement to Gödel and Turing
+### 7.2 The Undeniability of Ω: Gödel and Turing as Ontological Premises
 
 Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
 
