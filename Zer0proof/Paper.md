@@ -384,7 +384,7 @@ Consequently, the rejection of Ω is not a neutral metaphysical stance, but a me
 
 In this sense, Ω is not merely necessary but *undeniable*: its negation cannot be coherently articulated without dissolving the logical framework that makes articulation possible in the first place. Gödel and Turing demonstrated the intrinsic limits of formal systems and algorithms. This paper does not contradict those limits; it treats them as premises. The complementary consequence is that any coherent theory of grounding or computation requires a necessary, non-computable ground — Ω. Thus, the boundaries of computability are not merely negative results; they constitute the positive condition for the existence of the ontological singularity.  
   
-Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is Ω.
+**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is Ω.**
 
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT-o1 (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content has been thoroughly reviewed, edited, and finalized by the author to ensure originality, accuracy, and alignment with the paper's thesis. No funding was received for this work.
