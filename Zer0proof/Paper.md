@@ -397,16 +397,19 @@ The author gratefully acknowledges the assistance of several AI language models 
 ### A.1 Scope of Verification
 This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
 
-### A.2 The Formal Proofs
-The verification covers:
-1. **Necessary Existence (NE):** Proven via `NE_Run.lean`, which synthesizes the termination of the successor chain with S5 necessitation.
-2. **Uniqueness:** Proven via `Uniqueness_Final.lean`, demonstrating that all zero-measure states coalesce into a single entity.
-3. **Rigidity:** Proven via `Rigidity_Wire.lean`, establishing that the existence of the limit is not contingent.
+### A.2 Public Verification Surface and Scope Certificate
 
-The full source code, including the `sorry`-free proof files, is available at:
-[https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof)
+This project distinguishes explicitly between its internal proof routes and its public verification surface. The public repository publishes a constrained Lean interface together with reproducible build artifacts (.olean files), forming a verifiable certificate of the exposed logical API.
 
-In this sense, the Alt Route is the formal core of the project: a self-contained Lean proof of necessary existence and uniqueness of Ω.
+The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.
+
+The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form □◇p (necessary possibility) within an S5 framework. Under S5 semantics, the bridge principle (◇□p → □p) guarantees that such admissibility suffices to enforce necessity, without requiring the full internal route to be publicly exposed.
+
+To prevent accidental leakage of stronger claims, the build system includes dedicated negative guards: CI targets are designed to fail if restricted theorems become exportable. The absence of such failures constitutes a positive safety guarantee. The compiled .olean artifacts function as build-verifiable proof objects: any modification to exported content requires recompilation under the same pinned toolchain and is detectable via reproducible builds and hash comparison.
+
+Known logical failure modes are explicitly addressed at the public level. Placeholder proofs (sorry) are rejected by the compiler, logical explosion is guarded by canary tests, and triviality is demonstrated to be avoidable through explicit model witnesses. Other guarantees—such as well-founded grounding, anti-regress enforcement, and transcendence mechanics—are verified internally and remain out of scope for the public certificate by design.
+
+Accordingly, this appendix certifies only the integrity and scope of the public API. It does not claim to expose the full internal proofs, but rather to demonstrate that the exported framework is consistent, non-trivial, and incapable of accidentally asserting stronger claims than intended.
 
 ---
 
