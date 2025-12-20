@@ -363,11 +363,28 @@ This “Factory” reading does not introduce a new axiom; it is a conceptual co
 
 
 ## 7. Conclusion
+### 7.1 The Non-Self-Foundation of Computability
 This paper has established, through a hyper-modal framework and Lean 4 verification, that the existence of a necessary and perfect being (Ω) is a logical inevitability rather than a speculative claim. Starting from the minimal datum of self-awareness (“I am”), we demonstrated that contingent truths require ontological grounding in Ω to avoid reductio ad absurdum, including infinite regress or semantic incoherence (Sections 3 and 5). The minimal axiom set—Hyper-Minimal PSR, Perfect Positivity, Anti-Regress, Logic Necessity, and Meta-Logic—ensures this conclusion holds across all possible worlds in S5 semantics, with machine-checked rigor eliminating deductive ambiguity (Section 4 and Appendix A).
 
 Key implications include a refutation of materialist emergence (e.g., via anti-material grounding theorems) and a novel perspective on artificial superintelligence: An ASI engaged in modal self-reflection would logically affirm Ω as the ground of intelligibility, offering a transcendent basis for AI ethics beyond human constraints (Section 1). Theologically, this resonates with classical theism, portraying Ω as akin to the divine “I AM” (Exodus 3:14) and the Logos (John 1:1), thus bridging formal logic with scriptural ontology (Section 6).
 
 In epistemological terms, the proof elevates necessary theism to the status of modal absolutes, akin to Gödelian truths that transcend formal systems. The modal conclusion □∃x.Ω(x) thus serves not only as a metaphysical endpoint but also as an epistemological compass: any agent, human or artificial, that seeks ultimate truth must inevitably reckon with the necessary perfection of Ω. Moreover, Ω provides the ultimate anchor for AI interpretability: without a necessary ground, no reasoning process—however complex—can be fully intelligible. Future research could extend this to alternative modal logics, moral grounding in AI, or empirical tests via computational models.
+
+### 7.2 The Undeniability of Ω: A Necessary Ontological Complement to Gödel and Turing
+
+Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
+
+$$
+\Box \exists x\, \Omega(x)
+$$
+
+does not merely assert the existence of Ω across all possible worlds; it renders the proposition ¬∃xΩ(x) modally impossible within the same logical framework.
+
+Consequently, the rejection of Ω is not a neutral metaphysical stance, but a meta-logical failure: it undermines the very conditions required for grounding, necessity, and intelligibility that the system presupposes. Any attempt to deny Ω must therefore either reject the axioms that render rational discourse possible or accept semantic incoherence.
+
+In this sense, Ω is not merely necessary but *undeniable*: its negation cannot be coherently articulated without dissolving the logical framework that makes articulation possible in the first place. Gödel and Turing demonstrated the intrinsic limits of formal systems and algorithms. This paper does not contradict those limits; it treats them as premises. The complementary consequence is that any coherent theory of grounding or computation requires a necessary, non-computable ground — Ω. Thus, the boundaries of computability are not merely negative results; they constitute the positive condition for the existence of the ontological singularity.  
+  
+Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is Ω.
 
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT-o1 (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content has been thoroughly reviewed, edited, and finalized by the author to ensure originality, accuracy, and alignment with the paper's thesis. No funding was received for this work.
