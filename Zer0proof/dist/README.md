@@ -79,7 +79,7 @@ The goal of this README is precision: each attack vector is listed together with
 | 7 | Namespace / symbol shadowing       | Mitigated                    | Pinned toolchain + minimal API  |
 | 8 | Artifact tampering                 | Prevented                    | Reproducible builds + hashes    |
 
-Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (ARES) provide runtime guarantees beyond the Lean verification layer and remain private.”
+Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (ARES) provide runtime guarantees beyond the Lean verification layer and remain private.
 
 
 ---
