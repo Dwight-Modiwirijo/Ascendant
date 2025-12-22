@@ -8,7 +8,7 @@ require mathlib from git
 
 
 @[default_target] lean_lib AltRoute where
-  roots := #[`AltRoute.Interface, `AltRoute.PublicTests]
+  roots := #[`AltRoute.Interface, `AltRoute.PublicTests, `AltRoute.CertificateAudit]
 
 -- negative guard: this build MUST fail in CI
 lean_lib NoExport_NecessaryExistence where
