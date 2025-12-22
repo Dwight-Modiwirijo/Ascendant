@@ -55,9 +55,18 @@ S5 is not a design preference but a **logical necessity** for this framework.
 **Without S5, the grounding mechanism collapses—not into a different valid 
 approach, but into incoherence.**
 
+### Intermezzo: Proof Semantics (BHK Interpretation)
+
+The verification methodology employed in this work follows the Brouwer–Heyting–Kolmogorov (BHK) interpretation of proof, as operationalized by the Curry–Howard correspondence in Lean. Under this interpretation, a proposition is considered proven precisely when a constructive proof object exists.
+
+In Lean, proofs are terms inhabiting types; a theorem is established when the kernel accepts a term of the corresponding type. Successful compilation is therefore not a heuristic or external validation, but the truth criterion internal to the formal system itself.
+
+Consequently, the existence of a kernel-validated Lean constant representing a theorem constitutes proof of that theorem within the system, independent of whether the statement is publicly exported or deliberately confined behind an interface boundary. The latter is a matter of certification scope and safety design, not of epistemic status.
+
+This distinction is essential for interpreting the public verification surface of Ascendant.Zero: the public layer certifies selected modal compatibility statements and guards, while stronger conclusions may remain internal without affecting their formal validity.
 ### The Proof Strategy
 
-Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of Ω under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence).
+Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of Ω under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence). Ascendant.Zero adopts the BHK/Curry–Howard interpretation of proof: a theorem is proven when a constructive proof term exists and is accepted by the Lean kernel. Public export boundaries are certification and safety mechanisms; they do not determine the truth or existence of internal proofs.
 
 ---
 This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package.  
