@@ -411,6 +411,11 @@ Known logical failure modes are explicitly addressed at the public level. Placeh
 
 Accordingly, this appendix certifies only the integrity and scope of the public API. It does not claim to expose the full internal proofs, but rather to demonstrate that the exported framework is consistent, non-trivial, and incapable of accidentally asserting stronger claims than intended.
 
+#### A.2.1 Scope Conformance of the Public Verification Surface  
+
+The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than the stronger necessary-existence claim □∃x Ω(x). Kernel inspection of axiom dependencies shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom PosPossibility, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (TrivialModel) and an explicit explosion canary (exFalsoQuodlibet) confirms that consistency guards are active at the public boundary. Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant: it certifies admissibility and safety properties while intentionally preventing the leakage of stronger internal conclusions.
+
+
 ---
 
 ### A.3 Relation to the Hyper-Modal Framework in the Main Text
