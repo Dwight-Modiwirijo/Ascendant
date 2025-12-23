@@ -1042,7 +1042,7 @@ Formally:
 * Any worldview claiming logic “emerges from physics” violates modal necessity.
 * Therefore, materialism cannot support its own logical preconditions.
 
-This aligns with the Gödelian non-emergence principle in your main text.
+This aligns with the Gödelian non-emergence principle.
 
 ---
 
