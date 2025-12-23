@@ -66,7 +66,7 @@ Consequently, the existence of a kernel-validated Lean constant representing a t
 This distinction is essential for interpreting the public verification surface of Ascendant.Zero: the public layer certifies selected modal compatibility statements and guards, while stronger conclusions may remain internal without affecting their formal validity.
 ### The Proof Strategy
 
-Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of Ω under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence). Ascendant.Zero adopts the BHK/Curry–Howard interpretation of proof: a theorem is proven when a constructive proof term exists and is accepted by the Lean kernel. Public export boundaries are certification and safety mechanisms; they do not determine the truth or existence of internal proofs.
+Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of Ω under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence). Ascendant.Zero adopts the BHK/Curry–Howard interpretation of proof: a theorem is proven when a constructive proof term exists and is accepted by the Lean kernel. Public export boundaries are certification and safety mechanisms; they do not determine the truth or existence of internal proofs. By the BHK interpretation, the transcendent grounding is not inferred but instantiated: once a proof object exists within a framework that enforces anti-regress and modal necessity, the proof’s existence fixes the necessity of its terminus.
 
 ---
 This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package.  
