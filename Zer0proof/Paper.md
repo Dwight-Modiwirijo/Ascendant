@@ -105,12 +105,20 @@ The successor machine is required to satisfy two key conditions:
 
    and for all $g$ in G, if meas($g$) = 0 then $g$ = Ω.
 
-Because M is well-founded and the measure strictly decreases along successor steps, there cannot be an infinite descending chain
+Because M is well-founded and the measure strictly decreases along successor steps, there cannot be an infinite descending chain  
+
 $$
-   g_0,g_1, g_2, ...   
+  g_0, g_1,g_2, ...   
 $$
+
 with
-$$ g_{i+1} = S(g_i) $$for all $i$.  
+
+$$
+g_{i+1} = S(g_i)
+$$
+
+for all $i$.  
+
 Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
 
 By uniqueness of the minimal state, any such chain can only terminate in Ω. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
