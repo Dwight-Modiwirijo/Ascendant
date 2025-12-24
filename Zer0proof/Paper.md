@@ -904,7 +904,7 @@ Within Metaphysical Algebra, topology ensures that semantic structure is converg
 
 #### B.1.4.2 **Perfection as a Generative Principle (MA Extension)**
 
-> **Perfectie is not a static checklist but a generative distinction.**
+> **Perfection is not a static checklist but a generative distinction.**
 
 To serve as a foundation rather than a catalogue, the notion of positivity must be *productive*: from a minimal rule, it must generate further necessary structure without arbitrary enumeration. In Metaphysical Algebra, this is achieved by interpreting `Pos(p)` not merely as a filter, but as the outcome of a **constructive generative operation**.
 
