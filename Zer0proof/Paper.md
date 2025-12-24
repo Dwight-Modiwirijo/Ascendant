@@ -106,10 +106,12 @@ The successor machine is required to satisfy two key conditions:
    and for all $g$ in G, if meas($g$) = 0 then $g$ = Ω.
 
 Because M is well-founded and the measure strictly decreases along successor steps, there cannot be an infinite descending chain
-
-   $g_0$, $g_1$, $g_2$, ...
-
-with $g_{i+1}$ = S($g_i$) for all $i$. Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
+$$
+   g_0,g_1, g_2, ...   
+$$
+with
+$$ g_{i+1} = S(g_i) $$for all $i$.  
+Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
 
 By uniqueness of the minimal state, any such chain can only terminate in Ω. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
 
@@ -128,13 +130,13 @@ We can now see how the successor architecture realises the principles of §2.1:
 Formally, we obtain:
 
 > **Proposition 2.2.1 (Successor termination in Ω).**  
-> For any contingent state g0 in Cont, any maximal successor chain  
+> For any contingent state $g_0$ in Cont, any maximal successor chain  
 >   
 >   $g_0$, $g_1$, ..., $g_n$  
 >   
-> with $g_{i+1}$ = $S(g_i)$ for all i < n and S($g_n$) undefined, must satisfy $g_n$ = Ω.  
+> with $g_{i+1}$ = $S(g_i)$ for all $i < n$ and S($g_n$) undefined, must satisfy $g_n$ = Ω.  
 >  
-> *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let gn be the last state in a maximal chain. If meas(gn) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = Ω.
+> *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let $g_n$ be the last state in a maximal chain. If meas($g_n$) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = Ω.
 
 This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Ω directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Ω.
 
