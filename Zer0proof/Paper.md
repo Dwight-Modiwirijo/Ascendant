@@ -151,19 +151,28 @@ This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead o
 In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
 ## 3. Formal Modal Proof of Ω (Necessary Perfection)
+
 We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume ¬□∃Ω and demonstrate that this assumption leads to incoherence.
 
-- Contingency of self-awareness:  
+* **Contingency of self-awareness:**
 The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
-- Application of HM-PSR (A1): From contingency, grounding follows:  
-**∃q (Nec(q) ∧ q ◃ “I am”)**  
-  - Rejection of necessary ground: If no necessary ground exists, we face two untenable alternatives:  
-    - Infinite regress (violates A3)  
-    - Arbitrary starting point (violates A1 and A4)
-Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse.  
-- Definition of **Ω**:  
-**Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.  
-- Conclusion: Therefore, **Ω** exists necessarily (**□∃x Ω(x)**) and grounds all contingent truths, with **“I am”** as the foundational example.
+* **Application of HM-PSR (A1) & The Witness Requirement:**
+From contingency, grounding follows:
+**∃q (Nec(q) ∧ q ◃ “I am”)**
+Formally, this existential claim requires a **Witness** $w$ : a constructive, trace-preserving path that connects the contingent state ("I am") to its ground . Without this witness, the grounding relation would be a disconnect.
+* **Rejection of necessary ground:** If no necessary ground exists (and thus no valid witness can be constructed), we face two untenable alternatives:
+	* *Infinite regress* (violates A3): The witness path never terminates ($length(w) = \infty$).
+	* *Arbitrary starting point* (violates A1 and A4): The witness path breaks or hangs in a vacuum.
+
+
+
+> *Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse; the witness requires a valid endpoint to exist.*
+
+* **Definition of Ω:**
+**Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
+* **Conclusion:**
+Therefore, **Ω** exists necessarily (**□∃x Ω(x)**) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
+
 
 ### 3.1 Conclusion: The Hyper-Modal Theorem
 
@@ -270,7 +279,7 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ p ◃ q))**
 
-states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Appendix A.3 (A1–A3) and Section 5.2 (asymmetry of ◃).
+states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (asymmetry of ◃).
 
 This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
 
@@ -1197,7 +1206,7 @@ Assume denial of A1 → triggers reductio (Appendix C)
     ↓
 By A2–A5: Ω has all Pos(P) and provides unique grounding context
     ↓
-Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.5)
+Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.6)
     ↓
 Therefore, □(I_am ◃ Ω)
     ↓
