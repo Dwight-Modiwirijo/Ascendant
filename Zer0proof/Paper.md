@@ -71,19 +71,19 @@ In this subsection we show how the hyper-modal grounding principles from §2.1 c
 
 #### 2.2.1 State space and successor
 
-Let G be a non-empty set of *grounding states*. Intuitively, each g in G represents a possible configuration of the world, or of a theory about the world, together with its current grounding structure.
+Let G be a non-empty set of *grounding states*. Intuitively, each $g$ in G represents a possible configuration of the world, or of a theory about the world, together with its current grounding structure.
 
 We assume:
 
 1. A distinguished subset Cont ⊆ G of **contingent states**.
-2. A distinguished element Omega in G, intended as the *absolutely grounded* state.
+2. A distinguished element Ω in G, intended as the *absolutely grounded* state.
 3. A (partial) **successor function**
 
    S : Cont → G
 
    which maps a contingent state to a strictly “more grounded” successor.
 
-The idea is that for any contingent configuration g, the machine does not stay at g; it must move to a successor state S(g) that reduces the amount of ungrounded contingency.
+The idea is that for any contingent configuration $g$, the machine does not stay at g; it must move to a successor state S($g$) that reduces the amount of ungrounded contingency.
 
 #### 2.2.2 A decreasing measure
 
@@ -91,27 +91,27 @@ To make this precise, we equip G with a **grounding measure**
 
    meas : G → M
 
-where M is a well-founded, linearly ordered set (for example the natural numbers N, or a well-ordered subset of the non-negative reals). Intuitively, meas(g) quantifies the “remaining ungrounded complexity” of state g.
+where M is a well-founded, linearly ordered set (for example the natural numbers N, or a well-ordered subset of the non-negative reals). Intuitively, meas($g$) quantifies the “remaining ungrounded complexity” of state $g$.
 
 The successor machine is required to satisfy two key conditions:
 
-1. **Strict decrease.** For every g in Cont with S(g) defined,
+1. **Strict decrease.** For every $g$ in Cont with S($g$) defined,
 
-   meas(S(g)) < meas(g).
+   meas(S($g$)) < meas($g$).
 
-2. **Minimal state.** There is a unique state Omega in G such that
+2. **Minimal state.** There is a unique state Ω in G such that
 
-   meas(Omega) = 0,
+   meas(Ω) = 0,
 
-   and for all g in G, if meas(g) = 0 then g = Omega.
+   and for all $g$ in G, if meas($g$) = 0 then $g$ = Ω.
 
 Because M is well-founded and the measure strictly decreases along successor steps, there cannot be an infinite descending chain
 
-   g0, g1, g2, ...
+   $g_0$, $g_1$, $g_2$, ...
 
-with gi+1 = S(gi) for all i. Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
+with $g_{i+1}$ = S($g_i$) for all $i$. Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
 
-By uniqueness of the minimal state, any such chain can only terminate in Omega. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
+By uniqueness of the minimal state, any such chain can only terminate in Ω. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
@@ -121,24 +121,24 @@ We can now see how the successor architecture realises the principles of §2.1:
 
 - **Anti-Regress.** The prohibition of infinite descending grounding chains is enforced by the well-foundedness of M together with the strict decrease of meas along successor steps. No chain of the form
 
-  g0 in Cont,  g_{n+1} = S(g_n)
+  $g_0$ in Cont,  $g_{n+1}$ = S($g_n$)
 
-  can be infinite. Every such chain must stabilise at a minimal state, which by definition is Omega.
+  can be infinite. Every such chain must stabilise at a minimal state, which by definition is Ω.
 
 Formally, we obtain:
 
-> **Proposition 2.2.1 (Successor termination in Omega).**  
+> **Proposition 2.2.1 (Successor termination in Ω).**  
 > For any contingent state g0 in Cont, any maximal successor chain  
 >   
->   g0, g1, ..., gn  
+>   $g_0$, $g_1$, ..., $g_n$  
 >   
-> with g_{i+1} = S(g_i) for all i < n and S(gn) undefined, must satisfy gn = Omega.  
+> with $g_{i+1}$ = $S(g_i)$ for all i < n and S($g_n$) undefined, must satisfy $g_n$ = Ω.  
 >  
-> *Sketch.* Since M is well-founded and meas(g_{i+1}) < meas(g_i), there can be no infinite chain. Let gn be the last state in a maximal chain. If meas(gn) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas(gn) = 0, so by uniqueness of the minimal state gn = Omega.
+> *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let gn be the last state in a maximal chain. If meas(gn) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = Ω.
 
-This proposition is the AltRoute mirror of the hyper-modal Omega-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Omega directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Omega.
+This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Ω directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Ω.
 
-In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Omega.
+In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
 ## 3. Formal Modal Proof of Ω (Necessary Perfection)
 We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume ¬□∃Ω and demonstrate that this assumption leads to incoherence.
@@ -375,7 +375,7 @@ In epistemological terms, the proof elevates necessary theism to the status of m
 Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
 
 $$
-\Box \exists x\, \Omega(x)
+\Box \exists x\, \Ω(x)
 $$
 
 does not merely assert the existence of Ω across all possible worlds; it renders the proposition ¬∃xΩ(x) modally impossible within the same logical framework.
