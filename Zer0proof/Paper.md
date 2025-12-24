@@ -168,7 +168,7 @@ Formally, this existential claim requires a **Witness** $w$ : a constructive, tr
 
 > *Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse; the witness requires a valid endpoint to exist.*
 
-* **Definition of Ω:**
+* **Definition of Ω:**  
 **Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
 * **Conclusion:**
 Therefore, **Ω** exists necessarily (**□∃x Ω(x)**) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
