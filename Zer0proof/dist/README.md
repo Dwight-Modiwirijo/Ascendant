@@ -24,7 +24,7 @@ necessary framework (i.e., that it is not ruled out by the kernel's axioms and i
 
 ### The proof strategy (public vs. private)
 
-- **Publicly verifiable goal:** establish the *weaker* modal form `◇□p`
+- **Publicly verifiable goal:** establish the *weaker* modal form `□◇p`
   (compatibility with the kernel's necessary constraints).
 - **Logically enforced consequence (in S5):** obtain the *stronger* conclusion `□p`.
 
