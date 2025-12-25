@@ -433,7 +433,7 @@ Accordingly, this appendix certifies only the integrity and scope of the public 
 
 The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than the stronger necessary-existence claim □∃x Ω(x). Kernel inspection of axiom dependencies shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom PosPossibility, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (TrivialModel) and an explicit explosion canary (exFalsoQuodlibet) confirms that consistency guards are active at the public boundary. Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant: it certifies admissibility and safety properties while intentionally preventing the leakage of stronger internal conclusions.  
 
-The public interface is not an emergent byproduct of the proof; it is an intentionally defined export boundary. It governs what is externally auditable so that the certified status of the internal result is inferable from the public surface. The exported functions provide machine-checkable witnesses that the certified theorem holds. Because the exported functions are kernel-checked proof objects, the certified claim is not merely asserted but constructively derivable: the existence of these witnesses guarantees, by the Curry–Howard correspondence, that the verified property holds within the formal system.  
+The public interface is not an emergent byproduct of the proof; it is an intentionally defined export boundary. It governs what is externally auditable so that the public surface remains a scope-conformant certificate of the exported interface, without exposing the private proof route. The exported functions provide machine-checkable witnesses that the certified theorem holds. Because the exported functions are kernel-checked proof objects, the certified claim is not merely asserted but constructively derivable: the existence of these witnesses guarantees, by the Curry–Howard correspondence, that the verified property holds within the formal system.  
 
   **In short: by BHK/Curry–Howard, the theorem is true exactly insofar as a kernel-accepted proof object exists; the public interface exposes only audit witnesses of that fact while keeping the constructive route private, protecting the IP.**
 
@@ -453,7 +453,7 @@ The public repository does not aim to expose `t` for the private theorem. Instea
 The private theorem remains a kernel-checked theorem in the private build context, independently of whether it is publicly exported.
 
 **Scope statement.**  
-Accordingly, the public certificate is a statement about *auditable exposure* (certification), not a replacement for the kernel criterion of *truth* (BHK). The internal proof object fixes truth-in-Lean; the public interface fixes what is externally verifiable under the IP constraint.
+Accordingly, the public certificate is a statement about *auditable exposure* (certification), not a replacement for the kernel criterion of *truth* (propositions-as-types / Curry–Howard). The internal proof object fixes truth-in-Lean; the public interface fixes what is externally verifiable under the IP constraint.
 
 ---
 
@@ -1061,11 +1061,10 @@ All proven in Lean:
 
 Each reductio theorem demonstrates:
 
-> Negating the axiom produces modal or grounding incoherence
+> Assuming both the axiom and its negation yields modal or grounding incoherence
 > — formally, a contradiction.
 
-This suite provides **absolute modal inevitability**:
-the system is not merely consistent but *logically forced*.
+These results should be read as regression/consistency guards ($A \land \neg A \to \text{False}$), not as claims that the axioms are derivable from one another.
 
 ---
 #### B.2.3 Formal Derivation of Modal Asymmetry
