@@ -159,7 +159,7 @@ The statement **“I am”** expresses a fact that could have been otherwise; th
 * **Application of HM-PSR (A1) & The Witness Requirement:**
 From contingency, grounding follows:
 **∃q (Nec(q) ∧ q ◃ “I am”)**
-Formally, this existential claim requires a **Witness** $w$: a constructive, trace-preserving path that connects the contingent state ("I am") to its ground . **This witness is not merely a logical artifact, but an ontological bridge: it marks the transition where modal possibility is no longer merely admissible, but instantiated as a fact requiring grounding.** Without this witness, the grounding relation would be a disconnect.
+Formally, this existential claim requires a **Witness** $w$: a constructive, trace-preserving path that connects the contingent state ("I am") to its ground $q$. **This witness is not merely a logical artifact, but an ontological bridge: it marks the transition where modal possibility is no longer merely admissible, but instantiated as a fact requiring grounding.** Without this witness, the grounding relation would be a disconnect.
 * **Rejection of necessary ground:** If no necessary ground exists (and thus no valid witness can be constructed), we face two untenable alternatives:
 	* *Infinite regress* (violates A3): The witness path never terminates ($length(w) = \infty$).
 	* *Arbitrary starting point* (violates A1 and A4): The witness path breaks or hangs in a vacuum.
