@@ -435,6 +435,23 @@ The public interface is not an emergent byproduct of the proof; it is an intenti
 
   **In short: by BHK/Curry–Howard, the theorem is true exactly insofar as a kernel-accepted proof object exists; the public interface exposes only audit witnesses of that fact while keeping the constructive route private, protecting the IP.**
 
+#### A.2.2 Truth vs. Certification (BHK clarification and IP boundary)
+
+Under the Brouwer–Heyting–Kolmogorov (BHK) interpretation adopted here, truth and certification are distinct by construction. Truth concerns the existence of a constructive proof object accepted by the kernel; certification concerns the controlled exposure of admissible consequences of that construction.
+
+This separation is implemented for a concrete engineering reason: **to protect the intellectual property (IP) of the internal proof route and successor-based grounding engine**, while still allowing independent third parties to verify the exported logical surface.
+
+**Truth (kernel level).**  
+By Curry–Howard/BHK, a proposition `φ` is true-in-Lean exactly if there exists a term `t : φ` accepted by the Lean kernel. Truth in this sense is determined by kernel acceptance of the proof object, not by whether the object is publicly exported.
+
+**Certification (public surface).**  
+The public repository exposes a deliberately restricted interface that exports only scope-conformant statements (e.g., an admissibility layer of the form `□◇…`) together with axiom-footprint inspection and negative guards preventing stronger theorems from becoming derivable at the public boundary. This public surface is designed to provide *auditability without disclosure*: it certifies (i) what is exported, (ii) which axioms those exports depend on, and (iii) that no unintended stronger claims leak through the interface.
+
+**IP boundary.**  
+The export boundary is therefore not a statement about the strength of the internal result; it is a visibility constraint whose purpose is to prevent reconstruction or extraction of the private engine while preserving external verifiability of the exposed certificate.
+
+**Scope statement.**  
+Accordingly, the public certificate is a statement about *auditable exposure* (certification), not a replacement for the kernel criterion of *truth* (BHK). The internal proof object fixes truth-in-Lean; the public interface fixes what is externally verifiable under the IP constraint.
 
 ---
 
