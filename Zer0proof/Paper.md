@@ -192,8 +192,7 @@ Error Elimination: Every logical dependency, including modal transitions, ground
 Computational Transparency: Unlike traditional metaphysical arguments, which may rest on interpretive ambiguity, this formalization allows any competent logician to inspect the proof down to its atomic axioms.
 The Lean implementation models S5 modal logic using Kripke semantics. The accessibility relation is defined as an equivalence relation (reflexive, symmetric, transitive), and the modal operators □ and ◇ are implemented accordingly (Blackburn et al. 2001). The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system, allowing precise verification of logical entailments.
 
-The complete Lean 4 source code of the formal system, including modal operators, grounding relations, axioms, and twelve reductio theorems, is available publicly on GitHub:
-https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/superlaw.lean
+The complete Lean 4 source code of the formal system, including modal operators, grounding relations, axioms, and twelve reductio theorems, is available publicly on GitHub: [dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist) .
 
 Key core definitions and representative theorems are reproduced in Appendix A; the full development is available on GitHub.
 
