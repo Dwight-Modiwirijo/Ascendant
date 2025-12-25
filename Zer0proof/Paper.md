@@ -419,7 +419,9 @@ This project distinguishes explicitly between its internal proof routes and its 
 
 The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.
 
-The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form □◇p (necessary possibility) within an S5 framework. Under S5 semantics, the bridge principle (◇□p → □p) guarantees that such admissibility suffices to enforce necessity, without requiring the full internal route to be publicly exposed.
+The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form □◇p (necessary possibility) within an S5 framework.
+
+No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃x …) are established only in the private kernel route and are not exported.
 
 To prevent accidental leakage of stronger claims, the build system includes dedicated negative guards: CI targets are designed to fail if restricted theorems become exportable. The absence of such failures constitutes a positive safety guarantee. The compiled .olean artifacts function as build-verifiable proof objects: any modification to exported content requires recompilation under the same pinned toolchain and is detectable via reproducible builds and hash comparison.
 
@@ -437,12 +439,12 @@ The public interface is not an emergent byproduct of the proof; it is an intenti
 
 #### A.2.2 Truth vs. Certification (BHK clarification and IP boundary)
 
-Under the Brouwer–Heyting–Kolmogorov (BHK) interpretation adopted here, truth and certification are distinct by construction. Truth concerns the existence of a constructive proof object accepted by the kernel; certification concerns the controlled exposure of admissible consequences of that construction.
+Under the propositions-as-types (Curry–Howard) reading used by Lean, truth-in-Lean and public certification are distinct by construction. Truth concerns the existence of a constructive proof object accepted by the kernel; certification concerns the controlled exposure of admissible consequences of that construction.
 
 This separation is implemented for a concrete engineering reason: **to protect the intellectual property (IP) of the internal proof route and successor-based grounding engine**, while still allowing independent third parties to verify the exported logical surface.
 
 **Truth-in-Lean (kernel level).**  
-In this work, “$φ$ is true” means: $φ$ is a theorem of the Lean development, i.e. there exists a term `t : φ` accepted by the Lean kernel under the declared axioms and definitions. This is the standard propositions-as-types criterion.
+In this work, “$φ$ is true” means: $φ$ is a theorem of the Lean development, i.e. there exists a term `t : φ` accepted by the Lean kernel under the declared axioms and definitions (i.e. φ is a theorem of the development relative to its axiom set). This is the standard propositions-as-types criterion.
 
 **Certification (public level).**  
 The public repository does not aim to expose `t` for the private theorem. Instead it exports a deliberately weaker, scope-conformant interface ($□◇$-layer) together with axiom-footprint inspection and negative guards to prevent leakage of stronger statements. Public certification is therefore a statement about *auditable exposure*, not about the internal theorem’s logical status.
@@ -1016,10 +1018,11 @@ These axioms form the basis for the reductio framework and the grounding results
 
 ### **B.2 Systematic Reductio Suite (Lean-Verified)**
 
-Every axiom (1)–(10) in the HyperModal framework is logically inevitable:
-rejecting any single axiom while accepting the others produces a contradiction.
+For each axiom (1)–(10) in the HyperModal framework, we include a corresponding regression lemma (“reductio”) showing that assuming both the axiom and its negation yields a contradiction (False).
 
-Each reductio theorem has been fully machine-verified.
+These lemmas are intended as consistency/canary checks against accidental weakening or redefinition of axioms and definitions. They are not presented as derivations of each axiom from the remaining axioms.
+
+Each such lemma is machine-checked by the Lean kernel relative to the declared axioms and definitions.
 
 ---
 
@@ -1036,8 +1039,8 @@ Derive False
 
 Thus:
 
-> **The HyperModal framework is self-justifying.
-> Every axiom is logically unavoidable under S5 semantics.**
+> The development includes explicit canary lemmas ensuring that each stated axiom remains coherent with the rest of the formalization.
+> These results should be read as regression/consistency guards (A ∧ ¬A → False), not as proofs that any axiom is derivable from the others.
 
 ---
 
