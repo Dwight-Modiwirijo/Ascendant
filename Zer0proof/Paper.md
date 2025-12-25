@@ -391,7 +391,7 @@ In epistemological terms, the proof elevates necessary theism to the status of m
 Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
 
 $$
-\Box \exists x\, \Ω(x)
+\Box \exists x\, \Omega(x)
 $$
 
 does not merely assert the existence of Ω across all possible worlds; it renders the proposition ¬∃xΩ(x) modally impossible within the same logical framework.
