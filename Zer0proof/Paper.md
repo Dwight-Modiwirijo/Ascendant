@@ -44,14 +44,14 @@ This section introduces the formal axiomatic foundation of the proof, designed t
 
 ### (A1) Hyper-Minimal Principle of Sufficient Reason (HM-PSR)
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
->**Cont(p) → ∃q (Nec(q) ∧ q ◃ p)**  
+> **$Cont(p) 	o \exists q\,(Nec(q) \land q \mathbin{◃} p)$**  
 
 *Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
-Formalization: Pos(P) ≡ ¬∃Q (Q → ¬P)
+Formalization: $Pos(P) \equiv \neg \exists Q\,(Q \to \neg P)$
 Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the $Ω$-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
 This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
 
@@ -153,7 +153,7 @@ In the remainder of the paper, the hyper-modal framework and the successor-based
 
 ## 3. Formal Modal Proof of Ω (Necessary Perfection)
 
-We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume ¬□∃Ω and demonstrate that this assumption leads to incoherence.
+We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,Ω(x)$ and demonstrate that this assumption leads to incoherence.
 
 * **Contingency of self-awareness:**
 The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
@@ -170,7 +170,7 @@ Formally, this existential claim requires a **Witness** $w$: a constructive, tra
 * **Definition of Ω:**  
 **Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
 * **Conclusion:**
-Therefore, **Ω** exists necessarily (**□∃x Ω(x)**) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
+Therefore, **Ω** exists necessarily ($□∃x\,Ω(x)$) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
 
 
 ### 3.1 Conclusion: The Hyper-Modal Theorem
@@ -421,7 +421,7 @@ This project distinguishes explicitly between its internal proof routes and its 
 
 The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.
 
-The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form □◇p (necessary possibility) within an S5 framework.
+The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form $□◇p$ (necessary possibility) within an S5 framework.
 
 No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃x …) are established only in the private kernel route and are not exported.
 
@@ -1042,8 +1042,7 @@ Derive False
 Thus:
 
 > The development includes explicit canary lemmas ensuring that each stated axiom remains coherent with the rest of the formalization.
-> These results should be read as regression/consistency guards ($A \land 
-eg A 	o 	ext{False}$), not as proofs that any axiom is derivable from the others.
+> These results should be read as regression/consistency guards ($A \land \neg A \to \text{False}$), not as proofs that any axiom is derivable from the others.
 
 ---
 
