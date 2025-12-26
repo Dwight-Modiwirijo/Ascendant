@@ -196,6 +196,7 @@ The Lean implementation models S5 modal logic using Kripke semantics. The access
 
 The complete Lean 4 source code of the formal system, including modal operators, grounding relations, axioms, and twelve reductio theorems, is available publicly on GitHub: [dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist) .
 
+The public `dist` artifacts certify only the intentionally exported $□◇$-layer (Appendix A.2); the full $□∃x\,Ω(x)$ and uniqueness results are proved in the private kernel route and are not part of the public export boundary.
 Key core definitions and representative theorems are reproduced in Appendix A; the full development is available on GitHub.
 
 ## 5. Objections and Responses
@@ -419,9 +420,9 @@ This appendix specifies the exact scope of the Lean 4 verification. The current 
 
 All formal claims stated as “Lean-verified” in this paper refer to specific Lean declarations that compile under the pinned toolchain and contain no placeholders. Concretely:
 
-- **Necessary existence of Ω:** see theorem `NAME_HERE` in `PATH_HERE` (statement: `STATEMENT_HERE`).
-- **Uniqueness of Ω:** see theorem `NAME_HERE` in `PATH_HERE` (statement: `STATEMENT_HERE`).
-- **Anti-regress termination behavior:** see theorem `NAME_HERE` in `PATH_HERE`.
+- **Necessary existence of Ω:** see theorem `THEOREM_NEC_EXISTENCE` in `FILE_PATH_NEC_EXISTENCE`.
+- **Uniqueness of Ω:** see theorem `THEOREM_UNIQUENESS` in `FILE_PATH_UNIQUENESS`.
+- **Anti-regress termination behavior:** see theorem `THEOREM_TERMINATION` in `FILE_PATH_TERMINATION`.
 - **Anti-material grounding:** see theorem `anti_material_grounding` in `Zer0proof/superlaw.lean`.
 
 For each item, the cited theorem statement is the exact formal content backing the corresponding claim in the main text.
