@@ -52,6 +52,7 @@ The grounding relation (◃) signifies that q is not just a cause, but the **min
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
 Formalization: Pos(P) ≡ ¬∃Q (Q → ¬P)
+Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the $Ω$-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
 This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
 
 ### (A3) Anti-Regress
@@ -181,6 +182,7 @@ The reductio argument in this section demonstrates that denying a necessary grou
 
 But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
 
+Here we write $Nec(Ω) := □∃x\,Ω(x)$. Hence $□Nec(Ω)$ abbreviates $□□∃x\,Ω(x)$.
 > **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
 
 This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x Ω(x) with full mechanical rigor, ensuring logical validity and computational transparency.
@@ -1040,7 +1042,8 @@ Derive False
 Thus:
 
 > The development includes explicit canary lemmas ensuring that each stated axiom remains coherent with the rest of the formalization.
-> These results should be read as regression/consistency guards (A ∧ ¬A → False), not as proofs that any axiom is derivable from the others.
+> These results should be read as regression/consistency guards ($A \land 
+eg A 	o 	ext{False}$), not as proofs that any axiom is derivable from the others.
 
 ---
 
@@ -1234,8 +1237,8 @@ From minimal axioms → □∃x.Ω(x) is true
 The central theorem of this paper:  
 > **□∃x Ω(x)**.   
 
-Second-order modal necessity: it is necessarily the case that Ω necessarily exists.
-In this system, Ω is not just true in all possible worlds (**□∃x Ω(x)**), but that truth itself is modal-stable across all valid S5 structures. It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
+S5 stability note: in S5, necessity is stable. From $□∃x\,Ω(x)$ it follows that $□□∃x\,Ω(x)$.
+In this system, Ω is not just true in all possible worlds ($□∃x\,Ω(x)$), but (under S5) that necessity is itself necessary ($□□∃x\,Ω(x)$). It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
 
 |Symbol |	Meaning|
 |-------|----------|
