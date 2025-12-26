@@ -178,7 +178,7 @@ Therefore, **Ω** exists necessarily ($□∃x\,Ω(x)$) and grounds all continge
 The reductio argument in this section demonstrates that denying a necessary ground for contingent truths leads inevitably to semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the central result of this paper:
 
 **Hyper-Modal Theorem**  
-**□∃x Ω(x)** — Necessarily, there exists a perfect being Ω that grounds all contingent truths and instantiates only positive properties.
+**$□∃x\,Ω(x)$** — Necessarily, there exists a perfect being Ω that grounds all contingent truths and instantiates only positive properties.
 
 But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
 
@@ -426,8 +426,6 @@ All formal claims stated as “Lean-verified” in this paper refer to specific 
 - **Anti-material grounding:** see theorem `anti_material_grounding` in `Zer0proof/superlaw.lean`.
 
 For each item, the cited theorem is the exact formal content backing the corresponding claim in the main text.
-
-For each item, the cited theorem statement is the exact formal content backing the corresponding claim in the main text.
 
 ### A.2 Public Verification Surface and Scope Certificate
 
