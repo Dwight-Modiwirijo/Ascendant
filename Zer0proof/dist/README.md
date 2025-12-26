@@ -205,7 +205,20 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 **Strength**: Strong (standard software supply-chain model).
 
 ---
+## Verification & Audit Scope
 
+All formal claims in this repository are validated by Lean 4 proof objects
+checked by the kernel.
+
+Assessment of correctness therefore presupposes the ability to:
+- inspect Lean theorems and definitions,
+- trace axiom usage and scope,
+- verify correspondence between claims and exported proof objects.
+
+Reviewers lacking this competence may comment on presentation or implications,
+but cannot meaningfully assess formal validity.
+
+---
 ## Final Statement
 
 The public Lean package does **not** claim to prove everything.
@@ -217,3 +230,5 @@ It certifies that:
 * and no stronger claims are exported than intended.
 
 All stronger guarantees (transcendence mechanics, MA algebra, grounding dynamics, FPGA mapping) remain private by design.
+
+
