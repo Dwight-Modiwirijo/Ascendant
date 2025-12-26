@@ -416,17 +416,6 @@ The author gratefully acknowledges the assistance of several AI language models 
 ### A.1 Scope of Verification
 This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
 
-#### A.1.1 Verification Claim Map (paper claims ↔ Lean theorems)
-
-All formal claims stated as “Lean-verified” in this paper refer to specific Lean declarations that compile under the pinned toolchain and contain no placeholders. Concretely:
-
-- **Necessary existence of Ω:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
-- **Uniqueness of Ω:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
-- **Anti-regress termination behavior:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
-- **Anti-material grounding:** see theorem `anti_material_grounding` in `Zer0proof/superlaw.lean`.
-
-For each item, the cited theorem is the exact formal content backing the corresponding claim in the main text.
-
 ### A.2 Public Verification Surface and Scope Certificate
 
 This project distinguishes explicitly between its internal proof routes and its public verification surface. The public repository publishes a constrained Lean interface together with reproducible build artifacts (.olean files), forming a verifiable certificate of the exposed logical API.
