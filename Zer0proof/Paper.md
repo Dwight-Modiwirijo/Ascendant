@@ -420,10 +420,12 @@ This appendix specifies the exact scope of the Lean 4 verification. The current 
 
 All formal claims stated as “Lean-verified” in this paper refer to specific Lean declarations that compile under the pinned toolchain and contain no placeholders. Concretely:
 
-- **Necessary existence of Ω:** see theorem `THEOREM_NEC_EXISTENCE` in `FILE_PATH_NEC_EXISTENCE`.
-- **Uniqueness of Ω:** see theorem `THEOREM_UNIQUENESS` in `FILE_PATH_UNIQUENESS`.
-- **Anti-regress termination behavior:** see theorem `THEOREM_TERMINATION` in `FILE_PATH_TERMINATION`.
+- **Necessary existence of Ω:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
+- **Uniqueness of Ω:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
+- **Anti-regress termination behavior:** see theorem `REPLACE_WITH_REAL_THEOREM_NAME` in `REPLACE_WITH_REAL_FILE_PATH`.
 - **Anti-material grounding:** see theorem `anti_material_grounding` in `Zer0proof/superlaw.lean`.
+
+For each item, the cited theorem is the exact formal content backing the corresponding claim in the main text.
 
 For each item, the cited theorem statement is the exact formal content backing the corresponding claim in the main text.
 
