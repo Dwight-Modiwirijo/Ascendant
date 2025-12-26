@@ -217,6 +217,61 @@ Assessment of correctness therefore presupposes the ability to:
 
 Reviewers lacking this competence may comment on presentation or implications,
 but cannot meaningfully assess formal validity.
+### CertificateAudit
+
+Formal validity is determined solely by Lean kernel–checked proof objects.
+Assessment of correctness therefore presupposes the competencies listed below.  
+#### Required Competencies
+
+1. **Reproducible Build**
+
+   * Ability to build the repository from source without modification.
+   * Verification that all exported Lean modules compile successfully.
+
+2. **Claim–Theorem Correspondence**
+
+   * Ability to map explicit claims in the paper to their corresponding Lean theorems.
+   * Identification of module paths and namespaces for each referenced theorem.
+
+3. **Axiom Footprint Analysis**
+
+   * Ability to enumerate all axioms (explicit and transitive) on which a theorem depends.
+   * Understanding of scope, imports, and potential classical dependencies.
+
+4. **Export Boundary Inspection**
+
+   * Ability to verify which theorems are publicly exported versus internally scoped.
+   * Confirmation that no stronger claims are implicitly exposed.
+
+5. **Guard and Failure Sensitivity**
+
+   * Ability to interpret build or proof failures resulting from minimal changes.
+   * Understanding of negative guards and intentional proof boundaries.
+6. **Active Audit via Proof Contribution**
+   Ability to submit audit findings as pull requests against a designated audit branch,
+   including the addition or modification of Lean proof objects that:
+
+   * refine or clarify existing claims,
+   * demonstrate equivalence or non-equivalence of statements,
+   * or formally encode objections as Lean-checkable artifacts.
+
+   All audit claims must be expressible as Lean objects and be kernel-verifiable.
+7. Formal Refutation via Contradiction**
+   Ability to demonstrate that a claim is invalid **only** by constructing a formal contradiction, encoded as Lean proof objects, such that:
+     * the claim implies `False`, or
+     * the claim is inconsistent with existing axioms or proven theorems under the same axiom footprint.
+
+    All refutations must be:
+
+    * kernel-verifiable,
+    * expressed entirely within Lean,
+    * and submitted as pull requests against the designated audit branch.
+
+    Informal objections, narrative counterexamples, or non-formal critiques are not sufficient to invalidate a claim.
+### Audit Scope Limitation
+
+Reviewers lacking the above competencies may comment on exposition, interpretation, or philosophical implications,
+but **cannot meaningfully assess formal correctness** of the claims.  
 
 ---
 ## Final Statement
