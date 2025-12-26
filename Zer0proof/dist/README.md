@@ -256,7 +256,9 @@ Assessment of correctness therefore presupposes the competencies listed below.
    * or formally encode objections as Lean-checkable artifacts.
 
    All audit claims must be expressible as Lean objects and be kernel-verifiable.
-7. Formal Refutation via Contradiction**
+7. **Formal Refutation via Contradiction**
+   > Within this audit framework, both validation and refutation are admissible only insofar as they are expressible as Lean-checkable objects
+   
    Ability to demonstrate that a claim is invalid **only** by constructing a formal contradiction, encoded as Lean proof objects, such that:
      * the claim implies `False`, or
      * the claim is inconsistent with existing axioms or proven theorems under the same axiom footprint.
@@ -270,8 +272,7 @@ Assessment of correctness therefore presupposes the competencies listed below.
     Informal objections, narrative counterexamples, or non-formal critiques are not sufficient to invalidate a claim.
 ### Audit Scope Limitation
 
-Reviewers lacking the above competencies may comment on exposition, interpretation, or philosophical implications,
-but **cannot meaningfully assess formal correctness** of the claims.  
+This is an object-based framework: claims are valid only insofar as they are Lean kernel–checked. By reciprocity, refutations must also be Lean-checkable (e.g. `claim → False`) under the same axiom footprint. Reviewers lacking the above competencies may comment on exposition, interpretation, or philosophical implications, but **cannot meaningfully assess formal correctness** of the claims.  
 
 ---
 ## Final Statement
