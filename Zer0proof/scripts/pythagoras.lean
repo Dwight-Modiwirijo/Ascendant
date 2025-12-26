@@ -1,3 +1,17 @@
+/-
+       C
+      /|
+     / |
+    /  |
+   /   |  ↑
+  /    |  | Vector (C - A)
+ /     |  | "leg 2"
+/______|
+B      A
+  <---->
+ Vector (B - A)
+ "leg 1"
+-/
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.Geometry.Euclidean.Basic
 import Mathlib.Tactic
