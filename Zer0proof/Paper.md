@@ -44,7 +44,7 @@ This section introduces the formal axiomatic foundation of the proof, designed t
 
 ### (A1) Hyper-Minimal Principle of Sufficient Reason (HM-PSR)
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
-> **$Cont(p) 	o \exists q\,(Nec(q) \land q \mathbin{◃} p)$**  
+> **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
 *Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
@@ -414,6 +414,17 @@ The author gratefully acknowledges the assistance of several AI language models 
 
 ### A.1 Scope of Verification
 This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
+
+#### A.1.1 Verification Claim Map (paper claims ↔ Lean theorems)
+
+All formal claims stated as “Lean-verified” in this paper refer to specific Lean declarations that compile under the pinned toolchain and contain no placeholders. Concretely:
+
+- **Necessary existence of Ω:** see theorem `NAME_HERE` in `PATH_HERE` (statement: `STATEMENT_HERE`).
+- **Uniqueness of Ω:** see theorem `NAME_HERE` in `PATH_HERE` (statement: `STATEMENT_HERE`).
+- **Anti-regress termination behavior:** see theorem `NAME_HERE` in `PATH_HERE`.
+- **Anti-material grounding:** see theorem `anti_material_grounding` in `Zer0proof/superlaw.lean`.
+
+For each item, the cited theorem statement is the exact formal content backing the corresponding claim in the main text.
 
 ### A.2 Public Verification Surface and Scope Certificate
 
