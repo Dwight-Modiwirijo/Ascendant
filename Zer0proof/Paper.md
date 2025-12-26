@@ -447,7 +447,7 @@ Under the propositions-as-types (Curry–Howard) reading used by Lean, truth-in-
 This separation is implemented for a concrete engineering reason: **to protect the intellectual property (IP) of the internal proof route and successor-based grounding engine**, while still allowing independent third parties to verify the exported logical surface.
 
 **Truth-in-Lean (kernel level).**  
-In this work, “$φ$ is true” means: $φ$ is a theorem of the Lean development, i.e. there exists a term `t : φ` accepted by the Lean kernel under the declared axioms and definitions (i.e. φ is a theorem of the development relative to its axiom set). This is the standard propositions-as-types criterion.
+In this work, "*φ is true*" means: $φ$ is a theorem of the Lean development, i.e. there exists a term `t : φ` accepted by the Lean kernel under the declared axioms and definitions (i.e. φ is a theorem of the development relative to its axiom set). This is the standard propositions-as-types criterion.
 
 **Certification (public level).**  
 The public repository does not aim to expose `t` for the private theorem. Instead it exports a deliberately weaker, scope-conformant interface ($□◇$-layer) together with axiom-footprint inspection and negative guards to prevent leakage of stronger statements. Public certification is therefore a statement about *auditable exposure*, not about the internal theorem’s logical status.
