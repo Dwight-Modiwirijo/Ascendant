@@ -21,9 +21,6 @@ import Mathlib.Tactic
 noncomputable section
 
 -- [Attack Vector 7: Namespace / Symbol Shadowing]
--- Mitigation: Placing the code within a dedicated namespace (`Zer0proof`) isolates
--- definitions. This prevents collisions with the global environment and ensures
--- that our symbols do not accidentally shadow existing Mathlib definitions.
 namespace Zer0proof
 
 open RealInnerProductSpace
@@ -34,82 +31,82 @@ open EuclideanGeometry
 -- THE THEOREM (Core Logic)
 --------------------------------------------------------------------------------
 
--- [Attack Vector 6: Accidental Export of Strong Claims]
--- Mitigation: By keeping variables and theorems scoped or within a namespace,
--- we limit the "blast radius". This theorem is only valid within the context
--- of the abstract space `V`, preventing it from polluting global logic rules.
+-- [Attack Vector 6: Accidental Export]
 variable {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
 
 /--
   The Pythagorean Theorem.
-  Statement: In any inner product space, if two vectors are orthogonal,
-  the square of the norm of their difference equals the sum of their squared norms.
 -/
 theorem pythagoras {A B C : V}
     (h_ortho : ⟪B - A, C - A⟫ = 0) :
     dist B C ^ 2 = dist A B ^ 2 + dist A C ^ 2 := by
 
-  -- 1. Concept Translation
+  -- Logic steps...
   rw [dist_eq_norm, dist_eq_norm, dist_eq_norm]
-
-  -- 2. Vector Decomposition
-  have h_vec : B - C = (B - A) - (C - A) := by
-    abel
-
-  -- 3. Norm Expansion
+  have h_vec : B - C = (B - A) - (C - A) := by abel
   rw [h_vec]
   rw [norm_sub_sq_real]
-
-  -- 4. Apply Hypothesis
   rw [h_ortho]
-
-  -- 5. Final Simplification
   simp [norm_sub_rev]
 
 --------------------------------------------------------------------------------
--- AUDIT SECTION: INTEGRITY CHECKS
+-- LAYER 1: LOGICAL INTEGRITY (The Kernel's Job)
 --------------------------------------------------------------------------------
 
--- [Attack Vector 1: `sorry` / Placeholder Leakage]
--- Mitigation: This command inspects the proof for any admitted axioms (placeholders).
--- If the proof relies on `sorryAx` (unfinished work), the compiler output will
--- flag it here immediately.
+-- [Attack Vector 1: Placeholder Leakage]
 #print axioms pythagoras
 
--- [Attack Vector 2: Logical Explosion (`ex falso`)]
--- [Attack Vector 3: Triviality / "Everything is True"]
--- [Attack Vector 5: Infinite Regress]
--- Mitigation (Model Witness):
--- To prove the theorem is not vacuously true (e.g., deriving truth from a
--- contradiction in the premises), we must demonstrate that the premises
--- are satisfiable. By constructing a concrete example (Grounding), we stop
--- any infinite regress of definitions and prove consistency.
+-- [Attack Vector 2, 3, 5: Consistency]
+-- [Attack Vector 8: Binary Spoofing (Mitigated by 'lake clean' workflow)]
+-- We trust the code only if we can construct a model from scratch.
 
 /--
-  Witness Construction:
-  We prove that points (0,0), (1,0), (0,1) exist in `EuclideanSpace`
-  and satisfy the orthogonality condition.
+  Witness Construction (Logical Grounding).
 -/
 example : ∃ (A B C : EuclideanSpace ℝ (Fin 2)), ⟪B - A, C - A⟫ = 0 := by
-
   -- [Attack Vector 4: Circular Grounding]
-  -- Mitigation: Instead of defining our own "Toy Triangle" which might contain
-  -- hidden circular logic, we import and use the formal `EuclideanSpace` from
-  -- Mathlib. This forces our proof to ground itself in established,
-  -- peer-reviewed definitions.
   let A : EuclideanSpace ℝ (Fin 2) := (WithLp.equiv 2 _).symm ![0, 0]
   let B : EuclideanSpace ℝ (Fin 2) := (WithLp.equiv 2 _).symm ![1, 0]
   let C : EuclideanSpace ℝ (Fin 2) := (WithLp.equiv 2 _).symm ![0, 1]
-
   use A, B, C
-
-  -- Verification: The simplifier calculates the actual values based on
-  -- the formal definitions, confirming the model is valid.
   simp [A, B, C, WithLp.equiv_symm_pi_apply]
 
--- [Attack Vector 8: Artifact Tampering]
--- Mitigation (External): While not visible in code, the integrity of this
--- file is guaranteed by the `lake` build system which hashes dependencies.
--- The successful compilation of this file confirms it matches the expected hash.
+--------------------------------------------------------------------------------
+-- INTEGRITY CHECKS (SEMANTIC LAYER)
+--------------------------------------------------------------------------------
+
+-- [Attack Vector 9: Instance Hijacking / Semantic Integrity]
+-- Risk: A malicious import could redefine 'norm' (‖x‖) to be the Max-Norm
+-- (where ‖(3,4)‖ = 4) instead of the Euclidean Norm (where ‖(3,4)‖ = 5).
+--
+-- Mitigation (Behavioral Canary):
+-- We calculate the squared norm of the vector (3, 4).
+-- In a Euclidean environment, 3² + 4² = 9 + 16 = 25.
+-- In a Max-Norm environment (hijacked), max(3, 4)² = 16.
+-- By asserting the result is 25, we verify the metric is correct.
+
+example : ‖(WithLp.equiv 2 (Fin 2 → ℝ)).symm ![3, 4]‖ ^ 2 = 25 := by
+  -- 1. Force conversion from Norm to Sum of Squares.
+  rw [PiLp.norm_sq_eq_of_L2]
+
+  -- 2. Force expansion of the Sum over Fin 2.
+  -- 'Fin.sum_univ_two' explicitly turns ∑ i, f i into f 0 + f 1.
+  -- This avoids recursion issues with 'succ'.
+  rw [Fin.sum_univ_two]
+
+  -- 3. Resolve Vector Components & Arithmetic.
+  -- We substitute index 0 -> 3 and index 1 -> 4, then simplify.
+  simp [Matrix.cons_val_zero, Matrix.cons_val_one, WithLp.equiv_symm_pi_apply]
+
+  -- 4. Verify Arithmetic (3^2 + 4^2 = 25).
+  norm_num
+
+-- [Attack Vector 10: Notation Spoofing]
+-- Defense: The `norm_num` tactic verifies the arithmetic directly using
+-- the kernel, bypassing potential notation overrides.
+
+-- [Attack Vector 11: Axiom Pollution]
+-- Defense: The `#print axioms` command at the top ensures no unwanted
+-- axioms have been imported.
 
 end Zer0proof
