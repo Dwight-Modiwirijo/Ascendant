@@ -77,16 +77,20 @@ The goal of this README is precision: each attack vector is listed together with
 
 ## Summary Table — Attack Vectors and Coverage
 
-| # | Attack Vector                      | Status                       | Where it is Checked             |
-| - | ---------------------------------- | ---------------------------- | ------------------------------- |
-| 1 | `sorry` / placeholder leakage      | Prevented                    | Lean compiler + CI              |
-| 2 | Logical explosion (`ex falso`)     | Guarded (canary)             | PublicTests + negative build    |
-| 3 | Triviality / “everything is true”  | Demonstrated (consistency)   | PublicTests (model witness)     |
-| 4 | Circular grounding                 | Enforced (runtime / private) | Graph layer + private proofs    |
-| 5 | Infinite regress                   | Enforced (runtime / private) | Well-foundedness + ARES metrics |
-| 6 | Accidental export of strong claims | Prevented                    | NoExport_* CI guard             |
-| 7 | Namespace / symbol shadowing       | Mitigated                    | Pinned toolchain + minimal API  |
-| 8 | Artifact tampering                 | Prevented                    | Reproducible builds + hashes    |
+|  # | Attack Vector                           | Status           | Where it’s checked (File & Section)                                                                          |
+| -: | --------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
+|  1 | `sorry` / placeholder leakage           | **Prevented**    | `CertificateAudit.lean` — kernel audit via `#print axioms`; CI/compiler strictness (no `sorry` allowed)      |
+|  2 | Logical explosion (*ex falso*)          | **Guarded**      | `PublicTests.lean` — §5 *Negative Guards* (`AltRoute.PublicTests.AltRoute.exFalsoQuodlibet` scoped to tests) |
+|  3 | Triviality / “everything is true”       | **Demonstrated** | `PublicTests.lean` — §2 *TrivialModel* + §4 *Verum sanity* (isolated “yes-man” model doesn’t leak)           |
+|  4 | Circular grounding                      | **Enforced**     | `Interface.lean` — hardened types & graph invariants (e.g., Euclidean-style typed layer)                     |
+|  5 | Infinite regress                        | **Enforced**     | `PublicTests.lean` — §6 *WellFounded* (finite witness / well-founded reasoning)                              |
+|  6 | Accidental export of strong claims      | **Prevented**    | `CertificateAudit.lean` — export allow-list via explicit `#check`/scope; namespace isolation                 |
+|  7 | Namespace / symbol shadowing            | **Mitigated**    | `Interface.lean` — `namespace AltRoute` + qualified uses; explicit openings in tests                         |
+|  8 | Artifact tampering (.olean spoofing)    | **Prevented**    | `README.md` — reproducible builds policy (`lake clean`, deterministic CI; pinning & checksums)               |
+|  9 | Instance hijacking (semantic ambiguity) | **Verified**     | `PublicTests.lean` — §7 *Semantic Identity* (e.g., `Bank_Financial` ≠ `Bank_Furniture`; UID-level checks)    |
+| 10 | Notation spoofing                       | **Bypassed**     | `PublicTests.lean` — §7 UID/term equality (kernel primitives; compare typed terms, not strings)              |
+| 11 | Axiom pollution                         | **Audited**      | `CertificateAudit.lean` — `#print axioms ...` (e.g., dependency only on `[AltRoute.PosPossibility]`)         |
+
 
 Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (ARES) provide runtime guarantees beyond the Lean verification layer and remain private.
 
