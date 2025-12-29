@@ -184,29 +184,75 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 ---
 
-### 7. Namespace / Symbol Shadowing
 
-**Threat**: Subtle redefinitions change meaning without detection.
+### 7. Formal Refutation via Kernel-Checkable Contradiction
 
-**Mitigation**:
+> Within this framework, both validation **and refutation** are admissible **only** insofar as they are expressed as kernel-checkable Lean proof objects under an explicit and declared axiom footprint.
 
-* Fully pinned Lean toolchain and mathlib version.
-* Minimal exported surface; internal symbols remain private.
+A claim is considered **invalid** only if a formal refutation is provided in one of the following Lean-verifiable forms:
 
-**Strength**: Structural mitigation.
+* **Direct contradiction**
+  A proof object of the form:
+
+  ```lean
+  claim → False
+  ```
+
+* **Footprint inconsistency**
+  A proof that the union of:
+
+  ```
+  {declared axioms} ∪ {previous theorems} ∪ {claim}
+  ```
+
+  entails `False`, under the **same axiom footprint** and without introducing additional assumptions.
+
+No informal arguments, meta-reasoning, probabilistic objections, or external tools are admissible as refutation.
 
 ---
 
-### 8. Artifact Tampering
+### Audit-of-the-Audit Requirement
 
-**Threat**: Modified binaries masquerade as verified proofs.
+All refutations are themselves subject to the **same audit guarantees** as validated claims.
 
-**Mitigation**:
+Specifically, every refutation submission must:
 
-* Deterministic builds.
-* Hashing and reproducibility allow independent verification.
+* be **kernel-verifiable** by Lean,
+* avoid all placeholder constructs (`sorry`, `admit`, etc.),
+* introduce **no new axioms** beyond the declared footprint,
+* respect namespace isolation and export boundaries,
+* avoid notation, instance, or meta-level spoofing,
+* and pass all **11 defined attack-vector checks** without exception.
 
-**Strength**: Strong (standard software supply-chain model).
+In other words:
+
+> **A refutation that violates any attack vector is rejected, even if it compiles.**
+
+---
+
+### Procedural Enforcement
+
+* All refutations must be submitted as **pull requests** against the designated `audit` branch.
+* CI enforces:
+
+  * `#print axioms` footprint comparison,
+  * placeholder detection,
+  * export allow-listing,
+  * and full attack-vector coverage.
+* Refutations that rely on informal reasoning, reviewer authority, or external semantics are **out of scope** and considered non-actionable.
+
+---
+
+### Consequence
+
+Under this policy:
+
+* A compiling theorem may still be rejected if it fails **any** attack-vector invariant.
+* A claim cannot be dismissed by opinion or meta-critique alone.
+* Disagreement is meaningful **only** when it materializes as a Lean-checkable contradiction.
+
+This ensures that both **truth claims and objections** are governed by the same formal standard.
+
 
 ---
 ## Verification & Audit Scope
