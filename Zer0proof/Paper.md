@@ -153,7 +153,7 @@ In the remainder of the paper, the hyper-modal framework and the successor-based
 
 ## 3. Formal Modal Proof of $\Omega$ (Necessary Perfection)
 
-We now show that the axioms above entail the existence of a necessary, perfect being $\Omega$. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,$\Omega$(x)$ and demonstrate that this assumption leads to incoherence.
+We now show that the axioms above entail the existence of a necessary, perfect being $\Omega$. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
 
 * **Contingency of self-awareness:**
 The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
@@ -178,11 +178,11 @@ Therefore, **$\Omega$** exists necessarily ($□∃x\,$\Omega$(x)$) and grounds 
 The reductio argument in this section demonstrates that denying a necessary ground for contingent truths leads inevitably to semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the central result of this paper:
 
 **Hyper-Modal Theorem**  
-**$□∃x\,$\Omega$(x)$** — Necessarily, there exists a perfect being $\Omega$ that grounds all contingent truths and instantiates only positive properties.
+**$□∃x\,\Omega(x)$** — Necessarily, there exists a perfect being $\Omega$ that grounds all contingent truths and instantiates only positive properties.
 
 But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of $\Omega$ is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
 
-Here we write $Nec($\Omega$) := □∃x\,$\Omega$(x)$. Hence $□Nec($\Omega$)$ abbreviates $□□∃x\,$\Omega$(x)$.
+Here we write $Nec(\Omega$) := □∃x\,\Omega(x)$. Hence $□Nec(\Omega)$ abbreviates $□□∃x\,\Omega(x)$.
 > **□Nec($\Omega$)** — The being $\Omega$ is not only necessary, but necessarily necessary.
 
 This renders $\Omega$ the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x $\Omega$(x) with full mechanical rigor, ensuring logical validity and computational transparency.
@@ -196,7 +196,7 @@ The Lean implementation models S5 modal logic using Kripke semantics. The access
 
 The complete Lean 4 source code of the formal system, including modal operators, grounding relations, axioms, and twelve reductio theorems, is available publicly on GitHub: [dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist) .
 
-The public `dist` artifacts certify only the intentionally exported $□◇$-layer (Appendix A.2); the full $□∃x\,$\Omega$(x)$ and uniqueness results are proved in the private kernel route and are not part of the public export boundary.
+The public `dist` artifacts certify only the intentionally exported $□◇$-layer (Appendix A.2); the full $□∃x\,\Omega(x)$ and uniqueness results are proved in the private kernel route and are not part of the public export boundary.
 Key core definitions and representative theorems are reproduced in Appendix A; the full development is available on GitHub.
 
 ## 5. Objections and Responses
@@ -236,7 +236,7 @@ This logic supports the proof’s foundational claim: the necessity of $\Omega$ 
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
-Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret $\Omega$ theologically. The modal conclusion □∃x.$\Omega$(x) is derived independently of religious assumptions.
+Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret $\Omega$ theologically. The modal conclusion □∃x.$\Omega$ (x) is derived independently of religious assumptions.
 
 ### 5.4 Social Implications and AI Ethics
 Objection: The link between modal logic and societal values is speculative.
