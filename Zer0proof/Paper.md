@@ -182,7 +182,7 @@ The reductio argument in this section demonstrates that denying a necessary grou
 
 But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
 
-Here we write $Nec(\Omega$) := □∃x\,\Omega(x)$. Hence $□Nec(\Omega)$ abbreviates $□□∃x\,\Omega(x)$.
+Here we write $Nec(\Omega) := □∃x\,\Omega(x)$. Hence $□Nec(\Omega)$ abbreviates $□□∃x\,\Omega(x)$.
 > **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
 
 This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x Ω(x) with full mechanical rigor, ensuring logical validity and computational transparency.
