@@ -52,7 +52,7 @@ The grounding relation (◃) signifies that q is not just a cause, but the **min
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
 Formalization: $Pos(P) \equiv \neg \exists Q\,(Q \to \neg P)$
-Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the $Ω$-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
+Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the $\Omega$-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
 This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
 
 ### (A3) Anti-Regress
