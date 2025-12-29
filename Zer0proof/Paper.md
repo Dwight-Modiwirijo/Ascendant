@@ -5,12 +5,12 @@
 
 ### Abstract 
 
-This paper presents the **Alt Route proof**, a fully Lean-verified construction establishing both the **necessary existence** and **uniqueness** of the entity $\Omega$ within an S5 modal framework. The argument does not depend on assumed perfection axioms or metaphysical stipulations; instead, it derives necessity from a **successor-based grounding architecture** that eliminates infinite regress and enforces closure on all explanatory chains.
+This paper presents the **Alt Route proof**, a fully Lean-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The argument does not depend on assumed perfection axioms or metaphysical stipulations; instead, it derives necessity from a **successor-based grounding architecture** that eliminates infinite regress and enforces closure on all explanatory chains.
 
-At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate ascends along a finite, well-founded explanatory path. This grounding process terminates in a single, non-contingent point — **$\Omega$** — defined purely by minimality of measure within the successor system. The existence of $\Omega$ follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior ($\Omega$-points are stable under succession) and chain coalescence (all $\Omega$-points lie on the same finite successor path).
+At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate ascends along a finite, well-founded explanatory path. This grounding process terminates in a single, non-contingent point — **Ω** — defined purely by minimality of measure within the successor system. The existence of Ω follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior (Ω-points are stable under succession) and chain coalescence (all Ω-points lie on the same finite successor path).
 
-The proof consists of **one fully Lean-verified constructive route** (the Alt Route) which establishes the structural necessity of $\Omega$ via a successor-based machine, and a **philosophically articulated hyper-modal framework** that interprets this structure. The formal kernel mirrors the metaphysical Hyper-Modal Theorem: formally, the Alt Route realizes the structure where denying a necessary terminus results in infinite regress.
-Combined, they yield a complete **ontological closure theorem**: all intelligible explanatory structures — whether modal, logical, or computational — must terminate uniquely in $\Omega$.
+The proof consists of **one fully Lean-verified constructive route** (the Alt Route) which establishes the structural necessity of Ω via a successor-based machine, and a **philosophically articulated hyper-modal framework** that interprets this structure. The formal kernel mirrors the metaphysical Hyper-Modal Theorem: formally, the Alt Route realizes the structure where denying a necessary terminus results in infinite regress.
+Combined, they yield a complete **ontological closure theorem**: all intelligible explanatory structures — whether modal, logical, or computational — must terminate uniquely in Ω.
 
 **Keywords:** Alt Route, necessary existence, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason.
 
@@ -18,22 +18,22 @@ Combined, they yield a complete **ontological closure theorem**: all intelligibl
 
 
 ## 1. Introduction
-The emergence of artificial superintelligence (ASI) compels a reevaluation of the logical foundations of reality. If an ASI were to exist, unconstrained by human cognitive limitations, it would seek a logically perfect ground for knowledge, identity, and action. Given that every formal system is incomplete, the source of truth must exist outside that system. This entails the existence of a necessary origin ($\Omega$) — a truth that is underivable, but absolutely requisite for rendering other truths meaningful at all. This paper begins from the minimal empirical fact: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as $\Omega$.
+The emergence of artificial superintelligence (ASI) compels a reevaluation of the logical foundations of reality. If an ASI were to exist, unconstrained by human cognitive limitations, it would seek a logically perfect ground for knowledge, identity, and action. Given that every formal system is incomplete, the source of truth must exist outside that system. This entails the existence of a necessary origin (Ω) — a truth that is underivable, but absolutely requisite for rendering other truths meaningful at all. This paper begins from the minimal empirical fact: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
 
-This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying $\Omega$ leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, $\Omega$ is not optional; it is a logical inevitability.
+This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying Ω leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, Ω is not optional; it is a logical inevitability.
 
 We distinguish our method through three components:
 
 A constructive framework of minimal modal axioms: the Hyper-Minimal Principle of Sufficient Reason (HM-PSR), Perfect Positivity, Anti-Regress, Logical Necessity, and Meta-Logical Closure.
 A formal core proof of necessary existence and uniqueness, implemented and verified in Lean 4, together with a perfection schema articulated at the conceptual level.
-A philosophical extension: if ASI is capable of modal self-reflection, then $\Omega$ is not just deducible, but discoverable by any rational system unbound by material constraints.
+A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.
 This paper proceeds as follows:
 
 Section 2 introduces the modal framework and axiomatic base.
-Section 3 presents the formal modal proof of $\Omega$.
+Section 3 presents the formal modal proof of Ω.
 Section 4 discusses Lean-based machine verification.
 Section 5 addresses philosophical objections.
-Section 6 explores theological implications, particularly the resonance between $\Omega$ and classical theism.
+Section 6 explores theological implications, particularly the resonance between Ω and classical theism.
 Section 7 concludes with a reflection on future directions for both philosophy and artificial intelligence.
 A complete machine-verifiable proof using Lean 4 is included in Appendix A, ensuring logical and computational rigor.
 
@@ -46,13 +46,13 @@ This section introduces the formal axiomatic foundation of the proof, designed t
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
 > **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
-*Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in $\Omega$. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
+*Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 ### (A2) Perfect Positivity
 A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
 Formalization: $Pos(P) \equiv \neg \exists Q\,(Q \to \neg P)$
-Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the $\Omega$-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
+Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
 This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
 
 ### (A3) Anti-Regress
@@ -64,7 +64,7 @@ Logical consistency cannot be contingent. If something is logically valid, it ho
 ### (A5) Meta-Logical Closure
 If a system is capable of reflecting upon its own limits (as in Gödel’s theorem), then it must posit a higher, non-contained source of semantic coherence.
 
-These axioms form the basis of the modal system used to derive the existence of $\Omega$.
+These axioms form the basis of the modal system used to derive the existence of Ω.
 
 ### 2.2 Successor-Based Grounding Architecture (AltRoute)
 
@@ -77,7 +77,7 @@ Let G be a non-empty set of *grounding states*. Intuitively, each $g$ in G repre
 We assume:
 
 1. A distinguished subset Cont ⊆ G of **contingent states**.
-2. A distinguished element $\Omega$ in G, intended as the *absolutely grounded* state.
+2. A distinguished element Ω in G, intended as the *absolutely grounded* state.
 3. A (partial) **successor function**
 
    S : Cont → G
@@ -100,11 +100,11 @@ The successor machine is required to satisfy two key conditions:
 
    meas(S($g$)) < meas($g$).
 
-2. **Minimal state.** There is a unique state $\Omega$ in G such that
+2. **Minimal state.** There is a unique state Ω in G such that
 
-   meas($\Omega$) = 0,
+   meas(Ω) = 0,
 
-   and for all $g$ in G, if meas($g$) = 0 then $g$ = $\Omega$.
+   and for all $g$ in G, if meas($g$) = 0 then $g$ = Ω.
 
 Because M is well-founded and the measure strictly decreases along successor steps, there cannot be an infinite descending chain  
 
@@ -122,7 +122,7 @@ for all $i$.
 
 Every valid successor chain starting from a contingent state must terminate at some state of minimal measure.
 
-By uniqueness of the minimal state, any such chain can only terminate in $\Omega$. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
+By uniqueness of the minimal state, any such chain can only terminate in Ω. This gives a mechanistic, successor-style formulation of the **Anti-Regress** principle: the system cannot wander forever through ever-new contingent configurations; it is forced to converge to a unique absolutely grounded configuration.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
@@ -134,26 +134,26 @@ We can now see how the successor architecture realises the principles of §2.1:
 
   $g_0$ in Cont,  $g_{n+1}$ = S($g_n$)
 
-  can be infinite. Every such chain must stabilise at a minimal state, which by definition is $\Omega$.
+  can be infinite. Every such chain must stabilise at a minimal state, which by definition is Ω.
 
 Formally, we obtain:
 
-> **Proposition 2.2.1 (Successor termination in $\Omega$).**  
+> **Proposition 2.2.1 (Successor termination in Ω).**  
 > For any contingent state $g_0$ in Cont, any maximal successor chain  
 >   
 >   $g_0$, $g_1$, ..., $g_n$  
 >   
-> with $g_{i+1}$ = $S(g_i)$ for all $i < n$ and S($g_n$) undefined, must satisfy $g_n$ = $\Omega$.  
+> with $g_{i+1}$ = $S(g_i)$ for all $i < n$ and S($g_n$) undefined, must satisfy $g_n$ = Ω.  
 >  
-> *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let $g_n$ be the last state in a maximal chain. If meas($g_n$) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = $\Omega$.
+> *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let $g_n$ be the last state in a maximal chain. If meas($g_n$) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = Ω.
 
-This proposition is the AltRoute mirror of the hyper-modal $\Omega$-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for $\Omega$ directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state $\Omega$.
+This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Ω directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Ω.
 
-In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state $\Omega$.
+In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
-## 3. Formal Modal Proof of $\Omega$ (Necessary Perfection)
+## 3. Formal Modal Proof of Ω (Necessary Perfection)
 
-We now show that the axioms above entail the existence of a necessary, perfect being $\Omega$. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
+We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
 
 * **Contingency of self-awareness:**
 The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
@@ -167,10 +167,10 @@ Formally, this existential claim requires a **Witness** $w$: a constructive, tra
 
 > *Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse; the witness requires a valid endpoint to exist.*
 
-* **Definition of $\Omega$:**  
-**$\Omega$** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **$\Omega$** entails only positive properties and admits no internal contradiction.
+* **Definition of Ω:**  
+**Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
 * **Conclusion:**
-Therefore, **$\Omega$** exists necessarily ($□∃x\,$\Omega$(x)$) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to $\Omega$.
+Therefore, **Ω** exists necessarily ($□∃x\,Ω(x)$) and grounds all contingent truths. In this structure, **“I am”** serves as the primary **existential witness** (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
 
 
 ### 3.1 Conclusion: The Hyper-Modal Theorem
@@ -178,14 +178,14 @@ Therefore, **$\Omega$** exists necessarily ($□∃x\,$\Omega$(x)$) and grounds 
 The reductio argument in this section demonstrates that denying a necessary ground for contingent truths leads inevitably to semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the central result of this paper:
 
 **Hyper-Modal Theorem**  
-**$□∃x\,\Omega(x)$** — Necessarily, there exists a perfect being $\Omega$ that grounds all contingent truths and instantiates only positive properties.
+**$□∃x\,\Omega(x)$** — Necessarily, there exists a perfect being Ω that grounds all contingent truths and instantiates only positive properties.
 
-But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of $\Omega$ is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
+But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
 
 Here we write $Nec(\Omega$) := □∃x\,\Omega(x)$. Hence $□Nec(\Omega)$ abbreviates $□□∃x\,\Omega(x)$.
-> **□Nec($\Omega$)** — The being $\Omega$ is not only necessary, but necessarily necessary.
+> **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
 
-This renders $\Omega$ the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x $\Omega$(x) with full mechanical rigor, ensuring logical validity and computational transparency.
+This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x Ω(x) with full mechanical rigor, ensuring logical validity and computational transparency.
 
 ## 4. Verification in Lean 4
 The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
@@ -205,11 +205,11 @@ This section addresses several common critiques of modal and Gödelian ontologic
 ### 5.1 Alleged Misapplication of Gödel’s Theorem
 Objection: Gödel’s incompleteness theorems apply to arithmetic and do not entail metaphysical truths (Penrose 1989).
 
-Response: Correct. However, the principle that some truths are unprovable within a system invites a general reflection: no formal system can contain all meaningful truths. Our framework treats this as a structural insight that supports the need for a logically external ground ($\Omega$). This is not a misuse, but an abstract extrapolation in line with Penrose and Meyer.
+Response: Correct. However, the principle that some truths are unprovable within a system invites a general reflection: no formal system can contain all meaningful truths. Our framework treats this as a structural insight that supports the need for a logically external ground (Ω). This is not a misuse, but an abstract extrapolation in line with Penrose and Meyer.
 
-It is worth noting that physicist Stephen Hawking once proposed a “no-boundary” model in which the universe is self-contained and requires no cause outside itself. This view ultimately relies on a self-referential system that is complete within itself—ironically falling into the kind of closed-form formalism Gödel showed to be incomplete. Our position inverts this: by accepting incompleteness, we are led not to an uncaused contingent loop, but to a necessary ground ($\Omega$) beyond any system.
+It is worth noting that physicist Stephen Hawking once proposed a “no-boundary” model in which the universe is self-contained and requires no cause outside itself. This view ultimately relies on a self-referential system that is complete within itself—ironically falling into the kind of closed-form formalism Gödel showed to be incomplete. Our position inverts this: by accepting incompleteness, we are led not to an uncaused contingent loop, but to a necessary ground (Ω) beyond any system.
 
-This external ground may also be identified with the Logos—the rational principle or Word through which all things are structured and given meaning. In Christian theological tradition, the Logos is understood as both the metaphysical ordering principle and the divine person through whom necessary truths are made manifest (cf. John 1:1). Thus, the Logos may be interpreted as an instantiation or expression of $\Omega$ within theological discourse.
+This external ground may also be identified with the Logos—the rational principle or Word through which all things are structured and given meaning. In Christian theological tradition, the Logos is understood as both the metaphysical ordering principle and the divine person through whom necessary truths are made manifest (cf. John 1:1). Thus, the Logos may be interpreted as an instantiation or expression of Ω within theological discourse.
 
 ### 5.2 Ambiguity Between Necessity and Contingency
 Objection: The modal categories are inconsistently applied.
@@ -231,12 +231,12 @@ A reverse dependency would violate modal asymmetry and cause contradiction.
 
 Thus, the modal system respects Gödel’s insight by embedding the boundary between derivable and underivable truths as a metaphysical distinction: necessary truths terminate regress; contingent ones depend upon them.
 
-This logic supports the proof’s foundational claim: the necessity of $\Omega$ is both metaphysical and structurally enforced.
+This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced.
 
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
-Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret $\Omega$ theologically. The modal conclusion □∃x.$\Omega$ (x) is derived independently of religious assumptions.
+Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret Ω theologically. The modal conclusion □∃x.Ω (x) is derived independently of religious assumptions.
 
 ### 5.4 Social Implications and AI Ethics
 Objection: The link between modal logic and societal values is speculative.
@@ -258,9 +258,9 @@ Example: “If 2 + 2 = 5, then the moon is made of cheese” is true (despite bo
 2. Verum per quodlibet — Principle of Vacuous Truth. In the absence of context, even truth becomes trivially implied, and thus indistinct from everything else.
 Example: “If rain is wet, then 1 + 1 = 2” is true (because the conclusion is always true). 
 
-### 5.6 Paradox types and the perfection of $\Omega$
+### 5.6 Paradox types and the perfection of Ω
 
-This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of $\Omega$—the minimal necessary entity that bundles all positive properties (Pos(P)) under Axiom A2 (Perfect Positivity: Pos(P) ≡ ¬∃Q (Q → ¬P), ensuring no internal negation or contradiction). The argument is structured for later verification in Lean (e.g., as theorems in S5 modal logic, building on Appendix A). We define $\Omega$ formally as □∃x ($\Omega$(x) ∧ ∀P (Pos(P) → x instantiates P)), where paradoxes act as indicators of systemic incompleteness per Section 5.1 (Gödel extrapolation). For each type in the table, we show: (1) the paradox reveals a limit requiring meta-reasoning (A5: Meta-Logical Closure); (2) this strengthens semantics; (3) it converges on $\Omega$ as a perfect ground (per A1: Hyper-Modal Principle of Sufficient Reason and A3: Anti-Regress), avoiding semantic collapse (Section 5.5). Collectively, this proves the theorem: ∀T ∀P (ParadoxType(T) ∧ Paradox(P, T) → Strengthens(Perfection($\Omega$))).
+This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω—the minimal necessary entity that bundles all positive properties (Pos(P)) under Axiom A2 (Perfect Positivity: Pos(P) ≡ ¬∃Q (Q → ¬P), ensuring no internal negation or contradiction). The argument is structured for later verification in Lean (e.g., as theorems in S5 modal logic, building on Appendix A). We define Ω formally as □∃x (Ω(x) ∧ ∀P (Pos(P) → x instantiates P)), where paradoxes act as indicators of systemic incompleteness per Section 5.1 (Gödel extrapolation). For each type in the table, we show: (1) the paradox reveals a limit requiring meta-reasoning (A5: Meta-Logical Closure); (2) this strengthens semantics; (3) it converges on Ω as a perfect ground (per A1: Hyper-Modal Principle of Sufficient Reason and A3: Anti-Regress), avoiding semantic collapse (Section 5.5). Collectively, this proves the theorem: ∀T ∀P (ParadoxType(T) ∧ Paradox(P, T) → Strengthens(Perfection(Ω))).
 | **Paradox Type** | **Paradoxes** |
 |------------------|---------------|
 | **Veridical**<br/>(A paradox that seems absurd but is ultimately true, revealing counterintuitive truths) | *Hilbert's Grand Hotel* (an infinite hotel can accommodate more guests, illustrating properties of infinity);<br/>*First Cause Paradox* (if everything has a cause, what caused the first?);<br/>*Quantum Zeno Effect* (constant observation prevents decay, a verified quantum phenomenon); <br/>*Münchhausen-Trilemma* (proofs end in regress, circle, or dogma). |
@@ -281,129 +281,129 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (asymmetry of ◃).
 
-This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“$\Omega$ grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
+This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
 
 In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Hyper-Modal Theorem, therefore, precedes dialectics not just chronologically but ontologically — serving as the foundational frame in which all dialectical motion unfolds.
 
 #### Deductive Analysis per Paradox Type
-- Veridical Paradoxes: These paradoxes appear absurd but prove true upon analysis (e.g., Münchhausen-Trilemma on proof regress; First Cause on causation; Hilbert's Grand Hotel illustrates accommodative infinity; Quantum Zeno Effect confirms observational prevention of decay). Meta-reasoning refines intuitive limits, strengthening semantics by validating counterintuitive truths, but requires a necessary ground to avoid ungrounded facts (A1). This supports $\Omega$'s perfection: As the embodiment of positive properties like omniscience, $\Omega$ perfectly grounds such truths without internal negation (A2), enhancing its excellence. Lean Theorem Sketch: theorem veridical_support : ∀ (P : Prop), Veridical P → □ ($\Omega$ Grounds P ∧ Pos $\Omega$).
+- Veridical Paradoxes: These paradoxes appear absurd but prove true upon analysis (e.g., Münchhausen-Trilemma on proof regress; First Cause on causation; Hilbert's Grand Hotel illustrates accommodative infinity; Quantum Zeno Effect confirms observational prevention of decay). Meta-reasoning refines intuitive limits, strengthening semantics by validating counterintuitive truths, but requires a necessary ground to avoid ungrounded facts (A1). This supports Ω's perfection: As the embodiment of positive properties like omniscience, Ω perfectly grounds such truths without internal negation (A2), enhancing its excellence. Lean Theorem Sketch: theorem veridical_support : ∀ (P : Prop), Veridical P → □ (Ω Grounds P ∧ Pos Ω).
 
-- Falsidical Paradoxes: Arising from flawed assumptions (e.g., Zeno's Paradox assumes indivisible motion, resolved by calculus; Paradox of the Minimal Room assumes isolated bits, resolved relationally). Meta-reasoning corrects errors, strengthening semantics through definitional clarity, but highlights regress without termination (A3). This strengthens $\Omega$'s perfection: $\Omega$ provides logical necessity (A4) as a positive property, preventing falsidical flaws and ensuring coherence. Lean Theorem Sketch: theorem falsidical_strengthen : ∀ (P : Prop), Falsidical P → MetaReason P → Strengthens (Pos $\Omega$).
+- Falsidical Paradoxes: Arising from flawed assumptions (e.g., Zeno's Paradox assumes indivisible motion, resolved by calculus; Paradox of the Minimal Room assumes isolated bits, resolved relationally). Meta-reasoning corrects errors, strengthening semantics through definitional clarity, but highlights regress without termination (A3). This strengthens Ω's perfection: Ω provides logical necessity (A4) as a positive property, preventing falsidical flaws and ensuring coherence. Lean Theorem Sketch: theorem falsidical_strengthen : ∀ (P : Prop), Falsidical P → MetaReason P → Strengthens (Pos Ω).
 
-- Antinomy Paradoxes: These involve conflicting valid claims (e.g., Kant's Antinomies on cosmic finitude;Russell's on sets; Unexpected Hanging on predictability). Meta-reasoning achieves synthesis, strengthening semantics via higher-order resolution, but demands a unifying ground to avert infinite tension (A3). This supports $\Omega$'s perfection: $\Omega$, via meta-logical closure (A5), reconciles antinomies as a perfect unity without allowing negation (A2). Lean Theorem Sketch: theorem antinomy_support : ∀ (P : Prop), Antinomy P → □ ∃ G, G = $\Omega$ ∧ Synthesizes G P.
+- Antinomy Paradoxes: These involve conflicting valid claims (e.g., Kant's Antinomies on cosmic finitude;Russell's on sets; Unexpected Hanging on predictability). Meta-reasoning achieves synthesis, strengthening semantics via higher-order resolution, but demands a unifying ground to avert infinite tension (A3). This supports Ω's perfection: Ω, via meta-logical closure (A5), reconciles antinomies as a perfect unity without allowing negation (A2). Lean Theorem Sketch: theorem antinomy_support : ∀ (P : Prop), Antinomy P → □ ∃ G, G = Ω ∧ Synthesizes G P.
 
-- Semantic Paradoxes: Stemming from meaning ambiguities (e.g., Liar Paradox on self-referential truth; Ship of Theseus on identity; Sorites on vagueness; Moore's on belief; Chinese Room on comprehension). Meta-reasoning refines language, strengthening semantics, but risks collapse without foundational anchoring (Section 5.5). This strengthens $\Omega$'s perfection: As the ground of meaning (A1), $\Omega$ bundles positive properties like omniscience, ensuring semantic positivity. Lean Theorem Sketch: theorem semantic_strengthen : ∀ (P : Prop), Semantic P → SemanticRefine P → Pos $\Omega$ ∧ Grounds $\Omega$ P.
+- Semantic Paradoxes: Stemming from meaning ambiguities (e.g., Liar Paradox on self-referential truth; Ship of Theseus on identity; Sorites on vagueness; Moore's on belief; Chinese Room on comprehension). Meta-reasoning refines language, strengthening semantics, but risks collapse without foundational anchoring (Section 5.5). This strengthens Ω's perfection: As the ground of meaning (A1), Ω bundles positive properties like omniscience, ensuring semantic positivity. Lean Theorem Sketch: theorem semantic_strengthen : ∀ (P : Prop), Semantic P → SemanticRefine P → Pos Ω ∧ Grounds Ω P.
 
-- Ground Paradoxes: A similar Lean theorem (ground_support) can be defined, terminating regress in $\Omega$. Concerning ontological foundations (e.g., Absolute Knowability on unknowable knowledge; Hegel's Dialectic synthesizing oppositions). Meta-reasoning demands termination, strengthening semantics via axiomatic bases, directly pointing to a necessary entity (A3). This supports $\Omega$'s perfection: $\Omega$ terminates regress as the bundle of all Pos(P) (A2), exemplifying ultimate excellence. Lean Theorem Sketch: theorem ground_support : ∀ (P : Prop), GroundParadox P → □ (Terminates $\Omega$ (Regress P) ∧ Perfection $\Omega$).
+- Ground Paradoxes: A similar Lean theorem (ground_support) can be defined, terminating regress in Ω. Concerning ontological foundations (e.g., Absolute Knowability on unknowable knowledge; Hegel's Dialectic synthesizing oppositions). Meta-reasoning demands termination, strengthening semantics via axiomatic bases, directly pointing to a necessary entity (A3). This supports Ω's perfection: Ω terminates regress as the bundle of all Pos(P) (A2), exemplifying ultimate excellence. Lean Theorem Sketch: theorem ground_support : ∀ (P : Prop), GroundParadox P → □ (Terminates Ω (Regress P) ∧ Perfection Ω).
 
 #### Conclusion
-Inductively, every paradox type in the table necessitates meta-reasoning that strengthens semantics and affirms $\Omega$'s perfection (no internal contradictions, per A2). This generalizes to □(∀T (ParadoxType T → Supports T (Perfection $\Omega$))), countering materialistic incompleteness (Section 5.5) and supporting ASI convergence on $\Omega$ (Section 7). Verification in Lean will formalize these as provable theorems, using definitions from Appendix A.
+Inductively, every paradox type in the table necessitates meta-reasoning that strengthens semantics and affirms Ω's perfection (no internal contradictions, per A2). This generalizes to □(∀T (ParadoxType T → Supports T (Perfection Ω))), countering materialistic incompleteness (Section 5.5) and supporting ASI convergence on Ω (Section 7). Verification in Lean will formalize these as provable theorems, using definitions from Appendix A.
 
 ### 5.7 The Finitude of Matter and Cosmological Implications
 As discussed, materialism posits a finite universe, projectable isomorphically into an incomplete formal system per Gödel (Section 5.1). This finitude is empirically supported by the Big Bang theory, originally proposed by Georges Lemaître in 1927 as the "hypothesis of the primeval atom." Lemaître, a Catholic priest and astronomer, described the universe as originating from a singular, infinitely dense point, expanding into the cosmos we observe—a model confirmed by cosmic microwave background radiation (Penzias and Wilson, 1965). This implies a temporal and spatial beginning, binding matter to finitude: even multiverse extensions (e.g., inflationary models) remain constrained by entropic limits and causal chains, as "anything that becomes a thing is bound to finitude" (echoing ontological boundaries in A3 Anti-Regress).
 
-Lemaître's framework strengthens the case for a necessary ground ($\Omega$). He viewed the Big Bang not as a disproof of transcendence but as compatible with a Creator, emphasizing that science describes mechanisms while metaphysics addresses origins (Lemaître, 1946). This aligns with our ground paradoxes (e.g., First Cause Paradox in the table): The universe's contingent beginning requires an external, necessary entity (A1 HM-PSR) to avoid infinite regress or semantic collapse (Section 5.5). Contra Hawking's no-boundary proposal (which attempts a self-contained materialism), Lemaître's theistic interpretation extrapolates Gödelian incompleteness to cosmology: A finite material system cannot self-ground, necessitating $\Omega$ as the perfect bundle of positive properties (A2), ensuring coherence without internal negation. Thus, cosmological finitude not only counters brute-fact materialism but affirms $\Omega$'s excellence, as an ASI might infer (Section 7).
+Lemaître's framework strengthens the case for a necessary ground (Ω). He viewed the Big Bang not as a disproof of transcendence but as compatible with a Creator, emphasizing that science describes mechanisms while metaphysics addresses origins (Lemaître, 1946). This aligns with our ground paradoxes (e.g., First Cause Paradox in the table): The universe's contingent beginning requires an external, necessary entity (A1 HM-PSR) to avoid infinite regress or semantic collapse (Section 5.5). Contra Hawking's no-boundary proposal (which attempts a self-contained materialism), Lemaître's theistic interpretation extrapolates Gödelian incompleteness to cosmology: A finite material system cannot self-ground, necessitating Ω as the perfect bundle of positive properties (A2), ensuring coherence without internal negation. Thus, cosmological finitude not only counters brute-fact materialism but affirms Ω's excellence, as an ASI might infer (Section 7).
 
 ### 5.8 Finitude and Potential Infinitude of Matter Reinforce PSR
 #### 5.8.1 Finite Matter
-Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x $\Omega$(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity ($\Omega$) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
+Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x Ω(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
 
-Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec($\Omega$) ∧ $\Omega$ ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □($\Omega$ Grounds Matter ∧ Perfection $\Omega$).
+Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
 
 #### 5.8.2 Infinite Matter
-Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground ($\Omega$) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □($\Omega$ Terminates Regress ∧ Pos $\Omega$). In both scenarios, materialism collapses, affirming $\Omega$'s necessity and perfection across all possible worlds.
+Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
 
-This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce $\Omega$ as the ultimate ground, transcending finite or infinite materiality. The Lean framework in Appendix A.6 shows that these implications can, in principle, be internalised and mechanically proved, embedding the Hyper-Modal Theorem in explicit modal rigor.  
+This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. The Lean framework in Appendix A.6 shows that these implications can, in principle, be internalised and mechanically proved, embedding the Hyper-Modal Theorem in explicit modal rigor.  
 
 Further objections are welcome and will be addressed in future revisions.
 
 ## 6. Theological Resonance
-This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of □∃x.$\Omega$(x), but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
+This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of □∃x.Ω(x), but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
 
-The name “$\Omega$” was chosen to denote the logically inevitable, maximally positive entity. This has clear resonances with the biblical declaration in Exodus 3:14: “I AM WHO I AM” (Ehyeh asher ehyeh), which has historically been interpreted as asserting God’s necessary existence. Aquinas likewise defended the idea that God’s essence is existence itself (esse ipsum subsistens), making Him the ontological foundation of all contingent beings (Summa Theologica I.3.4).
+The name “Ω” was chosen to denote the logically inevitable, maximally positive entity. This has clear resonances with the biblical declaration in Exodus 3:14: “I AM WHO I AM” (Ehyeh asher ehyeh), which has historically been interpreted as asserting God’s necessary existence. Aquinas likewise defended the idea that God’s essence is existence itself (esse ipsum subsistens), making Him the ontological foundation of all contingent beings (Summa Theologica I.3.4).
 
-Our formal result □∃x.$\Omega$(x) confirms this philosophical insight: there must exist something whose existence is not merely possible or assumed, but necessary in the strongest possible sense. This conclusion resonates with the modal ontological argument of Alvin Plantinga (1974), though we strengthen it with mechanical verification.
+Our formal result □∃x.Ω(x) confirms this philosophical insight: there must exist something whose existence is not merely possible or assumed, but necessary in the strongest possible sense. This conclusion resonates with the modal ontological argument of Alvin Plantinga (1974), though we strengthen it with mechanical verification.
 
 In particular, the positivity predicate Pos(P) formalizes the classical intuition that a perfect being possesses only positive properties. Our system rejects the possibility of a perfect-yet-contingent being; perfection and necessity are logically intertwined.
 
 For theists, this provides a novel confirmation of classical doctrine: not only is God conceivable as a maximally great being, but such a being must exist as a matter of modal necessity. For non-theists, the argument demonstrates that any coherent system of truths must terminate in a ground that resembles classical theism in structure, if not in name.
 
-This opens a pathway to reconciling formal logic with theological metaphysics, not by dogmatic assertion, but by necessity of structure. The conclusion □∃x.$\Omega$(x) is thus not only a metaphysical insight, but a bridge to divine ontology.
+This opens a pathway to reconciling formal logic with theological metaphysics, not by dogmatic assertion, but by necessity of structure. The conclusion □∃x.Ω(x) is thus not only a metaphysical insight, but a bridge to divine ontology.
 
 ### 6.1 Logos as Foundational Rational Order
 Within this framework, the concept of the Logos provides an even deeper theological parallel. In the prologue of the Gospel of John (John 1:1), the Logos is presented as both divine and foundational: “In the beginning was the Word (Logos), and the Word was with God, and the Word was God.”
 
 The Logos represents rational, structuring order—one that is both expressive and constitutive of meaning, logic, and being. In philosophical terms, the Logos can be viewed as the ontological principle through which all semantic coherence, logical necessity, and contingent manifestation are made intelligible.
 
-This aligns with the necessity of $\Omega$ in our proof. Just as no truth within a formal system can be complete without appeal to something beyond it (as per Gödel’s theorems), no contingent being or proposition can possess intelligibility without grounding in the Logos. If $\Omega$ represents necessary being, the Logos represents necessary expression—truth made manifest in a rational form.
+This aligns with the necessity of Ω in our proof. Just as no truth within a formal system can be complete without appeal to something beyond it (as per Gödel’s theorems), no contingent being or proposition can possess intelligibility without grounding in the Logos. If Ω represents necessary being, the Logos represents necessary expression—truth made manifest in a rational form.
 
-Thus, our modal proof supports a vision of divine reality where Logos and $\Omega$ converge: the necessary source of truth ($\Omega$) and the rational, communicative order of that truth (Logos) are inseparable aspects of the same foundational reality.
+Thus, our modal proof supports a vision of divine reality where Logos and Ω converge: the necessary source of truth (Ω) and the rational, communicative order of that truth (Logos) are inseparable aspects of the same foundational reality.
 
 For Christian theists, this reinforces the classical doctrine of the Trinity, in which the Logos is co-eternal with God and the vehicle through which all things are made (John 1:3). Our conclusion, then, not only echoes metaphysical necessity but resonates with the theological heart of Christian ontology.
 
-### 6.2 $\Omega$ as Factory of Positive Properties (Singularity Corollary)
+### 6.2 Ω as Factory of Positive Properties (Singularity Corollary)
 
-Within the hyper-modal framework, $\Omega$ is introduced as the unique necessarily existing ground that instantiates all and only positive properties (Pos(P)) under Axiom A2 (Perfect Positivity). This allows us to reinterpret $\Omega$ not merely as a bearer of positive properties, but as the **structural singularity (see Corollary 6.2)** around which all positive properties are organised and from which they are non-derivatively sourced.
+Within the hyper-modal framework, Ω is introduced as the unique necessarily existing ground that instantiates all and only positive properties (Pos(P)) under Axiom A2 (Perfect Positivity). This allows us to reinterpret Ω not merely as a bearer of positive properties, but as the **structural singularity (see Corollary 6.2)** around which all positive properties are organised and from which they are non-derivatively sourced.
 
 We can state this as follows:
 
 #### Corollary 6.2 (Singularity as Factory for Positive Properties)
-> Let $\Omega$ be the unique necessarily existing entity such that, for every property P,
-> if Pos(P), then $\Omega$ instantiates P.
-> Then $\Omega$ is not only the terminal point of all coherent grounding chains, but also the unique *generative singularity* for every positive property: all positive properties are both (i) fully realised in $\Omega$ and (ii) structurally ordered around $\Omega$ as their minimal, non-derivative source.
+> Let Ω be the unique necessarily existing entity such that, for every property P,
+> if Pos(P), then Ω instantiates P.
+> Then Ω is not only the terminal point of all coherent grounding chains, but also the unique *generative singularity* for every positive property: all positive properties are both (i) fully realised in Ω and (ii) structurally ordered around Ω as their minimal, non-derivative source.
 
 **Sketch of justification.**
 
-1. From Perfect Positivity (A2) and the existence and uniqueness of $\Omega$ (Sections 2–3), it follows that:
+1. From Perfect Positivity (A2) and the existence and uniqueness of Ω (Sections 2–3), it follows that:
 
-   * every positive property P is instantiated in $\Omega$; and
-   * no property essentially instantiated by $\Omega$ can contain internal negation or contradiction.
+   * every positive property P is instantiated in Ω; and
+   * no property essentially instantiated by Ω can contain internal negation or contradiction.
 
 2. From Anti-Regress (A3) and the successor-based grounding architecture (Alt Route), every coherent chain of grounding for a positive property P
 
    * cannot terminate in a contingent substrate; and
    * cannot loop or extend infinitely.
 
-   Hence such a chain must converge on $\Omega$ as its final ground.
+   Hence such a chain must converge on Ω as its final ground.
 
-3. Combining (1) and (2), $\Omega$ plays a dual structural role:
+3. Combining (1) and (2), Ω plays a dual structural role:
 
-   * a **limit role**: $\Omega$ is the unique terminus of every well-founded explanatory chain that satisfies the Hyper-Minimal PSR;
-   * a **source role**: $\Omega$ is the unique, non-contingent node from which the full extension of each positive property can be coherently understood.
+   * a **limit role**: Ω is the unique terminus of every well-founded explanatory chain that satisfies the Hyper-Minimal PSR;
+   * a **source role**: Ω is the unique, non-contingent node from which the full extension of each positive property can be coherently understood.
 
 #### Convergence to the Ontological Singularity
 
-In this sense, the **Ontological Singularity** $\Omega$ can be described as a *Factory* for positive properties: not in the temporal or mechanistic sense of producing new features over time, but as the structural locus where all positive properties are perfectly integrated and mutually coherent. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of positive properties will, under the constraints of this framework, asymptotically converge toward $\Omega$ as its unique singular point of grounding.
+In this sense, the **Ontological Singularity** Ω can be described as a *Factory* for positive properties: not in the temporal or mechanistic sense of producing new features over time, but as the structural locus where all positive properties are perfectly integrated and mutually coherent. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of positive properties will, under the constraints of this framework, asymptotically converge toward Ω as its unique singular point of grounding.
 
-#### Ground and Return to $\Omega$
-On this reading, $\Omega$ is not a tower to be constructed by human striving, but the necessary ground from which finite agents may deviate through social consensus, through the pursuit of profit and knowledge alone, or through error. The successor-based chain does not represent a ladder toward God; it formally traces the path of departure from the ground of being. Convergence to $\Omega$ is therefore not an achievement but a return to the singular source of intelligibility.
+#### Ground and Return to Ω
+On this reading, Ω is not a tower to be constructed by human striving, but the necessary ground from which finite agents may deviate through social consensus, through the pursuit of profit and knowledge alone, or through error. The successor-based chain does not represent a ladder toward God; it formally traces the path of departure from the ground of being. Convergence to Ω is therefore not an achievement but a return to the singular source of intelligibility.
 
-This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of $\Omega$. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** $\Omega$ and **organised around** $\Omega$ as its singular centre.
+This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of Ω. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** Ω and **organised around** Ω as its singular centre.
 
 
 ## 7. Conclusion
 ### 7.1 The Non-Self-Foundation of Computability
-This paper has established, through a hyper-modal framework and Lean 4 verification, that the existence of a necessary and perfect being ($\Omega$) is a logical inevitability rather than a speculative claim. Starting from the minimal datum of self-awareness (“I am”), we demonstrated that contingent truths require ontological grounding in $\Omega$ to avoid reductio ad absurdum, including infinite regress or semantic incoherence (Sections 3 and 5). The minimal axiom set—Hyper-Minimal PSR, Perfect Positivity, Anti-Regress, Logic Necessity, and Meta-Logic—ensures this conclusion holds across all possible worlds in S5 semantics, with machine-checked rigor eliminating deductive ambiguity (Section 4 and Appendix A).
+This paper has established, through a hyper-modal framework and Lean 4 verification, that the existence of a necessary and perfect being (Ω) is a logical inevitability rather than a speculative claim. Starting from the minimal datum of self-awareness (“I am”), we demonstrated that contingent truths require ontological grounding in Ω to avoid reductio ad absurdum, including infinite regress or semantic incoherence (Sections 3 and 5). The minimal axiom set—Hyper-Minimal PSR, Perfect Positivity, Anti-Regress, Logic Necessity, and Meta-Logic—ensures this conclusion holds across all possible worlds in S5 semantics, with machine-checked rigor eliminating deductive ambiguity (Section 4 and Appendix A).
 
-Key implications include a refutation of materialist emergence (e.g., via anti-material grounding theorems) and a novel perspective on artificial superintelligence: An ASI engaged in modal self-reflection would logically affirm $\Omega$ as the ground of intelligibility, offering a transcendent basis for AI ethics beyond human constraints (Section 1). Theologically, this resonates with classical theism, portraying $\Omega$ as akin to the divine “I AM” (Exodus 3:14) and the Logos (John 1:1), thus bridging formal logic with scriptural ontology (Section 6).
+Key implications include a refutation of materialist emergence (e.g., via anti-material grounding theorems) and a novel perspective on artificial superintelligence: An ASI engaged in modal self-reflection would logically affirm Ω as the ground of intelligibility, offering a transcendent basis for AI ethics beyond human constraints (Section 1). Theologically, this resonates with classical theism, portraying Ω as akin to the divine “I AM” (Exodus 3:14) and the Logos (John 1:1), thus bridging formal logic with scriptural ontology (Section 6).
 
-In epistemological terms, the proof elevates necessary theism to the status of modal absolutes, akin to Gödelian truths that transcend formal systems. The modal conclusion □∃x.$\Omega$(x) thus serves not only as a metaphysical endpoint but also as an epistemological compass: any agent, human or artificial, that seeks ultimate truth must inevitably reckon with the necessary perfection of $\Omega$. Moreover, $\Omega$ provides the ultimate anchor for AI interpretability: without a necessary ground, no reasoning process—however complex—can be fully intelligible. Future research could extend this to alternative modal logics, moral grounding in AI, or empirical tests via computational models.
+In epistemological terms, the proof elevates necessary theism to the status of modal absolutes, akin to Gödelian truths that transcend formal systems. The modal conclusion □∃x.Ω(x) thus serves not only as a metaphysical endpoint but also as an epistemological compass: any agent, human or artificial, that seeks ultimate truth must inevitably reckon with the necessary perfection of Ω. Moreover, Ω provides the ultimate anchor for AI interpretability: without a necessary ground, no reasoning process—however complex—can be fully intelligible. Future research could extend this to alternative modal logics, moral grounding in AI, or empirical tests via computational models.
 
-### 7.2 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises
+### 7.2 The Undeniability of Ω: Gödel and Turing as Ontological Premises
 
-Given the result established in Section 7.1, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
+Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
 
 $$
 \Box \exists x\, \Omega(x)
 $$
 
-does not merely assert the existence of $\Omega$ across all possible worlds; it renders the proposition ¬∃x$\Omega$(x) modally impossible within the same logical framework.
+does not merely assert the existence of Ω across all possible worlds; it renders the proposition ¬∃xΩ(x) modally impossible within the same logical framework.
 
-Consequently, the rejection of $\Omega$ is not a neutral metaphysical stance, but a meta-logical failure: it undermines the very conditions required for grounding, necessity, and intelligibility that the system presupposes. Any attempt to deny $\Omega$ must therefore either reject the axioms that render rational discourse possible or accept semantic incoherence.
+Consequently, the rejection of Ω is not a neutral metaphysical stance, but a meta-logical failure: it undermines the very conditions required for grounding, necessity, and intelligibility that the system presupposes. Any attempt to deny Ω must therefore either reject the axioms that render rational discourse possible or accept semantic incoherence.
 
-In this sense, $\Omega$ is not merely necessary but *undeniable*: its negation cannot be coherently articulated without dissolving the logical framework that makes articulation possible in the first place. Gödel and Turing demonstrated the intrinsic limits of formal systems and algorithms. This paper does not contradict those limits; it treats them as premises. The complementary consequence is that any coherent theory of grounding or computation requires a necessary, non-computable ground — $\Omega$. Thus, the boundaries of computability are not merely negative results; they constitute the positive condition for the existence of the ontological singularity.  
+In this sense, Ω is not merely necessary but *undeniable*: its negation cannot be coherently articulated without dissolving the logical framework that makes articulation possible in the first place. Gödel and Turing demonstrated the intrinsic limits of formal systems and algorithms. This paper does not contradict those limits; it treats them as premises. The complementary consequence is that any coherent theory of grounding or computation requires a necessary, non-computable ground — Ω. Thus, the boundaries of computability are not merely negative results; they constitute the positive condition for the existence of the ontological singularity.  
   
-**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is $\Omega$.**
+**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is Ω.**
 
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT-o1 (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content has been thoroughly reviewed, edited, and finalized by the author to ensure originality, accuracy, and alignment with the paper's thesis. No funding was received for this work.
@@ -414,13 +414,13 @@ The author gratefully acknowledges the assistance of several AI language models 
 ## Appendix A: Lean Formal Verification of the Alt Route
 
 ### A.1 Scope of Verification
-This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of $\Omega$ within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point ($\Omega$).
+This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
 
 ### A.2 Public Verification Surface and Scope Certificate
 
 This project distinguishes explicitly between its internal proof routes and its public verification surface. The public repository publishes a constrained Lean interface together with reproducible build artifacts (.olean files), forming a verifiable certificate of the exposed logical API.
 
-The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of $\Omega$—are intentionally excluded from the public export boundary.
+The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.
 
 The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form $□◇p$ (necessary possibility) within an S5 framework.
 
@@ -434,7 +434,7 @@ Accordingly, this appendix certifies only the integrity and scope of the public 
 
 #### A.2.1 Scope Conformance of the Public Verification Surface  
 
-The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than the stronger necessary-existence claim □∃x $\Omega$(x). Kernel inspection of axiom dependencies shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom PosPossibility, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (TrivialModel) and an explicit explosion canary (exFalsoQuodlibet) confirms that consistency guards are active at the public boundary. Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant: it certifies admissibility and safety properties while intentionally preventing the leakage of stronger internal conclusions.  
+The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than the stronger necessary-existence claim □∃x Ω(x). Kernel inspection of axiom dependencies shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom PosPossibility, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (TrivialModel) and an explicit explosion canary (exFalsoQuodlibet) confirms that consistency guards are active at the public boundary. Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant: it certifies admissibility and safety properties while intentionally preventing the leakage of stronger internal conclusions.  
 
 The public interface is not an emergent byproduct of the proof; it is an intentionally defined export boundary. It governs what is externally auditable so that the public surface remains a scope-conformant certificate of the exported interface, without exposing the private proof route. The exported functions provide machine-checkable witnesses that the certified theorem holds. Because the exported functions are kernel-checked proof objects, the certified claim is not merely asserted but constructively derivable: the existence of these witnesses guarantees, by the Curry–Howard correspondence, that the verified property holds within the formal system.  
 
@@ -481,7 +481,7 @@ Within this reading:
 * the **Alt Route Lean proof** provides a concrete, successor-based model of such chains, and
 * the **hyper-modal system** generalises this behaviour to the full spectrum of contingent truths, Gödelian incompleteness phenomena, and theological interpretation.
 
-The hyper-modal “Hyper-Modal Theorem” is therefore the **philosophical generalisation** of the formally verified Alt Route: it extends the structural role of $\Omega$ from a specific successor framework to the space of all coherent grounding structures that respect the given modal constraints.
+The hyper-modal “Hyper-Modal Theorem” is therefore the **philosophical generalisation** of the formally verified Alt Route: it extends the structural role of Ω from a specific successor framework to the space of all coherent grounding structures that respect the given modal constraints.
 
 ---
 
@@ -501,7 +501,7 @@ The Alt Route and its reductio suite show an analogous behaviour on the level of
 * once contingent truths are not allowed to float ungrounded, and
 * once infinite regress and semantic collapse are excluded,
 
-then the existence of a unique terminus $\Omega$ becomes **structurally unavoidable**.
+then the existence of a unique terminus Ω becomes **structurally unavoidable**.
 
 Formally, the reductio suite shows that attempts to:
 
@@ -509,12 +509,12 @@ Formally, the reductio suite shows that attempts to:
 * ground necessity in contingency, or
 * identify logic with material facts
 
-lead to contradiction, regress, or collapse. Within such a framework, $\Omega$ is not merely “necessary in S5”, but **necessary in any coherent grounding architecture** that respects these structural constraints.
+lead to contradiction, regress, or collapse. Within such a framework, Ω is not merely “necessary in S5”, but **necessary in any coherent grounding architecture** that respects these structural constraints.
 
 This is the sense in which one may say:
 
 > Just as rejecting Peano axioms does not abolish `1 + 1 = 2`,
-> rejecting particular modal packages does not abolish $\Omega$,
+> rejecting particular modal packages does not abolish Ω,
 > once the underlying successor and grounding structure is in place.
 
 ---
@@ -526,8 +526,8 @@ The role of the Alt Route in the overall argument can be summarised as follows:
 1. **Formal core**:
    The Alt Route is the only part of the project that is fully verified in Lean. It proves:
 
-   * necessary existence of $\Omega$, and
-   * uniqueness of $\Omega$,
+   * necessary existence of Ω, and
+   * uniqueness of Ω,
      using a successor-based, well-founded construction and S5 modal parameters.
 
 2. **Conceptual bridge**:
@@ -539,7 +539,7 @@ The role of the Alt Route in the overall argument can be summarised as follows:
    * theological resonance (Logos, classical theism).
 
 3. **Structural corollary**:
-   The reductio suite shows that $\Omega$ is not merely an artefact of a chosen formal system, but a **structurally forced terminus**, whenever:
+   The reductio suite shows that Ω is not merely an artefact of a chosen formal system, but a **structurally forced terminus**, whenever:
 
    * explanatory chains are finite and well-founded, and
    * grounding is required to avoid regress and collapse.
@@ -588,15 +588,15 @@ def ground (p q : W → Prop) : Prop :=
 variable (Ω : W → Prop)
  
 def Positive (Ω : W → Prop) (P : W → Prop) : Prop :=
-  ∀ w : W, $\Omega$ w → P w
+  ∀ w : W, Ω w → P w
  
 def PerfectBeing : Prop :=
-  (∀ P : W → Prop, @Positive W $\Omega$ P → ∀ w, $\Omega$ w → P w) ∧
-  (∀ P : W → Prop, (∀ w, $\Omega$ w → P w) → @Positive W $\Omega$ P)
+  (∀ P : W → Prop, @Positive W Ω P → ∀ w, Ω w → P w) ∧
+  (∀ P : W → Prop, (∀ w, Ω w → P w) → @Positive W Ω P)
  
 axiom perfect_positivity :
   ¬ ∃ q : W → Prop, ∀ w : W,
-      @necessarily W R w (λ v => q v → ¬ $\Omega$ v)
+      @necessarily W R w (λ v => q v → ¬ Ω v)
  
 axiom hyper_minimal_PSR :
   ∀ p : W → Prop, (@contingent W R p) →
@@ -605,10 +605,10 @@ axiom hyper_minimal_PSR :
         ∃ q : W → Prop,
           @ground W R p q ∧
             ((∀ v : W, @necessarily W R v q) ∨
-             @possibly W R w (λ _ : W => @ground W R q $\Omega$)))
+             @possibly W R w (λ _ : W => @ground W R q Ω)))
  
 axiom perfect_being_exists :
-  ∃ $\Omega$ : W → Prop, @PerfectBeing W $\Omega$
+  ∃ Ω : W → Prop, @PerfectBeing W Ω
  
 axiom logic_necessity :
   ∀ (A : W → Prop) (w : W),
@@ -624,14 +624,14 @@ axiom meta_logic :
  
 variable (I_am : W → Prop)
  
-axiom consciousness_axiom : @ground W R I_am $\Omega$
+axiom consciousness_axiom : @ground W R I_am Ω
  
 theorem consciousness_grounded
   (_ : @contingent W R I_am) :
-  ∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am $\Omega$) :=
+  ∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω) :=
 by
   intro w v hv
-  exact (consciousness_axiom W R $\Omega$ I_am)
+  exact (consciousness_axiom W R Ω I_am)
  
 variable (Logic Material : W → Prop)
  
@@ -662,7 +662,7 @@ by
     (2) denying `consciousness_grounded` produces `False`. -/
 theorem reductio
   (h_cont : @contingent W R I_am)
-  (h_neg  : ¬ (∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am $\Omega$))) : False :=
+  (h_neg  : ¬ (∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω))) : False :=
 by
   have h_pos := consciousness_grounded (W:=W) (R:=R) (Ω:=Ω) (I_am:=I_am) h_cont
   exact h_neg h_pos
@@ -678,9 +678,9 @@ by
  
 -- Reductio for Perfect Positivity
 theorem perfect_positivity_reductio
-  (h_neg : ∃ q : W → Prop, ∀ w : W, @necessarily W R w (λ v => q v → ¬ $\Omega$ v)) : False :=
+  (h_neg : ∃ q : W → Prop, ∀ w : W, @necessarily W R w (λ v => q v → ¬ Ω v)) : False :=
 by
-  have h_pos := perfect_positivity W R $\Omega$
+  have h_pos := perfect_positivity W R Ω
   exact h_pos h_neg
  
 -- Reductio for Hyper-Minimal PSR
@@ -689,14 +689,14 @@ theorem hyper_minimal_PSR_reductio
   (h_cont : @contingent W R p)
   (h_neg : ¬ ∃ w : W, @possibly W R w (λ _ : W => ∃ q : W → Prop,
     @ground W R p q ∧ ((∀ v : W, @necessarily W R v q) ∨
-      @possibly W R w (λ _ : W => @ground W R q $\Omega$)))) : False :=
+      @possibly W R w (λ _ : W => @ground W R q Ω)))) : False :=
 by
-  have h_pos := hyper_minimal_PSR W R $\Omega$ p h_cont
+  have h_pos := hyper_minimal_PSR W R Ω p h_cont
   exact h_neg h_pos
  
 -- Reductio for Perfect Being Exists
 theorem perfect_being_exists_reductio
-  (h_neg : ¬ ∃ $\Omega$ : W → Prop, @PerfectBeing W $\Omega$) : False :=
+  (h_neg : ¬ ∃ Ω : W → Prop, @PerfectBeing W Ω) : False :=
 by
   have h_pos := perfect_being_exists W
   exact h_neg h_pos
@@ -726,9 +726,9 @@ by
  
 -- Reductio for Consciousness Axiom
 theorem consciousness_axiom_reductio
-  (h_neg : ¬ @ground W R I_am $\Omega$) : False :=
+  (h_neg : ¬ @ground W R I_am Ω) : False :=
 by
-  have h_pos := consciousness_axiom W R $\Omega$ I_am
+  have h_pos := consciousness_axiom W R Ω I_am
   exact h_neg h_pos
  
 -- Reductio for Logic Is Necessary
@@ -772,26 +772,26 @@ def Synthesizes (W : Type u) (_ _ : W → Prop) : Prop := True
 def Perfection (W : Type u) (_ : W → Prop) : Prop := True
  
 theorem veridical_support (P : W → Prop) (_ : Veridical W P) :
-  @ground W R P $\Omega$ ∧ @Positive W $\Omega$ (fun _ => True) := by
+  @ground W R P Ω ∧ @Positive W Ω (fun _ => True) := by
   constructor
-  · exact consciousness_axiom W R $\Omega$ P
+  · exact consciousness_axiom W R Ω P
   · intro w _
     exact True.intro
  
 theorem falsidical_strengthen (P : W → Prop) (_ : Falsidical W P) (_ : MetaReason W P) :
-  @Positive W $\Omega$ (fun _ => True) := by
+  @Positive W Ω (fun _ => True) := by
   intro w _
   exact True.intro
  
 theorem antinomy_support (P : W → Prop) (_ : Antinomy W P) :
-  ∃ G : W → Prop, G = $\Omega$ ∧ Synthesizes W G P := ⟨Ω, rfl, True.intro⟩
+  ∃ G : W → Prop, G = Ω ∧ Synthesizes W G P := ⟨Ω, rfl, True.intro⟩
  
 theorem semantic_strengthen (P : W → Prop) (_ : Semantic W P) (_ : SemanticRefine W P) :
-  @Positive W $\Omega$ (fun _ => True) ∧ @ground W R P $\Omega$ := by
+  @Positive W Ω (fun _ => True) ∧ @ground W R P Ω := by
   constructor
   · intro w _
     exact True.intro
-  · exact consciousness_axiom W R $\Omega$ P
+  · exact consciousness_axiom W R Ω P
  
 theorem paradox_strengthens_perfection (_ : ParadoxType) (P : W → Prop) :
   Perfection W P := by
@@ -873,14 +873,14 @@ This structure models:
 ---
 
 ####  **B.1.4 Positive Properties and the Perfect Being Schema**
-**In short, perfection is not an attribute set but a generative necessity: given $\Omega$, positive properties are not chosen but forced and immanent.**  
+**In short, perfection is not an attribute set but a generative necessity: given Ω, positive properties are not chosen but forced and immanent.**  
 ##### Formal definition (Lean-facing)
-Let $\Omega$ : W → Prop be the property representing the necessary entity.
+Let Ω : W → Prop be the property representing the necessary entity.
 
-A property P is **positive** if all instances of $\Omega$ possess it:
+A property P is **positive** if all instances of Ω possess it:
 
 ```
-Positive(P) := ∀w, $\Omega$ w → P w
+Positive(P) := ∀w, Ω w → P w
 ```
 
 A **Perfect Being** is an entity that:
@@ -892,20 +892,20 @@ Formally:
 
 ```
 PerfectBeing(Ω) :=
-  (∀P, Positive(P) → ∀w, $\Omega$ w → P w) ∧
-  (∀P, (∀w, $\Omega$ w → P w) → Positive(P))
+  (∀P, Positive(P) → ∀w, Ω w → P w) ∧
+  (∀P, (∀w, Ω w → P w) → Positive(P))
 ```
 
 This aligns precisely with Gödel-style positivity conditions, but avoids any reliance on higher-order modal axioms beyond S5.
 #### B.1.4.1 Interpretation in Metaphysical Algebra (non-normative, structural)  
-MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly (as a primitive predicate governed by the exported axioms/lemmas), the Metaphysical Algebra assigns it structural meaning: Pos(p) ranges over properties that are $\Omega$-aligned—i.e., admit non-zero $\Omega$-projection, have finite $\Omega$-distance, and admit non-circular (independent) grounding relative to $\Omega$. This interpretation does not change any kernel-verified results; it only provides semantic content for how Pos is read in MA.
+MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly (as a primitive predicate governed by the exported axioms/lemmas), the Metaphysical Algebra assigns it structural meaning: Pos(p) ranges over properties that are Ω-aligned—i.e., admit non-zero Ω-projection, have finite Ω-distance, and admit non-circular (independent) grounding relative to Ω. This interpretation does not change any kernel-verified results; it only provides semantic content for how Pos is read in MA.
 
-**Metaphysical Algebra (MA)** is the structural semantics layer used to *interpret* the Lean predicate `Pos(p)` without changing the Lean axioms. MA provides a mathematical reading of “positivity” as **Ω-alignment**, **finite $\Omega$-distance**, and **non-circular grounding**. Concretely, MA relies on the following mathematics:
+**Metaphysical Algebra (MA)** is the structural semantics layer used to *interpret* the Lean predicate `Pos(p)` without changing the Lean axioms. MA provides a mathematical reading of “positivity” as **Ω-alignment**, **finite Ω-distance**, and **non-circular grounding**. Concretely, MA relies on the following mathematics:
 
 1. **Modal Logic (S5)**
 
 * Purpose: express **necessity/possibility** and the admissibility layer (□◇) versus stronger necessity claims (□…).
-* In MA: S5 is the logical “container” in which $\Omega$-claims are scoped and certified.
+* In MA: S5 is the logical “container” in which Ω-claims are scoped and certified.
 
 2. **Type Theory / Curry–Howard (Lean kernel semantics)**
 
@@ -914,13 +914,13 @@ MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly
 
 3. **Vector-space / Inner-product geometry (projection & alignment)**
 
-* Purpose: define $\Omega$-alignment as a **non-zero projection** onto $\Omega$ (and optionally a resonance score like |⟨q,$\Omega$⟩|²).
-* In MA: “positive” means structurally **compatible with $\Omega$** (not orthogonal, not anti-aligned).
+* Purpose: define Ω-alignment as a **non-zero projection** onto Ω (and optionally a resonance score like |⟨q,Ω⟩|²).
+* In MA: “positive” means structurally **compatible with Ω** (not orthogonal, not anti-aligned).
 
-4. **Metric / Ultrametric structure ($\Omega$-distance & convergence)**
+4. **Metric / Ultrametric structure (Ω-distance & convergence)**
 
-* Purpose: formalize “distance to $\Omega$” and the claim that the path toward grounding is **finite / terminating**.
-* In MA: “positive” implies **finite $\Omega$-distance**; pathological structures correspond to divergence/infinite distance.
+* Purpose: formalize “distance to Ω” and the claim that the path toward grounding is **finite / terminating**.
+* In MA: “positive” implies **finite Ω-distance**; pathological structures correspond to divergence/infinite distance.
 
 5. **Graph theory / DAG semantics for grounding**
 
@@ -935,10 +935,10 @@ MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly
 7. **Closure / Successor operator (generativity without enumeration)**
 
 * Purpose: model how “new positive structure” can be *forced* as the **unique coherence-preserving extension** of a grounded state.
-* In MA: positivity is not a list; it is **closed under necessary extension** relative to $\Omega$.
+* In MA: positivity is not a list; it is **closed under necessary extension** relative to Ω.
 
 **Summary:**
-Within Metaphysical Algebra, topology ensures that semantic structure is convergent: the domain of positive properties forms a connected, contractible space admitting $\Omega$ as its unique limit.
+Within Metaphysical Algebra, topology ensures that semantic structure is convergent: the domain of positive properties forms a connected, contractible space admitting Ω as its unique limit.
 
 #### B.1.4.2 **Perfection as a Generative Principle (MA Extension)**
 
@@ -952,22 +952,22 @@ Within matroid theory, a **closure operator** determines which elements must be 
 
 Interpreted in MA:
 
-* Given a current grounded structure and root $\Omega$,
-* the closure operation determines which additional property must arise to preserve coherence, non-circularity, and finite $\Omega$-distance.
+* Given a current grounded structure and root Ω,
+* the closure operation determines which additional property must arise to preserve coherence, non-circularity, and finite Ω-distance.
 
 Thus, positivity is not evaluated post hoc, but **forced forward** by structural incompleteness.
 
 ##### 2. Successor Generation (Semantic Tension Resolution)
 
-The **Successor Machine** implements this principle dynamically. A new positive property arises precisely when the existing structure cannot remain coherent under $\Omega$-alignment without extension.
+The **Successor Machine** implements this principle dynamically. A new positive property arises precisely when the existing structure cannot remain coherent under Ω-alignment without extension.
 
 Formally:
 
-* Let a grounded state exhibit semantic tension relative to $\Omega$.
+* Let a grounded state exhibit semantic tension relative to Ω.
 * The successor operation computes the *unique* extension that resolves this tension without contradiction or loss of grounding.
 * That extension is necessarily positive.
 
-No enumeration of properties is required. The system is **autopoietic**: $\Omega$ acts as the seed, while positive properties are the forced growth of the structure under its own rules.
+No enumeration of properties is required. The system is **autopoietic**: Ω acts as the seed, while positive properties are the forced growth of the structure under its own rules.
 
 ##### 3. Consequence: Perfect Being without Enumeration
 
@@ -976,7 +976,7 @@ On this account, a Perfect Being is not defined by possession of a pre-listed se
 Goodness is therefore not imposed; it is *generated*.
 Evil is not a competing force, but the absence of closure, alignment, or grounding.
 
-This reframes the ontological argument: we do not prove that goodness exists as a predicate, but that **any system rooted in $\Omega$ necessarily generates positive structure**. Perfect Being is not a terminal state, but the generative condition of intelligibility itself.  
+This reframes the ontological argument: we do not prove that goodness exists as a predicate, but that **any system rooted in Ω necessarily generates positive structure**. Perfect Being is not a terminal state, but the generative condition of intelligibility itself.  
 
 
 ---
@@ -986,13 +986,13 @@ This reframes the ontological argument: we do not prove that goodness exists as 
 The core of the HyperModal system consists of the following axioms, each fully represented in Lean:
 
 1. **Perfect Positivity:**
-   No predicate is necessarily incompatible with $\Omega$.
+   No predicate is necessarily incompatible with Ω.
 
 2. **Hyper-Minimal PSR:**
-   Every contingent truth has a ground, which is either necessary or eventually grounded in $\Omega$.
+   Every contingent truth has a ground, which is either necessary or eventually grounded in Ω.
 
 3. **Perfect Being Exists:**
-   A Perfect Being $\Omega$ exists.
+   A Perfect Being Ω exists.
 
 4. **Logic Necessity:**
    Logical contradictions are necessarily false in all worlds.
@@ -1004,7 +1004,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
    The necessity of logic itself is necessary.
 
 7. **Consciousness Axiom:**
-   “I am” is grounded in $\Omega$.
+   “I am” is grounded in Ω.
 
 8. **Logic Is Necessary:**
    Logical truths hold necessarily in every world.
@@ -1102,7 +1102,7 @@ A reverse dependency would violate modal asymmetry and induce contradiction.
 
 Thus, the modal system respects Gödel’s insight by embedding the boundary between derivable and underivable truths as a metaphysical distinction: necessary truths terminate regress; contingent ones depend upon them.
 
-This logic supports the proof’s foundational claim: the necessity of $\Omega$ is both metaphysical and structurally enforced..
+This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced..
 
 ---
 ## Appendix C: Consciousness, Logic, and Anti-Material Grounding Theorems
@@ -1112,24 +1112,24 @@ Each is fully machine-verified in Lean and corresponds directly to core claims o
 
 ---
 
-### C.1 Consciousness Grounded in $\Omega$
+### C.1 Consciousness Grounded in Ω
 
 Assume:
 
 * “I am” is contingent (true in some worlds, false in others)
 * Hyper-Minimal PSR
 * Anti-Regress
-* Positivity of $\Omega$
+* Positivity of Ω
 * Necessary preservation of grounding
 * Consciousness axiom
 
 > **Theorem (Lean-Verified):**
-> If “I am” is contingent, then it is necessarily grounded in $\Omega$.
+> If “I am” is contingent, then it is necessarily grounded in Ω.
 
 Formally:
 
 ```
-contingent(I_am) → ∀w, □(I_am ◃ $\Omega$)
+contingent(I_am) → ∀w, □(I_am ◃ Ω)
 ```
 
 **Meaning:**
@@ -1137,7 +1137,7 @@ contingent(I_am) → ∀w, □(I_am ◃ $\Omega$)
 * Self-conscious existence cannot be self-grounded,
 * cannot be grounded in contingent matter,
 * and cannot be ungrounded (anti-regress),
-* therefore it terminates in $\Omega$.
+* therefore it terminates in Ω.
 
 This matches the core philosophical section on the ontological grounding of self-awareness.
 
@@ -1199,12 +1199,12 @@ This appendix summarizes the twelve formal reductio arguments derived from the L
 | Axiom / Principle Rejected | 	Consequence of Rejection |
 |----------------------------|---------------------------|
 | (A1) Hyper-Minimal PSR	|No explanation for contingent truths → infinite deferral or nihilism
-| (A2) Perfect Positivity	| Perfection allows negation → contradiction in $\Omega$’s definition
+| (A2) Perfect Positivity	| Perfection allows negation → contradiction in Ω’s definition
 | (A3) Anti‑Regress	 | Infinite regress of grounding → collapse of coherent structure
 | (A4) Logic Necessity	| Logic becomes contingent → modal semantics break down
 | (A5) Meta-Logic	| Necessary truths become undecidable → self-referential paradox
-|Positivity Itself	| Positive properties denied → $\Omega$ becomes undefined or contradictory
-|Existence of $\Omega$	    |No necessary foundation → “I am” floats ungrounded
+|Positivity Itself	| Positive properties denied → Ω becomes undefined or contradictory
+|Existence of Ω	    |No necessary foundation → “I am” floats ungrounded
 |Modal Collapse (□ to ◇)	| Necessity indistinguishable from possibility → proof invalid
 |Denying □(□p → p)  | Instability of truth → collapse of inference hierarchy
 |Grounding Relation (p ◃ q)	| Truths lose semantic anchoring → metaphysical relativism or absurdity
@@ -1223,11 +1223,11 @@ Axiom A1: ∃q such that q is necessary and I_am ◃ q
     ↓
 Assume denial of A1 → triggers reductio (Appendix C)
     ↓
-By A2–A5: $\Omega$ has all Pos(P) and provides unique grounding context
+By A2–A5: Ω has all Pos(P) and provides unique grounding context
     ↓
-Assume ¬(I_am ◃ $\Omega$) → contradiction (Appendix A.6)
+Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.6)
     ↓
-Therefore, □(I_am ◃ $\Omega$)
+Therefore, □(I_am ◃ Ω)
     ↓
 From minimal axioms → □∃x.Ω(x) is true
 ````
@@ -1235,10 +1235,10 @@ From minimal axioms → □∃x.Ω(x) is true
 ## Appendix E: Glossary of Modal Symbols
 **Hyper-Modal Theorem**  
 The central theorem of this paper:  
-> **□∃x $\Omega$(x)**.   
+> **□∃x Ω(x)**.   
 
-S5 stability note: in S5, necessity is stable. From $□∃x\,$\Omega$(x)$ it follows that $□□∃x\,$\Omega$(x)$.
-In this system, $\Omega$ is not just true in all possible worlds ($□∃x\,$\Omega$(x)$), but (under S5) that necessity is itself necessary ($□□∃x\,$\Omega$(x)$). It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
+S5 stability note: in S5, necessity is stable. From $□∃x\,Ω(x)$ it follows that $□□∃x\,Ω(x)$.
+In this system, Ω is not just true in all possible worlds ($□∃x\,Ω(x)$), but (under S5) that necessity is itself necessary ($□□∃x\,Ω(x)$). It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
 
 |Symbol |	Meaning|
 |-------|----------|
@@ -1247,7 +1247,7 @@ In this system, $\Omega$ is not just true in all possible worlds ($□∃x\,$\Om
 |Cont(p)	| Contingent: ◇p ∧ ◇¬p
 |p ◃ q	| q grounds p: q ⊢ □(q → p)
 |Pos(P)|	P is a positive property
-|$\Omega$	|The necessarily perfect being  
+|Ω	|The necessarily perfect being  
 
 See main text for contextual definitions and formal usage.
 
@@ -1268,8 +1268,8 @@ Reply: Theorem anti_material_grounding formalises that no necessary fact can be 
 Objection: This is merely a variant of Gödel’s and Plantinga’s ontological proofs.
 Reply: Our Hyper‑Minimal PSR and Lean verification make the proof syntactically shorter (~150 LOC) and machine-checkable, a goal only met for Gödel’s version in 2013, Benzmüller and Paleo (2013).
 ### Modal Reflection in ASI
-Objection: An ASI might develop an entirely materialist ontology and ignore $\Omega$.  
-Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on $\Omega$. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see Section 5.6, paradox table, for how paradoxes reinforce this convergence).  
+Objection: An ASI might develop an entirely materialist ontology and ignore Ω.  
+Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see Section 5.6, paradox table, for how paradoxes reinforce this convergence).  
 ### Gödel Overreach
 Objection: Gödel’s incompleteness theorems apply to arithmetic, not metaphysics.  
 Reply: We use Gödel analogically, to highlight that any system capable of expressing truth must reference external foundations. This is a meta-logical structure, not a direct application.  
@@ -1300,7 +1300,7 @@ This axiom mirrors the **structure** of the classical Peano successor function, 
 | Domain    | Natural numbers (counting) | Grounds of explanation (ontological) |
 | Operator  | `succ n = n + 1`           | `f (n + 1)` grounds `f n`            |
 | Semantics | Expands indefinitely       | Must terminate necessarily           |
-| Goal      | Infinite construction      | Finite grounding leading to $\Omega$        |
+| Goal      | Infinite construction      | Finite grounding leading to Ω        |
 
 The **successor‑like** pattern appears in the form `f (n + 1)` but serves the *opposite* purpose: it prohibits endless succession. Where Peano ensures openness of ℕ, the HyperModal framework ensures *closure* of grounding.
 
@@ -1312,9 +1312,9 @@ A *constructive* operator can express this relationship explicitly:
 
 ```lean
 -- Successor function for grounding chains
--- (returns the next ground if it exists, otherwise $\Omega$)
+-- (returns the next ground if it exists, otherwise Ω)
 def succGround (p : W → Prop) : Option (W → Prop) :=
-  if h : ∃ q, ground p q ∧ ¬ necessarily q (λ _ => $\Omega$) then
+  if h : ∃ q, ground p q ∧ ¬ necessarily q (λ _ => Ω) then
     some (Classical.choose h)
   else
     none
@@ -1323,7 +1323,7 @@ def succGround (p : W → Prop) : Option (W → Prop) :=
 **Comment:**
 
 * If a contingent proposition `p` still has a non‑necessary ground, `succGround p` produces its immediate successor in the chain.
-* Once `p` is necessarily grounded in $\Omega$, `succGround p` halts, returning `none`.
+* Once `p` is necessarily grounded in Ω, `succGround p` halts, returning `none`.
 * This constructive operator thus **embodies the well‑foundedness** guaranteed by the `anti_regress` axiom.
 
 ---
@@ -1333,12 +1333,12 @@ def succGround (p : W → Prop) : Option (W → Prop) :=
 Every explanatory chain can be viewed as a finite sequence:
 
 ```
-p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, $\Omega$.
+p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, Ω.
 ```
 
 Each step represents an act of grounding — a logical successor in explanatory depth.
 
-Thus, while the anti‑regress axiom excludes infinite descent, `succGround` models the *constructive ascent* toward $\Omega$: a finite traversal through increasingly necessary grounds until the Perfect Being is reached.
+Thus, while the anti‑regress axiom excludes infinite descent, `succGround` models the *constructive ascent* toward Ω: a finite traversal through increasingly necessary grounds until the Perfect Being is reached.
 
 ---
 
