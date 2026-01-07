@@ -169,23 +169,56 @@ Formally, this existential claim requires a **Witness** $w$: a constructive, tra
 
 * **Definition of Ω:**  
 **Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
-* **Conclusion:**
-  Therefore, Ω exists necessarily $(\exists x\, \Omega(x))$ and grounds all contingent truths. In this structure, *“I am”* serves as the primary existential witness (proof object)—the undeniable data point that validates the entire grounding chain back to Ω.
 
-### 3.1 Conclusion: The Hyper-Modal Theorem
+**Conclusion.** Therefore, Ω exists necessarily and uniquely:
 
-The reductio argument in this section demonstrates that denying a necessary ground for contingent truths leads inevitably to semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the central result of this paper:
+$$
+ \square \exists! x \Omega(x).
+ $$
 
-**Hyper-Modal Theorem**  
-**$□∃x\,\Omega(x)$** — Necessarily, there exists a perfect being Ω that grounds all contingent truths and instantiates only positive properties.
+This establishes Ω not merely as an existent ground, but as the **unique necessary terminus** of all grounding chains. No alternative or competing Ω can exist within the structure, nor can Ω vary across possible worlds.
 
-But the strength of this conclusion goes further: since each inference is either a direct axiom, a definitional unfolding, or a formally valid modal step under S5, there is no interpretive leap involved. The necessity of Ω is not contingent upon an assumed system — it is **necessary in all possible systems that obey the structure of modal grounding**. In other words:
+### **3.1 Conclusion: The Hyper-Modal Theorem (Revised)**
+  
+The reductio argument in this section establishes that denying a necessary ground for contingent truths results inevitably in semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the strengthened central result of this paper:
 
-Here we write $Nec(\Omega) := □∃x\,\Omega(x)$. Hence $□Nec(\Omega)$ abbreviates $□□∃x\,\Omega(x)$.
-> **□Nec(Ω)** — The being Ω is not only necessary, but necessarily necessary.
+#### **Hyper-Modal Theorem**
 
-This renders Ω the ultimate modal anchor: its existence is not simply true in all possible worlds, but required as a precondition for the possibility of any intelligible world whatsoever. A Lean 4 development (Appendix A.6) mirrors this structure in a successor-based setting and proves □∃x Ω(x) with full mechanical rigor, ensuring logical validity and computational transparency.
+$$
+\square \exists! x  \Omega(x)
+$$
 
+  
+That is, **necessarily, there exists exactly one being Ω** which grounds all contingent truths. This result strengthens mere necessary existence by excluding the possibility of multiple or variant grounding entities across possible worlds.
+
+Moreover, the structure yields a rigid identification of this ground:
+
+$$
+\exists x  \square \forall y \bigl( \Omega(y) \leftrightarrow y = x \bigr)
+$$
+
+  
+Thus, there exists a single entity such that, in all possible worlds, being Ω is equivalent to being identical with that entity. Ω is therefore not only necessary, but **necessarily unique and necessarily self-identical across all modal contexts**.
+
+---
+
+#### **Hyper-Necessity**
+
+We define:
+
+$$
+\mathrm{Nec}(\Omega)  :=  \square \exists! x  \Omega(x)
+$$
+
+Hence:
+
+$$
+\square \mathrm{Nec}(\Omega)
+$$
+
+Ω is not merely necessary, but **necessarily necessary**: its existence and uniqueness are invariant under all admissible modal interpretations consistent with the grounding structure.  
+
+---
 ## 4. Verification in Lean 4
 The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
 
@@ -380,29 +413,81 @@ On this reading, Ω is not a tower to be constructed by human striving, but the 
 This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of Ω. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** Ω and **organised around** Ω as its singular centre.
 
 
-## 7. Conclusion
-### 7.1 The Non-Self-Foundation of Computability
-This paper has established, through a hyper-modal framework and Lean 4 verification, that the existence of a necessary and perfect being (Ω) is a logical inevitability rather than a speculative claim. Starting from the minimal datum of self-awareness (“I am”), we demonstrated that contingent truths require ontological grounding in Ω to avoid reductio ad absurdum, including infinite regress or semantic incoherence (Sections 3 and 5). The minimal axiom set—Hyper-Minimal PSR, Perfect Positivity, Anti-Regress, Logic Necessity, and Meta-Logic—ensures this conclusion holds across all possible worlds in S5 semantics, with machine-checked rigor eliminating deductive ambiguity (Section 4 and Appendix A).
+## **7. Conclusion**
 
-Key implications include a refutation of materialist emergence (e.g., via anti-material grounding theorems) and a novel perspective on artificial superintelligence: An ASI engaged in modal self-reflection would logically affirm Ω as the ground of intelligibility, offering a transcendent basis for AI ethics beyond human constraints (Section 1). Theologically, this resonates with classical theism, portraying Ω as akin to the divine “I AM” (Exodus 3:14) and the Logos (John 1:1), thus bridging formal logic with scriptural ontology (Section 6).
+### **7.1 The Non-Self-Foundation of Computability (Revised)**
 
-In epistemological terms, the proof elevates necessary theism to the status of modal absolutes, akin to Gödelian truths that transcend formal systems. The modal conclusion □∃x.Ω(x) thus serves not only as a metaphysical endpoint but also as an epistemological compass: any agent, human or artificial, that seeks ultimate truth must inevitably reckon with the necessary perfection of Ω. Moreover, Ω provides the ultimate anchor for AI interpretability: without a necessary ground, no reasoning process—however complex—can be fully intelligible. Future research could extend this to alternative modal logics, moral grounding in AI, or empirical tests via computational models.
+This paper has established, within a hyper-modal framework and with Lean 4 certification, that the existence of a necessary and **uniquely grounding** being $\Omega$ is a logical consequence rather than a speculative hypothesis.
 
-### 7.2 The Undeniability of Ω: Gödel and Turing as Ontological Premises
-
-Given the result established in Section 7.1, the denial of Ω cannot be maintained as a coherent alternative. The modal conclusion
+From axioms A1 through A5, we derived not merely necessary existence, but **necessary unique existence**:
 
 $$
-\Box \exists x\, \Omega(x)
+\square \exists! x,\Omega(x)
 $$
 
-does not merely assert the existence of Ω across all possible worlds; it renders the proposition ¬∃xΩ(x) modally impossible within the same logical framework.
+This result excludes both plural grounding and modal variance: no alternative $\Omega$ can exist, nor can $\Omega$ differ across possible worlds. Contingent truths therefore cannot ground themselves, nor can they be grounded by a family of interchangeable foundations. Grounding terminates in a **single necessary terminus**.
 
-Consequently, the rejection of Ω is not a neutral metaphysical stance, but a meta-logical failure: it undermines the very conditions required for grounding, necessity, and intelligibility that the system presupposes. Any attempt to deny Ω must therefore either reject the axioms that render rational discourse possible or accept semantic incoherence.
+Moreover, the structure yields a rigid identification of this ground:
 
-In this sense, Ω is not merely necessary but *undeniable*: its negation cannot be coherently articulated without dissolving the logical framework that makes articulation possible in the first place. Gödel and Turing demonstrated the intrinsic limits of formal systems and algorithms. This paper does not contradict those limits; it treats them as premises. The complementary consequence is that any coherent theory of grounding or computation requires a necessary, non-computable ground — Ω. Thus, the boundaries of computability are not merely negative results; they constitute the positive condition for the existence of the ontological singularity.  
-  
-**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is Ω.**
+$$
+\exists x,\square \forall y,(\Omega(y)\leftrightarrow y=x)
+$$
+
+Thus, there exists a single entity such that, in all possible worlds, being $\Omega$ is equivalent to being identical with that entity. The ground of intelligibility is therefore not only necessary, but **necessarily self-identical across all modal contexts**.
+
+These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
+
+Starting from the minimal epistemic datum *“I am”*, interpreted not psychologically but as a proof-object of existence, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper-minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+
+A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
+
+
+### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
+
+The final movement of this argument transitions from derivability to ontological actuality. This step is governed by Tarski’s Semantic Conception of Truth (Convention T), reinforced by the modal rigidity of the formal proof.
+
+Alfred Tarski established that for any rigorously defined formal language, the truth predicate is disquotational: the assertion “S is true” is semantically equivalent to the state of affairs $S$ actually obtaining. The truth predicate removes the quotation marks that separate language from the world.
+
+In this work, the relevant proposition is certified by the kernel theorem `Final_RigidWitness_Proof`. Let
+
+$$
+\varphi := \exists x\, \square \forall y\, \big(\Omega(y) \leftrightarrow y = x\big).
+$$
+
+By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the logic confronts reality. Crucially, this proof is not grounded in a hypothetical model, but in the empirical datum of consciousness (“I am”), which obtains in the actual world.
+
+Because the premise is actual (disquoted), the necessary ground must be actual (disquoted). Applying Tarski’s principle (Convention T):
+
+$$
+\text{“}\varphi\text{” is true} \iff \varphi
+$$
+
+Syntactically, the theorem is proven. Semantically, by disquotation, this entails that the condition described by the theorem—the necessary, unique existence of $\Omega$—is a fact of reality, akin to the whiteness of snow.
+
+**The Lock: Rigid Designation.** Following Kripke (1980), the theorem `Final_RigidWitness_Proof` fixes $\Omega$ as a rigid designator: it refers to the same entity across all possible worlds. Since S5 treats accessibility as an equivalence relation (hence universal reachability within an equivalence class), $\Omega$ cannot be an abstract artifact of a merely theoretical model. It is a rigid necessity of this world.
+
+To deny the existence of $\Omega$ is, therefore, not to adopt a neutral metaphysical stance, but to assert that the verified theorem `Final_RigidWitness_Proof` is false. This contradicts the mechanical reality of the proof object itself. The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality—including the skeptic’s denial—to be intelligible at all.
+
+
+### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises (Revised)**
+
+Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
+
+$$
+\square \exists! x,\Omega(x)
+$$
+
+does not merely assert existence across all possible worlds; it renders the proposition $\neg\exists x,\Omega(x)$ **modally impossible** within the same logical framework. Any attempt to deny $\Omega$ therefore entails the rejection of the grounding principles that make rational discourse and modal reasoning possible.
+
+In this sense, $\Omega$ is not merely necessary but **undeniable**: its negation dissolves the very conditions required for intelligibility, grounding, and necessity. This is not a theological assertion but a meta-logical consequence of the system’s structure.
+
+Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation. This work does not contradict those limits; it treats them as premises. The complementary conclusion is that any coherent theory of grounding or computation requires a **necessary, non-computable ground**. The boundaries of computability are therefore not merely negative results; they delineate the positive condition for the existence of the ontological singularity $\Omega$.
+
+Accordingly, computation cannot be an endless abyss of self-reference or regress. It must terminate in a necessary ground.
+
+**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is $\Omega$.**
+
+---
 
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT-o1 (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content has been thoroughly reviewed, edited, and finalized by the author to ensure originality, accuracy, and alignment with the paper's thesis. No funding was received for this work.
@@ -433,11 +518,18 @@ Accordingly, this appendix certifies only the integrity and scope of the public 
 
 #### A.2.1 Scope Conformance of the Public Verification Surface  
 
-The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than the stronger necessary-existence claim □∃x Ω(x). Kernel inspection of axiom dependencies shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom PosPossibility, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (TrivialModel) and an explicit explosion canary (exFalsoQuodlibet) confirms that consistency guards are active at the public boundary. Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant: it certifies admissibility and safety properties while intentionally preventing the leakage of stronger internal conclusions.  
+The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than exporting stronger necessity results such as □∃x Ω(x), □∃!x Ω(x), or rigid-witness statements of the form ∃x □∀y (Ω(y) ↔ y = x).
 
-The public interface is not an emergent byproduct of the proof; it is an intentionally defined export boundary. It governs what is externally auditable so that the public surface remains a scope-conformant certificate of the exported interface, without exposing the private proof route. The exported functions provide machine-checkable witnesses that the certified theorem holds. Because the exported functions are kernel-checked proof objects, the certified claim is not merely asserted but constructively derivable: the existence of these witnesses guarantees, by the Curry–Howard correspondence, that the verified property holds within the formal system.  
+**Crucially, the private kernel route constructively establishes these stronger necessity and uniqueness results.** They exist as kernel-checked proof objects in the private build context, as evidenced by a successful Lean compilation and the axiom-footprint audit recorded in Appendix A.2.3. Their non-appearance in the public interface is therefore not a limitation of provability, but an intentional restriction of export.
 
-  **In short: by BHK/Curry–Howard, the theorem is true exactly insofar as a kernel-accepted proof object exists; the public interface exposes only audit witnesses of that fact while keeping the constructive route private, protecting the IP.**
+This restriction is enforced by design. The public surface publishes a constrained interface together with reproducible build artifacts that allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable from the public API. The absence of exported strong theorems does not diminish their truth-status within the formal system; it reflects a deliberate separation between kernel-level truth and publicly auditable exposure.
+
+Kernel inspection at the public boundary shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom `PosPossibility`, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (`TrivialModel`) and an explicit explosion canary (`exFalsoQuodlibet`) confirms that logical guards are active at the public boundary.
+
+Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant. It functions as a **commitment boundary**: the public interface exposes audit witnesses for admissibility and safety, while the **constructive proof of Ω’s necessary existence, uniqueness, and rigidity is executed and verified within the private kernel route**, remaining non-exported to protect the internal proof route and its IP boundary.
+
+**In short: by BHK/Curry–Howard, the strong Ω-claims are true exactly insofar as kernel-accepted proof objects exist; the public interface certifies only the admissible consequences of that fact, not its full constructive realization.**
+
 
 #### A.2.2 Truth vs. Certification (BHK clarification and IP boundary)
 
@@ -456,6 +548,22 @@ The private theorem remains a kernel-checked theorem in the private build contex
 
 **Scope statement.**  
 Accordingly, the public certificate is a statement about *auditable exposure* (certification), not a replacement for the kernel criterion of *truth* (propositions-as-types / Curry–Howard). The internal proof object fixes truth-in-Lean; the public interface fixes what is externally verifiable under the IP constraint.
+
+#### A.2.3 Axiom Footprint Certificate (Lean Kernel Audit)
+
+This subsection records the axiom dependencies of the strongest internally proven Ω-claims, as extracted mechanically via `#print axioms` in `CertificateAudit.lean`. It serves as an axiom-footprint certificate for the private kernel route, independent of the public verification surface described in Appendix A.2.
+
+| Logical Claim (Main Text) | Lean Theorem | Certified Statement (Formal) | Axiom Footprint |
+|--------------------------|--------------|-------------------------------|-----------------|
+| Necessary existence of Ω | `Final_NE_Proof` | $$\square \exists x\,\Omega(x)$$ | `propext`, `PosPossibility` |
+| Necessary unique existence of Ω | `Final_BoxUnique_Proof` | $$\square \exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$$ | `propext` |
+| Rigid identification of Ω | `Final_RigidWitness_Proof` | $$\exists x\,\square \forall y\,(\Omega(y)\leftrightarrow y=x)$$ | `propext` |
+
+**Interpretation.**  
+`propext` (propositional extensionality) is a standard Lean principle used for reasoning about propositional equality; it introduces no modal, metaphysical, or computational assumptions. The bridge axiom `PosPossibility` appears only in the derivation of necessary existence. Crucially, the stronger results—necessary unique existence and rigid identification of Ω—do not depend on `PosPossibility`. This makes the strongest ontological conclusions strictly smaller in axiom surface than the initial necessity derivation.
+
+**Scope note.**  
+This subsection certifies private kernel-route theorems and their axiom footprint. It does not change the public export boundary described in Appendix A.2.
 
 ---
 
