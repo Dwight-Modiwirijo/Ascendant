@@ -268,7 +268,13 @@ This logic supports the proof’s foundational claim: the necessity of Ω is bot
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
-Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret Ω theologically. The modal conclusion □∃x.Ω (x) is derived independently of religious assumptions.
+Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret Ω theologically. The modal conclusion  
+
+$$
+\square \exists! x  \Omega(x)
+$$
+
+is derived independently of religious assumptions.
 
 ### 5.4 Social Implications and AI Ethics
 Objection: The link between modal logic and societal values is speculative.
@@ -290,9 +296,50 @@ Example: “If 2 + 2 = 5, then the moon is made of cheese” is true (despite bo
 2. Verum per quodlibet — Principle of Vacuous Truth. In the absence of context, even truth becomes trivially implied, and thus indistinct from everything else.
 Example: “If rain is wet, then 1 + 1 = 2” is true (because the conclusion is always true). 
 
-### 5.6 Paradox types and the perfection of Ω
+### 5.6 Paradox Types and the Perfection of Ω
 
-This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω—the minimal necessary entity that bundles all positive properties (Pos(P)) under Axiom A2 (Perfect Positivity: Pos(P) ≡ ¬∃Q (Q → ¬P), ensuring no internal negation or contradiction). The argument is structured for later verification in Lean (e.g., as theorems in S5 modal logic, building on Appendix A). We define Ω formally as □∃x (Ω(x) ∧ ∀P (Pos(P) → x instantiates P)), where paradoxes act as indicators of systemic incompleteness per Section 5.1 (Gödel extrapolation). For each type in the table, we show: (1) the paradox reveals a limit requiring meta-reasoning (A5: Meta-Logical Closure); (2) this strengthens semantics; (3) it converges on Ω as a perfect ground (per A1: Hyper-Modal Principle of Sufficient Reason and A3: Anti-Regress), avoiding semantic collapse (Section 5.5). Collectively, this proves the theorem: ∀T ∀P (ParadoxType(T) ∧ Paradox(P, T) → Strengthens(Perfection(Ω))).
+This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω — the minimal necessary entity that bundles all positive properties $Pos(P)$ under **Axiom A2 (Perfect Positivity)**:
+
+$$
+Pos(P) \equiv \neg \exists Q \, (Q \rightarrow \neg P).
+$$
+
+This axiom ensures that no internally negating or contradictory property is admitted.
+
+The argument is structured for later verification in Lean (e.g. as theorems in S5 modal logic, building on Appendix A).
+
+We define Ω formally at the *semantic target level* as:
+
+$$
+\square \exists x : \iota \,
+\Bigl(
+  \Omega(x) \wedge
+  \forall P : \iota \to Prop \, (Pos(P) \rightarrow P(x))
+\Bigr).
+$$
+
+Here, $\Omega(x)$ abbreviates the condition that $x$ instantiates **all positive properties**.
+
+Paradoxes are treated not as inconsistencies, but as **indicators of systemic incompleteness**, following the Gödelian extrapolation introduced in Section 5.1. Each paradox exposes a boundary where object-level reasoning is insufficient and meta-level structure becomes necessary.
+
+For each paradox type listed in the table below, the following deductive pattern is established:
+
+1. **Limit revelation** — the paradox exposes a structural boundary that requires meta-reasoning (**Axiom A5: Meta-Logical Closure**).
+2. **Semantic strengthening** — resolving the paradox refines and stabilizes the semantic framework rather than weakening it.
+3. **Convergence on Ω** — the strengthened semantics necessarily converge on Ω as a perfect ground, in accordance with **Axiom A1 (Hyper-Modal Principle of Sufficient Reason)** and **Axiom A3 (Anti-Regress)**, thereby avoiding semantic collapse (cf. Section 5.5).
+
+Collectively, this yields the following theorem schema:
+
+$$
+\forall T \, \forall P \,
+\bigl(
+  ParadoxType(T) \wedge Paradox(P, T)
+  \rightarrow Strengthens(Perfection(\Omega))
+\bigr).
+$$
+
+Thus, paradoxes do not undermine the concept of Ω; instead, they function as structural witnesses that progressively enforce the necessity, coherence, and perfection of Ω as the ultimate semantic ground.
+
 | **Paradox Type** | **Paradoxes** |
 |------------------|---------------|
 | **Veridical**<br/>(A paradox that seems absurd but is ultimately true, revealing counterintuitive truths) | *Hilbert's Grand Hotel* (an infinite hotel can accommodate more guests, illustrating properties of infinity);<br/>*First Cause Paradox* (if everything has a cause, what caused the first?);<br/>*Quantum Zeno Effect* (constant observation prevents decay, a verified quantum phenomenon); <br/>*Münchhausen-Trilemma* (proofs end in regress, circle, or dogma). |
@@ -338,7 +385,7 @@ Lemaître's framework strengthens the case for a necessary ground (Ω). He viewe
 
 ### 5.8 Finitude and Potential Infinitude of Matter Reinforce PSR
 #### 5.8.1 Finite Matter
-Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃x Ω(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
+Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃!x Ω(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
 
 Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
 
@@ -350,17 +397,17 @@ This dual reinforcement counters brute-fact materialism (Section 5.5) and suppor
 Further objections are welcome and will be addressed in future revisions.
 
 ## 6. Theological Resonance
-This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of □∃x.Ω(x), but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
+This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of $\square \exists! x  \Omega(x)$, but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
 
 The name “Ω” was chosen to denote the logically inevitable, maximally positive entity. This has clear resonances with the biblical declaration in Exodus 3:14: “I AM WHO I AM” (Ehyeh asher ehyeh), which has historically been interpreted as asserting God’s necessary existence. Aquinas likewise defended the idea that God’s essence is existence itself (esse ipsum subsistens), making Him the ontological foundation of all contingent beings (Summa Theologica I.3.4).
 
-Our formal result □∃x.Ω(x) confirms this philosophical insight: there must exist something whose existence is not merely possible or assumed, but necessary in the strongest possible sense. This conclusion resonates with the modal ontological argument of Alvin Plantinga (1974), though we strengthen it with mechanical verification.
+Our formal result $\square \exists! x  \Omega(x)$ confirms this philosophical insight: there must exist something whose existence is not merely possible or assumed, but necessary in the strongest possible sense. This conclusion resonates with the modal ontological argument of Alvin Plantinga (1974), though we strengthen it with mechanical verification.
 
 In particular, the positivity predicate Pos(P) formalizes the classical intuition that a perfect being possesses only positive properties. Our system rejects the possibility of a perfect-yet-contingent being; perfection and necessity are logically intertwined.
 
 For theists, this provides a novel confirmation of classical doctrine: not only is God conceivable as a maximally great being, but such a being must exist as a matter of modal necessity. For non-theists, the argument demonstrates that any coherent system of truths must terminate in a ground that resembles classical theism in structure, if not in name.
 
-This opens a pathway to reconciling formal logic with theological metaphysics, not by dogmatic assertion, but by necessity of structure. The conclusion □∃x.Ω(x) is thus not only a metaphysical insight, but a bridge to divine ontology.
+This opens a pathway to reconciling formal logic with theological metaphysics, not by dogmatic assertion, but by necessity of structure. The conclusion $\square \exists! x  \Omega(x)$ is thus not only a metaphysical insight, but a bridge to divine ontology.
 
 ### 6.1 Logos as Foundational Rational Order
 Within this framework, the concept of the Logos provides an even deeper theological parallel. In the prologue of the Gospel of John (John 1:1), the Logos is presented as both divine and foundational: “In the beginning was the Word (Logos), and the Word was with God, and the Word was God.”
@@ -508,7 +555,7 @@ The purpose of this public surface is not to expose all internal derivations, bu
 
 The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form $□◇p$ (necessary possibility) within an S5 framework.
 
-No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃x …) are established only in the private kernel route and are not exported.
+No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃!x …) are established only in the private kernel route and are not exported.
 
 To prevent accidental leakage of stronger claims, the build system includes dedicated negative guards: CI targets are designed to fail if restricted theorems become exportable. The absence of such failures constitutes a positive safety guarantee. The compiled .olean artifacts function as build-verifiable proof objects: any modification to exported content requires recompilation under the same pinned toolchain and is detectable via reproducible builds and hash comparison.
 
@@ -1336,16 +1383,49 @@ Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.6)
     ↓
 Therefore, □(I_am ◃ Ω)
     ↓
-From minimal axioms → □∃x.Ω(x) is true
+From minimal axioms → ◻∃!x,Ω(x)is true
 ````
 
 ## Appendix E: Glossary of Modal Symbols
 **Hyper-Modal Theorem**  
 The central theorem of this paper:  
-> **□∃x Ω(x)**.   
+> **□∃!x Ω(x)**.   
 
-S5 stability note: in S5, necessity is stable. From $□∃x\,Ω(x)$ it follows that $□□∃x\,Ω(x)$.
-In this system, Ω is not just true in all possible worlds ($□∃x\,Ω(x)$), but (under S5) that necessity is itself necessary ($□□∃x\,Ω(x)$). It is derived from axioms A1–A5 (see Section 3) and formally verified in Lean (Appendix A). 
+**S5 stability note (necessitation is introspective).**
+
+In S5, the modal frame validates axiom 4:
+
+$$
+\Box p \rightarrow \Box\Box p.
+$$
+
+Therefore, once we have established
+
+$$
+\Box \exists x \, \Omega(x),
+$$
+
+it follows immediately that
+
+$$
+\Box\Box \exists x \, \Omega(x).
+$$
+
+Intuitively, Ω is not only necessary, but its necessity is itself necessary in S5.
+The non-modal content (the derivation of
+
+$$
+\Box \exists x \, \Omega(x)
+$$
+
+) comes from Axioms A1–A5 (Section 3); the step
+
+$$
+\Box p \rightarrow \Box\Box p
+$$
+
+is an S5-valid modal consequence and is verified in Lean (Appendix A).
+
 
 |Symbol |	Meaning|
 |-------|----------|
