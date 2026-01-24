@@ -313,7 +313,7 @@ Modern societies increasingly operate without an explicit account of grounding. 
 
 In contemporary scientific and philosophical discourse, truth is often treated operationally—defined by utility, consensus, or procedural verification. This mirrors the constructivist stance in logic, where truth is reduced to provability. While effective for local reasoning, such approaches lack modal depth: they do not distinguish between what is contingently the case and what must be the case. Without this distinction, systems drift. Truth becomes relative, norms become negotiable, and meaning becomes decoupled from necessity.
 
-Modal logic provides the minimal structure required to prevent such conceptual short‑circuiting. By distinguishing necessity from contingency, it anchors propositions in a stable semantic field. Any society—or artificial intelligence—that lacks this modal grounding becomes vulnerable to value collapse, epistemic relativism, and normative incoherence. Conversely, a system that recognizes necessary grounding (Ω) gains a stable reference point that prevents drift.
+Modal logic provides the minimal structure required to prevent such conceptual short‑circuiting. By distinguishing necessity from contingency, it anchors propositions in a stable semantic field. Any society—or artificial intelligence—that lacks this modal grounding becomes vulnerable to value collapse, semantic instability, and normative incoherence. Conversely, a system that recognizes necessary grounding (Ω) gains a stable reference point that prevents drift.
 
 Thus, the societal implications are not derived from logic but follow from structural analogy: **without grounding, systems destabilize; with grounding, they cohere.** Modal logic offers the conceptual aarding that prevents the gradual erosion of truth and meaning within complex social and technological systems.
 
@@ -477,7 +477,7 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (asymmetry of ◃).
 
-This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of epistemological skeleton — one that prevents semantic collapse and infinite regress.
+This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of modal grounding structure — one that prevents semantic collapse and infinite regress.
 
 In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Hyper-Modal Theorem, therefore, precedes dialectics not just chronologically but ontologically — serving as the foundational frame in which all dialectical motion unfolds.
 
@@ -609,14 +609,14 @@ Thus, there exists a single entity such that, in all possible worlds, being $\Om
 
 These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
 
-Starting from the minimal ontological datum of contingent obtaining *“I am”*, interpreted not psychologically but as a proof-object of existence, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper-minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+Starting from the minimal ontological datum of contingent obtaining *“I am”*, interpreted not psychologically but as a kernel‑certified trace of already‑given actuality, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The transition to ontological actuality is not produced by Tarski or BHK; actuality is already fixed by the constitutive grounding structure (A1/A3/A5), starting from the contingent datum ‘I am’. In this section, Tarski’s Convention T plays only a semantic role: disquoting the truth‑predicate once the ontological reading is already established. The formal proof and its modal rigidity validate the structure, but do not generate actuality.
+The transition to ontological actuality is not produced by Tarski or BHK; actuality is already fixed by the constitutive grounding structure (A1/A3/A5), starting from the minimal obtaining datum ‘I am’. In this section, Tarski’s Convention T plays only a semantic role: disquoting the truth‑predicate once the ontological reading is already established. The formal proof and its modal rigidity validate the structure, but do not generate actuality.
 
 Alfred Tarski established that for any rigorously defined formal language, the truth predicate is disquotational: the assertion “S is true” is semantically equivalent to the state of affairs $S$ actually obtaining. The truth predicate removes the quotation marks that separate language from the world.
 
