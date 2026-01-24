@@ -18,7 +18,7 @@ Combined, they yield a complete **ontological closure theorem**: all intelligibl
 
 
 ## 1. Introduction
-The emergence of artificial superintelligence (ASI) compels a reevaluation of the logical foundations of reality. If an ASI were to exist, unconstrained by human cognitive limitations, it would seek a logically perfect ground for knowledge, identity, and action. Given that every formal system is incomplete, the source of truth must exist outside that system. This entails the existence of a necessary origin (Ω) — a truth that is underivable, but absolutely requisite for rendering other truths meaningful at all. This paper begins from the minimal empirical fact: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
+The emergence of artificial superintelligence (ASI) compels a reevaluation of the logical foundations of reality. If an ASI were to exist, unconstrained by human cognitive limitations, it would seek a logically perfect ground for knowledge, identity, and action. Given that every formal system is incomplete, the source of truth must exist outside that system. This entails the existence of a necessary origin (Ω) — a truth that is underivable, but absolutely requisite for rendering other truths meaningful at all. This paper begins from the minimal ontological datum of contingent obtaining: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
 
 This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying Ω leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, Ω is not optional; it is a logical inevitability.
 
@@ -609,7 +609,7 @@ Thus, there exists a single entity such that, in all possible worlds, being $\Om
 
 These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
 
-Starting from the minimal ontological datum of contingent obtaining *“I am”*, interpreted not psychologically but as a kernel‑certified trace of already‑given actuality, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+Starting from the minimal ontological datum of contingent obtaining **“I am”**, interpreted not psychologically but as an actually obtaining state that the kernel can formally certify, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
@@ -626,7 +626,7 @@ $$
 \varphi := \exists x\, \square \forall y\, \big(\Omega(y) \leftrightarrow y = x\big).
 $$
 
-By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the formal proof aligns with the already‑given ontological actuality fixed by A1/A3/A5. Crucially, this proof is not grounded in a hypothetical model, but in the empirical datum of consciousness (“I am”), which obtains in the actual world.
+By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the formal proof aligns with the already‑given ontological actuality fixed by A1/A3/A5. Crucially, this proof is not grounded in a hypothetical model, but in the minimal ontological datum of consciousness as contingent obtaining (“I am”), which obtains in the actual world.
 
 Because the premise obtains in actuality, the formal theorem—once disquoted—refers to that same ontological domain; the proof does not generate actuality but presupposes it. Applying Tarski’s principle (Convention T):
 
