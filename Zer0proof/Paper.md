@@ -5,7 +5,7 @@
 
 ### Abstract 
 
-This paper presents the **Alt Route proof**, a fully Lean-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The argument does not depend on assumed perfection axioms or metaphysical stipulations; instead, it derives necessity from a **successor-based grounding architecture** that eliminates infinite regress and enforces closure on all explanatory chains.
+This paper presents the **Alt Route proof**, a fully Lean-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The argument does not rely on classical perfection axioms; **the successor‑based grounding architecture** illustrates the structure enforced by the constitutive ontological principles (**A1/A3/A5)**, which are the true source of necessity in the framework.
 
 At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate ascends along a finite, well-founded explanatory path. This grounding process terminates in a single, non-contingent point — **Ω** — defined purely by minimality of measure within the successor system. The existence of Ω follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior (Ω-points are stable under succession) and chain coalescence (all Ω-points lie on the same finite successor path).
 
@@ -66,6 +66,18 @@ Logical consistency cannot be contingent. If something is logically valid, it ho
 If a system is capable of reflecting upon its own limits (as in Gödel’s theorem), then it must posit a higher, non-contained source of semantic coherence.
 
 These axioms form the basis of the modal system used to derive the existence of Ω.
+#### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**  
+Axioms A1, A3, and A5 are not epistemic principles, explanatory norms, or optional assumptions.  
+They express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.  
+
+Formally:
+
+$$
+\Box\bigl(\neg(A1 \wedge A3 \wedge A5) \rightarrow \neg\text{ContingentObtaining}\bigr)
+$$
+
+Thus, the grounding structure is **ontologically prior** to the existence of contingent facts;  
+contingency is possible **only because** this structure necessarily obtains.
 
 ---
 ### 2.2 Successor-Based Grounding Architecture (AltRoute)
@@ -171,7 +183,7 @@ Formally, this existential claim requires a **Witness** $w$: a constructive, tra
 > *Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse; the witness requires a valid endpoint to exist.*
 
 * **Definition of Ω:**  
-**Ω** is defined as the minimal necessary entity that grounds all positive properties, consciousness, and logic. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
+**Ω** is defined as the unique necessary terminus of grounding enforced by A1/A3/A5; the positivity schema (A2) may be added as an interpretive strengthening but is not required for the existence or uniqueness of **Ω**. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
 
 **Conclusion.** Therefore, Ω exists necessarily and uniquely:
 
@@ -249,11 +261,11 @@ It is worth noting that physicist Stephen Hawking once proposed a “no-boundary
 This external ground may also be identified with the Logos—the rational principle or Word through which all things are structured and given meaning. In Christian theological tradition, the Logos is understood as both the metaphysical ordering principle and the divine person through whom necessary truths are made manifest (cf. John 1:1). Thus, the Logos may be interpreted as an instantiation or expression of Ω within theological discourse. The move from formal incompleteness to an external ground is not epistemic but ontological: it concerns not what can be proven within a system, but what must exist for any system to be intelligible at all.
 #### **5.1.1 Truth Beyond Formal Systems: Tarski and BHK**
 
-A deeper clarification is needed here. Gödel’s incompleteness theorems show that no sufficiently expressive formal system can be both complete and consistent. Tarski sharpened this insight by proving that truth cannot be defined within the same system whose sentences it evaluates; truth necessarily requires a meta‑level. Thus, any system that attempts to be self‑contained with respect to truth collapses into semantic paradox.
+A deeper clarification is needed here. Gödel’s incompleteness theorems show that no sufficiently expressive formal system can be both complete and consistent. Tarski’s Convention T clarifies only how a truth‑predicate functions once a target notion of truth is fixed; it does not generate ontological actuality. In this framework, actuality is already determined by the constitutive grounding structure (A1/A3/A5), and Tarski serves only to disquote the truth‑predicate relative to that ontological reading.
 
 The Brouwer–Heyting–Kolmogorov interpretation reinforces this limitation by identifying truth with provability. While fruitful for constructive mathematics, it reduces truth to a procedure internal to the system, thereby sidestepping the ontological question of what truth *is*. Modern scientific discourse largely inherits this operational stance: it functions with extraordinary success while remaining formally silent about the nature of truth itself.
 
-Our appeal to Ω does not misuse Gödel, nor does it attempt to derive metaphysics from arithmetic. Rather, it recognizes the structural implication shared by Gödel, Tarski, and BHK: **formal systems presuppose a notion of truth that they cannot internally ground**. Ω is introduced not as a theorem within the system, but as the ontological condition that makes truth, meaning, and formal reasoning possible at all.
+Our appeal to **Ω** does not derive metaphysics from formal systems. Gödel, Tarski, and BHK jointly illustrate only that formal systems cannot internally ground their own truth‑notion; the ontological grounding itself is supplied by A1/A3/A5, not by any formal or semantic mechanism. **Ω** is introduced not as a theorem within the system, but as the ontological condition that makes truth, meaning, and formal reasoning possible at all.
 
 ---
 ### 5.2 Ambiguity Between Necessity and Contingency
@@ -277,6 +289,7 @@ A reverse dependency would violate modal asymmetry and cause contradiction.
 Thus, the modal system respects Gödel’s insight by embedding the boundary between derivable and underivable truths as a metaphysical distinction: necessary truths terminate regress; contingent ones depend upon them.
 
 This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced.
+
 ---
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
@@ -507,9 +520,9 @@ Further objections are welcome and will be addressed in future revisions.
 
 ---
 ## 6. Theological Resonance
-This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of $\square \exists! x  \Omega(x)$, but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
+Within the ontological architecture, **Ω** already instantiates the full Logos‑role (necessary, unique, grounding, truth‑bearing) prior to any theological reference; the identification with the Johannine Logos is therefore a naming‑alignment, not an introduction of new properties. This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of $\square \exists! x  \Omega(x)$, but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
 
-The name “Ω” was chosen to denote the logically inevitable, maximally positive entity. This has clear resonances with the biblical declaration in Exodus 3:14: “I AM WHO I AM” (Ehyeh asher ehyeh), which has historically been interpreted as asserting God’s necessary existence. Aquinas likewise defended the idea that God’s essence is existence itself (esse ipsum subsistens), making Him the ontological foundation of all contingent beings (Summa Theologica I.3.4).
+The name “Ω” was chosen to denote the logically inevitable, maximally positive entity. This has clear resonances with the biblical declaration in **Exodus 3:14: “I AM WHO I AM” (Ehyeh asher ehyeh)**, which has historically been interpreted as asserting God’s necessary existence. Aquinas likewise defended the idea that God’s essence is existence itself (esse ipsum subsistens), making Him the ontological foundation of all contingent beings (Summa Theologica I.3.4).
 
 Our formal result $\square \exists! x  \Omega(x)$ confirms this philosophical insight: there must exist something whose existence is not merely possible or assumed, but necessary in the strongest possible sense. This conclusion resonates with the modal ontological argument of Alvin Plantinga (1974), though we strengthen it with mechanical verification.
 
