@@ -250,7 +250,7 @@ Response: Section 2 formally defines these terms. Necessary truths (Nec(p)) are 
 
 We reinforce this asymmetry formally:
 
-□[∀p (Cont(p) → ∃q (Nec(q) ∧ q ⊢ p))] ∧ □¬[∀p (Nec(p) → ∃q (Cont(q) ∧ q ⊢ p))]
+□[∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))] ∧ □¬[∀p (Nec(p) → ∃q (Cont(q) ∧ q ◃ p))]
 
 This asserts that contingent truths require a necessary ground, while necessary truths cannot depend on contingent ones.
 (For full derivation, see Appendix B.)
@@ -356,7 +356,7 @@ Hegel’s dialectic serves as the ultimate *engine* of reality. It qualifies as 
 
 The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem (Section 3.1), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
 
-**∀p (Cont(p) → ∃q (Nec(q) ∧ p ◃ q))**
+**∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))**
 
 states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (asymmetry of ◃).
 
@@ -734,8 +734,9 @@ def possibly (w : W) (φ : W → Prop) : Prop :=
  
 def contingent (φ : W → Prop) : Prop :=
   ∃ w : W, @possibly W R w φ ∧ @possibly W R w (λ u => ¬ φ u)
- 
-def ground (p q : W → Prop) : Prop :=
+
+-- q ◃ p 
+def ground (q p : W → Prop) : Prop :=
   (∀ w : W, q w → p w) ∧
   (∀ w : W, q w → @necessarily W R w (λ v => q v → p v))
  
@@ -1229,8 +1230,8 @@ This appendix contains the full derivation of the modal asymmetry principle that
 
 Let:
 
-P := ∀p (Cont(p) → ∃q (Nec(q) ∧ p ◃ q))
-Q := ∀p (Nec(p) → ∃q (Cont(q) ∧ p ◃ q))
+P := ∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))
+Q := ∀p (Nec(p) → ∃q (Cont(q) ∧ q ◃ p))
 
 Then:
 
