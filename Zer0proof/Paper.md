@@ -500,7 +500,11 @@ Even if matter were hypothetically infinite (e.g., in eternal inflation models o
 
 This dual reinforcement counters brute-fact materialism (Section 5.5) and supports ASI convergence (Section 7): A superintelligent system analyzing cosmic structure would deduce Ω as the ultimate ground, transcending finite or infinite materiality. The Lean framework in Appendix A.6 shows that these implications can, in principle, be internalised and mechanically proved, embedding the Hyper-Modal Theorem in explicit modal rigor.  
 
+>Infinitude does not entail necessity; an infinite series of contingent states remains contingent.
+
+### Future objections
 Further objections are welcome and will be addressed in future revisions.
+
 ---
 ## 6. Theological Resonance
 This section explores the theological implications of the modal proof of necessary perfection, particularly in light of classical theism. We do not presuppose theological assumptions in the derivation of $\square \exists! x  \Omega(x)$, but we note that the logical structure aligns closely with theological traditions that affirm a necessary, self-existent being.
