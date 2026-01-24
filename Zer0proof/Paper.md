@@ -616,7 +616,7 @@ A direct implication is the non-self-foundation of computability: no computation
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The final movement of this argument transitions from derivability to ontological actuality. This step is governed by Tarski’s Semantic Conception of Truth (Convention T), reinforced by the modal rigidity of the formal proof.
+The transition to ontological actuality is not produced by Tarski or BHK; actuality is already fixed by the constitutive grounding structure (A1/A3/A5), starting from the contingent datum ‘I am’. In this section, Tarski’s Convention T plays only a semantic role: disquoting the truth‑predicate once the ontological reading is already established. The formal proof and its modal rigidity validate the structure, but do not generate actuality.
 
 Alfred Tarski established that for any rigorously defined formal language, the truth predicate is disquotational: the assertion “S is true” is semantically equivalent to the state of affairs $S$ actually obtaining. The truth predicate removes the quotation marks that separate language from the world.
 
