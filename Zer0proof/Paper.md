@@ -626,9 +626,9 @@ $$
 \varphi := \exists x\, \square \forall y\, \big(\Omega(y) \leftrightarrow y = x\big).
 $$
 
-By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the logic confronts reality. Crucially, this proof is not grounded in a hypothetical model, but in the empirical datum of consciousness (“I am”), which obtains in the actual world.
+By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the formal proof aligns with the already‑given ontological actuality fixed by A1/A3/A5. Crucially, this proof is not grounded in a hypothetical model, but in the empirical datum of consciousness (“I am”), which obtains in the actual world.
 
-Because the premise is actual (disquoted), the necessary ground must be actual (disquoted). Applying Tarski’s principle (Convention T):
+Because the premise obtains in actuality, the formal theorem—once disquoted—refers to that same ontological domain; the proof does not generate actuality but presupposes it. Applying Tarski’s principle (Convention T):
 
 $$
 \text{“}\varphi\text{” is true} \iff \varphi
