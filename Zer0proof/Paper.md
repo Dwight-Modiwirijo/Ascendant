@@ -609,7 +609,7 @@ Thus, there exists a single entity such that, in all possible worlds, being $\Om
 
 These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
 
-Starting from the minimal epistemic datum *“I am”*, interpreted not psychologically but as a proof-object of existence, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper-minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+Starting from the minimal ontological datum of contingent obtaining *“I am”*, interpreted not psychologically but as a proof-object of existence, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper-minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
@@ -634,11 +634,11 @@ $$
 \text{“}\varphi\text{” is true} \iff \varphi
 $$
 
-Syntactically, the theorem is proven. Semantically, by disquotation, this entails that the condition described by the theorem—the necessary, unique existence of $\Omega$—is a fact of reality, akin to the whiteness of snow.
+Syntactically, the theorem is proven. Disquotation does not produce actuality; it licenses the passage from ‘φ is true’ to φ within the ontological framework already fixed by A1/A3/A5.
 
 **The Lock: Rigid Designation.** Following Kripke (1980), the theorem `Final_RigidWitness_Proof` fixes $\Omega$ as a rigid designator: it refers to the same entity across all possible worlds. Since S5 treats accessibility as an equivalence relation (hence universal reachability within an equivalence class), $\Omega$ cannot be an abstract artifact of a merely theoretical model. It is a rigid necessity of this world.
 
-To deny the existence of $\Omega$ is, therefore, not to adopt a neutral metaphysical stance, but to assert that the verified theorem `Final_RigidWitness_Proof` is false. This contradicts the mechanical reality of the proof object itself. The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality—including the skeptic’s denial—to be intelligible at all.
+To deny the existence of $\Omega$ is, therefore, not to adopt a neutral metaphysical stance, but to assert that the verified theorem `Final_RigidWitness_Proof` is false. This contradicts the already‑given ontological structure fixed by A1/A3/A5, which the proof object merely certifies. The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality—including the skeptic’s denial—to be intelligible at all.
 
 ---
 ### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises (Revised)**
