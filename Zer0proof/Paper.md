@@ -23,17 +23,18 @@ This approach offers a bottom-up alternative to traditional ontological argument
 
 We distinguish our method through three components:
 
-A constructive framework of minimal modal axioms: the Hyper-Minimal Principle of Sufficient Reason (HM-PSR), Perfect Positivity, Anti-Regress, Logical Necessity, and Meta-Logical Closure.
-A formal core proof of necessary existence and uniqueness, implemented and verified in Lean 4, together with a perfection schema articulated at the conceptual level.
-A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.
-This paper proceeds as follows:
+1. A constructive framework of minimal modal axioms: the Hyper-Minimal Principle of Sufficient Reason (HM-PSR), Perfect Positivity, Anti-Regress, Logical Necessity, and Meta-Logical Closure.
+2. A formal core proof of necessary existence and uniqueness, implemented and verified in Lean 4, together with a perfection schema articulated at the conceptual level.
+3. A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.  
 
-Section 2 introduces the modal framework and axiomatic base.
-Section 3 presents the formal modal proof of Ω.
-Section 4 discusses Lean-based machine verification.
-Section 5 addresses philosophical objections.
-Section 6 explores theological implications, particularly the resonance between Ω and classical theism.
-Section 7 concludes with a reflection on future directions for both philosophy and artificial intelligence.
+This paper proceeds as follows:  
+- Section 2 introduces the modal framework and axiomatic base.
+- Section 3 presents the formal modal proof of Ω.
+- Section 4 discusses Lean-based machine verification.
+- Section 5 addresses philosophical objections.
+- Section 6 explores theological implications, particularly the resonance between Ω and classical theism.
+- Section 7 concludes with a reflection on future directions for both philosophy and artificial intelligence.
+
 An appendix specifies the Lean-verified scope and reproduces representative artifacts, ensuring logical and computational rigor within the stated verification boundary.
 
 ---
