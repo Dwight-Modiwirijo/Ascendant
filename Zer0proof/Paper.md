@@ -56,7 +56,7 @@ A property (P) is **positive** iff it is **Ω-admissible**: it introduces no int
 
 Accordingly, “negative” properties are understood here in the **structural** sense: properties that are internally defeating (self-negating), limiting in a way that breaks fixed-point invariance, or that would re-open the possibility of non-termination or multiple endpoints. Under coalescence/minimality, such properties are inadmissible at Ω.
 
-**Schematic gloss (paper level):**
+**Schematic gloss :**
 
 $$
 Pos(P)\ \equiv\ \neg\exists Q,\bigl(Q \rightarrow \neg P\bigr),
@@ -90,9 +90,9 @@ Thus, the grounding structure is **ontologically prior** to the existence of con
 contingency is possible **only because** this structure necessarily obtains.
 
 ---
-### 2.2 Successor-Based Grounding Architecture (AltRoute)
+### 2.2 Successor-Based Grounding Architecture 
 
-In this subsection we show how the hyper-modal grounding principles from §2.1 can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “AltRoute”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
+This subsection presents the successor-based grounding machine (the Alt Route). In this subsection we show how the hyper-modal grounding principles from §2.1 can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “AltRoute”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
 
 #### 2.2.1 State space and successor
 
@@ -162,7 +162,7 @@ We can now see how the successor architecture realises the principles of §2.1:
 
 Formally, we obtain:
 
-> **Proposition 2.2.1 (Successor termination in Ω).**  
+> **Proposition 2.2.1 Successor termination in Ω.**  
 > For any contingent state $g_0$ in Cont, any maximal successor chain  
 >   
 >   $g_0$, $g_1$, ..., $g_n$  
@@ -176,7 +176,7 @@ This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead o
 In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
 ---
-## 3. Formal Modal Proof of Ω (Necessary Perfection)
+## 3. Formal Modal Proof of Ω
 
 We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
 
@@ -204,7 +204,7 @@ $$
 This establishes Ω not merely as an existent ground, but as the **unique necessary terminus** of all grounding chains. No alternative or competing Ω can exist within the structure, nor can Ω vary across possible worlds.
 
 ---
-### **3.1 Conclusion: The Hyper-Modal Theorem (Revised)**
+### **3.1 Conclusion: The Hyper-Modal Theorem**
   
 The reductio argument in this section establishes that denying a necessary ground for contingent truths results inevitably in semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the strengthened central result of this paper:
 
@@ -668,7 +668,7 @@ Within the hyper-modal framework, **A2 (Perfect Positivity)** fixes *Pos(P)* as 
 
 We can state this as follows.
 
-#### Corollary 6.2 (Singularity as Factory for Positive Properties)
+#### Corollary 6.2 — Singularity as Factory for Positive Properties
 
 > Let Ω be the unique necessarily existing terminus forced by the constitutive grounding architecture (A1/A3/A5). Let *Pos(P)* be constrained by A2 as the class of admissible (non-negating) properties. Then Ω is not only the terminal point of all coherent grounding chains, but also the unique **generative singularity** for positive properties: the grounding architecture forces a closure of admissible properties around Ω, and Ω instantiates every property admitted by that closure.
 
@@ -754,7 +754,7 @@ Syntactically, the theorem is proven. Disquotation does not produce actuality; i
 To deny the existence of $\Omega$ is, therefore, to reject the constitutive claim that contingent obtaining is possible only under the grounding architecture fixed by A1/A3/A5 (and the resulting Ω‑term). Separately, within the formal development, denying $\Omega$ contradicts the kernel‑verified derivation of $\varphi$ from the stated axioms. The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality—including the skeptic’s denial—to be intelligible at all.
 
 ---
-### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises (Revised)**
+### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises**
 
 Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
 
@@ -1335,13 +1335,13 @@ MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly
 **Summary:**
 Within Metaphysical Algebra, topology ensures that semantic structure is convergent: the domain of positive properties forms a connected, contractible space admitting Ω as its unique limit.
 
-#### B.1.4.2 **Perfection as a Generative Principle (MA Extension)**
+#### B.1.4.2 **Perfection as a Generative Principle**
 
 > **Perfection is not a static checklist but a generative distinction.**
 
 To serve as a foundation rather than a catalogue, the notion of positivity must be *productive*: from a minimal rule, it must generate further necessary structure without arbitrary enumeration. In Metaphysical Algebra, this is achieved by interpreting `Pos(p)` not merely as a filter, but as the outcome of a **constructive generative operation**.
 
-##### 1. Closure and Necessity (Matroidal Perspective)
+##### 1. Closure and Necessity via Matroidal Closure
 
 Within matroid theory, a **closure operator** determines which elements must be added to a set in order to preserve independence and completeness. This operator does not select freely; it enforces structural necessity.
 
@@ -1352,7 +1352,7 @@ Interpreted in MA:
 
 Thus, positivity is not evaluated post hoc, but **forced forward** by structural incompleteness.
 
-##### 2. Successor Generation (Semantic Tension Resolution)
+##### 2. Successor Generation via Semantic Tension Resolution
 
 The **Successor Machine** implements this principle dynamically. A new positive property arises precisely when the existing structure cannot remain coherent under Ω-alignment without extension.
 
@@ -1781,7 +1781,7 @@ Only modal logic allows us to formally express and analyze such necessity (□P)
 
 If we are to build systems that not only compute, but truly understand, modality must be their foundation.
 
-## Appendix I: Illustrative Cosmology (Non‑Load‑Bearing)
+## Appendix I: Illustrative Cosmology
 
 This appendix is intentionally non-load-bearing. It contains no empirical premises and is not used in any derivation of $\Omega$.
 
