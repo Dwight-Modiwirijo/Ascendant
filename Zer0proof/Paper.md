@@ -1,20 +1,17 @@
 # Formal Verification of Necessary Grounding via Successor Semantics
 ## Superintelligence: Gödel–Turing Limits and Tarskian Disquotation in the Modal Grounding Theorem of God (**$\Omega$**)
 
-### Abstract 
+### Abstract
 
-This paper presents the **Alt Route proof**, a Lean *kernel-verified* construction (private route) establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework; the public repository certifies only the intentionally exported **□◇** verification surface. The argument does not rely on classical perfection axioms; **the successor‑based grounding architecture** illustrates the structure enforced by the constitutive ontological principles (**A1/A3/A5)**, which are the true source of necessity in the framework.
+This paper presents the **Alt Route proof**, a Lean *kernel-verified* construction (private route) establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework; the public repository certifies only the intentionally exported **□◇** verification surface. The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
 
-At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate is carried through a finite, well-founded transcendental grounding process. This grounding process terminates in a single, non-contingent point — **Ω** — defined purely by minimality of measure within the successor system. The existence of Ω follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior (Ω-points are stable under succession) and chain coalescence (all Ω-points lie on the same finite successor path).
+At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
-The proof consists of **one fully Lean-verified constructive route** (the Alt Route) which establishes the structural necessity of Ω via a successor-based machine, and a **philosophically articulated hyper-modal framework** that interprets this structure. The formal kernel mirrors the metaphysical Hyper-Modal Theorem: formally, the Alt Route realizes the structure where denying a necessary terminus results in infinite regress.
-Combined, they yield a complete **ontological closure theorem**: all intelligible explanatory structures — whether modal, logical, or computational — must terminate uniquely in Ω.
+The paper combines one fully Lean-verified constructive route (Alt Route) with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure theorem**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
 
-**Keywords:** Alt Route, necessary existence, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK.
+**Keywords:** Alt Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
 ---
-
-
 ## 1. Introduction
 This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining is impossible unless the grounding architecture specified by A1/A3/A5 (and related constraints) already holds.
 
@@ -1839,6 +1836,8 @@ Tegmark, Max. *Our Mathematical Universe: My Quest for the Ultimate Nature of Re
 Turing, Alan M. *On Computable Numbers, with an Application to the Entscheidungsproblem.* Proceedings of the London Mathematical Society, 1936. https://doi.org/10.1112/plms/s2-42.1.230
 
 Leibniz, Gottfried Wilhelm. *Monadology.* 1714. Translated by Robert Latta. Oxford University Press, 1898.
+
+Kripke, Saul A. *Naming and Necessity.* Cambridge, MA: Harvard University Press, 1980.
 
 ### Author
 Dwight S. Modiwirijo, Independent scholar and .NET developer. No funding declared.
