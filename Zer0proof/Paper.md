@@ -242,10 +242,11 @@ The formal core corresponding to the successor-based architecture is fully verif
 
 Lean/Tarski/BHK contribute only to formal certification and semantic housekeeping; they do not supply an ontological bridge to actuality, which is fixed constitutively by A1/A3/A5.
  
-The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
+The verification serves two critical purposes:
 
-Error Elimination: Every logical dependency, including modal transitions, grounding relations, and definitions of contingency and necessity, is mechanically checked by the Lean compiler.
-Computational Transparency: Unlike traditional metaphysical arguments, which may rest on interpretive ambiguity, this project exposes a publicly inspectable layer (exported interface, axiom‑footprint, and build artifacts) whose kernel‑checking can be independently verified; private proof objects may remain unexported while still being kernel‑correct within the development.
+1. Error Elimination: Every logical dependency, including modal transitions, grounding relations, and definitions of contingency and necessity, is mechanically checked by the Lean compiler.
+2. Computational Transparency: Unlike traditional metaphysical arguments, which may rest on interpretive ambiguity, this project exposes a publicly inspectable layer (exported interface, axiom‑footprint, and build artifacts) whose kernel‑checking can be independently verified; private proof objects may remain unexported while still being kernel‑correct within the development.
+
 The Lean implementation models S5 modal logic using Kripke semantics. The accessibility relation is defined as an equivalence relation (reflexive, symmetric, transitive), and the modal operators □ and ◇ are implemented accordingly (Blackburn et al. 2001). The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system, allowing precise verification of logical entailments.
 
 The public repository provides the publicly inspectable surface (exported interface, axiom‑footprint certificate, and reproducible build artifacts) for independent kernel checking. Strong Ω‑theorems may rely on private proof objects that remain outside the public export boundary: [dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist).
@@ -575,7 +576,7 @@ $$
 Thus, cosmological finitude is not evidential but illustrative.  
 It clarifies, but does not support, the ontological conclusion.
 
---
+---
 ### **5.8 Finitude, Potential Infinitude, and the Reinforcement of Grounding**
 
 Even if one entertains the possibility of an infinite physical cosmos, this does not alter the grounding structure. Physical infinitude is a **modal possibility**, but grounding is a **constitutive necessity**. The two operate on different levels:
