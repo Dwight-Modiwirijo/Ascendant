@@ -220,7 +220,7 @@ Thus, there exists a single entity such that, in all possible worlds, being Ω i
 
 ---
 
-#### **Hyper-Necessity**
+#### 3.1.1 **Hyper-Necessity**
 
 We define:
 
@@ -235,6 +235,29 @@ $$
 $$
 
 Ω is not merely necessary, but **necessarily necessary**: its existence and uniqueness are invariant under all admissible modal interpretations consistent with the grounding structure.  
+
+---
+### 3.2 The Argument in Syllogistic Form (A1/A3/A5)
+
+This structure echoes Leibniz's *Monadology* §§36–38 (Leibniz 1714) and Aquinas's Third Way (*Summa Theologica* I.2.3), though here the necessity is derived not from causal regress but from the constitutive conditions of intelligibility enforced by A1/A3/A5.
+
+* **P1 (A1 — HM-PSR, constitutive):** Every contingent obtaining requires grounding in a necessary terminus:  
+  `Cont(p) → ∃q (Nec(q) ∧ q ◃ p)`.
+
+* **P2 (Datum):** `"I am"` obtains and is contingent: `Cont(I)`.
+
+* **C1 (Existence):** Therefore, a necessary ground exists; denote it `Ω`: `□∃x Ω(x)`.
+
+* **P3 (A3 — Anti-Regress, constitutive):** No infinite grounding chain is admissible ⇒ the grounding of `I` must terminate in a necessary endpoint.
+
+* **P4 (Coalescence / Minimality):** All terminating grounding chains converge to a single minimal endpoint within the grounding architecture.
+
+* **C2 (Uniqueness):** Therefore, the terminus is unique: `□∃!x Ω(x)`.
+
+* **P5 (A5 — Meta-Logical Closure, constitutive):** The terminus cannot be internally truth-closed/self-grounded ⇒ `Ω` is an actual necessary ground (not a merely formal posit).
+
+* **C (Ω / God):** Therefore, an actual necessary ground `Ω` exists for contingent obtaining (`□∃x Ω(x)` and `□∃!x Ω(x)`); and if `God ≡ Ω`, then `□∃x God(x)` and `□∃!x God(x)`.
+
 
 ---
 ## 4. Verification in Lean 4
@@ -1809,6 +1832,8 @@ Scholze, Peter. *Liquid Tensor Experiment – A Proof of the Direct Summand Conj
 Tegmark, Max. *Our Mathematical Universe: My Quest for the Ultimate Nature of Reality.* Knopf, 2014.
 
 Turing, Alan M. *On Computable Numbers, with an Application to the Entscheidungsproblem.* Proceedings of the London Mathematical Society, 1936. https://doi.org/10.1112/plms/s2-42.1.230
+
+Leibniz, Gottfried Wilhelm. *Monadology.* 1714. Translated by Robert Latta. Oxford University Press, 1898.
 
 ### Author
 Dwight S. Modiwirijo, Independent scholar and .NET developer. No funding declared.
