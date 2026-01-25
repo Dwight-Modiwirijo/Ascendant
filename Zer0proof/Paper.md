@@ -237,28 +237,26 @@ $$
 Ω is not merely necessary, but **necessarily necessary**: its existence and uniqueness are invariant under all admissible modal interpretations consistent with the grounding structure.  
 
 ---
-### 3.2 The Argument in Syllogistic Form (A1/A3/A5)
+### 3.2 Constitutive Compression (A1/A3/A5)
 
-This structure echoes Leibniz's *Monadology* §§36–38 (Leibniz 1714) and Aquinas's Third Way (*Summa Theologica* I.2.3), though here the necessity is derived not from causal regress but from the constitutive conditions of intelligibility enforced by A1/A3/A5.
+A compressed restatement of the constitutive grounding architecture: contingent obtaining is possible only because A1/A3/A5 hold as conditions of possibility. This echoes Leibniz (*Monadology* §§36–38) and Aquinas (ST I.2.3), with necessity read as constitutive intelligibility rather than causal succession.
 
-* **P1 (A1 — HM-PSR, constitutive):** Every contingent obtaining requires grounding in a necessary terminus:  
+* **C1 (A1 — constitutive):** Contingent obtaining requires a necessary ground:  
   `Cont(p) → ∃q (Nec(q) ∧ q ◃ p)`.
 
-* **P2 (Datum):** `"I am"` obtains and is contingent: `Cont(I)`.
+* **C2 (Datum):** `"I am"` obtains contingently: `Cont(I)`.
 
-* **C1 (Existence):** Therefore, a necessary ground exists; denote it `Ω`: `□∃x Ω(x)`.
+* **C3 (A3 — constitutive):** Grounding admits no infinite chain ⇒ termination in a necessary endpoint.
 
-* **P3 (A3 — Anti-Regress, constitutive):** No infinite grounding chain is admissible ⇒ the grounding of `I` must terminate in a necessary endpoint.
+* **C4 (AltRoute: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint.
 
-* **P4 (AltRoute: Coalescence / Minimality):** All terminating grounding chains converge to a single minimal endpoint within the grounding architecture.
+* **C5 (Ω):** The unique necessary terminus exists: `□∃!x Ω(x)` (hence `□∃x Ω(x)`).
 
-* **C2 (Uniqueness):** Therefore, the terminus is unique: `□∃!x Ω(x)`.
+* **C6 (A5 — constitutive):** The terminus is not internally self-grounding/self-contained ⇒ Ω is an actual necessary ground.
 
-* **P5 (A5 — Meta-Logical Closure, constitutive):** The terminus cannot be internally self-grounding/self-contained ⇒ `Ω` is an actual necessary ground (not a merely formal posit).
+* **C7 (God):** This unique actual necessary ground is God; hence `□∃!x God(x)`.
 
-* **C (Ω / God):** Therefore, an actual necessary ground `Ω` exists for contingent obtaining (`□∃x Ω(x)` and `□∃!x Ω(x)`); and if `God ≡ Ω`, then `□∃x God(x)` and `□∃!x God(x)`.
-
-This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is deployed elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
+This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
 ---
 ## 4. Verification in Lean 4
