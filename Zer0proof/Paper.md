@@ -570,7 +570,7 @@ To avoid any appearance of deriving ontological necessity from empirical premise
 The finitude of matter may serve as an analogy for the impossibility of infinite regress, but it is not a premise in the argument. The constitutive necessity of Ω is established solely by the grounding architecture:
 
 $$
-A1 \wedge A3 \wedge A5 \;\Rightarrow\; \square \exists! x\,\Omega(x)
+A1 \wedge A3 \wedge A5  \Rightarrow  \square \exists! x\,\Omega(x)
 $$
 
 Thus, cosmological finitude is not evidential but illustrative.  
@@ -589,13 +589,13 @@ Thus, the potential infinitude of matter does not weaken the Hyper‑Minimal PSR
 Formally:
 
 $$
-\text{Physical infinitude} \;\not\Rightarrow\; \text{Grounding infinitude}
+\text{Physical infinitude}  \not\Rightarrow  \text{Grounding infinitude}
 $$
 
 and
 
 $$
-\text{Physical finitude} \;\not\Rightarrow\; \text{Grounding termination}
+\text{Physical finitude}  \not\Rightarrow  \text{Grounding termination}
 $$
 
 The grounding chain terminates in Ω **because grounding is a constitutive structure**, not because the cosmos has any particular empirical shape.
