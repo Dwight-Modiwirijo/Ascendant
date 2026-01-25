@@ -53,10 +53,20 @@ Every contingent truth must be grounded in a necessary ontological basis. Formal
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 #### (A2) Perfect Positivity
-A property P is positive if it expresses excellence, entails no internal contradiction, and is not semantically interchangeable with its negation. This prevents contingent or limiting features (e.g., ignorance, passivity) from qualifying as “positive”.
-Formalization: $Pos(P) \equiv \neg \exists Q\,(Q \to \neg P)$
-Note on formalization: the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate (see Appendix A.6: `Positive`), rather than this informal schematic gloss. This choice is intentional: the paper-level clause explains the intended reading, while the kernel development fixes the exact predicate used in machine checking.
-This avoids circularity and contingent dependence (Appendix A.6: `perfect_positivity`).
+
+A property (P) is **positive** iff it is **Ω-admissible**: it introduces no internal defeat condition, no self-negation, and no regress-inducing instability at the terminus. In the successor/coalescence architecture, this is not merely evaluative vocabulary (“excellence”), but a **stability constraint** required for Ω to function as a **unique fixed point**. Any property that is semantically interchangeable with its negation, or that entails its own exclusion at the terminus, functions as a destabilizer: it would permit divergence, bifurcation, or non-invariance under the successor dynamics, thereby obstructing convergence to a single minimal endpoint.
+
+Accordingly, “negative” properties are understood here in the **structural** sense: properties that are internally defeating (self-negating), limiting in a way that breaks fixed-point invariance, or that would re-open the possibility of non-termination or multiple endpoints. Under coalescence/minimality, such properties are inadmissible at Ω.
+
+**Schematic gloss (paper level):**
+
+$$
+Pos(P)\ \equiv\ \neg\exists Q,\bigl(Q \rightarrow \neg P\bigr),
+$$
+
+which encodes non-defeat: no (Q) may be available that systematically forces (\neg P) in the relevant grounding setting.
+
+**Note on formalization:** the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate (Appendix A.6: `Positive`), rather than this informal schematic gloss. This is intentional: the paper-level clause specifies the intended stability reading (fixed-point admissibility), while the kernel development fixes the exact predicate used in machine checking. The corresponding non-defeat constraint is enforced by the internal lemma/axiom suite (Appendix A.6: `perfect_positivity`), preventing circularity and contingent dependence.
 
 #### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
@@ -656,42 +666,35 @@ For Christian theists, this reinforces the classical doctrine of the Trinity, in
 ---
 ### 6.2 Ω as Factory of Positive Properties (Singularity Corollary)
 
-Within the hyper-modal framework, Ω is introduced as the unique necessarily existing ground that instantiates all and only positive properties (Pos(P)) under Axiom A2 (Perfect Positivity). This allows us to reinterpret Ω not merely as a bearer of positive properties, but as the **structural singularity (see Corollary 6.2)** around which all positive properties are organised and from which they are non-derivatively sourced.
+Within the hyper-modal framework, **A2 (Perfect Positivity)** fixes *Pos(P)* as an **admissibility constraint** (non-negation / non-defeat), not as a definitional shorthand for “true of Ω.” Given the constitutive grounding architecture (A1/A3/A5), **Ω** is introduced as the unique necessarily existing terminus of grounding. This permits a stronger reading than mere property-bearer: Ω functions as a **structural singularity (see Corollary 6.2)** around which the domain of positive properties is **generated as closure** of grounded coherence, and at which every such generated Pos-property is instantiated.
 
-We can state this as follows:
+We can state this as follows.
 
 #### Corollary 6.2 (Singularity as Factory for Positive Properties)
-> Let Ω be the unique necessarily existing entity such that, for every property P,
-> if Pos(P), then Ω instantiates P.
-> Then Ω is not only the terminal point of all coherent grounding chains, but also the unique *generative singularity* for every positive property: all positive properties are both (i) fully realised in Ω and (ii) structurally ordered around Ω as their minimal, non-derivative source.
+
+> Let Ω be the unique necessarily existing terminus forced by the constitutive grounding architecture (A1/A3/A5). Let *Pos(P)* be constrained by A2 as the class of admissible (non-negating) properties. Then Ω is not only the terminal point of all coherent grounding chains, but also the unique **generative singularity** for positive properties: the grounding architecture forces a closure of admissible properties around Ω, and Ω instantiates every property admitted by that closure.
+
+**Non-circularity note.** The direction is not *Pos(P) iff Ω has P*. Rather: **A2 constrains admissible positivity; A1/A3/A5 force a unique terminus; the terminus generates (as closure) the Pos-domain and instantiates its members.**
 
 **Sketch of justification.**
 
-1. From Perfect Positivity (A2) and the existence and uniqueness of Ω (Sections 2–3), it follows that:
+1. **Admissibility (A2):** Perfect Positivity constrains *Pos(P)* so that no admitted property carries internal negation, defeat, or semantic collapse. Positivity is therefore a stability condition on the property-domain, not a re-labeling of Ω.
 
-   * every positive property P is instantiated in Ω; and
-   * no property essentially instantiated by Ω can contain internal negation or contradiction.
+2. **Termination (A3) under the AltRoute:** Under Anti-Regress and the successor-based grounding architecture, any coherent grounding progression must be well-founded. Accordingly, any admissible explanatory chain that tracks the grounding status of a property cannot loop or descend indefinitely.
 
-2. From Anti-Regress (A3) and the successor-based grounding architecture (Alt Route), every coherent chain of grounding for a positive property P
+3. **Uniqueness via minimality/coalescence:** The AltRoute minimality/coalescence condition forces all terminating grounding chains to converge to a **single** minimal endpoint. Hence the grounding terminus is unique and necessary.
 
-   * cannot terminate in a contingent substrate; and
-   * cannot loop or extend infinitely.
-
-   Hence such a chain must converge on Ω as its final ground.
-
-3. Combining (1) and (2), Ω plays a dual structural role:
-
-   * a **limit role**: Ω is the unique terminus of every well-founded explanatory chain that satisfies the Hyper-Minimal PSR;
-   * a **source role**: Ω is the unique, non-contingent node from which the full extension of each positive property can be coherently understood.
+4. **Factory as closure at the terminus:** Because the terminus is unique and necessary, the only stable location for the completion of admissible structure is Ω. Properties that are required to preserve grounded coherence (A1/A3/A5) and are admissible under A2 are thereby **forced** as members of the Pos-domain; Ω instantiates these forced Pos-properties as the fixed point of the closure.
 
 #### Convergence to the Ontological Singularity
 
-In this sense, the **Ontological Singularity** Ω can be described as a *Factory* for positive properties: not in the temporal or mechanistic sense of producing new features over time, but as the structural locus where all positive properties are perfectly integrated and mutually coherent. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of positive properties will, under the constraints of this framework, asymptotically converge toward Ω as its unique singular point of grounding.
+In this sense, the **Ontological Singularity** Ω is a *Factory* for positive properties—not temporally producing features, but functioning as the **constitutive closure point** where admissible positive structure is forced to complete and stabilize. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of admissible positive properties will, under the constraints of this framework, converge toward Ω as the unique singular point at which that closure is realized.
 
 #### Ground and Return to Ω
-On this reading, Ω is not a tower to be constructed by human striving, but the necessary ground from which finite agents may deviate through social consensus, through the pursuit of profit and knowledge alone, or through error. The successor-based chain does not represent a ladder toward God; it formally traces the path of departure from the ground of being. Convergence to Ω is therefore not an achievement but a return to the singular source of intelligibility.
 
-This “Factory” reading does not introduce a new axiom; it is a conceptual corollary of the already established theorems on the necessary existence, uniqueness, and perfect positivity of Ω. It simply makes explicit what the formal structure already entails: that every coherent treatment of positive properties is both **closed by** Ω and **organised around** Ω as its singular centre.
+On this reading, Ω is not a tower constructed by finite agents, but the necessary ground relative to which they can deviate through error, partiality, or merely local optimization. The successor-based chain does not represent a ladder toward God; it traces the structure by which finite systems drift from, and are re-constrained by, the unique ground of intelligibility. Convergence to Ω is therefore not an achievement but a return to the singular source of grounded coherence.
+
+This “Factory” reading introduces no new axiom. It is a conceptual corollary of the already established results on the necessary existence, uniqueness, and positivity-constraint of Ω. It makes explicit what the constitutive architecture entails: every coherent treatment of admissible positive structure is both **closed by** Ω and **organized around** Ω as its singular center.
 
 ---
 ## **7. Conclusion**
@@ -1288,10 +1291,13 @@ PerfectBeing(Ω) :=
 ```
 
 This aligns precisely with Gödel-style positivity conditions, but avoids any reliance on higher-order modal axioms beyond S5.
-#### B.1.4.1 Interpretation in Metaphysical Algebra (non-normative, structural)  
+
+#### B.1.4.1 Interpretation in Metaphysical Algebra (non-normative, structural)
+
 MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly (as a primitive predicate governed by the exported axioms/lemmas), the Metaphysical Algebra assigns it structural meaning: Pos(p) ranges over properties that are Ω-aligned—i.e., admit non-zero Ω-projection, have finite Ω-distance, and admit non-circular (independent) grounding relative to Ω. This interpretation does not change any kernel-verified results; it only provides semantic content for how Pos is read in MA.
 
-**Metaphysical Algebra (MA)** is the structural semantics layer used to *interpret* the Lean predicate `Pos(p)` without changing the Lean axioms. MA provides a mathematical reading of “positivity” as **Ω-alignment**, **finite Ω-distance**, and **non-circular grounding**. Concretely, MA relies on the following mathematics:
+**Metaphysical Algebra (MA)** is the structural semantics layer used to *interpret* the Lean predicate `Pos(p)` without changing the Lean axioms. MA provides a mathematical reading of “positivity” as **Ω-alignment**, **finite Ω-distance**, and **non-circular grounding**. MA does not constitute a semantics for the Lean development and is not invoked by any lemma/theorem; it is purely an expository reading of the already-fixed Pos predicate. Concretely, MA relies on the following mathematics:
+
 
 1. **Modal Logic (S5)**
 
