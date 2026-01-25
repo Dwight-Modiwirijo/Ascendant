@@ -250,14 +250,15 @@ This structure echoes Leibniz's *Monadology* §§36–38 (Leibniz 1714) and Aqui
 
 * **P3 (A3 — Anti-Regress, constitutive):** No infinite grounding chain is admissible ⇒ the grounding of `I` must terminate in a necessary endpoint.
 
-* **P4 (Coalescence / Minimality):** All terminating grounding chains converge to a single minimal endpoint within the grounding architecture.
+* **P4 (AltRoute: Coalescence / Minimality):** All terminating grounding chains converge to a single minimal endpoint within the grounding architecture.
 
 * **C2 (Uniqueness):** Therefore, the terminus is unique: `□∃!x Ω(x)`.
 
-* **P5 (A5 — Meta-Logical Closure, constitutive):** The terminus cannot be internally truth-closed/self-grounded ⇒ `Ω` is an actual necessary ground (not a merely formal posit).
+* **P5 (A5 — Meta-Logical Closure, constitutive):** The terminus cannot be internally self-grounding/self-contained ⇒ `Ω` is an actual necessary ground (not a merely formal posit).
 
 * **C (Ω / God):** Therefore, an actual necessary ground `Ω` exists for contingent obtaining (`□∃x Ω(x)` and `□∃!x Ω(x)`); and if `God ≡ Ω`, then `□∃x God(x)` and `□∃!x God(x)`.
 
+This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is deployed elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
 ---
 ## 4. Verification in Lean 4
