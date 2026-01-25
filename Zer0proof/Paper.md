@@ -1791,53 +1791,53 @@ Accordingly, no cosmological data, theory, or author is appealed to as support f
 ---
 ## References
 
-(Chicago author‑date with DOI)
+(Chicago author-date with DOI)
 
-Almeida, Michael J. *Freedom, God, and Worlds.*  Oxford University Press, 2012. https://doi.org/10.1093/acprof:oso/9780199640027.001.0001
+Almeida, Michael J. *Freedom, God, and Worlds.* Oxford University Press, 2012. [https://doi.org/10.1093/acprof:oso/9780199640027.001.0001](https://doi.org/10.1093/acprof:oso/9780199640027.001.0001)
 
-Anderson, C. Anthony. *Some Emendations of Gödel’s Ontological Proof.* Faith and Philosophy 7, no. 3 (1990): 291–303. https://doi.org/10.5840/faithphil19907325
+Anderson, C. Anthony. *Some Emendations of Gödel’s Ontological Proof.* Faith and Philosophy 7, no. 3 (1990): 291–303. [https://doi.org/10.5840/faithphil19907325](https://doi.org/10.5840/faithphil19907325)
 
 Aquinas, Thomas. *Summa Theologica.* Translated by Fathers of the English Dominican Province. Benziger Bros., 1947. (Originally published 1265–1274).
 
-Benzmüller, Christoph, and Bruno Woltzenlogel Paleo. *Formalization, Mechanization and Automation of Gödel's Proof of God's Existence.* arXiv preprint arXiv:1308.4526 (2013). https://doi.org/10.48550/arXiv.1308.4526
+Benzmüller, Christoph, and Bruno Woltzenlogel Paleo. *Formalization, Mechanization and Automation of Gödel's Proof of God's Existence.* arXiv preprint arXiv:1308.4526 (2013). [https://doi.org/10.48550/arXiv.1308.4526](https://doi.org/10.48550/arXiv.1308.4526)
 
-Blackburn, Patrick, Maarten de Rijke, and Yde Venema. *Modal Logic.* Cambridge University Press, 2001. https://doi.org/10.1017/CBO9781107050884
+Blackburn, Patrick, Maarten de Rijke, and Yde Venema. *Modal Logic.* Cambridge University Press, 2001. [https://doi.org/10.1017/CBO9781107050884](https://doi.org/10.1017/CBO9781107050884)
 
-*The Holy Bible: New International Version.* Zondervan, 2011. Exodus 3:14, John 1:1.
+Buzzard, Kevin. *The Lean Theorem Prover and Its Application to Formalising Mathematics.* Proceedings of the ICM 2022, Vol. 1, 2022. [https://icm2022.org/proceedings](https://icm2022.org/proceedings)
 
-Buzzard, Kevin. *The Lean Theorem Prover and Its Application to Formalising Mathematics.* Proceedings of the ICM 2022, Vol. 1, 2022. https://icm2022.org/proceedings
+Fitting, Melvin. *Types, Tableaus, and Gödel’s God.* Springer, 2002. [https://doi.org/10.1007/978-94-010-0411-4](https://doi.org/10.1007/978-94-010-0411-4)
 
-Fitting, Melvin. *Types, Tableaus, and Gödel’s God.* Springer, 2002. https://doi.org/10.1007/978-94-010-0411-4
-
-Gödel, Kurt. *Ontological Proof.* In Collected Works, Vol. 3. Oxford University Press, 1995.
+Gödel, Kurt. *Ontological Proof.* In *Collected Works*, Vol. 3. Oxford University Press, 1995.
 
 Hawking, Stephen, and Leonard Mlodinow. *The Grand Design.* Bantam Books, 2010.
 
-Lemaître, Georges. *The Primeval Atom: An Essay on Cosmogony.* Van Nostrand, 1946; Lambert, Dominique. Un Atome d’Univers: La Vie et l’Œuvre de Georges Lemaître. Racine, 2000.
-
-Meyer, Stephen C. *Signature in the Cell: DNA and the Evidence for Intelligent Design.* HarperOne, 2009.
-
-Oppy, Graham. *Ontological Arguments and Belief in God.* Cambridge University Press, 1996. https://doi.org/10.1017/CBO9780511663840
-
-Penrose, Roger. *The Emperor’s New Mind: Concerning Computers, Minds, and the Laws of Physics.* Oxford University Press, 1989. https://doi.org/10.1093/oso/9780198519737.001.0001
-
-Penrose, Roger. *The Road to Reality: A Complete Guide to the Laws of the Universe.* Jonathan Cape, 2004.
-
-Penzias, Arno A., and Robert W. Wilson. *A Measurement of Excess Antenna Temperature at 4080 Mc/s.* The Astrophysical Journal 142 (1965): 419–421. https://doi.org/10.1086/148307
-
-Plantinga, Alvin. *The Nature of Necessity.* Oxford University Press, 1974. https://doi.org/10.1093/0198244142.001.0001
-
-Popper, Karl. *The Logic of Scientific Discovery.* Routledge, 2002. (Originally published 1934).
-
-Scholze, Peter. *Liquid Tensor Experiment – A Proof of the Direct Summand Conjecture.* Preprint, 2020. https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/
-
-Tegmark, Max. *Our Mathematical Universe: My Quest for the Ultimate Nature of Reality.* Knopf, 2014.
-
-Turing, Alan M. *On Computable Numbers, with an Application to the Entscheidungsproblem.* Proceedings of the London Mathematical Society, 1936. https://doi.org/10.1112/plms/s2-42.1.230
+Kripke, Saul A. *Naming and Necessity.* Cambridge, MA: Harvard University Press, 1980.
 
 Leibniz, Gottfried Wilhelm. *Monadology.* 1714. Translated by Robert Latta. Oxford University Press, 1898.
 
-Kripke, Saul A. *Naming and Necessity.* Cambridge, MA: Harvard University Press, 1980.
+Lemaître, Georges. *The Primeval Atom: An Essay on Cosmogony.* Van Nostrand, 1946; Lambert, Dominique. *Un Atome d’Univers: La Vie et l’Œuvre de Georges Lemaître.* Racine, 2000.
+
+Meyer, Stephen C. *Signature in the Cell: DNA and the Evidence for Intelligent Design.* HarperOne, 2009.
+
+Oppy, Graham. *Ontological Arguments and Belief in God.* Cambridge University Press, 1996. [https://doi.org/10.1017/CBO9780511663840](https://doi.org/10.1017/CBO9780511663840)
+
+Penrose, Roger. *The Emperor’s New Mind: Concerning Computers, Minds, and the Laws of Physics.* Oxford University Press, 1989. [https://doi.org/10.1093/oso/9780198519737.001.0001](https://doi.org/10.1093/oso/9780198519737.001.0001)
+
+Penrose, Roger. *The Road to Reality: A Complete Guide to the Laws of the Universe.* Jonathan Cape, 2004.
+
+Penzias, Arno A., and Robert W. Wilson. *A Measurement of Excess Antenna Temperature at 4080 Mc/s.* The Astrophysical Journal 142 (1965): 419–421. [https://doi.org/10.1086/148307](https://doi.org/10.1086/148307)
+
+Plantinga, Alvin. *The Nature of Necessity.* Oxford University Press, 1974. [https://doi.org/10.1093/0198244142.001.0001](https://doi.org/10.1093/0198244142.001.0001)
+
+Popper, Karl. *The Logic of Scientific Discovery.* Routledge, 2002. (Originally published 1934).
+
+Scholze, Peter. *Liquid Tensor Experiment – A Proof of the Direct Summand Conjecture.* Preprint, 2020. [https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/](https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/)
+
+Tegmark, Max. *Our Mathematical Universe: My Quest for the Ultimate Nature of Reality.* Knopf, 2014.
+
+*The Holy Bible: New International Version.* Zondervan, 2011. Exodus 3:14, John 1:1.
+
+Turing, Alan M. *On Computable Numbers, with an Application to the Entscheidungsproblem.* Proceedings of the London Mathematical Society, 1936. [https://doi.org/10.1112/plms/s2-42.1.230](https://doi.org/10.1112/plms/s2-42.1.230)
 
 ### Author
 Dwight S. Modiwirijo, Independent scholar and .NET developer. No funding declared.
