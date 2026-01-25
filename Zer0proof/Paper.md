@@ -421,7 +421,7 @@ $$
 
 This axiom ensures that no internally negating or contradictory property is admitted.
 
-The argument is structured for later verification in Lean (e.g. as theorems in S5 modal logic, building on Appendix A).
+The argument is structured in S5 form (building on Appendix A) so that its formal derivations can be kernel-certified where provided.
 
 We define Ω formally at the *semantic target level* as:
 
@@ -687,7 +687,7 @@ Thus, there exists a single entity such that, in all possible worlds, being $\Om
 
 These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
 
-Starting from the minimal ontological datum of contingent obtaining **“I am”**, interpreted not psychologically but as an actually obtaining state that the kernel can formally certify, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+Starting from the minimal ontological datum of contingent obtaining **“I am”**, interpreted not psychologically but as an actually obtaining state; separately, the kernel certifies the formal derivation relative to the stated axioms, the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
@@ -1759,7 +1759,7 @@ Lemaître's framework strengthens the case for a necessary ground (Ω). He viewe
 #### 5.8.1 Finite Matter
 Building on the cosmological finitude established in Section 5.7, this section demonstrates how both the empirically supported finitude of matter and the hypothetical infinitude thereof reinforce the Hyper-Modal Theorem proof of necessary theism (□∃!x Ω(x), whose structural core is realised by the Lean Alt Route in Appendix A). In either case, materialism fails to provide a complete, self-grounding framework, necessitating an external, perfect entity (Ω) per A1 (HM-PSR) and A3 (Anti-Regress). This extrapolation aligns with Gödelian incompleteness (Section 5.1) and ground paradoxes (e.g., First Cause and Münchhausen-Trilemma in Section 5.6's table), ensuring the Hyper-Modal Theorem's robustness against materialistic objections.
 
-Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2). Lean verification could formalize this as: theorem finitude_reinforce : Cont(Matter) → □(Ω Grounds Matter ∧ Perfection Ω).
+Consider finitude first: As matter is finite (e.g., bounded by the Big Bang's singular origin and entropic decay, per Lemaître), it can be isomorphically projected into a finite formal system (e.g., logic with set theory, ZFC). Gödel's theorems dictate that such systems are incomplete—containing unprovable truths—requiring meta-reasoning (A5) and a terminating ground to avoid regress (A3) or semantic collapse (Section 5.5). This directly strengthens the Hyper-Modal Theorem: The contingent finitude of matter (Cont(Matter)) demands a necessary ground (**Nec(Ω) ∧ Ω ◃ Matter**, per A1), bundling all positive properties without negation (A2).
 
 #### 5.8.2 Infinite Matter
 Even if matter were hypothetically infinite (e.g., in eternal inflation models or Tegmark's mathematical universe), the Hyper-Modal Theorem holds. Infinite matter would engender regress paradoxes (e.g., Hilbert's Grand Hotel as a veridical paradox in Section 5.6, illustrating unbounded accommodation but unresolvable without external bounds) or Cantorian inconsistencies (unprovable truths about transfinite sets, per Gödel). This violates A3 by implying an infinite causal chain without termination, still necessitating meta-logical closure (A5) and a transcendent ground (Ω) to anchor meaning. Contra self-contained infinitude (e.g., Hawking's models), such systems remain incomplete, as infinity itself requires a non-contingent basis for coherence (A4). Thus, infinitude reinforces the Hyper-Modal Theorem equivalently: theorem infinitude_reinforce : Infinite(Matter) → Regress(Matter) → □(Ω Terminates Regress ∧ Pos Ω). In both scenarios, materialism collapses, affirming Ω's necessity and perfection across all possible worlds.
