@@ -1,16 +1,16 @@
 # Formal Verification of Necessary Grounding via Successor Semantics
-## Superintelligence: A Gödelian Argument for the Existence and Uniqueness of God
+## Superintelligence: Gödel–Turing Limits and Tarskian Disquotation in the Modal Grounding Theorem of God (**$\Omega$**)
 
 ### Abstract 
 
 This paper presents the **Alt Route proof**, a Lean *kernel-verified* construction (private route) establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework; the public repository certifies only the intentionally exported **□◇** verification surface. The argument does not rely on classical perfection axioms; **the successor‑based grounding architecture** illustrates the structure enforced by the constitutive ontological principles (**A1/A3/A5)**, which are the true source of necessity in the framework.
 
-At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate ascends along a finite, well-founded explanatory path. This grounding process terminates in a single, non-contingent point — **Ω** — defined purely by minimality of measure within the successor system. The existence of Ω follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior (Ω-points are stable under succession) and chain coalescence (all Ω-points lie on the same finite successor path).
+At the core of the framework lies a **successor-like grounding function**, which ensures that every contingent predicate is carried through a finite, well-founded transcendental grounding process. This grounding process terminates in a single, non-contingent point — **Ω** — defined purely by minimality of measure within the successor system. The existence of Ω follows from reductio-based anti-regress principles, and its uniqueness is established via the interaction between fixed-point behavior (Ω-points are stable under succession) and chain coalescence (all Ω-points lie on the same finite successor path).
 
 The proof consists of **one fully Lean-verified constructive route** (the Alt Route) which establishes the structural necessity of Ω via a successor-based machine, and a **philosophically articulated hyper-modal framework** that interprets this structure. The formal kernel mirrors the metaphysical Hyper-Modal Theorem: formally, the Alt Route realizes the structure where denying a necessary terminus results in infinite regress.
 Combined, they yield a complete **ontological closure theorem**: all intelligible explanatory structures — whether modal, logical, or computational — must terminate uniquely in Ω.
 
-**Keywords:** Alt Route, necessary existence, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason.
+**Keywords:** Alt Route, necessary existence, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK.
 
 ---
 
@@ -241,7 +241,6 @@ $$
 The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency.
 
 Lean/Tarski/BHK contribute only to formal certification and semantic housekeeping; they do not supply an ontological bridge to actuality, which is fixed constitutively by A1/A3/A5.
-The verification serves two critical purposes:
  
 The formal core corresponding to the successor-based architecture is fully verified in Lean 4, ensuring that each inference step complies with strict type-theoretical and logical consistency. The verification serves two critical purposes:
 
@@ -274,6 +273,8 @@ A deeper clarification is needed here. Gödel’s incompleteness theorems show t
 The Brouwer–Heyting–Kolmogorov interpretation reinforces this limitation by identifying truth with provability. While fruitful for constructive mathematics, it reduces truth to a procedure internal to the system, thereby sidestepping the ontological question of what truth *is*. Modern scientific discourse largely inherits this operational stance: it functions with extraordinary success while remaining formally silent about the nature of truth itself.
 
 Our appeal to **Ω** does not derive metaphysics from formal systems. Gödel, Tarski, and BHK jointly illustrate only that formal systems cannot internally ground their own truth‑notion; the ontological grounding itself is supplied by A1/A3/A5, not by any formal or semantic mechanism. **Ω** is introduced not as a theorem within the system, but as the ontological condition that makes truth, meaning, and formal reasoning possible at all.
+
+Alongside Gödel’s incompleteness (limits of derivability) and Tarski’s truth-theoretic constraint (limits of internal truth-definition), Turing adds the limit of decidability: even when reasoning is operationalized as computation, there is no uniform internal decision procedure for all cases. These results jointly motivate a meta-level distinction between internal procedures and the conditions that make such procedures intelligible, without turning any of them into an ontological generator.
 
 ---
 ### 5.2 Ambiguity Between Necessity and Contingency
@@ -416,7 +417,6 @@ Thus:
 > **Ungrounded systems collapse into triviality or explosion.  
 Grounding is required not to make logic work, but to make meaning possible.  
 Truth‑functional implication evaluates form, not meaning; grounding restores the semantic relation between antecedent and consequent.**
-
 
 ---
 ### 5.6 Paradox Types and the Perfection of Ω
@@ -673,7 +673,7 @@ This “Factory” reading does not introduce a new axiom; it is a conceptual co
 ---
 ## **7. Conclusion**
 
-### **7.1 The Non-Self-Foundation of Computability (Revised)**
+### **7.1 The Non-Self-Foundation of Computability**
 
 This paper has established, within a hyper-modal framework and with Lean 4 certification, that the existence of a necessary and **uniquely grounding** being $\Omega$ is a logical consequence rather than a speculative hypothesis.
 
@@ -698,6 +698,9 @@ These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof
 Starting from the minimal ontological datum of contingent obtaining **“I am”** (read ontologically, not psychologically), the analysis demonstrates that contingent truths require ontological grounding in $\\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). Separately, the kernel certifies the formal derivation relative to the stated axioms. The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
+
+#### 7.1.1
+Turing’s undecidability results provide the computational analogue of Gödelian limitation: no sufficiently general computational system can decide, from within a single uniform procedure, all questions of termination and total correctness. This does not constitute an ontological bridge. Rather, it diagnoses the non-self-foundation of computation: computation cannot fully certify its own global admissibility by purely internal means. In this framework, that diagnostic sits downstream of the constitutive grounding architecture (A1/A3/A5): it illustrates why a purely computational closure cannot replace grounding.
 
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
@@ -1759,7 +1762,7 @@ Some readers find it helpful to notice an analogy between (i) well-foundedness i
 
 Accordingly, no cosmological data, theory, or author is appealed to as support for $A1/A3/A5$ or for $\square\exists!x\,\Omega(x)$. The grounding architecture stands or falls independently of physics.
 
-
+---
 ## References
 
 (Chicago author‑date with DOI)
