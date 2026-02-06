@@ -62,7 +62,7 @@ $$
 Pos(P)\ \equiv\ \neg\exists Q,\bigl(Q \rightarrow \neg P\bigr),
 $$
 
-which encodes non-defeat: no (Q) may be available that systematically forces (\neg P) in the relevant grounding setting.
+which encodes non-defeat: no (Q) may be available that systematically forces ($\neg P$) in the relevant grounding setting.
 
 **Note on formalization:** the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate (Appendix A.6: `Positive`), rather than this informal schematic gloss. This is intentional: the paper-level clause specifies the intended stability reading (fixed-point admissibility), while the kernel development fixes the exact predicate used in machine checking. The corresponding non-defeat constraint is enforced by the internal lemma/axiom suite (Appendix A.6: `perfect_positivity`), preventing circularity and contingent dependence.
 
