@@ -577,7 +577,7 @@ These constraints jointly force the existence of a unique necessary ground Ω th
 Thus, for every paradox type **T**, the structural analysis supports:
 
 $$
-\square \forall T\,(\text{ParadoxType}(T) \rightarrow \text{Supports}(T,\,\text{Perfection}(\Omega))).
+\square \forall T\,(\text{ParadoxType}(T) \rightarrow \text{Supports}(T,\text{Perfection}(\Omega))).
 $$
 
 This conclusion is ontological rather than epistemic: paradoxes do not *prove* Ω, but their structural resolution presupposes the grounding architecture that necessitates Ω.
