@@ -1,9 +1,9 @@
 # Formal Verification of Necessary Grounding via Successor Semantics
-## Superintelligence: Gödel–Turing Limits and Tarskian Disquotation in the Modal Grounding Theorem of God (**$\Omega$**)
+## Superintelligence, Gödel–Turing Limits, and the Tarskian Grounding of God (**$\Omega$**) 
 
 ### Abstract
 
-This paper presents the **Alt Route proof**, a Lean *kernel-verified* construction (private route) establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework; the public repository certifies only the intentionally exported **□◇** verification surface. The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
+This paper presents the *Alt Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public verification surface explicates the strong ontological claim that is true—contingent reality witnesses the necessity it presupposes. The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
 
 At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
