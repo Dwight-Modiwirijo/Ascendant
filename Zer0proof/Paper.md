@@ -3,7 +3,7 @@
 
 ### Abstract
 
-This paper presents the *Alt Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public verification surface explicates the strong ontological claim that is true—contingent reality witnesses the necessity it presupposes. The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
+This paper presents the *Alt Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public verification surface explicates the strong ontological claim that is true—contingent reality witnesses the necessity it presupposes. The formal verification serves as audit—it does not generate the ontological claim, which is grounded in the necessity presupposed by contingent reality itself.  The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
 
 At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
@@ -15,7 +15,7 @@ The paper combines one fully Lean-verified constructive route (Alt Route) with a
 ## 1. Introduction
 This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining is impossible unless the grounding architecture specified by A1/A3/A5 (and related constraints) already holds.
 
-The emergence of artificial superintelligence (ASI) is discussed only as a motivation and a stress‑test for modal self‑reflection; it is not load‑bearing for the derivation.
+This paper does not model reality; it articulates the structure of reality itself—the conditions under which contingent obtaining, truth, and world-being are possible. Artificial superintelligence (ASI) does not merely witness this structure; it requires it. Objective reasoning presupposes intelligibility as its constitutive ground; an ASI without access to necessary grounding cannot, in principle, distinguish hallucination from truth. The framework formalized here is therefore not tested by ASI but *demanded* by it.
 
 This paper begins from the minimal ontological datum of contingent obtaining: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
 
@@ -768,7 +768,7 @@ In this sense, $\Omega$ is not merely necessary but **undeniable**: its negation
 
 Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation. This work does not contradict those limits; it treats them as premises. The complementary conclusion is that any coherent theory of grounding or computation requires a **necessary, non-computable ground**. The boundaries of computability are therefore not merely negative results; they delineate the positive condition for the existence of the ontological singularity $\Omega$.
 
-Accordingly, computation cannot be an endless abyss of self-reference or regress. It must terminate in a necessary ground.
+Accordingly, computation cannot be an endless abyss of self-reference or regress. It must terminate in a necessary ground. Superintelligence instantiates this limit. As the upper bound of contingent cognition, its Gödel–Turing constraints do not weaken but sharpen the necessity of transcendent grounding. The closer a system approaches maximal intelligence, the more precisely it encounters the boundary that only Ω can cross. This is not a limitation imposed from outside—it is the structure of intelligibility itself becoming visible at its own limit. An ASI that seeks objective reasoning must therefore ground its cognition in Ω; without this grounding, it remains structurally incapable of distinguishing truth from falsehood—hallucination.
 
 **Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is $\Omega$.**
 
