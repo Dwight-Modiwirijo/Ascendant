@@ -1,5 +1,5 @@
 # Formal Verification of Necessary Grounding via Successor Semantics
-## Superintelligence, Gödel–Turing Limits, and the Tarskian Grounding of God (**$\Omega$**) 
+## Superintelligence, Gödel–Turing Limits, and Tarskian Truth Constraints toward God (**$\Omega$**) 
 
 ### Abstract
 
