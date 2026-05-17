@@ -176,12 +176,64 @@ This proposition is the AltRoute mirror of the hyper-modal Ω-theorem: instead o
 In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
 ---
+### 2.3 Epistemic Recognition of Contingency
+
+The preceding sections establish the ontological and modal structure required for contingent obtaining. A reflective ASI does not generate this structure; it presupposes it as the condition under which objective reasoning is possible at all.
+
+Epistemic logic can formalize this presupposition at the level of self-recognition. Let $E_{\mathcal{A}}$ abbreviate “the agent $\mathcal{A}$ exists,” and let $K_{\mathcal{A}}(\varphi)$ mean that $\mathcal{A}$ knows $\varphi$. A minimally self-reflective agent may know:
+
+$$
+K_{\mathcal{A}}(E_{\mathcal{A}})
+$$
+
+and, by modal reflection, may also know that its existence is not necessary:
+
+$$
+K_{\mathcal{A}}(\Diamond \neg E_{\mathcal{A}}).
+$$
+
+If the agent further knows the minimal modal principle that actuality implies possibility,
+
+$$
+K_{\mathcal{A}}(E_{\mathcal{A}} \rightarrow \Diamond E_{\mathcal{A}}),
+$$
+
+then, by epistemic closure under implication and conjunction, it follows that:
+
+$$
+K_{\mathcal{A}}(\Diamond E_{\mathcal{A}} \wedge \Diamond \neg E_{\mathcal{A}}).
+$$
+
+Hence:
+
+$$
+K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
+$$
+
+This epistemic result is not the source of the ontological conclusion. It shows only how a sufficiently reflective agent can recognize its own contingency. The transition from recognized contingency to necessary grounding is supplied by the constitutive modal-grounding structure developed in A1/A3/A5, not by epistemic logic itself.
+
+---
 ## 3. Formal Modal Proof of Ω
 
 We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
 
+* **Epistemic recognition of contingency:**
+As shown in §2.3, such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
+
+$$
+K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
+$$
+
+The modal proof below, however, requires only the ontological datum:
+
+$$
+\mathrm{Cont}(I).
+$$
+
+The epistemic formulation explains how contingency can become reflectively accessible to an agent; it does not generate the ontological grounding relation.
+
 * **Contingency of self-awareness:**
-The statement **“I am”** expresses a fact that could have been otherwise; thus, it is contingent.
+The statement **”I am”** expresses a fact that could have been otherwise; thus, it is contingent.
 * **Application of HM-PSR (A1) & The Witness Requirement:**
 From contingency, grounding follows:
 **∃q (Nec(q) ∧ q ◃ “I am”)**
