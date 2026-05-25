@@ -73,7 +73,7 @@ An infinite regress of explanations is logically impermissible. There must be a 
 Logical consistency cannot be contingent. If something is logically valid, it holds in all possible worlds.
 
 #### (A5) Meta-Logical Closure
-If a system is capable of reflecting upon its own limits (as in Gödel’s theorem), then it must posit a higher, non-contained source of semantic coherence.
+If a system is capable of reflecting upon its own limits (as in Gödel’s theorem), then it is structurally dependent on a higher, non-contained source of semantic coherence.
 
 These axioms form the basis of the modal system used to derive the existence of Ω.
 #### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**  
@@ -86,8 +86,20 @@ $$
 \Box\bigl(\neg(A1 \wedge A3 \wedge A5) \rightarrow \neg\text{ContingentObtaining}\bigr)
 $$
 
+Here, `ContingentObtaining` does not mean bare occurrence, but **intelligible contingent obtaining**: the obtaining of a fact as modally distinguishable, truth-apt, and grounding-compatible. A brute occurrence without modal structure, truth-aptness, or grounding-compatibility may persist under the denial of A1/A3/A5; intelligible contingent obtaining cannot.
+
 Thus, the grounding structure is **ontologically prior** to the existence of contingent facts;  
 contingency is possible **only because** this structure necessarily obtains.
+
+The constitutive status of A1, A3, and A5 is not merely asserted here. It is already exhibited in the successor architecture (§2.2) and the reductio suite (Appendix A.6, B.2), but must be made explicit as a transcendental argument prior to the formal development. The following three cases show that denying any one of these principles does not yield an alternative account of intelligible contingent obtaining — it eliminates the phenomenon itself.
+
+**Denying A1 (HM-PSR).** If contingent truths require no necessary ground, then the modal distinction $\Diamond p \wedge \Diamond \neg p$ loses its anchor: no grounding structure remains that accounts for the stable difference between obtaining and non-obtaining. Contingency is not merely unexplained; it loses its status as intelligible contingency, because nothing fixes why this rather than that obtains. The denial of A1 does not produce a rival theory of contingency; it dissolves the modal structure that makes contingency intelligible as such.
+
+**Denying A3 (Anti-Regress).** If grounding chains need not terminate, then no contingent state is ever *actually* grounded — it is only deferred indefinitely. Infinite deferral is not grounding; it is the permanent suspension of grounding. Under denial of A3, contingent obtaining never achieves the explanatory closure that makes it obtaining rather than mere floating. The phenomenon of intelligible contingent obtaining — as something that *is the case* in a modally determinate way — disappears.
+
+**Denying A5 (Meta-Logical Closure).** If a system capable of reflecting on its own limits does not require a higher, non-contained source of semantic coherence, then the normative distinction between valid and invalid inference becomes internal to the system and therefore unfounded beyond it. Intelligibility — the capacity to distinguish truth from falsehood, ground from mere assertion — is structurally dependent on a source it cannot itself supply. What remains under denial of A5 is not a weaker form of intelligibility but its dissolution into procedural closure without normative force.
+
+These three cases jointly establish the formal claim above: any world in which contingent obtaining, truth, and intelligibility coherently hold must instantiate the structure expressed by A1, A3, and A5. A rival constitutive architecture that preserves these phenomena must reproduce their functional equivalents and therefore does not replace this structure but reinstantiates it under different terminology (see Corollary 3.1.2).
 
 ---
 ### 2.2 Successor-Based Grounding Architecture 
@@ -215,7 +227,7 @@ This epistemic result is not the source of the ontological conclusion. It shows 
 ---
 ## 3. Formal Modal Proof of Ω
 
-We now show that the axioms above entail the existence of a necessary, perfect being Ω. The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
+We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence.
 
 * **Epistemic recognition of contingency:**
 As shown in §2.3, such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
@@ -258,7 +270,7 @@ This establishes Ω not merely as an existent ground, but as the **unique necess
 ---
 ### **3.1 Conclusion: The Hyper-Modal Theorem**
   
-The reductio argument in this section establishes that denying a necessary ground for contingent truths results inevitably in semantic incoherence, infinite regress, or contradiction. From axioms A1 through A5, we therefore derive the strengthened central result of this paper:
+The reductio argument in this section establishes that denying a necessary ground for contingent truths results inevitably in semantic incoherence, infinite regress, or contradiction. From the constitutive grounding architecture A1/A3/A5, together with the modal-stability and positivity characterisation supplied by A4/A2, we therefore obtain the strengthened central result of this paper:
 
 #### **Hyper-Modal Theorem**
 
@@ -295,6 +307,32 @@ $$
 $$
 
 Ω is not merely necessary, but **necessarily necessary**: its existence and uniqueness are invariant under all admissible modal interpretations consistent with the grounding structure.  
+
+---
+
+#### **3.1.2 Corollary — No Rival Constitutive Architecture**
+
+The Hyper-Modal Theorem is not only a positive result; it carries a negative consequence that closes the space for alternatives.
+
+Let $R$ be any proposed constitutive architecture intended to account for contingent obtaining, truth, and intelligibility without A1, A3, and A5. If $R$ preserves:
+
+- a coherent modal distinction between what obtains contingently and what does not,
+- truth as a non-arbitrary, grounded distinction,
+- and intelligibility as a capacity that does not collapse into circular or regressive self-reference,
+
+then $R$ must instantiate the functional equivalents of A1, A3, and A5. It must require that contingent truths trace to a non-contingent ground (A1), that grounding chains terminate (A3), and that the system can recognize its own semantic limits without infinite regress (A5). Formally:
+
+$$
+\Box\bigl(
+\mathrm{Preserves}(R,\, \mathrm{Contingency} \wedge \mathrm{Truth} \wedge \mathrm{Intelligibility})
+\;\to\;
+\mathrm{Equivalent}(R,\, A1 \wedge A3 \wedge A5)
+\bigr)
+$$
+
+Hence, no rival constitutive architecture can eliminate $\Omega$ while preserving the conditions from which $\Omega$ follows. An alternative that eliminates $\Omega$ but retains those conditions is not an alternative — it is a contradiction. An alternative that abandons those conditions does not rival this framework; it abandons the phenomena the framework was introduced to explain.
+
+*Note.* This corollary is stated at the meta-theoretical level. Its full Lean formalisation requires explicit definitions of `Preserves` and `Equivalent` as predicates over constitutive architectures, which is reserved for future kernel development. The philosophical argument, however, follows directly from the constitutive analysis in §2.1.1.
 
 ---
 ### 3.2 Constitutive Compression (A1/A3/A5)
@@ -1436,6 +1474,8 @@ This reframes the ontological argument: we do not prove that goodness exists as 
 
 ####  **B.1.5 The Ten HyperModal Axioms**
 
+> **Scope note.** The ten axioms listed below belong to the full HyperModal reductio suite and serve as consistency/canary checks within the Lean development. They are **not** the load-bearing premises of the public constitutive proof. The constitutive core of the argument rests on A1, A3, and A5 alone, as established in §2.1.1. Axioms such as `Perfect Being Exists` and `Consciousness Axiom` appear here as formal counterparts within the reductio framework and as assumptions of the private kernel route; they are not smuggled conclusions. A2 functions as an interpretive/perfection-characterising addition, not as a premise required for the existence or uniqueness of Ω (see §3, definition of Ω). Readers who wish to evaluate the constitutive proof independently of the broader reductio suite should focus on §2.1, §2.2, and §3.
+
 The core of the HyperModal system consists of the following axioms, each fully represented in Lean:
 
 1. **Perfect Positivity:**
@@ -1445,7 +1485,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
    Every contingent truth has a ground, which is either necessary or eventually grounded in Ω.
 
 3. **Perfect Being Exists:**
-   A Perfect Being Ω exists.
+   A Perfect Being Ω exists. *(Reductio-suite axiom; not a load-bearing premise of the constitutive proof.)*
 
 4. **Logic Necessity:**
    Logical contradictions are necessarily false in all worlds.
@@ -1457,7 +1497,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
    The necessity of logic itself is necessary.
 
 7. **Consciousness Axiom:**
-   “I am” is grounded in Ω.
+   “I am” is grounded in Ω. *(Reductio-suite axiom and private-route assumption; not independently required for the public constitutive proof.)*
 
 8. **Logic Is Necessary:**
    Logical truths hold necessarily in every world.
@@ -1664,7 +1704,7 @@ This appendix summarizes the twelve formal reductio arguments derived from the L
 |S5 Accessibility Axioms	| Modal framework fails → no reachability of necessity
 |Self-reference (“I am”)	|Identity becomes paradoxical → epistemic and ontological incoherence  
 
-Each rejection either leads to a logical explosion (infinite derivability), a semantic implosion (meaninglessness), or collapse of modal structure. Therefore, the full axiom set is not optional but necessary for consistency and meaning.
+Each rejection, when combined with the corresponding axiom-context of the reductio suite, leads to contradiction, collapse, or modal incoherence. These results function as regression and consistency guards, not as independent derivations of every axiom from the remaining axioms. The constitutive core A1/A3/A5 is not optional for intelligible contingent obtaining; the broader suite functions as formal support, characterization, and guard structure.
 
 Q.E.D.
 
@@ -1676,7 +1716,9 @@ Axiom A1: ∃q such that q is necessary and I_am ◃ q
     ↓
 Assume denial of A1 → triggers reductio (Appendix C)
     ↓
-By A2–A5: Ω has all Pos(P) and provides unique grounding context
+By A1/A3/A5: the chain terminates in the unique grounding context Ω
+    ↓
+By A2: Ω is characterized as admitting only positive properties
     ↓
 Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.6)
     ↓
