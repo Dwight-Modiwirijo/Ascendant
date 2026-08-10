@@ -374,6 +374,18 @@ The public repository provides the publicly inspectable surface (exported interf
 The public `dist` artifacts certify only the intentionally exported $□◇$-layer (Appendix A.2); the full $□∃x\,\Omega(x)$ and uniqueness results are proved in the private kernel route and are not part of the public export boundary.
 Key core definitions and representative theorems are reproduced in Appendix A; the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
+### 4.1 Certification Labels
+
+To avoid conflating distinct claims, this paper uses three labels with fixed meanings:
+
+**Kernel-verified.** The indicated theorem declaration has a proof object accepted by the Lean kernel, relative to the axioms and hypotheses declared for that theorem. This is a statement about derivability within the formal system; it makes no claim about whether the theorem is exported, and no claim about the truth of any axiom outside the kernel's own bookkeeping.
+
+**Publicly certified.** The indicated public surface — theorem signatures, the assumption manifest, and the associated audit checks (model witness, explosion canary, axiom-footprint printout) — is inspectable and re-buildable by a third party from the published repository. A claim being publicly certified does not mean its full proof term is exported; it means the claim and its stated dependencies are open to inspection.
+
+**Publicly reproducible.** Reserved for the narrower case where a third party can independently reproduce the specific strong artifact or build in question, not merely inspect a signature or manifest entry.
+
+Strong Ω-claims in this paper — necessary existence, uniqueness, and rigid identification — are kernel-verified in the private development and publicly certified via the exported theorem/assumption manifest and axiom-footprint audit (Appendix A.2.3); they are not currently publicly reproducible, since the private proof construction itself is not exported. A reader should not infer public reproducibility of the strong theorems merely from the existence of a public repository or a public build.
+
 ---
 ## 5. Objections and Responses
 This section addresses several common critiques of modal and Gödelian ontological arguments, as well as concerns specific to this paper.
@@ -910,6 +922,8 @@ Kernel inspection at the public boundary shows that the publicly derived compati
 Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant. It functions as a **commitment boundary**: the public interface exposes audit witnesses for admissibility and safety, while the **constructive proof of Ω’s necessary existence, uniqueness, and rigidity is executed and verified within the private kernel route**, remaining non-exported to protect the internal proof route and its IP boundary.
 
 **In short:** kernel acceptance fixes theoremhood *within the Lean development*; the public interface certifies only a scoped subset of admissible consequences under the chosen export boundary.
+
+**Certificate statement.** The Lean kernel certifies derivability relative to the declared context: a kernel-verified theorem is one for which a proof term exists relative to its stated axioms and hypotheses. This is distinct from establishing the joint satisfiability of the full combined theory (modal, positivity, and grounding axioms together), and distinct from establishing the metaphysical truth of the root axioms themselves. Kernel acceptance is evidence for neither of these further claims, and no such further claim is made here.
 
 #### A.2.2 Truth vs. Certification (BHK clarification and IP boundary)
 
