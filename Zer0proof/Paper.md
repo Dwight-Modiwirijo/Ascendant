@@ -384,23 +384,80 @@ Alongside the successor-based Alt Route (§2.2) and the axiomatic Hyper-Modal ro
 
 The argument of §§2–3 has a single overall shape, which the rest of the paper (§4, §7.2) makes formally precise. It is summarized here so that the formal apparatus that follows can be read as an articulation of this shape, rather than as a separate concern:
 
-```
-CONTINGENT ACTUALITY  ("I am"; §2.1, §3)
-        ↓
-CONSTITUTIVE GROUNDING ARGUMENT  (A1/A3/A5; §2.1.1)
-        ↓
-     R ⊨ Γ                              (§7.2, level 4)
-        │
-        │                 FORMAL ROUTES
-        │          Alt Route        TI
-        │           (§2.2)        (§3.3)
-        │              \            /
-        │               Γ ⊢ φ                 (§7.2, level 2)
-        │                  ↓
-        │              t : φ                  (§7.2, level 1; Appendix A.2.3)
-        │
-        └──────────────→ φ applies to actuality
-```
+<div align="center">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MjAgNzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ic3ludGhlc2lzLXRpdGxlIHN5bnRoZXNpcy1kZXNjIiBzdHlsZT0iZGlzcGxheTpibG9jazttYXgtd2lkdGg6OTIwcHg7d2lkdGg6MTAwJTtoZWlnaHQ6YXV0bzttYXJnaW46MS41cmVtIGF1dG87Ij4KICA8dGl0bGUgaWQ9InN5bnRoZXNpcy10aXRsZSI+RnJvbSBjb250aW5nZW50IGFjdHVhbGl0eSB0byB0aGUgYXBwbGljYXRpb24gb2Ygz4Y8L3RpdGxlPgogIDxkZXNjIGlkPSJzeW50aGVzaXMtZGVzYyI+Q29udGluZ2VudCBhY3R1YWxpdHkgbGVhZHMgdGhyb3VnaCB0aGUgY29uc3RpdHV0aXZlIGdyb3VuZGluZyBhcmd1bWVudCB0byBSIHNhdGlzZnlpbmcgzpMuIFRoZSBBbHQgUm91dGUgYW5kIHRyYW5zY2VuZGVudGFsIGluZHVjdGlvbiBlc3RhYmxpc2ggzpMgZW50YWlscyDPhjsgdGhlIEFsdCBSb3V0ZSBhbHNvIHN1cHBsaWVzIGEgcHJvb2YgdGVybSB0IG9mIHR5cGUgz4YuIFRvZ2V0aGVyIHdpdGggdGhlIHNlbWFudGljIGdyb3VuZGluZyBvZiDOkywgdGhpcyBsaWNlbnNlcyBhcHBseWluZyDPhiB0byBhY3R1YWxpdHkuPC9kZXNjPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3doZWFkIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG9yaWVudD0iYXV0byIgbWFya2VyVW5pdHM9InN0cm9rZVdpZHRoIj4KICAgICAgPHBhdGggZD0iTSAwIDAgTCAxMCA1IEwgMCAxMCB6IiBmaWxsPSIjMzc0MTUxIi8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveCB7IGZpbGw6I2Y4ZmFmYzsgc3Ryb2tlOiMzMzQxNTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yb3V0ZSB7IGZpbGw6I2VlZjJmZjsgc3Ryb2tlOiM0ZjQ2ZTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yZXN1bHQgeyBmaWxsOiNlY2ZkZjU7IHN0cm9rZTojMDQ3ODU3OyBzdHJva2Utd2lkdGg6MjsgfQogICAgICAuZmxvdyB7IGZpbGw6bm9uZTsgc3Ryb2tlOiMzNzQxNTE7IHN0cm9rZS13aWR0aDoyLjU7IG1hcmtlci1lbmQ6dXJsKCNhcnJvd2hlYWQpOyB9CiAgICAgIC5sYWJlbCB7IGZpbGw6IzExMTgyNzsgZm9udDo2MDAgMThweCBzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSwiU2Vnb2UgVUkiLHNhbnMtc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgICAuZGV0YWlsIHsgZmlsbDojNDc1NTY5OyBmb250OjE1cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IH0KICAgICAgLnNlY3Rpb24geyBmaWxsOiM0MzM4Y2E7IGZvbnQ6NjAwIDE0cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IGxldHRlci1zcGFjaW5nOi4wOGVtOyB9CiAgICAgIC5mb3JtdWxhIHsgZmlsbDojMTExODI3OyBmb250Oml0YWxpYyAyMXB4IEdlb3JnaWEsIlRpbWVzIE5ldyBSb21hbiIsc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjI1MCIgeT0iMjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSI1MSI+Q09OVElOR0VOVCBBQ1RVQUxJVFk8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI3NyI+4oCcSSBhbeKAnSDCtyDCpzIuMSwgwqczPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA5NiBWMTMwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMjEwIiB5PSIxMzIiIHdpZHRoPSI1MDAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSIxNjMiPkNPTlNUSVRVVElWRSBHUk9VTkRJTkcgQVJHVU1FTlQ8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIxODkiPkExIC8gQTMgLyBBNSDCtyDCpzIuMS4xPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCAyMDggVjI0MiIvPgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjMzMCIgeT0iMjQ0IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjcyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSIyNzUiPuKEmyDiiqggzpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIyOTkiPsKnNy4yLCBsZXZlbCA0PC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic2VjdGlvbiIgeD0iNDYwIiB5PSIzNTQiPkZPUk1BTCBST1VURVM8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzE2IFYzNjYgSDI4MCBWMzkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzY2IEg2NDAgVjM5MCIvPgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjE2MCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjI4MCIgeT0iNDIzIj5BbHQgUm91dGU8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iMjgwIiB5PSI0NDkiPsKnMi4yPC90ZXh0PgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjUyMCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjY0MCIgeT0iNDIzIj5USTwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI2NDAiIHk9IjQ0OSI+wqczLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNMjgwIDQ2OCBWNDk0IEg0NjAgVjUyMCIvPgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNjQwIDQ2OCBWNDk0IEg0NjAiLz4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSIzMzAiIHk9IjUyMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI3MiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImZvcm11bGEiIHg9IjQ2MCIgeT0iNTUzIj7OkyDiiqIgz4Y8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI1NzciPsKnNy4yLCBsZXZlbCAyPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA1OTQgVjYyMCIvPgogIDxyZWN0IGNsYXNzPSJyZXN1bHQiIHg9IjMzMCIgeT0iNjIyIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjYyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSI2NTAiPnQgOiDPhjwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI0NjAiIHk9IjY3MyI+wqc3LjIsIGxldmVsIDEgwrcgQXBwZW5kaXggQS4yLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNTkwIDY1MyBINjkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik01OTAgMjgwIEg4ODAgVjU5MCBIODAwIFY2MDUiLz4KICA8cmVjdCBjbGFzcz0icmVzdWx0IiB4PSI2OTUiIHk9IjYxMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSI4NiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI4MDAiIHk9IjY0NiI+z4YgYXBwbGllczwvdGV4dD4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjgwMCIgeT0iNjcxIj50byBhY3R1YWxpdHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Synthesis diagram: contingent actuality is grounded in Γ; the Alt Route and TI converge on Γ ⊢ φ, with the Alt Route supplying t : φ, licensing application to actuality." width="920" />
+
+</div>
+
+<!--
+The editable SVG source follows. It is kept inside a comment because VS Code's
+Markdown preview sanitizes inline SVG elements, while the data-URL image above
+renders the same vector diagram.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 700" role="img" aria-labelledby="synthesis-title synthesis-desc" style="display:block;max-width:920px;width:100%;height:auto;margin:1.5rem auto;">
+  <title id="synthesis-title">From contingent actuality to the application of φ</title>
+  <desc id="synthesis-desc">Contingent actuality leads through the constitutive grounding argument to R satisfying Γ. The Alt Route and transcendental induction establish Γ entails φ; the Alt Route also supplies a proof term t of type φ. Together with the semantic grounding of Γ, this licenses applying φ to actuality.</desc>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/>
+    </marker>
+    <style>
+      .box { fill:#f8fafc; stroke:#334155; stroke-width:2; }
+      .route { fill:#eef2ff; stroke:#4f46e5; stroke-width:2; }
+      .result { fill:#ecfdf5; stroke:#047857; stroke-width:2; }
+      .flow { fill:none; stroke:#374151; stroke-width:2.5; marker-end:url(#arrowhead); }
+      .label { fill:#111827; font:600 18px system-ui,-apple-system,"Segoe UI",sans-serif; text-anchor:middle; }
+      .detail { fill:#475569; font:15px system-ui,-apple-system,"Segoe UI",sans-serif; text-anchor:middle; }
+      .section { fill:#4338ca; font:600 14px system-ui,-apple-system,"Segoe UI",sans-serif; text-anchor:middle; letter-spacing:.08em; }
+      .formula { fill:#111827; font:italic 21px Georgia,"Times New Roman",serif; text-anchor:middle; }
+    </style>
+  </defs>
+
+  <rect class="box" x="250" y="20" width="420" height="76" rx="12"/>
+  <text class="label" x="460" y="51">CONTINGENT ACTUALITY</text>
+  <text class="detail" x="460" y="77">“I am” · §2.1, §3</text>
+
+  <path class="flow" d="M460 96 V130"/>
+  <rect class="box" x="210" y="132" width="500" height="76" rx="12"/>
+  <text class="label" x="460" y="163">CONSTITUTIVE GROUNDING ARGUMENT</text>
+  <text class="detail" x="460" y="189">A1 / A3 / A5 · §2.1.1</text>
+
+  <path class="flow" d="M460 208 V242"/>
+  <rect class="box" x="330" y="244" width="260" height="72" rx="12"/>
+  <text class="formula" x="460" y="275">ℛ ⊨ Γ</text>
+  <text class="detail" x="460" y="299">§7.2, level 4</text>
+
+  <text class="section" x="460" y="354">FORMAL ROUTES</text>
+  <path class="flow" d="M460 316 V366 H280 V390"/>
+  <path class="flow" d="M460 366 H640 V390"/>
+
+  <rect class="route" x="160" y="392" width="240" height="76" rx="12"/>
+  <text class="label" x="280" y="423">Alt Route</text>
+  <text class="detail" x="280" y="449">§2.2</text>
+
+  <rect class="route" x="520" y="392" width="240" height="76" rx="12"/>
+  <text class="label" x="640" y="423">TI</text>
+  <text class="detail" x="640" y="449">§3.3</text>
+
+  <path class="flow" d="M280 468 V494 H460 V520"/>
+  <path class="flow" d="M640 468 V494 H460"/>
+  <rect class="box" x="330" y="522" width="260" height="72" rx="12"/>
+  <text class="formula" x="460" y="553">Γ ⊢ φ</text>
+  <text class="detail" x="460" y="577">§7.2, level 2</text>
+
+  <path class="flow" d="M460 594 V620"/>
+  <rect class="result" x="330" y="622" width="260" height="62" rx="12"/>
+  <text class="formula" x="460" y="650">t : φ</text>
+  <text class="detail" x="460" y="673">§7.2, level 1 · Appendix A.2.3</text>
+
+  <path class="flow" d="M590 653 H690"/>
+  <path class="flow" d="M590 280 H880 V590 H800 V605"/>
+  <rect class="result" x="695" y="610" width="210" height="86" rx="12"/>
+  <text class="label" x="800" y="646">φ applies</text>
+  <text class="label" x="800" y="671">to actuality</text>
+</svg>
+-->
 
 where
 
