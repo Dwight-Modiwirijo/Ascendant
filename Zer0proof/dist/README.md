@@ -22,8 +22,18 @@ The strong Ω-theorems are carried by the private Alt Route.
 
 ### Public versus private result boundary
 
-- **Public export:** `Pos(P) → □◇∃x P(x)` through `PosPossibility` and `ax_5`.
-- **Private Alt Route:** kernel-verified `Final_NE_Proof` (□∃x Ω(x)), `Final_BoxUnique_Proof` (□∃!x Ω(x)), and `Final_RigidWitness_Proof` (∃x □∀y (Ω(y) ↔ y=x)).
+- **Public export**
+  - Theorem: `necPossible_of_Pos`
+  - Statement: `Pos(P) → □◇∃x P(x)`
+  - Basis: `PosPossibility` and `ax_5`
+
+- **Private Alt Route — kernel-verified**
+  - `Final_NE_Proof`
+    - Type: `□∃x Ω(x)`
+  - `Final_BoxUnique_Proof`
+    - Type: `□∃!x Ω(x)`
+  - `Final_RigidWitness_Proof`
+    - Type: `∃x □∀y (Ω(y) ↔ y=x)`
 
 The limited public interface is an export boundary, not a reduction of the strong private theorem status.
 
