@@ -16,18 +16,14 @@ In S5 modal logic the following schema holds:
 
 Informally: *if it is possible that `p` is necessary, then `p` is necessary.*
 
-The public interface exports
-
-$$
-\mathrm{Pos}(P) \to \Box\Diamond\exists x\,P(x).
-$$
+The public interface exports **Pos(P) → □◇∃x P(x)**.
 
 The strong Ω-theorems are carried by the private Alt Route.
 
 ### Public versus private result boundary
 
 - **Public export:** `Pos(P) → □◇∃x P(x)` through `PosPossibility` and `ax_5`.
-- **Private Alt Route:** kernel-verified `Final_NE_Proof` ($\Box\exists x\,\Omega(x)$), `Final_BoxUnique_Proof` ($\Box\exists!x\,\Omega(x)$), and `Final_RigidWitness_Proof` ($\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$).
+- **Private Alt Route:** kernel-verified `Final_NE_Proof` (□∃x Ω(x)), `Final_BoxUnique_Proof` (□∃!x Ω(x)), and `Final_RigidWitness_Proof` (∃x □∀y (Ω(y) ↔ y=x)).
 
 The limited public interface is an export boundary, not a reduction of the strong private theorem status.
 
