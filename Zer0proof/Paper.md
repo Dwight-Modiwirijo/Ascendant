@@ -1620,7 +1620,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
    The necessity of logic itself is necessary.
 
 7. **Consciousness Axiom:**
-   “I am” is grounded in Ω. *(Reductio-suite axiom and private-route assumption; not independently required for the public constitutive proof.)*
+   “I am” is grounded in Ω. *(Reductio-suite axiom; not a dependency of the independent Alt Route `Final_*` theorems.)*
 
 8. **Logic Is Necessary:**
    Logical truths hold necessarily in every world.
@@ -1659,7 +1659,7 @@ Derive False
 Thus:
 
 > The development includes explicit canary lemmas ensuring that each stated axiom remains coherent with the rest of the formalization.
-> These results should be read as regression/consistency guards ($A \land \neg A \to \text{False}$), not as proofs that any axiom is derivable from the others.
+> These results should be read as regression/canary guards ($A \land \neg A \to \text{False}$), not as proofs that any axiom is derivable from the others.
 
 ---
 
