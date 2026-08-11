@@ -11,6 +11,12 @@ The paper combines one fully Lean-verified constructive route (Alt Route) with a
 
 **Keywords:** Alt Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
+### Verification Status
+
+This paper distinguishes four separate audit questions, which are not to be conflated: (1) **derivability** — whether a stated theorem has a Lean kernel-accepted proof term relative to its declared axioms and hypotheses; (2) **joint satisfiability / non-vacuity** — whether the full combined set of axioms and hypotheses used across the argument has been shown, in a single model, not to entail `False`; (3) **assumption burden** — which explicit hypotheses and global axioms a given closed theorem actually depends on, traced through the proof chain; and (4) **reproducibility / disclosure scope** — whether a third party can independently rebuild the specific artifact being claimed, as opposed to merely inspecting its signature.
+
+As of this version: the Alt Route necessary-existence, uniqueness, and rigid-identification theorems are **kernel-verified** in the private Lean development (question 1) and **publicly certified** via an exported signature/assumption manifest (Appendix A.2.3), but no joint-model witness for the full combined theory has been constructed and published (question 2 is open), and the private proof construction is not publicly reproducible (question 4). The certification-label taxonomy used throughout is defined in §4.1; the axiom/assumption bookkeeping is given in Appendix A.2.3; a consolidated Claim Traceability table is given in Appendix A.2.4. A known open item — the unconditioned shape of the `PosPossibility` bridge axiom in the public interface — is flagged in Appendix A.2 as **Gate 0: PENDING** and is not yet resolved.
+
 ---
 ## 1. Introduction
 This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining is impossible unless the grounding architecture specified by A1/A3/A5 (and related constraints) already holds.
@@ -39,7 +45,7 @@ An appendix specifies the Lean-verified scope and reproduces representative arti
 
 ---
 ## 2. Framework: Hyper-Modal Grounding Principles
-This section introduces the formal axiomatic foundation of the proof, designed to be as minimal and necessary as possible. We use S5 modal logic, which assumes that all possible worlds are equally accessible (reflexive, symmetric, and transitive, Blackburn et al. 2001). Within this logical space, we define five axioms:
+This section introduces the formal axiomatic foundation of the proof, designed to be as minimal and necessary as possible. We use S5 modal logic: the accessibility relation $R$ between possible worlds is an **equivalence relation** — reflexive ($\forall w,\, R\,w\,w$), symmetric ($\forall w\,v,\, R\,w\,v \to R\,v\,w$), and transitive ($\forall w\,v\,u,\, R\,w\,v \to R\,v\,u \to R\,w\,u$) — so that any two worlds in the same equivalence class can access one another (Blackburn et al. 2001). This is a structural property of $R$, not a claim that all worlds whatsoever are mutually accessible across every possible frame; the Lean development fixes $R$ as such an equivalence relation on the type of worlds it declares (Appendix B.1.1). Within this logical space, we define five axioms:
 
 ### 2.1 Hyper-Modal Axioms
 
@@ -278,7 +284,8 @@ $$
 \square \exists! x  \Omega(x)
 $$
 
-  
+*Inferential status.* This statement of the theorem is reached via the full hyper-modal axiom route (A1–A5, §2.1). Within that route, only the reductio/canary lemmas of Appendix A.6 are Lean-formalized (Appendix A.2.4); the constitutive argument that A1, A3, and A5 themselves must hold (§2.1.1) is a philosophical transcendental argument, not a Lean derivation. The Lean **theorem** with this same logical shape that is kernel-verified end-to-end is the Alt Route's `Final_BoxUnique_Proof` (Appendix A.2.3), reached via the independent successor-based construction of §2.2, not via A1–A5 directly. §3.1–§3.2 present these as two convergent routes to the same conclusion; they are not the same proof.
+
 That is, **necessarily, there exists exactly one being Ω** which grounds all contingent truths. This result strengthens mere necessary existence by excluding the possibility of multiple or variant grounding entities across possible worlds.
 
 Moreover, the structure yields a rigid identification of this ground:
@@ -742,6 +749,8 @@ Further objections are welcome and will be addressed in future revisions.
 
 Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing—*independently of* and *prior to* any theological vocabulary. The subsequent identification with the Johannine Logos therefore constitutes a **recognition of an already-instantiated ontological role**, not the introduction of additional properties or assumptions. This section examines the theological implications that follow from the modal proof of necessary perfection. No theological premises are presupposed in the derivation of $\square \exists! x, \Omega(x)$; rather, the resulting logical structure is observed to converge with classical theistic traditions that affirm a necessary, self-existent ground of being.
 
+*Inferential status of this section.* Everything from here through §6.2 is interpretive: it takes the kernel-verified and constitutively-argued existence/uniqueness/rigidity results (§3, Appendix A) as fixed, and argues for a further, non-formalized identification of Ω with theological terms (Logos, *Ehyeh asher ehyeh*, classical theism). This identification is philosophical exegesis, not a Lean theorem, and is not part of the Claim Traceability table (Appendix A.2.4) as a kernel-verified or publicly certified item.
+
 ### 6.1 **Inverse Corollary.**
 Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is not a devotional postulate but a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if at least one contingent instantiation can terminate in absolute knowability, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, this entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
 
@@ -825,7 +834,7 @@ $$
 
 Thus, there exists a single entity such that, in all possible worlds, being $\Omega$ is equivalent to being identical with that entity. The ground of intelligibility is therefore not only necessary, but **necessarily self-identical across all modal contexts**.
 
-These results are mechanically verified in Lean (theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`), with an explicit axiom footprint restricted to propositional extensionality, ensuring full deductive transparency.
+These results are stated in Lean as theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`, with a global axiom footprint restricted to propositional extensionality (Appendix A.2.3). As clarified there, a minimal global axiom footprint documents dependence on Lean's global axiom registry; it is not by itself a claim of full deductive transparency, since it does not report explicit hypotheses that may be carried as parameters of the theorem's type, and those have not been independently traced against the private source for this paper.
 
 Starting from the minimal ontological datum of contingent obtaining **“I am”** (read ontologically, not psychologically), the analysis demonstrates that contingent truths require ontological grounding in $\\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). Separately, the kernel certifies the formal derivation relative to the stated axioms. The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
@@ -837,25 +846,29 @@ Turing’s undecidability results provide the computational analogue of Gödelia
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The transition to ontological actuality is not produced by Tarski or BHK; actuality is already fixed by the constitutive grounding structure (A1/A3/A5), starting from the minimal obtaining datum ‘I am’. In this section, Tarski’s Convention T plays only a semantic role: disquoting the truth‑predicate once the ontological reading is already established. The formal proof and its modal rigidity validate the structure, but do not generate actuality.
+The transition to ontological actuality is not produced by Tarski, BHK, or the Lean kernel itself. This section separates three layers that are easy to conflate:
 
-Alfred Tarski’s Convention T is used here as a disquotation schema: it licenses the passage from “S is true” to S under the already-fixed ontological reading. The truth predicate removes quotation marks; it does not mediate ontology.
+1. **Kernel derivability.** $\varphi$ is a theorem-in-Lean iff a proof term is accepted by the kernel relative to the declared axioms (§4.1, "Kernel-verified"). This is a syntactic fact about a formal system.
+2. **Semantic model.** A structure $\mathcal M$ with $\mathcal M \models \Gamma$ is a metatheoretic satisfiability witness for the axiom set $\Gamma$ — it shows $\Gamma$ is not vacuous, within the chosen metatheory. No such joint model for the full combined context has been constructed in this paper (Verification Status, front matter); `TrivialModel` (Appendix A.2.3, A.2.4) witnesses only the bare modal interface, not the full Ω-theory.
+3. **Intended interpretation.** $\mathcal R \models \Gamma$ — that the *actual world* $\mathcal R$ satisfies $\Gamma$ — is a philosophical premise, not a conclusion Lean's kernel or a model witness can establish. Kernel derivability (1) says nothing about whether the actual world is a model of the axioms; a semantic model (2), even if constructed, would say only that some structure within the metatheory satisfies $\Gamma$, not that reality is that structure or is relevantly like it.
 
-In this work, the relevant proposition is certified by the kernel theorem `Final_RigidWitness_Proof`. Let
+This paper's constitutive argument (§2.1.1, §3) is an argument that layer 3 holds — that $\mathcal R \models \Gamma$ — argued transcendentally from the conditions of possibility for contingent obtaining. That argument is philosophical in character and is not itself a Lean derivation; it is not entailed by, and does not follow mechanically from, either (1) or (2). Tarski's Convention T operates only within layer 1: it licenses disquotation from "$\varphi$ is true" to $\varphi$ once truth-in-Lean is already fixed, and mediates no step from (1) or (2) to (3).
+
+In this work, the relevant proposition is stated as the kernel theorem `Final_RigidWitness_Proof`. Let
 
 $$
 \varphi := \exists x\, \square \forall y\, \big(\Omega(y) \leftrightarrow y = x\big).
 $$
 
-By the Curry–Howard correspondence, the Lean kernel’s acceptance of a proof object establishes that $\varphi$ is true within the formal system. Here, the formal proof aligns with the already‑given ontological actuality fixed by A1/A3/A5. Crucially, this proof is not grounded in a hypothetical model, but in the minimal ontological datum of consciousness as contingent obtaining (“I am”), which obtains in the actual world.
+By the Curry–Howard correspondence, the Lean kernel's acceptance of a proof object establishes that $\varphi$ is a theorem-in-Lean (layer 1) relative to the development's declared axioms. That $\varphi$ additionally holds of the actual world — i.e. that $\mathcal R \models \varphi$ in a reading where $\Omega$ picks out something real — is the layer-3 claim argued for independently in §2.1.1 and §3, grounded in the minimal ontological datum of consciousness as contingent obtaining ("I am"), which the paper takes to obtain in the actual world. This grounding step is a philosophical premise of the argument, not a further output of the kernel.
 
-Because the premise obtains in actuality, the formal theorem—once disquoted—refers to that same ontological domain; the proof does not generate actuality but presupposes it. Applying Tarski’s principle (Convention T):
+Given the layer-3 premise that the actual world satisfies the grounding structure (§2.1.1), the disquoted theorem is read as referring to that same ontological domain; disquotation itself does not generate that reading, it only removes quotation marks once truth-in-Lean is fixed. Applying Tarski’s principle (Convention T):
 
 $$
 \text{“}\varphi\text{” is true} \iff \varphi
 $$
 
-Syntactically, the theorem is proven. Disquotation does not produce actuality; it licenses the passage from ‘φ is true’ to φ within the ontological framework already fixed by A1/A3/A5.
+Syntactically, the theorem is proven (layer 1). Disquotation does not establish the layer-3 premise; it licenses the passage from ‘φ is true’ to φ *given* that premise, which is argued for in §2.1.1 and §3 rather than produced by Tarski, BHK, or the kernel.
 
 **The Lock: Rigid Designation.** Following Kripke (1980), `Final_RigidWitness_Proof` fixes Ω as a rigid designator: one and the same referent across the modal analysis. This functions as an anti‑equivocation and anti‑plural‑grounding constraint: Ω cannot shift between candidates across possible worlds within the S5 framework.
 
@@ -863,6 +876,8 @@ To deny the existence of $\Omega$ is, therefore, to reject the constitutive clai
 
 ---
 ### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises**
+
+*Inferential status.* "Undeniable" below is used in the constitutive-argument sense of §2.1.1 (denial dissolves the conditions of intelligibility), not in the sense that Lean has certified a proof of $\neg\Diamond\neg\exists x\,\Omega(x)$ from axioms external to the development's own context, nor that the public repository forecloses the denial. Within the Lean development, "modally impossible" below means: incompatible with the declared axioms of that development (§4.1, layer 1 of §7.2); it is not a claim that denial is impossible independent of accepting those axioms.
 
 Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
 
@@ -909,6 +924,8 @@ Known logical failure modes are explicitly addressed at the public level. Placeh
 
 Accordingly, this appendix certifies only the integrity and scope of the public API. It does not claim to expose the full internal proofs, but rather to demonstrate that the exported framework is consistent, non-trivial, and incapable of accidentally asserting stronger claims than intended.
 
+**Gate 0 status: PENDING.** The public bridge axiom `PosPossibility` is currently declared without restriction to a specific, certified positivity context: `axiom PosPossibility {ι : Type u} (M : Modal) [Positive ι] (P : ι → Prop) : Positive.Pos P → M.Dia (∃ x, P x)`. Because `Positive ι` requires only monotonicity of `Pos` and no independent realizability content, an adversarial instance (e.g. `Positive Unit` with `Pos := fun _ => True`) is compatible with the class as stated and would let `PosPossibility` be invoked to derive `M.Dia (∃ _ : Unit, False)` from `trivial`, which is unsatisfiable in a non-trivial model. This does not mean `False` has been derived anywhere in the current development — no such derivation is exported or claimed — but it means the axiom, as currently typed, is broader than the argument requires and has not yet been hardened against this class of hostile instantiation. Until this is resolved, the axiom-footprint entries for `PosPossibility` in Appendix A.2.3 should be read as **PENDING** rather than as a closed safety guarantee, and no claim of full 12-attack-vector robustness is made for the public surface.
+
 #### A.2.1 Scope Conformance of the Public Verification Surface  
 
 The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in Appendix A.2. In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than exporting stronger necessity results such as □∃x Ω(x), □∃!x Ω(x), or rigid-witness statements of the form ∃x □∀y (Ω(y) ↔ y = x).
@@ -947,17 +964,35 @@ Accordingly, the public certificate is a statement about *auditable exposure* (c
 
 This subsection records the axiom dependencies of the strongest internally proven Ω-claims, as extracted mechanically via `#print axioms` in `CertificateAudit.lean`. It serves as an axiom-footprint certificate for the private kernel route, independent of the public verification surface described in Appendix A.2.
 
-| Logical Claim (Main Text) | Lean Theorem | Certified Statement (Formal) | Axiom Footprint |
-|--------------------------|--------------|-------------------------------|-----------------|
-| Necessary existence of Ω | `Final_NE_Proof` | $$\square \exists x\,\Omega(x)$$ | `propext`, `PosPossibility` |
-| Necessary unique existence of Ω | `Final_BoxUnique_Proof` | $$\square \exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$$ | `propext` |
-| Rigid identification of Ω | `Final_RigidWitness_Proof` | $$\exists x\,\square \forall y\,(\Omega(y)\leftrightarrow y=x)$$ | `propext` |
+| Logical Claim (Main Text) | Lean Theorem | Certified Statement (Formal) | Global Axiom Footprint (`#print axioms`) | Explicit / Root Hypotheses |
+|--------------------------|--------------|-------------------------------|-----------------|-----------------------------|
+| Necessary existence of Ω | `Final_NE_Proof` | $$\square \exists x\,\Omega(x)$$ | `propext`, `PosPossibility` | Not independently verifiable from the public repository: the declaration is not present in public source, so any explicit theorem-level hypotheses beyond the global axioms cannot be confirmed here. |
+| Necessary unique existence of Ω | `Final_BoxUnique_Proof` | $$\square \exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$$ | `propext` | Not independently verifiable from the public repository (see above). |
+| Rigid identification of Ω | `Final_RigidWitness_Proof` | $$\exists x\,\square \forall y\,(\Omega(y)\leftrightarrow y=x)$$ | `propext` | Not independently verifiable from the public repository (see above). |
 
 **Interpretation.**  
-`propext` (propositional extensionality) is a standard Lean principle used for reasoning about propositional equality; it introduces no modal, metaphysical, or computational assumptions. The bridge axiom `PosPossibility` appears only in the derivation of necessary existence. Crucially, the stronger results—necessary unique existence and rigid identification of Ω—do not depend on `PosPossibility`. This makes the strongest ontological conclusions strictly smaller in axiom surface than the initial necessity derivation.
+`propext` (propositional extensionality) is a standard Lean principle used for reasoning about propositional equality; it introduces no modal, metaphysical, or computational assumptions. The bridge axiom `PosPossibility` appears in the global axiom footprint only for the necessary-existence derivation.
+
+A global axiom footprint produced by `#print axioms` is not the same measurement as the assumption burden of a theorem: it reports axioms in Lean's global `axiom` registry, not explicit hypotheses carried as parameters of the theorem's type. A smaller or absent global-axiom footprint for `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof` therefore does not by itself establish that these results carry a smaller total assumption burden than `Final_NE_Proof`; it establishes only that they do not additionally depend on a *global axiom* named `PosPossibility`. Whether they depend on equivalent content through explicit hypotheses, or through `Final_NE_Proof` itself as an upstream dependency, is not settled by this table and is not claimed here. Given the current public repository's contents (Appendix A.2, Gate 0: PENDING), no claim of a comparatively "smaller" or "safer" axiom surface is made for these results.
 
 **Scope note.**  
-This subsection certifies private kernel-route theorems and their axiom footprint. It does not change the public export boundary described in Appendix A.2.
+This subsection certifies private kernel-route theorems and their global axiom footprint, as extracted mechanically. It does not trace explicit-hypothesis discharge paths for the private theorems — that tracing has not been performed against the private source from this paper — and it does not change the public export boundary described in Appendix A.2.
+
+#### A.2.4 Claim Traceability
+
+Each major claim in this paper is tracked here against five audit axes, following the "Verification Status" separation in the front matter: **(i) Derivability** — kernel-accepted proof term relative to declared context; **(ii) Joint satisfiability / non-vacuity** — whether a single model realizing the full combined context has been constructed; **(iii) Assumption burden** — global axioms plus explicit/root hypotheses, traced through the proof chain; **(iv) Reproducibility / disclosure scope** — whether a third party can rebuild the specific artifact, versus merely inspect a signature; **(v) Certification label** — per the taxonomy in §4.1.
+
+| Claim | (i) Derivability | (ii) Joint satisfiability | (iii) Assumption burden | (iv) Reproducibility | (v) Label |
+|---|---|---|---|---|---|
+| $\square\exists x\,\Omega(x)$ (`Final_NE_Proof`) | Kernel-accepted in private development (asserted; not independently re-checked here) | Not constructed for the full combined context | `propext`, `PosPossibility`; explicit hypotheses not independently verifiable (A.2.3); `PosPossibility` itself is Gate 0: PENDING | Not publicly reproducible (proof term not exported) | Kernel-verified (private) / Publicly certified (signature only) |
+| $\square\exists!x\,(\Omega(x)\wedge\ldots)$ (`Final_BoxUnique_Proof`) | Kernel-accepted in private development (asserted) | Not constructed for the full combined context | `propext`; explicit hypotheses not independently verifiable (A.2.3) | Not publicly reproducible | Kernel-verified (private) / Publicly certified (signature only) |
+| $\exists x\,\square\forall y\,(\Omega(y)\leftrightarrow y=x)$ (`Final_RigidWitness_Proof`) | Kernel-accepted in private development (asserted) | Not constructed for the full combined context | `propext`; explicit hypotheses not independently verifiable (A.2.3) | Not publicly reproducible | Kernel-verified (private) / Publicly certified (signature only) |
+| $\square\Diamond\exists x\,P(x)$ compatibility layer (`necPossible_of_Pos`, `somePosNecPossible_of_exists`) | Kernel-accepted; publicly present in `AltRoute.Interface` | `TrivialModel` witnesses joint satisfiability of the bare modal+positivity interface only, not of the full Ω-theory | `PosPossibility` (Gate 0: PENDING) | Publicly reproducible (public source, public build) | Kernel-verified / Publicly certified / Publicly reproducible |
+| Hyper-Modal Theorem, §3.1 (full A1–A5 axiomatic route) | Kernel-accepted for the reductio-suite formalization in Appendix A.6 (canary/consistency lemmas), relative to axioms `hyper_minimal_PSR`, `perfect_positivity`, `perfect_being_exists`, `anti_regress`, `meta_logic`, `consciousness_axiom` as declared | Not constructed as a single joint model in this paper | The listed axioms are declared, not independently discharged from more basic principles; see §2.1.1 for their constitutive-status argument, which is philosophical, not a Lean discharge | Publicly reproducible for the reductio-suite file itself (Appendix A.6 source is public); not the same claim as the Alt Route Final_* theorems | Kernel-verified (reductio suite only) — see §3.1.2 note below |
+| Corollary 3.1.2 (No Rival Constitutive Architecture) | Not formalized in Lean; stated as meta-theoretical argument only (paper's own note) | N/A | Philosophical premises stated in §2.1.1, not Lean hypotheses | N/A | Philosophical extrapolation — not kernel-verified |
+| §6–§7.3 theological and "undeniability" readings (Logos identification, Ω as Factory, undeniability of Ω) | Not formalized in Lean | N/A | Interpretive; builds on the kernel-verified core but adds non-formalized philosophical premises | N/A | Philosophical extrapolation / interpretive resonance — not kernel-verified |
+
+This table is a bookkeeping device, not a new proof obligation: rows marked "not independently verifiable" or "not constructed" are open items, not silent failures, and are carried forward into any future revision that closes them.
 
 ---
 
