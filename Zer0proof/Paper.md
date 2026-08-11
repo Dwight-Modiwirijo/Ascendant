@@ -11,25 +11,6 @@ The paper combines one fully Lean-verified constructive route (Alt Route) with a
 
 **Keywords:** Alt Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
-### Verification Status
-
-This paper's central results — necessary existence, necessary unique existence, and rigid identification of Ω — are Lean kernel-verified theorems of the private Alt Route development. Concretely, the private kernel accepts proof terms inhabiting the exact strong theorem types
-
-$$
-t_1 : \Box\exists x\,\Omega(x), \qquad t_2 : \Box\exists!x\,\Omega(x), \qquad t_3 : \exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x),
-$$
-
-named `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` respectively (Appendix A.2.3). That the private proof source is not itself publicly published is a disclosure/IP choice (§4, Appendix A.2); it does not alter the formal theorem status these proof terms establish.
-
-The paper carries this result across four levels, developed formally in §7.2 and structurally in §4, which complement rather than substitute for one another:
-
-1. the **exact kernel term**, $t:\varphi$ — a proof object inhabiting the strong theorem type itself, not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$;
-2. the **dependency context**, $\Gamma\vdash\varphi$ — the axioms, bridges, definitions, and explicit hypotheses the derivation is carried out relative to (Appendix A.2.3);
-3. the **semantic consequence**, $\forall\mathcal M\,(\mathcal M\models\Gamma\to\mathcal M\models\varphi)$, together with the distinct joint-satisfiability question $\exists\mathcal M\,\mathcal M\models\Gamma$ — the model-theoretic reading of the formal theory, developed further as public certification architecture (Gate 0, JointModel; Appendix A.2); and
-4. the **constitutive ontological thesis**, $\mathcal R\models\Gamma$ — that the actual world satisfies the declared grounding structure — argued independently and philosophically from contingent obtaining ("I am"), not by Lean, in §2.1.1 and §3.
-
-Gate 0 and JointModel belong to the ongoing certification architecture around level 3 and the public interface (Appendix A.2): they harden and extend that architecture, but they are not a reopening of the private kernel theorems fixed at level 1. By design, the public export surface exposes a weaker $\Box\Diamond$-compatibility layer, while the private route carries the full $\Box$-strength results (§4) — an architectural disclosure boundary, not a difference in theorem strength. The axiom/assumption bookkeeping for the strong results is given in Appendix A.2.3; a consolidated claim-traceability table across all four levels is given in Appendix A.2.4.
-
 ---
 ## 1. Introduction
 This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining is impossible unless the grounding architecture specified by A1/A3/A5 (and related constraints) already holds.
@@ -448,7 +429,26 @@ Two Lean formalizations of S5 modal logic appear across this development, and ge
 
 Key core definitions and representative theorems are reproduced in Appendix A; the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
-### 4.1 Certification Labels
+### 4.1 Kernel Verification Status and Certification Boundary
+
+This paper's central results — necessary existence, necessary unique existence, and rigid identification of Ω — are Lean kernel-verified theorems of the private Alt Route development. Concretely, the private kernel accepts proof terms inhabiting the exact strong theorem types
+
+$$
+t_1 : \Box\exists x\,\Omega(x), \qquad t_2 : \Box\exists!x\,\Omega(x), \qquad t_3 : \exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x),
+$$
+
+named `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` respectively (Appendix A.2.3). That the private proof source is not itself publicly published is a disclosure/IP choice (§4, Appendix A.2); it does not alter the formal theorem status these proof terms establish.
+
+The paper carries this result across four levels, developed formally in §7.2 and structurally here, which complement rather than substitute for one another:
+
+1. the **exact kernel term**, $t:\varphi$ — a proof object inhabiting the strong theorem type itself, not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$;
+2. the **dependency context**, $\Gamma\vdash\varphi$ — the axioms, bridges, definitions, and explicit hypotheses the derivation is carried out relative to (Appendix A.2.3);
+3. the **semantic consequence**, $\forall\mathcal M\,(\mathcal M\models\Gamma\to\mathcal M\models\varphi)$, together with the distinct joint-satisfiability question $\exists\mathcal M\,\mathcal M\models\Gamma$ — the model-theoretic reading of the formal theory, developed further as public certification architecture (Gate 0, JointModel; Appendix A.2); and
+4. the **constitutive ontological thesis**, $\mathcal R\models\Gamma$ — that the actual world satisfies the declared grounding structure — argued independently and philosophically from contingent obtaining ("I am"), not by Lean, in §2.1.1 and §3.
+
+Gate 0 and JointModel belong to the ongoing certification architecture around level 3 and the public interface (Appendix A.2): they harden and extend that architecture, but they are not a reopening of the private kernel theorems fixed at level 1. By design, the public export surface exposes a weaker $\Box\Diamond$-compatibility layer, while the private route carries the full $\Box$-strength results (§4) — an architectural disclosure boundary, not a difference in theorem strength. The axiom/assumption bookkeeping for the strong results is given in Appendix A.2.3; a consolidated claim-traceability table across all four levels is given in Appendix A.2.4.
+
+### 4.2 Certification Labels
 
 To avoid conflating distinct claims, this paper uses three labels with fixed meanings:
 
@@ -458,7 +458,7 @@ To avoid conflating distinct claims, this paper uses three labels with fixed mea
 
 **Publicly reproducible.** Reserved for the narrower case where a third party can independently reproduce the specific strong artifact or build in question, not merely inspect a signature or manifest entry.
 
-Strong Ω-claims — necessary existence, necessary uniqueness, and rigid identification — are **kernel-verified in the private `.olean` development**: `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are proof terms the private Lean kernel accepts as inhabiting exactly the stated strong theorem types (Verification Status, front matter; §7.2, level 1). Their public signatures and mechanically reported global axiom footprints are exposed for audit (Appendix A.2.3). Public disclosure of the complete explicit-hypothesis manifest, and construction of a joint-satisfiability model for the full combined context, are ongoing certification-architecture work tracked as Gate 0 and JointModel (Appendix A.2; §7.2, level 3) — this work extends the public certificate surface and does not suspend or weaken the kernel theorem status itself. The private proof construction is not currently publicly reproducible. A reader should not infer public reproducibility of the strong theorems merely from the existence of a public repository or a public build.
+Strong Ω-claims — necessary existence, necessary uniqueness, and rigid identification — are **kernel-verified in the private `.olean` development**: `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are proof terms the private Lean kernel accepts as inhabiting exactly the stated strong theorem types (§4.1; §7.2, level 1). Their public signatures and mechanically reported global axiom footprints are exposed for audit (Appendix A.2.3). Public disclosure of the complete explicit-hypothesis manifest, and construction of a joint-satisfiability model for the full combined context, are ongoing certification-architecture work tracked as Gate 0 and JointModel (Appendix A.2; §7.2, level 3) — this work extends the public certificate surface and does not suspend or weaken the kernel theorem status itself. The private proof construction is not currently publicly reproducible. A reader should not infer public reproducibility of the strong theorems merely from the existence of a public repository or a public build.
 
 ---
 ## 5. Objections and Responses
@@ -919,9 +919,9 @@ Turing’s undecidability results provide the computational analogue of Gödelia
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-Ontological actuality is not produced by Tarski, BHK, Curry–Howard, or the Lean kernel by itself. This section distinguishes four levels of the same result, matching the taxonomy used throughout this paper (Verification Status, front matter):
+Ontological actuality is not produced by Tarski, BHK, Curry–Howard, or the Lean kernel by itself. This section distinguishes four levels of the same result, matching the taxonomy introduced in §4.1:
 
-1. **Exact kernel term.** $t : \varphi$ — the private Lean development contains a specific proof term $t$ that the kernel accepts as inhabiting the *exact* strong theorem type $\varphi$ (e.g. $t : \Box\exists!x\,\Omega(x)$), not merely a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$. This is level 1 of the Verification Status architecture.
+1. **Exact kernel term.** $t : \varphi$ — the private Lean development contains a specific proof term $t$ that the kernel accepts as inhabiting the *exact* strong theorem type $\varphi$ (e.g. $t : \Box\exists!x\,\Omega(x)$), not merely a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$. This is level 1 of the architecture introduced in §4.1.
 2. **Derivability / dependency context.** $\Gamma \vdash \varphi$ — the formal context $t$ depends on: global axioms reported by `#print axioms`, explicit theorem hypotheses, and relevant definitions (level 2, Appendix A.2.3). This records what $\varphi$ is proved *relative to*; it is not a claim that $\varphi$'s Lean type is syntactically rewritten as $(\bigwedge\Gamma)\to\varphi$ — the exact theorem statement and its dependency context are tracked separately, not conflated.
 3. **Semantic consequence.** $\forall\mathcal M\,(\mathcal M\models\Gamma\to\mathcal M\models\varphi)$ — a model-theoretic soundness statement: any model of the axioms is a model of the theorem. Distinct from this is the joint-satisfiability question $\exists\mathcal M\,\mathcal M\models\Gamma$ (level 3) — whether a model of $\Gamma$ exists at all. The absence of a published joint model for the full combined context (Gate 0 / JointModel, Appendix A.2) is a non-vacuity/consistency-audit gap; its absence does not mean a kernel-accepted theorem ceases to be a theorem. `TrivialModel` (Appendix A.2.3–A.2.4) witnesses satisfiability only of the bare modal interface, not of the full Ω-theory, and no claim beyond that is made here.
 4. **Intended actuality.** $\mathcal R \models \Gamma$ — that the *actual world* $\mathcal R$ satisfies the declared axioms — is the constitutive philosophical thesis of this paper (level 4). Lean does not establish this by compilation; Tarski does not generate it; BHK does not generate it; Curry–Howard does not generate it. The paper argues for it independently — from contingent obtaining, "I am," grounding, non-contingency, anti-regress, and A1/A3/A5 (§2.1.1, §3). If the intended interpretation satisfies $\Gamma$, then the already-established formal consequence of level 3 applies to that interpretation; but establishing *that* the intended interpretation satisfies $\Gamma$ is the philosophical argument's job, not a formal one.
@@ -1043,14 +1043,14 @@ This subsection records the axiom dependencies of the strongest internally prove
 **Interpretation.**  
 `propext` (propositional extensionality) is a standard Lean principle used for reasoning about propositional equality; it introduces no modal, metaphysical, or computational assumptions. The bridge axiom `PosPossibility` appears in the global axiom footprint only for the necessary-existence derivation.
 
-A global axiom footprint produced by `#print axioms` is not the same measurement as the full assumption burden of a theorem: it reports axioms in Lean's global `axiom` registry, not explicit hypotheses carried as parameters of the theorem's type. This is a bookkeeping distinction, not a doubt about the theorems' status: `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are each kernel-verified theorems in the private development (level 1, Verification Status). A smaller or absent global-axiom footprint for `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof` shows only that they do not additionally depend on a *global axiom* named `PosPossibility`; completing the explicit-hypothesis discharge trace for all three results, and hardening `PosPossibility` itself against adversarial instantiation, are the ongoing Gate 0 / assumption-manifest hardening items (level 3, Appendix A.2).
+A global axiom footprint produced by `#print axioms` is not the same measurement as the full assumption burden of a theorem: it reports axioms in Lean's global `axiom` registry, not explicit hypotheses carried as parameters of the theorem's type. This is a bookkeeping distinction, not a doubt about the theorems' status: `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are each kernel-verified theorems in the private development (level 1, §4.1). A smaller or absent global-axiom footprint for `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof` shows only that they do not additionally depend on a *global axiom* named `PosPossibility`; completing the explicit-hypothesis discharge trace for all three results, and hardening `PosPossibility` itself against adversarial instantiation, are the ongoing Gate 0 / assumption-manifest hardening items (level 3, Appendix A.2).
 
 **Scope note.**  
 This subsection certifies private kernel-route theorems and their global axiom footprint, as extracted mechanically. Completing the explicit-hypothesis discharge trace for the private theorems is tracked as future assumption-manifest work (levels 2–3); this does not change the public export boundary described in Appendix A.2, and does not qualify the kernel theorem status established at level 1.
 
 #### A.2.4 Claim Traceability
 
-Each major claim in this paper is tracked here as a refinement of the four-level architecture of the Verification Status (front matter) and §7.2: **(i) Derivability** — the kernel term and dependency context, $t:\varphi$ and $\Gamma \vdash \varphi$ (levels 1–2); **(ii) Joint satisfiability / non-vacuity** — the semantic-model question $\exists\mathcal M\,\mathcal M \models \Gamma$ (level 3); **(iii) Assumption burden** — global axioms plus explicit/root hypotheses within $\Gamma$, traced through the proof chain (level 2, in detail); **(iv) Reproducibility** — whether a third party can rebuild the specific artifact, versus merely inspect a signature (public disclosure architecture, §4); **(v) Intended interpretation / actuality** — $\mathcal R \models \Gamma$ (level 4, §7.2). A sixth column, **Certification label**, is metadata derived from (i)–(iv) per the taxonomy in §4.1; it is not itself part of the four-level architecture.
+Each major claim in this paper is tracked here as a refinement of the four-level architecture introduced in §4.1 and §7.2: **(i) Derivability** — the kernel term and dependency context, $t:\varphi$ and $\Gamma \vdash \varphi$ (levels 1–2); **(ii) Joint satisfiability / non-vacuity** — the semantic-model question $\exists\mathcal M\,\mathcal M \models \Gamma$ (level 3); **(iii) Assumption burden** — global axioms plus explicit/root hypotheses within $\Gamma$, traced through the proof chain (level 2, in detail); **(iv) Reproducibility** — whether a third party can rebuild the specific artifact, versus merely inspect a signature (public disclosure architecture, §4); **(v) Intended interpretation / actuality** — $\mathcal R \models \Gamma$ (level 4, §7.2). A sixth column, **Certification label**, is metadata derived from (i)–(iv) per the taxonomy in §4.2; it is not itself part of the four-level architecture.
 
 | Claim | (i) Derivability | (ii) Joint satisfiability | (iii) Assumption burden | (iv) Reproducibility | (v) Intended interpretation / actuality | Certification label (metadata) |
 |---|---|---|---|---|---|---|
