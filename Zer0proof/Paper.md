@@ -29,7 +29,7 @@ We distinguish our method through three components:
 
 This paper proceeds as follows:  
 - Section 2 introduces the modal framework and axiomatic base.
-- Section 3 presents the formal modal proof of Ω, together with the conceptual TI (Transcendentale Inductie) route (§3.3).
+- Section 3 presents the formal modal proof of Ω, together with the conceptual TI (Transcendental Induction) route (§3.3).
 - Section 4 discusses Lean-based machine verification.
 - Section 5 addresses philosophical objections.
 - Section 6 explores theological implications, particularly the resonance between Ω and classical theism.
@@ -358,9 +358,9 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
 ---
-### 3.3 TI — Transcendentale Inductie
+### 3.3 TI — Transcendental Induction
 
-A second independent route, **TI (Transcendentale Inductie)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Alt Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
+A second independent route, **TI (Transcendental Induction)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Alt Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
 
 The relevance of TI here is limited to convergence: the existence of an independent route shows that the Ω-terminus is not an artefact of the successor/measure presentation alone, but is approached from a distinct grounding construction. The present paper therefore records only the existence, independence, and convergence target of TI.
 
