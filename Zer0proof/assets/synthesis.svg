@@ -55,8 +55,8 @@
   <text class="label" x="640" y="423">TI</text>
   <text class="detail" x="640" y="449">§3.3</text>
 
-  <path class="flow" d="M280 468 V494 H460 V520"/>
-  <path class="flow" d="M640 468 V494 H460"/>
+  <path class="flow" d="M280 468 L410 518"/>
+  <path class="flow" d="M640 468 L510 518"/>
   <rect class="box" x="330" y="522" width="260" height="72" rx="12"/>
   <text class="formula" x="460" y="553">Γ ⊢ φ</text>
   <text class="detail" x="460" y="577">§7.2, level 2</text>
