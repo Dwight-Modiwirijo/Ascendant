@@ -4,13 +4,11 @@
 This repository publishes a *public verification surface* (Lean sources + build artifacts) and a small interface layer.
 The intent is that third parties can rebuild the project and inspect the *exported* API.
 
-Strong claims are controlled by the module export boundary and by a dedicated CI “negative guard” target that is designed to fail if restricted statements become exportable.  
+Strong claims are outside the public module export boundary. A negative-guard source file exists at `tests/NoExport_NecessaryExistence.lean`; it is separate from `CertificateAudit.lean`, which performs only `#check` and `#print axioms` inspection.
 
-The compiled .olean artifacts act as a build-verifiable proof object: any change to exported definitions or proofs requires recompilation under the same toolchain, and will be detected by rebuild/CI mismatches. This certificate concerns the public API surface only; private proof routes and MA/OPU implementation details remain out of scope.  
+Compiled `.olean` artifacts are build-verifiable: rebuilds and hash checks can detect tampering or mismatches, but do not make tampering impossible. This certificate concerns the public API surface only; private proof routes and implementation details remain out of scope.
 
-### Why □◇ Matters (and when it is sufficient)
-
-#### The S5 bridge: from admissibility to necessity
+### Public □◇ compatibility layer
 
 In S5 modal logic the following schema holds:
 
@@ -18,55 +16,28 @@ In S5 modal logic the following schema holds:
 
 Informally: *if it is possible that `p` is necessary, then `p` is necessary.*
 
-This is exactly why the public surface focuses on **admissibility / compatibility** checks:
-the public layer aims to establish that a candidate statement can consistently live inside the
-necessary framework (i.e., that it is not ruled out by the kernel's axioms and invariants).
+The public interface does not establish the antecedent `◇□p`. Its exported theorem is instead
 
-### The proof strategy (public vs. private)
+$$
+\operatorname{Pos}(P) \to \Box\Diamond\exists x\,P(x).
+$$
 
-- **Publicly verifiable goal:** establish the *weaker* modal form `□◇p`
-  (compatibility with the kernel's necessary constraints).
-- **Logically enforced consequence (in S5):** obtain the *stronger* conclusion `□p`.
+This necessary-possibility compatibility statement does **not** imply `\Box\exists x\,P(x)` in S5. In particular, `\Box\Diamond p \to \Box p` is not an S5-valid schema.
 
-So the public certificate does not need to expose the entire internal route to `□p`;
-it needs to expose enough structure to justify the step that triggers the S5 bridge.
+### Public versus private result boundary
+
+- **Public export:** `Pos(P) → □◇∃x P(x)` through `PosPossibility` and `ax_5`.
+- **Private Alt Route:** kernel-verified proof terms for `□∃x Ω(x)`, `□∃!x Ω(x)`, and `∃x □∀y (Ω(y) ↔ y=x)`.
+
+The limited public interface is an export boundary, not a reduction of the strong private theorem status.
 
 #### Important Scope Note
 
-This argument is valid only under the S5 axioms encoded by the `Modal` interface. 
-This certificate is therefore scoped to S5 modal logic.
-
-#### Why S5 Modal Logic?
-
-S5 is not a design preference but a **logical necessity** for this framework.
-
-#### Critical Requirements
-
-* **Axiom 5** (◇p → □◇p): Ensures modal stability across worlds
-* **Bridge principle** (◇□p → □p): Collapses necessary possibility to necessity
-* **Reflexivity (T) + Transitivity (4)**: Guarantees convergence
-
-#### Why Weaker Systems Fail
-
-* **S4**: Lacks symmetry (axiom 5); cannot bridge ◇□ to □
-* **K/T**: Insufficient structure for grounding chains
-* **Non-modal logic**: Cannot express necessity at all
-
-**Without S5, the grounding mechanism collapses—not into a different valid 
-approach, but into incoherence.**
+The `Modal` interface exposes K, T, 4, and 5 as abstract axioms. T and 4 do not establish termination or convergence of grounding chains. The valid S5/Brouwer schema `◇□p → □p` is distinct from the public `□◇` result and is not invoked by `necPossible_of_Pos`.
 
 ### Intermezzo: Proof Semantics (BHK Interpretation)
 
-The verification methodology employed in this work follows the Brouwer–Heyting–Kolmogorov (BHK) interpretation of proof, as operationalized by the Curry–Howard correspondence in Lean. Under this interpretation, a proposition is considered proven precisely when a constructive proof object exists.
-
-In Lean, proofs are terms inhabiting types; a theorem is established when the kernel accepts a term of the corresponding type. Successful compilation is therefore not a heuristic or external validation, but the truth criterion internal to the formal system itself.
-
-Consequently, the existence of a kernel-validated Lean constant representing a theorem constitutes proof of that theorem within the system, independent of whether the statement is publicly exported or deliberately confined behind an interface boundary. The latter is a matter of certification scope and safety design, not of epistemic status.
-
-This distinction is essential for interpreting the public verification surface of Ascendant.Zero: the public layer certifies selected modal compatibility statements and guards, while stronger conclusions may remain internal without affecting their formal validity.
-### Formal Consequence under BHK/S5
-
-Formally: the public layer establishes the weaker modal form **□◇∃x** (necessary possibility of instantiation under S5), while S5 + the Ω-framework enforces the stronger consequence **□∃x** (necessary existence). Ascendant.Zero adopts the BHK/Curry–Howard interpretation of proof: a theorem is proven when a constructive proof term exists and is accepted by the Lean kernel. Public export boundaries are certification and safety mechanisms; they do not determine the truth or existence of internal proofs. By the BHK interpretation, the transcendent grounding is not inferred but instantiated: once a proof object exists within a framework that enforces anti-regress and modal necessity, the proof’s existence fixes the necessity of its terminus.
+Lean kernel acceptance establishes theoremhood of an exact type: $t : \varphi$. This is distinct from the derivation context $\Gamma \vdash \varphi$, the semantic consequence $\mathcal M \models \Gamma \to \mathcal M \models \varphi$, and the paper's intended-actuality thesis $\mathcal R \models \Gamma$. BHK/Curry–Howard characterizes proof objects and theoremhood within Lean; it does not itself make the ontological step from a proof object to actuality. Public export boundaries do not alter the kernel status of private proof terms.
 
 ---
 This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package.  
@@ -79,20 +50,18 @@ The goal of this README is precision: each attack vector is listed together with
 
 |  # | Attack Vector                           | Status           | Where it’s checked (File & Section)                                                                          |
 | -: | --------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
-|  1 | `sorry` / placeholder leakage           | **Prevented**    | `CertificateAudit.lean` — kernel audit via `#print axioms`; CI/compiler strictness (no `sorry` allowed)      |
-|  2 | Logical explosion (*ex falso*)          | **Guarded**      | `PublicTests.lean` — §5 *Negative Guards* (`AltRoute.PublicTests.AltRoute.exFalsoQuodlibet` scoped to tests) |
-|  3 | Triviality / “everything is true”       | **Demonstrated** | `PublicTests.lean` — §2 *TrivialModel* + §4 *Verum sanity* (isolated “yes-man” model doesn’t leak)           |
-|  4 | Circular grounding                      | **Enforced**     | `Interface.lean` — hardened types & graph invariants (e.g., Euclidean-style typed layer)                     |
-|  5 | Infinite regress                        | **Enforced**     | `PublicTests.lean` — §6 *WellFounded* (finite witness / well-founded reasoning)                              |
-|  6 | Accidental export of strong claims      | **Prevented**    | `CertificateAudit.lean` — export allow-list via explicit `#check`/scope; namespace isolation                 |
-|  7 | Namespace / symbol shadowing            | **Mitigated**    | `Interface.lean` — `namespace AltRoute` + qualified uses; explicit openings in tests                         |
-|  8 | Artifact tampering (.olean spoofing)    | **Prevented**    | `README.md` — reproducible builds policy (`lake clean`, deterministic CI; pinning & checksums)               |
-|  9 | Instance hijacking (semantic ambiguity) | **Verified**     | `PublicTests.lean` — §7 *Semantic Identity* (e.g., `Bank_Financial` ≠ `Bank_Furniture`; UID-level checks)    |
-| 10 | Notation spoofing                       | **Bypassed**     | `PublicTests.lean` — §7 UID/term equality (kernel primitives; compare typed terms, not strings)              |
-| 11 | Axiom pollution                         | **Audited**      | `CertificateAudit.lean` — `#print axioms ...` (e.g., dependency only on `[AltRoute.PosPossibility]`)         |
-
-
-Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (ARES) provide runtime guarantees beyond the Lean verification layer and remain private.
+|  1 | `sorry` / placeholder leakage           | **Tracked**      | No `sorry`-specific check is performed by `CertificateAudit.lean` or the current `scripts/ci.sh`.             |
+|  2 | Logical explosion (*ex falso*)          | **Audited**      | `PublicTests.lean` exposes the standard `exFalsoQuodlibet` lemma; it does not prove non-derivability of `False`. |
+|  3 | Triviality / “everything is true”       | **Scoped witness** | `TrivialModel` witnesses only the bare `Modal` K/T/4/5 fragment.                                             |
+|  4 | Circular grounding                      | **Out of public scope** | `Interface.lean` contains no full circular-grounding protection.                                         |
+|  5 | Infinite regress                        | **Demonstration only** | `PublicTests.lean` proves well-foundedness for `Nat.lt`, not the full grounding context.                 |
+|  6 | Accidental export of strong claims      | **Guard source present** | `tests/NoExport_NecessaryExistence.lean` is separate from `CertificateAudit.lean`; current CI does not run it. |
+|  7 | Namespace / symbol shadowing            | **Scoped**       | Public declarations use `namespace AltRoute`; broader shadowing resistance is not certified here.             |
+|  8 | Artifact tampering (.olean spoofing)    | **Detectable**   | Rebuild and SHA-256 verification in `scripts/ci.sh` can detect mismatches.                                   |
+|  9 | Instance hijacking                      | **Tracked**      | `Positive` is a public typeclass; Gate 0 hardening addresses over-broad `PosPossibility` instantiation.       |
+| 10 | Notation spoofing                       | **Scoped**       | Lean checks elaborated terms; no separate notation-spoofing audit is present.                                 |
+| 11 | Axiom pollution                         | **Audited**      | `CertificateAudit.lean` prints selected global axiom footprints.                                              |
+| 12 | Modal collapse                          | **Guarded by scope** | The exported result is `□◇`; no public theorem asserts `□◇p → □p`.                                       |
 
 
 ---
@@ -103,9 +72,9 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Threat**: Incomplete proofs silently bypass verification.
 
-**Mitigation**: The public build rejects all files containing `sorry`. Compilation fails immediately.
+**Public status**: `CertificateAudit.lean` inspects exported declarations and global axiom footprints; it does not scan for placeholders. The current CI script builds and packages the distribution but does not contain a `sorry` gate.
 
-**Strength**: Hard guarantee (compiler-enforced).
+**Strength**: Tracked, not a public prevention claim.
 
 ---
 
@@ -115,12 +84,10 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Mitigation**:
 
-* The public API includes an explicit `exFalsoQuodlibet` lemma, making explosion visible rather than implicit.
-* PublicTests act as a *canary*: no public proof of `False` exists; any attempt to derive it fails to compile.
+* `PublicTests.lean` exposes the standard theorem `exFalsoQuodlibet : False → P`.
+* This makes the consequence of a proof of `False` explicit; it does not establish that `False` is unprovable from the complete context.
 
-**Note**: Lean cannot prove "`False` is unprovable" internally. The guarantee is operational: if `False` were derivable, the public tests would collapse.
-
-**Strength**: Canary-based guard.
+**Strength**: Audited canary artifact, not a non-explosion proof.
 
 ---
 
@@ -130,14 +97,13 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Mitigation**:
 
-* `TrivialModel` (Box = Dia = identity) is provided as a *model witness* showing that the modal axioms (K, T, 4, 5) are **consistent**, not contradictory.
+* `TrivialModel` (Box = Dia = identity) is a witness for the bare `Modal` K/T/4/5 fragment.
 
 **Clarification**:
 
-* This does **not** by itself prevent trivial acceptance of all statements.
-* Prevention is achieved by interface constraints and additional guards, not by the model alone.
+* It is not a model of the full Ω, `PosPossibility`, or grounding context.
 
-**Strength**: Consistency demonstration, not enforcement.
+**Strength**: Scoped modal-fragment witness, not full-context consistency certification.
 
 ---
 
@@ -145,14 +111,9 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Threat**: Entities ground each other in cycles, invalidating grounding semantics.
 
-**Mitigation**:
+**Public Status**: `Interface.lean` does not define or prove complete circular-grounding protection.
 
-* Detected operationally in the graph layer (cycle queries).
-* Excluded in private Lean proofs via anti-cycle grounding lemmas.
-
-**Public Status**: Not certified in PublicTests by design.
-
-**Strength**: Runtime + private proof enforcement.
+**Strength**: Out of the public certificate's scope.
 
 ---
 
@@ -160,14 +121,9 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Threat**: Grounding chains never terminate, preventing convergence.
 
-**Mitigation**:
+**Public Status**: `PublicTests.lean` demonstrates `WellFounded` for `Nat.lt`. This is an illustrative well-foundedness result, not a proof of termination or convergence for the public interface or the complete grounding context.
 
-* Private Lean proofs establish well-foundedness where required.
-* Runtime enforcement via ARES termination metrics and measure monotonicity.
-
-**Public Status**: Not fully exposed in the public package.
-
-**Strength**: Runtime + private proof enforcement.
+**Strength**: Demonstration only.
 
 ---
 
@@ -177,19 +133,17 @@ Hardware-enforced grounding (Nihillucinator™) and Abstract Reduction System (A
 
 **Mitigation**:
 
-* Dedicated `NoExport_*` libraries are designed to **fail** if such claims leak.
-* CI treats these failures as expected success conditions.
+* `tests/NoExport_NecessaryExistence.lean` is a negative-guard source that intentionally refers to a non-exported symbol.
+* `CertificateAudit.lean` does not run this guard; it only checks known public declarations and prints axiom footprints. The current CI script does not invoke the negative target.
 
-**Strength**: Hard CI guard.
+**Strength**: Guard source and export-boundary audit, not a current hard-CI claim.
 
 ---
 
 
 ### 7. Formal Refutation via Kernel-Checkable Contradiction
 
-> Within this framework, both validation **and refutation** are admissible **only** insofar as they are expressed as kernel-checkable Lean proof objects under an explicit and declared axiom footprint.
-
-A claim is considered **invalid** only if a formal refutation is provided in one of the following Lean-verifiable forms:
+This is a repository **audit policy** for formal claims. A Lean-checkable contradiction under an explicit, declared context is a kernel-level refutation. Typical forms are:
 
 * **Direct contradiction**
   A proof object of the form:
@@ -198,7 +152,7 @@ A claim is considered **invalid** only if a formal refutation is provided in one
   claim → False
   ```
 
-* **Footprint inconsistency**
+* **Context inconsistency**
   A proof that the union of:
 
   ```
@@ -207,70 +161,36 @@ A claim is considered **invalid** only if a formal refutation is provided in one
 
   entails `False`, under the **same axiom footprint** and without introducing additional assumptions.
 
-No informal arguments, meta-reasoning, probabilistic objections, or external tools are admissible as refutation.
+Philosophical, semantic, probabilistic, and external critiques are not thereby invalid; they address questions outside kernel-level refutation, including the suitability of axioms, interpretations, and the intended-actuality thesis. They are simply not Lean kernel refutations unless encoded as such under a stated context.
 
 ---
 
 ### Audit-of-the-Audit Requirement
 
-All refutations are themselves subject to the **same audit guarantees** as validated claims.
+Lean refutation artifacts submitted for repository audit should be subject to the same applicable build and dependency inspection as other Lean changes.
 
 Specifically, every refutation submission must:
 
 * be **kernel-verifiable** by Lean,
-* avoid all placeholder constructs (`sorry`, `admit`, etc.),
-* introduce **no new axioms** beyond the declared footprint,
-* respect namespace isolation and export boundaries,
-* avoid notation, instance, or meta-level spoofing,
-* and pass all **11 defined attack-vector checks** without exception.
-
-In other words:
-
-> **A refutation that violates any attack vector is rejected, even if it compiles.**
-
----
-
-### Procedural Enforcement
-
-* All refutations must be submitted as **pull requests** against the designated `audit` branch.
-* CI enforces:
-
-  * `#print axioms` footprint comparison,
-  * placeholder detection,
-  * export allow-listing,
-  * and full attack-vector coverage.
-* Refutations that rely on informal reasoning, reviewer authority, or external semantics are **out of scope** and considered non-actionable.
-
----
-
-### Consequence
-
-Under this policy:
-
-* A compiling theorem may still be rejected if it fails **any** attack-vector invariant.
-* A claim cannot be dismissed by opinion or meta-critique alone.
-* Disagreement is meaningful **only** when it materializes as a Lean-checkable contradiction.
-
-This ensures that both **truth claims and objections** are governed by the same formal standard.
-
+* state their declared axioms and hypotheses,
+* be kernel-checkable,
+* identify any added assumptions or imports, and
+* be assessed against the public audit scope described in this certificate.
 
 ---
 ## Verification & Audit Scope
 
-All formal claims in this repository are validated by Lean 4 proof objects
-checked by the kernel.
+Claims described as kernel-verified are validated by Lean 4 proof objects accepted by the kernel relative to their declared contexts. The public certificate audits only the exported surface and named public artifacts.
 
 Assessment of correctness therefore presupposes the ability to:
 - inspect Lean theorems and definitions,
 - trace axiom usage and scope,
 - verify correspondence between claims and exported proof objects.
 
-Reviewers lacking this competence may comment on presentation or implications,
-but cannot meaningfully assess formal validity.
+Reviewers may assess presentation, interpretation, and philosophical implications independently of kernel-level formal validity.
 ### CertificateAudit
 
-Formal validity is determined solely by Lean kernel–checked proof objects.
-Assessment of correctness therefore presupposes the competencies listed below.  
+Lean kernel acceptance determines theoremhood within the declared formal context. The competencies below support assessment of that formal layer.
 #### Required Competencies
 
 1. **Reproducible Build**
@@ -298,8 +218,7 @@ Assessment of correctness therefore presupposes the competencies listed below.
    * Ability to interpret build or proof failures resulting from minimal changes.
    * Understanding of negative guards and intentional proof boundaries.
 6. **Active Audit via Proof Contribution**
-   Ability to submit audit findings as pull requests against a designated audit branch,
-   including the addition or modification of Lean proof objects that:
+   Ability to submit Lean audit findings, including the addition or modification of Lean proof objects that:
 
    * refine or clarify existing claims,
    * demonstrate equivalence or non-equivalence of statements,
@@ -307,34 +226,18 @@ Assessment of correctness therefore presupposes the competencies listed below.
 
    All audit claims must be expressible as Lean objects and be kernel-verifiable.
 7. **Formal Refutation via Contradiction**
-   > Within this audit framework, both validation and refutation are admissible only insofar as they are expressible as Lean-checkable objects
-   
-   Ability to demonstrate that a claim is invalid **only** by constructing a formal contradiction, encoded as Lean proof objects, such that:
+   Ability to demonstrate a kernel-level refutation by constructing a Lean-checkable contradiction such that:
      * the claim implies `False`, or
      * the claim is inconsistent with existing axioms or proven theorems under the same axiom footprint.
 
-    All refutations must be:
-
-    * kernel-verifiable,
-    * expressed entirely within Lean,
-    * and submitted as pull requests against the designated audit branch.
-
-    Informal objections, narrative counterexamples, or non-formal critiques are not sufficient to invalidate a claim.
+   Philosophical or semantic criticism remains relevant outside that kernel-level classification.
 ### Audit Scope Limitation
 
-This is an object-based framework: claims are valid only insofar as they are Lean kernel–checked. By reciprocity, refutations must also be Lean-checkable (e.g. `claim → False`) under the same axiom footprint. Reviewers lacking the above competencies may comment on exposition, interpretation, or philosophical implications, but **cannot meaningfully assess formal correctness** of the claims.  
+This is an object-based framework for formal claims: kernel-level refutations must be Lean-checkable (for example, `claim → False`) under a stated context. It does not classify non-formal philosophical or semantic criticism as automatically invalid.
 
 ---
 ## Final Statement
 
 The public Lean package does **not** claim to prove everything.
 
-It certifies that:
-
-* the exposed logic is internally consistent,
-* known logical failure modes are either prevented or explicitly guarded,
-* and no stronger claims are exported than intended.
-
-All stronger guarantees (transcendence mechanics, MA algebra, grounding dynamics, FPGA mapping) remain private by design.
-
-
+It records the exported API, selected model and canary artifacts, and selected global axiom footprints. `TrivialModel` concerns only the bare modal fragment; Gate 0 and JointModel remain broader public-certification targets. The deliberate public export boundary does not alter the kernel-verified status of the private strong Alt Route theorems.
