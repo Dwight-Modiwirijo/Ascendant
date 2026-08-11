@@ -1,35 +1,89 @@
-# Zer0proof — AltRoute (public interface + `.olean`)
+# Zer0proof
 
-**Build:** `lake update && lake build`  
-**Check:** `./scripts/ci.sh` (grep-gate, blocklist, axioms whitelist, proof-term, no-export guard, packaging)
+Technical access point for the Alt Route Lean development and its public audit surface. The accompanying [paper](Paper.md) is authoritative for the argument, theorem status, and certification boundary.
 
-## Toolchain & deps
-- Lean: zie `lean-toolchain`
-- mathlib: gepind in `lakefile.lean`
+## Verification boundary
 
-## Public surface (zwak)
-- `necPossible_of_Pos`: `Pos P → □◇∃x P x` (via S5 `ax_5` + zwakke brug `PosPossibility`)
-- `SomePosNecPossible`: ∃P met bovenstaande eigenschap  
-**Geen** publieke claim van `□∃x …`.
+The private Alt Route contains Lean kernel-accepted proof terms for the following strong Ω-results:
 
-## Verifieerbaarheid
-- `#print axioms` (publieke theorema’s) toont enkel `AltRoute.PosPossibility`.
-- Proof-term laat aanroep van `Modal.ax_5` zien.
-- No-export guard bewijst dat sterke symbolen (zoals `NecessaryExistence`/`□∃`) **niet** publiek zijn.
+| Declaration | Exact theorem type |
+|---|---|
+| `Final_NE_Proof` | $\Box\exists x\,\Omega(x)$ |
+| `Final_BoxUnique_Proof` | $\Box\exists!x\,\Omega(x)$ |
+| `Final_RigidWitness_Proof` | $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ |
 
-## Toolchain
- leanprover/lean4:v4.20.1 (binary reports Lean 4.20.0, commit b02228b0, per upstream packaging). CLI en lake env zijn identiek, zie CI.
+These are **kernel-verified** results of the private Alt Route: Lean accepts proof objects inhabiting the stated theorem types relative to their declared contexts. The private source is a disclosure and IP boundary; its non-public status does not change the status of those kernel-accepted proof terms. See Paper §4.1 and Appendix A.2.3.
+
+TI (Transcendental Induction) is a separate convergent route discussed only at the scope stated in Paper §3.3. Its internal construction is not published here.
+
+## Public Verification Surface
+
+`AltRoute.Interface` deliberately exports a narrower compatibility/API layer. In particular, `necPossible_of_Pos` has the form
+
+$$
+\operatorname{Pos}(P) \to \Box\Diamond\exists x\,P(x),
+$$
+
+using `PosPossibility` and the S5-style axiom `ax_5`. `SomePosNecPossible` and `somePosNecPossible_of_exists` package the same public compatibility layer.
+
+This is an **export boundary**, not a weakening of the strong private theorem status. The public API is intentionally limited; the private kernel route carries the strong Ω-results listed above. Public source and audit artifacts let a third party build and inspect the exported layer, not reconstruct the private proof construction.
+
+## Certification labels
+
+The repository follows the terminology of Paper §4.2:
+
+- **Kernel-verified:** a Lean proof object inhabits its exact theorem type relative to the declaration's axioms and hypotheses.
+- **Publicly certified:** published signatures, manifests, and audit mechanisms are inspectable and rebuildable to the extent that they are present in this repository.
+- **Publicly reproducible:** a third party can independently reproduce the particular artifact or build at issue.
+
+The private strong proof construction is kernel-verified but not publicly reproducible. The public interface and its build are publicly reproducible from the published source. Certification is not a claim that the private proof term is exported.
+
+## Theorem type and dependencies
+
+Keep the exact theorem object and its derivation context distinct:
+
+$$
+t : \varphi \qquad\text{and}\qquad \Gamma \vdash \varphi.
+$$
+
+`#print axioms` reports global entries in Lean's axiom registry. It does not replace the theorem type or report explicit hypotheses carried by a declaration; those must be read from the declaration/signature and the dependency record. Paper Appendix A.2.3 records the reported global footprints for the strong results:
+
+| Declaration | Reported global footprint |
+|---|---|
+| `Final_NE_Proof` | `propext`, `PosPossibility` |
+| `Final_BoxUnique_Proof` | `propext` |
+| `Final_RigidWitness_Proof` | `propext` |
+
+The footprint is dependency bookkeeping, not a substitute for a full explicit-hypothesis manifest.
+
+## Audit hardening
+
+**Gate 0** concerns hardening the generic public `PosPossibility` bridge against hostile or overly broad instantiations. **JointModel** concerns joint-satisfiability certification of the full relevant public/audit context. Both are ongoing public-certification and robustness work. They do not reopen the kernel theorem status of `Final_NE_Proof`, `Final_BoxUnique_Proof`, or `Final_RigidWitness_Proof`, and they do not make the existing `#print axioms` footprint pending.
+
+## Audit Model
+
+The audit architecture tracks the following attack vectors: `sorry`/placeholder leakage, logical explosion (`ex falso`), triviality, circular grounding, infinite regress, accidental stronger exports, namespace or symbol shadowing, `.olean` artifact tampering, instance hijacking, notation spoofing, axiom pollution, and modal collapse.
+
+Current public artifacts provide scoped audit hooks: `AltRoute.CertificateAudit` checks exported declarations and prints selected axiom footprints; `AltRoute.PublicTests.TrivialModel` is a model witness for the bare modal interface; and `AltRoute.PublicTests.exFalsoQuodlibet` is an explosion canary. These artifacts are guards and audit inputs for their stated public scope. They are not a blanket pass claim for all vectors or for the full private Ω-theory. Gate 0 and JointModel remain certification targets for the broader context.
+
+## Build and Verify
+
+The pinned Lean toolchain is declared in `lean-toolchain`; the package and pinned mathlib dependency are declared in `lakefile.lean`.
+
+```bash
+cd Zer0proof
+lake update
+lake build
+
+# Inspect the public compatibility declarations and selected axiom footprints.
+lake env lean AltRoute/CertificateAudit.lean
+
+# Rebuild and create the current distribution/hash package.
+./scripts/ci.sh
+```
+
+`scripts/ci.sh` currently performs a clean build, packages top-level public `AltRoute` `.olean` files with the listed distribution documents, and generates and verifies `SHA256SUMS`. No repository CI configuration or separate `AxiomsCheck.lean` script is currently present; the command above uses the existing `CertificateAudit.lean` artifact instead.
 
 ## Disclosure
-Inhoud `.olean` + `AltRoute/Interface.lean` + toolchain/lakefile.  
-Bron van proofs is vertrouwelijk; onder NDA beschikbaar voor reviewers.
 
-### How to verify (public)
-```bash
-# fresh env
-lake update && lake build
-# run axiom footprint report
-lake env lean -R . scripts/AxiomsCheck.lean
-
-mkdir -p .lake/build/lib/lean/AltRoute/Private/Successor
-lake env lean --root=.   -o .lake/build/lib/lean/AltRoute/Private/Successor/Types.olean   AltRoute/Private/Successor/Types.lean
+The public repository exposes the interface, public tests, certificate audit, build configuration, and public build artifacts. The source of the private strong proof construction is confidential and available to reviewers only through the repository's disclosure process. No private route architecture is documented in this README.
