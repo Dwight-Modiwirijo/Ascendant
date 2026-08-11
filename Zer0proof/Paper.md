@@ -358,25 +358,11 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
 ---
-### 3.3 TI — Transcendentale Inductie (Route 2)
+### 3.3 TI — Transcendentale Inductie
 
-Alongside the successor-based Alt Route (§2.2) and the axiomatic Hyper-Modal route (§2.1, §3.1), this paper identifies a second, convergent route to the same terminus, referred to throughout as **TI (Transcendentale Inductie)**. TI is built from three concepts already at work elsewhere in the paper — a contingent **Entity**, the **Creates** relation that grounds it, and the **Perfection**/positivity characterization its terminus inherits (§2.1 (A2), §6.2) — organized as a transcendental induction on the Creates-chain. TI is presented here at the conceptual/philosophical level. No Lean formalization of TI as an independent route exists in the repository accompanying this paper, and no Lean-verification status is claimed for it; where this paper states a formal status elsewhere (kernel-verified, publicly certified, etc.), that status attaches specifically to the Alt Route and Hyper-Modal-reductio-suite results (§4, Appendix A), not to TI.
+A second independent route, **TI (Transcendentale Inductie)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Alt Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
 
-**1. Starting datum.** TI begins from a contingent Entity $E_0$ — any particular thing whose existence is not self-explanatory (paradigmatically, though not exclusively, the minimal datum "I am" used in §3).
-
-**2. The Creates/grounding relation.** TI uses a relation **Creates** (a specialization of the general grounding relation ◃ of §2.1) such that $\mathrm{Creates}(x,y)$ means: $x$ is the actual, sufficient ontological origin of $y$'s existence — not merely a correlate or a member of a symmetric dependency. Creates is asymmetric and irreflexive by construction: nothing creates itself, and if $x$ creates $y$, $y$ does not create $x$.
-
-**3. Why a contingent creator cannot terminate the regress.** Suppose $E_1\,\mathrm{Creates}\,E_0$ and $E_1$ is itself contingent. Then $E_1$ stands in exactly the same explanatory situation as $E_0$: its existence is not self-explanatory, and by A1 (HM-PSR) it too requires a creator/ground. A contingent creator never discharges the demand for a sufficient ground; it only relocates it one step back.
-
-**4. Why infinite contingent creation is excluded.** If every member of a chain $\ldots\,\mathrm{Creates}\,E_2\,\mathrm{Creates}\,E_1\,\mathrm{Creates}\,E_0$ were contingent, no member would ever be sufficiently grounded — by (3), each merely relocates the demand. By A3 (Anti-Regress), such an infinite chain of relocated, never-discharged grounding demands is not a coherent account of grounding: it is the permanent deferral of grounding, not its provision (§2.1.1, "Denying A3"). TI therefore excludes an infinite chain of contingent creators on the same constitutive grounds as the general Anti-Regress principle.
-
-**5. Why the terminating entity is non-contingent.** By (3) and (4), any terminating point of a Creates-chain that actually discharges the grounding demand cannot itself be contingent — a contingent terminus would, by (3), simply extend the chain rather than terminate it. The terminus of a genuine Creates-chain is therefore non-contingent: it exists without itself requiring a further creator.
-
-**6. Why the terminus satisfies the Ω-role.** A non-contingent terminus of the Creates-relation is, by definition, an Ω-candidate in the sense of §2.1's HM-PSR/Anti-Regress structure: a necessary ground that terminates a grounding chain without itself standing in need of further grounding. TI's terminus therefore satisfies the same role-defining conditions used to characterize Ω in §2.2 (minimality of measure) and §3 (reductio-derived terminus), even though TI arrives at that role via the Creates-relation rather than via the successor/measure construction or the abstract A1–A5 axioms directly.
-
-**7. Uniqueness and perfection.** TI does not, by itself, supply an independent proof of uniqueness or of the A2 positivity/perfection characterization; those are established, respectively, by the coalescence/minimality argument of the Alt Route (§2.2.2) and by the A2 admissibility notion (§2.1 (A2), §6.2). TI's contribution is the Creates-based motivation for why *some* non-contingent terminus must exist at all; once that much is granted, the uniqueness and perfection results of §2.2 and §6.2 apply to it under the identification in (6).
-
-**8. Relation to the Alt Route.** TI and the Alt Route are convergent, not identical. The Alt Route is a Lean-verified successor/measure construction (§2.2, Appendix A.2.3) that does not use a Creates-relation at all; TI is a conceptual argument from a creation/origination relation that has not been separately formalized in this repository. Both are presented as routes to the conclusion that a non-contingent terminus exists and plays the Ω-role, and both are compatible with the same terminus (§3.2). Establishing TI in Lean, and determining whether its Creates-relation reduces to, extends, or is independent of the grounding relation ◃ already formalized in Appendix A.6, is reserved for future work; this paper does not claim that work has been done, and the Alt Route's kernel-verified status (§4, Appendix A.2.3) does not depend on TI in any way.
+The relevance of TI here is limited to convergence: the existence of an independent route shows that the Ω-terminus is not an artefact of the successor/measure presentation alone, but is approached from a distinct grounding construction. The present paper therefore records only the existence, independence, and convergence target of TI.
 
 ---
 
@@ -468,7 +454,7 @@ $$
 \varphi = \Box\exists!x\,\Omega(x)
 $$
 
-together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Alt Route and TI are two independent formal/conceptual routes converging on the same $\Gamma\vdash\varphi$; the Alt Route additionally delivers the kernel term $t:\varphi$ itself (Appendix A.2.3). The constitutive argument that $\mathcal R\models\Gamma$ (§2.1.1) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in §7.2.
+together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Alt Route delivers $\Gamma\vdash\varphi$ and the kernel term $t:\varphi$ itself (Appendix A.2.3); TI is recorded only as an independent convergent route (§3.3). The constitutive argument that $\mathcal R\models\Gamma$ (§2.1.1) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in §7.2.
 
 ---
 ## 4. Verification in Lean 4
