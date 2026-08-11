@@ -19,10 +19,10 @@ Informally: *if it is possible that `p` is necessary, then `p` is necessary.*
 The public interface does not establish the antecedent `◇□p`. Its exported theorem is instead
 
 $$
-\operatorname{Pos}(P) \to \Box\Diamond\exists x\,P(x).
+\mathrm{Pos}(P) \to \Box\Diamond\exists x\,P(x).
 $$
 
-This necessary-possibility compatibility statement does **not** imply `\Box\exists x\,P(x)` in S5. In particular, `\Box\Diamond p \to \Box p` is not an S5-valid schema.
+This necessary-possibility compatibility statement does **not** imply $\Box\exists x\,P(x)$ in S5. In particular, $\Box\Diamond p \to \Box p$ is not an S5-valid schema.
 
 ### Public versus private result boundary
 
