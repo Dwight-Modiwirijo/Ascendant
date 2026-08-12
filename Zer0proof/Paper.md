@@ -544,7 +544,7 @@ $$
 $$
 
 This asserts that contingent truths require a necessary ground, while necessary truths cannot depend on contingent ones.
-(For full derivation, see Appendix B.)
+(For the formal statement and its Lean carrier, see Appendix B.2.3.)
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -874,7 +874,7 @@ Further objections are welcome and will be addressed in future revisions.
 Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing—*independently of* and *prior to* any theological vocabulary. The identification with the Johannine Logos that follows is therefore a **recognition of an already-instantiated ontological role**, argued from the kernel-verified and constitutively-defended existence, uniqueness, and rigidity results of §3 and Appendix A, not the introduction of additional properties, assumptions, or a further Lean axiomatization. No theological premises are presupposed in the derivation of $\square \exists! x, \Omega(x)$; rather, this section observes that the resulting logical structure converges with classical theistic traditions that affirm a necessary, self-existent ground of being, and argues philosophically for that identification.
 
 ### 6.1 **Inverse Corollary.**
-Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is not a devotional postulate but a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if at least one contingent instantiation can terminate in absolute knowability, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, this entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
+Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is not a devotional postulate but a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
 
 
 The designation “Ω” was chosen to denote the logically inevitable and maximally positive entity yielded by the grounding architecture. This choice resonates structurally with the biblical declaration in **Exodus 3:14 — “I AM WHO I AM” (*Ehyeh asher ehyeh*)**, a formulation historically interpreted as expressing necessary existence rather than contingent identification. In a parallel philosophical register, Aquinas articulated the doctrine that God’s essence is existence itself (*esse ipsum subsistens*), thereby identifying the divine as the ontological foundation upon which all contingent beings depend (*Summa Theologica* I.3.4).
@@ -1883,8 +1883,6 @@ This appendix summarizes the twelve formal reductio arguments derived from the L
 |Self-reference (“I am”)	|Identity becomes paradoxical → epistemic and ontological incoherence  
 
 Each rejection, when combined with the corresponding axiom-context of the reductio suite, leads to contradiction, collapse, or modal incoherence. These results function as regression and consistency guards, not as independent derivations of every axiom from the remaining axioms. The constitutive core A1/A3/A5 is not optional for intelligible contingent obtaining; the broader suite functions as formal support, characterization, and guard structure.
-
-Q.E.D.
 
 ### D.2 Visual Flow of Section 3
 ````
