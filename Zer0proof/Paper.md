@@ -547,6 +547,13 @@ Thus, the modal system respects Gödel’s insight by embedding the boundary bet
 This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced.
 
 ---
+#### **5.2.1 Necessary Possibility and Possible Necessity**
+
+**Objection:** Necessary possibility is being confused with possible necessity.
+
+**Response:** The framework distinguishes $\square\Diamond p$ from $\Diamond\square p$. The public layer establishes the former, which does not entail $\square p$. The Brouwer/S5 step is $\Diamond\square p \to \square p$; the strong $\square$-theorems are established by the private Alt Route within its declared Ω-specific context.
+
+---
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
