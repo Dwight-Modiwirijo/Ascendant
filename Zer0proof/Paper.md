@@ -7,7 +7,7 @@ This paper presents the *Alt Route proof*, a Lean kernel-verified construction e
 
 At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
-The paper combines one fully Lean-verified constructive route (Alt Route) with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure theorem**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
+The paper combines one fully Lean-verified constructive route (Alt Route) with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure result**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
 
 **Keywords:** Alt Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
@@ -19,7 +19,7 @@ This paper articulates the constitutive structure of reality—the conditions un
 
 This paper begins from the minimal ontological datum of contingent obtaining: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
 
-This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying Ω leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, Ω is not optional; it is a logical inevitability.
+This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying Ω leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, Ω is not optional; it is a logical inevitability of the constitutive grounding architecture.
 
 We distinguish our method through three components:
 
