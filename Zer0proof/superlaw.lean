@@ -5,7 +5,7 @@
 
   ## What is in this file?
   * A full S5 Kripke semantics (`R` is reflexive, symmetric, transitive).
-  * Modal operators **□**, **◇**, contingency, and a grounding relation `p ◃ q`.
+  * Modal operators **□**, **◇**, contingency, and a binary grounding predicate.
   * Axioms (A)–(E) that mirror the *Hyper‑Minimal Principle of Sufficient Reason*,
     Perfect Positivity of Ω, Anti‑Regress, etc.
   * A theorem `consciousness_grounded` showing that the contingent predicate
@@ -55,7 +55,12 @@ def possibly (w : W) (φ : W → Prop) : Prop :=
 def contingent (φ : W → Prop) : Prop :=
   ∃ w : W, @possibly W R w φ ∧ @possibly W R w (λ u => ¬ φ u)
 
-/-! ### Grounding relation p ◃ q -/
+/-!
+### Grounding predicate
+
+`ground p q` states that `q` supports `p` extensionally and by necessitation.
+The definition itself does not impose relational asymmetry or irreflexivity.
+-/
 
 def ground (p q : W → Prop) : Prop :=
   (∀ w : W, q w → p w) ∧
@@ -135,8 +140,10 @@ axiom logic_is_necessary :
 axiom material_is_contingent :
   @contingent W R Material
 
-/-- **Anti-Material Grounding Principle:**
-    No necessary truth can be grounded in contingent reality -/
+/-- **Nec/Cont Modal-Class Asymmetry:**
+    No necessary proposition can be grounded in a contingent proposition.
+    This axiom classifies the modal status of the two arguments; it does not
+    assert relational asymmetry or irreflexivity of `ground`. -/
 axiom no_necessary_grounded_in_contingent :
   ∀ p q : W → Prop,
     (∀ w : W, @necessarily W R w p) →
@@ -359,7 +366,7 @@ The above Lean 4 verification formally implements and validates the **Alternativ
 **Framework Correspondence:**
 - Lean S5 semantics ↔ Modal logical framework (worlds W, accessibility R)
 - Modal operators (necessarily, possibly, contingent) ↔ □φ, ◇φ, Cont(p)
-- Ground relation ↔ p ◃ q with asymmetry and minimality
+- Ground predicate ↔ extensional support with minimal necessitation
 
 **Axiom Implementation:**
 - `hyper_minimal_PSR` ↔ (A) Hyper-Minimal PSR: ∀p(Cont(p) → ◇∃q(q ◃ p ∧ (□q ∨ ◇(Ω ◃ q))))
@@ -391,7 +398,7 @@ The verification completes the alternative proof with computational rigor, eleva
 * **Necessity**: □φ (“φ is true in all worlds”)
 * **Possibility**: ◇φ (“φ is true in at least one world”)
 * **Contingency**: Cont(p) ≡ ◇p ∧ ◇¬p
-* **Grounding Relation**: p ◃ q, formally: q → □(q → p), with asymmetry and minimality guaranteed.
+* **Grounding Predicate**: `ground p q`, formally: q → □(q → p), with minimal necessitation.
 
 ---
 

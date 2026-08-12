@@ -531,7 +531,17 @@ Response: Section 2 formally defines these terms. Necessary truths (Nec(p)) are 
 
 We reinforce this asymmetry formally:
 
-□[∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))] ∧ □¬[∀p (Nec(p) → ∃q (Cont(q) ∧ q ◃ p))]
+$$
+\Box\forall p\Bigl(
+  Cont(p)\to
+  \exists q\,(Nec(q)\land q\mathbin{◃}p)
+\Bigr)
+\land
+\Box\forall p\Bigl(
+  Nec(p)\to
+  \neg\exists q\,(Cont(q)\land q\mathbin{◃}p)
+\Bigr)
+$$
 
 This asserts that contingent truths require a necessary ground, while necessary truths cannot depend on contingent ones.
 (For full derivation, see Appendix B.)
@@ -735,7 +745,7 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))**
 
-states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. This schema enforces *non-identity* (p ≠ q) as the absolute condition for intelligibility. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (asymmetry of ◃).
+states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. The accompanying modal-class condition excludes contingent grounds for necessary propositions. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (`no_necessary_grounded_in_contingent`).
 
 This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of modal grounding structure — one that prevents semantic collapse and infinite regress.
 
@@ -1738,24 +1748,31 @@ This appendix contains the full derivation of the modal asymmetry principle that
 
 Let:
 
-P := ∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))
-Q := ∀p (Nec(p) → ∃q (Cont(q) ∧ q ◃ p))
+$$
+P := \forall p\,\bigl(Cont(p)\to\exists q\,(Nec(q)\land q\mathbin{◃}p)\bigr)
+$$
 
-Then:
+and:
 
-¬◇(□p → ∃q (Cont(q) ∧ q ⊢ p)) ⇔ □¬(□p → ∃q (Cont(q) ∧ p ◃ q))
-⇒ It is necessarily not the case that a necessary truth can be grounded in a contingent one.
-⇒ Q is necessarily false.
+$$
+Q := \forall p\,\bigl(Nec(p)\to\neg\exists q\,(Cont(q)\land q\mathbin{◃}p)\bigr).
+$$
 
 Thus, we derive:
 
-□[P] ∧ □¬[Q]
+$$
+\Box\forall p\Bigl(
+  Cont(p)\to
+  \exists q\,(Nec(q)\land q\mathbin{◃}p)
+\Bigr)
+\land
+\Box\forall p\Bigl(
+  Nec(p)\to
+  \neg\exists q\,(Cont(q)\land q\mathbin{◃}p)
+\Bigr).
+$$
 
-Which asserts:
-
-□[P] = All contingent truths necessarily require necessary grounding
-□¬[Q] = It is necessarily false that necessary truths require contingent grounding
-This asymmetry is crucial: reversing the direction would violate the modal structure and produce contradiction. Expands on Section 5.2 (with full derivation) and Appendix A.6 for Lean-backed verification.
+This asserts that contingent truths necessarily require necessary grounding and that necessary truths necessarily admit no contingent ground. The second conjunct is the **Nec/Cont modal-class asymmetry** carried in Lean by `no_necessary_grounded_in_contingent`; it does not assert relational asymmetry or irreflexivity of `ground`. This expands Section 5.2 and Appendix A.6.
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -1830,7 +1847,7 @@ Assume:
 
 1. Logic is necessary
 2. Material is contingent
-3. Grounding asymmetry holds
+3. Nec/Cont modal-class asymmetry holds
 4. (False assumption) Material grounds logic
 
 Lean proves:
@@ -1951,7 +1968,7 @@ Objection: The Principle of Sufficient Reason is controversial; brute facts migh
 Reply: Within the HyperModal canary suite, `hyper_minimal_PSR` together with its negation yields ⊥ (the reductio lemma `hyper_minimal_PSR_reductio`); the constitutive justification of HM-PSR itself is the transcendental argument developed in §2.1.1. Denying PSR, beyond triggering this canary, also forfeits the very meaning of ‘explanation’ and ‘ground.’    
 ### “Grounding is Subjective”
 Objection: Ground‑relation p ◃ q is metaphysically vague.  
-Reply: In our formalism, ground is extensional (q→p) ∧ minimal‑necessitation; Lean verifies asymmetry. Vague metaphysics is replaced by precise modal criteria.  
+Reply: In our formalism, ground is extensional (q→p) ∧ minimal‑necessitation; Lean verifies the Nec/Cont modal-class asymmetry through `no_necessary_grounded_in_contingent`. Vague metaphysics is replaced by precise modal criteria.
 ### Materialist Reduction
 Objection: Logic might be emergent from physical brains.  
 Reply: Theorem anti_material_grounding formalises that no necessary fact can be grounded in a contingent substrate; Lean proves ¬(Logic ◃ Material).  
