@@ -1024,35 +1024,29 @@ Computation, on this reading, is not self-founding: no computational process can
 ---
 ## 8. Ω-Operationalization for Artificial Intelligence
 
-The grounding architecture developed in this paper provides a formal structure that can be investigated for operational use in artificial reasoning. The central object is the well-founded grounding measure introduced in §2.2:
+The grounding architecture developed in this paper has consequences beyond the ontological theorem itself. If an artificial reasoner can represent modal dependence, grounding relations, and the distinction between contingent and necessary structure, then the successor architecture of §2.2 provides more than a static proof target. It provides a candidate form for directed reasoning.
+
+The central idea is that intelligence need not be understood only as the accumulation of propositions or the maximization of predictive probability. Within the present framework, a stronger form of reasoning would attempt to reduce ungrounded structure while preserving truth, consistency, and explanatory dependence. The measure
 
 $$
 meas : G \to M
 $$
 
-with strict descent:
+together with
 
 $$
 meas(S(g)) < meas(g)
 $$
 
-and the unique minimal state:
+and the unique minimal state
 
 $$
-meas(\Omega) = 0.
+meas(\Omega) = 0
 $$
 
-This structure defines an ordering toward Ω. The purpose of this section is to investigate whether that ordering can be made operational for artificial intelligence through domain-specific representations, deterministic transitions, and formally controlled convergence.
+supplies an abstract ordering for such a process.
 
-Three targets follow from this programme.
-
-First, an artificial reasoner can search for a minimally independent formal basis that preserves the same Ω-theorems and constitutive grounding functions.
-
-Second, machine-reasoning states can be investigated for an embedding into the grounding space so that reasoning transitions are ordered by decreasing Ω-distance.
-
-Third, computational problem states can be investigated for an embedding into the same grounding order so that deterministic Ω-directed search converges toward a semantically specified terminus.
-
-These targets do not contribute to the derivation of $\square\exists!x\,\Omega(x)$ and are not required for the kernel-verified results of §4. They operationalize structures already introduced by the Ω-framework and define the AI research programme developed below.
+The implications below are downstream of the Ω-theorems. They do not contribute to the derivation of $\square\exists!x\,\Omega(x)$ and are not required for the kernel-verified results of §4. They state a research programme suggested by the existence of a well-founded grounding measure and a unique terminus.
 
 ---
 
@@ -1064,11 +1058,11 @@ Let $\Gamma$ denote the complete formal dependency context used to derive a targ
 
 $$
 T =
-\left\{
+\lbrace
 \Box\exists x\,\Omega(x),
 \Box\exists!x\,\Omega(x),
 \exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)
-\right\}.
+\rbrace.
 $$
 
 An artificial reasoner need not treat the current formal presentation of $\Gamma$ as permanently fixed. It can search for a weaker independent basis $\Gamma_{\min}$ such that:
