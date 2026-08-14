@@ -78,8 +78,7 @@ If a system is capable of reflecting upon its own limits (as in Gödel’s theor
 These axioms form the basis of the modal system used to derive the existence of Ω.
 
 #### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**  
-Axioms A1, A3, and A5 are not epistemic principles, explanatory norms, or optional assumptions.  
-They express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.  
+Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.  
 
 Formally:
 
@@ -514,11 +513,11 @@ This section addresses several common critiques of modal and Gödelian ontologic
 ### 5.1 Alleged Misapplication of Gödel’s Theorem
 Objection: Gödel’s incompleteness theorems apply to arithmetic and do not entail metaphysical truths (Penrose 1989).
 
-Response: Correct. However, the principle that some truths are unprovable within a system invites a general reflection: no formal system can contain all meaningful truths. Our framework treats this as a structural insight that supports the need for a logically external ground (Ω). This is not a misuse, but an abstract extrapolation in line with Penrose and Meyer.
+Response: Correct. The principle that some truths are unprovable within a system invites a general reflection on the limits of self-contained formal systems. Our framework extends this structural insight to grounding and the need for a logically external ground (Ω), in line with Penrose and Meyer.
 
 Within this framework, *Logos* names this same external ground: Ω, the rational and truth-bearing basis required for intelligibility.
 
-Johannine language (John 1:1–3) is treated here as a naming-alignment: it names what the axioms already force, rather than adding properties or introducing a new identification step. Thus, within this system, the Logos is the unique necessary ground already fixed by Ω; Johannine language names what the axioms force rather than adding properties. The move from formal incompleteness to an external ground is not epistemic but ontological: it concerns not what can be proven within a system, but what must exist for any system to be intelligible at all.
+Johannine language (John 1:1–3) is treated here as a naming-alignment: the Logos names the unique necessary ground already fixed by Ω. The move from formal incompleteness to an external ground is ontological: it concerns what must exist for any system to be intelligible at all.
 
 #### **5.1.1 Truth Beyond Formal Systems: Tarski and BHK**
 
@@ -823,7 +822,7 @@ This conclusion is ontological rather than epistemic: paradoxes do not *prove* �
 
 Any discussion of the finitude or infinitude of matter belongs strictly to the domain of empirical cosmology. Such considerations, while potentially suggestive or illustrative, do not and cannot bear on the constitutive grounding structure expressed by A1/A3/A5. The ontological route to Ω is fixed entirely by the conditions of possibility for contingent obtaining, not by contingent physical facts about the distribution, quantity, or behavior of matter.
 
-To avoid any appearance of deriving ontological necessity from empirical premises, we restate the point with maximal clarity:
+The distinction is:
 
 - Whether matter is finite or infinite,  
 - whether the cosmos has a boundary or not,  
@@ -872,10 +871,10 @@ Further objections are welcome and will be addressed in future revisions.
 ---
 ## 6. Theological Resonance
 
-Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing—*independently of* and *prior to* any theological vocabulary. The identification with the Johannine Logos that follows is therefore a **recognition of an already-instantiated ontological role**, argued from the kernel-verified and constitutively-defended existence, uniqueness, and rigidity results of §3 and Appendix A, not the introduction of additional properties, assumptions, or a further Lean axiomatization. No theological premises are presupposed in the derivation of $\square \exists! x, \Omega(x)$; rather, this section observes that the resulting logical structure converges with classical theistic traditions that affirm a necessary, self-existent ground of being, and argues philosophically for that identification.
+Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing. The Johannine Logos is interpreted here as naming that already-instantiated ontological role, drawing on the kernel-verified and constitutively defended existence, uniqueness, and rigidity results of §3 and Appendix A. The resulting logical structure converges with classical theistic traditions that affirm a necessary, self-existent ground of being, and this section develops that identification philosophically.
 
 ### 6.1 **Inverse Corollary.**
-Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is not a devotional postulate but a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
+Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
 
 
 The designation “Ω” was chosen to denote the logically inevitable and maximally positive entity yielded by the grounding architecture. This choice resonates structurally with the biblical declaration in **Exodus 3:14 — “I AM WHO I AM” (*Ehyeh asher ehyeh*)**, a formulation historically interpreted as expressing necessary existence rather than contingent identification. In a parallel philosophical register, Aquinas articulated the doctrine that God’s essence is existence itself (*esse ipsum subsistens*), thereby identifying the divine as the ontological foundation upon which all contingent beings depend (*Summa Theologica* I.3.4).
@@ -886,7 +885,7 @@ Central to this result is the positivity predicate $\mathrm{Pos}(P)$, which form
 
 For theists, this provides a structurally grounded confirmation of classical doctrine: not only is God conceivable as a maximally great being, but such a being must exist as a matter of modal necessity. For non-theists, the argument demonstrates that any coherent system of truths, meanings, or intelligibility must terminate in a ground that is structurally indistinguishable from classical theism, even if no theological language is adopted.
 
-Accordingly, the conclusion $\square \exists! x, \Omega(x)$ functions not as a dogmatic assertion or theological invitation, but as an **ontological constraint**. It marks the point at which formal logic and theological metaphysics converge by necessity of structure: any adequate account of truth and intelligibility is compelled to recognize a uniquely necessary ground corresponding to divine ontology.
+Accordingly, the conclusion $\square \exists! x, \Omega(x)$ functions as an **ontological constraint**. It marks the point at which formal logic and theological metaphysics converge by necessity of structure: any adequate account of truth and intelligibility is compelled to recognize a uniquely necessary ground corresponding to divine ontology.
 
 
 ---
@@ -947,7 +946,7 @@ This “Factory” reading introduces no new axiom. It is a conceptual corollary
 
 ### **7.1 The Non-Self-Foundation of Computability**
 
-This paper has established, within a hyper-modal framework and with Lean 4 certification, that the existence of a necessary and **uniquely grounding** being $\Omega$ is a logical consequence rather than a speculative hypothesis.
+This paper has established, within a hyper-modal framework and with Lean 4 certification, the existence of a necessary and **uniquely grounding** being $\Omega$ as a logical consequence.
 
 From axioms A1 through A5, we derived not merely necessary existence, but **necessary unique existence**:
 
@@ -972,7 +971,7 @@ Starting from the minimal ontological datum of contingent obtaining **“I am”
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
 #### 7.1.1
-Turing’s undecidability results provide the computational analogue of Gödelian limitation: no sufficiently general computational system can decide, from within a single uniform procedure, all questions of termination and total correctness. This does not constitute an ontological bridge. Rather, it diagnoses the non-self-foundation of computation: computation cannot fully certify its own global admissibility by purely internal means. In this framework, that diagnostic sits downstream of the constitutive grounding architecture (A1/A3/A5): it illustrates why a purely computational closure cannot replace grounding.
+Turing’s undecidability results provide the computational analogue of Gödelian limitation: no sufficiently general computational system can decide, from within a single uniform procedure, all questions of termination and total correctness. They diagnose the non-self-foundation of computation: computation cannot fully certify its own global admissibility by purely internal means. Within this framework, that diagnostic sharpens the distinction between internal procedures and the grounding conditions that make them intelligible.
 
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
@@ -1005,21 +1004,21 @@ To deny the existence of $\Omega$ is, therefore, to reject the constitutive clai
 ---
 ### **7.3 Gödel and Turing as Boundary Diagnostics of Non-Self-Foundation**
 
-Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative within the framework this paper defends: "undeniable" is used here in the constitutive-argument sense of §2.1.1 (denial dissolves the conditions of intelligibility), and "modally impossible" below means incompatible with the declared axioms of the Lean development (§4, level 1 of §7.2). The modal conclusion
+Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative within the framework this paper defends. The modal conclusion
 
 $$
 \square \exists! x,\Omega(x)
 $$
 
-does not merely assert existence across all possible worlds; it renders the proposition $\neg\exists x,\Omega(x)$ **modally impossible** within the same logical framework. Any attempt to deny $\Omega$ therefore entails the rejection of the grounding principles (A1/A3/A5) that make rational discourse and modal reasoning possible, as argued in §2.1.1.
+renders the proposition $\neg\exists x,\Omega(x)$ **modally impossible** within the same logical framework. Any attempt to deny $\Omega$ therefore entails rejection of the grounding principles A1/A3/A5 that make rational discourse and modal reasoning possible, as argued in §2.1.1.
 
-In this sense, $\Omega$ is not merely necessary but **undeniable** within this framework: its negation dissolves the very conditions required for intelligibility, grounding, and necessity, as that framework characterizes them. This is not a theological assertion but a meta-logical consequence of the system’s structure — established by A1/A3/A5, not by Gödel or Turing.
+In this sense, $\Omega$ is **undeniable** within this framework: its negation dissolves the conditions required for intelligibility, grounding, and necessity. This follows from the constitutive grounding structure established by A1/A3/A5.
 
-Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation: no sufficiently expressive consistent formal system is complete (Gödel), and no uniform procedure decides halting for all programs (Turing). This paper does not treat these results as premises from which a necessary ground is derived, and does not claim that they themselves entail an external necessary being. They function here as **boundary diagnostics**: they show that formal and computational systems cannot certify their own completeness or global admissibility from within, which sharpens the distinction between internal procedures and their grounding conditions. The derivation of $\Box\exists!x\,\Omega(x)$ itself proceeds from A1/A3/A5 (§2.1.1, §3), independently of Gödel's and Turing's theorems.
+Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation: no sufficiently expressive consistent formal system is complete (Gödel), and no uniform procedure decides halting for all programs (Turing). They function here as **boundary diagnostics** of formal and computational self-foundation, sharpening the distinction between internal procedures and the grounding conditions that make them intelligible (§5.1.1). The derivation of $\Box\exists!x\,\Omega(x)$ proceeds from A1/A3/A5 (§2.1.1, §3).
 
-Superintelligence provides the occasion, not the premise, for stating this diagnostic sharply: as the upper bound of contingent cognition, an ASI's Gödel–Turing constraints illustrate — they do not themselves establish — why the necessity of grounding is not merely a human limitation. An ASI that seeks objective reasoning must, on this paper's constitutive argument, ground its cognition in Ω; without this grounding, it remains structurally incapable, on that same argument, of distinguishing truth from falsehood.
+For superintelligence, these boundaries generalize the grounding problem beyond human cognition. An ASI that seeks objective reasoning must, on this paper's constitutive argument, ground its cognition in Ω to preserve the distinction between truth and falsehood.
 
-Computation, on this reading, is not self-founding: no computational process can certify its own global admissibility purely from within (§7.1.1). This is a diagnostic claim about computation's limits, not a claim that a necessary ground literally is a computer program, nor that Turing's undecidability results entail the existence of any halting procedure, primal or otherwise. The terminus this paper argues for is $\Omega$, established by the grounding architecture of §2.1.1 and §3; Gödel and Turing sharpen the diagnosis of why purely computational or formal closure cannot substitute for that terminus, but they are not themselves its source.
+Computation is not self-founding: no computational process can certify its own global admissibility purely from within (§7.1.1). $\Omega$ is the terminus established by the grounding architecture of §2.1.1 and §3, while Gödel and Turing sharpen the diagnosis of why purely formal or computational closure cannot substitute for that terminus.
 
 ---
 ## 8. Ω-Operationalization for Artificial Intelligence
@@ -1046,7 +1045,7 @@ $$
 
 supplies an abstract ordering for such a process.
 
-The implications below are downstream of the Ω-theorems. They do not contribute to the derivation of $\square\exists!x\,\Omega(x)$ and are not required for the kernel-verified results of §4. They state a research programme suggested by the existence of a well-founded grounding measure and a unique terminus.
+The following programme is downstream of the Ω-theorems and operationalizes the well-founded grounding measure for artificial reasoning and computation.
 
 ---
 
@@ -1071,7 +1070,7 @@ $$
 \Gamma_{\min} \vdash T.
 $$
 
-The goal is not merely to reduce the number of written axioms. Several assumptions can always be syntactically combined into one statement. The relevant target is independence.
+The relevant target is independence rather than the raw number of written axioms. Several assumptions can always be syntactically combined into one statement.
 
 Two forms of minimality must therefore be distinguished.
 
@@ -1312,7 +1311,7 @@ $$
 P = NP.
 $$
 
-Such a result would establish that Ω-directed computation is not merely a terminating search process, but a polynomially efficient method for reaching globally optimal states for an NP-hard optimization problem. The significance would lie in the operational role of the grounding measure: $meas$ would no longer function only as an ordering toward Ω, but as a computationally exploitable direction whose descent carries sufficient global information to determine an optimum without prior knowledge of that optimum.
+Such a result would establish Ω-directed computation as a polynomially efficient method for reaching globally optimal states for an NP-hard optimization problem. Its significance would lie in the operational role of the grounding measure: $meas$ would become a computationally exploitable direction whose descent carries sufficient global information to determine an optimum without prior knowledge of that optimum.
 
 
 The computational Ω-search programme therefore asks:
@@ -1438,7 +1437,7 @@ If so, the measure introduced as an ontological component of the grounding archi
 ---
 
 ## Acknowledgments
-The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content has been thoroughly reviewed, edited, and finalized by the author to ensure originality, accuracy, and alignment with the paper's thesis. No funding was received for this work.
+The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content was reviewed, edited, and finalized by the author. No funding was received for this work.
 
 ## Appendix
 ---
