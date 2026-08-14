@@ -362,7 +362,7 @@ This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used el
 
 A second independent route, **TI (Transcendental Induction)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Alt Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
 
-The relevance of TI here is limited to convergence: the existence of an independent route shows that the Ω-terminus is not an artefact of the successor/measure presentation alone, but is approached from a distinct grounding construction. The present paper therefore records only the existence, independence, and convergence target of TI.
+The relevance of TI here is limited to convergence: the independent route establishes convergence on Ω from a distinct grounding construction. The present paper therefore records only the existence, independence, and convergence target of TI.
 
 ---
 
@@ -1144,7 +1144,7 @@ Ordinary computational search is typically directed by an objective function, a 
 
 Such a system would not only ask which conclusion is statistically likely or locally rewarding. It would ask which transition is better grounded relative to the dependency structure represented by $E_R$.
 
-The research task is therefore not to assume that machine-reasoning states already inhabit $G$. It is to construct an embedding $E_R$ under which the grounding order becomes operational for reasoning.
+The research task is to construct an embedding $E_R$ under which the grounding order becomes operational for reasoning.
 
 A resulting trajectory would have the form:
 
@@ -1170,9 +1170,7 @@ This gives the grounding measure a candidate computational role in machine reaso
 
 ### 8.3 Deterministic Grounding and Reproducible Self-Correction
 
-Determinism alone is not the distinctive claim of the Ω-architecture. Deterministic systems, proof assistants, and debuggers can already produce reproducible traces.
-
-The additional Ω-specific requirement is that every reproduced transition can also be evaluated against a grounding invariant:
+The distinctive Ω-requirement adds a grounding invariant to deterministic reproducibility. Every reproduced transition can be evaluated against:
 
 $$
 d_\Omega^R(x_{i+1}) < d_\Omega^R(x_i).
