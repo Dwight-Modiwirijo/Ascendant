@@ -996,9 +996,11 @@ Turing’s undecidability results provide the computational analogue of Gödelia
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The transition to ontological actuality is not produced by Tarski, BHK, Curry–Howard or the Lean kernel. Actuality is already fixed by the constitutive grounding structure A1/A3/A5, starting from the minimal obtaining datum "I am". In this section Tarski's Convention T plays only a semantic role: disquoting the truth-predicate once the ontological reading is established. The formal proof and its modal rigidity validate the structure; they do not generate actuality.
+The transition to ontological actuality is not produced by Tarski, BHK, Curry–Howard or the Lean kernel. Actuality is already fixed by the constitutive grounding structure A1/A3/A5 — fixed by the argument for it in §2.1.1, that is, not stipulated by the axioms and not produced by the formal proof — starting from the minimal obtaining datum "I am". In this section Tarski's Convention T plays only a semantic role: disquoting the truth-predicate once the ontological reading is established. The formal proof and its modal rigidity validate the structure; they do not generate actuality.
 
 Alfred Tarski's Convention T is used here as a disquotation schema: it licenses the passage from "S is true" to S under the already-fixed ontological reading. The truth predicate removes quotation marks; it does not mediate ontology.
+
+Curry–Howard and BHK carry the other half of the machinery, and it is worth naming. Curry–Howard makes theoremhood a proof-theoretic fact: $t : \varphi$ is what it means for $\varphi$ to be a theorem in Lean. BHK says what a proof *is* — a proof of $\exists x\,P(x)$ is a witness together with a proof of $P$ there. Neither claims that metaphysical actuality follows from the existence of a proof object, and BHK does not guarantee an executable witness for the development taken as a program. The necessity in the central claim sits in the proven proposition, not in the bare fact that some term inhabits it.
 
 **Four levels, kept apart.** The same result appears at four levels, and conflating them is the error this section exists to prevent:
 
