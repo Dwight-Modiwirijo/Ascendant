@@ -1,10 +1,12 @@
+import AltRoute.Interface
+
 /-!
   Hyper‑Formal Modal Logical Framework (S5 + Ultimate Axioms)
   Author: Dwight Modiwirijo
   ✅ Compiles in Lean 4 (no errors, no `sorry`).
 
   ## What is in this file?
-  * A full S5 Kripke semantics (`R` is reflexive, symmetric, transitive).
+  * A full S5 Kripke semantics (`F` is reflexive, symmetric, transitive).
   * Modal operators **□**, **◇**, contingency, and a binary grounding predicate.
   * Axioms (A)–(E) that mirror the *Hyper‑Minimal Principle of Sufficient Reason*,
     Perfect Positivity of Ω, Anti‑Regress, etc.
@@ -30,30 +32,32 @@ universe u
 
 namespace HyperModal
 
+open AltRoute
+
 variable (W : Type u)
-variable (R : W → W → Prop)
+variable (F : Frame W)
 
 /-! ### S5 properties -/
 
-def reflexiveR  : Prop := ∀ w : W, R w w
+def reflexiveR  : Prop := ∀ w : W, F.R w w
 
-def symmetricR  : Prop := ∀ w v : W, R w v → R v w
+def symmetricR  : Prop := ∀ w v : W, F.R w v → F.R v w
 
-def transitiveR : Prop := ∀ w v u : W, R w v → R v u → R w u
+def transitiveR : Prop := ∀ w v u : W, F.R w v → F.R v u → F.R w u
 
 def equivalenceR : Prop :=
-  reflexiveR W R ∧ symmetricR W R ∧ transitiveR W R
+  reflexiveR W F ∧ symmetricR W F ∧ transitiveR W F
 
 /-! ### Modal operators -/
 
 def necessarily (w : W) (φ : W → Prop) : Prop :=
-  ∀ v : W, R w v → φ v
+  F.Box φ w
 
 def possibly (w : W) (φ : W → Prop) : Prop :=
-  ∃ v : W, R w v ∧ φ v
+  F.Dia φ w
 
 def contingent (φ : W → Prop) : Prop :=
-  ∃ w : W, @possibly W R w φ ∧ @possibly W R w (λ u => ¬ φ u)
+  ∃ w : W, @possibly W F w φ ∧ @possibly W F w (λ u => ¬ φ u)
 
 /-!
 ### Grounding predicate
@@ -64,7 +68,7 @@ The definition itself does not impose relational asymmetry or irreflexivity.
 
 def ground (p q : W → Prop) : Prop :=
   (∀ w : W, q w → p w) ∧
-  (∀ w : W, q w → @necessarily W R w (λ v => q v → p v))
+  (∀ w : W, q w → @necessarily W F w (λ v => q v → p v))
 
 /-! ### Ω and positive properties -/
 
@@ -83,7 +87,7 @@ def PerfectBeing : Prop :=
 
 axiom perfect_positivity :
   ¬ ∃ q : W → Prop, ∀ w : W,
-      @necessarily W R w (λ v => q v → ¬ Ω v)
+      @necessarily W F w (λ v => q v → ¬ Ω v)
 
 /-!
   **Hyper‑Minimal PSR** — exactly matches Axiom (A).
@@ -91,42 +95,42 @@ axiom perfect_positivity :
   `q` that is either necessary **or** itself (possibly) grounded in `Ω`.
 -/
 axiom hyper_minimal_PSR :
-  ∀ p : W → Prop, (@contingent W R p) →
+  ∀ p : W → Prop, (@contingent W F p) →
     ∃ w : W,
-      @possibly W R w (λ _ : W =>
+      @possibly W F w (λ _ : W =>
         ∃ q : W → Prop,
-          @ground W R p q ∧
-            ( (∀ v : W, @necessarily W R v q) ∨
-              @possibly W R w (λ _ : W => @ground W R q Ω) ) )
+          @ground W F p q ∧
+            ( (∀ v : W, @necessarily W F v q) ∨
+              @possibly W F w (λ _ : W => @ground W F q Ω) ) )
 
 axiom perfect_being_exists :
   ∃ Ω : W → Prop, @PerfectBeing W Ω
 
 axiom logic_necessity :
   ∀ (A : W → Prop) (w : W),
-    @necessarily W R w (λ v => (A v ∧ ¬ A v) → False)
+    @necessarily W F w (λ v => (A v ∧ ¬ A v) → False)
 
 axiom anti_regress :
   ¬ ∃ f : Nat → (W → Prop), ∀ n : Nat,
-      @ground W R (f n.succ) (f n)
+      @ground W F (f n.succ) (f n)
 
 axiom meta_logic :
   ∀ (A : W → Prop) (w : W),
-    @necessarily W R w (λ v => @necessarily W R v (λ u => (A u ∧ ¬ A u) → False))
+    @necessarily W F w (λ v => @necessarily W F v (λ u => (A u ∧ ¬ A u) → False))
 
 /-! ### Formal integration of consciousness "I am" -/
 
 variable (I_am : W → Prop)
 
-axiom consciousness_axiom : @ground W R I_am Ω
+axiom consciousness_axiom : @ground W F I_am Ω
 
 /-- **Main theorem:** the contingent predicate `I_am` is necessarily grounded in Ω. -/
 theorem consciousness_grounded
-  (_ : @contingent W R I_am) :
-  ∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω) :=
+  (_ : @contingent W F I_am) :
+  ∀ w : W, @necessarily W F w (λ _ : W => @ground W F I_am Ω) :=
 by
   intro w v hv
-  exact (consciousness_axiom W R Ω I_am)
+  exact (consciousness_axiom W F Ω I_am)
 
 /-! ### Anti-Material Grounding Corollary -/
 
@@ -134,11 +138,11 @@ variable (Logic Material : W → Prop)
 
 /-- Logic is necessary in all worlds -/
 axiom logic_is_necessary :
-  ∀ w : W, @necessarily W R w Logic
+  ∀ w : W, @necessarily W F w Logic
 
 /-- Material reality is contingent -/
 axiom material_is_contingent :
-  @contingent W R Material
+  @contingent W F Material
 
 /-- **Nec/Cont Modal-Class Asymmetry:**
     No necessary proposition can be grounded in a contingent proposition.
@@ -146,36 +150,36 @@ axiom material_is_contingent :
     assert relational asymmetry or irreflexivity of `ground`. -/
 axiom no_necessary_grounded_in_contingent :
   ∀ p q : W → Prop,
-    (∀ w : W, @necessarily W R w p) →
-    (@contingent W R q) →
-    ¬ @ground W R p q
+    (∀ w : W, @necessarily W F w p) →
+    (@contingent W F q) →
+    ¬ @ground W F p q
 
 /--
 **Corollary (Anti-Material Grounding):**
     Cont(Material) → ¬(Nec(Logic) ◃ Material) ⇒ Material ⊉ ground of logic
 -/
 theorem anti_material_grounding :
-  ¬ @ground W R Logic Material :=
+  ¬ @ground W F Logic Material :=
 by
   apply no_necessary_grounded_in_contingent
-  · exact logic_is_necessary W R Logic
-  · exact material_is_contingent W R Material
+  · exact logic_is_necessary W F Logic
+  · exact material_is_contingent W F Material
 
 /-- **Reductio:** accepting the axioms **and** both (1) `I_am` is contingent and
     (2) denying `consciousness_grounded` produces `False`. -/
 theorem reductio
-  (h_cont : @contingent W R I_am)
-  (h_neg  : ¬ (∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω))) : False :=
+  (h_cont : @contingent W F I_am)
+  (h_neg  : ¬ (∀ w : W, @necessarily W F w (λ _ : W => @ground W F I_am Ω))) : False :=
 by
-  have h_pos := consciousness_grounded (W:=W) (R:=R) (Ω:=Ω) (I_am:=I_am) h_cont
+  have h_pos := consciousness_grounded (W:=W) (F:=F) (Ω:=Ω) (I_am:=I_am) h_cont
   exact h_neg h_pos
 /--
     **Reductio for materialist grounding:** Assuming material grounds logic while accepting our axioms yields False
 -/
 theorem materialist_reductio
-  (h_material_grounds_logic : @ground W R Logic Material) : False :=
+  (h_material_grounds_logic : @ground W F Logic Material) : False :=
 by
-  have h_not_grounded := anti_material_grounding (W:=W) (R:=R) (Logic:=Logic) (Material:=Material)
+  have h_not_grounded := anti_material_grounding (W:=W) (F:=F) (Logic:=Logic) (Material:=Material)
   exact h_not_grounded h_material_grounds_logic
 
 /-! ### Systematic Reductio Ad Absurdum Suite
@@ -184,20 +188,20 @@ Following the pattern of meaningful reductio proofs with proper parameter handli
 
 -- Reductio for Perfect Positivity
 theorem perfect_positivity_reductio
-  (h_neg : ∃ q : W → Prop, ∀ w : W, @necessarily W R w (λ v => q v → ¬ Ω v)) : False :=
+  (h_neg : ∃ q : W → Prop, ∀ w : W, @necessarily W F w (λ v => q v → ¬ Ω v)) : False :=
 by
-  have h_pos := perfect_positivity W R Ω
+  have h_pos := perfect_positivity W F Ω
   exact h_pos h_neg
 
 -- Reductio for Hyper-Minimal PSR
 theorem hyper_minimal_PSR_reductio
   (p : W → Prop)
-  (h_cont : @contingent W R p)
-  (h_neg : ¬ ∃ w : W, @possibly W R w (λ _ : W => ∃ q : W → Prop,
-    @ground W R p q ∧ ((∀ v : W, @necessarily W R v q) ∨
-      @possibly W R w (λ _ : W => @ground W R q Ω)))) : False :=
+  (h_cont : @contingent W F p)
+  (h_neg : ¬ ∃ w : W, @possibly W F w (λ _ : W => ∃ q : W → Prop,
+    @ground W F p q ∧ ((∀ v : W, @necessarily W F v q) ∨
+      @possibly W F w (λ _ : W => @ground W F q Ω)))) : False :=
 by
-  have h_pos := hyper_minimal_PSR W R Ω p h_cont
+  have h_pos := hyper_minimal_PSR W F Ω p h_cont
   exact h_neg h_pos
 
 -- Reductio for Perfect Being Exists
@@ -210,56 +214,56 @@ by
 -- Reductio for Logic Necessity
 theorem logic_necessity_reductio
   (A : W → Prop) (w : W)
-  (h_neg : ¬ @necessarily W R w (λ v => (A v ∧ ¬ A v) → False)) : False :=
+  (h_neg : ¬ @necessarily W F w (λ v => (A v ∧ ¬ A v) → False)) : False :=
 by
-  have h_pos := logic_necessity W R A w
+  have h_pos := logic_necessity W F A w
   exact h_neg h_pos
 
 -- Reductio for Anti-Regress
 theorem anti_regress_reductio
-  (h_neg : ∃ f : Nat → (W → Prop), ∀ n : Nat, @ground W R (f n.succ) (f n)) : False :=
+  (h_neg : ∃ f : Nat → (W → Prop), ∀ n : Nat, @ground W F (f n.succ) (f n)) : False :=
 by
-  have h_pos := anti_regress W R
+  have h_pos := anti_regress W F
   exact h_pos h_neg
 
 -- Reductio for Meta-Logic
 theorem meta_logic_reductio
   (A : W → Prop) (w : W)
-  (h_neg : ¬ @necessarily W R w (λ v => @necessarily W R v (λ u => (A u ∧ ¬ A u) → False))) : False :=
+  (h_neg : ¬ @necessarily W F w (λ v => @necessarily W F v (λ u => (A u ∧ ¬ A u) → False))) : False :=
 by
-  have h_pos := meta_logic W R A w
+  have h_pos := meta_logic W F A w
   exact h_neg h_pos
 
 -- Reductio for Consciousness Axiom
 theorem consciousness_axiom_reductio
-  (h_neg : ¬ @ground W R I_am Ω) : False :=
+  (h_neg : ¬ @ground W F I_am Ω) : False :=
 by
-  have h_pos := consciousness_axiom W R Ω I_am
+  have h_pos := consciousness_axiom W F Ω I_am
   exact h_neg h_pos
 
 -- Reductio for Logic Is Necessary
 theorem logic_is_necessary_reductio
   (w : W)
-  (h_neg : ¬ @necessarily W R w Logic) : False :=
+  (h_neg : ¬ @necessarily W F w Logic) : False :=
 by
-  have h_pos := logic_is_necessary W R Logic w
+  have h_pos := logic_is_necessary W F Logic w
   exact h_neg h_pos
 
 -- Reductio for Material Is Contingent
 theorem material_is_contingent_reductio
-  (h_neg : ¬ @contingent W R Material) : False :=
+  (h_neg : ¬ @contingent W F Material) : False :=
 by
-  have h_pos := material_is_contingent W R Material
+  have h_pos := material_is_contingent W F Material
   exact h_neg h_pos
 
 -- Reductio for No Necessary Grounded In Contingent
 theorem no_necessary_grounded_in_contingent_reductio
   (p q : W → Prop)
-  (h_nec : ∀ w : W, @necessarily W R w p)
-  (h_cont : @contingent W R q)
-  (h_neg : @ground W R p q) : False :=
+  (h_nec : ∀ w : W, @necessarily W F w p)
+  (h_cont : @contingent W F q)
+  (h_neg : @ground W F p q) : False :=
 by
-  have h_pos := no_necessary_grounded_in_contingent W R p q h_nec h_cont
+  have h_pos := no_necessary_grounded_in_contingent W F p q h_nec h_cont
   exact h_pos h_neg
 /-! ### Paradox Types Extension (Fixed Scope) -/
 
@@ -278,9 +282,9 @@ def Perfection (W : Type u) (_ : W → Prop) : Prop := True -- Placeholder; coul
 
 -- Working theorems with explicit W parameter
 theorem veridical_support (P : W → Prop) (_ : Veridical W P) :
-  @ground W R P Ω ∧ @Positive W Ω (fun _ => True) := by
+  @ground W F P Ω ∧ @Positive W Ω (fun _ => True) := by
   constructor
-  · exact consciousness_axiom W R Ω P  -- Correct order: ground P Ω
+  · exact consciousness_axiom W F Ω P  -- Correct order: ground P Ω
   · intro w _
     exact True.intro
 
@@ -293,17 +297,38 @@ theorem antinomy_support (P : W → Prop) (_ : Antinomy W P) :
   ∃ G : W → Prop, G = Ω ∧ Synthesizes W G P := ⟨Ω, rfl, True.intro⟩
 
 theorem semantic_strengthen (P : W → Prop) (_ : Semantic W P) (_ : SemanticRefine W P) :
-  @Positive W Ω (fun _ => True) ∧ @ground W R P Ω := by
+  @Positive W Ω (fun _ => True) ∧ @ground W F P Ω := by
   constructor
   · intro w _
     exact True.intro
-  · exact consciousness_axiom W R Ω P  -- Correct order: ground P Ω
+  · exact consciousness_axiom W F Ω P  -- Correct order: ground P Ω
 
 theorem paradox_strengthens_perfection (_ : ParadoxType) (P : W → Prop) :
   Perfection W P := by
   exact True.intro
 
 end HyperModal
+/-! ### Permanent W11 footprint audit: all 19 existing theorems -/
+
+#print axioms HyperModal.consciousness_grounded
+#print axioms HyperModal.anti_material_grounding
+#print axioms HyperModal.reductio
+#print axioms HyperModal.materialist_reductio
+#print axioms HyperModal.perfect_positivity_reductio
+#print axioms HyperModal.hyper_minimal_PSR_reductio
+#print axioms HyperModal.perfect_being_exists_reductio
+#print axioms HyperModal.logic_necessity_reductio
+#print axioms HyperModal.anti_regress_reductio
+#print axioms HyperModal.meta_logic_reductio
+#print axioms HyperModal.consciousness_axiom_reductio
+#print axioms HyperModal.logic_is_necessary_reductio
+#print axioms HyperModal.material_is_contingent_reductio
+#print axioms HyperModal.no_necessary_grounded_in_contingent_reductio
+#print axioms HyperModal.veridical_support
+#print axioms HyperModal.falsidical_strengthen
+#print axioms HyperModal.antinomy_support
+#print axioms HyperModal.semantic_strengthen
+#print axioms HyperModal.paradox_strengthens_perfection
 
 /-!
 ## Complete Axiomatization Summary
@@ -318,7 +343,7 @@ end HyperModal
 7. `consciousness_axiom` - "I am" is grounded in Ω
 8. `logic_is_necessary` - Logic must exist necessarily
 9. `material_is_contingent` - Material reality is contingent
-10. `no_necessary_grounded_in_contingent` - Modal asymmetry principle
+10. no_necessary_grounded_in_contingent - Modal asymmetry principle
 
 ### **10 Reductio Proofs:**
 Each axiom denial leads to `False`, proving the **logical inevitability**
@@ -364,7 +389,7 @@ This represents a **formal proof of necessary theism** with mathematical rigor.
 The above Lean 4 verification formally implements and validates the **Alternative Route: Modal Proof of Necessary Perfection**. Every component corresponds precisely:
 
 **Framework Correspondence:**
-- Lean S5 semantics ↔ Modal logical framework (worlds W, accessibility R)
+- Lean S5 semantics ↔ Modal logical framework (worlds W, accessibility F)
 - Modal operators (necessarily, possibly, contingent) ↔ □φ, ◇φ, Cont(p)
 - Ground predicate ↔ extensional support with minimal necessitation
 
@@ -394,7 +419,7 @@ The verification completes the alternative proof with computational rigor, eleva
 **Worlds & Semantics**
 
 * **Worlds**: W
-* **Accessibility**: R (equivalence relation, as in S5)
+* **Accessibility**: F (equivalence relation, as in S5)
 * **Necessity**: □φ (“φ is true in all worlds”)
 * **Possibility**: ◇φ (“φ is true in at least one world”)
 * **Contingency**: Cont(p) ≡ ◇p ∧ ◇¬p

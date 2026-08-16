@@ -10,6 +10,9 @@ require mathlib from git
 @[default_target] lean_lib AltRoute where
   roots := #[`AltRoute.Interface,
   `AltRoute.PublicTests,
+  `AltRoute.TargetTypes,
+  `AltRoute.GroundingAudit,
+  `superlaw,
   `AltRoute.PublicCertificateAudit
   ]
 

@@ -52,6 +52,27 @@ The domain type `iota` is fixed across worlds, so constant-domain semantics is e
 
 The non-degenerate witnesses use the universal accessibility relation on `Bool` and `BoolWitness world := world = true`.
 
+
+## W11 grounding acceptance result
+
+`AltRoute.TargetTypes` fixes the exact world-indexed target propositions and explicit `GroundingPremises` bundle before any strong assembly is accepted. `AltRoute.GroundingAudit` checks every premise field against all four forbidden `Yields*` shapes.
+
+The anti-regress clause now uses `StrictGround`: the paper's extensional `Ground` relation is reflexive, whereas Paper §2.2 requires strict decrease along an anti-regress chain. Every individual premise field has a compiled countermodel with an empty Ω-domain, so no field by itself yields actual, possible, necessary, or possibly-necessary Ω-existence.
+
+The combined C1/C2 core does not pass. With the paper's definitions:
+
+```text
+C1: Cont(p) -> Exists q, Nec(q) /\ Ground(q, p)
+C2: Cont(I)
+Ground(q, p): forall w, q(w) -> p(w)
+```
+
+`Nec(q)` supplies `q` at every world and `Ground(q,p)` then supplies `p` at every world, contradicting `Cont(p)`, which includes a reachable world satisfying `Not p`. Lean therefore proves `GroundingPremises F Omega I -> False` without axioms.
+
+Consequently the NE, BoxUnique, BoxUnique-reductio, and rigid-witness obligations are formally derivable only by explosion from this jointly inconsistent C1/C2 bundle. They are published under explicit `*_from_inconsistent_bundle` audit names and are not strong certificates. CI rejects positivity-derived dependencies and no `Final_*` declaration or replacement assembly is fabricated.
+
+`superlaw.lean` now imports `AltRoute.Interface`; its modal operators are direct aliases of `Frame.Box` and `Frame.Dia`. All 19 pre-existing theorem footprints remain unchanged.
+
 ## Certification labels
 
 - **Kernel-verified:** a Lean proof object inhabits its exact theorem type relative to the declaration's axioms and hypotheses.

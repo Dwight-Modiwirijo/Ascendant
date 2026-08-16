@@ -37,16 +37,24 @@ echo "[CI] Clean public build"
 "$lake_bin" build
 "$lake_bin" -R env lean AltRoute/PublicCertificateAudit.lean
 "$lake_bin" -R env lean AltRoute/PublicTests.lean
+"$lake_bin" -R env lean AltRoute/TargetTypes.lean
+grounding_output=$("$lake_bin" -R env lean AltRoute/GroundingAudit.lean 2>&1)
+printf '%s\n' "$grounding_output"
+if grep -Fq 'AltRoute.PosPossibility' <<<"$grounding_output"; then
+  echo "[CI] ERROR: grounding obligation footprint contains AltRoute.PosPossibility" >&2
+  exit 1
+fi
+"$lake_bin" -R env lean superlaw.lean
 
 echo "[CI] Negative guards"
 run_negative_test tests/Reject_HostilePositiveEmpty.lean "fields missing: 'proper'"
 run_negative_test tests/Reject_HostileModal.lean "fields missing: 'symm'"
 run_negative_test tests/Reject_ForcedPositiveEmpty.lean "⊢ ¬True"
 run_negative_test tests/Reject_ForcedHostileModal.lean "⊢ False"
-run_negative_test tests/Reject_BoxCollapse.lean "did not find instance of the pattern in the target expression"
-run_negative_test tests/Reject_DiaCollapse.lean "phi x : Prop"
-run_negative_test tests/Reject_NoContingency.lean "phi y : Prop"
-run_negative_test tests/Reject_CertificateCollapse.lean "phi x : Prop"
+run_negative_test tests/Reject_BoxCollapse.lean "Reject_BoxCollapse.box_collapse: phi w cannot rewrite world-indexed phi"
+run_negative_test tests/Reject_DiaCollapse.lean "Reject_DiaCollapse.dia_collapse: phi x is not phi w"
+run_negative_test tests/Reject_NoContingency.lean "Reject_NoContingency.no_contingency_anywhere: witnesses have different world indices"
+run_negative_test tests/Reject_CertificateCollapse.lean "Reject_CertificateCollapse.certificate_equals_existence: phi x is not phi w"
 run_negative_test tests/NoExport_NecessaryExistence.lean "unknown identifier 'Final_NE_Proof'"
 
 if [[ ! -f "$strong_certificate" ]]; then
@@ -88,6 +96,17 @@ if grep -Fq 'sorryAx' <<<"$audit_output"; then
   echo "[CI] ERROR: strong certificate footprint contains sorryAx" >&2
   exit 1
 fi
+for forbidden in \
+  'AltRoute.PosPossibility' \
+  'AltRoute.exists_of_positive' \
+  'AltRoute.necPossible_of_Pos' \
+  'HyperModal.perfect_being_exists' \
+  'HyperModal.consciousness_axiom'; do
+  if grep -Fq "$forbidden" <<<"$audit_output"; then
+    printf '[CI] ERROR: forbidden strong certificate dependency: %s\n' "$forbidden" >&2
+    exit 1
+  fi
+done
 
 echo "[CI] Canonical package"
 staging="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-dist.XXXXXX")"
@@ -99,6 +118,9 @@ trap cleanup EXIT
 mkdir -p "$staging/AltRoute" "$staging/tests"
 cp AltRoute/Interface.lean "$staging/AltRoute/"
 cp AltRoute/PublicTests.lean "$staging/AltRoute/"
+cp AltRoute/TargetTypes.lean "$staging/AltRoute/"
+cp AltRoute/GroundingAudit.lean "$staging/AltRoute/"
+cp superlaw.lean "$staging/"
 cp AltRoute/PublicCertificateAudit.lean "$staging/AltRoute/"
 cp AltRoute/CertificateAudit.lean "$staging/AltRoute/"
 cp tests/NoExport_NecessaryExistence.lean "$staging/tests/"
@@ -114,9 +136,11 @@ cp README.md LICENSE lean-toolchain lake-manifest.json "$staging/"
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 cp "$certificate_manifest" "$staging/CERTIFICATE_SHA256SUMS"
 
-for module in Interface PublicTests PublicCertificateAudit; do
+for module in Interface PublicTests TargetTypes GroundingAudit PublicCertificateAudit; do
   cp ".lake/build/lib/lean/AltRoute/$module.olean" "$staging/AltRoute/"
 done
+cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
+
 
 while IFS= read -r -d '' artifact; do
   relative="${artifact#"$certificate_root"/}"

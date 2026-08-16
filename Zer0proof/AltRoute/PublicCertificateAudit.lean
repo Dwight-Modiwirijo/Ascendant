@@ -4,6 +4,7 @@
 -/
 
 import AltRoute.PublicTests
+import AltRoute.GroundingAudit
 
 namespace AltRoute.PublicCertificateAudit
 
@@ -81,4 +82,34 @@ open AltRoute
 #print axioms AltRoute.PublicTests.dia_not_constantly_false
 #print axioms AltRoute.PublicTests.dia_not_constantly_true
 
+
+/-! W11 grounding acceptance surface and the mechanically detected gap. -/
+#check AltRoute.Target.NE_Target
+#check AltRoute.Target.BoxUnique_Target
+#check AltRoute.Target.RigidWitness_Target
+#check AltRoute.Target.GroundingPremises
+#check AltRoute.GroundingAudit.premises_false
+#check AltRoute.GroundingAudit.obligation_NE_from_inconsistent_bundle
+#check AltRoute.GroundingAudit.obligation_BoxUnique_from_inconsistent_bundle
+#check AltRoute.GroundingAudit.obligation_BoxUnique_Reductio_from_inconsistent_bundle
+#check AltRoute.GroundingAudit.obligation_RigidWitness_from_inconsistent_bundle
+#check AltRoute.GroundingAudit.c1c2_yields_actual
+#check AltRoute.GroundingAudit.c1c2_yields_possible
+#check AltRoute.GroundingAudit.c1c2_yields_necessary
+#check AltRoute.GroundingAudit.c1c2_yields_possible_necessary
+#check AltRoute.GroundingAudit.datum_field_refutes_all
+#check AltRoute.GroundingAudit.hm_psr_field_refutes_all
+#check AltRoute.GroundingAudit.anti_regress_field_refutes_all
+#check AltRoute.GroundingAudit.coalescence_field_refutes_all
+#check AltRoute.GroundingAudit.terminus_is_Omega_field_refutes_all
+
+#print axioms AltRoute.GroundingAudit.premises_false
+#print axioms AltRoute.GroundingAudit.obligation_NE_from_inconsistent_bundle
+#print axioms AltRoute.GroundingAudit.obligation_BoxUnique_from_inconsistent_bundle
+#print axioms AltRoute.GroundingAudit.obligation_BoxUnique_Reductio_from_inconsistent_bundle
+#print axioms AltRoute.GroundingAudit.obligation_RigidWitness_from_inconsistent_bundle
+#print axioms AltRoute.GroundingAudit.c1c2_yields_actual
+#print axioms AltRoute.GroundingAudit.c1c2_yields_possible
+#print axioms AltRoute.GroundingAudit.c1c2_yields_necessary
+#print axioms AltRoute.GroundingAudit.c1c2_yields_possible_necessary
 end AltRoute.PublicCertificateAudit
