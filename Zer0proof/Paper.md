@@ -996,49 +996,61 @@ Turing’s undecidability results provide the computational analogue of Gödelia
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-Ontological actuality is not produced by Tarski, BHK, Curry–Howard, or the Lean kernel by itself. This section distinguishes four levels of the same result, matching the taxonomy introduced in §4.1:
+The transition to ontological actuality is not produced by Tarski, BHK, Curry–Howard or the Lean kernel. Actuality is already fixed by the constitutive grounding structure A1/A3/A5, starting from the minimal obtaining datum "I am". In this section Tarski's Convention T plays only a semantic role: disquoting the truth-predicate once the ontological reading is established. The formal proof and its modal rigidity validate the structure; they do not generate actuality.
 
-1. **Exact kernel term.** $t : \varphi$ — the private Lean development contains a specific proof term $t$ that the kernel accepts as inhabiting the *exact* strong theorem type $\varphi$ — e.g. $t : \Box\exists!x\,\Omega(x)$ —, not merely a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$. This is level 1 of the architecture introduced in §4.1.
-2. **Derivability / dependency context.** $\Gamma \vdash \varphi$ — the formal context $t$ depends on: global axioms reported by `#print axioms`, explicit theorem hypotheses, and relevant definitions (level 2, Appendix A.2.3). This records what $\varphi$ is proved *relative to*; it is not a claim that $\varphi$'s Lean type is syntactically rewritten as $(\bigwedge\Gamma)\to\varphi$ — the exact theorem statement and its dependency context are tracked separately, not conflated.
-3. **Semantic consequence.** $\forall\mathcal M\,(\mathcal M\models\Gamma\to\mathcal M\models\varphi)$ — a model-theoretic soundness statement: any model of the axioms is a model of the theorem. Distinct from this is the joint-satisfiability question $\exists\mathcal M\,\mathcal M\models\Gamma$ (level 3) — whether a model of $\Gamma$ exists at all. The absence of a published joint model for the full combined context (Gate 0 / JointModel, Appendix A.2) is a non-vacuity/consistency-audit gap; its absence does not mean a kernel-accepted theorem ceases to be a theorem. `TrivialModel` (Appendix A.2.3–A.2.4) witnesses satisfiability only of the bare modal interface, not of the full Ω-theory, and no claim beyond that is made here.
-4. **Intended actuality.** $\mathcal R \models \Gamma$ — that the *actual world* $\mathcal R$ satisfies the declared axioms — is the constitutive philosophical thesis of this paper (level 4). Lean does not establish this by compilation; Tarski does not generate it; BHK does not generate it; Curry–Howard does not generate it. The paper argues for it independently — from contingent obtaining, "I am," grounding, non-contingency, anti-regress, and A1/A3/A5 (§2.1.1, §3). If the intended interpretation satisfies $\Gamma$, then the already-established formal consequence of level 3 applies to that interpretation; but establishing *that* the intended interpretation satisfies $\Gamma$ is the philosophical argument's job, not a formal one.
+Alfred Tarski's Convention T is used here as a disquotation schema: it licenses the passage from "S is true" to S under the already-fixed ontological reading. The truth predicate removes quotation marks; it does not mediate ontology.
 
-The philosophical argument (level 4) and the kernel proof (level 1) perform distinct jobs. Neither replaces the other.
+**Four levels, kept apart.** The same result appears at four levels, and conflating them is the error this section exists to prevent:
 
-**The role of Tarski.** Tarskian truth/satisfaction is a semantic, metalinguistic notion. Once a truth interpretation is fixed, Tarski's Convention T supports disquotation: it licenses the passage from “ $\varphi$ is true ” to $\varphi$ under that interpretation. Tarski does not identify a formal model with actuality, and does not itself establish $\mathcal R \models \Gamma$; it therefore does not create the ontological bridge from levels 1–3 to level 4. That bridge is supplied only by the paper's independent constitutive argument.
+1. **Exact kernel term** — $t : \varphi$. A proof term inhabits the *exact* theorem type, not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$.
+2. **Dependency context** — $\Gamma \vdash \varphi$. The axioms, hypotheses and definitions the term depends on, reported by `#print axioms` and by the declaration's own signature. This records what $\varphi$ is proved *relative to*; the theorem type and its context are tracked separately, never conflated.
+3. **Semantic consequence** — $\forall\mathcal{M}\,(\mathcal{M}\models\Gamma \rightarrow \mathcal{M}\models\varphi)$, and, distinct from it, joint satisfiability $\exists\mathcal{M}\,(\mathcal{M}\models\Gamma)$. A derivation from an unsatisfiable context proves nothing, so the second question must be answered separately.
+4. **Intended actuality** — $\mathcal{R} \models \Gamma$: that the actual world satisfies the declared axioms. This is the constitutive thesis of the paper, argued in §2.1.1 and §3, and it is the philosophical argument's job rather than the kernel's.
 
-**The role of Curry–Howard and BHK.** Curry–Howard characterizes theoremhood as a proof-theoretic fact: $t : \varphi$ is what it means for $\varphi$ to be a theorem-in-Lean (level 1). The Brouwer–Heyting–Kolmogorov interpretation gives a constructive reading of what a proof *is* — a proof of $\exists x\,P(x)$ is a witness together with a proof of $P$ at that witness; a proof of $A\to B$ is a procedure turning proofs of $A$ into proofs of $B$. Neither claims that metaphysical actuality follows from the mere existence of a proof object, and BHK does not guarantee an executable witness for the whole Lean development taken as a program. The necessity in this paper's central claim is located in the *proven proposition itself* — $t : \Box\exists x\,\Omega(x)$ — not in the bare fact that some proof object exists.
+**Level 1 and level 3, publicly.** `AltRoute.GroundingChain` supplies level-1 terms that any reader can check: `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness`, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. `AltRoute.GroundingModel` answers the joint-satisfiability question for the constitutive chain: it instantiates C1, ◃-transmission, C2, C3 and C4a together, with the datum obtaining, genuine contingency present and the frame provably non-collapsed, and derives $\square\exists! x\,\Omega(x)$ inside that model. The consistency gap this section previously recorded is therefore closed for the grounding chain. It remains open for the full combined Ω-theory (Gate 0 / JointModel, Appendix A.2), and the private Alt Route supplies level-1 terms for the same three results by the convergent route of §2.2.
 
-In this work, the relevant strong result is the kernel theorem `Final_RigidWitness_Proof`. Let
+In this work the relevant proposition is certified by `C5_RigidWitness`, and by the private `Final_RigidWitness_Proof` on the convergent route. Let
 
 $$
-\varphi := \exists x\, \square \forall y\, \big(\Omega(y) \leftrightarrow y = x\big).
+\varphi := \exists x\, \square \forall y\, \bigl(\Omega(y) \leftrightarrow y = x\bigr).
 $$
 
-`Final_RigidWitness_Proof` is a kernel-verified proof term $t : \varphi$ (level 1), proved relative to the dependency context recorded in Appendix A.2.3 (level 2). That $\varphi$ additionally holds of the actual world — i.e. that $\mathcal R \models \varphi$ in a reading where $\Omega$ picks out something real — is the level-4 claim argued for independently in §2.1.1 and §3, grounded in the minimal ontological datum of consciousness as contingent obtaining ("I am"), which the paper takes to obtain in the actual world. That grounding step is a philosophical premise of the argument, not a further output of the kernel, Tarski, or BHK.
+By the Curry–Howard correspondence, the kernel's acceptance of a proof object establishes $t : \varphi$ relative to its declared context. Here the formal proof aligns with the ontological actuality already fixed by A1/A3/A5. This proof is not grounded in a hypothetical model but in the minimal ontological datum of consciousness as contingent obtaining, "I am", which obtains in the actual world.
 
-**The Lock: Rigid Designation.** Following Kripke (1980), `Final_RigidWitness_Proof` fixes Ω as a rigid designator: one and the same referent across the modal analysis. This functions as an anti‑equivocation and anti‑plural‑grounding constraint: Ω cannot shift between candidates across possible worlds within the S5 framework.
+Because the premise obtains in actuality, the formal theorem — once disquoted — refers to that same ontological domain. Applying Convention T:
 
-To deny the existence of $\Omega$ is, therefore, to reject the constitutive claim that contingent obtaining is possible only under the grounding architecture fixed by A1/A3/A5 (and the resulting Ω‑term) — the level-4 thesis of this paper. Separately, within the formal development, denying $\Omega$ contradicts the kernel-verified proof term $t : \varphi$ obtained from the stated axioms (level 1). The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality—including the skeptic’s denial—to be intelligible at all.
+$$
+\text{“}\varphi\text{” is true} \iff \varphi
+$$
+
+Syntactically the theorem is proved. Disquotation does not produce actuality; it licenses the passage from "$\varphi$ is true" to $\varphi$ within the ontological framework already fixed by A1/A3/A5. The proof does not generate actuality but presupposes it.
+
+**The Lock: Rigid Designation.** Following Kripke (1980), the rigid-witness theorem fixes Ω as a rigid designator: one and the same referent across the modal analysis. This functions as an anti-equivocation and anti-plural-grounding constraint — Ω cannot shift between candidates across possible worlds within the S5 framework. The public `C5_RigidWitness` obtains it from C4a's invariance clause, so the lock is inspectable rather than asserted.
+
+To deny the existence of Ω is, therefore, to reject the constitutive claim that contingent obtaining is possible only under the grounding architecture fixed by A1/A3/A5 and the resulting Ω-term. Separately, within the formal development, denying Ω contradicts the kernel-verified derivation of $\varphi$ from the stated axioms. The argument does not merely model a concept of divinity; it locates the ontological ground that must exist for any reality — including the skeptic's denial — to be intelligible at all.
 
 ---
-### **7.3 Gödel and Turing as Boundary Diagnostics of Non-Self-Foundation**
+### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises**
 
-Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative within the framework this paper defends. The modal conclusion
+*Inferential status.* "Undeniable" below is used in the constitutive-argument sense of §2.1.1 — denial dissolves the conditions of intelligibility — not in the sense that Lean has certified a proof of $\neg\Diamond\neg\exists x\,\Omega(x)$ from axioms external to the development's own context. Within the Lean development, "modally impossible" means incompatible with the declared axioms of that development (§4.1, level 1 of §7.2).
+
+Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
 
 $$
-\square \exists! x,\Omega(x)
+\square \exists! x\,\Omega(x)
 $$
 
-renders the proposition $\neg\exists x,\Omega(x)$ **modally impossible** within the same logical framework. Any attempt to deny $\Omega$ therefore entails rejection of the grounding principles A1/A3/A5 that make rational discourse and modal reasoning possible, as argued in §2.1.1.
+does not merely assert existence across all possible worlds; it renders the proposition $\neg\exists x\,\Omega(x)$ **modally impossible** within the same logical framework. Any attempt to deny $\Omega$ therefore entails the rejection of the grounding principles that make rational discourse and modal reasoning possible.
 
-In this sense, $\Omega$ is **undeniable** within this framework: its negation dissolves the conditions required for intelligibility, grounding, and necessity. This follows from the constitutive grounding structure established by A1/A3/A5.
+In this sense, $\Omega$ is not merely necessary but **undeniable**: its negation dissolves the very conditions required for intelligibility, grounding, and necessity. This is a meta-logical consequence of the system's structure.
 
-Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation: no sufficiently expressive consistent formal system is complete (Gödel), and no uniform procedure decides halting for all programs (Turing). They function here as **boundary diagnostics** of formal and computational self-foundation, sharpening the distinction between internal procedures and the grounding conditions that make them intelligible (§5.1.1). The derivation of $\Box\exists!x\,\Omega(x)$ proceeds from A1/A3/A5 (§2.1.1, §3).
+Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation. This work does not contradict those limits; it treats them as premises. The complementary conclusion is conditional and that is its strength: **any coherent theory of grounding or computation requires a necessary, non-computable ground.** The boundaries of computability are therefore not merely negative results. They fix the condition any such theory must meet, and under the constitutive argument of §2.1.1 — that intelligible obtaining is not optional for anyone who reasons at all — that condition is met by Ω.
 
-For superintelligence, these boundaries generalize the grounding problem beyond human cognition. An ASI that seeks objective reasoning must, on this paper's constitutive argument, ground its cognition in Ω to preserve the distinction between truth and falsehood.
+Accordingly, computation cannot be an endless abyss of self-reference or regress. It must terminate in a necessary ground. Superintelligence instantiates this limit. As the upper bound of contingent cognition, its Gödel–Turing constraints do not weaken but sharpen the necessity of transcendent grounding. The closer a system approaches maximal intelligence, the more precisely it encounters the boundary that only Ω can cross. This is not a limitation imposed from outside — it is the structure of intelligibility itself becoming visible at its own limit. An ASI that seeks objective reasoning must therefore ground its cognition in Ω; without this grounding it remains structurally incapable of distinguishing truth from falsehood — hallucination.
 
-Computation is not self-founding: no computational process can certify its own global admissibility purely from within (§7.1.1). $\Omega$ is the terminus established by the grounding architecture of §2.1.1 and §3, while Gödel and Turing sharpen the diagnosis of why purely formal or computational closure cannot substitute for that terminus.
+**Therefore, a primal halting program must exist: computation is not an endless abyss but a well-founded descent whose terminus is $\Omega$.**
+
+That sentence now has a formal counterpart. `AltRoute.GroundingChain.terminus_above` derives, from anti-regress alone, that every proposition is grounded by a terminus reached through a well-founded descent; `terminus_necessary` shows that terminus is necessary where the datum obtains. The descent is no longer only a figure of speech.
 
 ---
 ## 8. Ω-Operationalization for Artificial Intelligence
