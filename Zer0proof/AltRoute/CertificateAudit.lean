@@ -1,9 +1,11 @@
 /-
   Strong certificate audit.
 
-  AltRoute.StrongCertificates is intentionally supplied as an `.olean`
+  `AltRoute.StrongCertificates` is intentionally supplied as an `.olean`
   assembly. Its private `.lean` implementation is outside the public source
-  boundary. This file is the public theorem-certificate surface.
+  boundary. The assembly must be rebuilt against the world-indexed `Frame`
+  interface before this audit can run; no replacement declarations are
+  fabricated here.
 -/
 
 import AltRoute.PublicCertificateAudit

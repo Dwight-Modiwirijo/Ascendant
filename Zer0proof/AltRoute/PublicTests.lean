@@ -1,242 +1,163 @@
 import AltRoute.Interface
 
-/-
-  PublicTests.lean
-  =================
-
-  This module is the *public certificate* for the closed AltRoute kernel.
-
-  Goal
-  ----
-  Provide a small, human-readable test suite that anyone can inspect to see
-  that the exported interface of AltRoute behaves sanely, without exposing
-  any private proof internals or the MA / Ω-construction.
-
-  What is checked here
-  --------------------
-
-  1. API visibility
-     - `SomePosNecPossible`
-     - `necPossible_of_Pos`
-     - `somePosNecPossible_of_exists`
-     These examples show that the external S5-style API is usable from a
-     normal Lean context.
-
-  2. Existence of a concrete S5 model
-     - `TrivialModel : Modal`
-     This gives a very small model where `Box` and `Dia` are interpreted as
-     identity on propositions. It witnesses that the modal axioms (K, T, 4, 5)
-     are jointly consistent at the meta-level.
-
-  3. Explosion is controlled (ex falso quodlibet)
-     - `exFalsoQuodlibet : False → P`
-     We *acknowledge* that from `False` one can derive any `P`, but we keep
-     this confined to the usual logic and never export a proof of `False`
-     itself. As long as `False` is not derivable from the AltRoute axioms,
-     the system cannot silently "turn everything into truth".
-
-  4. Verum ex quodlibet is blocked at the API boundary
-     - We document (with comments and small examples) that we never accept
-       "proofs" that try to infer a universally true theorem merely from a
-       single, arbitrary instance. In other words, the interface does not
-       permit the classic 'Verum ex Quodlibet' pitfall: deriving an arbitrary
-       proposition from `True` alone.
-
-  5. A natural-number termination example is checked
-     - The test proves only that `Nat.lt` is well-founded and that a toy
-       countdown terminates. It does not certify the private Ω grounding chain.
-
-  6. Semantic equivocation is avoided by design
-     - The tests only talk about abstract `ι` and `Prop`; they do not assume
-       any string-based encoding of meaning. In the actual Ascendant.Zero
-       runtime, this is mirrored by using graph IDs / URIs instead of raw
-       text labels, so that Lean only ever sees stable, typed entities.
-
-  7. Gödelian blind spots are acknowledged
-     - The interface is designed to allow for an *undecidable* outcome at
-       runtime (handled outside this file), so that the overall system is
-       not forced to misclassify genuinely independent statements as either
-       "true" or "false". This test file documents that intention and checks
-       only the minimal theorems that are safely inside the proven fragment.
-
-  8. Binary integrity
-     - Because this file compiles against the closed AltRoute kernel with
-       no remaining goals and no `sorry`, any consumer can re-build it and
-       check that the `.olean` they received really corresponds to a kernel
-       where:
-         * the modal axioms hold in a concrete model, and
-         * no `False` has been proven inside the public interface.
-
-  In short: this file is not the proof itself, but a readable, reproducible
-  *witness* that the underlying AltRoute binary behaves like a sane,
-  non-explosive S5 + Ω engine.
+/-!
+`PublicTests` is the readable public audit surface for the world-indexed
+AltRoute interface. The public claims quantify over every S5 frame and every
+selected world. The concrete Bool frame below proves that this interface is
+not restricted to collapsed one-world semantics.
 -/
 
 namespace AltRoute.PublicTests
+
 open AltRoute
-universe u
 
-section
-variable {ι : Type u} (M : Modal) [Positive ι]
+universe u v
 
-/-- Sanity check: `necPossible_of_Pos` is applicable without witnesses. -/
-example (P : ι → Prop) (h : Positive.Pos P) :
-  M.Box (M.Dia (∃ x, P x)) :=
-  necPossible_of_Pos (ι:=ι) M h
-
-/-- The packaged existential statement is usable under the same hypotheses. -/
-example (h : ∃ P : ι → Prop, Positive.Pos P) :
-  SomePosNecPossible (ι:=ι) M :=
-  somePosNecPossible_of_exists (ι:=ι) M h
-
-/-- Gate 0: the constantly false predicate is excluded from positivity. -/
-example : ¬ Positive.Pos (fun _ : ι => False) :=
-  false_not_positive
-
-/-- Gate 0: every extensionally empty predicate is excluded from positivity. -/
-example (P : ι → Prop) (hEmpty : ∀ x, ¬ P x) : ¬ Positive.Pos P :=
-  empty_extension_not_positive P hEmpty
-
-end
-end AltRoute.PublicTests
+-- The modal laws are derived declarations, not user-supplied structure fields.
+#check AltRoute.Frame.ax_T
+#check AltRoute.Frame.ax_4
+#check AltRoute.Frame.ax_5
+#check AltRoute.Frame.K
+#check AltRoute.Frame.duality
+#check AltRoute.Frame.actual_possible
 
 #check AltRoute.exists_of_positive
 #check AltRoute.PosPossibility
--- Visibility checks (top-level commands)
-#check AltRoute.SomePosNecPossible
 #check AltRoute.necPossible_of_Pos
+#check AltRoute.SomePosNecPossible
 #check AltRoute.somePosNecPossible_of_exists
-#check AltRoute.false_not_positive
-#check AltRoute.empty_extension_not_positive
 
+section PublicApi
 
-namespace AltRoute.PublicTests
+variable {W : Type u} {iota : Type v} (F : Frame W) (w : W) [Positive iota]
 
-open AltRoute
-universe u
+/-- The public theorem is usable for every frame and selected world. -/
+example (P : iota -> W -> Prop)
+    (hPos : Positive.Pos (fun x => P x w)) :
+    F.Box (F.Dia (fun world => Exists fun x => P x world)) w :=
+  necPossible_of_Pos (iota := iota) F w hPos
 
+/-- The existentially packaged public statement has the same generality. -/
+example
+    (h : Exists fun P : iota -> W -> Prop =>
+      Positive.Pos (fun x => P x w)) :
+    SomePosNecPossible (iota := iota) F w :=
+  somePosNecPossible_of_exists (iota := iota) F w h
 
-/-!
-Basic classical meta-principles, for documentation:
+/-- Gate 0: the constantly false predicate is not positive. -/
+example : Not (Positive.Pos (fun _ : iota => False)) :=
+  false_not_positive
 
-* `exFalsoQuodlibet` says: if we ever *do* obtain `False`, then any proposition `P` follows.
-  This is standard in classical logic and not specific to our modal kernel.
-* What we explicitly do **not** assume as an axiom is a "verum quodlibet" of the form
-  `True → P` for arbitrary `P`. Having that as a theorem for all `P` would trivialize the system.
--/
+/-- Gate 0: every extensionally empty predicate is not positive. -/
+example (P : iota -> Prop) (hEmpty : forall x, Not (P x)) :
+    Not (Positive.Pos P) :=
+  empty_extension_not_positive P hEmpty
 
-/-- Ex falso quodlibet: from `False` we can derive any proposition `P`. -/
-theorem exFalsoQuodlibet {P : Prop} (h : False) : P :=
-  False.elim h
+end PublicApi
 
-/-!
-  PublicTests
+/-! ## A non-degenerate public S5 frame -/
 
-  This module plays three roles:
+/-- The universal accessibility relation on two worlds. -/
+def UniversalBoolFrame : Frame Bool where
+  R := fun _ _ => True
+  refl := by
+    intro _
+    trivial
+  trans := by
+    intro _ _ _ _ _
+    trivial
+  symm := by
+    intro _ _ _
+    trivial
 
-  1. API sanity checks:
-     Confirms that key exported theorems from `AltRoute.Interface`
-     can be applied in a simple, generic setting.
-
-  2. Model existence:
-     Provides a concrete S5-style `Modal` instance (`TrivialModel`)
-     to witness that the abstract axioms are jointly satisfiable.
-
-  3. Negative guards (documented expectation):
-     Records the design intent that `False` is not derivable from
-     the public API, which underpins the "no explosion" property.
--/
-
--- ================================================================
--- SECTION 1: API SURFACE CHECKS
--- ================================================================
-
-section ApiSurface
-
-variable {ι : Type u} (M : Modal) [Positive ι]
+/-- A proposition true at exactly the `true` world. -/
+def BoolWitness (world : Bool) : Prop := world = true
 
 /--
-API sanity check for `necPossible_of_Pos`.
-
-For any positive property `P : ι → Prop`, the core theorem
-`necPossible_of_Pos` yields the S5-style statement
-
-  □◇∃ x, P x
-
-which can be read as: "if `P` is positive, then it is necessarily
-possible that some witness of `P` exists."
+Counterexample to the old Prop-indexed collapse: truth at the actual world does
+not imply truth at every accessible world.
 -/
-example (P : ι → Prop) (h : Positive.Pos P) :
-  M.Box (M.Dia (∃ x, P x)) :=
-  necPossible_of_Pos (ι := ι) M h
+theorem box_not_identity :
+    Exists fun W : Type =>
+      Exists fun F : Frame W =>
+        Exists fun phi : W -> Prop =>
+          Exists fun w : W => Not (F.Box phi w <-> phi w) := by
+  refine ⟨Bool, UniversalBoolFrame, BoolWitness, true, ?_⟩
+  intro hIdentity
+  have hBox : UniversalBoolFrame.Box BoolWitness true :=
+    hIdentity.mpr rfl
+  have hAtFalse : BoolWitness false := hBox false trivial
+  simp [BoolWitness] at hAtFalse
+
+/-- Gate 6: the two-world frame exhibits genuine modal contingency. -/
+theorem contingency_witness :
+    Exists fun W : Type =>
+      Exists fun F : Frame W =>
+        Exists fun phi : W -> Prop =>
+          Exists fun w : W =>
+            F.Dia phi w /\ F.Dia (fun world => Not (phi world)) w := by
+  refine ⟨Bool, UniversalBoolFrame, BoolWitness, true, ?_, ?_⟩
+  · exact ⟨true, trivial, rfl⟩
+  · exact ⟨false, trivial, by simp [BoolWitness]⟩
 
 /--
-API sanity check for `somePosNecPossible_of_exists`.
-
-From the assumption that there exists at least one positive
-property on `ι`, the exported summary type `SomePosNecPossible M`
-can be obtained, which packages this information at the level of
-the modal structure.
+The world-indexed `Box (Dia phi)` certificate is not equivalent to `phi` at
+an arbitrary actual world.
 -/
-example (h : ∃ P : ι → Prop, Positive.Pos P) :
-  SomePosNecPossible (ι := ι) M :=
-  somePosNecPossible_of_exists (ι := ι) M h
+theorem certificate_not_trivial :
+    Not (forall (W : Type) (F : Frame W) (phi : W -> Prop) (w : W),
+      F.Box (F.Dia phi) w <-> phi w) := by
+  intro hCollapse
+  have hBoxDia :
+      UniversalBoolFrame.Box (UniversalBoolFrame.Dia BoolWitness) false := by
+    intro world _
+    exact ⟨true, trivial, rfl⟩
+  have hAtFalse :=
+    (hCollapse Bool UniversalBoolFrame BoolWitness false).mp hBoxDia
+  simp [BoolWitness] at hAtFalse
 
-end ApiSurface
-
--- ================================================================
--- SECTION 2: A CONCRETE S5 MODEL (TRIVIAL COLLAPSED WORLD)
--- ================================================================
-
-section TrivialModel
+/-! ## Explicitly degenerate one-world example -/
 
 /--
-A collapsed "identity" model for the modal operators.
-
-In this model, `Box p` and `Dia p` are definitionally equal to `p`,
-so necessity and possibility coincide with plain truth. The S5 axioms
-(K, T, 4, 5) become instances of ordinary propositional reasoning.
-
-The existence of this model demonstrates that the abstract `Modal`
-axiom set is internally consistent at the level it is defined.
+The one-world universal frame. Box and Dia collapse here, deliberately. The
+public claims are not restricted to this model; `UniversalBoolFrame` above is
+the permanent non-collapse witness.
 -/
-def TrivialModel : Modal :=
-{ Box := id,
-  Dia := id,
-  K := by
-    intro p q hpq hp
-    exact hpq hp,
-  ax_T := by
-    intro p hp
-    exact hp,
-  ax_4 := by
-    intro p hp
-    exact hp,
-  ax_5 := by
-    intro p hp
-    exact hp,
-  duality := by
-    intro p
-    constructor
-    · intro hp hnp
-      exact hnp hp
-    · intro hnp
-      exact Classical.byContradiction hnp }
+def TrivialModel : Frame Unit where
+  R := fun _ _ => True
+  refl := by
+    intro _
+    trivial
+  trans := by
+    intro _ _ _ _ _
+    trivial
+  symm := by
+    intro _ _ _
+    trivial
 
-/--
-Minimal inhabitance check inside `TrivialModel`.
+/-- Box reduces to truth at the sole world in the degenerate model. -/
+theorem trivialModel_box_collapses (phi : Unit -> Prop) (w : Unit) :
+    TrivialModel.Box phi w <-> phi w := by
+  cases w
+  constructor
+  · intro h
+    exact h () trivial
+  · intro h world _
+    cases world
+    exact h
 
-Because `Box` is the identity, `TrivialModel.Box True` reduces to `True`.
-This serves as a lightweight smoke test that the model behaves as intended.
--/
-example : TrivialModel.Box True := by
-  trivial
+/-- Dia reduces to truth at the sole world in the degenerate model. -/
+theorem trivialModel_dia_collapses (phi : Unit -> Prop) (w : Unit) :
+    TrivialModel.Dia phi w <-> phi w := by
+  cases w
+  constructor
+  · rintro ⟨world, _, h⟩
+    cases world
+    exact h
+  · intro h
+    exact ⟨(), trivial, h⟩
 
-end TrivialModel
-
-section JointPublicWitness
-
-/-- A concrete proper positivity structure on Unit. -/
+/-- A concrete proper positivity structure on the fixed domain `Unit`. -/
 def UnitPositive : Positive Unit where
   Pos := fun P => P ()
   mono := by
@@ -246,347 +167,120 @@ def UnitPositive : Positive Unit where
     intro h
     exact h
 
-/-- The hardened positivity and modal interfaces are jointly inhabited. -/
+/-- The proper positivity and world-indexed frame interfaces are jointly inhabited. -/
 theorem unit_positive_possible :
-    TrivialModel.Dia (Exists fun _ : Unit => True) := by
+    TrivialModel.Dia (fun _ : Unit => Exists fun _ : Unit => True) () := by
   letI : Positive Unit := UnitPositive
-  exact PosPossibility (iota := Unit) TrivialModel (fun _ => True) (by trivial)
+  exact PosPossibility (iota := Unit) TrivialModel
+    (fun _ _ => True) () (by trivial)
 
-end JointPublicWitness
-
--- ================================================================
--- SECTION 3: NEGATIVE GUARDS AND DOCUMENTED INTENT
--- ================================================================
-
-section NegativeGuards
+/-! ## General negative guards -/
 
 /-- No predicate on the empty type can be positive. -/
-theorem no_positive_on_empty [Positive Empty] (P : Empty → Prop) :
-    ¬ Positive.Pos P := by
+theorem no_positive_on_empty [Positive Empty] (P : Empty -> Prop) :
+    Not (Positive.Pos P) := by
   intro hPos
   exact Positive.proper (Positive.mono (fun x _ => x.elim) hPos)
 
-/-- Every modal interpretation admits at least one possible proposition. -/
-theorem dia_not_constantly_false (M : Modal) :
-    ¬ (∀ p : Prop, ¬ M.Dia p) := by
+/-- Reflexivity prevents possibility from being constantly false. -/
+theorem dia_not_constantly_false {W : Type u} (F : Frame W) (w : W) :
+    Not (forall phi : W -> Prop, Not (F.Dia phi w)) := by
   intro h
-  exact h True (M.actual_possible True trivial)
+  exact h (fun _ => True) (F.actual_possible _ w trivial)
 
-/-- Duality and axiom 5 exclude an interpretation where every proposition is possible. -/
-theorem no_inflated_dia : ¬ ∃ M : Modal, ∀ p : Prop, M.Dia p := by
-  rintro ⟨M, hAll⟩
-  have hDiaFalse : M.Dia False := hAll False
-  have hNotBoxTrue : ¬ M.Box True := by
-    simpa using (M.duality False).mp hDiaFalse
-  have hDiaFalseIffTrue : M.Dia False ↔ True :=
-    ⟨fun _ => trivial, fun _ => hDiaFalse⟩
-  have hBoxTrue : M.Box True := by
-    rw [← propext hDiaFalseIffTrue]
-    exact M.ax_5 False hDiaFalse
-  exact hNotBoxTrue hBoxTrue
+/-- No frame can make the constantly false proposition possible. -/
+theorem dia_not_constantly_true {W : Type u} (F : Frame W) (w : W) :
+    Not (forall phi : W -> Prop, F.Dia phi w) := by
+  intro h
+  rcases h (fun _ => False) with ⟨_, _, hFalse⟩
+  exact hFalse
 
-/-
-Design note.
+/-! ## Retained non-modal public canaries -/
 
-The library is intended to avoid any derivation of `False`
-from the public AltRoute API. A hypothetical closed proof term
+/-- Standard ex falso, retained as a named canary; no proof of `False` is exported. -/
+theorem exFalsoQuodlibet {P : Prop} (h : False) : P :=
+  False.elim h
 
-  example : False := ...
-
-would indicate a hidden inconsistency in the axiom set.
-
-Keeping this as a commented "trap" documents the invariant that
-`False` remains unprovable in the verified fragment, so that
-explosion (`False → p` for all `p`) never becomes available.
--/
--- example : False := by
---   trivial
-
-end NegativeGuards
-
--- ================================================================
--- SECTION 4: "Verum" sanity checks (True is harmless, not explosive)
--- ================================================================
-
-section VerumQuodlibet
-
-/--
-  In any reasonable logic, `True` is provable.
-  This example just confirms that our system can derive `True`.
--/
-example : True := by
-  trivial
-
-/--
-  Adding `True` as a conjunct does not change a proposition.
-  This encodes the harmless role of `True`:
-  `p ∧ True` is logically equivalent to `p`.
--/
-example (p : Prop) : p ∧ True ↔ p := by
-  constructor
-  · intro h
-    -- From a pair (p ∧ True), we can project out the `p` component.
-    exact h.1
-  · intro hp
-    -- If we know `p`, we can always pair it with `True`.
-    exact And.intro hp True.intro
-
-/-
-  What we explicitly *do not* have is a proof of:
-
-    ∀ p : Prop, True → p
-
-  Such a term would say:
-  Here: 'from sheer truth (`True`) one tries to derive an arbitrary proposition `p`'.
-
-  That would collapse the logic and make every statement provable.
-  The fact that this example cannot be implemented is part of the
-  consistency story: `True` behaves as a neutral element, not as
-  an explosive source of arbitrary facts.
--/
--- example : ∀ p : Prop, True → p := by
---   -- In a consistent system, this construction is not expected to be definable.
---   -- Leaving it commented documents that the logic does not collapse
---   -- into 'verum ex quodlibet'.
-
-end VerumQuodlibet
-
--- ================================================================
--- SECTION 5: NEGATIVE GUARDS (Anti-Yes-Man Check)
--- ================================================================
-
-section NegativeGuards
-
-
-/-
-  TEST: The "Hallucination Trap".
-  We attempt to prove that 'False' is Necessary (Box False).
-
-  Expected Result: FAILURE.
-  A consistent kernel will not admit a proof of this statement.
--/
-
-/--
-error: tactic 'assumption' failed
-⊢ TrivialModel.Box False
--/
-#guard_msgs in
-example : TrivialModel.Box False := by
-  assumption
-
-end NegativeGuards
--- ================================================================
--- SECTION 6: WELL-FOUNDEDNESS (Anti-Infinite Regress)
--- ================================================================
-
-section InfiniteRegress
-
-/-
-  TEST: The "Turtles All The Way Down" Check.
-
-  Problem: Circular reasoning loops back to start (A -> B -> A).
-  Infinite Regress never stops (A -> B -> C -> ... infinity).
-
-  Mitigation: prove that the grounding relation is well-founded (i.e., there are no infinite descending chains).
-  This means every chain of reasoning MUST eventually hit a bottom (Omega).
-
-  In this test, we demonstrate that 'Nat.lt' (less than) is well-founded.
-  The broader architecture can use an analogous idea (a measure/rank) to guarantee termination of search or reduction.
--/
-
-/--
-  We simulate a grounding chain using natural numbers.
-  0 represents Omega (Absolute Truth).
-  Higher numbers represent states further from the truth.
--/
+/-- Toy grounding relation used only to demonstrate `Nat.lt` well-foundedness. -/
 def GroundingRelation (a b : Nat) : Prop := a < b
 
-/--
-  The Proof:
-  Lean's kernel guarantees that `Nat.lt` is well-founded.
-  This implies no infinite descending chain exists (10 -> 9 -> ... -> 0 -> STOP).
-
-  If the interface uses a `meas` (measure) based on Nat,
-  infinite regress is mathematically impossible.
--/
 example : WellFounded GroundingRelation :=
   Nat.lt_wfRel.wf
 
-/--
-  Engineering Application:
-  We define a recursive function that *only* compiles because the relation is well-founded.
-  If infinite regress were possible, this function would cause a compile error
-  (fail to prove termination).
--/
+/-- A terminating toy countdown; it does not certify the private Ω-chain. -/
 def traverse_to_omega (n : Nat) : Nat :=
   if h : n = 0 then
-    0 -- We reached Omega
+    0
   else
-    -- Recursive step: we go down. Lean proves (n-1) < n, so this terminates.
     traverse_to_omega (n - 1)
-termination_by n -- The 'measure' that proves convergence.
-
-end InfiniteRegress
-
--- ================================================================
--- SECTION 7: SEMANTIC IDENTITY (Anti-Equivocation)
--- ================================================================
-
-section SemanticEquivocation
-
-/-
-  TEST: The "Bank vs Bank" Check.
-
-  Problem: In a Graph, two nodes might share the label "Bank" (Money vs Bench).
-  If the logic relies on strings, valid inferences become unsound (False).
-
-  Mitigation: treat identity as stable unique IDs (UIDs), not display labels or strings.
-  We prove that distinct UIDs make entities distinct, even if labels match.
--/
+termination_by n
 
 structure Entity where
   uid : Nat
   label : String
 deriving DecidableEq, Repr
 
-/--
-  The Scenario:
-  Two entities share the same name ("Bank"), but have different IDs.
--/
 def Bank_Financial : Entity := { uid := 1001, label := "Bank" }
 def Bank_Furniture : Entity := { uid := 2042, label := "Bank" }
 
-/--
-  The Proof:
-  We prove that despite the labels being identical, the entities are NOT equal.
-  The logic engine (Lean/FPGA) will treat them as separate objects.
--/
 example : Bank_Financial.label = Bank_Furniture.label := by
-  rfl -- The strings are indeed the same.
+  rfl
 
-example : Bank_Financial ≠ Bank_Furniture := by
-  -- But the entities are different.
-  -- If this proof succeeds, the system is immune to semantic equivocation via ID.
+example : Not (Bank_Financial = Bank_Furniture) := by
   intro h
-  have h_uid : Bank_Financial.uid = Bank_Furniture.uid := by rw [h]
-  -- Contradiction: 1001 is not 2042.
+  have hUid : Bank_Financial.uid = Bank_Furniture.uid := by rw [h]
   contradiction
-
-end SemanticEquivocation
-
--- ================================================================
--- SECTION 8: UNDECIDABILITY (Gödelian Completeness)
--- ================================================================
-
-section GodelianState
-
-/-
-  TEST: The "Agostic" Check.
-
-  Problem: Gödel proved that in any complex system, some statements are
-  true but unprovable. If we force a binary "True/False", the system might
-  hang or hallucinate a choice.
-
-  Mitigation: include a third outcome such as "Undecidable"/"Unknown" for propositions that are neither provable nor refutable under the current axioms.
-  This prevents the system from crashing on unanswerable questions.
--/
 
 inductive InferenceResult
-  | ProvenTrue      -- Grounded in Omega
-  | ProvenFalse     -- Contradiction / Explosion detected
-  | Undecidable     -- Gödelian Limbo (No path found, no contradiction found)
+  | ProvenTrue
+  | ProvenFalse
+  | Undecidable
 deriving DecidableEq, Repr
 
-/--
-  We prove that 'Undecidable' is a distinct valid state,
-  separate from True and False.
--/
-example : InferenceResult.Undecidable ≠ InferenceResult.ProvenTrue := by
-  intro h
-  contradiction
-
-example : InferenceResult.Undecidable ≠ InferenceResult.ProvenFalse := by
-  intro h
-  contradiction
-
-/--
-  Engineering Simulation:
-  A safe evaluator function that can return "I don't know".
-  This allows the FPGA to exit gracefully instead of looping infinitely.
--/
 def evaluate_statement (input : String) : InferenceResult :=
   if input == "1+1=2" then InferenceResult.ProvenTrue
   else if input == "1+1=3" then InferenceResult.ProvenFalse
-  else InferenceResult.Undecidable -- e.g. "This statement is unprovable"
+  else InferenceResult.Undecidable
 
--- Verify the safe fallback
+def forceful_evaluator (input : String) : InferenceResult :=
+  if input == "1=1" then InferenceResult.ProvenTrue
+  else evaluate_statement input
+
 example : evaluate_statement "Goldbach Conjecture" = InferenceResult.Undecidable := by
   rfl
 
-end GodelianState
-
--- ================================================================
--- SECTION 9: LIVENESS (Anti-Laziness Check)
--- ================================================================
-
-section Liveness
-
-/-
-  TEST: The "Bureaucrat" Check.
-
-  Problem: A safe system might choose to answer "Undecidable" to everything
-  to avoid risk. This renders the system useless.
-
-  Solution: We prove that if a proof exists (measure reduces to 0),
-  the system MUST output ProvenTrue. It cannot stay in Undecidable.
--/
-
-/--
-  We define a strict rule: If the input is the axiomatic truth "1=1",
-  the result MUST be ProvenTrue. Anything else is a failure of the engine.
--/
-def forceful_evaluator (input : String) : InferenceResult :=
-  if input == "1=1" then
-    InferenceResult.ProvenTrue -- FORCED to admit truth
-  else
-    evaluate_statement input
-
-/--
-  The Proof of Work:
-  We assert that for a known truth, the result is NOT Undecidable.
-  This proves the system is capable of committing to an answer.
--/
-example : forceful_evaluator "1=1" ≠ InferenceResult.Undecidable := by
-  -- We run the evaluator
+example : Not (forceful_evaluator "1=1" = InferenceResult.Undecidable) := by
   simp [forceful_evaluator]
-  -- We see it returns ProvenTrue
-  -- We prove ProvenTrue is not Undecidable
-  -- intro h
-  -- contradiction
+/-! ## Axiom-footprint output for the public audit -/
 
-end Liveness
--- ================================================================
--- FINAL SUMMARY
--- ================================================================
-
-/-
-  By compiling this file, we have verified:
-  1. API Visibility (Sections 1)
-  2. Model Consistency (Section 2 - TrivialModel)
-  3. No "Ex Falso" Explosion (Section 3/5 - Negative Guards)
-  4. No "Verum ex Quodlibet" (Section 5 - Anti-Yes-Man)
-  5. `Nat.lt` well-foundedness and toy countdown termination (Section 6)
-  6. No Semantic Ambiguity (Section 7 - Unique IDs)
-  7. Handling of Unknowables (Section 8 - Undecidable State)
--/
-/-
-Lightweight checks that the main exported symbols remain discoverable
-from this module. These lines also help IDEs surface the API.
--/
-#check AltRoute.SomePosNecPossible
-#check AltRoute.necPossible_of_Pos
-#check AltRoute.somePosNecPossible_of_exists
-#check TrivialModel
-#check exFalsoQuodlibet
+#print axioms exFalsoQuodlibet
+#print axioms GroundingRelation
+#print axioms traverse_to_omega
+#print axioms evaluate_statement
+#print axioms forceful_evaluator
+#print axioms AltRoute.Frame.ax_T
+#print axioms AltRoute.Frame.ax_4
+#print axioms AltRoute.Frame.ax_5
+#print axioms AltRoute.Frame.K
+#print axioms AltRoute.Frame.duality
+#print axioms AltRoute.Frame.actual_possible
+#print axioms AltRoute.false_not_positive
+#print axioms AltRoute.empty_extension_not_positive
+#print axioms AltRoute.exists_of_positive
+#print axioms AltRoute.PosPossibility
+#print axioms AltRoute.necPossible_of_Pos
+#print axioms AltRoute.SomePosNecPossible
+#print axioms AltRoute.somePosNecPossible_of_exists
+#print axioms box_not_identity
+#print axioms contingency_witness
+#print axioms certificate_not_trivial
+#print axioms TrivialModel
+#print axioms trivialModel_box_collapses
+#print axioms trivialModel_dia_collapses
+#print axioms UnitPositive
+#print axioms unit_positive_possible
+#print axioms no_positive_on_empty
+#print axioms dia_not_constantly_false
+#print axioms dia_not_constantly_true
 
 end AltRoute.PublicTests

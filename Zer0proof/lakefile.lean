@@ -27,7 +27,7 @@ lean_lib NoExport_NecessaryExistence where
 lean_lib Reject_HostilePositiveEmpty where
   roots := #[`tests.Reject_HostilePositiveEmpty]
 
--- negative guard: a modal structure with `Dia := False` MUST fail
+-- negative guard: a reflexive/transitive frame without symmetry MUST fail
 lean_lib Reject_HostileModal where
   roots := #[`tests.Reject_HostileModal]
 
@@ -35,10 +35,22 @@ lean_lib Reject_HostileModal where
 lean_lib Reject_ForcedPositiveEmpty where
   roots := #[`tests.Reject_ForcedPositiveEmpty]
 
--- negative guard: `Dia := False` cannot satisfy Box/Dia duality
+-- negative guard: the hostile preorder cannot satisfy symmetry
 lean_lib Reject_ForcedHostileModal where
   roots := #[`tests.Reject_ForcedHostileModal]
 
+-- modal-collapse regressions: these historical theorem shapes MUST fail
+lean_lib Reject_BoxCollapse where
+  roots := #[`tests.Reject_BoxCollapse]
+
+lean_lib Reject_DiaCollapse where
+  roots := #[`tests.Reject_DiaCollapse]
+
+lean_lib Reject_NoContingency where
+  roots := #[`tests.Reject_NoContingency]
+
+lean_lib Reject_CertificateCollapse where
+  roots := #[`tests.Reject_CertificateCollapse]
 -- Private library (no default_target; not built in public CI)
 lean_lib AltRoutePrivate where
   roots := #[

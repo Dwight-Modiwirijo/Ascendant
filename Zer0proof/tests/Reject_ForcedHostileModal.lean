@@ -2,29 +2,21 @@ import AltRoute.Interface
 
 namespace AltRoute.NegativeTests
 
--- Supplying every field for `Dia := False` exposes the impossible duality direction.
-def forcedInflatedDia : Modal :=
-{ Box := id,
-  Dia := fun _ => False,
-  K := by
-    intro p q hpq hp
-    exact hpq hp,
-  ax_T := by
-    intro p hp
-    exact hp,
-  ax_4 := by
-    intro p hp
-    exact hp,
-  ax_5 := by
-    intro p hp
-    exact hp.elim,
-  duality := by
-    intro p
-    constructor
-    · intro hp
-      exact hp.elim
-    · intro h
-      show False
-      assumption }
+/--
+Forcing the missing `symm` field exposes the concrete impossible direction:
+`true` accesses `true`, but the chosen preorder does not let `true` access
+`false` merely because `false` accesses `true`.
+-/
+def forcedHostileFrame : Frame Bool :=
+{ R := fun w x => w = false \/ x = true,
+  refl := by
+    intro w
+    cases w <;> simp,
+  trans := by
+    intro w x y hwx hxy
+    cases w <;> cases x <;> cases y <;> simp_all,
+  symm := by
+    intro w x hwx
+    cases w <;> cases x <;> simp_all }
 
 end AltRoute.NegativeTests

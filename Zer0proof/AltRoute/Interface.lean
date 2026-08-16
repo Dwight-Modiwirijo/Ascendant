@@ -1,71 +1,130 @@
 namespace AltRoute
-universe u
-open Classical
 
-/-- Minimal S5-style modal interface (route-agnostic). -/
-structure Modal where
-  Box : Prop → Prop
-  Dia : Prop → Prop
-  ax_T : ∀ p, Box p → p
-  ax_4 : ∀ p, Box p → Box (Box p)
-  ax_5 : ∀ p, Dia p → Box (Dia p)
-  K    : ∀ {p q}, Box (p → q) → (Box p → Box q)
-  duality : ∀ p, Dia p ↔ ¬ Box (¬ p)
+universe u v
 
-/-- Marker used by clients that work under constant-domain semantics. -/
-def ConstantDomain : Prop := True
+/-- An S5 Kripke frame. Accessibility is an equivalence relation. -/
+structure Frame (W : Type u) where
+  R : W -> W -> Prop
+  refl : forall w, R w w
+  trans : forall w x y, R w x -> R x y -> R w y
+  symm : forall w x, R w x -> R x w
 
-/-- Truth at the actual world is possible under T and Box/Dia duality. -/
-theorem Modal.actual_possible (M : Modal) (p : Prop) (hp : p) : M.Dia p :=
-  (M.duality p).mpr (fun hb => (M.ax_T _ hb) hp)
+namespace Frame
 
-/-- Proper monotone positivity structure: the empty predicate is not positive. -/
-class Positive (ι : Type u) where
-  Pos  : (ι → Prop) → Prop
-  mono : ∀ {P Q}, (∀ x, P x → Q x) → Pos P → Pos Q
-  proper : ¬ Pos (fun _ => False)
+variable {W : Type u} (F : Frame W)
+
+/-- Necessity at a world: truth at every accessible world. -/
+def Box (phi : W -> Prop) : W -> Prop :=
+  fun w => forall x, F.R w x -> phi x
+
+/-- Possibility at a world: truth at some accessible world. -/
+def Dia (phi : W -> Prop) : W -> Prop :=
+  fun w => Exists fun x => F.R w x /\ phi x
+
+/-- T follows from reflexivity. -/
+theorem ax_T (phi : W -> Prop) (w : W) : F.Box phi w -> phi w := by
+  intro h
+  exact h w (F.refl w)
+
+/-- K follows directly from universal quantification over accessible worlds. -/
+theorem K {phi psi : W -> Prop} (w : W) :
+    F.Box (fun x => phi x -> psi x) w -> F.Box phi w -> F.Box psi w := by
+  intro hImp hPhi x hwx
+  exact hImp x hwx (hPhi x hwx)
+
+/-- 4 follows from transitivity. -/
+theorem ax_4 (phi : W -> Prop) (w : W) :
+    F.Box phi w -> F.Box (F.Box phi) w := by
+  intro hPhi x hwx y hxy
+  exact hPhi y (F.trans w x y hwx hxy)
+
+/-- 5 follows from symmetry and transitivity. -/
+theorem ax_5 (phi : W -> Prop) (w : W) :
+    F.Dia phi w -> F.Box (F.Dia phi) w := by
+  intro hDia
+  rcases hDia with ⟨x, hwx, hPhi⟩
+  intro y hwy
+  exact ⟨x, F.trans y w x (F.symm w y hwy) hwx, hPhi⟩
+
+/-- Box/Dia duality is derived from the Kripke definitions. -/
+theorem duality (phi : W -> Prop) (w : W) :
+    F.Dia phi w <-> Not (F.Box (fun x => Not (phi x)) w) := by
+  constructor
+  · rintro ⟨x, hwx, hPhi⟩ hBox
+    exact hBox x hwx hPhi
+  · intro hNotBox
+    classical
+    exact Classical.byContradiction (fun hNoDia =>
+      hNotBox (fun x hwx hPhi => hNoDia ⟨x, hwx, hPhi⟩))
+
+/-- Actual truth is possible because every world accesses itself. -/
+theorem actual_possible (phi : W -> Prop) (w : W) (hPhi : phi w) :
+    F.Dia phi w :=
+  ⟨w, F.refl w, hPhi⟩
+
+end Frame
+
+/--
+Proper monotone positivity for ordinary predicates. For a world-indexed
+property `P : iota -> W -> Prop`, the public API applies positivity to its
+extension `fun x => P x w` at the selected world `w`. The fixed type `iota`
+enforces constant-domain semantics across worlds.
+-/
+class Positive (iota : Type v) where
+  Pos : (iota -> Prop) -> Prop
+  mono : forall {P Q}, (forall x, P x -> Q x) -> Pos P -> Pos Q
+  proper : Not (Pos (fun _ => False))
 
 /-- The constantly false predicate cannot be positive. -/
-theorem false_not_positive {ι : Type u} [Positive ι] :
-    ¬ Positive.Pos (fun _ : ι => False) :=
+theorem false_not_positive {iota : Type v} [Positive iota] :
+    Not (Positive.Pos (fun _ : iota => False)) :=
   Positive.proper
 
 /-- Any predicate with empty extension cannot be positive. -/
-theorem empty_extension_not_positive {ι : Type u} [Positive ι]
-    (P : ι → Prop) (hEmpty : ∀ x, ¬ P x) : ¬ Positive.Pos P := by
+theorem empty_extension_not_positive {iota : Type v} [Positive iota]
+    (P : iota -> Prop) (hEmpty : forall x, Not (P x)) :
+    Not (Positive.Pos P) := by
   intro hPos
-  apply false_not_positive (ι := ι)
+  apply false_not_positive (iota := iota)
   exact Positive.mono (fun x hx => (hEmpty x hx).elim) hPos
 
 /-- Proper positivity has a nonempty extension in classical logic. -/
-theorem exists_of_positive {alpha : Type u} [Positive alpha]
-    {P : alpha -> Prop} (hPos : Positive.Pos P) : Exists fun x => P x :=
+theorem exists_of_positive {iota : Type v} [Positive iota]
+    {P : iota -> Prop} (hPos : Positive.Pos P) : Exists fun x => P x :=
   Classical.byContradiction (fun hEmpty =>
     empty_extension_not_positive P
       (fun x hx => hEmpty (Exists.intro x hx)) hPos)
 
+/--
+World-relative lift of positivity to possibility. Positivity is evaluated on
+the actual-world extension of `P`; reflexivity then supplies the modal step.
+-/
+theorem PosPossibility {W : Type u} {iota : Type v} (F : Frame W)
+    [Positive iota] (P : iota -> W -> Prop) (w : W)
+    (hPos : Positive.Pos (fun x => P x w)) :
+    F.Dia (fun world => Exists fun x => P x world) w :=
+  F.actual_possible _ w (exists_of_positive (iota := iota) hPos)
 
-/-- Positivity implies possibility of instantiation in a reflexive modal interface. -/
-theorem PosPossibility {iota : Type u} (M : Modal) [Positive iota]
-    (P : iota -> Prop) (hPos : Positive.Pos P) :
-    M.Dia (Exists fun x => P x) :=
-  M.actual_possible _ (exists_of_positive hPos)
+/-- Positivity at any world implies necessary possibility at that world. -/
+theorem necPossible_of_Pos {W : Type u} {iota : Type v} (F : Frame W)
+    [Positive iota] {P : iota -> W -> Prop} (w : W)
+    (hPos : Positive.Pos (fun x => P x w)) :
+    F.Box (F.Dia (fun world => Exists fun x => P x world)) w :=
+  F.ax_5 _ w (PosPossibility F P w hPos)
 
-/-- Public, weak statement: from positivity we get necessary possibility. -/
-theorem necPossible_of_Pos {ι : Type u} (M : Modal) [Positive ι]
-  {P : ι → Prop} (hP : Positive.Pos P) : M.Box (M.Dia (∃ x, P x)) :=
-by
-  have hDia : M.Dia (∃ x, P x) := PosPossibility (iota := ι) M P hP
-  exact M.ax_5 _ hDia
+/-- Existential packaging of the world-indexed public statement. -/
+def SomePosNecPossible {W : Type u} {iota : Type v} (F : Frame W)
+    [Positive iota] (w : W) : Prop :=
+  Exists fun P : iota -> W -> Prop =>
+    Positive.Pos (fun x => P x w) /\
+      F.Box (F.Dia (fun world => Exists fun x => P x world)) w
 
-/-- Existential packaging of the previous statement (route-agnostic). -/
-def SomePosNecPossible {ι : Type u} (M : Modal) [Positive ι] : Prop :=
-  ∃ P : ι → Prop, Positive.Pos P ∧ M.Box (M.Dia (∃ x, P x))
-
-theorem somePosNecPossible_of_exists {ι : Type u} (M : Modal) [Positive ι]
-  (h : ∃ P : ι → Prop, Positive.Pos P) : SomePosNecPossible (ι:=ι) M :=
-by
-  rcases h with ⟨P, hP⟩
-  exact ⟨P, hP, necPossible_of_Pos (ι:=ι) M hP⟩
+theorem somePosNecPossible_of_exists {W : Type u} {iota : Type v}
+    (F : Frame W) [Positive iota] (w : W)
+    (h : Exists fun P : iota -> W -> Prop =>
+      Positive.Pos (fun x => P x w)) :
+    SomePosNecPossible (iota := iota) F w := by
+  rcases h with ⟨P, hPos⟩
+  exact ⟨P, hPos, necPossible_of_Pos (iota := iota) F w hPos⟩
 
 end AltRoute

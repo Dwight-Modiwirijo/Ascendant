@@ -1,7 +1,7 @@
 import Lake
 open Lake DSL
 
-package «Zer0proofCertificate» where
+package «Zer0proofWorldIndexedCertificate» where
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.20.1"
