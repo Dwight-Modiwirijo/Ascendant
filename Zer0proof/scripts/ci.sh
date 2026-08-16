@@ -1,22 +1,135 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+lake_bin="${LAKE_BIN:-lake}"
+expected_toolchain="$(tr -d '\r\n' < lean-toolchain)"
+export ELAN_TOOLCHAIN="${ELAN_TOOLCHAIN:-$expected_toolchain}"
+certificate_root="${CERTIFICATE_ROOT:-certificates}"
+strong_certificate="$certificate_root/AltRoute/StrongCertificates.olean"
+certificate_manifest="$certificate_root/SHA256SUMS"
+
+run_negative_test() {
+  local file="$1"
+  local expected="$2"
+  local output
+
+  if output=$("$lake_bin" -R env lean "$file" 2>&1); then
+    printf '[CI] ERROR: negative test compiled: %s\n' "$file" >&2
+    return 1
+  fi
+
+  printf '%s\n' "$output"
+  if ! grep -Fq "$expected" <<<"$output"; then
+    printf '[CI] ERROR: negative test failed for an unexpected reason: %s\n' "$file" >&2
+    return 1
+  fi
+}
+
 echo "[CI] Versions"
-lean --version || true
-lake --version || true
+"$lake_bin" --version
+"$lake_bin" env lean --version
 
-echo "[CI] Clean build"
-rm -rf .lake _lake dist
-lake update
-lake build
+echo "[CI] Clean public build"
+"$lake_bin" clean
+"$lake_bin" build
+"$lake_bin" -R env lean AltRoute/PublicCertificateAudit.lean
+"$lake_bin" -R env lean AltRoute/PublicTests.lean
 
-echo "[CI] Package"
-mkdir -p dist
+echo "[CI] Negative guards"
+run_negative_test tests/Reject_HostilePositiveEmpty.lean "fields missing: 'proper'"
+run_negative_test tests/Reject_HostileModal.lean "fields missing: 'duality'"
+run_negative_test tests/Reject_ForcedPositiveEmpty.lean "⊢ ¬True"
+run_negative_test tests/Reject_ForcedHostileModal.lean "⊢ False"
+run_negative_test tests/NoExport_NecessaryExistence.lean "unknown identifier 'Final_NE_Proof'"
 
-find .lake/build/lib/lean/AltRoute -maxdepth 1 -type f -name '*.olean' ! -name '*PublicTests*' -exec cp {} dist/ \;
+if [[ ! -f "$strong_certificate" ]]; then
+  printf '[CI] ERROR: missing source-free certificate assembly: %s\n' "$strong_certificate" >&2
+  exit 2
+fi
 
-cp AltRoute/Interface.lean README.md LICENSE lean-toolchain lakefile.lean dist/
+if [[ ! -f "$certificate_manifest" ]]; then
+  printf '[CI] ERROR: missing certificate provenance manifest: %s\n' "$certificate_manifest" >&2
+  exit 2
+fi
 
-( cd dist && sha256sum * > SHA256SUMS && sha256sum -c SHA256SUMS >/dev/null )
+echo "[CI] Verify certificate provenance"
+while IFS= read -r -d '' artifact; do
+  relative="${artifact#"$certificate_root"/}"
+  if ! awk -v path="$relative" '$2 == path { found = 1 } END { exit !found }' \
+      "$certificate_manifest"; then
+    printf '[CI] ERROR: unpinned certificate assembly: %s\n' "$relative" >&2
+    exit 1
+  fi
+done < <(find "$certificate_root" -type f -name '*.olean' -print0)
+(
+  cd "$certificate_root"
+  sha256sum -c SHA256SUMS
+)
 
-echo "[CI] Done ✅"
+echo "[CI] Install source-free certificate bundle"
+while IFS= read -r -d '' artifact; do
+  relative="${artifact#"$certificate_root"/}"
+  destination=".lake/build/lib/lean/$relative"
+  mkdir -p "$(dirname "$destination")"
+  cp "$artifact" "$destination"
+done < <(find "$certificate_root" -type f -name '*.olean' -print0)
+
+echo "[CI] Strong certificate audit"
+audit_output=$("$lake_bin" -R env lean AltRoute/CertificateAudit.lean 2>&1)
+printf '%s\n' "$audit_output"
+if grep -Fq 'sorryAx' <<<"$audit_output"; then
+  echo "[CI] ERROR: strong certificate footprint contains sorryAx" >&2
+  exit 1
+fi
+
+echo "[CI] Canonical package"
+staging="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-dist.XXXXXX")"
+cleanup() {
+  rm -rf "$staging"
+}
+trap cleanup EXIT
+
+mkdir -p "$staging/AltRoute" "$staging/tests"
+cp AltRoute/Interface.lean "$staging/AltRoute/"
+cp AltRoute/PublicTests.lean "$staging/AltRoute/"
+cp AltRoute/PublicCertificateAudit.lean "$staging/AltRoute/"
+cp AltRoute/CertificateAudit.lean "$staging/AltRoute/"
+cp tests/NoExport_NecessaryExistence.lean "$staging/tests/"
+cp tests/Reject_HostilePositiveEmpty.lean "$staging/tests/"
+cp tests/Reject_HostileModal.lean "$staging/tests/"
+cp tests/Reject_ForcedPositiveEmpty.lean "$staging/tests/"
+cp tests/Reject_ForcedHostileModal.lean "$staging/tests/"
+cp README.md LICENSE lean-toolchain lake-manifest.json "$staging/"
+cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
+cp "$certificate_manifest" "$staging/CERTIFICATE_SHA256SUMS"
+
+for module in Interface PublicTests PublicCertificateAudit; do
+  cp ".lake/build/lib/lean/AltRoute/$module.olean" "$staging/AltRoute/"
+done
+
+while IFS= read -r -d '' artifact; do
+  relative="${artifact#"$certificate_root"/}"
+  destination="$staging/$relative"
+  mkdir -p "$(dirname "$destination")"
+  cp "$artifact" "$destination"
+done < <(find "$certificate_root" -type f -name '*.olean' -print0)
+
+(
+  cd "$staging"
+  find . -type f ! -name SHA256SUMS -print0 \
+    | sort -z \
+    | xargs -0 sha256sum > SHA256SUMS
+  sha256sum -c SHA256SUMS
+)
+
+rm -rf dist
+mv "$staging" dist
+trap - EXIT
+
+echo "[CI] Verify packaged hashes"
+(cd dist && sha256sum -c SHA256SUMS)
+
+echo "[CI] Done"

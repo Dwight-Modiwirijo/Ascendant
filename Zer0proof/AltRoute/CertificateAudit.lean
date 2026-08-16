@@ -1,39 +1,26 @@
 /-
-  Public-surface correspondence check.
+  Strong certificate audit.
 
-  The purpose is a mechanical reflection of the paper's scoped certificate:
-  - the exported compatibility layer uses □◇-shaped statements
-  - guard artifacts remain available (explosion canary, model witness)
-  - axiom footprints remain inspectable for exported constants
+  AltRoute.StrongCertificates is intentionally supplied as an `.olean`
+  assembly. Its private `.lean` implementation is outside the public source
+  boundary. This file is the public theorem-certificate surface.
 -/
 
-import AltRoute.PublicTests
+import AltRoute.PublicCertificateAudit
+import AltRoute.StrongCertificates
 
 namespace AltRoute.CertificateAudit
 
-open AltRoute
+#check Final_NE_Proof
+#check Final_BoxUnique_Proof
+#check Final_RigidWitness_Proof
 
-/-
-  Exported public claims.
-  The signatures match the intended □◇ admissibility layer.
--/
-#check AltRoute.SomePosNecPossible
-#check AltRoute.necPossible_of_Pos
-#check AltRoute.somePosNecPossible_of_exists
+#print Final_NE_Proof
+#print Final_BoxUnique_Proof
+#print Final_RigidWitness_Proof
 
-/-
-  Guard artifacts.
-  The presence of these declarations matches the public safety-certificate narrative.
--/
-#check AltRoute.PublicTests.TrivialModel
-#check AltRoute.PublicTests.AltRoute.exFalsoQuodlibet
-
-/-
-  Axiom-footprint inspection for exported constants.
-  The output provides the dependency boundary for the public layer.
--/
-#print axioms AltRoute.necPossible_of_Pos
-#print axioms AltRoute.somePosNecPossible_of_exists
-#print axioms AltRoute.PublicTests.TrivialModel
+#print axioms Final_NE_Proof
+#print axioms Final_BoxUnique_Proof
+#print axioms Final_RigidWitness_Proof
 
 end AltRoute.CertificateAudit

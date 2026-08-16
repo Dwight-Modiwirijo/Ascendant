@@ -39,13 +39,12 @@ import AltRoute.Interface
      - We document (with comments and small examples) that we never accept
        "proofs" that try to infer a universally true theorem merely from a
        single, arbitrary instance. In other words, the interface does not
-       blocks the classic 'Verum ex Quodlibet' pitfall: deriving a proposition from `True` alone (e.g., `P → True`).
+       permit the classic 'Verum ex Quodlibet' pitfall: deriving an arbitrary
+       proposition from `True` alone.
 
-  5. Infinite regress is ruled out at the level of the modal engine
-     - By tying the tests to `SomePosNecPossible` and the successor-based
-       construction of Ω, we implicitly rely on well-founded chains: any
-       attempt to produce an endless, non-grounding chain would fail to
-       produce the required modal witness.
+  5. A natural-number termination example is checked
+     - The test proves only that `Nat.lt` is well-founded and that a toy
+       countdown terminates. It does not certify the private Ω grounding chain.
 
   6. Semantic equivocation is avoided by design
      - The tests only talk about abstract `ι` and `Prop`; they do not assume
@@ -90,13 +89,25 @@ example (h : ∃ P : ι → Prop, Positive.Pos P) :
   SomePosNecPossible (ι:=ι) M :=
   somePosNecPossible_of_exists (ι:=ι) M h
 
+/-- Gate 0: the constantly false predicate is excluded from positivity. -/
+example : ¬ Positive.Pos (fun _ : ι => False) :=
+  false_not_positive
+
+/-- Gate 0: every extensionally empty predicate is excluded from positivity. -/
+example (P : ι → Prop) (hEmpty : ∀ x, ¬ P x) : ¬ Positive.Pos P :=
+  empty_extension_not_positive P hEmpty
+
 end
 end AltRoute.PublicTests
 
+#check AltRoute.exists_of_positive
+#check AltRoute.PosPossibility
 -- Visibility checks (top-level commands)
 #check AltRoute.SomePosNecPossible
 #check AltRoute.necPossible_of_Pos
 #check AltRoute.somePosNecPossible_of_exists
+#check AltRoute.false_not_positive
+#check AltRoute.empty_extension_not_positive
 
 
 namespace AltRoute.PublicTests
@@ -104,7 +115,6 @@ namespace AltRoute.PublicTests
 open AltRoute
 universe u
 
-namespace AltRoute
 
 /-!
 Basic classical meta-principles, for documentation:
@@ -119,7 +129,6 @@ Basic classical meta-principles, for documentation:
 theorem exFalsoQuodlibet {P : Prop} (h : False) : P :=
   False.elim h
 
-end AltRoute
 /-!
   PublicTests
 
@@ -205,7 +214,14 @@ def TrivialModel : Modal :=
     exact hp,
   ax_5 := by
     intro p hp
-    exact hp }
+    exact hp,
+  duality := by
+    intro p
+    constructor
+    · intro hp hnp
+      exact hnp hp
+    · intro hnp
+      exact Classical.byContradiction hnp }
 
 /--
 Minimal inhabitance check inside `TrivialModel`.
@@ -218,11 +234,56 @@ example : TrivialModel.Box True := by
 
 end TrivialModel
 
+section JointPublicWitness
+
+/-- A concrete proper positivity structure on Unit. -/
+def UnitPositive : Positive Unit where
+  Pos := fun P => P ()
+  mono := by
+    intro P Q hPQ hP
+    exact hPQ () hP
+  proper := by
+    intro h
+    exact h
+
+/-- The hardened positivity and modal interfaces are jointly inhabited. -/
+theorem unit_positive_possible :
+    TrivialModel.Dia (Exists fun _ : Unit => True) := by
+  letI : Positive Unit := UnitPositive
+  exact PosPossibility (iota := Unit) TrivialModel (fun _ => True) (by trivial)
+
+end JointPublicWitness
+
 -- ================================================================
 -- SECTION 3: NEGATIVE GUARDS AND DOCUMENTED INTENT
 -- ================================================================
 
 section NegativeGuards
+
+/-- No predicate on the empty type can be positive. -/
+theorem no_positive_on_empty [Positive Empty] (P : Empty → Prop) :
+    ¬ Positive.Pos P := by
+  intro hPos
+  exact Positive.proper (Positive.mono (fun x _ => x.elim) hPos)
+
+/-- Every modal interpretation admits at least one possible proposition. -/
+theorem dia_not_constantly_false (M : Modal) :
+    ¬ (∀ p : Prop, ¬ M.Dia p) := by
+  intro h
+  exact h True (M.actual_possible True trivial)
+
+/-- Duality and axiom 5 exclude an interpretation where every proposition is possible. -/
+theorem no_inflated_dia : ¬ ∃ M : Modal, ∀ p : Prop, M.Dia p := by
+  rintro ⟨M, hAll⟩
+  have hDiaFalse : M.Dia False := hAll False
+  have hNotBoxTrue : ¬ M.Box True := by
+    simpa using (M.duality False).mp hDiaFalse
+  have hDiaFalseIffTrue : M.Dia False ↔ True :=
+    ⟨fun _ => trivial, fun _ => hDiaFalse⟩
+  have hBoxTrue : M.Box True := by
+    rw [← propext hDiaFalseIffTrue]
+    exact M.ax_5 False hDiaFalse
+  exact hNotBoxTrue hBoxTrue
 
 /-
 Design note.
@@ -295,6 +356,7 @@ end VerumQuodlibet
 -- ================================================================
 
 section NegativeGuards
+
 
 /-
   TEST: The "Hallucination Trap".
@@ -513,7 +575,7 @@ end Liveness
   2. Model Consistency (Section 2 - TrivialModel)
   3. No "Ex Falso" Explosion (Section 3/5 - Negative Guards)
   4. No "Verum ex Quodlibet" (Section 5 - Anti-Yes-Man)
-  5. No Infinite Regress (Section 6 - WellFounded)
+  5. `Nat.lt` well-foundedness and toy countdown termination (Section 6)
   6. No Semantic Ambiguity (Section 7 - Unique IDs)
   7. Handling of Unknowables (Section 8 - Undecidable State)
 -/
@@ -525,6 +587,6 @@ from this module. These lines also help IDEs surface the API.
 #check AltRoute.necPossible_of_Pos
 #check AltRoute.somePosNecPossible_of_exists
 #check TrivialModel
-#check AltRoute.exFalsoQuodlibet
+#check exFalsoQuodlibet
 
 end AltRoute.PublicTests

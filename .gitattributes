@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.olean binary
+*.zip binary
+*.svg text eol=lf

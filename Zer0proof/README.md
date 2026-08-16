@@ -46,25 +46,25 @@ $$
 t : \varphi \qquad\text{and}\qquad \Gamma \vdash \varphi.
 $$
 
-`#print axioms` reports global entries in Lean's axiom registry. It does not replace the theorem type or report explicit hypotheses carried by a declaration; those must be read from the declaration/signature and the dependency record. Paper Appendix A.2.3 records the reported global footprints for the strong results:
+`#print axioms` reports global entries in Lean's axiom registry. It does not replace the theorem type or report explicit hypotheses carried by a declaration; those must be read from the declaration/signature and dependency record. The following table records the historical, pre-hardening output reported by Paper Appendix A.2.3. The strong bundle has not been rebuilt against the hardened interface, so every value is pending re-derivation and is not a current public certificate.
 
-| Declaration | Reported global footprint |
+| Declaration | Pre-hardening reported footprint (pending re-derivation) |
 |---|---|
 | `Final_NE_Proof` | `propext`, `PosPossibility` |
 | `Final_BoxUnique_Proof` | `propext` |
 | `Final_RigidWitness_Proof` | `propext` |
 
-The footprint is dependency bookkeeping, not a substitute for a full explicit-hypothesis manifest.
+These historical footprints are dependency bookkeeping only. They must be replaced by fresh `#print axioms` output after the real strong bundle is rebuilt and loaded.
 
 ## Audit hardening
 
-**Gate 0** concerns hardening the generic public `PosPossibility` bridge against hostile or overly broad instantiations. **JointModel** concerns joint-satisfiability certification of the full relevant public/audit context. Both are ongoing public-certification and robustness work. They do not reopen the kernel theorem status of `Final_NE_Proof`, `Final_BoxUnique_Proof`, or `Final_RigidWitness_Proof`, and they do not make the existing `#print axioms` footprint pending.
+**Gate 0** is closed in the public interface by proper positivity and Box/Dia duality. Because that interface is load-bearing for the old reported `Final_NE_Proof` footprint, all strong footprints remain explicitly pending until the real certificate bundle is rebuilt. **JointModel** remains a separate full-context certification question.
 
 ## Audit Model
 
 The audit architecture tracks the following attack vectors: `sorry`/placeholder leakage, logical explosion (`ex falso`), triviality, circular grounding, infinite regress, accidental stronger exports, namespace or symbol shadowing, `.olean` artifact tampering, instance hijacking, notation spoofing, axiom pollution, and modal collapse.
 
-Current public artifacts provide scoped audit hooks: `AltRoute.CertificateAudit` checks exported declarations and prints selected axiom footprints; `AltRoute.PublicTests.TrivialModel` is a model witness for the bare modal interface; and `AltRoute.PublicTests.exFalsoQuodlibet` is an explosion canary. These artifacts are guards and audit inputs for their stated public scope. They are not a blanket pass claim for all vectors or for the full private Ω-theory. Gate 0 and JointModel remain certification targets for the broader context.
+Current public artifacts provide scoped audit hooks: `AltRoute.PublicCertificateAudit` checks exported declarations and prints selected axiom footprints; `AltRoute.PublicTests.TrivialModel` is a model witness for the bare modal interface; and `AltRoute.PublicTests.exFalsoQuodlibet` is an explosion canary. `AltRoute.CertificateAudit` is the separate strong-certificate audit and imports the source-free `AltRoute.StrongCertificates` assembly. These artifacts are guards and audit inputs for their stated scope. They are not a blanket pass claim for the full private Ω-theory.
 
 ## Build and Verify
 
@@ -76,14 +76,18 @@ lake update
 lake build
 
 # Inspect the public compatibility declarations and selected axiom footprints.
+lake env lean AltRoute/PublicCertificateAudit.lean
+
+# With certificates/AltRoute/StrongCertificates.olean and its compiled
+# dependency closure installed, inspect the strong theorem declarations.
 lake env lean AltRoute/CertificateAudit.lean
 
 # Rebuild and create the current distribution/hash package.
 ./scripts/ci.sh
 ```
 
-`scripts/ci.sh` currently performs a clean build, packages top-level public `AltRoute` `.olean` files with the listed distribution documents, and generates and verifies `SHA256SUMS`. No repository CI configuration or separate `AxiomsCheck.lean` script is currently present; the command above uses the existing `CertificateAudit.lean` artifact instead.
+`scripts/ci.sh` performs a clean public build, runs the hostile-instance and no-export guards, verifies the pinned certificate hashes, loads and audits the source-free strong bundle, and only then generates the ignored `dist/` CI output with `SHA256SUMS`. It fails closed when the assembly, dependency closure, or provenance manifest is absent.
 
 ## Disclosure
 
-The public repository exposes the interface, public tests, certificate audit, build configuration, and public build artifacts. The source of the private strong proof construction is confidential and available to reviewers only through the repository's disclosure process. No private route architecture is documented in this README.
+The public repository exposes the interface, public tests, certificate audit, and build configuration. Generated `dist/` output is intentionally not tracked; it can be published as a workflow or release artifact only after the real bundle passes CI. The source of the private strong proof construction is confidential and available to reviewers only through the repository's disclosure process.
