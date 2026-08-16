@@ -345,17 +345,32 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 
 * **C2 (Datum):** `"I am"` obtains contingently: `Cont(I)`.
 
-* **C3 (A3 — constitutive):** Grounding admits no infinite chain ⇒ termination in a necessary endpoint.
+* **C3 (A3 — constitutive):** Grounding admits no infinite chain ⇒ every grounding chain terminates:  
+  `¬∃f : ℕ → Prop, ∀n, f(n+1) ◃ f(n)`, hence `∃q Terminus(q)`.
 
-* **C4 (AltRoute: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint.
+* **C3a (Necessity of the terminus):** A contingent terminus would itself fall under C1 and demand a ground, merely relocating the demand (§3). Hence  
+  `Terminus(q) → Nec(q)`.
 
-* **C5 (Ω):** The unique necessary terminus exists: `□∃!x Ω(x)` (hence `□∃x Ω(x)`).
+* **C4 (AltRoute: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint:  
+  `Terminus(q₁) ∧ Terminus(q₂) → ∀w (q₁(w) ↔ q₂(w))`.
+
+* **C4a (Identity of Ω):** Ω *is* the terminus — uniquely, and invariantly across worlds:  
+  `∃x Ω(x,w) ↔ ∃q (Terminus(q) ∧ q(w))`, `Ω(x,w) ∧ Ω(y,w) → x = y`, and `Ω(x,v) → Ω(x,v′)`.  
+  This is stated in the object language: no semantic ascent is involved, and by the disquotational schema none would add anything. C4a asserts no existence; it identifies whatever obtains as terminus. Existence is supplied by C3.
+
+* **C5 (Ω):** The unique necessary terminus exists: `□∃!x Ω(x)` (hence `□∃x Ω(x)`), and its designation is rigid: `∃x □∀y (Ω(y) ↔ y = x)`.
 
 * **C6 (A5 — constitutive):** The terminus is not internally self-grounding/self-contained ⇒ Ω is an actual necessary ground.
 
 * **C7 (God):** This unique actual necessary ground is God; hence `□∃!x God(x)`.
 
 This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
+
+**Machine-checked status of C2 → C5.** The step from the datum to the conclusion is kernel-verified against the world-indexed Kripke semantics of the public development. `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness` derive `□∃x Ω(x)`, `□∃!x Ω(x)` and `∃x □∀y (Ω(y) ↔ y = x)` from C1, C3, C3a, C4 and C4a, with axiom footprint `[propext, Classical.choice, Quot.sound]` — no custom axioms, no appeal to A2/positivity, no `sorryAx`. The existence of the terminus is obtained from C3 alone by dependent choice. The premise set is additionally shown to be **satisfiable**: a two-world model instantiates C1, C2, C3, C3a, C4 and C4a simultaneously, with genuine contingency present and the frame provably non-collapsed, so the derivation is not vacuous. The grounding relation ◃ is taken as primitive throughout; defining it as a modal conditional makes C1 and C2 jointly inconsistent in the entailment direction and trivialises C1 in the converse direction.
+
+**Consequence for intelligibility.** C1–C4a are not further commitments taken on beside intelligibility; §2.1.1 argues that they are its conditions. Read that way, the chain states that wherever anything obtains intelligibly the grounding structure obtains, and that it terminates. Ω is then not a further entity posited at the end of an inference: Ω is what the terminus is. Denial is not exempt from this, since denial is itself an intelligible act. For intelligibility, God is.
+
+C3a and C4a are made explicit here because the earlier compression left them implicit. Both were already argued in §3: the necessity of the terminus is the "cannot itself be contingent, on pain of merely relocating the demand" step, and rigid designation is the §3.1 result. Neither adds strength to A1/A3/A5. C3a follows the main-text argument; C4a states an identity rather than a stipulation, and therefore carries no existential import of its own. The standard objection that a necessary being has been defined into existence does not apply here: the existence claim is discharged by C3 from anti-regress, and C4a only settles that what terminates the chain is Ω.
 
 ---
 ### 3.3 TI — Transcendental Induction

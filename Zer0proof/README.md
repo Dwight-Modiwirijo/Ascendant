@@ -14,6 +14,32 @@ W10 replaces the collapsed `Prop -> Prop` modal encoding with a world-indexed Kr
 
 These rows are claim labels, not invented Lean signatures. `AltRoute.CertificateAudit` is the authority for the exact declaration types once `certificates/AltRoute/StrongCertificates.olean` has been rebuilt and supplied. The private `.lean` implementation is not required for that public binary audit.
 
+## The grounding chain is public
+
+The three Ω-results are derivable here, in this repository, from the constitutive chain of Paper §3.2. `AltRoute.GroundingChain` proves them:
+
+| Theorem | Type | Axiom footprint |
+|---|---|---|
+| `C5_NE` | `Box (fun v => ∃x, Ω x v) w` | `propext, Classical.choice, Quot.sound` |
+| `C5_BoxUnique` | `Box (fun v => ∃!x, Ω x v) w` | `propext, Classical.choice, Quot.sound` |
+| `C5_RigidWitness` | `∃x, Box (fun v => ∀y, Ω y v ↔ y = x) w` | `propext, Classical.choice, Quot.sound` |
+
+The premises are C1 (HM-PSR), C3 (anti-regress), C3a (necessity of the terminus), C4 (coalescence) and C4a (identity of Ω). Positivity is not among them: A2 plays no part in existence or uniqueness, as Paper §3 states. The existence of the terminus comes from C3 alone, by dependent choice. Grounding is primitive throughout; taken as a modal conditional it collapses the modality in one direction and trivialises in the other.
+
+`AltRoute.GroundingModel` exhibits a two-world model satisfying C1, C2, C3, C3a, C4 and C4a together, with contingency present and the frame provably non-collapsed. The chain therefore terminates somewhere rather than everywhere.
+
+Build it and read the footprints:
+
+```bash
+lake build
+lake env lean AltRoute/GroundingChain.lean
+lake env lean AltRoute/GroundingModel.lean
+```
+
+The private Alt Route is the convergent second route Paper §3.1 describes. It reaches the same three results through the successor construction of §2.2. Its assembly remains outstanding, and the chain above does not wait on it.
+
+What the kernel settles is the derivation. Whether C1–C4a hold is Paper §2.1.1, which argues that they are the conditions of intelligible contingent obtaining. Denial falls under the same conditions, since denial is an intelligible act.
+
 TI (Transcendental Induction) is a separate convergent route discussed only at the scope stated in Paper §3.3. Its internal construction is not published here.
 
 ## Public verification surface

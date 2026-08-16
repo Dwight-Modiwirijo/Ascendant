@@ -12,6 +12,8 @@ require mathlib from git
   `AltRoute.PublicTests,
   `AltRoute.TargetTypes,
   `AltRoute.GroundingAudit,
+  `AltRoute.GroundingChain,
+  `AltRoute.GroundingModel,
   `superlaw,
   `AltRoute.PublicCertificateAudit
   ]
