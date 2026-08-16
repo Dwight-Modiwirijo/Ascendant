@@ -348,8 +348,9 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 * **C3 (A3 — constitutive):** Grounding admits no infinite chain ⇒ every grounding chain terminates:  
   `¬∃f : ℕ → Prop, ∀n, f(n+1) ◃ f(n)`, hence `∃q Terminus(q)`.
 
-* **C3a (Necessity of the terminus):** A contingent terminus would itself fall under C1 and demand a ground, merely relocating the demand (§3). Hence  
-  `Terminus(q) → Nec(q)`.
+* **C3a (Necessity of the terminus — derived, not assumed):** The terminus grounds the datum, so by the first clause of ◃ it obtains wherever the datum obtains. Were it not necessary there, some accessible world would lack it, and together with its obtaining that makes it *contingent*. C1 then supplies it a necessary ground — so it was no terminus. Hence  
+  `Terminus(q) ∧ q(w) → □q at w`.  
+  This is the §3 step "a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand", and it is where A1 does its work: remove C1 and the step fails.
 
 * **C4 (AltRoute: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint:  
   `Terminus(q₁) ∧ Terminus(q₂) → ∀w (q₁(w) ↔ q₂(w))`.
@@ -366,7 +367,11 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 
 This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
-**Machine-checked status of C2 → C5.** The step from the datum to the conclusion is kernel-verified against the world-indexed Kripke semantics of the public development. `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness` derive `□∃x Ω(x)`, `□∃!x Ω(x)` and `∃x □∀y (Ω(y) ↔ y = x)` from C1, C3, C3a, C4 and C4a, with axiom footprint `[propext, Classical.choice, Quot.sound]` — no custom axioms, no appeal to A2/positivity, no `sorryAx`. The existence of the terminus is obtained from C3 alone by dependent choice. The premise set is additionally shown to be **satisfiable**: a two-world model instantiates C1, C2, C3, C3a, C4 and C4a simultaneously, with genuine contingency present and the frame provably non-collapsed, so the derivation is not vacuous. The grounding relation ◃ is taken as primitive throughout; defining it as a modal conditional makes C1 and C2 jointly inconsistent in the entailment direction and trivialises C1 in the converse direction.
+**Machine-checked status of C2 → C5.** The step from the datum to the conclusion is kernel-verified against the world-indexed Kripke semantics of the public development. `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness` derive `□∃x Ω(x)`, `□∃!x Ω(x)` and `∃x □∀y (Ω(y) ↔ y = x)` from **C1, ◃-transmission, C3 and C4a**, evaluated at the world where the datum obtains, with axiom footprint `[propext, Classical.choice, Quot.sound]` — no custom axioms, no appeal to A2/positivity, no `sorryAx`. C3a is a *theorem* of that set, not a further premise: `terminus_above` obtains from C3, by dependent choice, a terminus grounding the datum, and `terminus_necessary` is the §3 reductio, which consumes C1 essentially. Remove A1 and the chain does not close.
+
+The premise set is additionally shown to be **satisfiable**: a two-world model instantiates C1, ◃-transmission, C2, C3 and C4a simultaneously, with the datum obtaining, genuine contingency present and the frame provably non-collapsed — and `□∃!x Ω(x)` is then derived inside that model. The derivation is therefore not vacuous.
+
+The grounding relation ◃ is primitive throughout; defining it as a modal conditional makes C1 and C2 jointly inconsistent in the entailment direction and trivialises C1 in the converse. What the chain uses of ◃ is one clause of the paper's own definition: a ground obtains wherever what it grounds obtains.
 
 **Consequence for intelligibility.** C1–C4a are not further commitments taken on beside intelligibility; §2.1.1 argues that they are its conditions. Read that way, the chain states that wherever anything obtains intelligibly the grounding structure obtains, and that it terminates. Ω is then not a further entity posited at the end of an inference: Ω is what the terminus is. Denial is not exempt from this, since denial is itself an intelligible act. For intelligibility, God is.
 

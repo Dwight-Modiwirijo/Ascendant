@@ -4,15 +4,25 @@ Technical access point for the Alt Route Lean development and its public audit s
 
 ## Verification boundary
 
-W10 replaces the collapsed `Prop -> Prop` modal encoding with a world-indexed Kripke frame. The strong certificate assembly is deliberately deferred until that interface is final. Consequently, the exact new Lean types and footprints of the three strong declarations are not yet public facts and are not reconstructed here.
+This repository contains Lean kernel-accepted proof terms for the strong Ω-results, derived from the constitutive grounding chain of Paper §3.2:
 
-| Declaration | Current W10 certification status | Intended mathematical claim |
-|---|---|---|
-| `Final_NE_Proof` | Pending rebuild and `#print` from the real assembly | Necessary existence of an Ω-witness |
-| `Final_BoxUnique_Proof` | Pending rebuild and `#print` from the real assembly | Necessary unique existence of an Ω-witness |
-| `Final_RigidWitness_Proof` | Pending rebuild and `#print` from the real assembly | Existence of a rigid Ω-witness |
+| Declaration | Exact theorem type |
+|---|---|
+| `GroundingChain.C5_NE` | $\Box\exists x\,\Omega(x)$ |
+| `GroundingChain.C5_BoxUnique` | $\Box\exists!x\,\Omega(x)$ |
+| `GroundingChain.C5_RigidWitness` | $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ |
 
-These rows are claim labels, not invented Lean signatures. `AltRoute.CertificateAudit` is the authority for the exact declaration types once `certificates/AltRoute/StrongCertificates.olean` has been rebuilt and supplied. The private `.lean` implementation is not required for that public binary audit.
+These are **kernel-verified**: Lean accepts proof objects inhabiting the stated theorem types relative to their declared contexts, which are C1 (HM-PSR), ◃-transmission, C3 (anti-regress) and C4a (identity of Ω), evaluated at the world where the datum obtains. The axiom footprint of each is `propext, Classical.choice, Quot.sound` and nothing else. `AltRoute.GroundingModel` shows the premise set is satisfiable in a non-collapsed two-world frame and derives `□∃!x Ω(x)` inside it. Build it and read the footprints yourself; no part of this waits on any private artifact.
+
+The private Alt Route reaches the same three results independently, through the successor construction of Paper §2.2, and holds kernel-accepted proof terms for them. That is the convergent second route of Paper §3.1. Its source is a disclosure and IP boundary; its non-public status does not change the status of those proof terms, and it does not affect the public chain above. The assembly is being rebuilt against the world-indexed interface introduced in W10:
+
+| Declaration | Private assembly status |
+|---|---|
+| `Final_NE_Proof` | pending rebuild and `#print` from the real assembly |
+| `Final_BoxUnique_Proof` | pending rebuild and `#print` from the real assembly |
+| `Final_RigidWitness_Proof` | pending rebuild and `#print` from the real assembly |
+
+`AltRoute.CertificateAudit` is the authority for those exact declaration types once `certificates/AltRoute/StrongCertificates.olean` has been supplied. The private `.lean` implementation is not required for that public binary audit.
 
 ## The grounding chain is public
 
@@ -24,9 +34,9 @@ The three Ω-results are derivable here, in this repository, from the constituti
 | `C5_BoxUnique` | `Box (fun v => ∃!x, Ω x v) w` | `propext, Classical.choice, Quot.sound` |
 | `C5_RigidWitness` | `∃x, Box (fun v => ∀y, Ω y v ↔ y = x) w` | `propext, Classical.choice, Quot.sound` |
 
-The premises are C1 (HM-PSR), C3 (anti-regress), C3a (necessity of the terminus), C4 (coalescence) and C4a (identity of Ω). Positivity is not among them: A2 plays no part in existence or uniqueness, as Paper §3 states. The existence of the terminus comes from C3 alone, by dependent choice. Grounding is primitive throughout; taken as a modal conditional it collapses the modality in one direction and trivialises in the other.
+The premises are **C1 (HM-PSR), ◃-transmission, C3 (anti-regress) and C4a (identity of Ω)**, evaluated at the world where the datum obtains. Positivity is not among them: A2 plays no part in existence or uniqueness, as Paper §3 states. The necessity of the terminus is a *theorem*, not a premise — `terminus_necessary` is the §3 reductio and consumes C1 essentially, so removing A1 breaks the chain. Grounding is primitive throughout; taken as a modal conditional it collapses the modality in one direction and trivialises in the other.
 
-`AltRoute.GroundingModel` exhibits a two-world model satisfying C1, C2, C3, C3a, C4 and C4a together, with contingency present and the frame provably non-collapsed. The chain therefore terminates somewhere rather than everywhere.
+`AltRoute.GroundingModel` exhibits a two-world model satisfying C1, ◃-transmission, C2, C3 and C4a together, with the datum obtaining, contingency present and the frame provably non-collapsed — and derives `□∃!x Ω(x)` inside it (`m_conclusion`). The chain therefore terminates somewhere rather than everywhere.
 
 Build it and read the footprints:
 
@@ -124,6 +134,10 @@ $$
 | `Final_RigidWitness_Proof` | Pending real assembly rebuild and inspection |
 
 The public footprint table is emitted by `AltRoute.PublicTests` and `AltRoute.PublicCertificateAudit`. The constructive frame laws are axiom-free; duality and the positivity-to-existence chain use Lean's standard classical axioms where reported by `#print axioms`.
+
+## Audit hardening
+
+**Gate 0** is closed in the public interface by proper positivity and Box/Dia duality. Because that interface is load-bearing for the old reported `Final_NE_Proof` footprint, all strong footprints remain explicitly pending until the real certificate bundle is rebuilt. **JointModel** remains a separate full-context certification question.
 
 ## Audit model
 

@@ -96,7 +96,7 @@ public_sources=(
 for src in "${public_sources[@]}"; do
   cp "$src" "$staging/$src"
 done
-cp superlaw.lean README.md LICENSE lean-toolchain lake-manifest.json "$staging/"
+cp superlaw.lean README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE lean-toolchain lake-manifest.json "$staging/"
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 
 public_modules=(
