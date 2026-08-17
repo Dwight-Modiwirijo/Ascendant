@@ -1,5 +1,5 @@
 -- NoExport_NecessaryExistence.lean
-import AltRoute.Interface
+import AltRoute.PublicCertificateAudit
 
 -- This file MUST NOT compile: the strong certificate symbols must not be
 -- exported by AltRoute.Interface.

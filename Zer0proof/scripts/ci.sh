@@ -7,20 +7,20 @@ cd "$repo_root"
 lake_bin="${LAKE_BIN:-lake}"
 expected_toolchain="$(tr -d '\r\n' < lean-toolchain)"
 export ELAN_TOOLCHAIN="${ELAN_TOOLCHAIN:-$expected_toolchain}"
-certificate_root="${CERTIFICATE_ROOT:-certificates}"
-strong_certificate="$certificate_root/AltRoute/StrongCertificates.olean"
-certificate_manifest="$certificate_root/SHA256SUMS"
+
+public_modules=(
+  Interface PublicTests TargetTypes GroundingAudit GroundingChain
+  GroundingChainAudit GroundingModel PublicCertificateAudit
+)
 
 run_negative_test() {
   local file="$1"
   local expected="$2"
   local output
-
   if output=$("$lake_bin" -R env lean "$file" 2>&1); then
     printf '[CI] ERROR: negative test compiled: %s\n' "$file" >&2
     return 1
   fi
-
   printf '%s\n' "$output"
   if ! grep -Fq "$expected" <<<"$output"; then
     printf '[CI] ERROR: negative test failed for an unexpected reason: %s\n' "$file" >&2
@@ -28,23 +28,45 @@ run_negative_test() {
   fi
 }
 
+snapshot_public_assemblies() {
+  local output="$1"
+  : > "$output"
+  for module in "${public_modules[@]}"; do
+    sha256sum ".lake/build/lib/lean/AltRoute/$module.olean" >> "$output"
+  done
+  sha256sum ".lake/build/lib/lean/superlaw.olean" >> "$output"
+  sort -o "$output" "$output"
+}
+
 echo "[CI] Versions"
 "$lake_bin" --version
 "$lake_bin" env lean --version
 
-echo "[CI] Clean public build"
+hash_a="$(mktemp)"
+hash_b="$(mktemp)"
+staging=""
+cleanup() {
+  rm -f "$hash_a" "$hash_b"
+  [[ -z "$staging" ]] || rm -rf "$staging"
+}
+trap cleanup EXIT
+
+echo "[CI] Clean public build A"
 "$lake_bin" clean
 "$lake_bin" build
-"$lake_bin" -R env lean AltRoute/PublicCertificateAudit.lean
-"$lake_bin" -R env lean AltRoute/PublicTests.lean
-"$lake_bin" -R env lean AltRoute/TargetTypes.lean
-grounding_output=$("$lake_bin" -R env lean AltRoute/GroundingAudit.lean 2>&1)
-printf '%s\n' "$grounding_output"
-if grep -Fq 'AltRoute.PosPossibility' <<<"$grounding_output"; then
-  echo "[CI] ERROR: grounding obligation footprint contains AltRoute.PosPossibility" >&2
+snapshot_public_assemblies "$hash_a"
+
+public_audit_output=$("$lake_bin" -R env lean AltRoute/PublicCertificateAudit.lean 2>&1)
+printf '%s\n' "$public_audit_output"
+if grep -Fq 'sorryAx' <<<"$public_audit_output"; then
+  echo "[CI] ERROR: public audit contains sorryAx" >&2
   exit 1
 fi
+"$lake_bin" -R env lean AltRoute/PublicTests.lean
+"$lake_bin" -R env lean AltRoute/TargetTypes.lean
+"$lake_bin" -R env lean AltRoute/GroundingAudit.lean
 "$lake_bin" -R env lean AltRoute/GroundingChain.lean
+"$lake_bin" -R env lean AltRoute/GroundingChainAudit.lean
 "$lake_bin" -R env lean AltRoute/GroundingModel.lean
 "$lake_bin" -R env lean superlaw.lean
 
@@ -59,20 +81,19 @@ run_negative_test tests/Reject_NoContingency.lean "Reject_NoContingency.no_conti
 run_negative_test tests/Reject_CertificateCollapse.lean "Reject_CertificateCollapse.certificate_equals_existence: phi x is not phi w"
 run_negative_test tests/NoExport_NecessaryExistence.lean "unknown identifier 'Final_NE_Proof'"
 
-# ---------------------------------------------------------------------------
-# Public distribution.
-#
-# Built unconditionally, so a third party can reproduce and verify it without
-# the strong certificate assembly. The strong phase below extends the same
-# distribution when the bundle is present, and fails closed when it is not.
-# ---------------------------------------------------------------------------
+echo "[CI] Clean public build B"
+"$lake_bin" clean
+"$lake_bin" build
+snapshot_public_assemblies "$hash_b"
+if ! diff -u "$hash_a" "$hash_b"; then
+  echo "[CI] ERROR: public assemblies are not reproducible" >&2
+  exit 1
+fi
+echo "[CI] Public assembly reproducibility PASS"
 
-echo "[CI] Stage public distribution"
+echo "[CI] Stage explicit public allow-list"
 staging="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-dist.XXXXXX")"
-cleanup() { rm -rf "$staging"; }
-trap cleanup EXIT
-
-mkdir -p "$staging/AltRoute" "$staging/tests"
+mkdir -p "$staging/AltRoute" "$staging/tests" "$staging/scripts"
 
 public_sources=(
   AltRoute/Interface.lean
@@ -80,9 +101,9 @@ public_sources=(
   AltRoute/TargetTypes.lean
   AltRoute/GroundingAudit.lean
   AltRoute/GroundingChain.lean
+  AltRoute/GroundingChainAudit.lean
   AltRoute/GroundingModel.lean
   AltRoute/PublicCertificateAudit.lean
-  AltRoute/CertificateAudit.lean
   tests/NoExport_NecessaryExistence.lean
   tests/Reject_HostilePositiveEmpty.lean
   tests/Reject_HostileModal.lean
@@ -92,116 +113,58 @@ public_sources=(
   tests/Reject_DiaCollapse.lean
   tests/Reject_NoContingency.lean
   tests/Reject_CertificateCollapse.lean
+  scripts/FormalStatusAudit.lean
+  scripts/generate-formal-status.py
+  scripts/check-document-sync.py
+  scripts/check-public-dist.sh
 )
 for src in "${public_sources[@]}"; do
   cp "$src" "$staging/$src"
 done
-cp superlaw.lean README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE lean-toolchain lake-manifest.json "$staging/"
+cp superlaw.lean Paper.md README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE \
+  lean-toolchain lake-manifest.json "$staging/"
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 
-public_modules=(
-  Interface PublicTests TargetTypes GroundingAudit
-  GroundingChain GroundingModel PublicCertificateAudit
-)
 for module in "${public_modules[@]}"; do
   cp ".lake/build/lib/lean/AltRoute/$module.olean" "$staging/AltRoute/"
 done
 cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
 
-strong_included=no
+LAKE_BIN="$lake_bin" python3 scripts/generate-formal-status.py --reproducible \
+  --output-json "$staging/formal-status.json" \
+  --output-md "$staging/FORMAL_STATUS.md"
+python3 scripts/check-document-sync.py "$staging/formal-status.json"
 
-if [[ -f "$strong_certificate" ]]; then
-  if [[ ! -f "$certificate_manifest" ]]; then
-    printf '[CI] ERROR: missing certificate provenance manifest: %s\n' "$certificate_manifest" >&2
-    exit 1
-  fi
+cat > "$staging/SCOPE.txt" <<SCOPE
+Zer0proof public distribution
 
-  echo "[CI] Verify certificate provenance"
-  while IFS= read -r -d '' artifact; do
-    relative="${artifact#"$certificate_root"/}"
-    if ! awk -v path="$relative" '$2 == path { found = 1 } END { exit !found }' \
-        "$certificate_manifest"; then
-      printf '[CI] ERROR: unpinned certificate assembly: %s\n' "$relative" >&2
-      exit 1
-    fi
-  done < <(find "$certificate_root" -type f -name '*.olean' -print0)
-  ( cd "$certificate_root" && sha256sum -c SHA256SUMS )
+toolchain: $expected_toolchain
+commit:    $(git rev-parse HEAD 2>/dev/null || echo unknown)
 
-  echo "[CI] Install source-free certificate bundle"
-  while IFS= read -r -d '' artifact; do
-    relative="${artifact#"$certificate_root"/}"
-    destination=".lake/build/lib/lean/$relative"
-    mkdir -p "$(dirname "$destination")"
-    cp "$artifact" "$destination"
-  done < <(find "$certificate_root" -type f -name '*.olean' -print0)
+Covered: the world-indexed public interface, compatibility API, public C5
+strong theorem route, individual-premise question-begging audit, non-collapsed
+GroundingModel, public tests, HyperModal layer, generated formal status, and
+document-sync checks. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
+and every shipped file is covered by SHA256SUMS.
 
-  echo "[CI] Strong certificate audit"
-  audit_output=$("$lake_bin" -R env lean AltRoute/CertificateAudit.lean 2>&1)
-  printf '%s\n' "$audit_output"
-  if grep -Fq 'sorryAx' <<<"$audit_output"; then
-    echo "[CI] ERROR: strong certificate footprint contains sorryAx" >&2
-    exit 1
-  fi
-  for forbidden in \
-    'AltRoute.PosPossibility' \
-    'AltRoute.exists_of_positive' \
-    'AltRoute.necPossible_of_Pos' \
-    'HyperModal.perfect_being_exists' \
-    'HyperModal.consciousness_axiom'; do
-    if grep -Fq "$forbidden" <<<"$audit_output"; then
-      printf '[CI] ERROR: forbidden strong certificate dependency: %s\n' "$forbidden" >&2
-      exit 1
-    fi
-  done
+Private successor source and theorem-bearing private .olean: NOT DISTRIBUTED.
+No public verdict about the current internal private build is asserted.
+SCOPE
 
-  while IFS= read -r -d '' artifact; do
-    relative="${artifact#"$certificate_root"/}"
-    mkdir -p "$(dirname "$staging/$relative")"
-    cp "$artifact" "$staging/$relative"
-  done < <(find "$certificate_root" -type f -name '*.olean' -print0)
-  cp "$certificate_manifest" "$staging/CERTIFICATE_SHA256SUMS"
-  strong_included=yes
-fi
-
-# In-band statement of what this distribution does and does not cover.
-{
-  echo "Zer0proof public distribution"
-  echo
-  echo "toolchain: $expected_toolchain"
-  echo "commit:    $(git rev-parse HEAD 2>/dev/null || echo unknown)"
-  echo
-  echo "Covered: the public interface, public tests, target types, the grounding"
-  echo "audit, the grounding chain (C5_NE, C5_BoxUnique, C5_RigidWitness), its"
-  echo "satisfiability model, and the HyperModal development, as sources and as"
-  echo "compiled assemblies. Every file listed in SHA256SUMS is covered by it."
-  echo
-  if [[ "$strong_included" == yes ]]; then
-    echo "Strong certificate assembly: INCLUDED. See CERTIFICATE_SHA256SUMS."
-  else
-    echo "Strong certificate assembly: NOT INCLUDED. This distribution makes no"
-    echo "claim about Final_NE_Proof, Final_BoxUnique_Proof or"
-    echo "Final_RigidWitness_Proof. Those remain pending a rebuilt bundle."
-  fi
-} > "$staging/SCOPE.txt"
-
-echo "[CI] Generate and verify manifest"
 (
   cd "$staging"
+  { find . -type f -printf '%P\n'; printf '%s\n' PUBLIC_ALLOWLIST.txt SHA256SUMS; } \
+    | sort -u > PUBLIC_ALLOWLIST.txt
   find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
   sha256sum -c SHA256SUMS
 )
 
 rm -rf dist
 mv "$staging" dist
-trap - EXIT
+staging=""
 
-echo "[CI] Verify packaged hashes"
+echo "[CI] Post-package leak scan"
+LAKE_BIN="$lake_bin" bash scripts/check-public-dist.sh dist
 ( cd dist && sha256sum -c SHA256SUMS )
-
-if [[ "$strong_included" == no ]]; then
-  printf '[CI] Public distribution complete.\n'
-  printf '[CI] ERROR: missing source-free certificate assembly: %s\n' "$strong_certificate" >&2
-  exit 2
-fi
 
 echo "[CI] Done"

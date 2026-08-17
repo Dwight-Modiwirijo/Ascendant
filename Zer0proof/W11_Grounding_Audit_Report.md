@@ -1,5 +1,7 @@
 # W11 Grounding Route Audit Report
 
+> Historical audit record: this report concerns the rejected extensional-grounding bundle. The later public `GroundingChain.C5_*` route uses primitive grounding plus `GroundObtains`, has its own per-premise audit, and ships a non-collapsed joint model.
+
 ## Status
 
 - W10 commit 35dedc0 was pushed before W11 work began and matched origin/main.

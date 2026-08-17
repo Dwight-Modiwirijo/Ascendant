@@ -1,36 +1,14 @@
-# Strong certificate bundle
+# Private certificate policy
 
-This directory is the source-free input boundary for the strong Lean
-certificate surface.
+The public distribution does not accept or ship private theorem-bearing Lean
+assemblies. In particular, no private successor implementation, private proof
+source, or compiled private proof tree belongs in this directory.
 
-The bundle must contain:
+The public strong Omega results are rebuilt from source through
+`AltRoute.GroundingChain`; `AltRoute.GroundingModel` supplies the public
+satisfiability witness. Any private successor route uses a separate internal CI
+and may publish only non-proof-bearing high-level metadata.
 
-```text
-certificates/AltRoute/StrongCertificates.olean
-```
-
-and every transitive project `.olean` dependency required when Lean imports
-that module. Directory paths must match the compiled Lean module names.
-
-No private `.lean` implementation belongs in this directory.
-
-`scripts/ci.sh` copies this bundle into Lean's build search path, executes
-`AltRoute/CertificateAudit.lean`, rejects any reported `sorryAx`, and packages
-the same assemblies into `dist/`. The ordinary `AltRoute.Interface` does not
-import this bundle.
-
-## Provenance manifest
-
-A real bundle must include `certificates/SHA256SUMS`. Generate it from the
-certificate root, never by copying expected values from documentation:
-
-```bash
-cd certificates
-find . -type f -name '*.olean' -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
-sha256sum -c SHA256SUMS
-```
-
-Every `.olean` in the bundle must have an exact entry. CI verifies the manifest
-and rejects unlisted, missing, or substituted assemblies before placing any of
-them on Lean's search path. No manifest is published while the real bundle is
-absent.
+`scripts/ci.sh` packages an explicit public allow-list. The resulting `dist/`
+is then checked by `scripts/check-public-dist.sh`, including a binary symbol
+scan and the no-export test in the actually shipped Lean environment.

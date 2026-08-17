@@ -1,15 +1,13 @@
 /-
   AltRoute/TargetTypes.lean
 
-  ACCEPTANCE SURFACE for the strong certificates. Statements only.
+  PUBLIC TARGET AND AUDIT VOCABULARY. Statements only.
 
-  This file contains NO proofs, NO axioms and NO `sorry`. It fixes the exact
-  types that `Final_NE_Proof`, `Final_BoxUnique_Proof` and
-  `Final_RigidWitness_Proof` must inhabit, and the exact premise bundle they
-  are permitted to consume, BEFORE `certificates/AltRoute/StrongCertificates.olean`
-  exists. Publishing it first is the point: it makes the audit a type
-  comparison instead of a judgement call, and it cannot be retrofitted to
-  whatever the bundle happens to prove.
+  This file contains NO proofs, NO axioms and NO `sorry`. It fixes three
+  strong conclusion types, an explicit premise bundle, and the forbidden
+  one-premise consequence shapes used by the public audits. It deliberately
+  declares no certificate theorem. Publishing the target vocabulary makes
+  type and premise comparisons mechanical rather than a matter of judgement.
 
   Sources, quoted by section rather than reproduced:
     * Paper 2.1   — A1 (HM-PSR), A3 (Anti-Regress), A5 (Meta-Logical Closure)
@@ -58,7 +56,7 @@ These are fixed by Paper 3.1 and by `README.md`. They are not negotiable:
 the strong certificates must inhabit exactly these, with `Box`/`Dia` being
 `AltRoute.Frame.Box`/`AltRoute.Frame.Dia` and nothing else. -/
 
-/-- `Final_NE_Proof` must inhabit this: □∃x Ω(x), at the selected world. -/
+/-- Necessary-existence target: □∃x Ω(x), at the selected world. -/
 def NE_Target (F : Frame W) (Omega : D -> W -> Prop) (w : W) : Prop :=
   F.Box (fun v => Exists fun x : D => Omega x v) w
 
@@ -66,11 +64,11 @@ def NE_Target (F : Frame W) (Omega : D -> W -> Prop) (w : W) : Prop :=
 def UniqueAt (Omega : D -> W -> Prop) (v : W) : Prop :=
   Exists fun x : D => Omega x v /\ forall y : D, Omega y v -> y = x
 
-/-- `Final_BoxUnique_Proof` must inhabit this: □∃!x Ω(x). -/
+/-- Boxed-uniqueness target: □∃!x Ω(x). -/
 def BoxUnique_Target (F : Frame W) (Omega : D -> W -> Prop) (w : W) : Prop :=
   F.Box (fun v => UniqueAt Omega v) w
 
-/-- `Final_RigidWitness_Proof` must inhabit this: ∃x □∀y (Ω(y) ↔ y = x). -/
+/-- Rigid-witness target: ∃x □∀y (Ω(y) ↔ y = x). -/
 def RigidWitness_Target (F : Frame W) (Omega : D -> W -> Prop) (w : W) : Prop :=
   Exists fun x : D =>
     F.Box (fun v => forall y : D, Omega y v <-> y = x) w
@@ -156,17 +154,17 @@ def Obligation_BoxUnique_Reductio (F : Frame W) (Omega : D -> W -> Prop)
 
 /-! ## AUDIT CHECKLIST
 
-A submitted `StrongCertificates.olean` is accepted only if ALL of the
-following hold. Every item is mechanical.
+Any theorem advertised as discharging these target obligations should satisfy
+all of the following. Every item is mechanical.
 
-1. TYPE. `#print Final_NE_Proof` shows a type defeq to `NE_Target`, with
-   `Frame.Box`/`Frame.Dia` as the modal operators. Same for the other two.
+1. TYPE. `#print <declaration>` shows a type defeq to the advertised target,
+   with `Frame.Box`/`Frame.Dia` as the modal operators.
 
 2. PREMISES VISIBLE. All hypotheses appear as explicit arguments in `#print`.
    No load-bearing premise hides inside a typeclass instance. This is the
    MacIntosh objection made checkable.
 
-3. FOOTPRINT -- MUST CONTAIN. `#print axioms Final_NE_Proof` shows the
+3. FOOTPRINT -- MUST CONTAIN. `#print axioms <declaration>` shows the
    grounding architecture: the A1 / A3 / minimality content, whether as
    axioms or as discharged hypotheses of `GroundingPremises`.
 

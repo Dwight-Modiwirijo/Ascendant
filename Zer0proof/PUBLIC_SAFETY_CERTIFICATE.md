@@ -1,99 +1,64 @@
 # Ascendant.Zero — Public Safety Certificate
 
-## **Scope**
+## Scope
 
-This repository publishes a *public verification surface* — Lean sources, build artifacts, and a reproducible distribution. Third parties rebuild the project and inspect what it exports.
+This repository publishes a source-reproducible public verification route. It includes the world-indexed S5 interface, the C5 grounding theorems, the individual-premise audit, a joint non-collapsed model, negative guards, and an explicitly allow-listed distribution.
 
-`AltRoute.PublicCertificateAudit` inspects the exported declarations and their axiom footprints. `tests/NoExport_NecessaryExistence.lean` supports the export boundary. `AltRoute.CertificateAudit` is the separate strong-certificate surface and reads the source-free assembly when one is supplied.
+Compiled `.olean` files carry theorem declarations and proof terms. They support rebuild and integrity checks, but they are not an IP disclosure boundary. The private successor route is not distributed as source or theorem-bearing `.olean`; public kernel assurance for the strong Omega claims is supplied independently by `AltRoute.GroundingChain.C5_*`.
 
-Compiled `.olean` artifacts are build-verifiable: rebuilds and hash checks detect tampering and mismatches; they do not make tampering impossible. Note that `.olean` files carry full proof terms — `#print` returns them from the assembly alone — so the artifact format is not a disclosure boundary. Disclosure is governed by what is compiled into a shipped assembly, not by shipping binaries rather than sources.
+No public claim is made about the current internal build status of private `Final_*` declarations. Such a status requires separate non-public evidence and independent audit.
 
-### Modal semantics
+## Modal semantics
 
-The public interface defines an S5 Kripke frame by an accessibility relation with reflexivity, transitivity and symmetry. `Box` and `Dia` are definitions over world-indexed propositions:
+The public interface defines an S5 Kripke `Frame` with an accessibility relation, reflexivity, transitivity, and symmetry. `Box` and `Dia` are definitions over world-indexed propositions. T, 4, 5, K, duality, and actual-to-possible are derived theorems. `superlaw.lean` imports the same interface, so there is one shared modal semantics.
 
-```lean
-Frame.Box (phi : W -> Prop) : W -> Prop := fun w => forall v, R w v -> phi v
-Frame.Dia (phi : W -> Prop) : W -> Prop := fun w => exists v, R w v /\ phi v
-```
+## Public result boundary
 
-`ax_T`, `ax_4`, `ax_5`, `K` and Box/Dia duality are **theorems** derived from the frame conditions, not fields a caller supplies. A hostile instance can therefore only attack the frame conditions themselves, and does not survive: the guards reject on `fields missing: 'symm'` and on the forced variant.
+- **Public compatibility API:** `necPossible_of_Pos`, a weak `Box (Dia ...)` result.
+- **Public C5 grounding route:** `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`, each with footprint `propext, Classical.choice, Quot.sound`.
+- **Private successor route:** independent internal work, not distributed and not part of the public reproducibility claim.
 
-The Brouwer step **◇□p → □p** is available and derivable in this frame class.
+The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining datum directly. Positivity is absent. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame.
 
-### Public versus private result boundary
+## Attack-vector coverage
 
-- **Public compatibility export**
-  - Theorem: `necPossible_of_Pos`
-  - Statement: `Pos(P·w) → □◇∃x P(x)` at the selected world
-  - Basis: `PosPossibility`, reflexivity, `ax_5`
-  - This layer is weak by design. `□◇φ` follows for every actually true `φ`, and after world-indexing it is strictly weaker than `φ` rather than equivalent to it.
+| # | Attack vector | Public mechanism |
+|---:|---|---|
+| 1 | Placeholder or `sorryAx` leakage | Clean Lean build plus `#print axioms`; CI rejects `sorryAx` in public audit output. |
+| 2 | Explosion | The historical inconsistent extensional bundle remains isolated in `GroundingAudit`; the current C5 route ships a joint model. |
+| 3 | Modal collapse | `box_not_identity`, `contingency_witness`, `certificate_not_trivial`, and `GroundingModel.m_not_collapsed`. |
+| 4 | Circular grounding | C5 takes grounding as primitive and states only the required obtaining transmission through `GroundObtains`. |
+| 5 | Infinite regress | C3 and `terminus_above`; the latter constructs a terminus by classical dependent witness selection. |
+| 6 | Accidental private export | `NoExport_NecessaryExistence.lean` runs against the actually shipped public environment. |
+| 7 | Namespace or private-module leakage | Explicit package allow-list plus forbidden path scan. |
+| 8 | Artifact substitution | Two clean-build hash comparison and `dist/SHA256SUMS` verification. |
+| 9 | Instance hijacking | `Positive.proper`, hostile positivity guards, and hostile frame guards. Gate 0 is PASS. |
+| 10 | Notation spoofing | Public theorem types are printed from Lean's elaborated environment. |
+| 11 | Axiom pollution | `PublicCertificateAudit` prints the public C5 terms and footprints; positivity is absent from them. |
+| 12 | Question-begging premise | `GroundingChainAudit` refutes all four `Yields*` forms for each individual C5 premise. |
+| 13 | Vacuous public derivation | `GroundingModel` satisfies the C5 context with genuine contingency and non-collapse. |
+| 14 | Distribution leakage or drift | Explicit package allow-list, post-package leak scan, generated status, and document-sync checker. |
 
-- **Public grounding chain — kernel-verified**
-  - `GroundingChain.C5_NE` — `□∃x Ω(x)`
-  - `GroundingChain.C5_BoxUnique` — `□∃!x Ω(x)`
-  - `GroundingChain.C5_RigidWitness` — `∃x □∀y (Ω(y) ↔ y = x)`
-  - Context: C1 (HM-PSR), ◃-transmission, C3 (anti-regress), C4a (identity of Ω), evaluated where the datum obtains. Footprint `propext, Classical.choice, Quot.sound` and nothing else. Positivity plays no part.
-  - `GroundingModel` shows the context is satisfiable in a non-collapsed two-world frame and derives `□∃!x Ω(x)` inside it.
+## Release policy
 
-- **Private Alt Route — kernel-verified**
-  - `Final_NE_Proof`, `Final_BoxUnique_Proof`, `Final_RigidWitness_Proof`, reached independently through the successor construction of Paper §2.2. The assembly is being rebuilt against the world-indexed interface.
+The release flow is:
 
-The limited compatibility export is an export boundary, not a reduction of theorem status.
+1. clean public Lean build;
+2. public theorem and model audit;
+3. all negative guards;
+4. second clean build and byte-for-byte public assembly comparison;
+5. explicit package allow-list staging;
+6. generated `formal-status.json` and `FORMAL_STATUS.md`;
+7. document-sync check;
+8. SHA-256 manifest generation and verification;
+9. post-package leak scan in the shipped environment.
 
-### Kernel acceptance
+The post-package leak scan checks both paths and `.olean` strings for forbidden private names and then repeats the no-export test from `dist/`. No recursive “copy every `.olean`” rule exists.
 
-Lean accepts a proof term inhabiting its exact theorem type relative to its declared context. Export boundaries determine disclosure scope; they do not alter kernel acceptance. A derivation from a context that is inconsistent proves nothing, so every published premise bundle ships with a model.
+## Formal status
 
----
+The machine-generated status contains the exact Lean theorem types, axiom footprints, toolchain, Git commit, public assembly hashes, gate results, audit date, private-route disclosure status, and auditor verdict. Lean/CI output is the source of truth. The independent auditor verdict remains `PENDING_INDEPENDENT_REVIEW` until an external rerun is supplied.
 
-This document describes the **publicly verifiable safety guarantees** provided by the Ascendant.Zero Lean package. Each attack vector is listed with the repository mechanism that covers it.
+## Final statement
 
----
-
-## Summary Table — Attack Vectors and Coverage
-
-|  # | Attack Vector | Status | Where it is checked |
-| -: | --- | --- | --- |
-|  1 | `sorry` / placeholder leakage | **Source and build audit** | No `sorry`, `admit`, `native_decide` or `unsafe` in public source. `scripts/ci.sh` rejects any strong footprint containing `sorryAx`. |
-|  2 | Logical explosion (*ex falso*) | **Canary** | `PublicTests.exFalsoQuodlibet` is the explicit kernel-checked consequence of `False`. No closed `False` is derivable from the public interface. |
-|  3 | Triviality / modal collapse | **Three counterexamples** | `box_not_identity`, `contingency_witness` and `certificate_not_trivial` in `PublicTests`, footprint `propext`. `TrivialModel` is retained and explicitly labelled as the degenerate one-world case. |
-|  4 | Circular grounding | **Primitive ◃, public** | Grounding is a parameter constrained by axioms, never a defined modal conditional. As an entailment it collapses the modality; as its converse it trivialises. `Grounds` is the reflexive transitive closure. |
-|  5 | Infinite regress | **Anti-regress, public** | `C3` forbids infinite descending chains; `terminus_above` derives a terminus grounding the datum, by dependent choice. The `Nat.lt` example in `PublicTests` is a toy analogue and is labelled as such. |
-|  6 | Accidental export of strong claims | **Export guard** | `tests/NoExport_NecessaryExistence.lean` checks both global and namespaced forms of all three strong names. |
-|  7 | Namespace / symbol shadowing | **Namespace boundary** | Public declarations are namespaced under `AltRoute`; the historical doubled `AltRoute.PublicTests.AltRoute` namespace has been removed. |
-|  8 | Artifact tampering (`.olean` spoofing) | **Rebuild, hash and provenance** | `scripts/ci.sh` builds, packages and verifies SHA-256 sums for the whole distribution, and pins every certificate assembly against `certificates/SHA256SUMS` before placing it on the search path. |
-|  9 | Instance hijacking | **Gate 0** | `Positive.proper` kills the hostile empty instance; `no_positive_on_empty` kills the whole class. Frame conditions kill hostile modal instances. Forced variants confirm the guards are logical, with residual goals `¬True` and `False`. |
-| 10 | Notation spoofing | **Typed elaboration** | No `notation`, `macro`, `syntax`, `infix` or `prefix` in the public surface. Lean checks elaborated terms. |
-| 11 | Axiom pollution | **Axiom audit** | `PublicCertificateAudit` prints every public footprint. CI rejects `AltRoute.PosPossibility`, `AltRoute.exists_of_positive` and `AltRoute.necPossible_of_Pos` in any strong footprint. |
-| 12 | Question-begging premise | **Forbidden-premise predicates** | `AltRoute.TargetTypes` defines `YieldsActualOmega`, `YieldsPossibleOmega`, `YieldsNecessaryOmega` and `YieldsPossibleNecessaryOmega`. `AltRoute.GroundingAudit` checks each premise field against all four. |
-| 13 | Vacuous derivation | **Satisfiability witness** | `AltRoute.GroundingModel` instantiates the entire premise set in a two-world frame with the datum obtaining, contingency present and the frame provably non-collapsed. |
-| 14 | Distribution not reproducible | **Two-phase pipeline** | The public distribution is built, packaged and verified unconditionally; the strong phase runs only when the assembly is present. Two full runs produce an identical manifest. `dist/SCOPE.txt` states in band what is and is not covered. |
-
----
-
-### Formal refutation via kernel-checkable contradiction
-
-This is a repository **audit policy** for formal claims. A Lean-checkable contradiction under an explicit, declared context is a kernel-level refutation. Typical forms are:
-
-* **Direct contradiction** — a proof object of the form
-
-  ```lean
-  claim → False
-  ```
-
-* **Context inconsistency** — a proof that
-
-  ```
-  {declared axioms} ∪ {previous theorems} ∪ {claim}
-  ```
-
-  entails `False`, under the **same axiom footprint** and without additional assumptions.
-
-The declared theorem type, axioms and hypotheses define the context of the refutation. The policy has been exercised against this repository: an earlier premise bundle was refuted this way, and the published bundle now ships with a model precisely so that refutation route is closed.
-
----
-
-## Final Statement
-
-The public Lean package certifies the exported API, the grounding chain and its model, the canary and counterexample artifacts, the axiom footprints, and the artifact-integrity checks. The three strong Ω-results are derived in the public repository from the constitutive chain, and the private Alt Route reaches them independently through the successor construction. The export boundary preserves disclosure scope without altering theorem status.
+The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The package discloses no private successor implementation or theorem-bearing private assembly. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.

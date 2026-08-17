@@ -13,6 +13,7 @@ require mathlib from git
   `AltRoute.TargetTypes,
   `AltRoute.GroundingAudit,
   `AltRoute.GroundingChain,
+  `AltRoute.GroundingChainAudit,
   `AltRoute.GroundingModel,
   `superlaw,
   `AltRoute.PublicCertificateAudit
@@ -21,8 +22,6 @@ require mathlib from git
 lean_lib VacuousCanaries where
   roots := #[`scripts.VacuousTruth, `scripts.VacuousIAm]
 
-lean_lib StrongCertificateAudit where
-  roots := #[`AltRoute.CertificateAudit]
 
 -- negative guard: this build MUST fail in CI
 lean_lib NoExport_NecessaryExistence where
@@ -56,11 +55,3 @@ lean_lib Reject_NoContingency where
 
 lean_lib Reject_CertificateCollapse where
   roots := #[`tests.Reject_CertificateCollapse]
--- Private library (no default_target; not built in public CI)
-lean_lib AltRoutePrivate where
-  roots := #[
-    `AltRoute.Private.AltRoutePrivate,
-    `AltRoute.Private.Successor.Types,
-    `AltRoute.Private.Successor.Bridge,
-    `AltRoute.Private.Successor.Chain
-  ]

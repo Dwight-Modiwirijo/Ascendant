@@ -5,6 +5,8 @@
 
 import AltRoute.PublicTests
 import AltRoute.GroundingAudit
+import AltRoute.GroundingChainAudit
+import AltRoute.GroundingModel
 
 namespace AltRoute.PublicCertificateAudit
 
@@ -112,4 +114,36 @@ open AltRoute
 #print axioms AltRoute.GroundingAudit.c1c2_yields_possible
 #print axioms AltRoute.GroundingAudit.c1c2_yields_necessary
 #print axioms AltRoute.GroundingAudit.c1c2_yields_possible_necessary
+
+/-! Current public strong route: exact declarations, terms, and footprints. -/
+#check AltRoute.GroundingChain.C5_NE
+#check AltRoute.GroundingChain.C5_BoxUnique
+#check AltRoute.GroundingChain.C5_RigidWitness
+
+#print AltRoute.GroundingChain.C5_NE
+#print AltRoute.GroundingChain.C5_BoxUnique
+#print AltRoute.GroundingChain.C5_RigidWitness
+
+#print axioms AltRoute.GroundingChain.C5_NE
+#print axioms AltRoute.GroundingChain.C5_BoxUnique
+#print axioms AltRoute.GroundingChain.C5_RigidWitness
+
+/-! Individual-premise and joint-model audits for the current C5 route. -/
+#check AltRoute.GroundingChainAudit.c1_refutes_all
+#check AltRoute.GroundingChainAudit.ground_obtains_refutes_all
+#check AltRoute.GroundingChainAudit.c3_refutes_all
+#check AltRoute.GroundingChainAudit.c4a_refutes_all
+#check AltRoute.GroundingChainAudit.datum_obtains_refutes_all
+#check AltRoute.GroundingModel.m_C2
+#check AltRoute.GroundingModel.m_not_collapsed
+#check AltRoute.GroundingModel.m_conclusion
+
+#print axioms AltRoute.GroundingChainAudit.c1_refutes_all
+#print axioms AltRoute.GroundingChainAudit.ground_obtains_refutes_all
+#print axioms AltRoute.GroundingChainAudit.c3_refutes_all
+#print axioms AltRoute.GroundingChainAudit.c4a_refutes_all
+#print axioms AltRoute.GroundingChainAudit.datum_obtains_refutes_all
+#print axioms AltRoute.GroundingModel.m_C2
+#print axioms AltRoute.GroundingModel.m_not_collapsed
+#print axioms AltRoute.GroundingModel.m_conclusion
 end AltRoute.PublicCertificateAudit

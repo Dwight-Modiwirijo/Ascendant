@@ -28,3 +28,6 @@ axioms.out
 
 paper
 paper.pub
+
+# Reproducible public release output
+dist/
