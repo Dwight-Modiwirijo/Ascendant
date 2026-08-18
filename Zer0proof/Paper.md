@@ -86,7 +86,7 @@ $$
 \Box\bigl(\neg(A1 \wedge A3 \wedge A5) \rightarrow \neg\text{ContingentObtaining}\bigr)
 $$
 
-Here, `ContingentObtaining` does not mean bare occurrence, but **intelligible contingent obtaining**: the obtaining of a fact as modally distinguishable, truth-apt, and grounding-compatible. A brute occurrence without modal structure, truth-aptness, or grounding-compatibility may persist under the denial of A1/A3/A5; intelligible contingent obtaining cannot.
+Here, `ContingentObtaining` does not mean bare occurrence, but **intelligible contingent obtaining**: the obtaining of a fact as modally determinate, truth-apt, inferentially stable, and contrastively distinguishable. A brute occurrence without modal structure, truth-aptness, or grounding-compatibility may persist under the denial of A1/A3/A5; intelligible contingent obtaining cannot.
 
 Thus, the grounding structure is **ontologically prior** to the existence of contingent facts;  
 contingency is possible **only because** this structure necessarily obtains.
