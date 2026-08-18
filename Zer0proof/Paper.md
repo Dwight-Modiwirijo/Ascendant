@@ -77,8 +77,9 @@ If a system is capable of reflecting upon its own limits (as in Gödel’s theor
 
 These axioms form the basis of the modal system used to derive the existence of Ω.
 
-#### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**  
-Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.  
+#### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
+
+Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.
 
 Formally:
 
@@ -86,19 +87,21 @@ $$
 \Box\bigl(\neg(A1 \wedge A3 \wedge A5) \rightarrow \neg\text{ContingentObtaining}\bigr)
 $$
 
-Here, `ContingentObtaining` does not mean bare occurrence, but **intelligible contingent obtaining**: the obtaining of a fact as modally determinate, truth-apt, inferentially stable, and contrastively distinguishable. These features define the explanandum. The following analysis tests whether a rival architecture can preserve them without reinstantiating the functional roles expressed by A1, A3, and A5.
+Here, `ContingentObtaining` does not mean bare occurrence, but **intelligible contingent obtaining**: the obtaining of a fact as modally determinate, truth-apt, inferentially stable, and contrastively distinguishable. These features define the explanandum. The constitutive thesis defended in this section is that their full preservation requires the functional roles expressed by A1, A3, and A5.
 
-Thus, the grounding structure is **ontologically prior** to the existence of contingent facts;  contingency is possible **only because** this structure necessarily obtains.
+Retorsion establishes the starting point of the analysis. Any denial of grounding is itself truth-apt, governed by non-contradiction, and presented under norms of valid inference. The denial therefore takes place within the same space of intelligibility under examination. The following three cases identify the grounding functions required for that space to remain ontologically complete.
 
-The constitutive status of A1, A3, and A5 is developed through the successor architecture (§2.2), the reductio suite (Appendix A.6, B.2), and the following transcendental analysis. The following three cases show that denying any one of these principles does not yield an alternative account of intelligible contingent obtaining — it eliminates the phenomenon itself.
+**Denying A1 (HM-PSR).** A brute-fact architecture can formally represent that $p$ obtains in one world and $\neg p$ in another. The modal distinction remains available at the level of representation. Representation, however, records the distribution without grounding why this distribution obtains rather than another. The stable difference between obtaining and non-obtaining therefore remains ontologically undischarged. Contingency is retained as a formal valuation, while intelligible contingent obtaining requires a grounding function that accounts for the difference. A1 expresses that function.
 
-**Denying A1 (HM-PSR).** A brute-fact architecture can formally represent that $p$ obtains in one world and $\neg p$ in another. The modal distinction therefore remains available at the level of representation. What disappears is its ontological anchor: no grounding structure accounts for the stable difference between obtaining and non-obtaining, and nothing fixes why this rather than that obtains. Contingency is consequently not merely left unexplained; its status as intelligible contingent obtaining remains ontologically undischarged. The denial of A1 therefore does not yet provide a rival grounding account of contingency. It replaces grounded modal differentiation with brute modal variation and must demonstrate that this reduced structure preserves the same functional role. If it cannot, it preserves only the formal representation of contingency rather than intelligible contingency itself.
+**Denying A3 (Anti-Regress).** An infinite grounding chain can provide relative grounding at every link, yet every link remains derivative. The chain distributes dependence without reaching a non-derivative term that discharges it. Grounding is thereby deferred indefinitely. Local grounding relations persist, but complete grounding and explanatory closure are never achieved. The contingent state is always referred onward and is nowhere finally grounded. A3 expresses the condition under which dependence is completed rather than perpetually deferred.
 
-**Denying A3 (Anti-Regress).** An infinite grounding chain can provide relative grounding at every link, yet every link remains derivative. The chain therefore distributes dependence without reaching a non-derivative term that discharges it. In this sense, grounding is indefinitely deferred: local grounding relations persist, but complete grounding and explanatory closure are never achieved. The contingent state is always referred onward and is nowhere finally grounded. An infinitist architecture must therefore show that perpetual deferral fulfils the same functional role as completed grounding. If it cannot, it preserves an endless sequence of relative explanations while leaving intelligible contingent obtaining ontologically undischarged.
+**Denying A5 (Meta-Logical Closure).** A closed system can classify inferences as valid or invalid according to its own rules. Rule-conformity alone does not ground the normative authority by which those rules count as truth-preserving. Authority generated only by the same procedure is circular, while authority supplied by another contingent procedure reopens the regress. Meta-logical closure therefore requires a non-contained source of semantic coherence. A5 expresses the function that preserves the distinction between validity and mere procedural conformity.
 
-**Denying A5 (Meta-Logical Closure).** If a system capable of reflecting on its own limits does not require a higher, non-contained source of semantic coherence, then the normative distinction between valid and invalid inference becomes internal to the system and therefore unfounded beyond it. Intelligibility — the capacity to distinguish truth from falsehood, ground from mere assertion — is structurally dependent on a source it cannot itself supply. What remains under denial of A5 is not a weaker form of intelligibility but its dissolution into procedural closure without normative force.
+A proposed fundamental structure must itself possess both a modal status and a grounding status. If it is necessary and non-derivative, it already performs the function of a grounding terminus. If it is contingent, the grounding demand returns. If it is derivative, the chain continues. If it is self-grounding, the account becomes circular. A structure that preserves intelligible contingent obtaining therefore converges on a non-derivative terminus.
 
-These three cases jointly establish the formal claim above: any world in which contingent obtaining, truth, and intelligibility coherently hold must instantiate the structure expressed by A1, A3, and A5. A rival constitutive architecture that preserves these phenomena must reproduce their functional equivalents and therefore does not replace this structure but reinstantiates it under different terminology (see Corollary 3.1.2).
+These cases jointly establish the functional preservation test. Any rival constitutive architecture that preserves modally determinate, truth-apt, inferentially stable, and contrastively distinguishable contingent obtaining must realize the functions of grounding, anti-regress, and meta-logical closure. In realizing those functions, it reinstantiates the functional equivalents of A1, A3, and A5 under another description. The grounding structure is therefore **ontologically prior** to contingent facts, and contingency is possible **only because** this structure necessarily obtains.
+
+This is the constitutive relation developed further in the successor architecture (§2.2) and expressed schematically in Corollary 3.1.2.
 
 ---
 ### 2.2 Successor-Based Grounding Architecture 
