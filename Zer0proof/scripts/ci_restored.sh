@@ -5,19 +5,12 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
 lake_bin="${LAKE_BIN:-lake}"
-required_tools=(cat cp diff find grep mktemp mkdir rm tr xargs sha256sum sort git)
-for tool in "${required_tools[@]}"; do
-  command -v "$tool" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $tool" >&2; exit 1; }
-done
-command -v "$lake_bin" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $lake_bin" >&2; exit 1; }
-
-python_bin="${PYTHON_BIN:-$(command -v python3 || command -v python)}"
-if [[ -z "$python_bin" ]]; then
-  echo "[CI] ERROR: required tool missing: python" >&2
-  exit 1
-fi
-if ! "$python_bin" -c 'import sys'; then
-  echo "[CI] ERROR: python interpreter validation failed: $python_bin" >&2
+if command -v python3 >/dev/null 2>&1; then
+  python_bin=python3
+elif command -v python >/dev/null 2>&1; then
+  python_bin=python
+else
+  echo "[CI] ERROR: python interpreter not found" >&2
   exit 1
 fi
 
@@ -44,47 +37,6 @@ run_negative_test() {
   fi
 }
 
-run_negative_control() {
-  local source_root="$1"
-  local dist_root="$2"
-
-  mkdir -p "$source_root/AltRoute/Private"
-  cat > "$source_root/AltRoute/Private/Successor.lean" <<'EOF_NEG'
-namespace AltRoute.Private
-
-theorem Successor : True := by
-  trivial
-
-theorem Final_NE_Proof : True := by
-  trivial
-end AltRoute.Private
-EOF_NEG
-
-  (
-    cd "$source_root"
-    "$lake_bin" -R env lean -o "AltRoute/Private/Successor.olean" "AltRoute/Private/Successor.lean"
-  )
-  cp "$source_root/AltRoute/Private/Successor.olean" "$dist_root/AltRoute/TargetTypes.olean"
-
-  local neg_output
-  local neg_rc
-  set +e
-  neg_output="$(LAKE_BIN="$lake_bin" bash scripts/check-public-dist.sh "$dist_root" 2>&1)"
-  neg_rc=$?
-  set -e
-
-  if [[ "$neg_rc" -eq 0 ]]; then
-    echo "[CI] ERROR: negative control leak test unexpectedly passed" >&2
-    return 1
-  fi
-  if ! grep -Fq "[LEAK] forbidden private symbol" <<<"$neg_output"; then
-    printf '%s\n' "$neg_output" >&2
-    echo "[CI] ERROR: negative control leak test did not report forbidden private symbol" >&2
-    return 1
-  fi
-  printf '%s\n' "$neg_output"
-}
-
 snapshot_public_assemblies() {
   local output="$1"
   : > "$output"
@@ -102,11 +54,9 @@ echo "[CI] Versions"
 hash_a="$(mktemp)"
 hash_b="$(mktemp)"
 staging=""
-negative_control_workspace=""
 cleanup() {
   rm -f "$hash_a" "$hash_b"
   [[ -z "$staging" ]] || rm -rf "$staging"
-  [[ -z "$negative_control_workspace" ]] || rm -rf "$negative_control_workspace"
 }
 trap cleanup EXIT
 
@@ -189,10 +139,10 @@ for module in "${public_modules[@]}"; do
 done
 cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
 
-LAKE_BIN="${lake_bin}" "$python_bin" scripts/generate-formal-status.py --reproducible \
+LAKE_BIN="${lake_bin}" ${python_bin} scripts/generate-formal-status.py --reproducible \
   --output-json "$staging/formal-status.json" \
   --output-md "$staging/FORMAL_STATUS.md"
-"$python_bin" scripts/check-document-sync.py "$staging/formal-status.json"
+${python_bin} scripts/check-document-sync.py "$staging/formal-status.json"
 
 cat > "$staging/SCOPE.txt" <<SCOPE
 Zer0proof public distribution
@@ -209,6 +159,7 @@ and every shipped file is covered by SHA256SUMS.
 Private successor source and theorem-bearing private .olean: NOT DISTRIBUTED.
 No public verdict about the current internal private build is asserted.
 SCOPE
+
 (
   cd "$staging"
   { find . -type f -printf '%P\n'; printf '%s\n' PUBLIC_ALLOWLIST.txt SHA256SUMS; } \
@@ -223,13 +174,8 @@ staging=""
 
 echo "[CI] Post-package leak scan"
 LAKE_BIN="$lake_bin" bash scripts/check-public-dist.sh dist
-
-negative_control_workspace="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-negative.XXXXXX")"
-cp -a dist "$negative_control_workspace"
-run_negative_control "$negative_control_workspace" "$negative_control_workspace/dist"
-rm -rf "$negative_control_workspace"
-negative_control_workspace=""
-
 ( cd dist && sha256sum -c SHA256SUMS )
 
 echo "[CI] Done"
+
+

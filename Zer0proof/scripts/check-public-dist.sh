@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+for tool in grep find sha256sum sort diff mktemp; do
+  command -v "$tool" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $tool" >&2; exit 1; }
+done
+
+lake_bin="${LAKE_BIN:-lake}"
+command -v "$lake_bin" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $lake_bin" >&2; exit 1; }
+
+
 root_arg="${1:?usage: check-public-dist.sh DIST_ROOT}"
 root="$(cd "$root_arg" && pwd)"
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 allowlist="$root/PUBLIC_ALLOWLIST.txt"
-lake_bin="${LAKE_BIN:-lake}"
 
 [[ -f "$allowlist" ]] || { echo "[LEAK] missing PUBLIC_ALLOWLIST.txt" >&2; exit 1; }
 
@@ -27,7 +34,7 @@ if find "$root" -type f | grep -E '/(AltRoute/Private|Private/Successor|StrongCe
 fi
 
 while IFS= read -r -d '' artifact; do
-  if strings "$artifact" | grep -E 'Final_(NE|BoxUnique|RigidWitness)_Proof|StrongCertificates|AltRoute\.Private|Private\.Successor' >/dev/null; then
+  if grep -a -E 'Final_(NE|BoxUnique|RigidWitness)_Proof|StrongCertificates|AltRoute\.Private|Private\.Successor' "$artifact" >/dev/null 2>&1; then
     echo "[LEAK] forbidden private symbol in public assembly: $artifact" >&2
     exit 1
   fi
