@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 700" role="img" aria-labelledby="title desc">
   <title id="title">From contingent actuality to the application of φ</title>
-  <desc id="desc">Contingent actuality leads through the constitutive grounding argument to R satisfying Γ. The Alt Route and transcendental induction establish Γ entails φ; the Alt Route also supplies a proof term t of type φ. Together with the semantic grounding of Γ, this licenses applying φ to actuality.</desc>
+  <desc id="desc">Contingent actuality leads through the constitutive grounding argument to R satisfying Γ. The Ascendant Route and transcendental induction establish Γ entails φ; the Ascendant Route also supplies a proof term t of type φ. Together with the semantic grounding of Γ, this licenses applying φ to actuality.</desc>
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
@@ -48,7 +48,7 @@
   <path class="flow" d="M460 366 H640 V390"/>
 
   <rect class="route" x="160" y="392" width="240" height="76" rx="12"/>
-  <text class="label" x="280" y="423">Alt Route</text>
+  <text class="label" x="280" y="423">Ascendant Route</text>
   <text class="detail" x="280" y="449">§2.2</text>
 
   <rect class="route" x="520" y="392" width="240" height="76" rx="12"/>

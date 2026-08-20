@@ -3,13 +3,13 @@
 
 ### Abstract
 
-This paper presents the *Alt Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public C5 grounding route proves the strong Ω-theorems from an explicit constitutive context and ships a non-collapsed joint model; an independent private successor route is a separate disclosure domain and is not needed for public verification. The argument does not rely on classical perfection axioms: the grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
+This paper presents the *Ascendant Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public C5 grounding route proves the strong Ω-theorems from an explicit constitutive context and ships a non-collapsed joint model; an independent private successor route is a separate disclosure domain and is not needed for public verification. The argument does not rely on classical perfection axioms: the grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
 
 At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
 The paper combines one fully Lean-verified public grounding route with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure result**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
 
-**Keywords:** Alt Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
+**Keywords:** Ascendant Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
 ---
 ## 1. Introduction
@@ -106,7 +106,7 @@ This is the constitutive relation developed further in the successor architectur
 ---
 ### 2.2 Successor-Based Grounding Architecture 
 
-This subsection presents the successor-based grounding machine (the Alt Route). In this subsection we show how the hyper-modal grounding principles from §2.1 can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “AltRoute”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
+This subsection presents the successor-based grounding machine (the Ascendant Route). In this subsection we show how the hyper-modal grounding principles from §2.1 can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “Ascendant Route”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
 
 #### 2.2.1 State space and successor
 
@@ -185,9 +185,9 @@ Formally, we obtain:
 >  
 > *Sketch.* Since M is well-founded and meas($g_{i+1}$) < meas($g_i$), there can be no infinite chain. Let $g_n$ be the last state in a maximal chain. If meas($g_n$) > 0, then by HM-PSR there is a more fundamental ground, contradicting maximality. Hence meas($g_n$) = 0, so by uniqueness of the minimal state $g_n$ = Ω.
 
-This proposition is the Alt Route mirror of the hyper-modal Ω-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Ω directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Ω.
+This proposition is the Ascendant Route mirror of the hyper-modal Ω-theorem: instead of starting from abstract modal axioms and deriving a necessary existence claim for Ω directly, we now exhibit a concrete machine whose dynamics, under the same grounding intuitions, must converge to a unique absolutely grounded state Ω.
 
-In the remainder of the paper, the hyper-modal framework and the successor-based AltRoute can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
+In the remainder of the paper, the hyper-modal framework and the successor-based Ascendant Route can be treated as two complementary presentations of the same grounding intuition: one axiomatic and top-down, the other mechanistic and bottom-up. Both point to the same conclusion: a coherent treatment of contingency and grounding forces the existence and uniqueness of an absolutely grounded state Ω.
 
 ---
 ### 2.3 Epistemic Recognition of Contingency
@@ -229,7 +229,7 @@ The epistemic formulation makes contingency reflectively accessible to an agent;
 ---
 ## 3. Formal Modal Proof of Ω
 
-We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. The argument moves through a single chain: contingent obtaining ("I am") demands grounding (A1); a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand; grounding chains cannot regress infinitely (A3); a terminating, non-contingent ground therefore exists; and by minimality/coalescence (§2.2.2) that ground is unique — Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy below is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence. §3.3 presents a second, convergent route to the same terminus (TI), and §2.2 gives the successor-based construction that the Alt Route kernel-verifies (Appendix A.2.3).
+We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. The argument moves through a single chain: contingent obtaining ("I am") demands grounding (A1); a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand; grounding chains cannot regress infinitely (A3); a terminating, non-contingent ground therefore exists; and by minimality/coalescence (§2.2.2) that ground is unique — Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy below is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence. §3.3 presents a second, convergent route to the same terminus (TI), and §2.2 gives the successor-based construction that the Ascendant Route kernel-verifies (Appendix A.2.3).
 
 * **Epistemic recognition of contingency:**
 As shown in §2.3, such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
@@ -354,7 +354,7 @@ A compressed restatement of the constitutive grounding architecture: contingent 
   `Terminus(q) ∧ q(w) → □q at w`.  
   This is the §3 step "a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand", and it is where A1 does its work: remove C1 and the step fails.
 
-* **C4 (AltRoute: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint:  
+* **C4 (Ascendant Route: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint:  
   `Terminus(q₁) ∧ Terminus(q₂) → ∀w (q₁(w) ↔ q₂(w))`.
 
 * **C4a (Identity of Ω):** Ω *is* the terminus — uniquely, and invariantly across worlds:  
@@ -382,7 +382,7 @@ C3a and C4a are made explicit here because the earlier compression left them imp
 ---
 ### 3.3 TI — Transcendental Induction
 
-A second independent route, **TI (Transcendental Induction)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Alt Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
+A second independent route, **TI (Transcendental Induction)**, converges on the same necessary Ω-terminus through an alternative grounding architecture. TI is conceptually distinct from the successor-based Ascendant Route and is reserved for separate formal development. Its internal construction, induction scheme, relations, and proof architecture are not disclosed in this paper.
 
 The relevance of TI here is limited to convergence: the independent route establishes convergence on Ω from a distinct grounding construction. The present paper therefore records only the existence, independence, and convergence target of TI.
 
@@ -398,7 +398,7 @@ The argument of §§2–3 has a single overall shape, which the rest of the pape
 
 <div align="center">
 
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MjAgNzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ic3ludGhlc2lzLXRpdGxlIHN5bnRoZXNpcy1kZXNjIiBzdHlsZT0iZGlzcGxheTpibG9jazttYXgtd2lkdGg6OTIwcHg7d2lkdGg6MTAwJTtoZWlnaHQ6YXV0bzttYXJnaW46MS41cmVtIGF1dG87Ij4KICA8dGl0bGUgaWQ9InN5bnRoZXNpcy10aXRsZSI+RnJvbSBjb250aW5nZW50IGFjdHVhbGl0eSB0byB0aGUgYXBwbGljYXRpb24gb2Ygz4Y8L3RpdGxlPgogIDxkZXNjIGlkPSJzeW50aGVzaXMtZGVzYyI+Q29udGluZ2VudCBhY3R1YWxpdHkgbGVhZHMgdGhyb3VnaCB0aGUgY29uc3RpdHV0aXZlIGdyb3VuZGluZyBhcmd1bWVudCB0byBSIHNhdGlzZnlpbmcgzpMuIFRoZSBBbHQgUm91dGUgYW5kIHRyYW5zY2VuZGVudGFsIGluZHVjdGlvbiBlc3RhYmxpc2ggzpMgZW50YWlscyDPhjsgdGhlIEFsdCBSb3V0ZSBhbHNvIHN1cHBsaWVzIGEgcHJvb2YgdGVybSB0IG9mIHR5cGUgz4YuIFRvZ2V0aGVyIHdpdGggdGhlIHNlbWFudGljIGdyb3VuZGluZyBvZiDOkywgdGhpcyBsaWNlbnNlcyBhcHBseWluZyDPhiB0byBhY3R1YWxpdHkuPC9kZXNjPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3doZWFkIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG9yaWVudD0iYXV0byIgbWFya2VyVW5pdHM9InN0cm9rZVdpZHRoIj4KICAgICAgPHBhdGggZD0iTSAwIDAgTCAxMCA1IEwgMCAxMCB6IiBmaWxsPSIjMzc0MTUxIi8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveCB7IGZpbGw6I2Y4ZmFmYzsgc3Ryb2tlOiMzMzQxNTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yb3V0ZSB7IGZpbGw6I2VlZjJmZjsgc3Ryb2tlOiM0ZjQ2ZTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yZXN1bHQgeyBmaWxsOiNlY2ZkZjU7IHN0cm9rZTojMDQ3ODU3OyBzdHJva2Utd2lkdGg6MjsgfQogICAgICAuZmxvdyB7IGZpbGw6bm9uZTsgc3Ryb2tlOiMzNzQxNTE7IHN0cm9rZS13aWR0aDoyLjU7IG1hcmtlci1lbmQ6dXJsKCNhcnJvd2hlYWQpOyB9CiAgICAgIC5sYWJlbCB7IGZpbGw6IzExMTgyNzsgZm9udDo2MDAgMThweCBzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSwiU2Vnb2UgVUkiLHNhbnMtc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgICAuZGV0YWlsIHsgZmlsbDojNDc1NTY5OyBmb250OjE1cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IH0KICAgICAgLnNlY3Rpb24geyBmaWxsOiM0MzM4Y2E7IGZvbnQ6NjAwIDE0cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IGxldHRlci1zcGFjaW5nOi4wOGVtOyB9CiAgICAgIC5mb3JtdWxhIHsgZmlsbDojMTExODI3OyBmb250Oml0YWxpYyAyMXB4IEdlb3JnaWEsIlRpbWVzIE5ldyBSb21hbiIsc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjI1MCIgeT0iMjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSI1MSI+Q09OVElOR0VOVCBBQ1RVQUxJVFk8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI3NyI+4oCcSSBhbeKAnSDCtyDCpzIuMSwgwqczPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA5NiBWMTMwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMjEwIiB5PSIxMzIiIHdpZHRoPSI1MDAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSIxNjMiPkNPTlNUSVRVVElWRSBHUk9VTkRJTkcgQVJHVU1FTlQ8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIxODkiPkExIC8gQTMgLyBBNSDCtyDCpzIuMS4xPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCAyMDggVjI0MiIvPgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjMzMCIgeT0iMjQ0IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjcyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSIyNzUiPuKEmyDiiqggzpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIyOTkiPsKnNy4yLCBsZXZlbCA0PC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic2VjdGlvbiIgeD0iNDYwIiB5PSIzNTQiPkZPUk1BTCBST1VURVM8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzE2IFYzNjYgSDI4MCBWMzkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzY2IEg2NDAgVjM5MCIvPgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjE2MCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjI4MCIgeT0iNDIzIj5BbHQgUm91dGU8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iMjgwIiB5PSI0NDkiPsKnMi4yPC90ZXh0PgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjUyMCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjY0MCIgeT0iNDIzIj5USTwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI2NDAiIHk9IjQ0OSI+wqczLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNMjgwIDQ2OCBWNDk0IEg0NjAgVjUyMCIvPgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNjQwIDQ2OCBWNDk0IEg0NjAiLz4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSIzMzAiIHk9IjUyMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI3MiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImZvcm11bGEiIHg9IjQ2MCIgeT0iNTUzIj7OkyDiiqIgz4Y8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI1NzciPsKnNy4yLCBsZXZlbCAyPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA1OTQgVjYyMCIvPgogIDxyZWN0IGNsYXNzPSJyZXN1bHQiIHg9IjMzMCIgeT0iNjIyIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjYyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSI2NTAiPnQgOiDPhjwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI0NjAiIHk9IjY3MyI+wqc3LjIsIGxldmVsIDEgwrcgQXBwZW5kaXggQS4yLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNTkwIDY1MyBINjkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik01OTAgMjgwIEg4ODAgVjU5MCBIODAwIFY2MDUiLz4KICA8cmVjdCBjbGFzcz0icmVzdWx0IiB4PSI2OTUiIHk9IjYxMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSI4NiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI4MDAiIHk9IjY0NiI+z4YgYXBwbGllczwvdGV4dD4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjgwMCIgeT0iNjcxIj50byBhY3R1YWxpdHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Synthesis diagram: contingent actuality is grounded in Γ; the Alt Route and TI converge on Γ ⊢ φ, with the Alt Route supplying t : φ, licensing application to actuality." width="920" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MjAgNzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ic3ludGhlc2lzLXRpdGxlIHN5bnRoZXNpcy1kZXNjIiBzdHlsZT0iZGlzcGxheTpibG9jazttYXgtd2lkdGg6OTIwcHg7d2lkdGg6MTAwJTtoZWlnaHQ6YXV0bzttYXJnaW46MS41cmVtIGF1dG87Ij4KICA8dGl0bGUgaWQ9InN5bnRoZXNpcy10aXRsZSI+RnJvbSBjb250aW5nZW50IGFjdHVhbGl0eSB0byB0aGUgYXBwbGljYXRpb24gb2Ygz4Y8L3RpdGxlPgogIDxkZXNjIGlkPSJzeW50aGVzaXMtZGVzYyI+Q29udGluZ2VudCBhY3R1YWxpdHkgbGVhZHMgdGhyb3VnaCB0aGUgY29uc3RpdHV0aXZlIGdyb3VuZGluZyBhcmd1bWVudCB0byBSIHNhdGlzZnlpbmcgzpMuIFRoZSBBc2NlbmRhbnQgUm91dGUgYW5kIHRyYW5zY2VuZGVudGFsIGluZHVjdGlvbiBlc3RhYmxpc2ggzpMgZW50YWlscyDPhjsgdGhlIEFzY2VuZGFudCBSb3V0ZSBhbHNvIHN1cHBsaWVzIGEgcHJvb2YgdGVybSB0IG9mIHR5cGUgz4YuIFRvZ2V0aGVyIHdpdGggdGhlIHNlbWFudGljIGdyb3VuZGluZyBvZiDOkywgdGhpcyBsaWNlbnNlcyBhcHBseWluZyDPhiB0byBhY3R1YWxpdHkuPC9kZXNjPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3doZWFkIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG9yaWVudD0iYXV0byIgbWFya2VyVW5pdHM9InN0cm9rZVdpZHRoIj4KICAgICAgPHBhdGggZD0iTSAwIDAgTCAxMCA1IEwgMCAxMCB6IiBmaWxsPSIjMzc0MTUxIi8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveCB7IGZpbGw6I2Y4ZmFmYzsgc3Ryb2tlOiMzMzQxNTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yb3V0ZSB7IGZpbGw6I2VlZjJmZjsgc3Ryb2tlOiM0ZjQ2ZTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yZXN1bHQgeyBmaWxsOiNlY2ZkZjU7IHN0cm9rZTojMDQ3ODU3OyBzdHJva2Utd2lkdGg6MjsgfQogICAgICAuZmxvdyB7IGZpbGw6bm9uZTsgc3Ryb2tlOiMzNzQxNTE7IHN0cm9rZS13aWR0aDoyLjU7IG1hcmtlci1lbmQ6dXJsKCNhcnJvd2hlYWQpOyB9CiAgICAgIC5sYWJlbCB7IGZpbGw6IzExMTgyNzsgZm9udDo2MDAgMThweCBzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSwiU2Vnb2UgVUkiLHNhbnMtc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgICAuZGV0YWlsIHsgZmlsbDojNDc1NTY5OyBmb250OjE1cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IH0KICAgICAgLnNlY3Rpb24geyBmaWxsOiM0MzM4Y2E7IGZvbnQ6NjAwIDE0cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IGxldHRlci1zcGFjaW5nOi4wOGVtOyB9CiAgICAgIC5mb3JtdWxhIHsgZmlsbDojMTExODI3OyBmb250Oml0YWxpYyAyMXB4IEdlb3JnaWEsIlRpbWVzIE5ldyBSb21hbiIsc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjI1MCIgeT0iMjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSI1MSI+Q09OVElOR0VOVCBBQ1RVQUxJVFk8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI3NyI+4oCcSSBhbeKAnSDCtyDCpzIuMSwgwqczPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA5NiBWMTMwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMjEwIiB5PSIxMzIiIHdpZHRoPSI1MDAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSIxNjMiPkNPTlNUSVRVVElWRSBHUk9VTkRJTkcgQVJHVU1FTlQ8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIxODkiPkExIC8gQTMgLyBBNSDCtyDCpzIuMS4xPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCAyMDggVjI0MiIvPgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjMzMCIgeT0iMjQ0IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjcyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSIyNzUiPuKEmyDiiqggzpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIyOTkiPsKnNy4yLCBsZXZlbCA0PC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic2VjdGlvbiIgeD0iNDYwIiB5PSIzNTQiPkZPUk1BTCBST1VURVM8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzE2IFYzNjYgSDI4MCBWMzkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzY2IEg2NDAgVjM5MCIvPgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjE2MCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjI4MCIgeT0iNDIzIj5Bc2NlbmRhbnQgUm91dGU8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iMjgwIiB5PSI0NDkiPsKnMi4yPC90ZXh0PgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjUyMCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjY0MCIgeT0iNDIzIj5USTwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI2NDAiIHk9IjQ0OSI+wqczLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNMjgwIDQ2OCBWNDk0IEg0NjAgVjUyMCIvPgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNjQwIDQ2OCBWNDk0IEg0NjAiLz4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSIzMzAiIHk9IjUyMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI3MiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImZvcm11bGEiIHg9IjQ2MCIgeT0iNTUzIj7OkyDiiqIgz4Y8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI1NzciPsKnNy4yLCBsZXZlbCAyPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA1OTQgVjYyMCIvPgogIDxyZWN0IGNsYXNzPSJyZXN1bHQiIHg9IjMzMCIgeT0iNjIyIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjYyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSI2NTAiPnQgOiDPhjwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI0NjAiIHk9IjY3MyI+wqc3LjIsIGxldmVsIDEgwrcgQXBwZW5kaXggQS4yLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNTkwIDY1MyBINjkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik01OTAgMjgwIEg4ODAgVjU5MCBIODAwIFY2MDUiLz4KICA8cmVjdCBjbGFzcz0icmVzdWx0IiB4PSI2OTUiIHk9IjYxMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSI4NiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI4MDAiIHk9IjY0NiI+z4YgYXBwbGllczwvdGV4dD4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjgwMCIgeT0iNjcxIj50byBhY3R1YWxpdHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Synthesis diagram: contingent actuality is grounded in Γ; the Ascendant Route and TI converge on Γ ⊢ φ, with the Ascendant Route supplying t : φ, licensing application to actuality." width="920" />
 
 </div>
 
@@ -408,7 +408,7 @@ renders the same vector diagram.
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 700" role="img" aria-labelledby="synthesis-title synthesis-desc" style="display:block;max-width:920px;width:100%;height:auto;margin:1.5rem auto;">
   <title id="synthesis-title">From contingent actuality to the application of φ</title>
-  <desc id="synthesis-desc">Contingent actuality leads through the constitutive grounding argument to R satisfying Γ. The Alt Route and transcendental induction establish Γ entails φ; the Alt Route also supplies a proof term t of type φ. Together with the semantic grounding of Γ, this licenses applying φ to actuality.</desc>
+  <desc id="synthesis-desc">Contingent actuality leads through the constitutive grounding argument to R satisfying Γ. The Ascendant Route and transcendental induction establish Γ entails φ; the Ascendant Route also supplies a proof term t of type φ. Together with the semantic grounding of Γ, this licenses applying φ to actuality.</desc>
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/>
@@ -444,7 +444,7 @@ renders the same vector diagram.
   <path class="flow" d="M460 366 H640 V390"/>
 
   <rect class="route" x="160" y="392" width="240" height="76" rx="12"/>
-  <text class="label" x="280" y="423">Alt Route</text>
+  <text class="label" x="280" y="423">Ascendant Route</text>
   <text class="detail" x="280" y="449">§2.2</text>
 
   <rect class="route" x="520" y="392" width="240" height="76" rx="12"/>
@@ -476,7 +476,7 @@ $$
 \varphi = \Box\exists!x\,\Omega(x)
 $$
 
-together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Alt Route delivers $\Gamma\vdash\varphi$ and the kernel term $t:\varphi$ itself (Appendix A.2.3); TI is recorded only as an independent convergent route (§3.3). The constitutive argument that $\mathcal R\models\Gamma$ (§2.1.1) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in §7.2.
+together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Ascendant Route delivers $\Gamma\vdash\varphi$ and the kernel term $t:\varphi$ itself (Appendix A.2.3); TI is recorded only as an independent convergent route (§3.3). The constitutive argument that $\mathcal R\models\Gamma$ (§2.1.1) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in §7.2.
 
 ---
 ## 4. Verification in Lean 4
@@ -703,7 +703,7 @@ $$
 
 This axiom ensures that no internally negating or contradictory property is admitted.
 
-The argument in this section is presented in S5-informed philosophical form. A parallel Lean scaffold exists in Appendix A.6 ("Paradox Types Extension"), but the paradox-type predicates there (`Veridical`, `Falsidical`, `Antinomy`, `Semantic`, `MetaReason`, `SemanticRefine`, `Synthesizes`, `Perfection`) are declared as placeholder definitions equal to `True`, so the corresponding Lean theorems are trivially true given those placeholders and do not constitute a non-trivial kernel proof that paradoxes support Ω's perfection. This section's paradox analysis should accordingly be read as **conceptual, illustrative, and interpretive** philosophical argument, not as an additional kernel-verified result alongside the Alt Route theorems (Appendix A.2.3) or the reductio suite (Appendix B.2).
+The argument in this section is presented in S5-informed philosophical form. A parallel Lean scaffold exists in Appendix A.6 ("Paradox Types Extension"), but the paradox-type predicates there (`Veridical`, `Falsidical`, `Antinomy`, `Semantic`, `MetaReason`, `SemanticRefine`, `Synthesizes`, `Perfection`) are declared as placeholder definitions equal to `True`, so the corresponding Lean theorems are trivially true given those placeholders and do not constitute a non-trivial kernel proof that paradoxes support Ω's perfection. This section's paradox analysis should accordingly be read as **conceptual, illustrative, and interpretive** philosophical argument, not as an additional kernel-verified result alongside the Ascendant Route theorems (Appendix A.2.3) or the reductio suite (Appendix B.2).
 
 We define Ω formally at the *semantic target level* as:
 
@@ -935,9 +935,9 @@ The non-circularity note above concerns (3), the A2 admissibility notion, not (2
 
 1. **Admissibility (A2):** Perfect Positivity constrains *Pos(P)* so that no admitted property carries internal negation, defeat, or semantic collapse. Positivity is therefore a stability condition on the property-domain, not a re-labeling of Ω.
 
-2. **Termination (A3) under the AltRoute:** Under Anti-Regress and the successor-based grounding architecture, any coherent grounding progression must be well-founded. Accordingly, any admissible explanatory chain that tracks the grounding status of a property cannot loop or descend indefinitely.
+2. **Termination (A3) under the Ascendant Route:** Under Anti-Regress and the successor-based grounding architecture, any coherent grounding progression must be well-founded. Accordingly, any admissible explanatory chain that tracks the grounding status of a property cannot loop or descend indefinitely.
 
-3. **Uniqueness via minimality/coalescence:** The AltRoute minimality/coalescence condition forces all terminating grounding chains to converge to a **single** minimal endpoint. Hence the grounding terminus is unique and necessary.
+3. **Uniqueness via minimality/coalescence:** The Ascendant Route minimality/coalescence condition forces all terminating grounding chains to converge to a **single** minimal endpoint. Hence the grounding terminus is unique and necessary.
 
 4. **Factory as closure at the terminus:** Because the terminus is unique and necessary, the only stable location for the completion of admissible structure is Ω. Properties that are required to preserve grounded coherence (A1/A3/A5) and are admissible under A2 are thereby **forced** as members of the Pos-domain; Ω instantiates these forced Pos-properties as the fixed point of the closure.
 
@@ -1468,10 +1468,10 @@ The author gratefully acknowledges the assistance of several AI language models 
 ## Appendix
 ---
 
-## Appendix A: Lean Formal Verification of the Alt Route
+## Appendix A: Lean Formal Verification of the Ascendant Route
 
 ### A.1 Scope of Verification
-This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Alt Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
+This appendix specifies the exact scope of the Lean 4 verification. The current development verifies the **Ascendant Route proof** of the necessary existence and uniqueness of Ω within a successor-based S5 setting. The code establishes that any system with a strictly decreasing measure (Anti-Regress) must terminate in a unique fixed point (Ω).
 
 ### A.2 Public Verification Surface and Scope Certificate
 
@@ -1534,7 +1534,7 @@ The main text develops a **hyper-modal grounding framework**:
 * Logic Necessity, and
 * Meta-Logical Closure.
 
-This framework is designed to express, at a conceptual and metaphysical level, what the Alt Route exhibits in a structurally minimal way:
+This framework is designed to express, at a conceptual and metaphysical level, what the Ascendant Route exhibits in a structurally minimal way:
 
 * Every coherent explanatory chain must be **well-founded**,
 * must avoid **infinite regress**, and
@@ -1542,10 +1542,10 @@ This framework is designed to express, at a conceptual and metaphysical level, w
 
 Within this reading:
 
-* the **Alt Route Lean proof** provides a concrete, successor-based model of such chains, and
+* the **Ascendant Route Lean proof** provides a concrete, successor-based model of such chains, and
 * the **hyper-modal system** generalises this behaviour to the full spectrum of contingent truths, Gödelian incompleteness phenomena, and theological interpretation.
 
-The hyper-modal “Hyper-Modal Theorem” is therefore the **philosophical generalisation** of the formally verified Alt Route: it extends the structural role of Ω from a specific successor framework to the space of all coherent grounding structures that respect the given modal constraints.
+The hyper-modal “Hyper-Modal Theorem” is therefore the **philosophical generalisation** of the formally verified Ascendant Route: it extends the structural role of Ω from a specific successor framework to the space of all coherent grounding structures that respect the given modal constraints.
 
 ---
 
@@ -1559,7 +1559,7 @@ In arithmetic:
 * truths such as `1 + 1 = 2` are not contingent on accepting or rejecting a particular axiomatization of Peano Arithmetic;
 * they are embedded in the minimal structure of counting itself.
 
-The Alt Route and its reductio suite show an analogous behaviour on the level of grounding:
+The Ascendant Route and its reductio suite show an analogous behaviour on the level of grounding:
 
 * once well-founded explanatory chains are admitted,
 * once contingent truths are not allowed to float ungrounded, and
@@ -1583,12 +1583,12 @@ This is the sense in which one may say:
 
 ---
 
-### A.5 Summary of the Alt Route’s Role
+### A.5 Summary of the Ascendant Route’s Role
 
-The role of the Alt Route in the overall argument can be summarised as follows:
+The role of the Ascendant Route in the overall argument can be summarised as follows:
 
 1. **Formal core**:
-   The Alt Route is the only part of the project that is fully verified in Lean. It proves:
+   The Ascendant Route is the only part of the project that is fully verified in Lean. It proves:
 
    * necessary existence of Ω, and
    * uniqueness of Ω,
@@ -1608,7 +1608,7 @@ The role of the Alt Route in the overall argument can be summarised as follows:
    * explanatory chains are finite and well-founded, and
    * grounding is required to avoid regress and collapse.
 
-Under this perspective, the Alt Route functions as a minimal, Lean-certified **model** of a much more general phenomenon: the inescapability of a unique necessary ground of intelligibility.
+Under this perspective, the Ascendant Route functions as a minimal, Lean-certified **model** of a much more general phenomenon: the inescapability of a unique necessary ground of intelligibility.
 
 ---
 
@@ -1870,8 +1870,8 @@ end HyperModal
 ## Appendix B: The Hyper-Modal Framework (Conceptual Corollary)
 ### **B.1 The HyperModal Formal Framework (S5 + Grounding System)**
 
-This appendix presents the complete modal-semantic framework underlying the Alt Route.
-Whereas the Alt Route uses a successor-based grounding structure, the HyperModal system provides the global modal semantics and grounding axioms that justify the ontological closure the Alt Route depends on.
+This appendix presents the complete modal-semantic framework underlying the Ascendant Route.
+Whereas the Ascendant Route uses a successor-based grounding structure, the HyperModal system provides the global modal semantics and grounding axioms that justify the ontological closure the Ascendant Route depends on.
 
 The following foundations are fully formalized in Lean 4 (definitions and axioms, together with a suite of reductio theorems).
 
@@ -2389,7 +2389,7 @@ Reply: Section 6 frames this as interpretive resonance. The proof itself is form
 
 ## Appendix G: Successor Function of Grounding (Illustrative Classical Sketch)
 
-**Scope note.** The `succGround` operator below is a conceptual, illustrative construction within the public HyperModal reductio suite (Appendix A.6), used to make the anti-regress axiom's well-foundedness intuitive. It is not a description of, and is not claimed to be identical to, the successor function $S$ of the Alt Route's private successor-based construction (§2.2.1, Appendix A.1); the private sketch and this illustration are separate from the load-bearing public `GroundingChain.C5_*` derivation; no private implementation or current private build status is disclosed here.
+**Scope note.** The `succGround` operator below is a conceptual, illustrative construction within the public HyperModal reductio suite (Appendix A.6), used to make the anti-regress axiom's well-foundedness intuitive. It is not a description of, and is not claimed to be identical to, the successor function $S$ of the Ascendant Route's private successor-based construction (§2.2.1, Appendix A.1); the private sketch and this illustration are separate from the load-bearing public `GroundingChain.C5_*` derivation; no private implementation or current private build status is disclosed here.
 
 In the formal system developed above, the **anti‑regress axiom**
 
