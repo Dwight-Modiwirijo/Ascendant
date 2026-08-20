@@ -26,9 +26,9 @@ jobs:
           ~/.elan/bin/lean --version
           ~/.elan/bin/lake --version || true
 
-      # Exit 2 means: the public distribution was built and verified, and the
-      # strong certificate assembly is absent. That is a known, reportable
-      # state, not a build failure. Any other non-zero code fails the job.
+      # The public pipeline is self-contained: exit 0 means the public C5
+      # route built, audited, and packaged. The private assembly is not part
+      # of this flow by policy, so no annotation may claim it is included.
       - name: Run CI script
         id: ci
         run: |
@@ -38,9 +38,7 @@ jobs:
           set -e
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           if [ "$rc" -eq 0 ]; then
-            echo "::notice::Public distribution built. Strong certificate included."
-          elif [ "$rc" -eq 2 ]; then
-            echo "::warning::Public distribution built. Strong certificate assembly absent."
+            echo "::notice::Public distribution built and verified. Public C5 strong-theorem route included; private assembly not distributed by policy."
           else
             echo "::error::CI failed with exit code $rc"
             exit "$rc"
