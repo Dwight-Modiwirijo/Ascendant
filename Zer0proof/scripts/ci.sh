@@ -5,6 +5,15 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
 lake_bin="${LAKE_BIN:-lake}"
+if command -v python3 >/dev/null 2>&1; then
+  python_bin=python3
+elif command -v python >/dev/null 2>&1; then
+  python_bin=python
+else
+  echo "[CI] ERROR: python interpreter not found" >&2
+  exit 1
+fi
+
 expected_toolchain="$(tr -d '\r\n' < lean-toolchain)"
 export ELAN_TOOLCHAIN="${ELAN_TOOLCHAIN:-$expected_toolchain}"
 
@@ -130,10 +139,10 @@ for module in "${public_modules[@]}"; do
 done
 cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
 
-LAKE_BIN="$lake_bin" python3 scripts/generate-formal-status.py --reproducible \
+LAKE_BIN="${lake_bin}" ${python_bin} scripts/generate-formal-status.py --reproducible \
   --output-json "$staging/formal-status.json" \
   --output-md "$staging/FORMAL_STATUS.md"
-python3 scripts/check-document-sync.py "$staging/formal-status.json"
+${python_bin} scripts/check-document-sync.py "$staging/formal-status.json"
 
 cat > "$staging/SCOPE.txt" <<SCOPE
 Zer0proof public distribution
@@ -168,3 +177,5 @@ LAKE_BIN="$lake_bin" bash scripts/check-public-dist.sh dist
 ( cd dist && sha256sum -c SHA256SUMS )
 
 echo "[CI] Done"
+
+

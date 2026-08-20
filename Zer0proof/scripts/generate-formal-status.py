@@ -27,6 +27,53 @@ QUESTION_AUDITS = [
     "AltRoute.GroundingChainAudit.c4a_refutes_all",
     "AltRoute.GroundingChainAudit.datum_obtains_refutes_all",
 ]
+W12_MATRIX = [
+    ("C1", "actual_omega", "AltRoute.GroundingChainAudit.c1_not_actual"),
+    ("C1", "possible_omega", "AltRoute.GroundingChainAudit.c1_not_possible"),
+    ("C1", "necessary_omega", "AltRoute.GroundingChainAudit.c1_not_necessary"),
+    ("C1", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c1_not_possible_necessary"),
+    ("GroundObtains", "actual_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_actual"),
+    ("GroundObtains", "possible_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_possible"),
+    ("GroundObtains", "necessary_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_necessary"),
+    ("GroundObtains", "possible_necessary_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_possible_necessary"),
+    ("C3", "actual_omega", "AltRoute.GroundingChainAudit.c3_not_actual"),
+    ("C3", "possible_omega", "AltRoute.GroundingChainAudit.c3_not_possible"),
+    ("C3", "necessary_omega", "AltRoute.GroundingChainAudit.c3_not_necessary"),
+    ("C3", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c3_not_possible_necessary"),
+    ("C4a", "actual_omega", "AltRoute.GroundingChainAudit.c4a_not_actual"),
+    ("C4a", "possible_omega", "AltRoute.GroundingChainAudit.c4a_not_possible"),
+    ("C4a", "necessary_omega", "AltRoute.GroundingChainAudit.c4a_not_necessary"),
+    ("C4a", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c4a_not_possible_necessary"),
+    ("datum_obtains", "actual_omega", "AltRoute.GroundingChainAudit.datum_not_actual"),
+    ("datum_obtains", "possible_omega", "AltRoute.GroundingChainAudit.datum_not_possible"),
+    ("datum_obtains", "necessary_omega", "AltRoute.GroundingChainAudit.datum_not_necessary"),
+    ("datum_obtains", "possible_necessary_omega", "AltRoute.GroundingChainAudit.datum_not_possible_necessary"),
+]
+EXPECTED_W12_PREMISES = [
+    "C1",
+    "GroundObtains",
+    "C3",
+    "C4a",
+    "datum_obtains",
+]
+EXPECTED_W12_TARGETS = [
+    "actual_omega",
+    "possible_omega",
+    "necessary_omega",
+    "possible_necessary_omega",
+]
+EXPECTED_W12_MANIFEST = [
+    ("C1", "AltRoute.GroundingChainAudit.c1_refutes_all"),
+    ("GroundObtains", "AltRoute.GroundingChainAudit.ground_obtains_refutes_all"),
+    ("C3", "AltRoute.GroundingChainAudit.c3_refutes_all"),
+    ("C4a", "AltRoute.GroundingChainAudit.c4a_refutes_all"),
+    ("datum_obtains", "AltRoute.GroundingChainAudit.datum_obtains_refutes_all"),
+]
+EXPECTED_C5_BINDERS = {
+    "C5_NE": ["Omega", "hC1", "hGO", "hC3", "hC4a", "I", "w0", "hI"],
+    "C5_BoxUnique": ["Omega", "hC1", "hGO", "hC3", "hC4a", "I", "w0", "hI"],
+    "C5_RigidWitness": ["Omega", "hC1", "hGO", "hC3", "hC4a", "I", "w0", "hI"],
+}
 NEGATIVE_TESTS = [
     ("tests/Reject_HostilePositiveEmpty.lean", "fields missing: 'proper'"),
     ("tests/Reject_HostileModal.lean", "fields missing: 'symm'"),
@@ -52,8 +99,15 @@ ASSEMBLIES = [
 
 
 def run(command: list[str], *, expect_success: bool = True) -> subprocess.CompletedProcess[str]:
-    result = subprocess.run(command, cwd=REPO, text=True, encoding="utf-8", errors="replace",
-                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    result = subprocess.run(
+        command,
+        cwd=REPO,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
     if expect_success and result.returncode != 0:
         raise RuntimeError(f"command failed ({result.returncode}): {' '.join(command)}\n{result.stdout}")
     return result
@@ -69,6 +123,14 @@ def block(output: str, kind: str, name: str) -> str:
     return output[start + len(begin):stop].strip()
 
 
+def block_text(output: str, begin: str, end: str) -> str:
+    start = output.find(begin)
+    stop = output.find(end, start + len(begin))
+    if start < 0 or stop < 0:
+        raise RuntimeError(f"missing Lean status markers {begin} / {end}")
+    return output[start + len(begin):stop].strip()
+
+
 def parse_axioms(output: str, name: str) -> list[str]:
     text = block(output, "AXIOMS", name)
     if "does not depend on any axioms" in text:
@@ -77,6 +139,43 @@ def parse_axioms(output: str, name: str) -> list[str]:
     if not match:
         raise RuntimeError(f"cannot parse axiom footprint for {name}: {text}")
     return [item.strip() for item in match.group(1).replace("\n", " ").split(",") if item.strip()]
+
+
+def parse_w12_list(output: str):
+    text = block_text(output, "FORMAL_STATUS_W12_LIST_BEGIN", "FORMAL_STATUS_W12_LIST_END")
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    premises = [line[len("W12_PREMISE=") :] for line in lines if line.startswith("W12_PREMISE=")]
+    targets = [line[len("W12_TARGET=") :] for line in lines if line.startswith("W12_TARGET=")]
+    manifest = []
+    for line in lines:
+        if line.startswith("W12_MANIFEST="):
+            payload = line[len("W12_MANIFEST=") :]
+            if "::" not in payload:
+                raise RuntimeError(f"invalid W12_MANIFEST line: {line}")
+            name, theorem = payload.split("::", 1)
+            manifest.append((name, theorem))
+    return premises, targets, manifest
+
+
+def parse_binder_names(signature: str) -> list[str]:
+    return [
+        name
+        for name in re.findall("[({]\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*:\\s*[^){}]+[)}]", signature)
+        if name not in {"u", "v"}
+    ]
+
+def verify_c5_signature(source: str, theorem: str, expected: list[str]) -> None:
+    pattern = "theorem\\s+{}\\b([\\s\\S]*?)\\s*:=\\s*by".format(re.escape(theorem))
+    m = re.search(pattern, source)
+    if not m:
+        raise RuntimeError(f"could not locate theorem signature for {theorem}")
+    signature = m.group(1)
+    actual = parse_binder_names(signature)
+    if actual != expected:
+        raise RuntimeError(f"unexpected binder names for {theorem}: {actual}")
+
+def parse_lean_pairs(raw: list[str] | None) -> dict:
+    return {key: value for key, value in raw} if raw is not None else {}
 
 
 def sha256(path: Path) -> str:
@@ -106,7 +205,23 @@ def markdown(status: dict) -> str:
     for theorem in status["public_theorems"]:
         footprint = ", ".join(theorem["axioms"]) or "none"
         lines.append(f"| `{theorem['name']}` | `{footprint}` |")
-    lines += ["", "## Gates", ""]
+    lines += [
+        "",
+        "## W12 Question-Begging Matrix",
+        "",
+        f"- Audited premises: `{', '.join(status['w12_audit']['premise_names'])}`",
+        f"- Audited targets: `{', '.join(status['w12_audit']['target_names'])}`",
+        "",
+        "| Premise | Target | Status |",
+        "|---|---|---|",
+    ]
+    for row in status["w12_audit"]["matrix"]:
+        lines.append(f"| `{row['premise']}` | `{row['target']}` | {row['status']} |")
+    lines += [
+        "",
+        "## Gates",
+        "",
+    ]
     for key, value in status["gates"].items():
         lines.append(f"- {key.replace('_', ' ').title()}: **{value}**")
     lines += [
@@ -151,9 +266,28 @@ def main() -> int:
     model_axioms = parse_axioms(audit, "AltRoute.GroundingModel.m_conclusion")
     if model_axioms != EXPECTED_AXIOMS:
         raise RuntimeError(f"unexpected model footprint: {model_axioms}")
+
     for name in QUESTION_AUDITS:
         if parse_axioms(audit, name):
             raise RuntimeError(f"question-begging audit is not axiom-free: {name}")
+
+    w12_premises, w12_targets, w12_manifest = parse_w12_list(audit)
+    if w12_premises != EXPECTED_W12_PREMISES:
+        raise RuntimeError(f"unexpected W12 premise list: {w12_premises}")
+    if w12_targets != EXPECTED_W12_TARGETS:
+        raise RuntimeError(f"unexpected W12 target list: {w12_targets}")
+    if w12_manifest != EXPECTED_W12_MANIFEST:
+        raise RuntimeError(f"unexpected W12 manifest: {w12_manifest}")
+
+    w12_matrix = []
+    for premise, target, theorem in W12_MATRIX:
+        if parse_axioms(audit, theorem):
+            raise RuntimeError(f"W12 matrix entry is not axiom-free: {theorem}")
+        w12_matrix.append({"premise": premise, "target": target, "theorem": theorem, "status": "PASS"})
+
+    chain_source = (REPO / "AltRoute" / "GroundingChain.lean").read_text(encoding="utf-8")
+    for theorem, binders in EXPECTED_C5_BINDERS.items():
+        verify_c5_signature(chain_source, theorem, binders)
 
     for filename, expected in NEGATIVE_TESTS:
         result = run([lake, "-R", "env", "lean", filename], expect_success=False)
@@ -182,6 +316,8 @@ def main() -> int:
             "gate_0": "PASS",
             "modal_non_collapse": "PASS",
             "question_begging_individual_premises": "PASS",
+            "w12_premise_manifest_complete": "PASS",
+            "w12_question_begging_matrix_complete": "PASS",
             "public_grounding_model": "PASS",
             "public_reproducibility": "PASS",
             "explicit_package_allow_list": "PASS",
@@ -197,6 +333,12 @@ def main() -> int:
             "theorem": "AltRoute.GroundingModel.m_conclusion",
             "axioms": model_axioms,
             "non_collapsed": True,
+        },
+        "w12_audit": {
+            "premise_names": w12_premises,
+            "target_names": w12_targets,
+            "manifest": [{"premise": p, "theorem": th} for (p, th) in w12_manifest],
+            "matrix": w12_matrix,
         },
         "negative_guards": [{"file": f, "expected": e, "status": "PASS"} for f, e in NEGATIVE_TESTS],
         "public_assemblies": assemblies,

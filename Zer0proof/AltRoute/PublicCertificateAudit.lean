@@ -146,4 +146,50 @@ open AltRoute
 #print axioms AltRoute.GroundingModel.m_C2
 #print axioms AltRoute.GroundingModel.m_not_collapsed
 #print axioms AltRoute.GroundingModel.m_conclusion
+/-! W12 premise-level question-begging audit for the current C5 public route. -/
+#check AltRoute.GroundingChainAudit.W12_PremiseNames
+#check AltRoute.GroundingChainAudit.W12_TargetNames
+#check AltRoute.GroundingChainAudit.W12_PremiseAuditManifest
+#check AltRoute.GroundingChainAudit.c1_not_actual
+#check AltRoute.GroundingChainAudit.c1_not_possible
+#check AltRoute.GroundingChainAudit.c1_not_necessary
+#check AltRoute.GroundingChainAudit.c1_not_possible_necessary
+#check AltRoute.GroundingChainAudit.ground_obtains_not_actual
+#check AltRoute.GroundingChainAudit.ground_obtains_not_possible
+#check AltRoute.GroundingChainAudit.ground_obtains_not_necessary
+#check AltRoute.GroundingChainAudit.ground_obtains_not_possible_necessary
+#check AltRoute.GroundingChainAudit.c3_not_actual
+#check AltRoute.GroundingChainAudit.c3_not_possible
+#check AltRoute.GroundingChainAudit.c3_not_necessary
+#check AltRoute.GroundingChainAudit.c3_not_possible_necessary
+#check AltRoute.GroundingChainAudit.c4a_not_actual
+#check AltRoute.GroundingChainAudit.c4a_not_possible
+#check AltRoute.GroundingChainAudit.c4a_not_necessary
+#check AltRoute.GroundingChainAudit.c4a_not_possible_necessary
+#check AltRoute.GroundingChainAudit.datum_not_actual
+#check AltRoute.GroundingChainAudit.datum_not_possible
+#check AltRoute.GroundingChainAudit.datum_not_necessary
+#check AltRoute.GroundingChainAudit.datum_not_possible_necessary
+
+#print axioms AltRoute.GroundingChainAudit.c1_not_actual
+#print axioms AltRoute.GroundingChainAudit.c1_not_possible
+#print axioms AltRoute.GroundingChainAudit.c1_not_necessary
+#print axioms AltRoute.GroundingChainAudit.c1_not_possible_necessary
+#print axioms AltRoute.GroundingChainAudit.ground_obtains_not_actual
+#print axioms AltRoute.GroundingChainAudit.ground_obtains_not_possible
+#print axioms AltRoute.GroundingChainAudit.ground_obtains_not_necessary
+#print axioms AltRoute.GroundingChainAudit.ground_obtains_not_possible_necessary
+#print axioms AltRoute.GroundingChainAudit.c3_not_actual
+#print axioms AltRoute.GroundingChainAudit.c3_not_possible
+#print axioms AltRoute.GroundingChainAudit.c3_not_necessary
+#print axioms AltRoute.GroundingChainAudit.c3_not_possible_necessary
+#print axioms AltRoute.GroundingChainAudit.c4a_not_actual
+#print axioms AltRoute.GroundingChainAudit.c4a_not_possible
+#print axioms AltRoute.GroundingChainAudit.c4a_not_necessary
+#print axioms AltRoute.GroundingChainAudit.c4a_not_possible_necessary
+#print axioms AltRoute.GroundingChainAudit.datum_not_actual
+#print axioms AltRoute.GroundingChainAudit.datum_not_possible
+#print axioms AltRoute.GroundingChainAudit.datum_not_necessary
+#print axioms AltRoute.GroundingChainAudit.datum_not_possible_necessary
 end AltRoute.PublicCertificateAudit
+
