@@ -77,7 +77,7 @@ If a system is capable of reflecting upon its own limits (as in Gödel’s theor
 
 These axioms form the basis of the modal system used to derive the existence of Ω.
 
-#### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
+#### **2.1.1 The Constitutive Triad: Grounding, Termination, and Closure**
 
 Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.
 
