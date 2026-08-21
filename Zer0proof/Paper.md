@@ -103,17 +103,17 @@ These cases jointly establish the functional preservation test. Any rival consti
 
 This is the constitutive relation developed further in the successor architecture (§2.2) and expressed schematically in Corollary 3.1.2.
 
-#### Constitutive Characterization — Functional Preservation
+##### 2.1.1.1 Constitutive Synthesis — The Triad as the Minimum Architecture of Intelligibility
 
-The preceding analysis can be summarized as a characterization of adequate constitutive architectures.
+The preceding analysis can be summarized as a necessary constitutive characterization of intelligible contingent obtaining.
 
-Let $\mathrm{ICO}$ denote intelligible contingent obtaining, and let $R$ range over proposed constitutive architectures. Let $F_{A_1}$, $F_{A_3}$, and $F_{A_5}$ denote the functional roles expressed respectively by grounding, anti-regress, and meta-logical closure.
+Let $\mathrm{ICO}$ denote intelligible contingent obtaining, and let $R$ range over proposed constitutive architectures. Let $F_{A_1}$, $F_{A_3}$, and $F_{A_5}$ denote the functional roles expressed respectively by grounding, termination, and meta-logical closure.
 
 Define the class of architectures that fully preserve the explanandum:
 
 $$\mathcal{A}_{\mathrm{ICO}} := \left\lbrace R \mid \mathrm{Preserves}(R,\mathrm{ICO}) \right\rbrace$$
 
-The argument of this section establishes the following functional constraint:
+The constitutive analysis establishes:
 
 $$\forall R,\; R \in \mathcal{A}_{\mathrm{ICO}} \rightarrow \bigl(F_{A_1}(R) \land F_{A_3}(R) \land F_{A_5}(R)\bigr)$$
 
@@ -121,9 +121,19 @@ Equivalently:
 
 $$\boxed{\mathcal{A}_{\mathrm{ICO}} \subseteq \left\lbrace R \mid F_{A_1}(R) \land F_{A_3}(R) \land F_{A_5}(R) \right\rbrace}$$
 
-This does not require a rival architecture to adopt A1, A3, and A5 literally or under the same terminology. It requires it to realize their functional equivalents. If it fails to realize one of these roles, it no longer preserves the full explanandum. If it realizes all three, it reinstantiates the constitutive grounding structure under another description.
+This yields the complementary negative characterization:
 
-The successor architecture of §2.2 provides a concrete realization of this characterization.
+$$\boxed{\neg\bigl(F_{A_1}(R) \land F_{A_3}(R) \land F_{A_5}(R)\bigr) \rightarrow \neg\mathrm{Preserves}(R,\mathrm{ICO})}$$
+
+The constitutive triad is therefore not an optional explanatory supplement to an otherwise intact intelligible world. Grounding, termination, and closure jointly express the minimum architecture under which contingent obtaining can remain modally determinate, truth-apt, inferentially stable, and contrastively distinguishable.
+
+A rival architecture may reject the terminology of A1, A3, or A5, but it cannot remove their functional roles while preserving the full explanandum. If those roles are realized under another description, the constitutive triad has been reinstantiated. If even one of them is genuinely absent, the resulting structure no longer preserves intelligible contingent obtaining in the sense defined here.
+
+The alternatives are therefore exhaustive:
+
+$$\boxed{\text{functional preservation of the triad} \;\lor\; \text{loss of ICO}}$$
+
+The successor architecture of §2.2 provides a concrete realization of this minimum constitutive structure.
 
 ---
 ### 2.2 Successor-Based Grounding Architecture 
