@@ -10,6 +10,14 @@ for tool in "${required_tools[@]}"; do
   command -v "$tool" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $tool" >&2; exit 1; }
 done
 command -v "$lake_bin" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $lake_bin" >&2; exit 1; }
+lean_stub="$(mktemp -t zer0proof-lean-wrapper.XXXXXX)"
+cat > "$lean_stub" <<"EOF_LEAN_WRAPPER"
+#!/usr/bin/env bash
+"$lake_bin" -R env lean "$@"
+EOF_LEAN_WRAPPER
+chmod +x "$lean_stub"
+PATH="$(dirname "$lean_stub"):$PATH"
+command -v lean >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: lean" >&2; exit 1; }
 
 python_bin="${PYTHON_BIN:-$(command -v python3 || command -v python)}"
 if [[ -z "$python_bin" ]]; then
@@ -20,6 +28,8 @@ if ! "$python_bin" -c 'import sys'; then
   echo "[CI] ERROR: python interpreter validation failed: $python_bin" >&2
   exit 1
 fi
+
+CI_RC=0
 
 expected_toolchain="$(tr -d '\r\n' < lean-toolchain)"
 export ELAN_TOOLCHAIN="${ELAN_TOOLCHAIN:-$expected_toolchain}"
@@ -60,10 +70,7 @@ theorem Final_NE_Proof : True := by
 end AltRoute.Private
 EOF_NEG
 
-  (
-    cd "$source_root"
-    "$lake_bin" -R env lean -o "AltRoute/Private/Successor.olean" "AltRoute/Private/Successor.lean"
-  )
+  lean -o "$source_root/AltRoute/Private/Successor.olean" "$source_root/AltRoute/Private/Successor.lean"
   cp "$source_root/AltRoute/Private/Successor.olean" "$dist_root/AltRoute/TargetTypes.olean"
 
   local neg_output
@@ -104,6 +111,7 @@ hash_b="$(mktemp)"
 staging=""
 negative_control_workspace=""
 cleanup() {
+  [[ -z "${lean_stub:-}" ]] || rm -f "$lean_stub"
   rm -f "$hash_a" "$hash_b"
   [[ -z "$staging" ]] || rm -rf "$staging"
   [[ -z "$negative_control_workspace" ]] || rm -rf "$negative_control_workspace"
@@ -233,3 +241,4 @@ negative_control_workspace=""
 ( cd dist && sha256sum -c SHA256SUMS )
 
 echo "[CI] Done"
+echo "[CI] CI_RC=$CI_RC"
