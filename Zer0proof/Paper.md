@@ -528,7 +528,7 @@ This section is the technical bridge between the paper's argument and its formal
 
 **Public certificate / export surface.** The public repository publishes a deliberately weaker interface on top of the same verification architecture: `AltRoute.Interface`, `AltRoute.PublicTests`, and `AltRoute.CertificateAudit` export only the $\Box\Diamond$-compatibility layer, together with axiom-footprint printouts, a model witness (`TrivialModel`), and an explosion canary (`exFalsoQuodlibet`). This is an architectural separation between **public surface** and **internal theorem strength**, not a difference in what has been proved: the private kernel route contains the full $\Box$-strength results; the public interface exposes a scoped, independently auditable subset by design, protecting the internal proof route's IP while still letting third parties rebuild and inspect the exported layer ([dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist); [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
 
-The development uses two distinct Lean formalizations of S5. The HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1) uses explicit Kripke semantics: a type of worlds $W$ and an accessibility relation $R : W \to W \to \mathrm{Prop}$ declared as an equivalence relation (reflexive, symmetric, transitive), with $\Box$ and $\Diamond$ defined from $R$ in the usual way (Blackburn et al. 2001). The public `AltRoute.Modal` interface ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)) axiomatizes $\Box$ and $\Diamond$ abstractly as an opaque structure satisfying the K, T, 4, and 5 schemas directly, without an explicit worlds-and-accessibility representation — a Hilbert-style axiomatic presentation of S5. Each verified claim is scoped to the Lean artifact in which it is established. The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system in the relevant setting, allowing precise verification of logical entailments.
+The development uses one shared world-indexed S5 semantics across two proof layers. `superlaw.lean` imports `AltRoute.Interface` and aliases its modal operators to `Frame.Box` and `Frame.Dia`, so the HyperModal reductio suite and the public grounding route evaluate `\Box` and `\Diamond` in the same Kripke frame. The HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1) uses explicit Kripke semantics: a type of worlds $W$ and an accessibility relation $R : W \to W \to \mathrm{Prop}$ declared as an equivalence relation (reflexive, symmetric, transitive), with $\Box$ and $\Diamond$ defined from $R$ in the usual way (Blackburn et al. 2001). The public `AltRoute.Modal` interface ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)) axiomatizes $\Box$ and $\Diamond$ abstractly as an opaque structure satisfying the K, T, 4, and 5 schemas directly, without an explicit worlds-and-accessibility representation — a Hilbert-style axiomatic presentation of S5. Each verified claim is scoped to the Lean artifact in which it is established. The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system in the relevant setting, allowing precise verification of logical entailments.
 
 Key core definitions and representative theorems are reproduced in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route); the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
@@ -974,7 +974,7 @@ We can state this as follows.
 
 **Terminology note — three distinct notions of "Positive."** This paper uses "Positive"/"Pos" for three formally different objects, which must not be silently identified:
 
-1. The **public Ascendant Route interface** predicate `Positive` ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate), `Interface.lean`): an abstract typeclass constrained only by monotonicity, with no built-in reference to Ω.
+1. The **public Ascendant Route interface** predicate `Positive` ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate), `Interface.lean`): an abstract typeclass carrying monotonicity together with `Positive.proper`, which forbids positivity of the constantly false predicate, and with no built-in reference to Ω.
 2. The **HyperModal Lean-facing definition** ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1.4): `Positive Ω P := ∀w, Ω w → P w` — defined *extensionally in terms of Ω*, i.e. exactly "P holds wherever Ω holds." This is deliberately Ω-relative by construction; it is not meant to be non-circular with respect to Ω, and no claim to the contrary is made about it.
 3. The **A2 admissibility notion** used in this subsection's argument ([§2.1](#21-hyper-modal-axioms) (A2), [§6.2](#62-ω-as-factory-of-positive-properties-singularity-corollary) above): a stability/non-defeat constraint on which properties are admissible at all, prior to and independent of asking which properties Ω happens to have.
 
@@ -1219,6 +1219,8 @@ Such a system would not only ask which conclusion is statistically likely or loc
 
 The research task is to construct an embedding $E_R$ under which the grounding order becomes operational for reasoning.
 
+What this section publishes is therefore a research blueprint, not the engine. The signatures $E_R$, $meas$ and $J_R$ and the descent invariant fix the *shape* every component must have and the correctness condition each must satisfy; they do not supply a computable $meas$, a concrete state encoding, or a rule that efficiently finds a guaranteed descending step. Those remain to be constructed.
+
 A resulting trajectory would have the form:
 
 $$
@@ -1384,6 +1386,9 @@ $$
 
 Such a result would establish Ω-directed computation as a polynomially efficient method for reaching globally optimal states for an NP-hard optimization problem. Its significance would lie in the operational role of the grounding measure: $meas$ would become a computationally exploitable direction whose descent carries sufficient global information to determine an optimum without prior knowledge of that optimum.
 
+This implication should be read as a complexity consequence, not an IP protection mechanism. It records how strong a uniform polynomial-time Ω-search would be; since $P 
+eq NP$ is unproven, it offers no guarantee against reconstruction, and it also tells a reader precisely which property of the construction would be revolutionary.
+
 
 The computational Ω-search programme therefore asks:
 
@@ -1523,7 +1528,7 @@ The purpose of this public surface is not to expose all internal derivations, bu
 
 The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form $□◇p$ (necessary possibility) within an S5 framework.
 
-No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃!x …) are established only in the private kernel route and are not exported.
+No public claim is made that □◇p implies □p in S5. The public repository now carries three distinct layers. The **public compatibility API** (`necPossible_of_Pos`) is the deliberately weak □◇ result. The **public C5 grounding proof surface** (`GroundingChain.C5_NE`, `C5_BoxUnique`, `C5_RigidWitness`) establishes the strong necessity and uniqueness results from the explicit premise context C1, `GroundObtains`, C3 and C4a, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. The **private successor route** reaches the same three results independently and is not distributed.
 
 To prevent accidental leakage of stronger claims, the build system includes dedicated negative guards: CI targets are designed to fail if restricted theorems become exportable. The absence of such failures constitutes a positive safety guarantee. The compiled .olean artifacts function as build-verifiable proof objects: any modification to exported content requires recompilation under the same pinned toolchain and is detectable via reproducible builds and hash comparison.
 
@@ -1531,13 +1536,13 @@ Known logical failure modes are explicitly addressed at the public level for the
 
 Accordingly, this appendix certifies only the integrity and scope of the public API for the exported $\square\Diamond$-fragment: it demonstrates that the exported framework does not accidentally assert stronger claims than intended (via the negative guards described in A.2.1). It does not claim to expose the full internal proofs, and — subject to the qualification below — it does not by itself establish consistency or non-triviality of the complete audited context (modality, positivity, `PosPossibility`, grounding, and the Ω-specific assumptions, taken together).
 
-**Existing public model witnesses establish non-triviality only for the modal fragment for which they were constructed.** `TrivialModel` witnesses that the bare `Modal` structure (K, T, 4, 5) is jointly satisfiable at the meta-level; it is not treated as a joint satisfiability witness for the combined context involving modality, positivity, `PosPossibility`, grounding, and the relevant Ω-specific assumptions. Consistency and non-triviality of the complete audited context remain **PENDING FULL-CONTEXT AUDIT V2** until Gate 0 and the JointModel certificate have passed.
+**Existing public model witnesses establish non-triviality only for the modal fragment for which they were constructed.** `TrivialModel` witnesses that the bare `Modal` structure (K, T, 4, 5) is jointly satisfiable at the meta-level; it is not treated as a joint satisfiability witness for the combined context involving modality, positivity, `PosPossibility`, grounding, and the relevant Ω-specific assumptions. `GroundingModel` closes this gap for the constitutive C5 chain: it instantiates C1, `GroundObtains`, C2, C3 and C4a jointly in a non-collapsed two-world frame with genuine contingency present, and derives □∃!x Ω(x) inside that model. Consistency and non-triviality of the *complete* combined Ω-theory remain open until Gate 0 and the JointModel certificate have passed.
 
-**Gate 0 status: PENDING.** The public bridge axiom `PosPossibility` is currently declared without restriction to a specific, certified positivity context: `axiom PosPossibility {ι : Type u} (M : Modal) [Positive ι] (P : ι → Prop) : Positive.Pos P → M.Dia (∃ x, P x)`. Because `Positive ι` requires only monotonicity of `Pos` and no independent realizability content, an adversarial instance (e.g. `Positive Unit` with `Pos := fun _ => True`) is compatible with the class as stated and would let `PosPossibility` be invoked to derive `M.Dia (∃ _ : Unit, False)` from `trivial`, which is unsatisfiable in a non-trivial model. This does not mean `False` has been derived anywhere in the current development — no such derivation is exported or claimed — but it means the axiom, as currently typed, is broader than the argument requires and has not yet been hardened against this class of hostile instantiation. Gate 0 extends the public robustness certification of the generic `PosPossibility` bridge against hostile instantiations of this kind; it does not concern the correctness of the recorded axiom-footprint entries for `PosPossibility` in [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit). That footprint remains the accurate dependency record of the kernel-verified theorem — Gate 0 is about the strength and public hardening of the bridge itself, and until that hardening is complete, no claim of full 12-attack-vector robustness is made for the public surface.
+**Gate 0 status: PASS.** The public interface no longer declares `PosPossibility` as a global axiom. `Positive` carries `Positive.proper`, hostile empty-domain instances fail (including forced variants), and the modal interface is a world-indexed `Frame` whose S5 laws are derived theorems rather than caller-supplied fields. Positivity is absent from the C5 route entirely, so it is no longer load-bearing for any strong result. Historical pre-W10 records of this gate are retained in the audit history rather than as current status.
 
 #### A.2.1 Scope Conformance of the Public Verification Surface  
 
-The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in [Appendix A.2](#a2-public-verification-surface-and-scope-certificate). In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than exporting stronger necessity results such as □∃x Ω(x), □∃!x Ω(x), or rigid-witness statements of the form ∃x □∀y (Ω(y) ↔ y = x).
+The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in [Appendix A.2](#a2-public-verification-surface-and-scope-certificate). In particular, the exported compatibility interface certifies the intended S5-compatibility layer, while the public C5 grounding proof surface separately certifies the strong results in the form □◇∃x P(x), rather than exporting stronger necessity results such as □∃x Ω(x), □∃!x Ω(x), or rigid-witness statements of the form ∃x □∀y (Ω(y) ↔ y = x).
 
 **Crucially, the private kernel route constructively establishes these stronger necessity and uniqueness results.** They exist as kernel-checked proof objects in the private build context, as evidenced by a successful Lean compilation and the axiom-footprint audit recorded in [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit). Their non-appearance in the public interface is therefore not a limitation of provability, but an intentional restriction of export.
 
@@ -2505,9 +2510,9 @@ The **successor‑like** pattern appears in the form `f (n + 1)` but serves the 
 
 ---
 
-### G.2 Constructive Successor Function
+### G.2 Classical Witness-Selecting Successor Sketch
 
-A *constructive* operator can express this relationship explicitly:
+A witness-selecting operator can express this relationship explicitly. Note that `Classical.choose` performs classical witness selection from an existence proof; it is not a computable search procedure, and `#eval` extracts no algorithmic grounding engine from it:
 
 ```lean
 -- Successor function for grounding chains
