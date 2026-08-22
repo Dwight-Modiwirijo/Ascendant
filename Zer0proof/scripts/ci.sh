@@ -70,7 +70,10 @@ theorem Final_NE_Proof : True := by
 end AltRoute.Private
 EOF_NEG
 
-  lean -o "$source_root/AltRoute/Private/Successor.olean" "$source_root/AltRoute/Private/Successor.lean"
+  (
+    cd "$source_root"
+    lean -o "$source_root/AltRoute/Private/Successor.olean" "$source_root/AltRoute/Private/Successor.lean"
+  )
   cp "$source_root/AltRoute/Private/Successor.olean" "$dist_root/AltRoute/TargetTypes.olean"
 
   local neg_output
