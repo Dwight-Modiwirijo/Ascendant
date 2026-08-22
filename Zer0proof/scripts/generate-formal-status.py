@@ -296,7 +296,9 @@ def main() -> int:
 
     lean_version = run([lake, "env", "lean", "--version"]).stdout.strip()
     toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
-    commit = run(["git", "rev-parse", "HEAD"]).stdout.strip()
+    commit = os.environ.get("FORMAL_STATUS_GIT_COMMIT", "").strip()
+    if not commit:
+        commit = run(["git", "rev-parse", "HEAD"]).stdout.strip()
     assembly_root = REPO / ".lake" / "build" / "lib" / "lean"
     assemblies = []
     for relative in ASSEMBLIES:

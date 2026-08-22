@@ -38,7 +38,7 @@ bash scripts/ci.sh
 For an isolated command-line audit environment:
 
 ```bash
-docker build -t zer0proof-audit:local .
+docker build --build-arg ASCENDANT_COMMIT=$(git rev-parse HEAD) -t zer0proof-audit:local .
 docker run --rm -it zer0proof-audit:local
 ```
 
