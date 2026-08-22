@@ -66,7 +66,7 @@ The actual Final_NE_Proof and Final_BoxUnique_Proof footprints remain unavailabl
 
 ## HyperModal footprints
 
-superlaw.lean now imports AscendantRoute.Interface and defines necessarily and possibly directly as Frame.Box and Frame.Dia. The before/after footprints of all 19 existing theorems are identical:
+HyperModal.lean now imports AscendantRoute.Interface and defines necessarily and possibly directly as Frame.Box and Frame.Dia. The before/after footprints of all 19 existing theorems are identical:
 
 | Theorem | Axiom footprint |
 |---|---|
@@ -115,7 +115,7 @@ Two clean builds and a third build after LF normalization were byte-identical. F
 | AscendantRoute/TargetTypes.olean | 1c8d94ca53b8cf35c40125567f03bcea6fde856171fedea0263ce900e0102ccf |
 | AscendantRoute/GroundingAudit.olean | ebd25cff9710316254a661842eeb516418c14609794264ef3c5fbeefc3ba7fa2 |
 | AscendantRoute/PublicCertificateAudit.olean | f8a7b9a845594d6f1ba06890ae78df2ca0d23e96cc4f444550582d053f315c47 |
-| superlaw.olean | 2dbfc52936283f7ee892cf1d55e606fa68be73320c8c3953f381aec118632a68 |
+| HyperModal.olean | 2dbfc52936283f7ee892cf1d55e606fa68be73320c8c3953f381aec118632a68 |
 
 ## Unproved work
 

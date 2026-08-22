@@ -15,7 +15,7 @@ require mathlib from git
   `AscendantRoute.GroundingChain,
   `AscendantRoute.GroundingChainAudit,
   `AscendantRoute.GroundingModel,
-  `superlaw,
+  `HyperModal,
   `AscendantRoute.PublicCertificateAudit
   ]
 

@@ -180,7 +180,7 @@ all of the following. Every item is mechanical.
 
 5. NOT A CANARY. The footprint must not consist of exactly the one axiom
    being "refuted". That pattern -- `H.foo_reductio` depending only on
-   `H.foo` -- is `A, ¬A ⊢ ⊥`, and every `*_reductio` in `superlaw.lean`
+   `H.foo` -- is `A, ¬A ⊢ ⊥`, and every `*_reductio` in `HyperModal.lean`
    currently has it. A real derivation shows the OTHER premises and not the
    conclusion.
 

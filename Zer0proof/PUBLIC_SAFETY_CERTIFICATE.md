@@ -10,7 +10,7 @@ No public claim is made about the current internal build status of private `Fina
 
 ## Modal semantics
 
-The public interface defines an S5 Kripke `Frame` with an accessibility relation, reflexivity, transitivity, and symmetry. `Box` and `Dia` are definitions over world-indexed propositions. T, 4, 5, K, duality, and actual-to-possible are derived theorems. `superlaw.lean` imports the same interface, so there is one shared modal semantics.
+The public interface defines an S5 Kripke `Frame` with an accessibility relation, reflexivity, transitivity, and symmetry. `Box` and `Dia` are definitions over world-indexed propositions. T, 4, 5, K, duality, and actual-to-possible are derived theorems. `HyperModal.lean` imports the same interface, so there is one shared modal semantics.
 
 ## Public result boundary
 

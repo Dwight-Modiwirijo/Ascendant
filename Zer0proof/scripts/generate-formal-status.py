@@ -94,7 +94,7 @@ ASSEMBLIES = [
     "AscendantRoute/GroundingChainAudit.olean",
     "AscendantRoute/GroundingModel.olean",
     "AscendantRoute/PublicCertificateAudit.olean",
-    "superlaw.olean",
+    "HyperModal.olean",
 ]
 
 

@@ -101,7 +101,7 @@ snapshot_public_assemblies() {
   for module in "${public_modules[@]}"; do
     sha256sum ".lake/build/lib/lean/AscendantRoute/$module.olean" >> "$output"
   done
-  sha256sum ".lake/build/lib/lean/superlaw.olean" >> "$output"
+  sha256sum ".lake/build/lib/lean/HyperModal.olean" >> "$output"
   sort -o "$output" "$output"
 }
 
@@ -138,7 +138,7 @@ fi
 "$lake_bin" -R env lean AscendantRoute/GroundingChain.lean
 "$lake_bin" -R env lean AscendantRoute/GroundingChainAudit.lean
 "$lake_bin" -R env lean AscendantRoute/GroundingModel.lean
-"$lake_bin" -R env lean superlaw.lean
+"$lake_bin" -R env lean HyperModal.lean
 
 echo "[CI] Negative guards"
 run_negative_test tests/Reject_HostilePositiveEmpty.lean "fields missing: 'proper'"
@@ -191,14 +191,14 @@ public_sources=(
 for src in "${public_sources[@]}"; do
   cp "$src" "$staging/$src"
 done
-cp superlaw.lean Paper.md README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE \
+cp HyperModal.lean Paper.md README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE \
   lean-toolchain lake-manifest.json "$staging/"
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 
 for module in "${public_modules[@]}"; do
   cp ".lake/build/lib/lean/AscendantRoute/$module.olean" "$staging/AscendantRoute/"
 done
-cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
+cp ".lake/build/lib/lean/HyperModal.olean" "$staging/"
 
 LAKE_BIN="${lake_bin}" "$python_bin" scripts/generate-formal-status.py --reproducible \
   --output-json "$staging/formal-status.json" \
