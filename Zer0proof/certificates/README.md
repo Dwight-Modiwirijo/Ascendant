@@ -5,7 +5,7 @@ assemblies. In particular, no private successor implementation, private proof
 source, or compiled private proof tree belongs in this directory.
 
 The public strong Omega results are rebuilt from source through
-`AltRoute.GroundingChain`; `AltRoute.GroundingModel` supplies the public
+`AscendantRoute.GroundingChain`; `AscendantRoute.GroundingModel` supplies the public
 satisfiability witness. Any private successor route uses a separate internal CI
 and may publish only non-proof-bearing high-level metadata.
 

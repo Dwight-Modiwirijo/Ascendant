@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 -- This historical hostile instance must fail: it cannot provide `Positive.proper`.
 instance hostilePositiveEmpty : Positive Empty where
@@ -13,4 +13,4 @@ theorem empty_positive : Positive.Pos (fun _ : Empty => False) := by
   show True
   trivial
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

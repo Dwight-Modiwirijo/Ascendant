@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /--
 Forcing the missing `symm` field exposes the concrete impossible direction:
@@ -19,4 +19,4 @@ def forcedHostileFrame : Frame Bool :=
     intro w x hwx
     cases w <;> cases x <;> simp_all }
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

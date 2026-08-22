@@ -1,5 +1,5 @@
 /-
-  AltRoute/TargetTypes.lean
+  AscendantRoute/TargetTypes.lean
 
   PUBLIC TARGET AND AUDIT VOCABULARY. Statements only.
 
@@ -18,9 +18,9 @@
   That last sentence is the sharpest acceptance criterion in the whole paper,
   and it is the paper's own. See `AUDIT CHECKLIST` at the bottom.
 -/
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.Target
+namespace AscendantRoute.Target
 
 universe u v
 
@@ -54,7 +54,7 @@ def Terminus (F : Frame W) (q : W -> Prop) : Prop :=
 
 These are fixed by Paper 3.1 and by `README.md`. They are not negotiable:
 the strong certificates must inhabit exactly these, with `Box`/`Dia` being
-`AltRoute.Frame.Box`/`AltRoute.Frame.Dia` and nothing else. -/
+`AscendantRoute.Frame.Box`/`AscendantRoute.Frame.Dia` and nothing else. -/
 
 /-- Necessary-existence target: □∃x Ω(x), at the selected world. -/
 def NE_Target (F : Frame W) (Omega : D -> W -> Prop) (w : W) : Prop :=
@@ -79,7 +79,7 @@ Paper 3.2 C1..C4 plus C6. Every field is an explicit hypothesis, so
 `#print` on any theorem taking this bundle displays the entire input.
 No field may be strengthened into Omega-existence: see 4.
 
-`coalescence` is the AltRoute minimality condition of Paper 2.2.2 (C4).
+`coalescence` is the AscendantRoute minimality condition of Paper 2.2.2 (C4).
 `terminus_is_Omega` is C6 read as a *definition* of the Omega predicate --
 it says Omega denotes the terminus, not that a terminus exists. -/
 structure GroundingPremises (F : Frame W) (Omega : D -> W -> Prop)
@@ -169,7 +169,7 @@ all of the following. Every item is mechanical.
    axioms or as discharged hypotheses of `GroundingPremises`.
 
 4. FOOTPRINT -- MUST NOT CONTAIN. None of:
-     `AltRoute.PosPossibility`      (Paper 3: A2 is not required for NE/uniqueness)
+     `AscendantRoute.PosPossibility`      (Paper 3: A2 is not required for NE/uniqueness)
      `HyperModal.perfect_being_exists`
      `HyperModal.consciousness_axiom`
      `sorryAx`
@@ -194,4 +194,4 @@ all of the following. Every item is mechanical.
    that only works in the one-world frame is not a proof.
 -/
 
-end AltRoute.Target
+end AscendantRoute.Target

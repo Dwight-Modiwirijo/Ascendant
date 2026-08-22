@@ -7,16 +7,16 @@ require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.20.1" -- match toolchain
 
 
-@[default_target] lean_lib AltRoute where
-  roots := #[`AltRoute.Interface,
-  `AltRoute.PublicTests,
-  `AltRoute.TargetTypes,
-  `AltRoute.GroundingAudit,
-  `AltRoute.GroundingChain,
-  `AltRoute.GroundingChainAudit,
-  `AltRoute.GroundingModel,
+@[default_target] lean_lib AscendantRoute where
+  roots := #[`AscendantRoute.Interface,
+  `AscendantRoute.PublicTests,
+  `AscendantRoute.TargetTypes,
+  `AscendantRoute.GroundingAudit,
+  `AscendantRoute.GroundingChain,
+  `AscendantRoute.GroundingChainAudit,
+  `AscendantRoute.GroundingModel,
   `superlaw,
-  `AltRoute.PublicCertificateAudit
+  `AscendantRoute.PublicCertificateAudit
   ]
 
 lean_lib VacuousCanaries where

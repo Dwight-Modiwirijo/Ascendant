@@ -28,13 +28,13 @@ if ! diff -u "$expected" "$actual"; then
   exit 1
 fi
 
-if find "$root" -type f | grep -E '/(AltRoute/Private|Private/Successor|StrongCertificates|Final_(NE|BoxUnique|RigidWitness)_Proof)' >/dev/null; then
+if find "$root" -type f | grep -E '/(AscendantRoute/Private|Private/Successor|StrongCertificates|Final_(NE|BoxUnique|RigidWitness)_Proof)' >/dev/null; then
   echo "[LEAK] forbidden private path in distribution" >&2
   exit 1
 fi
 
 while IFS= read -r -d '' artifact; do
-  if grep -a -E 'Final_(NE|BoxUnique|RigidWitness)_Proof|StrongCertificates|AltRoute\.Private|Private\.Successor' "$artifact" >/dev/null 2>&1; then
+  if grep -a -E 'Final_(NE|BoxUnique|RigidWitness)_Proof|StrongCertificates|AscendantRoute\.Private|Private\.Successor' "$artifact" >/dev/null 2>&1; then
     echo "[LEAK] forbidden private symbol in public assembly: $artifact" >&2
     exit 1
   fi

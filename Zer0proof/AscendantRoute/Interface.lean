@@ -1,4 +1,4 @@
-namespace AltRoute
+namespace AscendantRoute
 
 universe u v
 
@@ -127,4 +127,4 @@ theorem somePosNecPossible_of_exists {W : Type u} {iota : Type v}
   rcases h with ⟨P, hPos⟩
   exact ⟨P, hPos, necPossible_of_Pos (iota := iota) F w hPos⟩
 
-end AltRoute
+end AscendantRoute

@@ -1,5 +1,5 @@
-import AltRoute.GroundingAudit
-import AltRoute.GroundingChain
+import AscendantRoute.GroundingAudit
+import AscendantRoute.GroundingChain
 
 /-!
 W12 audit matrix for the actual C5 premise surface.
@@ -18,12 +18,12 @@ individual domain is empty. Consequently that single premise alone entails
 none of the four forbidden targets.
 -/
 
-namespace AltRoute.GroundingChainAudit
+namespace AscendantRoute.GroundingChainAudit
 
-open AltRoute
-open AltRoute.Target
-open AltRoute.GroundingAudit
-open AltRoute.GroundingChain
+open AscendantRoute
+open AscendantRoute.Target
+open AscendantRoute.GroundingAudit
+open AscendantRoute.GroundingChain
 
 /-- The audited C5 premise names in this public package. -/
 def W12_PremiseNames : List String := [
@@ -45,11 +45,11 @@ def W12_TargetNames : List String := [
 /-- Exact audit manifest used by the formal status generator and CI. -/
 def W12_PremiseAuditManifest : List (String × String) :=
   [
-    ("C1", "AltRoute.GroundingChainAudit.c1_refutes_all"),
-    ("GroundObtains", "AltRoute.GroundingChainAudit.ground_obtains_refutes_all"),
-    ("C3", "AltRoute.GroundingChainAudit.c3_refutes_all"),
-    ("C4a", "AltRoute.GroundingChainAudit.c4a_refutes_all"),
-    ("datum_obtains", "AltRoute.GroundingChainAudit.datum_obtains_refutes_all")
+    ("C1", "AscendantRoute.GroundingChainAudit.c1_refutes_all"),
+    ("GroundObtains", "AscendantRoute.GroundingChainAudit.ground_obtains_refutes_all"),
+    ("C3", "AscendantRoute.GroundingChainAudit.c3_refutes_all"),
+    ("C4a", "AscendantRoute.GroundingChainAudit.c4a_refutes_all"),
+    ("datum_obtains", "AscendantRoute.GroundingChainAudit.datum_obtains_refutes_all")
   ]
 
 def NoGround (_ _ : Unit -> Prop) : Prop := False
@@ -235,5 +235,5 @@ theorem datum_not_possible_necessary :
 #print axioms c4a_refutes_all
 #print axioms datum_obtains_refutes_all
 
-end AltRoute.GroundingChainAudit
+end AscendantRoute.GroundingChainAudit
 

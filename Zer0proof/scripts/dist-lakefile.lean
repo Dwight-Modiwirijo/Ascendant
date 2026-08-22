@@ -8,11 +8,11 @@ require mathlib from git
 
 @[default_target] lean_lib CertificateSurface where
   roots := #[
-    `AltRoute.TargetTypes,
-    `AltRoute.GroundingAudit,
-    `AltRoute.GroundingChain,
-    `AltRoute.GroundingChainAudit,
-    `AltRoute.GroundingModel,
+    `AscendantRoute.TargetTypes,
+    `AscendantRoute.GroundingAudit,
+    `AscendantRoute.GroundingChain,
+    `AscendantRoute.GroundingChainAudit,
+    `AscendantRoute.GroundingModel,
     `superlaw,
-    `AltRoute.PublicCertificateAudit
+    `AscendantRoute.PublicCertificateAudit
   ]

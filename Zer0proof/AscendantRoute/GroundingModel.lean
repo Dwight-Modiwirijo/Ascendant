@@ -1,7 +1,7 @@
-import AltRoute.GroundingChain
+import AscendantRoute.GroundingChain
 
-namespace AltRoute.GroundingModel
-open AltRoute AltRoute.GroundingChain
+namespace AscendantRoute.GroundingModel
+open AscendantRoute AscendantRoute.GroundingChain
 
 /-- Two worlds, universal accessibility. -/
 def F : Frame Bool :=
@@ -59,4 +59,4 @@ theorem m_conclusion :
 #print axioms m_C4a
 #print axioms m_not_collapsed
 #print axioms m_conclusion
-end AltRoute.GroundingModel
+end AscendantRoute.GroundingModel

@@ -1,7 +1,7 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.GroundingChain
-open AltRoute
+namespace AscendantRoute.GroundingChain
+open AscendantRoute
 universe u v
 variable {W : Type u} {D : Type v}
 
@@ -123,4 +123,4 @@ theorem C5_RigidWitness (Omega : D -> W -> Prop)
 #print axioms C5_NE
 #print axioms C5_BoxUnique
 #print axioms C5_RigidWitness
-end AltRoute.GroundingChain
+end AscendantRoute.GroundingChain

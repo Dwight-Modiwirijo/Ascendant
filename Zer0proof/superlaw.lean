@@ -1,4 +1,4 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
 /-!
   Hyper‑Formal Modal Logical Framework (S5 + Ultimate Axioms)
@@ -32,7 +32,7 @@ universe u
 
 namespace HyperModal
 
-open AltRoute
+open AscendantRoute
 
 variable (W : Type u)
 variable (F : Frame W)

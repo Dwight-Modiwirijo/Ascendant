@@ -1,31 +1,31 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
 /-!
 `PublicTests` is the readable public audit surface for the world-indexed
-AltRoute interface. The public claims quantify over every S5 frame and every
+AscendantRoute interface. The public claims quantify over every S5 frame and every
 selected world. The concrete Bool frame below proves that this interface is
 not restricted to collapsed one-world semantics.
 -/
 
-namespace AltRoute.PublicTests
+namespace AscendantRoute.PublicTests
 
-open AltRoute
+open AscendantRoute
 
 universe u v
 
 -- The modal laws are derived declarations, not user-supplied structure fields.
-#check AltRoute.Frame.ax_T
-#check AltRoute.Frame.ax_4
-#check AltRoute.Frame.ax_5
-#check AltRoute.Frame.K
-#check AltRoute.Frame.duality
-#check AltRoute.Frame.actual_possible
+#check AscendantRoute.Frame.ax_T
+#check AscendantRoute.Frame.ax_4
+#check AscendantRoute.Frame.ax_5
+#check AscendantRoute.Frame.K
+#check AscendantRoute.Frame.duality
+#check AscendantRoute.Frame.actual_possible
 
-#check AltRoute.exists_of_positive
-#check AltRoute.PosPossibility
-#check AltRoute.necPossible_of_Pos
-#check AltRoute.SomePosNecPossible
-#check AltRoute.somePosNecPossible_of_exists
+#check AscendantRoute.exists_of_positive
+#check AscendantRoute.PosPossibility
+#check AscendantRoute.necPossible_of_Pos
+#check AscendantRoute.SomePosNecPossible
+#check AscendantRoute.somePosNecPossible_of_exists
 
 section PublicApi
 
@@ -258,19 +258,19 @@ example : Not (forceful_evaluator "1=1" = InferenceResult.Undecidable) := by
 #print axioms traverse_to_omega
 #print axioms evaluate_statement
 #print axioms forceful_evaluator
-#print axioms AltRoute.Frame.ax_T
-#print axioms AltRoute.Frame.ax_4
-#print axioms AltRoute.Frame.ax_5
-#print axioms AltRoute.Frame.K
-#print axioms AltRoute.Frame.duality
-#print axioms AltRoute.Frame.actual_possible
-#print axioms AltRoute.false_not_positive
-#print axioms AltRoute.empty_extension_not_positive
-#print axioms AltRoute.exists_of_positive
-#print axioms AltRoute.PosPossibility
-#print axioms AltRoute.necPossible_of_Pos
-#print axioms AltRoute.SomePosNecPossible
-#print axioms AltRoute.somePosNecPossible_of_exists
+#print axioms AscendantRoute.Frame.ax_T
+#print axioms AscendantRoute.Frame.ax_4
+#print axioms AscendantRoute.Frame.ax_5
+#print axioms AscendantRoute.Frame.K
+#print axioms AscendantRoute.Frame.duality
+#print axioms AscendantRoute.Frame.actual_possible
+#print axioms AscendantRoute.false_not_positive
+#print axioms AscendantRoute.empty_extension_not_positive
+#print axioms AscendantRoute.exists_of_positive
+#print axioms AscendantRoute.PosPossibility
+#print axioms AscendantRoute.necPossible_of_Pos
+#print axioms AscendantRoute.SomePosNecPossible
+#print axioms AscendantRoute.somePosNecPossible_of_exists
 #print axioms box_not_identity
 #print axioms contingency_witness
 #print axioms certificate_not_trivial
@@ -283,4 +283,4 @@ example : Not (forceful_evaluator "1=1" = InferenceResult.Undecidable) := by
 #print axioms dia_not_constantly_false
 #print axioms dia_not_constantly_true
 
-end AltRoute.PublicTests
+end AscendantRoute.PublicTests

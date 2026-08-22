@@ -1,0 +1,12 @@
+.git
+.lake
+dist
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.log
+*.tmp
+__pycache__
+*.pyc

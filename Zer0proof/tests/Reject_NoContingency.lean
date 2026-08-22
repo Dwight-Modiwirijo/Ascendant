@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /-- Contingent witnesses can occur at different accessible worlds. -/
 theorem no_contingency_anywhere {W : Type} (F : Frame W)
@@ -10,4 +10,4 @@ theorem no_contingency_anywhere {W : Type} (F : Frame W)
   fail_if_success exact hNotPhi hPhi
   fail "Reject_NoContingency.no_contingency_anywhere: witnesses have different world indices"
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

@@ -1,4 +1,4 @@
-import AltRoute.TargetTypes
+import AscendantRoute.TargetTypes
 
 /-!
 Mechanical W11 audit of the paper-level grounding premise bundle.
@@ -9,10 +9,10 @@ satisfiable without any Omega witness, while C1 and C2 are jointly inconsistent
 under the published extensional `Ground` definition.
 -/
 
-namespace AltRoute.GroundingAudit
+namespace AscendantRoute.GroundingAudit
 
-open AltRoute
-open AltRoute.Target
+open AscendantRoute
+open AscendantRoute.Target
 
 universe u v
 
@@ -277,24 +277,24 @@ theorem terminus_is_Omega_field_refutes_all :
 
 /-! ## Acceptance and finding footprints -/
 
-#print axioms AltRoute.Target.Nec
-#print axioms AltRoute.Target.Cont
-#print axioms AltRoute.Target.Ground
-#print axioms AltRoute.Target.StrictGround
-#print axioms AltRoute.Target.Terminus
-#print axioms AltRoute.Target.NE_Target
-#print axioms AltRoute.Target.UniqueAt
-#print axioms AltRoute.Target.BoxUnique_Target
-#print axioms AltRoute.Target.RigidWitness_Target
-#print axioms AltRoute.Target.GroundingPremises
-#print axioms AltRoute.Target.YieldsActualOmega
-#print axioms AltRoute.Target.YieldsPossibleOmega
-#print axioms AltRoute.Target.YieldsNecessaryOmega
-#print axioms AltRoute.Target.YieldsPossibleNecessaryOmega
-#print axioms AltRoute.Target.Obligation_NE
-#print axioms AltRoute.Target.Obligation_BoxUnique
-#print axioms AltRoute.Target.Obligation_RigidWitness
-#print axioms AltRoute.Target.Obligation_BoxUnique_Reductio
+#print axioms AscendantRoute.Target.Nec
+#print axioms AscendantRoute.Target.Cont
+#print axioms AscendantRoute.Target.Ground
+#print axioms AscendantRoute.Target.StrictGround
+#print axioms AscendantRoute.Target.Terminus
+#print axioms AscendantRoute.Target.NE_Target
+#print axioms AscendantRoute.Target.UniqueAt
+#print axioms AscendantRoute.Target.BoxUnique_Target
+#print axioms AscendantRoute.Target.RigidWitness_Target
+#print axioms AscendantRoute.Target.GroundingPremises
+#print axioms AscendantRoute.Target.YieldsActualOmega
+#print axioms AscendantRoute.Target.YieldsPossibleOmega
+#print axioms AscendantRoute.Target.YieldsNecessaryOmega
+#print axioms AscendantRoute.Target.YieldsPossibleNecessaryOmega
+#print axioms AscendantRoute.Target.Obligation_NE
+#print axioms AscendantRoute.Target.Obligation_BoxUnique
+#print axioms AscendantRoute.Target.Obligation_RigidWitness
+#print axioms AscendantRoute.Target.Obligation_BoxUnique_Reductio
 
 #print axioms ground_refl
 #print axioms necessary_ground_excludes_contingency
@@ -313,4 +313,4 @@ theorem terminus_is_Omega_field_refutes_all :
 #print axioms coalescence_field_refutes_all
 #print axioms terminus_is_Omega_field_refutes_all
 
-end AltRoute.GroundingAudit
+end AscendantRoute.GroundingAudit

@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 -- Supplying every field exposes the genuinely impossible obligation.
 instance forcedPositiveEmpty : Positive Empty where
@@ -12,4 +12,4 @@ instance forcedPositiveEmpty : Positive Empty where
     show ¬ True
     assumption
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

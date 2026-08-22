@@ -73,10 +73,10 @@ def main() -> int:
         "README.md": [
             "missing source-free certificate assembly",
             "compiled declarations and their dependencies are the intended public certification surface",
-            "certificates/AltRoute/StrongCertificates.olean",
+            "certificates/AscendantRoute/StrongCertificates.olean",
         ],
         "PUBLIC_SAFETY_CERTIFICATE.md": [
-            "AltRoute.CertificateAudit",
+            "AscendantRoute.CertificateAudit",
             "pins every certificate assembly",
             "strong phase runs only when the assembly is present",
         ],

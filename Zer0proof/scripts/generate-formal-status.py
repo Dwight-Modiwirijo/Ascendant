@@ -15,39 +15,39 @@ import sys
 
 REPO = Path(__file__).resolve().parents[1]
 THEOREMS = [
-    "AltRoute.GroundingChain.C5_NE",
-    "AltRoute.GroundingChain.C5_BoxUnique",
-    "AltRoute.GroundingChain.C5_RigidWitness",
+    "AscendantRoute.GroundingChain.C5_NE",
+    "AscendantRoute.GroundingChain.C5_BoxUnique",
+    "AscendantRoute.GroundingChain.C5_RigidWitness",
 ]
 EXPECTED_AXIOMS = ["propext", "Classical.choice", "Quot.sound"]
 QUESTION_AUDITS = [
-    "AltRoute.GroundingChainAudit.c1_refutes_all",
-    "AltRoute.GroundingChainAudit.ground_obtains_refutes_all",
-    "AltRoute.GroundingChainAudit.c3_refutes_all",
-    "AltRoute.GroundingChainAudit.c4a_refutes_all",
-    "AltRoute.GroundingChainAudit.datum_obtains_refutes_all",
+    "AscendantRoute.GroundingChainAudit.c1_refutes_all",
+    "AscendantRoute.GroundingChainAudit.ground_obtains_refutes_all",
+    "AscendantRoute.GroundingChainAudit.c3_refutes_all",
+    "AscendantRoute.GroundingChainAudit.c4a_refutes_all",
+    "AscendantRoute.GroundingChainAudit.datum_obtains_refutes_all",
 ]
 W12_MATRIX = [
-    ("C1", "actual_omega", "AltRoute.GroundingChainAudit.c1_not_actual"),
-    ("C1", "possible_omega", "AltRoute.GroundingChainAudit.c1_not_possible"),
-    ("C1", "necessary_omega", "AltRoute.GroundingChainAudit.c1_not_necessary"),
-    ("C1", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c1_not_possible_necessary"),
-    ("GroundObtains", "actual_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_actual"),
-    ("GroundObtains", "possible_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_possible"),
-    ("GroundObtains", "necessary_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_necessary"),
-    ("GroundObtains", "possible_necessary_omega", "AltRoute.GroundingChainAudit.ground_obtains_not_possible_necessary"),
-    ("C3", "actual_omega", "AltRoute.GroundingChainAudit.c3_not_actual"),
-    ("C3", "possible_omega", "AltRoute.GroundingChainAudit.c3_not_possible"),
-    ("C3", "necessary_omega", "AltRoute.GroundingChainAudit.c3_not_necessary"),
-    ("C3", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c3_not_possible_necessary"),
-    ("C4a", "actual_omega", "AltRoute.GroundingChainAudit.c4a_not_actual"),
-    ("C4a", "possible_omega", "AltRoute.GroundingChainAudit.c4a_not_possible"),
-    ("C4a", "necessary_omega", "AltRoute.GroundingChainAudit.c4a_not_necessary"),
-    ("C4a", "possible_necessary_omega", "AltRoute.GroundingChainAudit.c4a_not_possible_necessary"),
-    ("datum_obtains", "actual_omega", "AltRoute.GroundingChainAudit.datum_not_actual"),
-    ("datum_obtains", "possible_omega", "AltRoute.GroundingChainAudit.datum_not_possible"),
-    ("datum_obtains", "necessary_omega", "AltRoute.GroundingChainAudit.datum_not_necessary"),
-    ("datum_obtains", "possible_necessary_omega", "AltRoute.GroundingChainAudit.datum_not_possible_necessary"),
+    ("C1", "actual_omega", "AscendantRoute.GroundingChainAudit.c1_not_actual"),
+    ("C1", "possible_omega", "AscendantRoute.GroundingChainAudit.c1_not_possible"),
+    ("C1", "necessary_omega", "AscendantRoute.GroundingChainAudit.c1_not_necessary"),
+    ("C1", "possible_necessary_omega", "AscendantRoute.GroundingChainAudit.c1_not_possible_necessary"),
+    ("GroundObtains", "actual_omega", "AscendantRoute.GroundingChainAudit.ground_obtains_not_actual"),
+    ("GroundObtains", "possible_omega", "AscendantRoute.GroundingChainAudit.ground_obtains_not_possible"),
+    ("GroundObtains", "necessary_omega", "AscendantRoute.GroundingChainAudit.ground_obtains_not_necessary"),
+    ("GroundObtains", "possible_necessary_omega", "AscendantRoute.GroundingChainAudit.ground_obtains_not_possible_necessary"),
+    ("C3", "actual_omega", "AscendantRoute.GroundingChainAudit.c3_not_actual"),
+    ("C3", "possible_omega", "AscendantRoute.GroundingChainAudit.c3_not_possible"),
+    ("C3", "necessary_omega", "AscendantRoute.GroundingChainAudit.c3_not_necessary"),
+    ("C3", "possible_necessary_omega", "AscendantRoute.GroundingChainAudit.c3_not_possible_necessary"),
+    ("C4a", "actual_omega", "AscendantRoute.GroundingChainAudit.c4a_not_actual"),
+    ("C4a", "possible_omega", "AscendantRoute.GroundingChainAudit.c4a_not_possible"),
+    ("C4a", "necessary_omega", "AscendantRoute.GroundingChainAudit.c4a_not_necessary"),
+    ("C4a", "possible_necessary_omega", "AscendantRoute.GroundingChainAudit.c4a_not_possible_necessary"),
+    ("datum_obtains", "actual_omega", "AscendantRoute.GroundingChainAudit.datum_not_actual"),
+    ("datum_obtains", "possible_omega", "AscendantRoute.GroundingChainAudit.datum_not_possible"),
+    ("datum_obtains", "necessary_omega", "AscendantRoute.GroundingChainAudit.datum_not_necessary"),
+    ("datum_obtains", "possible_necessary_omega", "AscendantRoute.GroundingChainAudit.datum_not_possible_necessary"),
 ]
 EXPECTED_W12_PREMISES = [
     "C1",
@@ -63,11 +63,11 @@ EXPECTED_W12_TARGETS = [
     "possible_necessary_omega",
 ]
 EXPECTED_W12_MANIFEST = [
-    ("C1", "AltRoute.GroundingChainAudit.c1_refutes_all"),
-    ("GroundObtains", "AltRoute.GroundingChainAudit.ground_obtains_refutes_all"),
-    ("C3", "AltRoute.GroundingChainAudit.c3_refutes_all"),
-    ("C4a", "AltRoute.GroundingChainAudit.c4a_refutes_all"),
-    ("datum_obtains", "AltRoute.GroundingChainAudit.datum_obtains_refutes_all"),
+    ("C1", "AscendantRoute.GroundingChainAudit.c1_refutes_all"),
+    ("GroundObtains", "AscendantRoute.GroundingChainAudit.ground_obtains_refutes_all"),
+    ("C3", "AscendantRoute.GroundingChainAudit.c3_refutes_all"),
+    ("C4a", "AscendantRoute.GroundingChainAudit.c4a_refutes_all"),
+    ("datum_obtains", "AscendantRoute.GroundingChainAudit.datum_obtains_refutes_all"),
 ]
 EXPECTED_C5_BINDERS = {
     "C5_NE": ["Omega", "hC1", "hGO", "hC3", "hC4a", "I", "w0", "hI"],
@@ -86,14 +86,14 @@ NEGATIVE_TESTS = [
     ("tests/NoExport_NecessaryExistence.lean", "unknown identifier 'Final_NE_Proof'"),
 ]
 ASSEMBLIES = [
-    "AltRoute/Interface.olean",
-    "AltRoute/PublicTests.olean",
-    "AltRoute/TargetTypes.olean",
-    "AltRoute/GroundingAudit.olean",
-    "AltRoute/GroundingChain.olean",
-    "AltRoute/GroundingChainAudit.olean",
-    "AltRoute/GroundingModel.olean",
-    "AltRoute/PublicCertificateAudit.olean",
+    "AscendantRoute/Interface.olean",
+    "AscendantRoute/PublicTests.olean",
+    "AscendantRoute/TargetTypes.olean",
+    "AscendantRoute/GroundingAudit.olean",
+    "AscendantRoute/GroundingChain.olean",
+    "AscendantRoute/GroundingChainAudit.olean",
+    "AscendantRoute/GroundingModel.olean",
+    "AscendantRoute/PublicCertificateAudit.olean",
     "superlaw.olean",
 ]
 
@@ -261,9 +261,9 @@ def main() -> int:
             raise RuntimeError(f"unexpected footprint for {name}: {axioms}")
         theorem_rows.append({"name": name, "type": block(audit, "TYPE", name), "axioms": axioms})
 
-    if parse_axioms(audit, "AltRoute.GroundingModel.m_not_collapsed"):
+    if parse_axioms(audit, "AscendantRoute.GroundingModel.m_not_collapsed"):
         raise RuntimeError("m_not_collapsed unexpectedly depends on axioms")
-    model_axioms = parse_axioms(audit, "AltRoute.GroundingModel.m_conclusion")
+    model_axioms = parse_axioms(audit, "AscendantRoute.GroundingModel.m_conclusion")
     if model_axioms != EXPECTED_AXIOMS:
         raise RuntimeError(f"unexpected model footprint: {model_axioms}")
 
@@ -285,7 +285,7 @@ def main() -> int:
             raise RuntimeError(f"W12 matrix entry is not axiom-free: {theorem}")
         w12_matrix.append({"premise": premise, "target": target, "theorem": theorem, "status": "PASS"})
 
-    chain_source = (REPO / "AltRoute" / "GroundingChain.lean").read_text(encoding="utf-8")
+    chain_source = (REPO / "AscendantRoute" / "GroundingChain.lean").read_text(encoding="utf-8")
     for theorem, binders in EXPECTED_C5_BINDERS.items():
         verify_c5_signature(chain_source, theorem, binders)
 
@@ -330,7 +330,7 @@ def main() -> int:
         },
         "auditor_verdict": "PENDING_INDEPENDENT_REVIEW",
         "public_model": {
-            "theorem": "AltRoute.GroundingModel.m_conclusion",
+            "theorem": "AscendantRoute.GroundingModel.m_conclusion",
             "axioms": model_axioms,
             "non_collapsed": True,
         },

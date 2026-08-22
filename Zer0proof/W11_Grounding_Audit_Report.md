@@ -25,7 +25,7 @@ The GHCR and historical community aliases were also unavailable. All results bel
 
 ## Acceptance surface
 
-AltRoute/TargetTypes.lean is a default Lake root and a direct CI input. All Target declarations report no axiom dependency, including GroundingPremises, all targets, all four Yields predicates, and all obligations.
+AscendantRoute/TargetTypes.lean is a default Lake root and a direct CI input. All Target declarations report no axiom dependency, including GroundingPremises, all targets, all four Yields predicates, and all obligations.
 
 Ground was retained exactly in the paper's extensional direction. StrictGround adds extensional inequality only where the paper requires strict descent: Terminus and anti_regress. This avoids the impossible anti-regress formulation induced by reflexive Ground without changing C1/A1.
 
@@ -60,13 +60,13 @@ The NE, BoxUnique, BoxUnique reductio, and rigid-witness obligations compile onl
 
 ## Positivity criterion
 
-No positivity-derived constant occurs in the grounding obligation proofs. CI rejects AltRoute.PosPossibility, AltRoute.exists_of_positive, and AltRoute.necPossible_of_Pos if any later strong footprint contains them.
+No positivity-derived constant occurs in the grounding obligation proofs. CI rejects AscendantRoute.PosPossibility, AscendantRoute.exists_of_positive, and AscendantRoute.necPossible_of_Pos if any later strong footprint contains them.
 
 The actual Final_NE_Proof and Final_BoxUnique_Proof footprints remain unavailable because StrongCertificates.olean has not been rebuilt. W11 does not claim that those absent footprints were inspected.
 
 ## HyperModal footprints
 
-superlaw.lean now imports AltRoute.Interface and defines necessarily and possibly directly as Frame.Box and Frame.Dia. The before/after footprints of all 19 existing theorems are identical:
+superlaw.lean now imports AscendantRoute.Interface and defines necessarily and possibly directly as Frame.Box and Frame.Dia. The before/after footprints of all 19 existing theorems are identical:
 
 | Theorem | Axiom footprint |
 |---|---|
@@ -101,7 +101,7 @@ All nine tests failed as intended. The four tightened collapse sentinels matched
 
 The remaining guards matched missing proper, missing symm, goal Not True, goal False, and unknown Final_NE_Proof. CI then stopped only at the intentionally absent source-free strong assembly:
 
-    [CI] ERROR: missing source-free certificate assembly: certificates/AltRoute/StrongCertificates.olean
+    [CI] ERROR: missing source-free certificate assembly: certificates/AscendantRoute/StrongCertificates.olean
     CI_RC=2
 
 ## Deterministic assemblies
@@ -110,11 +110,11 @@ Two clean builds and a third build after LF normalization were byte-identical. F
 
 | Assembly | SHA-256 |
 |---|---|
-| AltRoute/Interface.olean | 06bff5fcb1a830b6e5445becd125bef35bd3889a2500d639d0028975b0fd136a |
-| AltRoute/PublicTests.olean | d172dfc3522095e8c02928c9ec9b8deee81756eae4f4423e788e2894c3e2f00c |
-| AltRoute/TargetTypes.olean | 1c8d94ca53b8cf35c40125567f03bcea6fde856171fedea0263ce900e0102ccf |
-| AltRoute/GroundingAudit.olean | ebd25cff9710316254a661842eeb516418c14609794264ef3c5fbeefc3ba7fa2 |
-| AltRoute/PublicCertificateAudit.olean | f8a7b9a845594d6f1ba06890ae78df2ca0d23e96cc4f444550582d053f315c47 |
+| AscendantRoute/Interface.olean | 06bff5fcb1a830b6e5445becd125bef35bd3889a2500d639d0028975b0fd136a |
+| AscendantRoute/PublicTests.olean | d172dfc3522095e8c02928c9ec9b8deee81756eae4f4423e788e2894c3e2f00c |
+| AscendantRoute/TargetTypes.olean | 1c8d94ca53b8cf35c40125567f03bcea6fde856171fedea0263ce900e0102ccf |
+| AscendantRoute/GroundingAudit.olean | ebd25cff9710316254a661842eeb516418c14609794264ef3c5fbeefc3ba7fa2 |
+| AscendantRoute/PublicCertificateAudit.olean | f8a7b9a845594d6f1ba06890ae78df2ca0d23e96cc4f444550582d053f315c47 |
 | superlaw.olean | 2dbfc52936283f7ee892cf1d55e606fa68be73320c8c3953f381aec118632a68 |
 
 ## Unproved work

@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /--
 A reflexive and transitive preorder on Bool that is not symmetric. Omitting the
@@ -15,4 +15,4 @@ def hostileFrame : Frame Bool :=
     intro w x y hwx hxy
     cases w <;> cases x <;> cases y <;> simp_all }
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

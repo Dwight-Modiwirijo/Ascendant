@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /-- A witness at an accessible world need not establish truth at `w`. -/
 theorem dia_collapse {W : Type} (F : Frame W) (phi : W -> Prop) (w : W) :
@@ -12,4 +12,4 @@ theorem dia_collapse {W : Type} (F : Frame W) (phi : W -> Prop) (w : W) :
   · intro hPhi
     exact F.actual_possible phi w hPhi
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

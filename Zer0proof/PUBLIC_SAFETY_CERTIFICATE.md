@@ -4,7 +4,7 @@
 
 This repository publishes a source-reproducible public verification route. It includes the world-indexed S5 interface, the C5 grounding theorems, the individual-premise audit, a joint non-collapsed model, negative guards, and an explicitly allow-listed distribution.
 
-Compiled `.olean` files carry theorem declarations and proof terms. They support rebuild and integrity checks, but they are not an IP disclosure boundary. The private successor route is not distributed as source or theorem-bearing `.olean`; public kernel assurance for the strong Omega claims is supplied independently by `AltRoute.GroundingChain.C5_*`.
+Compiled `.olean` files carry theorem declarations and proof terms. They support rebuild and integrity checks, but they are not an IP disclosure boundary. The private successor route is not distributed as source or theorem-bearing `.olean`; public kernel assurance for the strong Omega claims is supplied independently by `AscendantRoute.GroundingChain.C5_*`.
 
 No public claim is made about the current internal build status of private `Final_*` declarations. Such a status requires separate non-public evidence and independent audit.
 

@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /-- Necessary possibility does not imply truth at the selected world. -/
 theorem certificate_equals_existence {W : Type} (F : Frame W)
@@ -14,4 +14,4 @@ theorem certificate_equals_existence {W : Type} (F : Frame W)
   · intro hPhi
     exact F.ax_5 phi w (F.actual_possible phi w hPhi)
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests

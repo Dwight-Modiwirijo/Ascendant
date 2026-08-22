@@ -58,23 +58,23 @@ run_negative_control() {
   local source_root="$1"
   local dist_root="$2"
 
-  mkdir -p "$source_root/AltRoute/Private"
-  cat > "$source_root/AltRoute/Private/Successor.lean" <<'EOF_NEG'
-namespace AltRoute.Private
+  mkdir -p "$source_root/AscendantRoute/Private"
+  cat > "$source_root/AscendantRoute/Private/Successor.lean" <<'EOF_NEG'
+namespace AscendantRoute.Private
 
 theorem Successor : True := by
   trivial
 
 theorem Final_NE_Proof : True := by
   trivial
-end AltRoute.Private
+end AscendantRoute.Private
 EOF_NEG
 
   (
     cd "$source_root"
-    lean -o "$source_root/AltRoute/Private/Successor.olean" "$source_root/AltRoute/Private/Successor.lean"
+    lean -o "$source_root/AscendantRoute/Private/Successor.olean" "$source_root/AscendantRoute/Private/Successor.lean"
   )
-  cp "$source_root/AltRoute/Private/Successor.olean" "$dist_root/AltRoute/TargetTypes.olean"
+  cp "$source_root/AscendantRoute/Private/Successor.olean" "$dist_root/AscendantRoute/TargetTypes.olean"
 
   local neg_output
   local neg_rc
@@ -99,7 +99,7 @@ snapshot_public_assemblies() {
   local output="$1"
   : > "$output"
   for module in "${public_modules[@]}"; do
-    sha256sum ".lake/build/lib/lean/AltRoute/$module.olean" >> "$output"
+    sha256sum ".lake/build/lib/lean/AscendantRoute/$module.olean" >> "$output"
   done
   sha256sum ".lake/build/lib/lean/superlaw.olean" >> "$output"
   sort -o "$output" "$output"
@@ -126,18 +126,18 @@ echo "[CI] Clean public build A"
 "$lake_bin" build
 snapshot_public_assemblies "$hash_a"
 
-public_audit_output=$("$lake_bin" -R env lean AltRoute/PublicCertificateAudit.lean 2>&1)
+public_audit_output=$("$lake_bin" -R env lean AscendantRoute/PublicCertificateAudit.lean 2>&1)
 printf '%s\n' "$public_audit_output"
 if grep -Fq 'sorryAx' <<<"$public_audit_output"; then
   echo "[CI] ERROR: public audit contains sorryAx" >&2
   exit 1
 fi
-"$lake_bin" -R env lean AltRoute/PublicTests.lean
-"$lake_bin" -R env lean AltRoute/TargetTypes.lean
-"$lake_bin" -R env lean AltRoute/GroundingAudit.lean
-"$lake_bin" -R env lean AltRoute/GroundingChain.lean
-"$lake_bin" -R env lean AltRoute/GroundingChainAudit.lean
-"$lake_bin" -R env lean AltRoute/GroundingModel.lean
+"$lake_bin" -R env lean AscendantRoute/PublicTests.lean
+"$lake_bin" -R env lean AscendantRoute/TargetTypes.lean
+"$lake_bin" -R env lean AscendantRoute/GroundingAudit.lean
+"$lake_bin" -R env lean AscendantRoute/GroundingChain.lean
+"$lake_bin" -R env lean AscendantRoute/GroundingChainAudit.lean
+"$lake_bin" -R env lean AscendantRoute/GroundingModel.lean
 "$lake_bin" -R env lean superlaw.lean
 
 echo "[CI] Negative guards"
@@ -163,17 +163,17 @@ echo "[CI] Public assembly reproducibility PASS"
 
 echo "[CI] Stage explicit public allow-list"
 staging="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-dist.XXXXXX")"
-mkdir -p "$staging/AltRoute" "$staging/tests" "$staging/scripts"
+mkdir -p "$staging/AscendantRoute" "$staging/tests" "$staging/scripts"
 
 public_sources=(
-  AltRoute/Interface.lean
-  AltRoute/PublicTests.lean
-  AltRoute/TargetTypes.lean
-  AltRoute/GroundingAudit.lean
-  AltRoute/GroundingChain.lean
-  AltRoute/GroundingChainAudit.lean
-  AltRoute/GroundingModel.lean
-  AltRoute/PublicCertificateAudit.lean
+  AscendantRoute/Interface.lean
+  AscendantRoute/PublicTests.lean
+  AscendantRoute/TargetTypes.lean
+  AscendantRoute/GroundingAudit.lean
+  AscendantRoute/GroundingChain.lean
+  AscendantRoute/GroundingChainAudit.lean
+  AscendantRoute/GroundingModel.lean
+  AscendantRoute/PublicCertificateAudit.lean
   tests/NoExport_NecessaryExistence.lean
   tests/Reject_HostilePositiveEmpty.lean
   tests/Reject_HostileModal.lean
@@ -196,7 +196,7 @@ cp superlaw.lean Paper.md README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE \
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 
 for module in "${public_modules[@]}"; do
-  cp ".lake/build/lib/lean/AltRoute/$module.olean" "$staging/AltRoute/"
+  cp ".lake/build/lib/lean/AscendantRoute/$module.olean" "$staging/AscendantRoute/"
 done
 cp ".lake/build/lib/lean/superlaw.olean" "$staging/"
 

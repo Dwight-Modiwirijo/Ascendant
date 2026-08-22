@@ -1,6 +1,6 @@
-import AltRoute.Interface
+import AscendantRoute.Interface
 
-namespace AltRoute.NegativeTests
+namespace AscendantRoute.NegativeTests
 
 /-- The old reverse direction cannot lift truth at one world to every world. -/
 theorem box_collapse {W : Type} (F : Frame W) (phi : W -> Prop) (w : W) :
@@ -11,4 +11,4 @@ theorem box_collapse {W : Type} (F : Frame W) (phi : W -> Prop) (w : W) :
     fail_if_success rw [eq_true hPhi]
     fail "Reject_BoxCollapse.box_collapse: phi w cannot rewrite world-indexed phi"
 
-end AltRoute.NegativeTests
+end AscendantRoute.NegativeTests
