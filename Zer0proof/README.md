@@ -35,20 +35,46 @@ bash scripts/ci.sh
 
 ## Docker Audit Image
 
-For an isolated command-line audit environment:
+The public audit image is available from Docker Hub:
+
+```text
+docker.io/dmodiwirijo/ascendant:latest
+```
+
+To download and start the published image:
+
+```bash
+docker pull dmodiwirijo/ascendant:latest
+docker run --rm -it dmodiwirijo/ascendant:latest
+```
+
+Inside the container, the working directory is `/workspace/Zer0proof`. Run the full public audit with:
+
+```bash
+bash scripts/ci.sh
+```
+
+A successful audit ends with:
+
+```text
+[CI] Done
+[CI] CI_RC=0
+```
+
+For direct Lean inspection inside the container:
+
+```bash
+lake build
+lake -R env lean AscendantRoute/PublicCertificateAudit.lean
+lake -R env lean tests/NoExport_NecessaryExistence.lean
+cat FORMAL_STATUS.md
+```
+
+To build the same audit image locally from this repository:
 
 ```bash
 docker build --build-arg ASCENDANT_COMMIT=$(git rev-parse HEAD) -t zer0proof-audit:local .
 docker run --rm -it zer0proof-audit:local
-```
-
-Inside the container, the working directory is `/workspace/Zer0proof`:
-
-```bash
-lake build
-bash scripts/ci.sh
-lake -R env lean AscendantRoute/PublicCertificateAudit.lean
-lake -R env lean tests/NoExport_NecessaryExistence.lean
 ```
 
 The build leaves the public distribution in `dist/`, including `formal-status.json`, `FORMAL_STATUS.md`, `PUBLIC_ALLOWLIST.txt`, `SCOPE.txt`, `SHA256SUMS`, and the shipped public `.olean` files.
