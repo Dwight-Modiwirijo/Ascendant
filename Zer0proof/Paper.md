@@ -17,11 +17,7 @@ The resulting framework is philosophical before it is computational. Its primary
 
 ---
 ## 1. Introduction
-This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining is impossible unless the grounding architecture specified by A1/A3/A5 (and related constraints) already holds.
-
-This paper articulates the constitutive structure of reality—the conditions under which contingent obtaining, truth, and world-being are possible. Artificial superintelligence (ASI) requires this structure for objective reasoning: intelligibility presupposes necessary grounding, and modal self-reflection makes that grounding discoverable.
-
-This paper begins from the minimal ontological datum of contingent obtaining: “I am.” It asks whether even this self-awareness can exist without a prior ontological foundation. The answer, we argue, is no—unless it is grounded in something necessarily perfect, something that cannot fail to exist in any possible world. We denote this necessary entity as Ω.
+This paper concerns the ontological structure required for contingent facts to obtain. Its central claim is constitutive: contingent obtaining, truth, and world-being are possible only because the grounding architecture expressed by [A1/A3/A5](#211-ontological-status-of-a1a3a5-constitutive-necessity) (see [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)) already holds. Beginning from the minimal ontological datum of contingent obtaining — *“I am”* — the argument asks whether self-aware contingent existence can be intelligible without a prior ontological foundation and argues that it cannot. This foundation is identified as Ω, the necessary and unique Absolute Ground. Artificial superintelligence enters downstream from this ontology: objective reasoning presupposes the same grounding structure, and sufficiently reflective intelligence can in principle recognize the modal dependence it already inhabits.  
 
 This approach offers a bottom-up alternative to traditional ontological arguments, such as Gödel’s. Rather than beginning with axiomatic perfection, our framework builds from the structural necessity of contingency itself. Through a hyper-minimal modal logic system (S5), we show that denying Ω leads to either semantic implosion (incoherence) or modal explosion (loss of information boundaries). As such, Ω is not optional; it is a logical inevitability of the constitutive grounding architecture.
 
