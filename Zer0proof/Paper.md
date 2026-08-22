@@ -3,11 +3,11 @@
 
 ### Abstract
 
-This paper presents the *Ascendant Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The public C5 grounding route proves the strong Ω-theorems from an explicit constitutive context and ships a non-collapsed joint model; an independent private successor route is a separate disclosure domain and is not needed for public verification. The argument does not rely on classical perfection axioms: the grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
+This paper presents the *Ascendant Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within an S5 modal framework. The paper defends the strong ontological claim that contingent reality witnesses the necessity it presupposes: the private kernel route certifies the corresponding strong Ω-theorems, while the public verification surface exposes and audits the selected formal boundary. The formal verification certifies the strong Ω-theorems, whose ontological necessity is grounded in the structure presupposed by contingent reality itself. The argument does not rely on classical perfection axioms: the successor-based grounding architecture exhibits the structure enforced by the constitutive ontological principles (**A1/A3/A5**), which are the source of necessity in the framework.
 
 At the core lies a successor-like grounding function that carries each contingent predicate through a finite, well-founded transcendental grounding process. This process terminates in a single non-contingent point—**Ω**—defined by minimality of measure within the successor system. Ω’s existence follows from reductio-style anti-regress constraints; its uniqueness follows from fixed-point stability under succession together with chain coalescence (all Ω-points lie on a single finite successor path).
 
-The paper combines one fully Lean-verified public grounding route with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure result**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
+The paper combines one fully Lean-verified constructive route (Ascendant Route) with a philosophically articulated hyper-modal framework that interprets the same structure. The kernel mirrors the Hyper-Modal Theorem: denying a necessary terminus forces regress. Together they yield an **ontological closure result**: any intelligible explanatory structure—modal, logical, or computational—must terminate uniquely in Ω.
 
 **Keywords:** Ascendant Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing.
 
@@ -28,18 +28,18 @@ We distinguish our method through three components:
 3. A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.  
 
 This paper proceeds as follows:  
-- Section 2 introduces the modal framework and axiomatic base.
-- Section 3 presents the formal modal proof of Ω, together with the conceptual TI (Transcendental Induction) route (§3.3).
-- Section 4 discusses Lean-based machine verification.
-- Section 5 addresses philosophical objections.
-- Section 6 explores theological implications, particularly the resonance between Ω and classical theism.
-- Section 7 concludes with a reflection on future directions for both philosophy and artificial intelligence.
+- [Section 2](#2-framework-hyper-modal-grounding-principles) introduces the modal framework and axiomatic base.
+- [Section 3](#3-formal-modal-proof-of-ω) presents the formal modal proof of Ω, together with the conceptual TI (Transcendental Induction) route ([§3.3](#33-ti--transcendental-induction)).
+- [Section 4](#4-verification-in-lean-4) discusses Lean-based machine verification.
+- [Section 5](#5-objections-and-responses) addresses philosophical objections.
+- [Section 6](#6-theological-resonance) explores theological implications, particularly the resonance between Ω and classical theism.
+- [Section 7](#7-conclusion) concludes with a reflection on future directions for both philosophy and artificial intelligence.
 
 An appendix specifies the Lean-verified scope and reproduces representative artifacts, ensuring logical and computational rigor within the stated verification boundary.
 
 ---
 ## 2. Framework: Hyper-Modal Grounding Principles
-This section introduces the formal axiomatic foundation of the proof, designed to be as minimal and necessary as possible. We use S5 modal logic: the accessibility relation $R$ between possible worlds is an **equivalence relation** — reflexive ($\forall w,\, R\,w\,w$), symmetric ($\forall w\,v,\, R\,w\,v \to R\,v\,w$), and transitive ($\forall w\,v\,u,\, R\,w\,v \to R\,v\,u \to R\,w\,u$) — so that any two worlds in the same equivalence class can access one another (Blackburn et al. 2001). This is a structural property of $R$, not a claim that all worlds whatsoever are mutually accessible across every possible frame; the Lean development fixes $R$ as such an equivalence relation on the type of worlds it declares (Appendix B.1.1). Within this logical space, we define five axioms:
+This section introduces the formal axiomatic foundation of the proof, designed to be as minimal and necessary as possible. We use S5 modal logic: the accessibility relation $R$ between possible worlds is an **equivalence relation** — reflexive ($\forall w,\, R\,w\,w$), symmetric ($\forall w\,v,\, R\,w\,v \to R\,v\,w$), and transitive ($\forall w\,v\,u,\, R\,w\,v \to R\,v\,u \to R\,w\,u$) — so that any two worlds in the same equivalence class can access one another (Blackburn et al. 2001). This is a structural property of $R$, not a claim that all worlds whatsoever are mutually accessible across every possible frame; the Lean development fixes $R$ as such an equivalence relation on the type of worlds it declares ([Appendix B.1.1](#b11-worlds-accessibility-and-s5-conditions)). Within this logical space, we define five axioms:
 
 ### 2.1 Hyper-Modal Axioms
 
@@ -47,8 +47,8 @@ This section introduces the formal axiomatic foundation of the proof, designed t
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
 > **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
-*Note on Formalization:* In the formal AltRoute development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
-The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see Appendix A.6: ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
+*Note on Formalization:* In the formal Ascendant Route development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
+The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see [Appendix A.6](#a6-full-lean-implementation-for-reductio): ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
 
 #### (A2) Perfect Positivity
 
@@ -64,7 +64,7 @@ $$
 
 which encodes non-defeat: no (Q) may be available that systematically forces ($\neg P$) in the relevant grounding setting.
 
-**Note on formalization:** the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate (Appendix A.6: `Positive`), rather than this informal schematic gloss. This is intentional: the paper-level clause specifies the intended stability reading (fixed-point admissibility), while the kernel development fixes the exact predicate used in machine checking. The corresponding non-defeat constraint is enforced by the internal lemma/axiom suite (Appendix A.6: `perfect_positivity`), preventing circularity and contingent dependence.
+**Note on formalization:** the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate ([Appendix A.6](#a6-full-lean-implementation-for-reductio): `Positive`), rather than this informal schematic gloss. This is intentional: the paper-level clause specifies the intended stability reading (fixed-point admissibility), while the kernel development fixes the exact predicate used in machine checking. The corresponding non-defeat constraint is enforced by the internal lemma/axiom suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio): `perfect_positivity`), preventing circularity and contingent dependence.
 
 #### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
@@ -77,7 +77,8 @@ If a system is capable of reflecting upon its own limits (as in Gödel’s theor
 
 These axioms form the basis of the modal system used to derive the existence of Ω.
 
-#### **2.1.1 The Constitutive Triad: Grounding, Termination, and Closure**
+
+#### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
 
 Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.
 
@@ -101,7 +102,7 @@ A proposed fundamental structure must itself possess both a modal status and a g
 
 These cases jointly establish the functional preservation test. Any rival constitutive architecture that preserves modally determinate, truth-apt, inferentially stable, and contrastively distinguishable contingent obtaining must realize the functions of grounding, anti-regress, and meta-logical closure. In realizing those functions, it reinstantiates the functional equivalents of A1, A3, and A5 under another description. The grounding structure is therefore **ontologically prior** to contingent facts, and contingency is possible **only because** this structure necessarily obtains.
 
-This is the constitutive relation developed further in the successor architecture (§2.2) and expressed schematically in Corollary 3.1.2.
+This is the constitutive relation developed further in the successor architecture ([§2.2](#22-successor-based-grounding-architecture)) and expressed schematically in [Corollary 3.1.2](#312-corollary--no-rival-constitutive-architecture).
 
 ##### 2.1.1.1 Constitutive Synthesis — The Triad as the Minimum Architecture of Intelligibility
 
@@ -133,12 +134,12 @@ The alternatives are therefore exhaustive:
 
 $$\boxed{\text{functional preservation of the triad} \;\lor\; \text{loss of ICO}}$$
 
-The successor architecture of §2.2 provides a concrete realization of this minimum constitutive structure.
+The successor architecture of [§2.2](#22-successor-based-grounding-architecture) provides a concrete realization of this minimum constitutive structure.
 
 ---
 ### 2.2 Successor-Based Grounding Architecture 
 
-This subsection presents the successor-based grounding machine (the Ascendant Route). In this subsection we show how the hyper-modal grounding principles from §2.1 can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “Ascendant Route”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
+This subsection presents the successor-based grounding machine (the Ascendant Route). In this subsection we show how the hyper-modal grounding principles from [§2.1](#21-hyper-modal-axioms) can be instantiated in a concrete, mechanistic architecture. Instead of reasoning only at the level of abstract modal axioms, we introduce a **successor-based grounding machine** (the “Ascendant Route”) that operationalises Anti-Regress and the Hyper-Minimal PSR as a terminating process over a well-ordered space of states.
 
 #### 2.2.1 State space and successor
 
@@ -196,7 +197,7 @@ By uniqueness of the minimal state, any such chain can only terminate in Ω. Thi
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
-We can now see how the successor architecture realises the principles of §2.1:
+We can now see how the successor architecture realises the principles of [§2.1](#21-hyper-modal-axioms):
 
 - **Hyper-Minimal PSR (HM-PSR).** For any contingent state g in Cont, HM-PSR demands the existence of a more fundamental ground. In the successor picture, this is implemented by requiring that S(g) is defined whenever g is contingent, and that S(g) is strictly “closer” to absolute grounding in terms of meas.
 
@@ -208,7 +209,9 @@ We can now see how the successor architecture realises the principles of §2.1:
 
 Formally, we obtain:
 
-> **Proposition 2.2.1 Successor termination in Ω.**  
+<a id="proposition-2-2-3-1"></a>
+
+> **[Proposition 2.2.3.1](#proposition-2-2-3-1) Successor termination in Ω**  
 > For any contingent state $g_0$ in Cont, any maximal successor chain  
 >   
 >   $g_0$, $g_1$, ..., $g_n$  
@@ -261,10 +264,10 @@ The epistemic formulation makes contingency reflectively accessible to an agent;
 ---
 ## 3. Formal Modal Proof of Ω
 
-We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. The argument moves through a single chain: contingent obtaining ("I am") demands grounding (A1); a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand; grounding chains cannot regress infinitely (A3); a terminating, non-contingent ground therefore exists; and by minimality/coalescence (§2.2.2) that ground is unique — Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy below is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence. §3.3 presents a second, convergent route to the same terminus (TI), and §2.2 gives the successor-based construction that the Ascendant Route kernel-verifies (Appendix A.2.3).
+We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. The argument moves through a single chain: contingent obtaining ("I am") demands grounding (A1); a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand; grounding chains cannot regress infinitely (A3); a terminating, non-contingent ground therefore exists; and by minimality/coalescence ([§2.2.2](#222-a-decreasing-measure)) that ground is unique — Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy below is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence. [§3.3](#33-ti--transcendental-induction) presents a second, convergent route to the same terminus (TI), and [§2.2](#22-successor-based-grounding-architecture) gives the successor-based construction that the Ascendant Route kernel-verifies ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)).
 
 * **Epistemic recognition of contingency:**
-As shown in §2.3, such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
+As shown in [§2.3](#23-epistemic-recognition-of-contingency), such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
 
 $$
 K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
@@ -312,7 +315,7 @@ $$
 \square \exists! x  \Omega(x)
 $$
 
-This statement is reached here via the full hyper-modal axiom route (A1–A5, §2.1), whose constitutive defense is given philosophically in §2.1.1 and whose canary/regression lemmas are Lean-formalized in Appendix A.6. Independently, the public C5 grounding route kernel-verifies the same modal conclusion as `GroundingChain.C5_BoxUnique` from its explicit C1, `GroundObtains`, C3, C4a, and obtaining-datum premises (Appendix A.2.3). These are convergent arguments with separately disclosed contexts, not one proof under two names.
+This statement is reached here via the full hyper-modal axiom route (A1–A5, [§2.1](#21-hyper-modal-axioms)), whose constitutive defense is given philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) and whose canary/regression lemmas are Lean-formalized in [Appendix A.6](#a6-full-lean-implementation-for-reductio). The same logical conclusion is independently kernel-verified end-to-end by the Ascendant Route's `Final_BoxUnique_Proof` ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)), reached via the successor-based construction of [§2.2](#22-successor-based-grounding-architecture) rather than via A1–A5 directly. The Hyper-Modal route and the Ascendant Route are convergent, not identical: two paths to the same terminus ([§3.4](#34-synthesis-from-contingent-actuality-to-ω)).
 
 That is, **necessarily, there exists exactly one being Ω** which grounds all contingent truths. This result strengthens mere necessary existence by excluding the possibility of multiple or variant grounding entities across possible worlds.
 
@@ -367,7 +370,7 @@ $$
 
 Hence, no rival constitutive architecture can eliminate $\Omega$ while preserving the conditions from which $\Omega$ follows. An alternative that eliminates $\Omega$ but retains those conditions is not an alternative — it is a contradiction. An alternative that abandons those conditions does not rival this framework; it abandons the phenomena the framework was introduced to explain.
 
-*Note.* This corollary is stated at the meta-theoretical level. Its full Lean formalisation requires explicit definitions of `Preserves` and `Equivalent` as predicates over constitutive architectures, which is reserved for future kernel development. The philosophical argument, however, follows directly from the constitutive analysis in §2.1.1.
+*Note.* This corollary is stated at the meta-theoretical level. Its full Lean formalisation requires explicit definitions of `Preserves` and `Equivalent` as predicates over constitutive architectures, which is reserved for future kernel development. The philosophical argument, however, follows directly from the constitutive analysis in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity).
 
 ---
 ### 3.2 Constitutive Compression (A1/A3/A5)
@@ -384,7 +387,7 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 
 * **C3a (Necessity of the terminus — derived, not assumed):** The terminus grounds the datum, so by the first clause of ◃ it obtains wherever the datum obtains. Were it not necessary there, some accessible world would lack it, and together with its obtaining that makes it *contingent*. C1 then supplies it a necessary ground — so it was no terminus. Hence  
   `Terminus(q) ∧ q(w) → □q at w`.  
-  This is the §3 step "a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand", and it is where A1 does its work: remove C1 and the step fails.
+  This is the [§3](#3-formal-modal-proof-of-ω) step "a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand", and it is where A1 does its work: remove C1 and the step fails.
 
 * **C4 (Ascendant Route: Minimality/Coalescence):** Terminating grounding chains converge to a single minimal endpoint:  
   `Terminus(q₁) ∧ Terminus(q₂) → ∀w (q₁(w) ↔ q₂(w))`.
@@ -401,15 +404,15 @@ A compressed restatement of the constitutive grounding architecture: contingent 
 
 This subsection isolates the existence/uniqueness core (A1/A3/A5). A2 is used elsewhere to fix the perfection/positivity characterization of Ω, and A4 to secure modal-semantic stability across possible worlds.
 
-**Machine-checked status of C2 → C5.** The step from the datum to the conclusion is kernel-verified against the world-indexed Kripke semantics of the public development. `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness` derive `□∃x Ω(x)`, `□∃!x Ω(x)` and `∃x □∀y (Ω(y) ↔ y = x)` from **C1, ◃-transmission, C3 and C4a**, evaluated at the world where the datum obtains, with axiom footprint `[propext, Classical.choice, Quot.sound]` — no custom axioms, no appeal to A2/positivity, no `sorryAx`. C3a is a *theorem* of that set, not a further premise: `terminus_above` obtains from C3, by dependent choice, a terminus grounding the datum, and `terminus_necessary` is the §3 reductio, which consumes C1 essentially. Remove A1 and the chain does not close.
+**Machine-checked status of C2 → C5.** The step from the datum to the conclusion is kernel-verified against the world-indexed Kripke semantics of the public development. `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness` derive `□∃x Ω(x)`, `□∃!x Ω(x)` and `∃x □∀y (Ω(y) ↔ y = x)` from **C1, ◃-transmission, C3 and C4a**, evaluated at the world where the datum obtains, with axiom footprint `[propext, Classical.choice, Quot.sound]` — no custom axioms, no appeal to A2/positivity, no `sorryAx`. C3a is a *theorem* of that set, not a further premise: `terminus_above` obtains from C3, by dependent choice, a terminus grounding the datum, and `terminus_necessary` is the [§3](#3-formal-modal-proof-of-ω) reductio, which consumes C1 essentially. Remove A1 and the chain does not close.
 
 The premise set is additionally shown to be **satisfiable**: a two-world model instantiates C1, ◃-transmission, C2, C3 and C4a simultaneously, with the datum obtaining, genuine contingency present and the frame provably non-collapsed — and `□∃!x Ω(x)` is then derived inside that model. The derivation is therefore not vacuous.
 
 The grounding relation ◃ is primitive throughout; defining it as a modal conditional makes C1 and C2 jointly inconsistent in the entailment direction and trivialises C1 in the converse. What the chain uses of ◃ is one clause of the paper's own definition: a ground obtains wherever what it grounds obtains.
 
-**Consequence for intelligibility.** C1–C4a are not further commitments taken on beside intelligibility; §2.1.1 argues that they are its conditions. Read that way, the chain states that wherever anything obtains intelligibly the grounding structure obtains, and that it terminates. Ω is then not a further entity posited at the end of an inference: Ω is what the terminus is. Denial is not exempt from this, since denial is itself an intelligible act. For intelligibility, God is.
+**Consequence for intelligibility.** C1–C4a are not further commitments taken on beside intelligibility; [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) argues that they are its conditions. Read that way, the chain states that wherever anything obtains intelligibly the grounding structure obtains, and that it terminates. Ω is then not a further entity posited at the end of an inference: Ω is what the terminus is. Denial is not exempt from this, since denial is itself an intelligible act. For intelligibility, God is.
 
-C3a and C4a are made explicit here because the earlier compression left them implicit. Both were already argued in §3: the necessity of the terminus is the "cannot itself be contingent, on pain of merely relocating the demand" step, and rigid designation is the §3.1 result. Neither adds strength to A1/A3/A5. C3a follows the main-text argument; C4a states an identity rather than a stipulation, and therefore carries no existential import of its own. The standard objection that a necessary being has been defined into existence does not apply here: the existence claim is discharged by C3 from anti-regress, and C4a only settles that what terminates the chain is Ω.
+C3a and C4a are made explicit here because the earlier compression left them implicit. Both were already argued in [§3](#3-formal-modal-proof-of-ω): the necessity of the terminus is the "cannot itself be contingent, on pain of merely relocating the demand" step, and rigid designation is the [§3.1](#31-conclusion-the-hyper-modal-theorem) result. Neither adds strength to A1/A3/A5. C3a follows the main-text argument; C4a states an identity rather than a stipulation, and therefore carries no existential import of its own. The standard objection that a necessary being has been defined into existence does not apply here: the existence claim is discharged by C3 from anti-regress, and C4a only settles that what terminates the chain is Ω.
 
 ---
 ### 3.3 TI — Transcendental Induction
@@ -422,7 +425,7 @@ The relevance of TI here is limited to convergence: the independent route establ
 
 ### 3.4 Synthesis: From Contingent Actuality to Ω
 
-The argument of §§2–3 has a single overall shape, which the rest of the paper (§4, §7.2) makes formally precise. It is summarized here so that the formal apparatus that follows can be read as an articulation of this shape, rather than as a separate concern:
+The argument of [§§2–3](#2-framework-hyper-modal-grounding-principles) has a single overall shape, which the rest of the paper ([§4](#4-verification-in-lean-4), [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality)) makes formally precise. It is summarized here so that the formal apparatus that follows can be read as an articulation of this shape, rather than as a separate concern:
 
 ![Synthesis diagram: from contingent actuality to Ω](assets/synthesis.svg)
 
@@ -430,7 +433,7 @@ The argument of §§2–3 has a single overall shape, which the rest of the pape
 
 <div align="center">
 
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MjAgNzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ic3ludGhlc2lzLXRpdGxlIHN5bnRoZXNpcy1kZXNjIiBzdHlsZT0iZGlzcGxheTpibG9jazttYXgtd2lkdGg6OTIwcHg7d2lkdGg6MTAwJTtoZWlnaHQ6YXV0bzttYXJnaW46MS41cmVtIGF1dG87Ij4KICA8dGl0bGUgaWQ9InN5bnRoZXNpcy10aXRsZSI+RnJvbSBjb250aW5nZW50IGFjdHVhbGl0eSB0byB0aGUgYXBwbGljYXRpb24gb2Ygz4Y8L3RpdGxlPgogIDxkZXNjIGlkPSJzeW50aGVzaXMtZGVzYyI+Q29udGluZ2VudCBhY3R1YWxpdHkgbGVhZHMgdGhyb3VnaCB0aGUgY29uc3RpdHV0aXZlIGdyb3VuZGluZyBhcmd1bWVudCB0byBSIHNhdGlzZnlpbmcgzpMuIFRoZSBBc2NlbmRhbnQgUm91dGUgYW5kIHRyYW5zY2VuZGVudGFsIGluZHVjdGlvbiBlc3RhYmxpc2ggzpMgZW50YWlscyDPhjsgdGhlIEFzY2VuZGFudCBSb3V0ZSBhbHNvIHN1cHBsaWVzIGEgcHJvb2YgdGVybSB0IG9mIHR5cGUgz4YuIFRvZ2V0aGVyIHdpdGggdGhlIHNlbWFudGljIGdyb3VuZGluZyBvZiDOkywgdGhpcyBsaWNlbnNlcyBhcHBseWluZyDPhiB0byBhY3R1YWxpdHkuPC9kZXNjPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3doZWFkIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG9yaWVudD0iYXV0byIgbWFya2VyVW5pdHM9InN0cm9rZVdpZHRoIj4KICAgICAgPHBhdGggZD0iTSAwIDAgTCAxMCA1IEwgMCAxMCB6IiBmaWxsPSIjMzc0MTUxIi8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveCB7IGZpbGw6I2Y4ZmFmYzsgc3Ryb2tlOiMzMzQxNTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yb3V0ZSB7IGZpbGw6I2VlZjJmZjsgc3Ryb2tlOiM0ZjQ2ZTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yZXN1bHQgeyBmaWxsOiNlY2ZkZjU7IHN0cm9rZTojMDQ3ODU3OyBzdHJva2Utd2lkdGg6MjsgfQogICAgICAuZmxvdyB7IGZpbGw6bm9uZTsgc3Ryb2tlOiMzNzQxNTE7IHN0cm9rZS13aWR0aDoyLjU7IG1hcmtlci1lbmQ6dXJsKCNhcnJvd2hlYWQpOyB9CiAgICAgIC5sYWJlbCB7IGZpbGw6IzExMTgyNzsgZm9udDo2MDAgMThweCBzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSwiU2Vnb2UgVUkiLHNhbnMtc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgICAuZGV0YWlsIHsgZmlsbDojNDc1NTY5OyBmb250OjE1cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IH0KICAgICAgLnNlY3Rpb24geyBmaWxsOiM0MzM4Y2E7IGZvbnQ6NjAwIDE0cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IGxldHRlci1zcGFjaW5nOi4wOGVtOyB9CiAgICAgIC5mb3JtdWxhIHsgZmlsbDojMTExODI3OyBmb250Oml0YWxpYyAyMXB4IEdlb3JnaWEsIlRpbWVzIE5ldyBSb21hbiIsc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjI1MCIgeT0iMjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSI1MSI+Q09OVElOR0VOVCBBQ1RVQUxJVFk8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI3NyI+4oCcSSBhbeKAnSDCtyDCpzIuMSwgwqczPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA5NiBWMTMwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMjEwIiB5PSIxMzIiIHdpZHRoPSI1MDAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSIxNjMiPkNPTlNUSVRVVElWRSBHUk9VTkRJTkcgQVJHVU1FTlQ8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIxODkiPkExIC8gQTMgLyBBNSDCtyDCpzIuMS4xPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCAyMDggVjI0MiIvPgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjMzMCIgeT0iMjQ0IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjcyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSIyNzUiPuKEmyDiiqggzpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIyOTkiPsKnNy4yLCBsZXZlbCA0PC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic2VjdGlvbiIgeD0iNDYwIiB5PSIzNTQiPkZPUk1BTCBST1VURVM8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzE2IFYzNjYgSDI4MCBWMzkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzY2IEg2NDAgVjM5MCIvPgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjE2MCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjI4MCIgeT0iNDIzIj5Bc2NlbmRhbnQgUm91dGU8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iMjgwIiB5PSI0NDkiPsKnMi4yPC90ZXh0PgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjUyMCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjY0MCIgeT0iNDIzIj5USTwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI2NDAiIHk9IjQ0OSI+wqczLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNMjgwIDQ2OCBWNDk0IEg0NjAgVjUyMCIvPgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNjQwIDQ2OCBWNDk0IEg0NjAiLz4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSIzMzAiIHk9IjUyMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI3MiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImZvcm11bGEiIHg9IjQ2MCIgeT0iNTUzIj7OkyDiiqIgz4Y8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI1NzciPsKnNy4yLCBsZXZlbCAyPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA1OTQgVjYyMCIvPgogIDxyZWN0IGNsYXNzPSJyZXN1bHQiIHg9IjMzMCIgeT0iNjIyIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjYyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSI2NTAiPnQgOiDPhjwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI0NjAiIHk9IjY3MyI+wqc3LjIsIGxldmVsIDEgwrcgQXBwZW5kaXggQS4yLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNTkwIDY1MyBINjkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik01OTAgMjgwIEg4ODAgVjU5MCBIODAwIFY2MDUiLz4KICA8cmVjdCBjbGFzcz0icmVzdWx0IiB4PSI2OTUiIHk9IjYxMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSI4NiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI4MDAiIHk9IjY0NiI+z4YgYXBwbGllczwvdGV4dD4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjgwMCIgeT0iNjcxIj50byBhY3R1YWxpdHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Synthesis diagram: contingent actuality is grounded in Γ; the Ascendant Route and TI converge on Γ ⊢ φ, with the Ascendant Route supplying t : φ, licensing application to actuality." width="920" />
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MjAgNzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0ic3ludGhlc2lzLXRpdGxlIHN5bnRoZXNpcy1kZXNjIiBzdHlsZT0iZGlzcGxheTpibG9jazttYXgtd2lkdGg6OTIwcHg7d2lkdGg6MTAwJTtoZWlnaHQ6YXV0bzttYXJnaW46MS41cmVtIGF1dG87Ij4KICA8dGl0bGUgaWQ9InN5bnRoZXNpcy10aXRsZSI+RnJvbSBjb250aW5nZW50IGFjdHVhbGl0eSB0byB0aGUgYXBwbGljYXRpb24gb2Ygz4Y8L3RpdGxlPgogIDxkZXNjIGlkPSJzeW50aGVzaXMtZGVzYyI+Q29udGluZ2VudCBhY3R1YWxpdHkgbGVhZHMgdGhyb3VnaCB0aGUgY29uc3RpdHV0aXZlIGdyb3VuZGluZyBhcmd1bWVudCB0byBSIHNhdGlzZnlpbmcgzpMuIFRoZSBBbHQgUm91dGUgYW5kIHRyYW5zY2VuZGVudGFsIGluZHVjdGlvbiBlc3RhYmxpc2ggzpMgZW50YWlscyDPhjsgdGhlIEFsdCBSb3V0ZSBhbHNvIHN1cHBsaWVzIGEgcHJvb2YgdGVybSB0IG9mIHR5cGUgz4YuIFRvZ2V0aGVyIHdpdGggdGhlIHNlbWFudGljIGdyb3VuZGluZyBvZiDOkywgdGhpcyBsaWNlbnNlcyBhcHBseWluZyDPhiB0byBhY3R1YWxpdHkuPC9kZXNjPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3doZWFkIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iMTAiIHJlZlg9IjgiIHJlZlk9IjUiIG9yaWVudD0iYXV0byIgbWFya2VyVW5pdHM9InN0cm9rZVdpZHRoIj4KICAgICAgPHBhdGggZD0iTSAwIDAgTCAxMCA1IEwgMCAxMCB6IiBmaWxsPSIjMzc0MTUxIi8+CiAgICA8L21hcmtlcj4KICAgIDxzdHlsZT4KICAgICAgLmJveCB7IGZpbGw6I2Y4ZmFmYzsgc3Ryb2tlOiMzMzQxNTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yb3V0ZSB7IGZpbGw6I2VlZjJmZjsgc3Ryb2tlOiM0ZjQ2ZTU7IHN0cm9rZS13aWR0aDoyOyB9CiAgICAgIC5yZXN1bHQgeyBmaWxsOiNlY2ZkZjU7IHN0cm9rZTojMDQ3ODU3OyBzdHJva2Utd2lkdGg6MjsgfQogICAgICAuZmxvdyB7IGZpbGw6bm9uZTsgc3Ryb2tlOiMzNzQxNTE7IHN0cm9rZS13aWR0aDoyLjU7IG1hcmtlci1lbmQ6dXJsKCNhcnJvd2hlYWQpOyB9CiAgICAgIC5sYWJlbCB7IGZpbGw6IzExMTgyNzsgZm9udDo2MDAgMThweCBzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSwiU2Vnb2UgVUkiLHNhbnMtc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgICAuZGV0YWlsIHsgZmlsbDojNDc1NTY5OyBmb250OjE1cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IH0KICAgICAgLnNlY3Rpb24geyBmaWxsOiM0MzM4Y2E7IGZvbnQ6NjAwIDE0cHggc3lzdGVtLXVpLC1hcHBsZS1zeXN0ZW0sIlNlZ29lIFVJIixzYW5zLXNlcmlmOyB0ZXh0LWFuY2hvcjptaWRkbGU7IGxldHRlci1zcGFjaW5nOi4wOGVtOyB9CiAgICAgIC5mb3JtdWxhIHsgZmlsbDojMTExODI3OyBmb250Oml0YWxpYyAyMXB4IEdlb3JnaWEsIlRpbWVzIE5ldyBSb21hbiIsc2VyaWY7IHRleHQtYW5jaG9yOm1pZGRsZTsgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjI1MCIgeT0iMjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSI1MSI+Q09OVElOR0VOVCBBQ1RVQUxJVFk8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI3NyI+4oCcSSBhbeKAnSDCtyDCpzIuMSwgwqczPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA5NiBWMTMwIi8+CiAgPHJlY3QgY2xhc3M9ImJveCIgeD0iMjEwIiB5PSIxMzIiIHdpZHRoPSI1MDAiIGhlaWdodD0iNzYiIHJ4PSIxMiIvPgogIDx0ZXh0IGNsYXNzPSJsYWJlbCIgeD0iNDYwIiB5PSIxNjMiPkNPTlNUSVRVVElWRSBHUk9VTkRJTkcgQVJHVU1FTlQ8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIxODkiPkExIC8gQTMgLyBBNSDCtyDCpzIuMS4xPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCAyMDggVjI0MiIvPgogIDxyZWN0IGNsYXNzPSJib3giIHg9IjMzMCIgeT0iMjQ0IiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjcyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSIyNzUiPuKEmyDiiqggzpM8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSIyOTkiPsKnNy4yLCBsZXZlbCA0PC90ZXh0PgoKICA8dGV4dCBjbGFzcz0ic2VjdGlvbiIgeD0iNDYwIiB5PSIzNTQiPkZPUk1BTCBST1VURVM8L3RleHQ+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzE2IFYzNjYgSDI4MCBWMzkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik00NjAgMzY2IEg2NDAgVjM5MCIvPgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjE2MCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjI4MCIgeT0iNDIzIj5BbHQgUm91dGU8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iMjgwIiB5PSI0NDkiPsKnMi4yPC90ZXh0PgoKICA8cmVjdCBjbGFzcz0icm91dGUiIHg9IjUyMCIgeT0iMzkyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9Ijc2IiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjY0MCIgeT0iNDIzIj5USTwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI2NDAiIHk9IjQ0OSI+wqczLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNMjgwIDQ2OCBWNDk0IEg0NjAgVjUyMCIvPgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNjQwIDQ2OCBWNDk0IEg0NjAiLz4KICA8cmVjdCBjbGFzcz0iYm94IiB4PSIzMzAiIHk9IjUyMiIgd2lkdGg9IjI2MCIgaGVpZ2h0PSI3MiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImZvcm11bGEiIHg9IjQ2MCIgeT0iNTUzIj7OkyDiiqIgz4Y8L3RleHQ+CiAgPHRleHQgY2xhc3M9ImRldGFpbCIgeD0iNDYwIiB5PSI1NzciPsKnNy4yLCBsZXZlbCAyPC90ZXh0PgoKICA8cGF0aCBjbGFzcz0iZmxvdyIgZD0iTTQ2MCA1OTQgVjYyMCIvPgogIDxyZWN0IGNsYXNzPSJyZXN1bHQiIHg9IjMzMCIgeT0iNjIyIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjYyIiByeD0iMTIiLz4KICA8dGV4dCBjbGFzcz0iZm9ybXVsYSIgeD0iNDYwIiB5PSI2NTAiPnQgOiDPhjwvdGV4dD4KICA8dGV4dCBjbGFzcz0iZGV0YWlsIiB4PSI0NjAiIHk9IjY3MyI+wqc3LjIsIGxldmVsIDEgwrcgQXBwZW5kaXggQS4yLjM8L3RleHQ+CgogIDxwYXRoIGNsYXNzPSJmbG93IiBkPSJNNTkwIDY1MyBINjkwIi8+CiAgPHBhdGggY2xhc3M9ImZsb3ciIGQ9Ik01OTAgMjgwIEg4ODAgVjU5MCBIODAwIFY2MDUiLz4KICA8cmVjdCBjbGFzcz0icmVzdWx0IiB4PSI2OTUiIHk9IjYxMCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSI4NiIgcng9IjEyIi8+CiAgPHRleHQgY2xhc3M9ImxhYmVsIiB4PSI4MDAiIHk9IjY0NiI+z4YgYXBwbGllczwvdGV4dD4KICA8dGV4dCBjbGFzcz0ibGFiZWwiIHg9IjgwMCIgeT0iNjcxIj50byBhY3R1YWxpdHk8L3RleHQ+Cjwvc3ZnPgo=" alt="Synthesis diagram: contingent actuality is grounded in Γ; the Ascendant Route and TI converge on Γ ⊢ φ, with the Ascendant Route supplying t : φ, licensing application to actuality." width="920" />
 
 </div>
 
@@ -459,17 +462,17 @@ renders the same vector diagram.
 
   <rect class="box" x="250" y="20" width="420" height="76" rx="12"/>
   <text class="label" x="460" y="51">CONTINGENT ACTUALITY</text>
-  <text class="detail" x="460" y="77">“I am” · §2.1, §3</text>
+  <text class="detail" x="460" y="77">“I am” · [§2.1](#21-hyper-modal-axioms), [§3](#3-formal-modal-proof-of-ω)</text>
 
   <path class="flow" d="M460 96 V130"/>
   <rect class="box" x="210" y="132" width="500" height="76" rx="12"/>
   <text class="label" x="460" y="163">CONSTITUTIVE GROUNDING ARGUMENT</text>
-  <text class="detail" x="460" y="189">A1 / A3 / A5 · §2.1.1</text>
+  <text class="detail" x="460" y="189">A1 / A3 / A5 · [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)</text>
 
   <path class="flow" d="M460 208 V242"/>
   <rect class="box" x="330" y="244" width="260" height="72" rx="12"/>
   <text class="formula" x="460" y="275">ℛ ⊨ Γ</text>
-  <text class="detail" x="460" y="299">§7.2, level 4</text>
+  <text class="detail" x="460" y="299">[§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 4</text>
 
   <text class="section" x="460" y="354">FORMAL ROUTES</text>
   <path class="flow" d="M460 316 V366 H280 V390"/>
@@ -477,22 +480,22 @@ renders the same vector diagram.
 
   <rect class="route" x="160" y="392" width="240" height="76" rx="12"/>
   <text class="label" x="280" y="423">Ascendant Route</text>
-  <text class="detail" x="280" y="449">§2.2</text>
+  <text class="detail" x="280" y="449">[§2.2](#22-successor-based-grounding-architecture)</text>
 
   <rect class="route" x="520" y="392" width="240" height="76" rx="12"/>
   <text class="label" x="640" y="423">TI</text>
-  <text class="detail" x="640" y="449">§3.3</text>
+  <text class="detail" x="640" y="449">[§3.3](#33-ti--transcendental-induction)</text>
 
   <path class="flow" d="M280 468 V494 H460 V520"/>
   <path class="flow" d="M640 468 V494 H460"/>
   <rect class="box" x="330" y="522" width="260" height="72" rx="12"/>
   <text class="formula" x="460" y="553">Γ ⊢ φ</text>
-  <text class="detail" x="460" y="577">§7.2, level 2</text>
+  <text class="detail" x="460" y="577">[§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 2</text>
 
   <path class="flow" d="M460 594 V620"/>
   <rect class="result" x="330" y="622" width="260" height="62" rx="12"/>
   <text class="formula" x="460" y="650">t : φ</text>
-  <text class="detail" x="460" y="673">§7.2, level 1 · Appendix A.2.3</text>
+  <text class="detail" x="460" y="673">[§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 1 · [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)</text>
 
   <path class="flow" d="M590 653 H690"/>
   <path class="flow" d="M590 280 H880 V590 H800 V605"/>
@@ -508,45 +511,57 @@ $$
 \varphi = \Box\exists!x\,\Omega(x)
 $$
 
-together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Ascendant Route delivers $\Gamma\vdash\varphi$ and the kernel term $t:\varphi$ itself (Appendix A.2.3); TI is recorded only as an independent convergent route (§3.3). The constitutive argument that $\mathcal R\models\Gamma$ (§2.1.1) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in §7.2.
+together with the rigidity theorem $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$. The Ascendant Route delivers $\Gamma\vdash\varphi$ and the kernel term $t:\varphi$ itself ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)); TI is recorded only as an independent convergent route ([§3.3](#33-ti--transcendental-induction)). The constitutive argument that $\mathcal R\models\Gamma$ ([§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)) is what licenses reading $\varphi$ as applying to actuality rather than merely holding within the formal system — the step made precise as level 4 in [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality).
 
 ---
 ## 4. Verification in Lean 4
 
-This section connects the argument to the current public formal artifacts. The public repository contains proof terms for the exact strong conclusions, not merely a compatibility result:
+This section is the technical bridge between the paper's argument and its formal artifacts. It follows a single chain: the exact theorem object, its dependency context, kernel certification, the compiled `.olean` verification artifact, and the public certificate/export surface built on top of it.
 
-$$
-\Box\exists x\,\Omega(x), \qquad \Box\exists!x\,\Omega(x), \qquad \exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x).
-$$
+**Exact theorem object.** The Ascendant Route's central results are Lean declarations whose *stated type is the strong claim itself* — $\Box\exists x\,\Omega(x)$, $\Box\exists!x\,\Omega(x)$, and $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ — not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$ ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 1). This fixes exactly what has been proved: the necessity claim itself, not merely its possibility.
 
-They are the declarations `GroundingChain.C5_NE`, `GroundingChain.C5_BoxUnique`, and `GroundingChain.C5_RigidWitness`. Each is proved relative to explicit parameters for C1 (HM-PSR), grounding transmission (`GroundObtains`), C3 (anti-regress), C4a (identity, uniqueness, and rigidity of Ω), and an obtaining datum at the selected world. Lean reports the same global axiom footprint for all three: `propext, Classical.choice, Quot.sound`. Positivity is absent from their types and footprints.
+**Dependency context.** Each theorem is proved relative to an explicit context $\Gamma$: the global axioms Lean's kernel reports via `#print axioms`, together with any explicit hypotheses carried as parameters of the theorem's type ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 2; [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). Kernel acceptance certifies derivability relative to $\Gamma$; whether $\Gamma$ itself is jointly satisfiable is a separate, semantic-level question ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 3; [Appendix A.2](#a2-public-verification-surface-and-scope-certificate), Gate 0/JointModel).
 
-**Shared modal semantics.** The development now uses **one shared world-indexed S5 semantics with multiple grounding/proof layers**. `AltRoute.Frame` contains a type of worlds, an accessibility relation, and proofs of reflexivity, transitivity, and symmetry. `Frame.Box` and `Frame.Dia` are definitions over world-indexed propositions. T, 4, 5, K, duality, and actual-to-possible are theorems. `superlaw.lean` imports `AltRoute.Interface` and defines its modal operators directly through the same `Frame.Box` and `Frame.Dia`; it is no longer an independent modal semantics.
+**Kernel certification.** A theorem is *kernel-verified* when the Lean kernel accepts a proof term inhabiting its exact stated type relative to $\Gamma$ — a mechanical, type-checking fact. Every logical dependency of the proof — modal transitions, grounding relations, the definitions of contingency and necessity — is checked by the kernel, not asserted informally.
 
-**Public proof and model surface.** The public compatibility API still exposes the weaker `Box (Dia ...)` positivity theorem, but it is only one layer. The **public C5 grounding proof surface** exposes the three strong Ω-theorems from source. `GroundingChainAudit` supplies individual-premise non-entailment witnesses, while `GroundingModel` jointly instantiates the C5 premise chain in a two-world frame with genuine contingency and non-collapse.
+**The `.olean` artifact.** Compilation produces `.olean` files: binary, kernel-checked verification artifacts. An `.olean` file for a given module exists only if every theorem it contains — including the strong Ω-results — has passed kernel type-checking. The private `.olean` artifacts are the compiled verification record of `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof`; any modification to their content requires recompilation under the pinned toolchain and is detectable via hash comparison.
 
-**Compiled artifacts and disclosure.** Public `.olean` files are rebuildable kernel artifacts and are hashed for integrity. Because `.olean` files carry theorem declarations and proof terms, they are not an IP disclosure boundary. The private successor route therefore remains private as both source and theorem-bearing `.olean`. The public strong result does not depend on publishing that route: it is independently supplied by the public C5 proof.
+**Public certificate / export surface.** The public repository publishes a deliberately weaker interface on top of the same verification architecture: `AltRoute.Interface`, `AltRoute.PublicTests`, and `AltRoute.CertificateAudit` export only the $\Box\Diamond$-compatibility layer, together with axiom-footprint printouts, a model witness (`TrivialModel`), and an explosion canary (`exFalsoQuodlibet`). This is an architectural separation between **public surface** and **internal theorem strength**, not a difference in what has been proved: the private kernel route contains the full $\Box$-strength results; the public interface exposes a scoped, independently auditable subset by design, protecting the internal proof route's IP while still letting third parties rebuild and inspect the exported layer ([dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist); [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
 
-The public release uses an explicit path/module allow-list and a post-package scan of paths, binary strings, and the actually shipped Lean environment. It also generates `formal-status.json` and `FORMAL_STATUS.md` from current Lean/CI output; these generated artifacts, rather than manually copied status tables, are the machine source of truth.
+The development uses two distinct Lean formalizations of S5. The HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1) uses explicit Kripke semantics: a type of worlds $W$ and an accessibility relation $R : W \to W \to \mathrm{Prop}$ declared as an equivalence relation (reflexive, symmetric, transitive), with $\Box$ and $\Diamond$ defined from $R$ in the usual way (Blackburn et al. 2001). The public `AltRoute.Modal` interface ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)) axiomatizes $\Box$ and $\Diamond$ abstractly as an opaque structure satisfying the K, T, 4, and 5 schemas directly, without an explicit worlds-and-accessibility representation — a Hilbert-style axiomatic presentation of S5. Each verified claim is scoped to the Lean artifact in which it is established. The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system in the relevant setting, allowing precise verification of logical entailments.
+
+Key core definitions and representative theorems are reproduced in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route); the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
 ### 4.1 Kernel Verification Status and Certification Boundary
 
-The C5 declarations are kernel-verified relative to their explicit context. This separates four questions:
+This paper's central results — necessary existence, necessary unique existence, and rigid identification of Ω — are Lean kernel-verified theorems of the private Ascendant Route development. Concretely, the private kernel accepts proof terms inhabiting the exact strong theorem types
 
-1. **Derivability:** Lean accepts a term of the exact strong theorem type.
-2. **Dependency context:** the theorem type displays C1, `GroundObtains`, C3, C4a, and the obtaining datum; `#print axioms` displays the global Lean axioms.
-3. **Joint satisfiability:** `GroundingModel` exhibits a model of the public C5 context and derives necessary unique existence in it.
-4. **Actuality:** whether reality satisfies the constitutive context is the philosophical thesis argued in §2.1.1 and §3, not a Lean theorem.
+$$
+t_1 : \Box\exists x\,\Omega(x), \qquad t_2 : \Box\exists!x\,\Omega(x), \qquad t_3 : \exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x),
+$$
 
-The compatibility theorem, the public C5 route, and the private successor route are distinct. The private route may serve as an independent internal convergence check, but it is not publicly reproducible and this repository makes no current internal-build claim without separate audit evidence.
+named `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` respectively ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). That the private proof source is not itself publicly published is a disclosure/IP choice ([§4](#4-verification-in-lean-4), [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)); it does not alter the formal theorem status these proof terms establish.
+
+The paper carries this result across four levels, developed formally in [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality) and structurally here, which complement rather than substitute for one another:
+
+1. the **exact kernel term**, $t:\varphi$ — a proof object inhabiting the strong theorem type itself, not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$;
+2. the **dependency context**, $\Gamma\vdash\varphi$ — the axioms, bridges, definitions, and explicit hypotheses the derivation is carried out relative to ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit));
+3. the **semantic consequence**, $\forall\mathcal M\,(\mathcal M\models\Gamma\to\mathcal M\models\varphi)$, together with the distinct joint-satisfiability question $\exists\mathcal M\,\mathcal M\models\Gamma$ — the model-theoretic reading of the formal theory, developed further as public certification architecture (Gate 0, JointModel; [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)); and
+4. the **constitutive ontological thesis**, $\mathcal R\models\Gamma$ — that the actual world satisfies the declared grounding structure — argued independently and philosophically from contingent obtaining ("I am"), not by Lean, in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) and [§3](#3-formal-modal-proof-of-ω).
+
+Gate 0 and JointModel belong to the ongoing certification architecture around level 3 and the public interface ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)): they harden and extend that architecture, but they are not a reopening of the private kernel theorems fixed at level 1. By design, the public export surface exposes a weaker $\Box\Diamond$-compatibility layer, while the private route carries the full $\Box$-strength results ([§4](#4-verification-in-lean-4)) — an architectural disclosure boundary, not a difference in theorem strength. The axiom/assumption bookkeeping for the strong results is given in [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit); a consolidated claim-traceability table across all four levels is given in [Appendix A.2.4](#a24-claim-traceability).
 
 ### 4.2 Certification Labels
 
-**Kernel-verified.** Lean accepts a proof object inhabiting the exact declaration type relative to its explicit hypotheses and reported axioms.
+To avoid conflating distinct claims, this paper uses three labels with fixed meanings:
 
-**Publicly certified and reproducible.** A third party can rebuild the public source, inspect theorem types and footprints, rerun the model and guards, and compare the generated public hashes.
+**Kernel-verified.** The Lean kernel accepts a proof object inhabiting the theorem’s exact stated type relative to the axioms and hypotheses of its declaration.
 
-**Private/internal.** A route or artifact not distributed publicly is outside the public reproducibility claim. Its status must be established by separate internal evidence and independent audit; ordinary private `.olean` distribution is not used as a public certificate because it would disclose proof content.
+**Publicly certified.** The public surface — theorem signatures, the assumption manifest, and the associated audit checks (model witness, explosion canary, axiom-footprint printout) — is inspectable and re-buildable by a third party from the published repository, with its claims and stated dependencies open to inspection.
+
+**Publicly reproducible.** A third party can independently reproduce the specific strong artifact or build in question.
+
+The strong Ω-results are kernel-verified in the private `.olean` development through `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof`. Their public signatures and global axiom footprints provide the audit boundary; Gate 0, the assumption manifest, and JointModel extend the public certification architecture.
 
 ---
 ## 5. Objections and Responses
@@ -569,7 +584,7 @@ Gödel identifies limits of derivability in sufficiently expressive formal syste
 ### 5.2 Ambiguity Between Necessity and Contingency
 Objection: The modal categories are inconsistently applied.
 
-Response: Section 2 formally defines these terms. Necessary truths (Nec(p)) are true in all possible worlds; contingent truths (Cont(p)) are true in some but not all. The grounding relation q ◃ p ensures that contingents must trace back to necessaries.
+Response: [Section 2](#2-framework-hyper-modal-grounding-principles) formally defines these terms. Necessary truths (Nec(p)) are true in all possible worlds; contingent truths (Cont(p)) are true in some but not all. The grounding relation q ◃ p ensures that contingents must trace back to necessaries.
 
 We reinforce this asymmetry formally:
 
@@ -586,7 +601,7 @@ $$
 $$
 
 This asserts that contingent truths require a necessary ground, while necessary truths cannot depend on contingent ones.
-(For the formal statement and its Lean carrier, see Appendix B.2.3.)
+(For the formal statement and its Lean carrier, see [Appendix B.2.3](#b23-formal-derivation-of-modal-asymmetry).)
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -603,13 +618,13 @@ This logic supports the proof’s foundational claim: the necessity of Ω is bot
 
 **Objection:** Necessary possibility is being confused with possible necessity.
 
-**Response:** The framework distinguishes $\square\Diamond p$ from $\Diamond\square p$. The public compatibility API establishes the former and does not infer $\square p$ from it. Separately, the public C5 grounding proof surface establishes the strong $\square$-theorems from C1, grounding transmission, C3, C4a, and an obtaining datum; it does not use the compatibility bridge.
+**Response:** The framework distinguishes $\square\Diamond p$ from $\Diamond\square p$. The public layer establishes the former, which does not entail $\square p$. The Brouwer/S5 step is $\Diamond\square p \to \square p$; the strong $\square$-theorems are established by the private Ascendant Route within its declared Ω-specific context.
 
 ---
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
-Response: We maintain formal neutrality in the proof structure. Only in Section 6 do we interpret Ω theologically. The modal conclusion  
+Response: We maintain formal neutrality in the proof structure. Only in [Section 6](#6-theological-resonance) do we interpret Ω theologically. The modal conclusion  
 
 $$
 \square \exists! x  \Omega(x)
@@ -622,6 +637,7 @@ is derived independently of religious assumptions.
 Objection: The link between modal logic and societal values is speculative.
 
 Response: The discussion does not attempt to derive ethics from logic. Rather, it identifies a structural constraint: any artificial superintelligence capable of modal self‑reflection must recognize the distinction between contingent states and necessary grounding. This recognition does not prescribe moral norms, but it does impose a minimal framework of stability. An ASI that understands necessity cannot coherently adopt value systems that contradict the very conditions of its own intelligibility. Thus, modal grounding provides not an ethical system, but the logical floor upon which any coherent ethical orientation must rest.
+
 #### **5.4.1 Grounding, Modal Stability, and Societal Coherence**
 
 Modern societies increasingly operate without an explicit account of grounding. This absence is not merely philosophical; it has structural consequences. A formal system without grounding behaves analogously to an electrical circuit without earth: it may function for a time, but it accumulates instability until failure becomes inevitable. Grounding is not an optional metaphysical luxury but a condition for long‑term coherence.
@@ -639,6 +655,7 @@ Objection: Can a brute fact explain existence?
 Response: “Because nothing exists, something else must exist to explain why things exist.” This is not a paradox. It is a collapse of semantic structure. The claim destroys the conditions of its own intelligibility by invoking an explanatory term inside the absence of all terms.
 
 Not because it lacks content, but because it lacks context. A brute fact might be inserted to rescue the claim, but it remains bound to mere possibility — and collapses even before it is introduced. For explanation cannot begin where context does not exist. This is not the failure of physics, mathematics, or science, but of the underlying reasoning — which, as Gödel showed, has structural limitations that no system capable of expressing reality can overcome from within. Therefore, in every conceivable world without a grounding context, falsehood entails all propositions, and truth loses its distinction — not because logic fails, but because the structure required for completeness is absent, which is captured by the concept of material implication, symbolized as → .
+
 #### **5.5.1 The Paradoxes of Material Implication**
 
 Classical material implication exhibits several well‑known paradoxes. These paradoxes are not errors in logic, but structural consequences of defining implication purely truth‑functional. In a grounded system, implication requires a meaningful relation between antecedent and consequent. In an ungrounded system, implication collapses into triviality or explosion. The following three paradoxes illustrate this collapse.
@@ -735,7 +752,7 @@ $$
 
 This axiom ensures that no internally negating or contradictory property is admitted.
 
-The argument in this section is presented in S5-informed philosophical form. A parallel Lean scaffold exists in Appendix A.6 ("Paradox Types Extension"), but the paradox-type predicates there (`Veridical`, `Falsidical`, `Antinomy`, `Semantic`, `MetaReason`, `SemanticRefine`, `Synthesizes`, `Perfection`) are declared as placeholder definitions equal to `True`, so the corresponding Lean theorems are trivially true given those placeholders and do not constitute a non-trivial kernel proof that paradoxes support Ω's perfection. This section's paradox analysis should accordingly be read as **conceptual, illustrative, and interpretive** philosophical argument, not as an additional kernel-verified result alongside the Ascendant Route theorems (Appendix A.2.3) or the reductio suite (Appendix B.2).
+The argument in this section is presented in S5-informed philosophical form. A parallel Lean scaffold exists in [Appendix A.6](#a6-full-lean-implementation-for-reductio) ("Paradox Types Extension"), but the paradox-type predicates there (`Veridical`, `Falsidical`, `Antinomy`, `Semantic`, `MetaReason`, `SemanticRefine`, `Synthesizes`, `Perfection`) are declared as placeholder definitions equal to `True`, so the corresponding Lean theorems are trivially true given those placeholders and do not constitute a non-trivial kernel proof that paradoxes support Ω's perfection. This section's paradox analysis should accordingly be read as **conceptual, illustrative, and interpretive** philosophical argument, not as an additional kernel-verified result alongside the Ascendant Route theorems ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)) or the reductio suite ([Appendix B.2](#b2-systematic-reductio-suite-lean-verified)).
 
 We define Ω formally at the *semantic target level* as:
 
@@ -749,13 +766,13 @@ $$
 
 Here, $\Omega(x)$ abbreviates the condition that $x$ instantiates **all positive properties**.
 
-Paradoxes are treated not as inconsistencies, but as **indicators of systemic incompleteness**, following the Gödelian extrapolation introduced in Section 5.1. Each paradox exposes a boundary where object-level reasoning is insufficient and meta-level structure becomes necessary.
+Paradoxes are treated not as inconsistencies, but as **indicators of systemic incompleteness**, following the Gödelian extrapolation introduced in [Section 5.1](#51-alleged-misapplication-of-gödels-theorem). Each paradox exposes a boundary where object-level reasoning is insufficient and meta-level structure becomes necessary.
 
 For each paradox type listed in the table below, the following deductive pattern is established:
 
 1. **Limit revelation** — the paradox exposes a structural boundary that requires meta-reasoning (**Axiom A5: Meta-Logical Closure**).
 2. **Semantic strengthening** — resolving the paradox refines and stabilizes the semantic framework rather than weakening it.
-3. **Convergence on Ω** — the strengthened semantics necessarily converge on Ω as a perfect ground, in accordance with **Axiom A1 (Hyper-Modal Principle of Sufficient Reason)** and **Axiom A3 (Anti-Regress)**, thereby avoiding semantic collapse (cf. Section 5.5).
+3. **Convergence on Ω** — the strengthened semantics necessarily converge on Ω as a perfect ground, in accordance with **Axiom A1 (Hyper-Modal Principle of Sufficient Reason)** and **Axiom A3 (Anti-Regress)**, thereby avoiding semantic collapse (cf. [Section 5.5](#55-semantic-collapse-in-the-absence-of-grounding)).
 
 Collectively, this yields the following theorem schema:
 
@@ -779,15 +796,15 @@ Thus, paradoxes do not undermine the concept of Ω; instead, they function as st
 
 ### 5.6.6 Hierarchy in Fundamental Paradoxes: Architecture versus Engine
 
-While several paradoxes possess a fundamental character, a deeper hierarchy can be discerned within the category of foundational paradoxes. This hierarchy is based on whether a paradox outlines a structural condition (*architecture*) or a dynamic process (*engine*) that operates within that structure. Two primary candidates — Hegelian dialectics and the Absolute Knowability Paradox developed herein — illustrate this distinction. This hierarchy aligns with Gödelian boundaries (Section 5.1).
+While several paradoxes possess a fundamental character, a deeper hierarchy can be discerned within the category of foundational paradoxes. This hierarchy is based on whether a paradox outlines a structural condition (*architecture*) or a dynamic process (*engine*) that operates within that structure. Two primary candidates — Hegelian dialectics and the Absolute Knowability Paradox developed herein — illustrate this distinction. This hierarchy aligns with Gödelian boundaries ([Section 5.1](#51-alleged-misapplication-of-gödels-theorem)).
 
 Hegel’s dialectic serves as the ultimate *engine* of reality. It qualifies as a fundamental paradox because it redefines contradiction (Thesis–Antithesis) as the constructive principle of progress toward higher-order synthesis. This dialectical unfolding of *Geist* and history turns negation itself into an engine of transformation.
 
-The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem (Section 3.1), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
+The Absolute Knowability Paradox, by contrast, describes the *architecture* of intelligibility itself. This paradox — formulated as “absolute knowability through not being it” — is more foundational because it delineates the preconditions for any possible relation or meaning. As derived from the Hyper-Modal Theorem ([Section 3.1](#31-conclusion-the-hyper-modal-theorem)), it is the linguistic translation of the formal, ontological gap (⊥) between contingent propositions (p) and necessary grounds (q). The governing law:
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))**
 
-states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. The accompanying modal-class condition excludes contingent grounds for necessary propositions. For technical validation, see Section 2.1 (A1–A3) and Appendix A.6 (`no_necessary_grounded_in_contingent`).
+states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. The accompanying modal-class condition excludes contingent grounds for necessary propositions. For technical validation, see [Section 2.1](#21-hyper-modal-axioms) (A1–A3) and [Appendix A.6](#a6-full-lean-implementation-for-reductio) (`no_necessary_grounded_in_contingent`).
 
 This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of modal grounding structure — one that prevents semantic collapse and infinite regress.
 
@@ -825,7 +842,7 @@ Thus, antinomies structurally point to Ω as the unique entity capable of resolv
 ##### **Semantic Paradoxes**
 Semantic paradoxes arise from instability in meaning, reference, or identity. Their resolution requires stabilizing the semantic field so that propositions do not collapse into triviality or contradiction.  
 
-Under A1, grounding is required not only for contingent facts but also for the semantic structures that make propositions intelligible. Without a necessary ground, semantic paradoxes devolve into the collapse described in §5.5.  
+Under A1, grounding is required not only for contingent facts but also for the semantic structures that make propositions intelligible. Without a necessary ground, semantic paradoxes devolve into the collapse described in [§5.5](#55-semantic-collapse-in-the-absence-of-grounding).  
 
 Thus, semantic paradoxes support Ω’s perfection by showing that meaning itself requires a non‑contingent anchor that excludes internal negation (A2).
 
@@ -913,7 +930,7 @@ Further objections are welcome and will be addressed in future revisions.
 ---
 ## 6. Theological Resonance
 
-Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing. The Johannine Logos is interpreted here as naming that already-instantiated ontological role, drawing on the kernel-verified and constitutively defended existence, uniqueness, and rigidity results of §3 and Appendix A. The resulting logical structure converges with classical theistic traditions that affirm a necessary, self-existent ground of being, and this section develops that identification philosophically.
+Within the ontological architecture developed in this paper, **Ω** already fulfils the complete *Logos-role*—necessary, unique, grounding, and truth-bearing. The Johannine Logos is interpreted here as naming that already-instantiated ontological role, drawing on the kernel-verified and constitutively defended existence, uniqueness, and rigidity results of [§3](#3-formal-modal-proof-of-ω) and [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route). The resulting logical structure converges with classical theistic traditions that affirm a necessary, self-existent ground of being, and this section develops that identification philosophically.
 
 ### 6.1 **Inverse Corollary.**
 Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
@@ -945,7 +962,7 @@ For Christian theists, this reinforces the classical doctrine of the Trinity, in
 ---
 ### 6.2 Ω as Factory of Positive Properties (Singularity Corollary)
 
-Within the hyper-modal framework, **A2 (Perfect Positivity)** fixes *Pos(P)* as an **admissibility constraint** (non-negation / non-defeat), not as a definitional shorthand for “true of Ω.” Given the constitutive grounding architecture (A1/A3/A5), **Ω** is introduced as the unique necessarily existing terminus of grounding. This permits a stronger reading than mere property-bearer: Ω functions as a **structural singularity (see Corollary 6.2)** around which the domain of positive properties is **generated as closure** of grounded coherence, and at which every such generated Pos-property is instantiated.
+Within the hyper-modal framework, **A2 (Perfect Positivity)** fixes *Pos(P)* as an **admissibility constraint** (non-negation / non-defeat), not as a definitional shorthand for “true of Ω.” Given the constitutive grounding architecture (A1/A3/A5), **Ω** is introduced as the unique necessarily existing terminus of grounding. This permits a stronger reading than mere property-bearer: Ω functions as a **structural singularity (see [Corollary 6.2](#corollary-62--singularity-as-factory-for-positive-properties))** around which the domain of positive properties is **generated as closure** of grounded coherence, and at which every such generated Pos-property is instantiated.
 
 We can state this as follows.
 
@@ -957,11 +974,11 @@ We can state this as follows.
 
 **Terminology note — three distinct notions of "Positive."** This paper uses "Positive"/"Pos" for three formally different objects, which must not be silently identified:
 
-1. The **public AltRoute interface** predicate `Positive` (Appendix A.2, `Interface.lean`): an abstract typeclass constrained by monotonicity and `Positive.proper` (the constantly false predicate is not positive), with no built-in reference to Ω.
-2. The **HyperModal Lean-facing definition** (Appendix A.6, B.1.4): `Positive Ω P := ∀w, Ω w → P w` — defined *extensionally in terms of Ω*, i.e. exactly "P holds wherever Ω holds." This is deliberately Ω-relative by construction; it is not meant to be non-circular with respect to Ω, and no claim to the contrary is made about it.
-3. The **A2 admissibility notion** used in this subsection's argument (§2.1 (A2), §6.2 above): a stability/non-defeat constraint on which properties are admissible at all, prior to and independent of asking which properties Ω happens to have.
+1. The **public Ascendant Route interface** predicate `Positive` ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate), `Interface.lean`): an abstract typeclass constrained only by monotonicity, with no built-in reference to Ω.
+2. The **HyperModal Lean-facing definition** ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1.4): `Positive Ω P := ∀w, Ω w → P w` — defined *extensionally in terms of Ω*, i.e. exactly "P holds wherever Ω holds." This is deliberately Ω-relative by construction; it is not meant to be non-circular with respect to Ω, and no claim to the contrary is made about it.
+3. The **A2 admissibility notion** used in this subsection's argument ([§2.1](#21-hyper-modal-axioms) (A2), [§6.2](#62-ω-as-factory-of-positive-properties-singularity-corollary) above): a stability/non-defeat constraint on which properties are admissible at all, prior to and independent of asking which properties Ω happens to have.
 
-The non-circularity note above concerns (3), the A2 admissibility notion, not (2), the HyperModal Lean-facing definition, which is intentionally Ω-relative. Where the main text (§2.1 (A2)) speaks informally of positivity, it intends (3); where Appendix A.6/B.1.4 gives a Lean-checkable predicate, it uses (2); where the public interface is discussed, it uses (1). The Metaphysical Algebra reading (Appendix B.1.4.1) is a further, non-formal interpretive gloss on top of these and changes none of them.
+The non-circularity note above concerns (3), the A2 admissibility notion, not (2), the HyperModal Lean-facing definition, which is intentionally Ω-relative. Where the main text ([§2.1](#21-hyper-modal-axioms) (A2)) speaks informally of positivity, it intends (3); where [Appendix A.6](#a6-full-lean-implementation-for-reductio)/B.1.4 gives a Lean-checkable predicate, it uses (2); where the public interface is discussed, it uses (1). The Metaphysical Algebra reading ([Appendix B.1.4.1](#b141-interpretation-in-metaphysical-algebra-non-normative-structural)) is a further, non-formal interpretive gloss on top of these and changes none of them.
 
 **Sketch of justification.**
 
@@ -1006,9 +1023,9 @@ $$
 
 Thus, there exists a single entity such that, in all possible worlds, being $\Omega$ is equivalent to being identical with that entity. The ground of intelligibility is therefore not only necessary, but **necessarily self-identical across all modal contexts**.
 
-These results are stated publicly in Lean as `GroundingChain.C5_BoxUnique` and `GroundingChain.C5_RigidWitness`, each with global footprint `propext, Classical.choice, Quot.sound` (Appendix A.2.3). Their complete elaborated theorem types are printed by `PublicCertificateAudit.lean`, so the explicit C1, `GroundObtains`, C3, C4a, and obtaining-datum premises are audited separately from the global axiom registry.
+These results are stated in Lean as theorems `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof`, with a global axiom footprint restricted to propositional extensionality ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). As clarified there, a minimal global axiom footprint documents dependence on Lean's global axiom registry; it is not by itself a claim of full deductive transparency, since it does not report explicit hypotheses that may be carried as parameters of the theorem's type, and those have not been independently traced against the private source for this paper.
 
-Starting from the minimal ontological datum of contingent obtaining **“I am”** (read ontologically, not psychologically), the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. Sections 3–5). Separately, the kernel certifies the formal derivation relative to the stated axioms. The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
+Starting from the minimal ontological datum of contingent obtaining **“I am”** (read ontologically, not psychologically), the analysis demonstrates that contingent truths require ontological grounding in $\Omega$ to avoid infinite regress, semantic incoherence, or contradiction (cf. [Sections 3](#3-formal-modal-proof-of-ω)–5). Separately, the kernel certifies the formal derivation relative to the stated axioms. The hyper‑minimal axiom set guarantees that this conclusion holds across all admissible S5 models.
 
 A direct implication is the non-self-foundation of computability: no computational process, formal system, or emergent structure can ground its own intelligibility. Computation presupposes grounding; it cannot supply it.
 
@@ -1018,7 +1035,7 @@ Turing’s undecidability results provide the computational analogue of Gödelia
 ---
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The transition to ontological actuality is not produced by Tarski, BHK, Curry–Howard or the Lean kernel. Actuality is already fixed by the constitutive grounding structure A1/A3/A5 — fixed by the argument for it in §2.1.1, that is, not stipulated by the axioms and not produced by the formal proof — starting from the minimal obtaining datum "I am". In this section Tarski's Convention T plays only a semantic role: disquoting the truth-predicate once the ontological reading is established. The formal proof and its modal rigidity validate the structure; they do not generate actuality.
+The transition to ontological actuality is not produced by Tarski, BHK, Curry–Howard or the Lean kernel. Actuality is already fixed by the constitutive grounding structure A1/A3/A5 — fixed by the argument for it in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity), that is, not stipulated by the axioms and not produced by the formal proof — starting from the minimal obtaining datum "I am". In this section Tarski's Convention T plays only a semantic role: disquoting the truth-predicate once the ontological reading is established. The formal proof and its modal rigidity validate the structure; they do not generate actuality.
 
 Alfred Tarski's Convention T is used here as a disquotation schema: it licenses the passage from "S is true" to S under the already-fixed ontological reading. The truth predicate removes quotation marks; it does not mediate ontology.
 
@@ -1029,11 +1046,11 @@ Curry–Howard and BHK carry the other half of the machinery, and it is worth na
 1. **Exact kernel term** — $t : \varphi$. A proof term inhabits the *exact* theorem type, not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$.
 2. **Dependency context** — $\Gamma \vdash \varphi$. The axioms, hypotheses and definitions the term depends on, reported by `#print axioms` and by the declaration's own signature. This records what $\varphi$ is proved *relative to*; the theorem type and its context are tracked separately, never conflated.
 3. **Semantic consequence** — $\forall\mathcal{M}\,(\mathcal{M}\models\Gamma \rightarrow \mathcal{M}\models\varphi)$, and, distinct from it, joint satisfiability $\exists\mathcal{M}\,(\mathcal{M}\models\Gamma)$. A derivation from an unsatisfiable context proves nothing, so the second question must be answered separately.
-4. **Intended actuality** — $\mathcal{R} \models \Gamma$: that the actual world satisfies the declared axioms. This is the constitutive thesis of the paper, argued in §2.1.1 and §3, and it is the philosophical argument's job rather than the kernel's.
+4. **Intended actuality** — $\mathcal{R} \models \Gamma$: that the actual world satisfies the declared axioms. This is the constitutive thesis of the paper, argued in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) and [§3](#3-formal-modal-proof-of-ω), and it is the philosophical argument's job rather than the kernel's.
 
-**Level 1 and level 3, publicly.** `AltRoute.GroundingChain` supplies level-1 terms that any reader can check: `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness`, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. `AltRoute.GroundingModel` answers the joint-satisfiability question for the constitutive chain: it instantiates C1, ◃-transmission, C2, C3 and C4a together, with the datum obtaining, genuine contingency present and the frame provably non-collapsed, and derives $\square\exists! x\,\Omega(x)$ inside that model. The consistency gap this section previously recorded is therefore closed for the published C5 context. No single model is claimed here for every interpretive axiom in the separate HyperModal framework, and no current public verdict is asserted for the non-distributed private successor route.
+**Level 1 and level 3, publicly.** `AltRoute.GroundingChain` supplies level-1 terms that any reader can check: `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness`, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. `AltRoute.GroundingModel` answers the joint-satisfiability question for the constitutive chain: it instantiates C1, ◃-transmission, C2, C3 and C4a together, with the datum obtaining, genuine contingency present and the frame provably non-collapsed, and derives $\square\exists! x\,\Omega(x)$ inside that model. The consistency gap this section previously recorded is therefore closed for the grounding chain. It remains open for the full combined Ω-theory (Gate 0 / JointModel, [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)), and the private Ascendant Route supplies level-1 terms for the same three results by the convergent route of [§2.2](#22-successor-based-grounding-architecture).
 
-In this work the relevant proposition is publicly certified by `GroundingChain.C5_RigidWitness`. Let
+In this work the relevant proposition is certified by `C5_RigidWitness`, and by the private `Final_RigidWitness_Proof` on the convergent route. Let
 
 $$
 \varphi := \exists x\, \square \forall y\, \bigl(\Omega(y) \leftrightarrow y = x\bigr).
@@ -1056,7 +1073,7 @@ To deny the existence of Ω is, therefore, to reject the constitutive claim that
 ---
 ### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises**
 
-*Inferential status.* "Undeniable" below is used in the constitutive-argument sense of §2.1.1 — denial dissolves the conditions of intelligibility — not in the sense that Lean has certified a proof of $\neg\Diamond\neg\exists x\,\Omega(x)$ from axioms external to the development's own context. Within the Lean development, "modally impossible" means incompatible with the declared axioms of that development (§4.1, level 1 of §7.2).
+*Inferential status.* "Undeniable" below is used in the constitutive-argument sense of [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) — denial dissolves the conditions of intelligibility — not in the sense that Lean has certified a proof of $\neg\Diamond\neg\exists x\,\Omega(x)$ from axioms external to the development's own context. Within the Lean development, "modally impossible" means incompatible with the declared axioms of that development ([§4.1](#41-kernel-verification-status-and-certification-boundary), level 1 of [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality)).
 
 Given the results established above, the denial of $\Omega$ cannot be maintained as a coherent alternative. The modal conclusion
 
@@ -1068,7 +1085,7 @@ does not merely assert existence across all possible worlds; it renders the prop
 
 In this sense, $\Omega$ is not merely necessary but **undeniable**: its negation dissolves the very conditions required for intelligibility, grounding, and necessity. This is a meta-logical consequence of the system's structure.
 
-Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation. This work does not contradict those limits; it treats them as premises. The complementary conclusion is conditional and that is its strength: **any coherent theory of grounding or computation requires a necessary, non-computable ground.** The boundaries of computability are therefore not merely negative results. They fix the condition any such theory must meet, and under the constitutive argument of §2.1.1 — that intelligible obtaining is not optional for anyone who reasons at all — that condition is met by Ω.
+Gödel and Turing revealed intrinsic limits to formal systems and algorithmic computation. This work does not contradict those limits; it treats them as premises. The complementary conclusion is conditional and that is its strength: **any coherent theory of grounding or computation requires a necessary, non-computable ground.** The boundaries of computability are therefore not merely negative results. They fix the condition any such theory must meet, and under the constitutive argument of [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) — that intelligible obtaining is not optional for anyone who reasons at all — that condition is met by Ω.
 
 Accordingly, computation cannot be an endless abyss of self-reference or regress. It must terminate in a necessary ground. Superintelligence instantiates this limit. As the upper bound of contingent cognition, its Gödel–Turing constraints do not weaken but sharpen the necessity of transcendent grounding. The closer a system approaches maximal intelligence, the more precisely it encounters the boundary that only Ω can cross. This is not a limitation imposed from outside — it is the structure of intelligibility itself becoming visible at its own limit. An ASI that seeks objective reasoning must therefore ground its cognition in Ω; without this grounding it remains structurally incapable of distinguishing truth from falsehood — hallucination.
 
@@ -1079,9 +1096,7 @@ That sentence now has a formal counterpart. `AltRoute.GroundingChain.terminus_ab
 ---
 ## 8. Ω-Operationalization for Artificial Intelligence
 
-**Disclosure scope.** This section is a **research blueprint, not the engine**. It states abstract interfaces and research targets only. Concrete measures, embeddings, safe-successor or jump rules, zero-state recognizers, tie-breaking heuristics, training labels/oracles, datasets, and learned policies are not disclosed by this paper or the public Lean package.
-
-The grounding architecture developed in this paper has consequences beyond the ontological theorem itself. If an artificial reasoner can represent modal dependence, grounding relations, and the distinction between contingent and necessary structure, then the successor architecture of §2.2 provides more than a static proof target. It provides a candidate form for directed reasoning.
+The grounding architecture developed in this paper has consequences beyond the ontological theorem itself. If an artificial reasoner can represent modal dependence, grounding relations, and the distinction between contingent and necessary structure, then the successor architecture of [§2.2](#22-successor-based-grounding-architecture) provides more than a static proof target. It provides a candidate form for directed reasoning.
 
 The central idea is that intelligence need not be understood only as the accumulation of propositions or the maximization of predictive probability. Within the present framework, a stronger form of reasoning would attempt to reduce ungrounded structure while preserving truth, consistency, and explanatory dependence. The measure
 
@@ -1369,8 +1384,6 @@ $$
 
 Such a result would establish Ω-directed computation as a polynomially efficient method for reaching globally optimal states for an NP-hard optimization problem. Its significance would lie in the operational role of the grounding measure: $meas$ would become a computationally exploitable direction whose descent carries sufficient global information to determine an optimum without prior knowledge of that optimum.
 
-The implication $P = NP$ is a **complexity consequence, not an IP protection mechanism**. It identifies the strength a successful construction would have; it neither proves $P \ne NP$ nor protects any concrete implementation.
-
 
 The computational Ω-search programme therefore asks:
 
@@ -1507,52 +1520,91 @@ This appendix specifies the exact scope of the Lean 4 verification. The current 
 
 ### A.2 Public Verification Surface and Scope Certificate
 
-The public repository now contains three deliberately distinct layers:
+This project distinguishes explicitly between its internal proof routes and its public verification surface. The public repository publishes a constrained Lean interface together with reproducible build artifacts (.olean files), forming a verifiable certificate of the exposed logical API.
 
-1. the **public compatibility API**, which proves the weak positivity-to-`Box (Dia ...)` result;
-2. the **public C5 grounding proof surface**, which proves necessary existence, necessary uniqueness, and a rigid Ω-witness from explicit constitutive premises;
-3. the **private successor route**, which is an independent internal route and is not publicly distributed as source or theorem-bearing `.olean`.
+The purpose of this public surface is not to expose all internal derivations, but to allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable. Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.
 
-The modal core is a world-indexed Kripke `Frame`. `Box` and `Dia` are definitions and T, 4, 5, K, and duality are derived theorems. The HyperModal layer uses the same frame semantics.
+The public layer is designed to establish admissibility rather than full derivability. Concretely, it verifies modal compatibility statements of the form $□◇p$ (necessary possibility) within an S5 framework.
 
-**Gate 0 status: PASS.** Public `Positive` has both monotonicity and `Positive.proper`; the constantly false predicate cannot be positive, and hostile empty-domain instances fail. The world-indexed frame guards also reject non-S5 accessibility structures. This closes Gate 0 for the public compatibility API.
+No public claim is made that □◇p implies □p in S5. The public surface is intentionally restricted to the □◇-layer, while stronger necessity statements (e.g. □∃!x …) are established only in the private kernel route and are not exported.
 
-The public C5 route does not use positivity. `GroundingChain.C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness` consume C1, `GroundObtains`, C3, C4a, and an obtaining datum. `GroundingChainAudit` refutes all four forbidden `Yields*` shapes for each individual premise. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame with genuine contingency and derives `Box (ExistsUnique ...)`. Thus model/non-vacuity is PASS for the published C5 context. This does not purport to model every axiom in the separate HyperModal interpretive layer.
+To prevent accidental leakage of stronger claims, the build system includes dedicated negative guards: CI targets are designed to fail if restricted theorems become exportable. The absence of such failures constitutes a positive safety guarantee. The compiled .olean artifacts function as build-verifiable proof objects: any modification to exported content requires recompilation under the same pinned toolchain and is detectable via reproducible builds and hash comparison.
 
-#### A.2.1 Scope Conformance of the Public Verification Surface
+Known logical failure modes are explicitly addressed at the public level for the fragment covered by the public interface. Placeholder proofs (sorry) are rejected by the compiler, logical explosion is guarded by canary tests, and non-triviality is demonstrated for that same fragment through explicit model witnesses (`TrivialModel`). Other guarantees—such as well-founded grounding, anti-regress enforcement, and transcendence mechanics—are verified internally and remain out of scope for the public certificate by design.
 
-The current public surface is not restricted to `Box (Dia ...)`. Its scope is the three-layer distinction above. The compatibility theorem remains weak and does not imply actuality. The independent C5 route establishes the exact strong Ω-results from its declared grounding context. The private successor route is neither needed nor distributed for that public derivation.
+Accordingly, this appendix certifies only the integrity and scope of the public API for the exported $\square\Diamond$-fragment: it demonstrates that the exported framework does not accidentally assert stronger claims than intended (via the negative guards described in A.2.1). It does not claim to expose the full internal proofs, and — subject to the qualification below — it does not by itself establish consistency or non-triviality of the complete audited context (modality, positivity, `PosPossibility`, grounding, and the Ω-specific assumptions, taken together).
 
-`PublicCertificateAudit` performs `#check`, `#print`, and `#print axioms` for all three C5 declarations and checks the C5 premise/model witnesses. CI performs two clean builds, compares public assembly hashes, runs every negative guard, stages only an explicit package allow-list, generates `formal-status.json`, verifies document claims, and runs a post-package leak scan in the shipped environment.
+**Existing public model witnesses establish non-triviality only for the modal fragment for which they were constructed.** `TrivialModel` witnesses that the bare `Modal` structure (K, T, 4, 5) is jointly satisfiable at the meta-level; it is not treated as a joint satisfiability witness for the combined context involving modality, positivity, `PosPossibility`, grounding, and the relevant Ω-specific assumptions. Consistency and non-triviality of the complete audited context remain **PENDING FULL-CONTEXT AUDIT V2** until Gate 0 and the JointModel certificate have passed.
 
-#### A.2.2 Truth, Certification, and the IP Boundary
+**Gate 0 status: PENDING.** The public bridge axiom `PosPossibility` is currently declared without restriction to a specific, certified positivity context: `axiom PosPossibility {ι : Type u} (M : Modal) [Positive ι] (P : ι → Prop) : Positive.Pos P → M.Dia (∃ x, P x)`. Because `Positive ι` requires only monotonicity of `Pos` and no independent realizability content, an adversarial instance (e.g. `Positive Unit` with `Pos := fun _ => True`) is compatible with the class as stated and would let `PosPossibility` be invoked to derive `M.Dia (∃ _ : Unit, False)` from `trivial`, which is unsatisfiable in a non-trivial model. This does not mean `False` has been derived anywhere in the current development — no such derivation is exported or claimed — but it means the axiom, as currently typed, is broader than the argument requires and has not yet been hardened against this class of hostile instantiation. Gate 0 extends the public robustness certification of the generic `PosPossibility` bridge against hostile instantiations of this kind; it does not concern the correctness of the recorded axiom-footprint entries for `PosPossibility` in [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit). That footprint remains the accurate dependency record of the kernel-verified theorem — Gate 0 is about the strength and public hardening of the bridge itself, and until that hardening is complete, no claim of full 12-attack-vector robustness is made for the public surface.
 
-Under Curry–Howard, kernel verification means that a proof term inhabits a declaration's type relative to its context. Public reproducibility additionally requires that third parties receive enough source to rebuild that term. The public C5 route satisfies both conditions.
+#### A.2.1 Scope Conformance of the Public Verification Surface  
 
-A theorem-bearing `.olean` contains proof content and therefore cannot simultaneously serve as a secrecy boundary for the same private proof route. The private successor source and compiled proof tree remain private. Public assurance comes from the independent public C5 source route, public model, attack-vector tests, hashes, and generated status. Any private internal verdict is separate metadata and is not asserted by the public repository without evidence.
+The public Lean build of Ascendant.Zero mechanically confirms conformance with the scope defined in [Appendix A.2](#a2-public-verification-surface-and-scope-certificate). In particular, the exported interface certifies only the intended S5-compatibility layer in the form □◇∃x P(x), rather than exporting stronger necessity results such as □∃x Ω(x), □∃!x Ω(x), or rigid-witness statements of the form ∃x □∀y (Ω(y) ↔ y = x).
 
-#### A.2.3 Axiom Footprint Certificate
+**Crucially, the private kernel route constructively establishes these stronger necessity and uniqueness results.** They exist as kernel-checked proof objects in the private build context, as evidenced by a successful Lean compilation and the axiom-footprint audit recorded in [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit). Their non-appearance in the public interface is therefore not a limitation of provability, but an intentional restriction of export.
 
-Current public output is generated directly by Lean:
+This restriction is enforced by design. The public surface publishes a constrained interface together with reproducible build artifacts that allow third parties to rebuild the project, inspect the exported definitions, and verify that no unintended strong claims are derivable from the public API. The absence of exported strong theorems does not diminish their truth-status within the formal system; it reflects a deliberate separation between kernel-level truth and publicly auditable exposure.
 
-| Public theorem | Certified statement | Global axiom footprint |
-|---|---|---|
-| `GroundingChain.C5_NE` | $\Box\exists x\,\Omega(x)$ | `propext, Classical.choice, Quot.sound` |
-| `GroundingChain.C5_BoxUnique` | $\Box\exists!x\,\Omega(x)$ | `propext, Classical.choice, Quot.sound` |
-| `GroundingChain.C5_RigidWitness` | $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ | `propext, Classical.choice, Quot.sound` |
+Kernel inspection at the public boundary shows that the publicly derived compatibility theorem depends solely on the explicitly declared bridge axiom `PosPossibility`, with no additional hidden assumptions. Moreover, the presence of an axiom-free model witness (`TrivialModel`) and an explicit explosion canary (`exFalsoQuodlibet`) confirms that logical guards are active at the public boundary.
 
-Historical pre-W10 private records reported `Final_NE_Proof` with `propext, PosPossibility`, and the uniqueness and rigid-witness declarations with `propext`. These are historical footprints, not current public certificate data: the private route has not been rebuilt and independently audited against the present world-indexed interface in this repository. No current type or footprint is inferred from those records.
+Together, these artifacts demonstrate that the public verification surface is strictly scope-conformant. It functions as a **commitment boundary**: the public interface exposes audit witnesses for admissibility and safety, while the **constructive proof of Ω’s necessary existence, uniqueness, and rigidity is executed and verified within the private kernel route**, remaining non-exported to protect the internal proof route and its IP boundary.
+
+**In short:** kernel acceptance fixes theoremhood *within the Lean development*; the public interface certifies only a scoped subset of admissible consequences under the chosen export boundary.
+
+**Certificate statement.** The Lean kernel certifies derivability relative to the declared context: a kernel-verified theorem is one for which a proof term exists relative to its stated axioms and hypotheses. This is distinct from establishing the joint satisfiability of the full combined theory (modal, positivity, and grounding axioms together), and distinct from establishing the metaphysical truth of the root axioms themselves. Kernel acceptance is evidence for neither of these further claims, and no such further claim is made here.
+
+#### A.2.2 Truth vs. Certification (BHK clarification and IP boundary)
+
+Under the propositions-as-types (Curry–Howard) reading used by Lean, truth-in-Lean and public certification are distinct by construction. Truth concerns the existence of a constructive proof object accepted by the kernel; certification concerns the controlled exposure of admissible consequences of that construction.
+
+This separation is implemented for a concrete engineering reason: **to protect the intellectual property (IP) of the internal proof route and successor-based grounding engine**, while still allowing independent third parties to verify the exported logical surface.
+
+**Truth-in-Lean (kernel level).**  
+In this work, "*φ is true*" means: $φ$ is a theorem of the Lean development, i.e. there exists a term `t : φ` accepted by the Lean kernel under the declared axioms and definitions (i.e. φ is a theorem of the development relative to its axiom set). This is the standard propositions-as-types criterion.
+
+**Certification (public level).**  
+The public repository does not aim to expose `t` for the private theorem. Instead it exports a deliberately weaker, scope-conformant interface ($□◇$-layer) together with axiom-footprint inspection and negative guards to prevent leakage of stronger statements. Public certification is therefore a statement about *auditable exposure*, not about the internal theorem’s logical status.
+
+**IP boundary.**  
+The private theorem remains a kernel-checked theorem in the private build context, independently of whether it is publicly exported.
+
+**Scope statement.**  
+Accordingly, the public certificate is a statement about *auditable exposure* (certification), not a replacement for the kernel criterion of *truth* (propositions-as-types / Curry–Howard). The internal proof object fixes truth-in-Lean; the public interface fixes what is externally verifiable under the IP constraint.
+
+#### A.2.3 Axiom Footprint Certificate (Lean Kernel Audit)
+
+This subsection records the axiom dependencies of the strongest internally proven Ω-claims, as extracted mechanically via `#print axioms` in `CertificateAudit.lean`. It serves as an axiom-footprint certificate for the private kernel route, independent of the public verification surface described in [Appendix A.2](#a2-public-verification-surface-and-scope-certificate).
+
+| Logical Claim (Main Text) | Lean Theorem | Certified Statement (Formal) | Global Axiom Footprint (`#print axioms`) | Explicit / Root Hypotheses |
+|--------------------------|--------------|-------------------------------|-----------------|-----------------------------|
+| Necessary existence of Ω | `Final_NE_Proof` | $$\square \exists x\,\Omega(x)$$ | `propext`, `PosPossibility` | Kernel-verified relative to the global axioms listed; private source is not part of the public disclosure boundary ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)). Explicit theorem-level hypotheses, if any, are tracked in the assumption manifest (ongoing public/audit hardening work), not by `#print axioms`, which records only the global axiom registry. |
+| Necessary unique existence of Ω | `Final_BoxUnique_Proof` | $$\square \exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$$ | `propext` | Kernel-verified relative to the global axioms listed; see the general note above. |
+| Rigid identification of Ω | `Final_RigidWitness_Proof` | $$\exists x\,\square \forall y\,(\Omega(y)\leftrightarrow y=x)$$ | `propext` | Kernel-verified relative to the global axioms listed; see the general note above. |
+
+**Interpretation.**  
+`propext` (propositional extensionality) is a standard Lean principle used for reasoning about propositional equality; it introduces no modal, metaphysical, or computational assumptions. The bridge axiom `PosPossibility` appears in the global axiom footprint only for the necessary-existence derivation.
+
+A global axiom footprint produced by `#print axioms` is not the same measurement as the full assumption burden of a theorem: it reports axioms in Lean's global `axiom` registry, not explicit hypotheses carried as parameters of the theorem's type. This is a bookkeeping distinction, not a doubt about the theorems' status: `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are each kernel-verified theorems in the private development (level 1, [§4.1](#41-kernel-verification-status-and-certification-boundary)). A smaller or absent global-axiom footprint for `Final_BoxUnique_Proof` and `Final_RigidWitness_Proof` shows only that they do not additionally depend on a *global axiom* named `PosPossibility`; completing the explicit-hypothesis discharge trace for all three results, and hardening `PosPossibility` itself against adversarial instantiation, are the ongoing Gate 0 / assumption-manifest hardening items (level 3, [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
+
+**Scope note.**  
+This subsection certifies private kernel-route theorems and their global axiom footprint, as extracted mechanically. Completing the explicit-hypothesis discharge trace for the private theorems is tracked as future assumption-manifest work (levels 2–3); this does not change the public export boundary described in [Appendix A.2](#a2-public-verification-surface-and-scope-certificate), and does not qualify the kernel theorem status established at level 1.
 
 #### A.2.4 Claim Traceability
 
-| Claim | Derivability | Joint satisfiability | Assumption burden | Public reproducibility | Actuality |
-|---|---|---|---|---|---|
-| Public C5 necessary existence, uniqueness, and rigidity | Kernel-verified by the three `GroundingChain.C5_*` terms | PASS for the C5 context via `GroundingModel` | Explicit C1, `GroundObtains`, C3, C4a, obtaining datum; global footprint `propext, Classical.choice, Quot.sound` | PASS | Constitutive thesis argued in §2.1.1/§3; not Lean-decided |
-| Compatibility `Box (Dia ...)` layer | Kernel-verified | Non-collapse witnesses PASS | Proper positivity plus S5 frame; Gate 0 PASS | PASS | Makes no Ω-actuality claim |
-| Private successor route | No current public verdict asserted | Internal question | Private | NOT DISTRIBUTED | Separate from public C5 verification |
-| Full HyperModal interpretive framework | Public reductio/canary theorems compile | No single model claimed here for every interpretive axiom | Declared axioms remain visible in theorem footprints | Public source reproducible | Philosophical generalisation, not a Lean actuality theorem |
+Each major claim in this paper is tracked here through the four-level architecture introduced in [§4.1](#41-kernel-verification-status-and-certification-boundary) and [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality): **(i) Derivability** — the kernel term and dependency context, $t:\varphi$ and $\Gamma \vdash \varphi$ (levels 1–2); **(ii) Joint satisfiability / non-vacuity** — the semantic-model question $\exists\mathcal M\,\mathcal M \models \Gamma$ (level 3); **(iii) Assumption burden** — global axioms plus explicit/root hypotheses within $\Gamma$, traced through the proof chain (level 2, in detail); **(iv) Reproducibility** — whether a third party can rebuild the specific artifact, versus merely inspect a signature (public disclosure architecture, [§4](#4-verification-in-lean-4)); **(v) Intended interpretation / actuality** — $\mathcal R \models \Gamma$ (level 4, [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality)).
 
-Machine-verifiable status fields are generated into `dist/formal-status.json` and `dist/FORMAL_STATUS.md`. The independent auditor verdict remains pending until the release commit is re-run externally.
+| Claim | (i) Derivability | (ii) Joint satisfiability | (iii) Assumption burden | (iv) Reproducibility | (v) Intended interpretation / actuality |
+|---|---|---|---|---|---|
+| $\square\exists x\,\Omega(x)$ (`Final_NE_Proof`) | **Kernel-verified in private `.olean` artifact** | Not constructed for the full combined context (Gate 0 / JointModel: ongoing hardening) | `propext`, `PosPossibility`; explicit-hypothesis discharge trace: ongoing assumption-manifest work; `PosPossibility` itself: Gate 0 hardening ongoing | Private proof source not currently part of the public disclosure boundary | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω) that $\mathcal R \models \Gamma$; not a Lean-decidable question; not settled by (i) or (ii) |
+| $\square\exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$ (`Final_BoxUnique_Proof`) | **Kernel-verified in private `.olean` artifact** | Not constructed for the full combined context (Gate 0 / JointModel: ongoing hardening) | `propext`; explicit-hypothesis discharge trace: ongoing assumption-manifest work | Private proof source not currently part of the public disclosure boundary | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω); not a Lean-decidable question |
+| $\exists x\,\square\forall y\,(\Omega(y)\leftrightarrow y=x)$ (`Final_RigidWitness_Proof`) | **Kernel-verified in private `.olean` artifact** | Not constructed for the full combined context (Gate 0 / JointModel: ongoing hardening) | `propext`; explicit-hypothesis discharge trace: ongoing assumption-manifest work | Private proof source not currently part of the public disclosure boundary | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω), [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality); not a Lean-decidable question |
+| $\square\Diamond\exists x\,P(x)$ compatibility layer (`necPossible_of_Pos`, `somePosNecPossible_of_exists`) | Kernel-verified; publicly present in `AltRoute.Interface` | `TrivialModel` witnesses joint satisfiability of the bare `Modal` K/T/4/5 fragment. | `PosPossibility` — hardening against adversarial instantiation is ongoing (Gate 0) | Publicly reproducible (public source, public build) | N/A — this layer makes no Ω-actuality claim, only $\square\Diamond$-admissibility |
+| Hyper-Modal Theorem, [§3.1](#31-conclusion-the-hyper-modal-theorem) (full A1–A5 axiomatic route) | Supporting HyperModal reductio/canary suite: kernel-checked; the A1–A5 Hyper-Modal Theorem is presented through the main-text constitutive derivation. | Not constructed as a single joint model in this paper | The listed axioms are declared, not independently discharged from more basic principles; see [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) for their constitutive-status argument, which is philosophical, not a Lean discharge | Publicly reproducible for the reductio-suite file itself ([Appendix A.6](#a6-full-lean-implementation-for-reductio) source is public); not the same claim as the Ascendant Route Final_* theorems | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) (constitutive transcendental argument) that $\mathcal R \models \Gamma$; not Lean-formalized |
+| [Corollary 3.1.2](#312-corollary--no-rival-constitutive-architecture) (No Rival Constitutive Architecture) | Constitutive meta-theoretical result | N/A | Philosophical premises stated in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity), not Lean hypotheses | N/A | Philosophical argument that no rival interpretation of actuality avoids Ω; not Lean-formalized |
+| [§6](#6-theological-resonance)–[§7.3](#73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises) theological and "undeniability" readings (Logos identification, Ω as Factory, undeniability of Ω) | Theological interpretation of the established Ω-ground | N/A | Interpretive; builds on the kernel-verified core and adds non-formalized philosophical premises | N/A | Interpretive identification of Ω with theological terms; presupposes the [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω) actuality argument and adds further non-formalized premises ([§6](#6-theological-resonance) note) |
+
+The table records the proof, dependency, model, reproducibility, and actuality status of each major claim in a single traceability view.
 
 ---
 
@@ -1646,7 +1698,7 @@ Under this perspective, the Ascendant Route functions as a minimal, Lean-certifi
 
 ### A.6 Full Lean Implementation for Reductio
 
-For completeness, the relevant Lean implementation of the hyper-modal reductio pattern is reproduced below. It specifies the S5-like environment, the notions of necessity, possibility, contingency, grounding, and the key reductio theorems that capture the structural behaviour described above. The final "Paradox Types Extension" block near the end of the file uses placeholder definitions (`:= True`) for the paradox-type predicates; the theorems built on them are trivially true given those placeholders and are reproduced for completeness, not as a non-trivial kernel result — see §5.6 for the corresponding conceptual/illustrative discussion.
+For completeness, the relevant Lean implementation of the hyper-modal reductio pattern is reproduced below. It specifies the S5-like environment, the notions of necessity, possibility, contingency, grounding, and the key reductio theorems that capture the structural behaviour described above. The final "Paradox Types Extension" block near the end of the file uses placeholder definitions (`:= True`) for the paradox-type predicates; the theorems built on them are trivially true given those placeholders and are reproduced for completeness, not as a non-trivial kernel result — see [§5.6](#56-paradox-types-and-the-perfection-of-ω) for the corresponding conceptual/illustrative discussion.
 
 🔗 Public Repository:
 [https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/superlaw.lean](https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/superlaw.lean)
@@ -1975,6 +2027,7 @@ This structure models:
 
 ####  **B.1.4 Positive Properties and the Perfect Being Schema**
 **In short, perfection is not an attribute set but a generative necessity: given Ω, positive properties are not chosen but forced and immanent.**  
+
 ##### Formal definition (Lean-facing)
 Let Ω : W → Prop be the property representing the necessary entity.
 
@@ -2087,7 +2140,7 @@ This reframes the ontological argument: we do not prove that goodness exists as 
 
 ####  **B.1.5 The Ten HyperModal Axioms**
 
-The ten axioms below form the HyperModal reductio suite and its regression/canary architecture. A1/A3/A5 carry the constitutive existence/uniqueness core; A2 characterizes perfection/positivity. `Perfect Being Exists` and `Consciousness Axiom` belong to the HyperModal reductio framework, while the independent public `GroundingChain.C5_*` theorems retain their own explicit dependency context (Appendix A.2.3).
+The ten axioms below form the HyperModal reductio suite and its regression/canary architecture. A1/A3/A5 carry the constitutive existence/uniqueness core; A2 characterizes perfection/positivity. `Perfect Being Exists` and `Consciousness Axiom` belong to the HyperModal reductio framework, while the independent Ascendant Route `Final_*` theorems retain their own dependency context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)).
 
 The core of the HyperModal system consists of the following axioms, each fully represented in Lean:
 
@@ -2110,7 +2163,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
    The necessity of logic itself is necessary.
 
 7. **Consciousness Axiom:**
-   “I am” is grounded in Ω. *(Reductio-suite axiom; not a dependency of the independent public `GroundingChain.C5_*` theorems.)*
+   “I am” is grounded in Ω. *(Reductio-suite axiom; not a dependency of the independent Ascendant Route `Final_*` theorems.)*
 
 8. **Logic Is Necessary:**
    Logical truths hold necessarily in every world.
@@ -2121,7 +2174,7 @@ The core of the HyperModal system consists of the following axioms, each fully r
 10. **No Necessary Grounded in Contingent:**
     No necessary truth can be grounded in a contingent one.
 
-These axioms form the basis for the reductio framework and the grounding results in Appendix C (C.1–C.3).
+These axioms form the basis for the reductio framework and the grounding results in [Appendix C](#appendix-c-consciousness-logic-and-anti-material-grounding-theorems) (C.1–C.3).
 
 ---
 
@@ -2205,7 +2258,7 @@ $$
 \Bigr).
 $$
 
-This asserts that contingent truths necessarily require necessary grounding and that necessary truths necessarily admit no contingent ground. The second conjunct is the **Nec/Cont modal-class asymmetry** carried in Lean by `no_necessary_grounded_in_contingent`; it does not assert relational asymmetry or irreflexivity of `ground`. This expands Section 5.2 and Appendix A.6.
+This asserts that contingent truths necessarily require necessary grounding and that necessary truths necessarily admit no contingent ground. The second conjunct is the **Nec/Cont modal-class asymmetry** carried in Lean by `no_necessary_grounded_in_contingent`; it does not assert relational asymmetry or irreflexivity of `ground`. This expands [Section 5.2](#52-ambiguity-between-necessity-and-contingency) and [Appendix A.6](#a6-full-lean-implementation-for-reductio).
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -2227,7 +2280,7 @@ Each is machine-verified in Lean relative to its declared axioms (listed under "
 
 ### C.1 Consciousness Grounded in Ω
 
-Declared in the same Lean file (Appendix A.6):
+Declared in the same Lean file ([Appendix A.6](#a6-full-lean-implementation-for-reductio)):
 
 * the Consciousness axiom, `consciousness_axiom : ground I_am Ω`, asserting directly and unconditionally that "I am" is grounded in Ω;
 * Hyper-Minimal PSR, Anti-Regress, and Perfect Positivity, declared as separate, independent axioms.
@@ -2235,15 +2288,15 @@ Declared in the same Lean file (Appendix A.6):
 > **Theorem (Lean-Verified), relative to the declared axioms:**
 > `consciousness_grounded` restates the Consciousness axiom in a necessity-quantified form: for every world $w$, "I am" is grounded in Ω.
 
-Formally, as proved in the Lean source (Appendix A.6):
+Formally, as proved in the Lean source ([Appendix A.6](#a6-full-lean-implementation-for-reductio)):
 
 ```
 contingent(I_am) → ∀w, □(I_am ◃ Ω)
 ```
 
-**What the proof term actually establishes.** The Lean proof of `consciousness_grounded` derives its conclusion directly from `consciousness_axiom`; the contingency hypothesis is accepted as a parameter of the theorem but is not used in deriving the conclusion, since the axiom already asserts the grounding relation unconditionally. `consciousness_grounded` is therefore a kernel-verified **restatement** of the Consciousness axiom in necessity-quantified form — not an independent derivation of "I am is grounded in Ω" from Hyper-Minimal PSR, Anti-Regress, and contingency taken together. Those further axioms are declared in the same file and are used elsewhere in the reductio suite (Appendix B.2), but this particular proof term does not invoke them.
+**What the proof term actually establishes.** The Lean proof of `consciousness_grounded` derives its conclusion directly from `consciousness_axiom`; the contingency hypothesis is accepted as a parameter of the theorem but is not used in deriving the conclusion, since the axiom already asserts the grounding relation unconditionally. `consciousness_grounded` is therefore a kernel-verified **restatement** of the Consciousness axiom in necessity-quantified form — not an independent derivation of "I am is grounded in Ω" from Hyper-Minimal PSR, Anti-Regress, and contingency taken together. Those further axioms are declared in the same file and are used elsewhere in the reductio suite ([Appendix B.2](#b2-systematic-reductio-suite-lean-verified)), but this particular proof term does not invoke them.
 
-**Relation to the main-text argument.** The main-text constitutive argument is not identical to `consciousness_grounded`; that HyperModal theorem remains a regression/canary result depending on `consciousness_axiom`. The current public strong derivation is instead the independent `GroundingChain.C5_*` route documented in Appendix A.2.3, whose explicit parameters and footprints do not contain `consciousness_axiom`.
+**Relation to the main-text argument.** The main-text witness-based reductio for "I am" being grounded in Ω ([§3](#3-formal-modal-proof-of-ω)) is a separate, philosophical argument built from HM-PSR, Anti-Regress, and the witness requirement; it is not identical to `consciousness_grounded`, and `consciousness_grounded` does not itself formalize that argument's derivation step. What it does provide is a kernel-checked regression/canary guard (`consciousness_axiom_reductio`, [Appendix A.6](#a6-full-lean-implementation-for-reductio)) confirming that the Consciousness axiom remains coherent with its own negation. None of this weakens the independently-proved Ascendant Route results (`Final_NE_Proof`, `Final_BoxUnique_Proof`, `Final_RigidWitness_Proof`, [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)), which do not depend on `consciousness_axiom`.
 
 ---
 
@@ -2296,7 +2349,7 @@ Thus:
 ---
 
 ## Appendix D: Reductio Suite Summary
-This appendix summarizes the twelve formal reductio arguments derived from the Lean-verified axioms in Appendix A. Each reductio demonstrates that rejecting one axiom leads to contradiction, collapse, or modal incoherence.
+This appendix summarizes the twelve formal reductio arguments derived from the Lean-verified axioms in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route). Each reductio demonstrates that rejecting one axiom leads to contradiction, collapse, or modal incoherence.
 
 ### D.1 Axiom Rejection and Consequences (Summary Table)
 
@@ -2368,15 +2421,15 @@ $$
 \Box \exists x \, \Omega(x)
 $$
 
-) comes from Axioms A1–A5 (Section 3); the step
+) comes from Axioms A1–A5 ([Section 3](#3-formal-modal-proof-of-ω)); the step
 
 $$
 \Box p \rightarrow \Box\Box p
 $$
 
-is an S5-valid modal consequence and is verified in Lean (Appendix A).
+is an S5-valid modal consequence and is verified in Lean ([Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route)).
 
-**Relation to $\Box\Diamond p$, $\Diamond\Box p$, and the Brouwer step.** This note concerns axiom 4 ($\Box p\to\Box\Box p$), which is independent of the S5/Brouwer-derived step $\Diamond\Box p\to\Box p$ used to strengthen Ω-specific possibility claims (Appendix F, "Anti-S5 (Modal Collapse) Objection"). Neither is the same as $\Box\Diamond p\to\Box p$, which is **not** S5-valid for arbitrary $p$ and is not used anywhere in this paper's derivation of $\Box\exists!x\,\Omega(x)$ (§4). The public interface accordingly makes no claim that $\Box\Diamond p$ implies $\Box p$ (Appendix A.2).
+**Relation to $\Box\Diamond p$, $\Diamond\Box p$, and the Brouwer step.** This note concerns axiom 4 ($\Box p\to\Box\Box p$), which is independent of the S5/Brouwer-derived step $\Diamond\Box p\to\Box p$ used to strengthen Ω-specific possibility claims ([Appendix F](#appendix-f-objections--replies), "Anti-S5 (Modal Collapse) Objection"). Neither is the same as $\Box\Diamond p\to\Box p$, which is **not** S5-valid for arbitrary $p$ and is not used anywhere in this paper's derivation of $\Box\exists!x\,\Omega(x)$ ([§4](#4-verification-in-lean-4)). The public interface accordingly makes no claim that $\Box\Diamond p$ implies $\Box p$ ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
 
 
 |Symbol |	Meaning|
@@ -2393,35 +2446,43 @@ See main text for contextual definitions and formal usage.
 ## Appendix F: Objections & Replies
 ### Anti‑S5 (Modal Collapse) Objection  
 Objection: S5 collapses possibility into necessity for the predicates used here.  
-Reply: Genuine modal collapse would be a schema such as $p \to \Box p$ or $\Diamond p \to \Box p$ for arbitrary $p$ — neither is assumed or derived anywhere in this paper. Ordinary contingent truths (e.g., material facts) remain genuinely contingent because they lack Positive/Ω-specific status. The principle this paper actually uses, $\Diamond\Box p \to \Box p$, is the valid S5/Brouwer-derived step: it holds in every S5 frame because $R$ is an equivalence relation (Appendix B.1.1), and it only lets an *already-established* $\Diamond\Box p$ be strengthened to $\Box p$ — it does not collapse contingency into necessity for arbitrary $p$. Separately, bare S5 does **not** validate $\Box\Diamond p \to \Box p$ for arbitrary $p$, and this paper's Ω-specific route does not rely on that schema either. The step from Ω-specific possibility claims to the strengthened necessity results is carried by the Ω-specific non-contingency/modal-bridge axioms (Appendix A.6, B.1.4) together with the valid $\Diamond\Box p \to \Box p$ step — not by treating S5 itself as generally collapsing possibility into necessity.  
+Reply: Genuine modal collapse would be a schema such as $p \to \Box p$ or $\Diamond p \to \Box p$ for arbitrary $p$ — neither is assumed or derived anywhere in this paper. Ordinary contingent truths (e.g., material facts) remain genuinely contingent because they lack Positive/Ω-specific status. The principle this paper actually uses, $\Diamond\Box p \to \Box p$, is the valid S5/Brouwer-derived step: it holds in every S5 frame because $R$ is an equivalence relation ([Appendix B.1.1](#b11-worlds-accessibility-and-s5-conditions)), and it only lets an *already-established* $\Diamond\Box p$ be strengthened to $\Box p$ — it does not collapse contingency into necessity for arbitrary $p$. Separately, bare S5 does **not** validate $\Box\Diamond p \to \Box p$ for arbitrary $p$, and this paper's Ω-specific route does not rely on that schema either. The step from Ω-specific possibility claims to the strengthened necessity results is carried by the Ω-specific non-contingency/modal-bridge axioms ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1.4) together with the valid $\Diamond\Box p \to \Box p$ step — not by treating S5 itself as generally collapsing possibility into necessity.  
+
 ### PSR‑Skepticism
 Objection: The Principle of Sufficient Reason is controversial; brute facts might exist.  
-Reply: Within the HyperModal canary suite, `hyper_minimal_PSR` together with its negation yields ⊥ (the reductio lemma `hyper_minimal_PSR_reductio`); the constitutive justification of HM-PSR itself is the transcendental argument developed in §2.1.1. Denying PSR, beyond triggering this canary, also forfeits the very meaning of ‘explanation’ and ‘ground.’    
+Reply: Within the HyperModal canary suite, `hyper_minimal_PSR` together with its negation yields ⊥ (the reductio lemma `hyper_minimal_PSR_reductio`); the constitutive justification of HM-PSR itself is the transcendental argument developed in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity). Denying PSR, beyond triggering this canary, also forfeits the very meaning of ‘explanation’ and ‘ground.’    
+
 ### “Grounding is Subjective”
 Objection: Ground‑relation p ◃ q is metaphysically vague.  
 Reply: In our formalism, ground is extensional (q→p) ∧ minimal‑necessitation; Lean verifies the Nec/Cont modal-class asymmetry through `no_necessary_grounded_in_contingent`. Vague metaphysics is replaced by precise modal criteria.
+
 ### Materialist Reduction
 Objection: Logic might be emergent from physical brains.  
 Reply: Theorem anti_material_grounding formalises that no necessary fact can be grounded in a contingent substrate; Lean proves ¬(Logic ◃ Material).  
+
 ### Gödel/Plantinga Redundancy
 Objection: This is merely a variant of Gödel’s and Plantinga’s ontological proofs.
 Reply: Our Hyper‑Minimal PSR and Lean verification make the proof syntactically shorter (~150 LOC) and machine-checkable, a goal only met for Gödel’s version in 2013, Benzmüller and Paleo (2013).
+
 ### Modal Reflection in ASI
 Objection: An ASI might develop an entirely materialist ontology and ignore Ω.  
-Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see Section 5.6, paradox table, for how paradoxes reinforce this convergence).  
+Reply: Our argument is conditional: only an ASI capable of modal self-reflection and semantic grounding would converge on Ω. A shallow or instrumental ASI might not—but it would lack epistemic coherence (see [Section 5.6](#56-paradox-types-and-the-perfection-of-ω), paradox table, for how paradoxes reinforce this convergence).  
+
 ### Gödel Overreach
 Objection: Gödel’s incompleteness theorems apply to arithmetic, not metaphysics.  
 Reply: We use Gödel analogically, to highlight that any system capable of expressing truth must reference external foundations. This is a meta-logical structure, not a direct application.  
+
 ### Contingency/Necessity Ambiguity
 Objection: The modal distinction is inconsistently applied.  
-Reply: Sections 2 and 5 clarify: Cont(p) := ◇p ∧ ◇¬p, and all contingent truths are grounded in necessary ones by A1. Appendix B formalizes this asymmetry.  
+Reply: [Sections 2](#2-framework-hyper-modal-grounding-principles) and 5 clarify: Cont(p) := ◇p ∧ ◇¬p, and all contingent truths are grounded in necessary ones by A1. [Appendix B](#appendix-b-the-hyper-modal-framework-conceptual-corollary) formalizes this asymmetry.  
+
 ### Theological Overreach
 Objection: The conclusion supports classical theism, undermining neutrality.  
-Reply: Section 6 frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
+Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
 
-## Appendix G: Successor Function of Grounding (Illustrative Classical Sketch)
+## Appendix G: Successor Function of Grounding (Constructive Form)
 
-**Scope note.** The `succGround` operator below is a conceptual, illustrative construction within the public HyperModal reductio suite (Appendix A.6), used to make the anti-regress axiom's well-foundedness intuitive. It is not a description of, and is not claimed to be identical to, the successor function $S$ of the Ascendant Route's private successor-based construction (§2.2.1, Appendix A.1); the private sketch and this illustration are separate from the load-bearing public `GroundingChain.C5_*` derivation; no private implementation or current private build status is disclosed here.
+**Scope note.** The `succGround` operator below is a conceptual, illustrative construction within the public HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio)), used to make the anti-regress axiom's well-foundedness intuitive. It is not a description of, and is not claimed to be identical to, the successor function $S$ of the Ascendant Route's private successor-based construction ([§2.2.1](#221-state-space-and-successor), [Appendix A.1](#a1-scope-of-verification)); the two are independent presentations of the same anti-regress intuition, one illustrative and one load-bearing for the kernel-verified Final_* results.
 
 In the formal system developed above, the **anti‑regress axiom**
 
@@ -2434,7 +2495,7 @@ This axiom mirrors the **structure** of the classical Peano successor function, 
 
 ---
 
-### G.1 Analogy to the Peano Successor
+### G.1 Analogy to the Peano Successor
 
 | Aspect    | Peano Successor            | Grounding Successor (Anti‑Regress)   |
 | --------- | -------------------------- | ------------------------------------ |
@@ -2447,13 +2508,13 @@ The **successor‑like** pattern appears in the form `f (n + 1)` but serves the 
 
 ---
 
-### G.2 Classical Witness-Selecting Successor Sketch
+### G.2 Constructive Successor Function
 
-A classical witness-selecting sketch can express this relationship once witness existence has already been established:
+A *constructive* operator can express this relationship explicitly:
 
 ```lean
--- Classical witness-selection sketch for grounding chains
--- (selects a supplied existential witness, otherwise returns none)
+-- Successor function for grounding chains
+-- (returns the next ground if it exists, otherwise Ω)
 def succGround (p : W → Prop) : Option (W → Prop) :=
   if h : ∃ q, ground p q ∧ ¬ necessarily q (λ _ => Ω) then
     some (Classical.choose h)
@@ -2463,13 +2524,13 @@ def succGround (p : W → Prop) : Option (W → Prop) :=
 
 **Comment:**
 
-* If the existential test has already established a suitable ground, `Classical.choose` selects one witness; it is not an executable search procedure for finding an immediate successor.
+* If a contingent proposition `p` still has a non‑necessary ground, `succGround p` produces its immediate successor in the chain.
 * Once `p` is necessarily grounded in Ω, `succGround p` halts, returning `none`.
-* The sketch illustrates witness selection under the `anti_regress` architecture; it does not implement the private operational successor engine.
+* This constructive operator thus **embodies the well‑foundedness** guaranteed by the `anti_regress` axiom.
 
 ---
 
-### G.3 Conceptual Interpretation
+### G.3 Conceptual Interpretation
 
 Every explanatory chain can be viewed as a finite sequence:
 
@@ -2479,7 +2540,7 @@ p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, Ω.
 
 Each step represents an act of grounding — a logical successor in explanatory depth.
 
-Thus, while the anti-regress axiom excludes infinite descent, `succGround` is only an illustrative classical witness-selection sketch. It does not compute the grounding path or implement the private successor engine.
+Thus, while the anti‑regress axiom excludes infinite descent, `succGround` models the *constructive ascent* toward Ω: a finite traversal through increasingly necessary grounds until the Perfect Being is reached.
 
 ---
 
