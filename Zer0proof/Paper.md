@@ -1507,9 +1507,6 @@ If so, the measure introduced as an ontological component of the grounding archi
 
 ---
 
-## Acknowledgments
-The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content was reviewed, edited, and finalized by the author. No funding was received for this work.
-
 ## Appendix
 ---
 
@@ -2555,6 +2552,8 @@ Only modal logic allows us to formally express and analyze such necessity (□P)
 
 If we are to build systems that not only compute, but truly understand, modality must be their foundation.
 
+---
+
 ## Appendix I: Illustrative Cosmology
 
 This appendix is intentionally non-load-bearing. It contains no empirical premises and is not used in any derivation of $\Omega$.
@@ -2564,6 +2563,11 @@ Some readers find it helpful to notice an analogy between (i) well-foundedness i
 Accordingly, no cosmological data, theory, or author is appealed to as support for $A1/A3/A5$ or for $\square\exists!x\,\Omega(x)$. The grounding architecture stands or falls independently of physics.
 
 ---
+## Acknowledgments
+The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content was reviewed, edited, and finalized by the author. No funding was received for this work.
+
+---
+
 ## References
 
 (Chicago author-date with DOI)
