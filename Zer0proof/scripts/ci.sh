@@ -150,6 +150,8 @@ run_negative_test tests/Reject_DiaCollapse.lean "Reject_DiaCollapse.dia_collapse
 run_negative_test tests/Reject_NoContingency.lean "Reject_NoContingency.no_contingency_anywhere: witnesses have different world indices"
 run_negative_test tests/Reject_CertificateCollapse.lean "Reject_CertificateCollapse.certificate_equals_existence: phi x is not phi w"
 run_negative_test tests/NoExport_NecessaryExistence.lean "unknown identifier 'Final_NE_Proof'"
+run_negative_test tests/NoExport_HyperModalLegacy.lean "unknown identifier 'HyperModal.perfect_positivity'"
+run_negative_test tests/Reject_NecGroundedInAnything.lean "target is not an inductive datatype"
 
 echo "[CI] Clean public build B"
 "$lake_bin" clean
@@ -183,6 +185,8 @@ public_sources=(
   tests/Reject_DiaCollapse.lean
   tests/Reject_NoContingency.lean
   tests/Reject_CertificateCollapse.lean
+  tests/NoExport_HyperModalLegacy.lean
+  tests/Reject_NecGroundedInAnything.lean
   scripts/FormalStatusAudit.lean
   scripts/generate-formal-status.py
   scripts/check-document-sync.py

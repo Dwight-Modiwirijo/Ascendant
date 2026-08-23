@@ -20,6 +20,16 @@ The public interface defines an S5 Kripke `Frame` with an accessibility relation
 
 The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining datum directly. Positivity is absent. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame.
 
+## HyperModal repair boundary
+
+The public `HyperModal.lean` layer has no global `axiom` declarations. It uses primitive grounding `G q p` and packages its visible assumptions in `HyperModalSetting`. The derived theorem `triad_holds` supplies the world-constant `T_core` predicate from the setting's formal A1/A3 fields.
+
+`PosT` is **Preservation-Relative Positivity**; its designated `Pos_T` specialization is **Core-Relative Positivity (A1/A3)**. `posT_iff_box` records the honesty equivalence under explicit preservation, `posT_box_core` is the `T_core` specialization, and `posT_not_both` requires explicit `F.Dia Omega w0`. None of these declarations supplies an Omega-existence premise.
+
+The A5 component of the philosophical Triad is not formalized, and no `Triad -> Box PreservesICO` theorem is claimed. A4 is not derived from the Triad but from the fixed logical-semantic background alone. `meta_logic` is only double-boxed non-contradiction, not A5 closure.
+
+`HyperModal.Model.setting_inhabited` is an axiom-free, non-collapsed two-world witness with an obtaining datum, contingent material, necessary logic, possible Omega, and non-empty `G`. Four historical refutation records document the deleted universal statements; the no-export and primitive-grounding negative guards prevent their accidental return.
+
 ## Attack-vector coverage
 
 | # | Attack vector | Public mechanism |
@@ -38,6 +48,8 @@ The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining
 | 12 | Question-begging premise | `GroundingChainAudit` refutes all four `Yields*` forms for each individual C5 premise. |
 | 13 | Vacuous public derivation | `GroundingModel` satisfies the C5 context with genuine contingency and non-collapse. |
 | 14 | Distribution leakage or drift | Explicit package allow-list, post-package leak scan, generated status, and document-sync checker. |
+| 15 | HyperModal variable capture | Four axiom-free historical refutation records plus `NoExport_HyperModalLegacy.lean`. |
+| 16 | Extensional grounding recreates forbidden edges | Primitive `G`, `Reject_NecGroundedInAnything.lean`, and the inhabited setting witness. |
 
 ## Release policy
 

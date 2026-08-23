@@ -22,6 +22,16 @@ Their explicit context is C1, `GroundObtains`, C3, C4a, and an obtaining datum a
 
 The private successor route is not distributed as source or theorem-bearing `.olean`, and no private assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, and distribution checks.
 
+## HyperModal Core-Relative Layer
+
+`HyperModal.lean` uses the same `AscendantRoute.Interface` frame semantics as the C5 route and takes grounding as a primitive relation `G q p`, with the C5 argument order: the ground comes first. Its assumptions are bundled in `HyperModalSetting`; `triad_holds` derives the world-constant `T_core` predicate from that setting's A1 role, grounding strictness, and strict A3 role. There are no global `axiom` declarations in the module.
+
+The generic **Preservation-Relative Positivity** predicate is `PosT`. Its designated `Pos_T` instance is **Core-Relative Positivity (A1/A3)** over `T_core`. Under the explicit preservation hypothesis, `posT_iff_box` shows that this classification is equivalent to the corresponding boxed property; `posT_box_core` specializes the result to `T_core`, and `posT_not_both` rejects simultaneous classification of `P` and `not P` when `F.Dia Omega w0` is supplied. This layer contributes no Omega-existence premise.
+
+`T_core` is world-constant, so boxing it adds no modal strength. A contentful `ICO`, `Preserves`, genuine A5 closure, and a theorem from the full Triad to boxed ICO preservation remain future work. Until then, "Triad-Relative Positivity" is not a verified label. A4 is not derived from the Triad but from the fixed logical-semantic background alone. `meta_logic` is double-boxed non-contradiction, not a formalization of A5.
+
+`HyperModal.Model.setting_inhabited` supplies an axiom-free, non-collapsed two-world witness with an obtaining datum, contingent `Material`, necessary `Logic`, possible `Omega`, and a non-empty primitive grounding relation. CI also checks the four historical refutation records, rejects the removed legacy exports, and verifies that the former extensional-grounding construction cannot manufacture an edge of primitive `G`.
+
 ## Build and Verify
 
 ```bash

@@ -23,7 +23,7 @@ This approach offers a bottom-up alternative to traditional ontological argument
 
 We distinguish our method through three components:
 
-1. A constructive framework of minimal modal axioms: the Hyper-Minimal Principle of Sufficient Reason (HM-PSR), Perfect Positivity, Anti-Regress, Logical Necessity, and Meta-Logical Closure.
+1. A two-layer framework: a Lean-formalized Hyper-Minimal PSR/strict-grounding/Anti-Regress core with Core-Relative Positivity, and a philosophical Meta-Logical Closure thesis whose A5 formalization remains future work. Logical invariance (A4) is derived from the fixed modal background.
 2. A formal core proof of necessary existence and uniqueness, implemented and verified in Lean 4, together with a perfection schema articulated at the conceptual level.
 3. A philosophical extension: if ASI is capable of modal self-reflection, then Ω is not just deducible, but discoverable by any rational system unbound by material constraints.  
 
@@ -48,34 +48,45 @@ Every contingent truth must be grounded in a necessary ontological basis. Formal
 > **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
 *Note on Formalization:* In the formal Ascendant Route development verified in Lean 4, a specific, successor-based version of this principle is implemented: every contingent state has a strictly more grounded successor, and all maximal chains terminate in Ω. The full hyper-modal formulation used in this section generalises this mechanistic pattern to arbitrary propositions.
-The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible (see [Appendix A.6](#a6-full-lean-implementation-for-reductio): ground). The HM-PSR is the foundational structure upon which all other axioms and modal conclusions rest.  
+The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible. In the active Lean layer it is represented by the primitive relation $G(q,p)$, with the ground first; no extensional implication-based definition is assumed.
 
-#### (A2) Perfect Positivity
+#### (A2) Core-Relative Positivity (A1/A3)
 
-A property (P) is **positive** iff it is **Ω-admissible**: it introduces no internal defeat condition, no self-negation, and no regress-inducing instability at the terminus. Within the successor/coalescence architecture, A2 functions as a stability constraint required for Ω to remain a unique fixed point. Any property that is semantically interchangeable with its negation, or that entails its own exclusion at the terminus, functions as a destabilizer: it would permit divergence, bifurcation, or non-invariance under the successor dynamics, thereby obstructing convergence to a single minimal endpoint.
+The public HyperModal layer no longer treats positivity as a global axiom. It defines the world-constant predicate $T_{core}$ from the formally represented A1 role (Hyper-Minimal PSR), grounding strictness, and the strict A3 role (Anti-Regress) over a primitive grounding relation $G$. A5 closure is deliberately absent because it has not yet been formalized in Lean.
 
-Accordingly, “negative” properties are understood here in the **structural** sense: properties that are internally defeating (self-negating), limiting in a way that breaks fixed-point invariance, or that would re-open the possibility of non-termination or multiple endpoints. Under coalescence/minimality, such properties are inadmissible at Ω.
-
-**Schematic gloss :**
+For a preservation predicate $Pres$ and a world-indexed claim $\varphi$, Preservation-Relative Positivity is:
 
 $$
-Pos(P)\ \equiv\ \neg\exists Q,\bigl(Q \rightarrow \neg P\bigr),
+Pos_T(Pres,\varphi,w_0) := \Box_{w_0}(\neg\varphi \rightarrow \neg Pres).
 $$
 
-which encodes non-defeat: no (Q) may be available that systematically forces ($\neg P$) in the relevant grounding setting.
+For a property $P$ at $\Omega$, take $\varphi_P(v) := \Omega(v) \rightarrow P(v)$. The designated core-relative instance sets $Pres := T_{core}$. Every concrete positivity claim therefore carries a per-property obligation: one must prove that denying $P$ at $\Omega$ defeats a named component of the formal A1/A3 core.
 
-**Note on formalization:** the Lean development uses a Lean-facing positivity predicate aligned with the Ω-predicate ([Appendix A.6](#a6-full-lean-implementation-for-reductio): `Positive`), rather than this informal schematic gloss. This is intentional: the paper-level clause specifies the intended stability reading (fixed-point admissibility), while the kernel development fixes the exact predicate used in machine checking. The corresponding non-defeat constraint is enforced by the internal lemma/axiom suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio): `perfect_positivity`), preventing circularity and contingent dependence.
+A HyperModal setting contains the A1/A3 fields themselves, and the theorem triad_holds derives $\forall v, T_{core}(v)$ from those fields; this is not an additional premise. From that derived fact and $Pos_T(T_{core},\varphi_P,w_0)$, Lean proves $\Box_{w_0}(\Omega \rightarrow P)$.
+
+**Honesty condition.** Because $T_{core}$ is world-constant, under $\Box T_{core}$ the theorem posT_iff_box establishes:
+
+$$
+Pos_T(T_{core},\varphi_P,w_0) \leftrightarrow \Box_{w_0}\varphi_P.
+$$
+
+Core-relative positivity is therefore a transparent classification of properties already forced by the explicit core-relative obligation; it supplies no additional existence premise for $\Omega$. With $\Diamond\Omega$ at $w_0$, posT_not_both also proves that $P$ and $\neg P$ cannot both be core-positive.
+
+The stronger route through contentful $ICO$, $Preserves$, and genuine A5 closure is future work. Section 2.1.1 establishes the necessity direction $Preserves(R,ICO) \rightarrow Triad(R)$; it does not claim or use the converse. The name Triad-Relative Positivity is reserved until that A5 and preservation bridge is formalized.
 
 #### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
 
-#### (A4) Logical Necessity
-Logical consistency cannot be contingent. If something is logically valid, it holds in all possible worlds.
+#### (A4) Derived Logical Invariance
+
+Logical non-contradiction is invariant across the shared Kripke semantics. In Lean, logic_necessity proves $\Box(A \wedge \neg A \rightarrow \bot)$ directly, and meta_logic proves its double-boxed form.
+
+**A4 is not derived from the Triad but from the fixed logical-semantic background alone.** Both theorem footprints are empty. The formal meta_logic theorem is double-boxed non-contradiction; it is not a formalization of the philosophical A5 closure principle.
 
 #### (A5) Meta-Logical Closure
 If a system is capable of reflecting upon its own limits (as in Gödel’s theorem), then it is structurally dependent on a higher, non-contained source of semantic coherence.
 
-These axioms form the basis of the modal system used to derive the existence of Ω.
+A1/A3/A5 form the philosophical constitutive proposal. The active HyperModal layer formalizes only the A1/A3 core; it neither formalizes A5 nor derives Ω-existence. The independent public C5 route carries the kernel-verified existence and uniqueness results from its explicit premise context.
 
 
 #### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
@@ -264,7 +275,7 @@ The epistemic formulation makes contingency reflectively accessible to an agent;
 ---
 ## 3. Formal Modal Proof of Ω
 
-We now show that the axioms above entail the existence of a necessary and unique grounding terminus Ω. The argument moves through a single chain: contingent obtaining ("I am") demands grounding (A1); a ground adequate to discharge that demand cannot itself be contingent, on pain of merely relocating the demand; grounding chains cannot regress infinitely (A3); a terminating, non-contingent ground therefore exists; and by minimality/coalescence ([§2.2.2](#222-a-decreasing-measure)) that ground is unique — Ω. Its perfection is characterized by A2, but its existence and uniqueness follow from the grounding architecture itself (A1/A3/A5). The proof strategy below is reductio ad absurdum: we assume $¬□∃x\,\Omega(x)$ and demonstrate that this assumption leads to incoherence. [§3.3](#33-ti--transcendental-induction) presents a second, convergent route to the same terminus (TI), and [§2.2](#22-successor-based-grounding-architecture) gives the successor-based construction that the Ascendant Route kernel-verifies ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)).
+This section gives the paper's philosophical grounding argument for a necessary and unique terminus Ω. It moves from contingent obtaining ("I am") through the constitutive roles assigned to A1, A3, and A5. The active HyperModal Lean layer does not formalize that complete passage: it represents the A1/A3 core, leaves A5 and the sufficiency bridge to ICO preservation open, and treats A2 as a property classification. The independent public C5 route kernel-verifies the strong Ω-results from its explicit grounding premises ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). [§3.3](#33-ti--transcendental-induction) remains a conceptual convergent route.
 
 * **Epistemic recognition of contingency:**
 As shown in [§2.3](#23-epistemic-recognition-of-contingency), such contingency can be formally recognized by any sufficiently reflective agent — human or artificial:
@@ -289,12 +300,12 @@ From contingency, grounding follows:
 The **Witness** $w$ is a constructive, trace-preserving path recording the dependence structure that connects contingent actuality to its ground $q$.
 * **Rejection of necessary ground:** If no necessary ground exists (and thus no valid witness can be constructed), we face two untenable alternatives:
 	* *Infinite regress* (violates A3): The witness path never terminates ($length(w) = \infty$).
-	* *Arbitrary starting point* (violates A1 and A4): The witness path breaks or hangs in a vacuum.
+	* *Arbitrary starting point* (leaves the A1 grounding demand undischarged): The witness path breaks or hangs in a vacuum.
 
 > *Reductio ad absurdum: These contradictions show that denying a necessary ground results in logical collapse; the witness requires a valid endpoint to exist.*
 
 * **Definition of Ω:**  
-**Ω** is defined as the unique necessary terminus of grounding enforced by A1/A3/A5; the positivity schema (A2) may be added as an interpretive strengthening but is not required for the existence or uniqueness of **Ω**. According to A2, **Ω** entails only positive properties and admits no internal contradiction.
+**Ω** is defined philosophically as the unique necessary terminus of grounding. Core-Relative Positivity supplies no existence premise and no generic perfection package: each property $P$ requires its own proof that denying $P$ at Ω defeats a named A1/A3 core component.
 
 **Conclusion.** Therefore, Ω exists necessarily and uniquely:
 
@@ -307,7 +318,7 @@ This establishes Ω not merely as an existent ground, but as the **unique necess
 ---
 ### **3.1 Conclusion: The Hyper-Modal Theorem**
   
-The reductio argument in this section establishes that denying a necessary ground for contingent truths results inevitably in semantic incoherence, infinite regress, or contradiction. From the constitutive grounding architecture A1/A3/A5, together with the modal-stability and positivity characterisation supplied by A4/A2, we therefore obtain the strengthened central result of this paper:
+The philosophical reductio in this section argues that denying a necessary ground for contingent truths leaves semantic incoherence, regress, or an undischarged explanatory demand. A2 and A4 add no existence premise: A2 is core-relative classification, while A4 is fixed-background logical invariance. The strengthened conclusion is:
 
 #### **Hyper-Modal Theorem**
 
@@ -315,7 +326,7 @@ $$
 \square \exists! x  \Omega(x)
 $$
 
-This statement is reached here via the full hyper-modal axiom route (A1–A5, [§2.1](#21-hyper-modal-axioms)), whose constitutive defense is given philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) and whose canary/regression lemmas are Lean-formalized in [Appendix A.6](#a6-full-lean-implementation-for-reductio). The same logical conclusion is independently kernel-verified end-to-end by the Ascendant Route's `Final_BoxUnique_Proof` ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)), reached via the successor-based construction of [§2.2](#22-successor-based-grounding-architecture) rather than via A1–A5 directly. The Hyper-Modal route and the Ascendant Route are convergent, not identical: two paths to the same terminus ([§3.4](#34-synthesis-from-contingent-actuality-to-ω)).
+The full A1/A3/A5 route in this section is a philosophical constitutive argument, not an end-to-end Lean derivation. In particular, A5 and `Triad -> Box PreservesICO` remain unformalized. The same boxed-uniqueness conclusion is independently kernel-verified by the public `AscendantRoute.GroundingChain.C5_BoxUnique` theorem from C1, `GroundObtains`, C3, C4a, and an obtaining datum. The routes are therefore convergent in conclusion but distinct in formal status and premises.
 
 That is, **necessarily, there exists exactly one being Ω** which grounds all contingent truths. This result strengthens mere necessary existence by excluding the possibility of multiple or variant grounding entities across possible worlds.
 
@@ -524,11 +535,11 @@ This section is the technical bridge between the paper's argument and its formal
 
 **Kernel certification.** A theorem is *kernel-verified* when the Lean kernel accepts a proof term inhabiting its exact stated type relative to $\Gamma$ — a mechanical, type-checking fact. Every logical dependency of the proof — modal transitions, grounding relations, the definitions of contingency and necessity — is checked by the kernel, not asserted informally.
 
-**The `.olean` artifact.** Compilation produces `.olean` files: binary, kernel-checked verification artifacts. An `.olean` file for a given module exists only if every theorem it contains — including the strong Ω-results — has passed kernel type-checking. The private `.olean` artifacts are the compiled verification record of `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof`; any modification to their content requires recompilation under the pinned toolchain and is detectable via hash comparison.
+**The `.olean` artifact.** Compilation produces binary Lean environment files only after the module has passed elaboration and kernel checking. The public C5 and HyperModal assemblies can be rebuilt from their supplied source under the pinned toolchain and compared by the CI hash audit. No private assembly is needed for the public certificate.
 
-**Public certificate / export surface.** The public repository publishes a deliberately weaker interface on top of the same verification architecture: `AscendantRoute.Interface`, `AscendantRoute.PublicTests`, and `AscendantRoute.CertificateAudit` export only the $\Box\Diamond$-compatibility layer, together with axiom-footprint printouts, a model witness (`TrivialModel`), and an explosion canary (`exFalsoQuodlibet`). This is an architectural separation between **public surface** and **internal theorem strength**, not a difference in what has been proved: the private kernel route contains the full $\Box$-strength results; the public interface exposes a scoped, independently auditable subset by design, protecting the internal proof route's IP while still letting third parties rebuild and inspect the exported layer ([dist](https://github.com/Dwight-Modiwirijo/Ascendant/tree/main/Zer0proof/dist); [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
+**Public certificate / export surface.** The public repository exposes both the weak compatibility API and the strong source-reproducible C5 route: `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`. Their theorem types, explicit premise context, axiom footprints, joint model, negative guards, and packaged assemblies are independently auditable. The HyperModal core-relative layer is additional and does not supply premises to C5.
 
-The development uses one shared world-indexed S5 semantics across two proof layers. `HyperModal.lean` imports `AscendantRoute.Interface` and aliases its modal operators to `Frame.Box` and `Frame.Dia`, so the HyperModal reductio suite and the public grounding route evaluate `\Box` and `\Diamond` in the same Kripke frame. The HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1) uses explicit Kripke semantics: a type of worlds $W$ and an accessibility relation $R : W \to W \to \mathrm{Prop}$ declared as an equivalence relation (reflexive, symmetric, transitive), with $\Box$ and $\Diamond$ defined from $R$ in the usual way (Blackburn et al. 2001). The public `AscendantRoute.Modal` interface ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)) axiomatizes $\Box$ and $\Diamond$ abstractly as an opaque structure satisfying the K, T, 4, and 5 schemas directly, without an explicit worlds-and-accessibility representation — a Hilbert-style axiomatic presentation of S5. Each verified claim is scoped to the Lean artifact in which it is established. The grounding relation (◃) and the predicate Pos(P) are embedded in a dependent type system in the relevant setting, allowing precise verification of logical entailments.
+The development uses one shared world-indexed S5 semantics. Both `AscendantRoute.GroundingChain` and `HyperModal.lean` import `AscendantRoute.Interface` and use its explicit Kripke `Frame`, `Frame.Box`, and `Frame.Dia` definitions. HyperModal adds a primitive grounding relation $G$ and a visible `HyperModalSetting`; its positivity classifier is separate from, and absent from the premises of, the C5 theorems.
 
 Key core definitions and representative theorems are reproduced in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route); the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
@@ -744,15 +755,15 @@ Truth‑functional implication evaluates form, not meaning; grounding restores t
 ---
 ### 5.6 Paradox Types and the Perfection of Ω
 
-This section presents a table of paradox types and demonstrates, through deductive reasoning, how each type supports or strengthens the perfection of Ω — the minimal necessary entity that bundles all positive properties $Pos(P)$ under **Axiom A2 (Perfect Positivity)**:
+This section gives a conceptual table of paradox types and explores how they may motivate properties attributed to Ω. It does not use the deleted Perfect Positivity axiom or provide an additional Lean proof of perfection.
+
+In the active HyperModal layer, positivity is preservation-relative. For $\varphi_P(v):=\Omega(v)\rightarrow P(v)$, and under the explicit core-preservation hypothesis derived by `triad_holds`, the honesty theorem states:
 
 $$
-Pos(P) \equiv \neg \exists Q \, (Q \rightarrow \neg P).
+Pos_T(T_{core},\varphi_P,w_0) \leftrightarrow \Box_{w_0}\varphi_P.
 $$
 
-This axiom ensures that no internally negating or contradictory property is admitted.
-
-The argument in this section is presented in S5-informed philosophical form. A parallel Lean scaffold exists in [Appendix A.6](#a6-full-lean-implementation-for-reductio) ("Paradox Types Extension"), but the paradox-type predicates there (`Veridical`, `Falsidical`, `Antinomy`, `Semantic`, `MetaReason`, `SemanticRefine`, `Synthesizes`, `Perfection`) are declared as placeholder definitions equal to `True`, so the corresponding Lean theorems are trivially true given those placeholders and do not constitute a non-trivial kernel proof that paradoxes support Ω's perfection. This section's paradox analysis should accordingly be read as **conceptual, illustrative, and interpretive** philosophical argument, not as an additional kernel-verified result alongside the Ascendant Route theorems ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)) or the reductio suite ([Appendix B.2](#b2-systematic-reductio-suite-lean-verified)).
+This classifies a property already supported by its per-property core obligation; it does not generate the property or prove Ω exists. The paradox analysis below is therefore **conceptual, illustrative, and interpretive**, not a kernel-verified consequence of `PosT`.
 
 We define Ω formally at the *semantic target level* as:
 
@@ -804,7 +815,7 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))**
 
-states that every contingent fact must be grounded in a necessary truth — a logical architecture without which no coherent reasoning could occur. The accompanying modal-class condition excludes contingent grounds for necessary propositions. For technical validation, see [Section 2.1](#21-hyper-modal-axioms) (A1–A3) and [Appendix A.6](#a6-full-lean-implementation-for-reductio) (`no_necessary_grounded_in_contingent`).
+states the paper's philosophical grounding architecture. In Lean, the corresponding restrictions are visible fields of `HyperModalSetting`: `psr` and `no_nec_in_cont : NoNecessaryGroundedInContingent F G`. They are jointly inhabited by the two-world model but are assumptions of each setting, not globally derived laws.
 
 This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of modal grounding structure — one that prevents semantic collapse and infinite regress.
 
@@ -960,54 +971,52 @@ Thus, our modal proof supports a vision of divine reality where Logos and Ω con
 For Christian theists, this reinforces the classical doctrine of the Trinity, in which the Logos is co-eternal with God and the vehicle through which all things are made (John 1:3). Our conclusion, then, not only echoes metaphysical necessity but resonates with the theological heart of Christian ontology.
 
 ---
-### 6.2 Ω as Factory of Positive Properties (Singularity Corollary)
+### 6.2 Ω and Core-Relative Positive Properties
 
-Within the hyper-modal framework, **A2 (Perfect Positivity)** fixes *Pos(P)* as an **admissibility constraint** (non-negation / non-defeat), not as a definitional shorthand for “true of Ω.” Given the constitutive grounding architecture (A1/A3/A5), **Ω** is introduced as the unique necessarily existing terminus of grounding. This permits a stronger reading than mere property-bearer: Ω functions as a **structural singularity (see [Corollary 6.2](#corollary-62--singularity-as-factory-for-positive-properties))** around which the domain of positive properties is **generated as closure** of grounded coherence, and at which every such generated Pos-property is instantiated.
+The existence, uniqueness, and rigidity of $\Omega$ come from the public C5 grounding route, not from positivity. Once that terminus has been established, HyperModal supplies a separate classification layer for properties at $\Omega$.
 
-We can state this as follows.
+For $\varphi_P(v) := \Omega(v) \rightarrow P(v)$, Core-Relative Positivity states that denying $\varphi_P$ defeats the formal A1/A3 core $T_{core}$. The setting theorem triad_holds derives $T_{core}$ from its explicit A1/A3 fields. Under this core condition, the honesty theorem gives:
 
-#### Corollary 6.2 — Singularity as Factory for Positive Properties
+$$
+Pos_T(T_{core},\varphi_P,w_0)
+\leftrightarrow
+\Box_{w_0}(\Omega \rightarrow P).
+$$
 
-> Let Ω be the unique necessarily existing terminus forced by the constitutive grounding architecture (A1/A3/A5). Let *Pos(P)* be constrained by A2 as the class of admissible (non-negating) properties. Then Ω is not only the terminal point of all coherent grounding chains, but also the unique **generative singularity** for positive properties: the grounding architecture forces a closure of admissible properties around Ω, and Ω instantiates every property admitted by that closure.
+This equivalence is the formal result. It is a classification theorem, not a second proof that $\Omega$ exists and not a mechanism that generates arbitrary properties. Each concrete $P$ requires its own proof that its denial defeats a named core component. The additional guard $\Diamond\Omega$ ensures that both $P$ and $\neg P$ cannot receive that classification simultaneously.
 
-**Non-circularity note.** The direction is not *Pos(P) iff Ω has P*. Rather: **A2 constrains admissible positivity; A1/A3/A5 force a unique terminus; the terminus generates (as closure) the Pos-domain and instantiates its members.**
+#### Corollary 6.2 — Singularity as a Classification Point
 
-**Terminology note — three distinct notions of "Positive."** This paper uses "Positive"/"Pos" for three formally different objects, which must not be silently identified:
+> Let $\Omega$ be the unique necessary terminus established by the C5 grounding architecture. A property belongs to the core-relative positive class only when its denial is incompatible with the represented A1/A3 core. For every property admitted by such a proof, $\Omega$ instantiates that property necessarily in the selected S5 cluster.
 
-1. The **public Ascendant Route interface** predicate `Positive` ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate), `Interface.lean`): an abstract typeclass carrying monotonicity together with `Positive.proper`, which forbids positivity of the constantly false predicate, and with no built-in reference to Ω.
-2. The **HyperModal Lean-facing definition** ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1.4): `Positive Ω P := ∀w, Ω w → P w` — defined *extensionally in terms of Ω*, i.e. exactly "P holds wherever Ω holds." This is deliberately Ω-relative by construction; it is not meant to be non-circular with respect to Ω, and no claim to the contrary is made about it.
-3. The **A2 admissibility notion** used in this subsection's argument ([§2.1](#21-hyper-modal-axioms) (A2), [§6.2](#62-ω-as-factory-of-positive-properties-singularity-corollary) above): a stability/non-defeat constraint on which properties are admissible at all, prior to and independent of asking which properties Ω happens to have.
+The earlier Factory language is retained only as an interpretive metaphor for this closure of a proved property class around an independently established terminus. Lean does not derive new properties merely from the label positive, and positivity contributes no existence premise.
 
-The non-circularity note above concerns (3), the A2 admissibility notion, not (2), the HyperModal Lean-facing definition, which is intentionally Ω-relative. Where the main text ([§2.1](#21-hyper-modal-axioms) (A2)) speaks informally of positivity, it intends (3); where [Appendix A.6](#a6-full-lean-implementation-for-reductio)/B.1.4 gives a Lean-checkable predicate, it uses (2); where the public interface is discussed, it uses (1). The Metaphysical Algebra reading ([Appendix B.1.4.1](#b141-interpretation-in-metaphysical-algebra-non-normative-structural)) is a further, non-formal interpretive gloss on top of these and changes none of them.
+**Terminology note — three distinct notions of Positive.**
 
-**Sketch of justification.**
+1. The public Ascendant Route interface class Positive in Interface.lean is an abstract monotone and proper predicate with no built-in reference to $\Omega$.
+2. The HyperModal notion PosT, with designated instance Pos_T, is preservation-relative. Its current $T_{core}$ instance represents A1/A3 only and satisfies the explicit honesty equivalence above.
+3. Full philosophical Triad-Relative Positivity would additionally require contentful ICO preservation and genuine A5 closure. That bridge is not yet formalized and is reserved for future work.
 
-1. **Admissibility (A2):** Perfect Positivity constrains *Pos(P)* so that no admitted property carries internal negation, defeat, or semantic collapse. Positivity is therefore a stability condition on the property-domain, not a re-labeling of Ω.
-
-2. **Termination (A3) under the Ascendant Route:** Under Anti-Regress and the successor-based grounding architecture, any coherent grounding progression must be well-founded. Accordingly, any admissible explanatory chain that tracks the grounding status of a property cannot loop or descend indefinitely.
-
-3. **Uniqueness via minimality/coalescence:** The Ascendant Route minimality/coalescence condition forces all terminating grounding chains to converge to a **single** minimal endpoint. Hence the grounding terminus is unique and necessary.
-
-4. **Factory as closure at the terminus:** Because the terminus is unique and necessary, the only stable location for the completion of admissible structure is Ω. Properties that are required to preserve grounded coherence (A1/A3/A5) and are admissible under A2 are thereby **forced** as members of the Pos-domain; Ω instantiates these forced Pos-properties as the fixed point of the closure.
+Accordingly, no argument in this section may infer $\Omega$-existence from PosT, identify the current core with a completed A1/A3/A5 formalization, or infer positivity for a property without its per-property obligation.
 
 #### Convergence to the Ontological Singularity
 
-In this sense, the **Ontological Singularity** Ω is a *Factory* for positive properties—not temporally producing features, but functioning as the **constitutive closure point** where admissible positive structure is forced to complete and stabilize. Any system (human, scientific, or artificial) that attempts to approximate maximal coherence in its catalogue of admissible positive properties will, under the constraints of this framework, converge toward Ω as the unique singular point at which that closure is realized.
+In this interpretive sense, the **Ontological Singularity** Ω may be called a *Factory* for positive properties: not because `PosT` produces properties, but because the independently established Ω-ground provides the point relative to which proposed properties are classified. Every concrete property still needs its own preservation argument.
 
 #### Ground and Return to Ω
 
-On this reading, Ω is not a tower constructed by finite agents, but the necessary ground relative to which they can deviate through error, partiality, or merely local optimization. The successor-based chain does not represent a ladder toward God; it traces the structure by which finite systems drift from, and are re-constrained by, the unique ground of intelligibility. Convergence to Ω is therefore not an achievement but a return to the singular source of grounded coherence.
+On this reading, Ω is not a tower constructed by finite agents, but the ground relative to which error, partiality, and local optimization are assessed. This is an interpretive consequence of the paper's grounding thesis; it is not a theorem extracted from Core-Relative Positivity.
 
-This “Factory” reading introduces no new axiom. It is a conceptual corollary of the already established results on the necessary existence, uniqueness, and positivity-constraint of Ω. It makes explicit what the constitutive architecture entails: every coherent treatment of admissible positive structure is both **closed by** Ω and **organized around** Ω as its singular center.
+This “Factory” reading introduces no new axiom and no new Lean theorem. Under the explicit preservation hypothesis, `posT_iff_box` reduces the classification to $\Box(\Omega\rightarrow P)$; it neither establishes Ω nor supplies $P$. The stronger A1/A3/A5 preservation story remains philosophical pending a contentful ICO/A5 formalization.
 
 ---
 ## **7. Conclusion**
 
 ### **7.1 The Non-Self-Foundation of Computability**
 
-This paper has established, within a hyper-modal framework and with Lean 4 certification, the existence of a necessary and **uniquely grounding** being $\Omega$ as a logical consequence.
+This paper defends a philosophical hyper-modal argument for a necessary and **uniquely grounding** being $\Omega$, while Lean 4 independently certifies the corresponding strong results on the public C5 route relative to its explicit premise context.
 
-From axioms A1 through A5, we derived not merely necessary existence, but **necessary unique existence**:
+From that C5 context, Lean derives not merely necessary existence, but **necessary unique existence**:
 
 $$
 \square \exists! x,\Omega(x)
@@ -1048,7 +1057,7 @@ Curry–Howard and BHK carry the other half of the machinery, and it is worth na
 3. **Semantic consequence** — $\forall\mathcal{M}\,(\mathcal{M}\models\Gamma \rightarrow \mathcal{M}\models\varphi)$, and, distinct from it, joint satisfiability $\exists\mathcal{M}\,(\mathcal{M}\models\Gamma)$. A derivation from an unsatisfiable context proves nothing, so the second question must be answered separately.
 4. **Intended actuality** — $\mathcal{R} \models \Gamma$: that the actual world satisfies the declared axioms. This is the constitutive thesis of the paper, argued in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) and [§3](#3-formal-modal-proof-of-ω), and it is the philosophical argument's job rather than the kernel's.
 
-**Level 1 and level 3, publicly.** `AscendantRoute.GroundingChain` supplies level-1 terms that any reader can check: `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness`, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. `AscendantRoute.GroundingModel` answers the joint-satisfiability question for the constitutive chain: it instantiates C1, ◃-transmission, C2, C3 and C4a together, with the datum obtaining, genuine contingency present and the frame provably non-collapsed, and derives $\square\exists! x\,\Omega(x)$ inside that model. The consistency gap this section previously recorded is therefore closed for the grounding chain. It remains open for the full combined Ω-theory (Gate 0 / JointModel, [Appendix A.2](#a2-public-verification-surface-and-scope-certificate)), and the private Ascendant Route supplies level-1 terms for the same three results by the convergent route of [§2.2](#22-successor-based-grounding-architecture).
+**Level 1 and level 3, publicly.** `AscendantRoute.GroundingChain` supplies level-1 terms that any reader can check: `C5_NE`, `C5_BoxUnique` and `C5_RigidWitness`, with footprint `propext, Classical.choice, Quot.sound` and no appeal to positivity. `AscendantRoute.GroundingModel` answers joint satisfiability for that C5 chain in a non-collapsed two-world model. Separately, `HyperModal.Model.setting_inhabited` gives an axiom-free joint witness for the repaired A1/A3 HyperModal setting, including contingent material, necessary logic, an obtaining datum, possible Ω, and non-empty primitive $G$. Neither model formalizes A5 or proves `Triad -> Box PreservesICO`; that full philosophical bridge remains open.
 
 In this work the relevant proposition is certified by `C5_RigidWitness`, and by the private `Final_RigidWitness_Proof` on the convergent route. Let
 
@@ -1602,7 +1611,7 @@ Each major claim in this paper is tracked here through the four-level architectu
 | $\square\exists x\,(\Omega(x)\wedge\forall y\,(\Omega(y)\rightarrow y=x))$ (`Final_BoxUnique_Proof`) | **Kernel-verified in private `.olean` artifact** | Not constructed for the full combined context (Gate 0 / JointModel: ongoing hardening) | `propext`; explicit-hypothesis discharge trace: ongoing assumption-manifest work | Private proof source not currently part of the public disclosure boundary | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω); not a Lean-decidable question |
 | $\exists x\,\square\forall y\,(\Omega(y)\leftrightarrow y=x)$ (`Final_RigidWitness_Proof`) | **Kernel-verified in private `.olean` artifact** | Not constructed for the full combined context (Gate 0 / JointModel: ongoing hardening) | `propext`; explicit-hypothesis discharge trace: ongoing assumption-manifest work | Private proof source not currently part of the public disclosure boundary | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω), [§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality); not a Lean-decidable question |
 | $\square\Diamond\exists x\,P(x)$ compatibility layer (`necPossible_of_Pos`, `somePosNecPossible_of_exists`) | Kernel-verified; publicly present in `AscendantRoute.Interface` | `TrivialModel` witnesses joint satisfiability of the bare `Modal` K/T/4/5 fragment. | `PosPossibility` — hardening against adversarial instantiation is ongoing (Gate 0) | Publicly reproducible (public source, public build) | N/A — this layer makes no Ω-actuality claim, only $\square\Diamond$-admissibility |
-| Hyper-Modal Theorem, [§3.1](#31-conclusion-the-hyper-modal-theorem) (full A1–A5 axiomatic route) | Supporting HyperModal reductio/canary suite: kernel-checked; the A1–A5 Hyper-Modal Theorem is presented through the main-text constitutive derivation. | Not constructed as a single joint model in this paper | The listed axioms are declared, not independently discharged from more basic principles; see [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) for their constitutive-status argument, which is philosophical, not a Lean discharge | Publicly reproducible for the reductio-suite file itself ([Appendix A.6](#a6-full-lean-implementation-for-reductio) source is public); not the same claim as the Ascendant Route Final_* theorems | Argued philosophically in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity) (constitutive transcendental argument) that $\mathcal R \models \Gamma$; not Lean-formalized |
+| Hyper-Modal constitutive conclusion, [§3.1](#31-conclusion-the-hyper-modal-theorem) | The full A1/A3/A5 route is philosophical; the public C5 theorems independently verify the strong Ω-results from their explicit grounding context. The repaired `HyperModal.lean` verifies the A1/A3 core-relative layer, not the full conclusion. | `HyperModal.Model.setting_inhabited` jointly inhabits the repaired A1/A3 setting in a non-collapsed two-world frame; `GroundingModel` separately inhabits the C5 context. | No global HyperModal axioms; A5 and `Triad -> Box PreservesICO` remain unformalized. | Publicly reproducible from source; footprints and negative guards are generated by CI. | The claim that actuality realizes A1/A3/A5 remains the philosophical argument of [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity), not a Lean theorem. |
 | [Corollary 3.1.2](#312-corollary--no-rival-constitutive-architecture) (No Rival Constitutive Architecture) | Constitutive meta-theoretical result | N/A | Philosophical premises stated in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity), not Lean hypotheses | N/A | Philosophical argument that no rival interpretation of actuality avoids Ω; not Lean-formalized |
 | [§6](#6-theological-resonance)–[§7.3](#73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises) theological and "undeniability" readings (Logos identification, Ω as Factory, undeniability of Ω) | Theological interpretation of the established Ω-ground | N/A | Interpretive; builds on the kernel-verified core and adds non-formalized philosophical premises | N/A | Interpretive identification of Ω with theological terms; presupposes the [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)/[§3](#3-formal-modal-proof-of-ω) actuality argument and adds further non-formalized premises ([§6](#6-theological-resonance) note) |
 
@@ -1615,351 +1624,94 @@ The table records the proof, dependency, model, reproducibility, and actuality s
 The main text develops a **hyper-modal grounding framework**:
 
 * Hyper-Minimal PSR,
-* Perfect Positivity,
+* Core-Relative Positivity (A1/A3),
 * Anti-Regress,
-* Logic Necessity, and
-* Meta-Logical Closure.
+* Derived Logical Invariance (A4), and
+* Meta-Logical Closure (A5, philosophical and not yet formalized).
 
-This framework is designed to express, at a conceptual and metaphysical level, what the Ascendant Route exhibits in a structurally minimal way:
+This framework expresses, at a conceptual and metaphysical level, the well-foundedness, termination, and closure roles associated with the Ascendant Route. The public C5 Lean proof supplies the strong Ω-results from its explicit grounding context. The repaired `HyperModal.lean` layer has a narrower certified role: it makes the A1/A3 setting, core-relative classifier, model witness, and historical refutation records explicit.
 
-* Every coherent explanatory chain must be **well-founded**,
-* must avoid **infinite regress**, and
-* must terminate in a **non-contingent ground**.
-
-Within this reading:
-
-* the **Ascendant Route Lean proof** provides a concrete, successor-based model of such chains, and
-* the **hyper-modal system** generalises this behaviour to the full spectrum of contingent truths, Gödelian incompleteness phenomena, and theological interpretation.
-
-The hyper-modal “Hyper-Modal Theorem” is therefore the **philosophical generalisation** of the formally verified Ascendant Route: it extends the structural role of Ω from a specific successor framework to the space of all coherent grounding structures that respect the given modal constraints.
+The full hyper-modal theorem is therefore the paper's **philosophical generalisation** of the public formal route. It extends the interpretation to A5, ICO, and broader metaphysical claims that the present HyperModal module does not kernel-verify.
 
 ---
 
 ### A.4 Corollary: Structural Necessity and the Peano Analogy
 
-The **reductio lemmas** in the Lean development (e.g. `reductio`, `materialist_reductio`, `anti_regress_reductio`) are designed to capture a structural phenomenon that is closely analogous to arithmetic.
+The public C5 theorems carry the formal Ω-conclusion from an explicit grounding context. The repaired HyperModal layer carries a different, narrower audit: every surviving consequence is relative to a visible `HyperModalSetting`, and `Model.setting_inhabited` shows that those fields are jointly satisfiable in a non-collapsed model.
 
-In arithmetic:
+The four historical refutation records prove only that the former universal statements were untenable. They do not derive Ω, and the surviving setting-relative reductio lemmas prove contradictions only when a setting field is paired with its explicit negation.
 
-* once a successor structure is admitted,
-* truths such as `1 + 1 = 2` are not contingent on accepting or rejecting a particular axiomatization of Peano Arithmetic;
-* they are embedded in the minimal structure of counting itself.
-
-The Ascendant Route and its reductio suite show an analogous behaviour on the level of grounding:
-
-* once well-founded explanatory chains are admitted,
-* once contingent truths are not allowed to float ungrounded, and
-* once infinite regress and semantic collapse are excluded,
-
-then the existence of a unique terminus Ω becomes **structurally unavoidable**.
-
-Formally, the reductio suite shows that attempts to:
-
-* deny a necessary ground,
-* ground necessity in contingency, or
-* identify logic with material facts
-
-lead to contradiction, regress, or collapse. Within such a framework, Ω is not merely “necessary in S5”, but **necessary in any coherent grounding architecture** that respects these structural constraints.
-
-This is the sense in which one may say:
-
-> Just as rejecting Peano axioms does not abolish `1 + 1 = 2`,
-> rejecting particular modal packages does not abolish Ω,
-> once the underlying successor and grounding structure is in place.
+The Peano comparison is therefore an interpretive analogy about well-founded structure. It is not an additional theorem that Ω follows in every possible grounding architecture, nor a substitute for the explicit hypotheses of the C5 route.
 
 ---
 
 ### A.5 Summary of the Ascendant Route’s Role
 
-The role of the Ascendant Route in the overall argument can be summarised as follows:
+The role of the Ascendant Route in the overall argument can be summarized as follows:
 
-1. **Formal core**:
-   The Ascendant Route is the only part of the project that is fully verified in Lean. It proves:
+1. **Formal C5 core.** The public `AscendantRoute.GroundingChain` proves necessary existence, boxed uniqueness, and a rigid witness from C1, `GroundObtains`, C3, C4a, and an obtaining datum. `GroundingModel` supplies a non-collapsed joint witness.
 
-   * necessary existence of Ω, and
-   * uniqueness of Ω,
-     using a successor-based, well-founded construction and S5 modal parameters.
+2. **Formal HyperModal audit.** `HyperModalSetting` makes the repaired A1/A3 assumptions explicit; `triad_holds`, `posT_iff_box`, `posT_box_core`, `posT_not_both`, the historical refutation records, and `Model.setting_inhabited` expose exactly what this layer establishes.
 
-2. **Conceptual bridge**:
-   The hyper-modal framework of the main text provides the conceptual and metaphysical **interpretation** of this formal core, linking:
-
-   * contingency and grounding,
-   * Gödelian incompleteness,
-   * modal asymmetry between necessity and contingency, and
-   * theological resonance (Logos, classical theism).
-
-3. **Structural corollary**:
-   The reductio suite shows that Ω is not merely an artefact of a chosen formal system, but a **structurally forced terminus**, whenever:
-
-   * explanatory chains are finite and well-founded, and
-   * grounding is required to avoid regress and collapse.
-
-Under this perspective, the Ascendant Route functions as a minimal, Lean-certified **model** of a much more general phenomenon: the inescapability of a unique necessary ground of intelligibility.
+3. **Conceptual bridge.** The full A1/A3/A5 constitutive route, Metaphysical Algebra, and theological readings interpret the formal core. Genuine A5 closure and the sufficiency theorem from the full Triad to ICO preservation remain future formalization tasks.
 
 ---
 
-### A.6 Full Lean Implementation for Reductio
+### A.6 Public HyperModal Implementation and Refutation Records
 
-For completeness, the relevant Lean implementation of the hyper-modal reductio pattern is reproduced below. It specifies the S5-like environment, the notions of necessity, possibility, contingency, grounding, and the key reductio theorems that capture the structural behaviour described above. The final "Paradox Types Extension" block near the end of the file uses placeholder definitions (`:= True`) for the paradox-type predicates; the theorems built on them are trivially true given those placeholders and are reproduced for completeness, not as a non-trivial kernel result — see [§5.6](#56-paradox-types-and-the-perfection-of-ω) for the corresponding conceptual/illustrative discussion.
+The complete implementation is public at:
 
-🔗 Public Repository:
 [https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/HyperModal.lean](https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/HyperModal.lean)
 
-```lean
-universe u
- 
-namespace HyperModal
- 
-variable (W : Type u)
-variable (R : W → W → Prop)
- 
-def reflexiveR  : Prop := ∀ w : W, R w w
- 
-def symmetricR  : Prop := ∀ w v : W, R w v → R v w
- 
-def transitiveR : Prop := ∀ w v u : W, R w v → R v u → R w u
- 
-def equivalenceR : Prop :=
-  reflexiveR W R ∧ symmetricR W R ∧ transitiveR W R
- 
-def necessarily (w : W) (φ : W → Prop) : Prop :=
-  ∀ v : W, R w v → φ v
- 
-def possibly (w : W) (φ : W → Prop) : Prop :=
-  ∃ v : W, R w v ∧ φ v
- 
-def contingent (φ : W → Prop) : Prop :=
-  ∃ w : W, @possibly W R w φ ∧ @possibly W R w (λ u => ¬ φ u)
+The module imports the same AscendantRoute.Interface used by the C5 route. Grounding is a primitive relation $G$ with argument order $G(q,p)$ for q grounds p. The old extensional implication-based ground is retained only inside the Historical namespace under the distinct name LegacyGround, so the removed formulas can be stated and refuted without contaminating the active architecture.
 
--- q ◃ p 
-def ground (q p : W → Prop) : Prop :=
-  (∀ w : W, q w → p w) ∧
-  (∀ w : W, q w → @necessarily W R w (λ v => q v → p v))
- 
-variable (Ω : W → Prop)
- 
-def Positive (Ω : W → Prop) (P : W → Prop) : Prop :=
-  ∀ w : W, Ω w → P w
- 
-def PerfectBeing : Prop :=
-  (∀ P : W → Prop, @Positive W Ω P → ∀ w, Ω w → P w) ∧
-  (∀ P : W → Prop, (∀ w, Ω w → P w) → @Positive W Ω P)
- 
-axiom perfect_positivity :
-  ¬ ∃ q : W → Prop, ∀ w : W,
-      @necessarily W R w (λ v => q v → ¬ Ω v)
- 
-axiom hyper_minimal_PSR :
-  ∀ p : W → Prop, (@contingent W R p) →
-    ∃ w : W,
-      @possibly W R w (λ _ : W =>
-        ∃ q : W → Prop,
-          @ground W R p q ∧
-            ((∀ v : W, @necessarily W R v q) ∨
-             @possibly W R w (λ _ : W => @ground W R q Ω)))
- 
-axiom perfect_being_exists :
-  ∃ Ω : W → Prop, @PerfectBeing W Ω
- 
-axiom logic_necessity :
-  ∀ (A : W → Prop) (w : W),
-    @necessarily W R w (λ v => (A v ∧ ¬ A v) → False)
- 
-axiom anti_regress :
-  ¬ ∃ f : Nat → (W → Prop), ∀ n : Nat,
-      @ground W R (f n.succ) (f n)
- 
-axiom meta_logic :
-  ∀ (A : W → Prop) (w : W),
-    @necessarily W R w (λ v => @necessarily W R v (λ u => (A u ∧ ¬ A u) → False))
- 
-variable (I_am : W → Prop)
- 
-axiom consciousness_axiom : @ground W R I_am Ω
- 
-theorem consciousness_grounded
-  (_ : @contingent W R I_am) :
-  ∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω) :=
-by
-  intro w v hv
-  exact (consciousness_axiom W R Ω I_am)
- 
-variable (Logic Material : W → Prop)
- 
-axiom logic_is_necessary :
-  ∀ w : W, @necessarily W R w Logic
- 
-axiom material_is_contingent :
-  @contingent W R Material
- 
-axiom no_necessary_grounded_in_contingent :
-  ∀ p q : W → Prop,
-    (∀ w : W, @necessarily W R w p) →
-    (@contingent W R q) →
-    ¬ @ground W R p q
- 
-/--
-**Corollary (Anti-Material Grounding):**
-    Cont(Material) → ¬(Nec(Logic) ◃ Material)
--/ 
-theorem anti_material_grounding :
-  ¬ @ground W R Logic Material :=
-by
-  apply no_necessary_grounded_in_contingent
-  · exact logic_is_necessary W R Logic
-  · exact material_is_contingent W R Material
- 
-/-- **Reductio:** accepting the axioms **and** both (1) `I_am` is contingent and
-    (2) denying `consciousness_grounded` produces `False`. -/
-theorem reductio
-  (h_cont : @contingent W R I_am)
-  (h_neg  : ¬ (∀ w : W, @necessarily W R w (λ _ : W => @ground W R I_am Ω))) : False :=
-by
-  have h_pos := consciousness_grounded (W:=W) (R:=R) (Ω:=Ω) (I_am:=I_am) h_cont
-  exact h_neg h_pos
- 
-/-- **Reductio for materialist grounding:** assuming material grounds logic while accepting our axioms yields `False`. -/
-theorem materialist_reductio
-  (h_material_grounds_logic : @ground W R Logic Material) : False :=
-by
-  have h_not_grounded := anti_material_grounding (W:=W) (R:=R) (Logic:=Logic) (Material:=Material)
-  exact h_not_grounded h_material_grounds_logic
- 
-/-! ### Systematic Reductio Ad Absurdum Suite -/
- 
--- Reductio for Perfect Positivity
-theorem perfect_positivity_reductio
-  (h_neg : ∃ q : W → Prop, ∀ w : W, @necessarily W R w (λ v => q v → ¬ Ω v)) : False :=
-by
-  have h_pos := perfect_positivity W R Ω
-  exact h_pos h_neg
- 
--- Reductio for Hyper-Minimal PSR
-theorem hyper_minimal_PSR_reductio
-  (p : W → Prop)
-  (h_cont : @contingent W R p)
-  (h_neg : ¬ ∃ w : W, @possibly W R w (λ _ : W => ∃ q : W → Prop,
-    @ground W R p q ∧ ((∀ v : W, @necessarily W R v q) ∨
-      @possibly W R w (λ _ : W => @ground W R q Ω)))) : False :=
-by
-  have h_pos := hyper_minimal_PSR W R Ω p h_cont
-  exact h_neg h_pos
- 
--- Reductio for Perfect Being Exists
-theorem perfect_being_exists_reductio
-  (h_neg : ¬ ∃ Ω : W → Prop, @PerfectBeing W Ω) : False :=
-by
-  have h_pos := perfect_being_exists W
-  exact h_neg h_pos
- 
--- Reductio for Logic Necessity
-theorem logic_necessity_reductio
-  (A : W → Prop) (w : W)
-  (h_neg : ¬ @necessarily W R w (λ v => (A v ∧ ¬ A v) → False)) : False :=
-by
-  have h_pos := logic_necessity W R A w
-  exact h_neg h_pos
- 
--- Reductio for Anti-Regress
-theorem anti_regress_reductio
-  (h_neg : ∃ f : Nat → (W → Prop), ∀ n : Nat, @ground W R (f n.succ) (f n)) : False :=
-by
-  have h_pos := anti_regress W R
-  exact h_pos h_neg
- 
--- Reductio for Meta-Logic
-theorem meta_logic_reductio
-  (A : W → Prop) (w : W)
-  (h_neg : ¬ @necessarily W R w (λ v => @necessarily W R v (λ u => (A u ∧ ¬ A u) → False))) : False :=
-by
-  have h_pos := meta_logic W R A w
-  exact h_neg h_pos
- 
--- Reductio for Consciousness Axiom
-theorem consciousness_axiom_reductio
-  (h_neg : ¬ @ground W R I_am Ω) : False :=
-by
-  have h_pos := consciousness_axiom W R Ω I_am
-  exact h_neg h_pos
- 
--- Reductio for Logic Is Necessary
-theorem logic_is_necessary_reductio
-  (w : W)
-  (h_neg : ¬ @necessarily W R w Logic) : False :=
-by
-  have h_pos := logic_is_necessary W R Logic w
-  exact h_neg h_pos
- 
--- Reductio for Material Is Contingent
-theorem material_is_contingent_reductio
-  (h_neg : ¬ @contingent W R Material) : False :=
-by
-  have h_pos := material_is_contingent W R Material
-  exact h_pos h_neg
- 
--- Reductio for No Necessary Grounded In Contingent
-theorem no_necessary_grounded_in_contingent_reductio
-  (p q : W → Prop)
-  (h_nec : ∀ w : W, @necessarily W R w p)
-  (h_cont : @contingent W R q)
-  (h_neg : @ground W R p q) : False :=
-by
-  have h_pos := no_necessary_grounded_in_contingent W R p q h_nec h_cont
-  exact h_pos h_neg
- 
-/-! ### Paradox Types Extension (Fixed Scope) -/
- 
-def ParadoxType : Type := String
- 
--- Explicitly parametrized definitions to fix scope issues
-def Veridical (W : Type u) (_ : W → Prop) : Prop := True
-def Falsidical (W : Type u) (_ : W → Prop) : Prop := True
-def Antinomy (W : Type u) (_ : W → Prop) : Prop := True
-def Semantic (W : Type u) (_ : W → Prop) : Prop := True
- 
-def MetaReason (W : Type u) (_ : W → Prop) : Prop := True
-def SemanticRefine (W : Type u) (_ : W → Prop) : Prop := True
-def Synthesizes (W : Type u) (_ _ : W → Prop) : Prop := True
-def Perfection (W : Type u) (_ : W → Prop) : Prop := True
- 
-theorem veridical_support (P : W → Prop) (_ : Veridical W P) :
-  @ground W R P Ω ∧ @Positive W Ω (fun _ => True) := by
-  constructor
-  · exact consciousness_axiom W R Ω P
-  · intro w _
-    exact True.intro
- 
-theorem falsidical_strengthen (P : W → Prop) (_ : Falsidical W P) (_ : MetaReason W P) :
-  @Positive W Ω (fun _ => True) := by
-  intro w _
-  exact True.intro
- 
-theorem antinomy_support (P : W → Prop) (_ : Antinomy W P) :
-  ∃ G : W → Prop, G = Ω ∧ Synthesizes W G P := ⟨Ω, rfl, True.intro⟩
- 
-theorem semantic_strengthen (P : W → Prop) (_ : Semantic W P) (_ : SemanticRefine W P) :
-  @Positive W Ω (fun _ => True) ∧ @ground W R P Ω := by
-  constructor
-  · intro w _
-    exact True.intro
-  · exact consciousness_axiom W R Ω P
- 
-theorem paradox_strengthens_perfection (_ : ParadoxType) (P : W → Prop) :
-  Perfection W P := by
-  exact True.intro
- 
-end HyperModal
+The active assumption surface is explicit:
+
+```lean
+structure HyperModalSetting (W) (F : Frame W) (G)
+    (Omega I_am Logic Material : W -> Prop) (w0 : W) : Prop where
+  psr            : HyperMinimalPSR F G Omega
+  g_strict       : GroundIrreflexive G
+  anti_regress   : AntiRegress G
+  consciousness  : G Omega I_am
+  logic_nec      : Nec F Logic
+  material_cont  : contingent F Material
+  no_nec_in_cont : NoNecessaryGroundedInContingent F G
+  datum_at_w0    : I_am w0
 ```
 
+There is no Perfect-Being-existence field: existence belongs to the independent C5 route, and the positivity layer supplies no extra existence premise. There is also no A5 field. A contentful A5 closure and the stronger ICO-preservation bridge remain future work.
 
----
+Preservation-Relative Positivity and its designated core-relative instance are:
+
+```lean
+def PosT (F : Frame W) (Pres phi : W -> Prop) (w0 : W) : Prop :=
+  F.Box (fun v => Not (phi v) -> Not (Pres v)) w0
+
+def Pos_T (F : Frame W) (G : GroundRel W)
+    (Omega P : W -> Prop) (w0 : W) : Prop :=
+  PosT F (T_core F G Omega) (AtOmega Omega P) w0
+```
+
+The theorem triad_holds derives the world-constant $T_{core}$ predicate from the setting's own A1/A3 fields. Theorems posT_box, posT_iff_box, posT_box_core, and posT_not_both record respectively the collapse under preservation, its equivalence form, the designated core instance, and incompatibility of simultaneous positivity for $P$ and $\neg P$ when $\Diamond\Omega$.
+
+A4 and meta_logic are theorems with empty footprints. A4 is not derived from the Triad but from the fixed logical-semantic background alone; meta_logic is double-boxed non-contradiction and not formal A5 closure.
+
+Four axiom-free historical records document why the former universal formulations were removed:
+
+- Historical.perfect_positivity_refutation;
+- Historical.consciousness_axiom_refutation;
+- Historical.anti_regress_refutation;
+- Historical.logic_material_trio_refutation.
+
+All surviving reductio lemmas take HyperModalSetting explicitly. Model.setting_inhabited provides an axiom-free two-world witness with a designated obtaining datum, genuinely contingent material, genuinely necessary logic, non-collapsed modality, possible $\Omega$, and a non-empty primitive grounding relation. The generated formal status and CI guards audit these declarations and reject re-export of the removed interfaces.
+
 ## Appendix B: The Hyper-Modal Framework (Conceptual Corollary)
 ### **B.1 The HyperModal Formal Framework (S5 + Grounding System)**
 
-This appendix presents the complete modal-semantic framework underlying the Ascendant Route.
-Whereas the Ascendant Route uses a successor-based grounding structure, the HyperModal system provides the global modal semantics and grounding axioms that justify the ontological closure the Ascendant Route depends on.
+This appendix records the shared S5 semantics and the repaired, setting-relative HyperModal layer. It complements the public C5 grounding route; it is not a separate end-to-end proof of the strong Ω-results.
 
-The following foundations are fully formalized in Lean 4 (definitions and axioms, together with a suite of reductio theorems).
+The formalized surface consists of definitions, theorems, one explicit `HyperModalSetting` structure, an axiom-free model, and historical refutation records. It contains no global `axiom` declaration. A5 closure and the full ICO-preservation bridge are not formalized.
 
 ---
 
@@ -2004,62 +1756,40 @@ These definitions exactly match the classical Kripke semantics used in modal log
 
 ####  **B.1.3 The Grounding Relation**
 
-A central component of the HyperModal system is the grounding relation **p ◃ q**:
+A central component of the active HyperModal system is the primitive grounding relation $G$:
 
-> **Definition (Grounding):**
-> q grounds p iff
-> (1) q implies p in all worlds, and
-> (2) whenever q holds at world w, it is necessarily the case that q → p.
+$$
+G(q,p)
+$$
 
-Formally:
+means that $q$ grounds $p$, matching the C5 argument order. Lean does not define $G$ by implication or necessitation. Instead, each `HyperModalSetting` states the properties it needs explicitly: grounding irreflexivity, strict anti-regress, HM-PSR, the edge $G(\Omega,I\_am)$, and the exclusion of contingent grounds for necessary propositions.
 
-```
-ground(p, q) :=
-  (∀w, q w → p w) ∧
-  (∀w, q w → □(q → p) at w)
-```
-
-This structure models:
-
-* upward explanatory dependence,
-* necessity-preservation,
-* and grounding minimality.
+The former extensional relation survives only as `Historical.LegacyGround` so its failures can be recorded. It is not part of the active proof architecture.
 
 ---
 
-####  **B.1.4 Positive Properties and the Perfect Being Schema**
-**In short, perfection is not an attribute set but a generative necessity: given Ω, positive properties are not chosen but forced and immanent.**  
+####  **B.1.4 Preservation-Relative and Core-Relative Positivity**
 
 ##### Formal definition (Lean-facing)
-Let Ω : W → Prop be the property representing the necessary entity.
 
-A property P is **positive** if all instances of Ω possess it:
-
-```
-Positive(P) := ∀w, Ω w → P w
-```
-
-A **Perfect Being** is an entity that:
-
-1. possesses *all* positive properties, and
-2. only possesses positive properties.
-
-Formally:
+For a world-indexed preservation condition $Pres$ and claim $\varphi$:
 
 ```
-PerfectBeing(Ω) :=
-  (∀P, Positive(P) → ∀w, Ω w → P w) ∧
-  (∀P, (∀w, Ω w → P w) → Positive(P))
+PosT(F, Pres, phi, w0) :=
+  Box at w0 of (not phi -> not Pres)
 ```
 
-This aligns precisely with Gödel-style positivity conditions, but avoids any reliance on higher-order modal axioms beyond S5.
+For a property $P$ at $\Omega$, $\varphi_P(v)$ is $\Omega(v) \rightarrow P(v)$. The designated Pos_T instance uses $Pres := T_{core}$, where $T_{core}$ contains the formal A1 role, grounding strictness, and strict A3 role. It does not contain A5.
+
+If preservation holds throughout the selected S5 cluster, posT_iff_box proves that PosT is equivalent to $\Box\varphi$. This is the required honesty result: positivity classifies a proved preservation dependency and neither creates $\Omega$ nor adds an independent property premise.
+
+Each concrete $P$ still requires its own obligation showing that denial of $P$ at $\Omega$ defeats a named core component. With $\Diamond\Omega$, posT_not_both prevents both $P$ and $\neg P$ from being classified simultaneously.
 
 #### B.1.4.1 Interpretation in Metaphysical Algebra (non-normative, structural)
 
-MA interpretation of Pos(p). While the Lean development treats Pos(p) abstractly (as a primitive predicate governed by the exported axioms/lemmas), the Metaphysical Algebra assigns it structural meaning: Pos(p) ranges over properties that are Ω-aligned—i.e., admit non-zero Ω-projection, have finite Ω-distance, and admit non-circular (independent) grounding relative to Ω. This interpretation does not change any kernel-verified results; it only provides semantic content for how Pos is read in MA.
+MA may be used as a non-normative interpretation of a property already classified by `PosT`. It does not turn positivity into a primitive Lean predicate, discharge a per-property obligation, or add proof power. Terms such as Ω-alignment, finite Ω-distance, and independent grounding are therefore interpretive unless separately formalized.
 
-**Metaphysical Algebra (MA)** is the structural semantics layer used to *interpret* the Lean predicate `Pos(p)` without changing the Lean axioms. MA provides a mathematical reading of “positivity” as **Ω-alignment**, **finite Ω-distance**, and **non-circular grounding**. MA does not constitute a semantics for the Lean development and is not invoked by any lemma/theorem; it is purely an expository reading of the already-fixed Pos predicate. Concretely, MA relies on the following mathematics:
-
+**Metaphysical Algebra (MA)** supplies optional semantic imagery for those classified properties. It is not invoked by any Lean declaration, and no MA construction changes the honesty result `PosT ↔ Box phi` under the explicit preservation hypothesis. Concretely, MA draws on the following mathematics:
 
 1. **Modal Logic (S5)**
 
@@ -2140,97 +1870,62 @@ This reframes the ontological argument: we do not prove that goodness exists as 
 
 ---
 
-####  **B.1.5 The Ten HyperModal Axioms**
+####  **B.1.5 The HyperModal Setting and Derived Layer**
 
-The ten axioms below form the HyperModal reductio suite and its regression/canary architecture. A1/A3/A5 carry the constitutive existence/uniqueness core; A2 characterizes perfection/positivity. `Perfect Being Exists` and `Consciousness Axiom` belong to the HyperModal reductio framework, while the independent Ascendant Route `Final_*` theorems retain their own dependency context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)).
+The former collection of globally generalized assumptions has been replaced by HyperModalSetting, whose parameters bind one explicit world type, frame, primitive grounding relation, predicates, and designated datum world.
 
-The core of the HyperModal system consists of the following axioms, each fully represented in Lean:
+Its fields record:
 
-1. **Perfect Positivity:**
-   No predicate is necessarily incompatible with Ω.
+1. the Hyper-Minimal PSR role over primitive $G$;
+2. irreflexivity of $G$;
+3. strict Anti-Regress over $G$;
+4. the consciousness edge $G(\Omega,I_{am})$;
+5. necessary Logic;
+6. contingent Material;
+7. the prohibition on a contingent ground for a necessary proposition; and
+8. the obtaining datum at $w_0$.
 
-2. **Hyper-Minimal PSR:**
-   Every contingent truth has a ground, which is either necessary or eventually grounded in Ω.
+The setting has no existence field and no A5-closure field. The existence and uniqueness of $\Omega$ are certified by the separate public C5 route. A5 and a contentful ICO-preservation theorem remain outside the present kernel formalization.
 
-3. **Perfect Being Exists:**
-   A Perfect Being Ω exists. *(Reductio-suite axiom; not a load-bearing premise of the constitutive proof.)*
+The active layer additionally contains:
 
-4. **Logic Necessity:**
-   Logical contradictions are necessarily false in all worlds.
+- Core-Relative Positivity (A1/A3), derived from the setting through triad_holds and a per-property PosT obligation;
+- Derived Logical Invariance, logic_necessity, with empty footprint;
+- double-boxed non-contradiction, meta_logic, also with empty footprint and not identified with A5;
+- setting-relative consciousness and anti-material consequences.
 
-5. **Anti-Regress:**
-   No infinite grounding chain is possible.
-
-6. **Meta-Logic Necessity:**
-   The necessity of logic itself is necessary.
-
-7. **Consciousness Axiom:**
-   “I am” is grounded in Ω. *(Reductio-suite axiom; not a dependency of the independent Ascendant Route `Final_*` theorems.)*
-
-8. **Logic Is Necessary:**
-   Logical truths hold necessarily in every world.
-
-9. **Material Is Contingent:**
-   Material reality is contingent.
-
-10. **No Necessary Grounded in Contingent:**
-    No necessary truth can be grounded in a contingent one.
-
-These axioms form the basis for the reductio framework and the grounding results in [Appendix C](#appendix-c-consciousness-logic-and-anti-material-grounding-theorems) (C.1–C.3).
+Model.setting_inhabited proves that these fields are jointly satisfiable in a non-collapsed two-world frame.
 
 ---
 
-### **B.2 Systematic Reductio Suite (Lean-Verified)**
+### **B.2 Setting-Relative Consequences and Historical Refutations**
 
-For each axiom (1)–(10) in the HyperModal framework, we include a corresponding regression lemma (“reductio”) showing that assuming both the axiom and its negation yields a contradiction (False).
+The current reductio lemmas are conditional consequences of an explicit HyperModalSetting. Their types display the complete assumption bundle rather than depending on globally generalized declarations.
 
-These lemmas are intended as regression/canary checks against accidental weakening or redefinition of axioms and definitions. They are not presented as derivations of each axiom from the remaining axioms.
+#### **B.2.1 Setting-Relative Method**
 
-Each such lemma is machine-checked by the Lean kernel relative to the declared axioms and definitions.
-
----
-
-#### **B.2.1 Reductio Method**
-
-For an axiom A, the reductio structure is:
+For a setting $S$ and one of its fields $H$, the regression form is:
 
 ```
-Assume Axioms ≡ {A₁,…,Aₙ}
-Assume ¬Aᵢ
----------------------------------
-Derive False
+S : HyperModalSetting ...
+not H
+---------------------
+False
 ```
 
-Thus:
+This records an ordinary contradiction between an explicit setting field and its denial. It does not claim that the field is derivable from the remaining fields.
 
-> The development includes explicit canary lemmas ensuring that each stated axiom remains coherent with the rest of the formalization.
-> These results should be read as regression/canary guards ($A \land \neg A \to \text{False}$), not as proofs that any axiom is derivable from the others.
+#### **B.2.2 Historical Refutation Records**
 
----
+Four different theorems take the removed formulas themselves as hypotheses and derive False:
 
-#### **B.2.2 Reductio Theorems**
+- perfect_positivity_refutation uses the tautological defeater $q := \neg\Omega$;
+- consciousness_axiom_refutation uses hostile predicates on a one-world frame;
+- anti_regress_refutation uses reflexivity of the former LegacyGround;
+- logic_material_trio_refutation shows that extensional necessity automatically generated the forbidden grounding edge.
 
-All proven in Lean:
+These records are axiom-free. They explain why the old formulations were deleted; they are not active premises. CI separately verifies that the former exported names are unavailable and that the extensional construction cannot produce an edge of primitive $G$.
 
-* **Perfect Positivity Reductio**
-* **Hyper-Minimal PSR Reductio**
-* **Perfect Being Exists Reductio**
-* **Logic Necessity Reductio**
-* **Anti-Regress Reductio**
-* **Meta-Logic Reductio**
-* **Consciousness Axiom Reductio**
-* **Logic Is Necessary Reductio**
-* **Material Is Contingent Reductio**
-* **No Necessary Grounded in Contingent Reductio**
-
-Each reductio theorem demonstrates:
-
-> Assuming both the axiom and its negation yields modal or grounding incoherence
-> — formally, a contradiction.
-
-These results should be read as regression/consistency guards ($A \land \neg A \to \text{False}$), not as claims that the axioms are derivable from one another.
-
----
 #### B.2.3 Formal Derivation of Modal Asymmetry
 This appendix contains the full derivation of the modal asymmetry principle that grounds the proof:
 
@@ -2260,7 +1955,7 @@ $$
 \Bigr).
 $$
 
-This asserts that contingent truths necessarily require necessary grounding and that necessary truths necessarily admit no contingent ground. The second conjunct is the **Nec/Cont modal-class asymmetry** carried in Lean by `no_necessary_grounded_in_contingent`; it does not assert relational asymmetry or irreflexivity of `ground`. This expands [Section 5.2](#52-ambiguity-between-necessity-and-contingency) and [Appendix A.6](#a6-full-lean-implementation-for-reductio).
+The displayed conjunction is the philosophical modal-asymmetry schema. In the active Lean layer its two roles are explicit fields of a particular `HyperModalSetting`: `psr` and `no_nec_in_cont : NoNecessaryGroundedInContingent F G`. Lean does not derive the schema as a global law. The setting-relative theorem `anti_material_grounding` uses the latter field over primitive $G$; `Model.setting_inhabited` confirms that these restrictions are jointly satisfiable and non-vacuous because $G$ contains the consciousness edge.
 
 This conclusion mirrors the structure of Gödel’s incompleteness theorem:
 
@@ -2282,25 +1977,16 @@ Each is machine-verified in Lean relative to its declared axioms (listed under "
 
 ### C.1 Consciousness Grounded in Ω
 
-Declared in the same Lean file ([Appendix A.6](#a6-full-lean-implementation-for-reductio)):
-
-* the Consciousness axiom, `consciousness_axiom : ground I_am Ω`, asserting directly and unconditionally that "I am" is grounded in Ω;
-* Hyper-Minimal PSR, Anti-Regress, and Perfect Positivity, declared as separate, independent axioms.
-
-> **Theorem (Lean-Verified), relative to the declared axioms:**
-> `consciousness_grounded` restates the Consciousness axiom in a necessity-quantified form: for every world $w$, "I am" is grounded in Ω.
-
-Formally, as proved in the Lean source ([Appendix A.6](#a6-full-lean-implementation-for-reductio)):
+The active Lean theorem is setting-relative. HyperModalSetting contains the explicit edge $G(\Omega,I_{am})$ together with the obtaining datum at $w_0$. The theorem consciousness_grounded boxes that world-invariant edge across the selected frame:
 
 ```
-contingent(I_am) → ∀w, □(I_am ◃ Ω)
+S : HyperModalSetting ... ->
+forall w, Box at w of G(Omega, I_am)
 ```
 
-**What the proof term actually establishes.** The Lean proof of `consciousness_grounded` derives its conclusion directly from `consciousness_axiom`; the contingency hypothesis is accepted as a parameter of the theorem but is not used in deriving the conclusion, since the axiom already asserts the grounding relation unconditionally. `consciousness_grounded` is therefore a kernel-verified **restatement** of the Consciousness axiom in necessity-quantified form — not an independent derivation of "I am is grounded in Ω" from Hyper-Minimal PSR, Anti-Regress, and contingency taken together. Those further axioms are declared in the same file and are used elsewhere in the reductio suite ([Appendix B.2](#b2-systematic-reductio-suite-lean-verified)), but this particular proof term does not invoke them.
+The proof term uses S.consciousness directly. It is therefore a transparent consequence of the explicit setting field, not an independent derivation from PSR and Anti-Regress. Unlike the removed universal declaration, the field is bound to one setting and cannot be instantiated with hostile predicates from another setting.
 
-**Relation to the main-text argument.** The main-text witness-based reductio for "I am" being grounded in Ω ([§3](#3-formal-modal-proof-of-ω)) is a separate, philosophical argument built from HM-PSR, Anti-Regress, and the witness requirement; it is not identical to `consciousness_grounded`, and `consciousness_grounded` does not itself formalize that argument's derivation step. What it does provide is a kernel-checked regression/canary guard (`consciousness_axiom_reductio`, [Appendix A.6](#a6-full-lean-implementation-for-reductio)) confirming that the Consciousness axiom remains coherent with its own negation. None of this weakens the independently-proved Ascendant Route results (`Final_NE_Proof`, `Final_BoxUnique_Proof`, `Final_RigidWitness_Proof`, [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)), which do not depend on `consciousness_axiom`.
-
----
+The main-text witness-based argument and the public C5 route remain separate. In particular, C5_NE, C5_BoxUnique, and C5_RigidWitness do not depend on the HyperModal consciousness field.
 
 ### **C.2 Anti-Material Grounding Theorem**
 
@@ -2350,46 +2036,21 @@ Thus:
 
 ---
 
-## Appendix D: Reductio Suite Summary
-This appendix summarizes the twelve formal reductio arguments derived from the Lean-verified axioms in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route). Each reductio demonstrates that rejecting one axiom leads to contradiction, collapse, or modal incoherence.
+## Appendix D: HyperModal Audit Summary
 
-### D.1 Axiom Rejection and Consequences (Summary Table)
+The public HyperModal audit distinguishes active setting-relative consequences from historical refutations.
 
-| Axiom / Principle Rejected | 	Consequence of Rejection |
-|----------------------------|---------------------------|
-| (A1) Hyper-Minimal PSR	|No explanation for contingent truths → infinite deferral or nihilism
-| (A2) Perfect Positivity	| Perfection allows negation → contradiction in Ω’s definition
-| (A3) Anti‑Regress	 | Infinite regress of grounding → collapse of coherent structure
-| (A4) Logic Necessity	| Logic becomes contingent → modal semantics break down
-| (A5) Meta-Logic	| Necessary truths become undecidable → self-referential paradox
-|Positivity Itself	| Positive properties denied → Ω becomes undefined or contradictory
-|Existence of Ω	    |No necessary foundation → “I am” floats ungrounded
-|Modal Collapse (□ to ◇)	| Necessity indistinguishable from possibility → proof invalid
-|Denying □(□p → p)  | Instability of truth → collapse of inference hierarchy
-|Grounding Relation (p ◃ q)	| Truths lose semantic anchoring → metaphysical relativism or absurdity
-|S5 Accessibility Axioms	| Modal framework fails → no reachability of necessity
-|Self-reference (“I am”)	|Identity becomes paradoxical → epistemic and ontological incoherence  
+| Item | Kernel status | Interpretation |
+|---|---|---|
+| Core-relative positivity | posT_box_core and posT_iff_box; standard classical footprint | Classification under explicit A1/A3 core preservation; no existence premise |
+| Positivity consistency | posT_not_both plus $\Diamond\Omega$ | $P$ and $\neg P$ cannot both be core-positive |
+| Logical invariance | logic_necessity; empty footprint | Derived from fixed logical semantics, not from the Triad |
+| Double-boxed non-contradiction | meta_logic; empty footprint | Not a formalization of A5 |
+| HyperModal setting | Model.setting_inhabited; empty footprint | Jointly satisfiable, non-collapsed two-world witness |
+| Four removed formulations | Historical.*_refutation; empty footprints | The former formulas imply False and are not exported |
+| Consciousness and anti-material results | explicit HyperModalSetting parameter | Conditional on visible setting fields |
 
-Each rejection, when combined with the corresponding axiom-context of the reductio suite, leads to contradiction, collapse, or modal incoherence. These results function as regression and consistency guards, not as independent derivations of every axiom from the remaining axioms. The constitutive core A1/A3/A5 is not optional for intelligible contingent obtaining; the broader suite functions as formal support, characterization, and guard structure.
-
-### D.2 Visual Flow of Section 3
-````
-START: I_am is contingent
-    ↓
-Axiom A1: ∃q such that q is necessary and I_am ◃ q
-    ↓
-Assume denial of A1 → triggers reductio (Appendix C)
-    ↓
-By A1/A3/A5: the chain terminates in the unique grounding context Ω
-    ↓
-By A2: Ω is characterized as admitting only positive properties
-    ↓
-Assume ¬(I_am ◃ Ω) → contradiction (Appendix A.6)
-    ↓
-Therefore, □(I_am ◃ Ω)
-    ↓
-From minimal axioms → □∃!x,Ω(x) is true
-````
+The full philosophical A1/A3/A5 claim remains broader than this table. In particular, contentful ICO preservation, genuine A5 closure, and any theorem from the full Triad to preservation remain future formalization tasks.
 
 ## Appendix E: Glossary of Modal Symbols
 **Hyper-Modal Theorem**  
@@ -2417,19 +2078,7 @@ $$
 $$
 
 Intuitively, Ω is not only necessary, but its necessity is itself necessary in S5.
-The non-modal content (the derivation of
-
-$$
-\Box \exists x \, \Omega(x)
-$$
-
-) comes from Axioms A1–A5 ([Section 3](#3-formal-modal-proof-of-ω)); the step
-
-$$
-\Box p \rightarrow \Box\Box p
-$$
-
-is an S5-valid modal consequence and is verified in Lean ([Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route)).
+The public Lean derivation of the strong Ω-results comes from the explicit C5 context: C1, `GroundObtains`, C3, C4a, and an obtaining datum. The broader A1/A3/A5 route remains the paper's philosophical argument. The modal step $\Box p\rightarrow\Box\Box p$ itself is an S5-valid theorem of the fixed frame semantics and requires no Triad premise.
 
 **Relation to $\Box\Diamond p$, $\Diamond\Box p$, and the Brouwer step.** This note concerns axiom 4 ($\Box p\to\Box\Box p$), which is independent of the S5/Brouwer-derived step $\Diamond\Box p\to\Box p$ used to strengthen Ω-specific possibility claims ([Appendix F](#appendix-f-objections--replies), "Anti-S5 (Modal Collapse) Objection"). Neither is the same as $\Box\Diamond p\to\Box p$, which is **not** S5-valid for arbitrary $p$ and is not used anywhere in this paper's derivation of $\Box\exists!x\,\Omega(x)$ ([§4](#4-verification-in-lean-4)). The public interface accordingly makes no claim that $\Box\Diamond p$ implies $\Box p$ ([Appendix A.2](#a2-public-verification-surface-and-scope-certificate)).
 
@@ -2439,8 +2088,8 @@ is an S5-valid modal consequence and is verified in Lean ([Appendix A](#appendix
 |□p	|Necessarily p (true in all worlds)
 |◇p	|Possibly p (true in at least one world)
 |Cont(p)	| Contingent: ◇p ∧ ◇¬p
-|p ◃ q	| q grounds p: q ⊢ □(q → p)
-|Pos(P)|	P is a positive property
+|p ◃ q | Primitive $G(q,p)$: q grounds p; required properties are explicit setting fields
+|Pos(P)| Preservation-relative property classification; the designated Lean instance is Core-Relative Positivity (A1/A3)
 |Ω	|The necessarily perfect being  
 
 See main text for contextual definitions and formal usage.
@@ -2448,19 +2097,19 @@ See main text for contextual definitions and formal usage.
 ## Appendix F: Objections & Replies
 ### Anti‑S5 (Modal Collapse) Objection  
 Objection: S5 collapses possibility into necessity for the predicates used here.  
-Reply: Genuine modal collapse would be a schema such as $p \to \Box p$ or $\Diamond p \to \Box p$ for arbitrary $p$ — neither is assumed or derived anywhere in this paper. Ordinary contingent truths (e.g., material facts) remain genuinely contingent because they lack Positive/Ω-specific status. The principle this paper actually uses, $\Diamond\Box p \to \Box p$, is the valid S5/Brouwer-derived step: it holds in every S5 frame because $R$ is an equivalence relation ([Appendix B.1.1](#b11-worlds-accessibility-and-s5-conditions)), and it only lets an *already-established* $\Diamond\Box p$ be strengthened to $\Box p$ — it does not collapse contingency into necessity for arbitrary $p$. Separately, bare S5 does **not** validate $\Box\Diamond p \to \Box p$ for arbitrary $p$, and this paper's Ω-specific route does not rely on that schema either. The step from Ω-specific possibility claims to the strengthened necessity results is carried by the Ω-specific non-contingency/modal-bridge axioms ([Appendix A.6](#a6-full-lean-implementation-for-reductio), B.1.4) together with the valid $\Diamond\Box p \to \Box p$ step — not by treating S5 itself as generally collapsing possibility into necessity.  
+Reply: Genuine modal collapse would be a schema such as $p\rightarrow\Box p$ or $\Diamond p\rightarrow\Box p$ for arbitrary $p$; neither is assumed or derived. The public C5 theorems use explicit Ω-specific grounding premises, while the HyperModal theorem `posT_not_both` additionally requires `F.Dia Omega w0` and the A1/A3 core hypothesis. Bare S5 does not validate $\Box\Diamond p\rightarrow\Box p$, and no positivity rule is used to turn arbitrary possibility into necessity.
 
 ### PSR‑Skepticism
 Objection: The Principle of Sufficient Reason is controversial; brute facts might exist.  
-Reply: Within the HyperModal canary suite, `hyper_minimal_PSR` together with its negation yields ⊥ (the reductio lemma `hyper_minimal_PSR_reductio`); the constitutive justification of HM-PSR itself is the transcendental argument developed in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity). Denying PSR, beyond triggering this canary, also forfeits the very meaning of ‘explanation’ and ‘ground.’    
+Reply: HM-PSR is a visible field of `HyperModalSetting`. The setting-relative lemma `hyper_minimal_PSR_reductio` derives contradiction only when that field is paired with its explicit negation; it is an assumption-consistency canary, not an independent proof of PSR. The constitutive justification remains the philosophical argument in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity).
 
 ### “Grounding is Subjective”
 Objection: Ground‑relation p ◃ q is metaphysically vague.  
-Reply: In our formalism, ground is extensional (q→p) ∧ minimal‑necessitation; Lean verifies the Nec/Cont modal-class asymmetry through `no_necessary_grounded_in_contingent`. Vague metaphysics is replaced by precise modal criteria.
+Reply: The active formalism treats grounding as primitive $G(q,p)$, with ground first, and exposes every required property in `HyperModalSetting`. The old extensional implication-based relation is retained only as `Historical.LegacyGround` for axiom-free refutation records.
 
 ### Materialist Reduction
 Objection: Logic might be emergent from physical brains.  
-Reply: Theorem anti_material_grounding formalises that no necessary fact can be grounded in a contingent substrate; Lean proves ¬(Logic ◃ Material).  
+Reply: The setting-relative theorem `anti_material_grounding` proves $\neg G(Material,Logic)$ from the explicit fields that logic is necessary, material is contingent, and no contingent proposition grounds a necessary one. `Model.setting_inhabited` demonstrates those fields together in a non-collapsed model.
 
 ### Gödel/Plantinga Redundancy
 Objection: This is merely a variant of Gödel’s and Plantinga’s ontological proofs.
@@ -2476,24 +2125,23 @@ Reply: We use Gödel analogically, to highlight that any system capable of expre
 
 ### Contingency/Necessity Ambiguity
 Objection: The modal distinction is inconsistently applied.  
-Reply: [Sections 2](#2-framework-hyper-modal-grounding-principles) and 5 clarify: Cont(p) := ◇p ∧ ◇¬p, and all contingent truths are grounded in necessary ones by A1. [Appendix B](#appendix-b-the-hyper-modal-framework-conceptual-corollary) formalizes this asymmetry.  
+Reply: [Sections 2](#2-framework-hyper-modal-grounding-principles) and 5 use $Cont(p):=\Diamond p\wedge\Diamond\neg p$. The active HyperModal layer does not globally derive that every contingent truth has a necessary ground; `HyperModalSetting` states the corresponding PSR and modal-class restrictions explicitly, and its model proves that the package is jointly inhabitable.
 
 ### Theological Overreach
 Objection: The conclusion supports classical theism, undermining neutrality.  
 Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
 
-## Appendix G: Successor Function of Grounding (Constructive Form)
+## Appendix G: Successor Function of Grounding (Conceptual Sketch)
 
-**Scope note.** The `succGround` operator below is a conceptual, illustrative construction within the public HyperModal reductio suite ([Appendix A.6](#a6-full-lean-implementation-for-reductio)), used to make the anti-regress axiom's well-foundedness intuitive. It is not a description of, and is not claimed to be identical to, the successor function $S$ of the Ascendant Route's private successor-based construction ([§2.2.1](#221-state-space-and-successor), [Appendix A.1](#a1-scope-of-verification)); the two are independent presentations of the same anti-regress intuition, one illustrative and one load-bearing for the kernel-verified Final_* results.
+**Scope note.** The `succGround` operator below is non-load-bearing pseudocode for the anti-regress intuition. It is not a declaration in `HyperModal.lean` and not the engine of the public C5 proof. The active formal object is the primitive relation $G$ together with the explicit setting field `AntiRegress G`; witness selection below is classical, not constructive.
 
-In the formal system developed above, the **anti‑regress axiom**
+In the repaired formal system, strict anti-regress is an explicit setting field:
 
+```lean
+¬ ∃ f : Nat → (W → Prop), ∀ n, G (f (n + 1)) (f n)
 ```
-¬ ∃ f : ℕ → (W → Prop), ∀ n, ground (f (n + 1)) (f n)
-```
 
-expresses the impossibility of an *infinite grounding chain*.
-This axiom mirrors the **structure** of the classical Peano successor function, but inverts its metaphysical direction: it is *successor‑function‑like*, not a literal Peano successor.
+It excludes an infinite strictly descending $G$-chain. It is not a global axiom and does not by itself construct a terminus.
 
 ---
 
@@ -2515,20 +2163,22 @@ The **successor‑like** pattern appears in the form `f (n + 1)` but serves the 
 A witness-selecting operator can express this relationship explicitly. Note that `Classical.choose` performs classical witness selection from an existence proof; it is not a computable search procedure, and `#eval` extracts no algorithmic grounding engine from it:
 
 ```lean
--- Successor function for grounding chains
--- (returns the next ground if it exists, otherwise Ω)
-def succGround (p : W → Prop) : Option (W → Prop) :=
-  if h : ∃ q, ground p q ∧ ¬ necessarily q (λ _ => Ω) then
+-- Conceptual pseudocode; not a compiled HyperModal declaration.
+noncomputable def succGround
+    (F : Frame W) (G : GroundRel W) (p : W → Prop) : Option (W → Prop) :=
+  if h : ∃ q, G q p ∧ ¬ Nec F q then
     some (Classical.choose h)
   else
     none
 ```
 
+
+
 **Comment:**
 
 * If a contingent proposition `p` still has a non‑necessary ground, `succGround p` produces its immediate successor in the chain.
 * Once `p` is necessarily grounded in Ω, `succGround p` halts, returning `none`.
-* This constructive operator thus **embodies the well‑foundedness** guaranteed by the `anti_regress` axiom.
+* This classical witness-selection sketch illustrates one possible next-edge choice; it does not prove well-foundedness or termination.
 
 ---
 
@@ -2542,7 +2192,7 @@ p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, Ω.
 
 Each step represents an act of grounding — a logical successor in explanatory depth.
 
-Thus, while the anti‑regress axiom excludes infinite descent, `succGround` models the *constructive ascent* toward Ω: a finite traversal through increasingly necessary grounds until the Perfect Being is reached.
+Thus, while the `AntiRegress G` setting field excludes infinite descent, `succGround` only illustrates finite traversal when suitable witnesses are already available; it does not derive arrival at Ω.
 
 ---
 

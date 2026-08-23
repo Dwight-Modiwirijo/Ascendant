@@ -32,6 +32,43 @@ def main() -> int:
         if footprint not in text:
             errors.append(f"{document}: missing current public footprint")
 
+    hypermodal_current = [
+        "Preservation-Relative Positivity",
+        "Core-Relative Positivity",
+        "T_core",
+        "triad_holds",
+        "HyperModalSetting",
+        "setting_inhabited",
+        "posT_iff_box",
+        "posT_box_core",
+        "posT_not_both",
+        "A4 is not derived from the Triad but from the fixed logical-semantic background alone.",
+    ]
+    for document, text in texts.items():
+        for needle in hypermodal_current:
+            if needle not in text:
+                errors.append(f"{document}: missing W14 claim: {needle}")
+
+    hypermodal_banned = [
+        "axiom perfect_positivity",
+        "axiom consciousness_axiom",
+        "axiom anti_regress",
+        "axiom perfect_being_exists",
+        "def ground (p q",
+        "ground(p, q) :=",
+        r"Pos(P) \equiv \neg \exists Q",
+        "Axiom A2 (Perfect Positivity)",
+    ]
+    for document, text in texts.items():
+        for needle in hypermodal_banned:
+            if needle in text:
+                errors.append(f"{document}: stale W14 claim remains: {needle}")
+
+    if status["gates"].get("hypermodal_setting_model") != "PASS":
+        errors.append("status: HyperModal setting model gate must pass")
+    if status["gates"].get("hypermodal_legacy_guards") != "PASS":
+        errors.append("status: HyperModal legacy guard gate must pass")
+
     required = {
         "Paper.md": [
             "one shared world-indexed S5 semantics",

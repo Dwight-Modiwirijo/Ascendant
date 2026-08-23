@@ -20,6 +20,23 @@ THEOREMS = [
     "AscendantRoute.GroundingChain.C5_RigidWitness",
 ]
 EXPECTED_AXIOMS = ["propext", "Classical.choice", "Quot.sound"]
+HYPERMODAL_EXPECTED_AXIOMS = {
+    "HyperModal.logic_necessity": [],
+    "HyperModal.meta_logic": [],
+    "HyperModal.posT_box": EXPECTED_AXIOMS,
+    "HyperModal.posT_iff_box": EXPECTED_AXIOMS,
+    "HyperModal.triad_holds": [],
+    "HyperModal.posT_box_core": EXPECTED_AXIOMS,
+    "HyperModal.posT_not_both": EXPECTED_AXIOMS,
+    "HyperModal.Historical.perfect_positivity_refutation": [],
+    "HyperModal.Historical.consciousness_axiom_refutation": [],
+    "HyperModal.Historical.anti_regress_refutation": [],
+    "HyperModal.Historical.logic_material_trio_refutation": [],
+    "HyperModal.Model.setting_inhabited": [],
+    "HyperModal.Model.omega_possible": [],
+    "HyperModal.Model.grounding_nonempty": [],
+    "HyperModal.Model.frame_not_collapsed": [],
+}
 QUESTION_AUDITS = [
     "AscendantRoute.GroundingChainAudit.c1_refutes_all",
     "AscendantRoute.GroundingChainAudit.ground_obtains_refutes_all",
@@ -84,6 +101,8 @@ NEGATIVE_TESTS = [
     ("tests/Reject_NoContingency.lean", "Reject_NoContingency.no_contingency_anywhere"),
     ("tests/Reject_CertificateCollapse.lean", "Reject_CertificateCollapse.certificate_equals_existence"),
     ("tests/NoExport_NecessaryExistence.lean", "unknown identifier 'Final_NE_Proof'"),
+    ("tests/NoExport_HyperModalLegacy.lean", "unknown identifier 'HyperModal.perfect_positivity'"),
+    ("tests/Reject_NecGroundedInAnything.lean", "target is not an inductive datatype"),
 ]
 ASSEMBLIES = [
     "AscendantRoute/Interface.olean",
@@ -207,6 +226,17 @@ def markdown(status: dict) -> str:
         lines.append(f"| `{theorem['name']}` | `{footprint}` |")
     lines += [
         "",
+        "## HyperModal Core-Relative Audit",
+        "",
+        "| Declaration | Axiom footprint |",
+        "|---|---|",
+    ]
+    for theorem in status["hypermodal_theorems"]:
+        footprint = ", ".join(theorem["axioms"]) or "none"
+        lines.append(f"| `{theorem['name']}` | `{footprint}` |")
+
+    lines += [
+        "",
         "## W12 Question-Begging Matrix",
         "",
         f"- Audited premises: `{', '.join(status['w12_audit']['premise_names'])}`",
@@ -261,6 +291,16 @@ def main() -> int:
             raise RuntimeError(f"unexpected footprint for {name}: {axioms}")
         theorem_rows.append({"name": name, "type": block(audit, "TYPE", name), "axioms": axioms})
 
+    hypermodal_rows = []
+    hypermodal_source = (REPO / "HyperModal.lean").read_text(encoding="utf-8")
+    if re.search(r"(?m)^\s*axiom\b", hypermodal_source):
+        raise RuntimeError("HyperModal.lean still contains a global axiom declaration")
+    for name, expected in HYPERMODAL_EXPECTED_AXIOMS.items():
+        axioms = parse_axioms(audit, name)
+        if axioms != expected:
+            raise RuntimeError(f"unexpected HyperModal footprint for {name}: {axioms}")
+        hypermodal_rows.append({"name": name, "axioms": axioms})
+
     if parse_axioms(audit, "AscendantRoute.GroundingModel.m_not_collapsed"):
         raise RuntimeError("m_not_collapsed unexpectedly depends on axioms")
     model_axioms = parse_axioms(audit, "AscendantRoute.GroundingModel.m_conclusion")
@@ -314,6 +354,7 @@ def main() -> int:
         "lean_version": lean_version,
         "last_audit_date": dt.datetime.now(dt.timezone.utc).date().isoformat(),
         "public_theorems": theorem_rows,
+        "hypermodal_theorems": hypermodal_rows,
         "gates": {
             "gate_0": "PASS",
             "modal_non_collapse": "PASS",
@@ -321,6 +362,8 @@ def main() -> int:
             "w12_premise_manifest_complete": "PASS",
             "w12_question_begging_matrix_complete": "PASS",
             "public_grounding_model": "PASS",
+            "hypermodal_setting_model": "PASS",
+            "hypermodal_legacy_guards": "PASS",
             "public_reproducibility": "PASS",
             "explicit_package_allow_list": "PASS",
             "post_package_leak_scan": "PASS",
