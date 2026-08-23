@@ -29,6 +29,50 @@ if ! "$python_bin" -c 'import sys'; then
   exit 1
 fi
 
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  cr_pattern="$(printf '\r')"
+  cr_scan_output=""
+  cr_scan_rc=0
+  set +e
+  cr_scan_output="$(git grep -Il "$cr_pattern" -- '*.sh' '*.py' 2>&1)"
+  cr_scan_rc=$?
+  set -e
+  if [[ "$cr_scan_rc" -eq 0 ]]; then
+    echo "[CI] ERROR: CR byte in tracked script" >&2
+    printf '%s\n' "$cr_scan_output" >&2
+    exit 1
+  fi
+  if [[ "$cr_scan_rc" -ne 1 ]]; then
+    echo "[CI] ERROR: CR-byte scan failed closed" >&2
+    printf '%s\n' "$cr_scan_output" >&2
+    exit 1
+  fi
+else
+  # Docker and public source archives intentionally omit Git metadata.
+  "$python_bin" - <<'PY_CR_SCAN'
+from pathlib import Path
+import sys
+
+excluded = {".git", ".lake", "dist"}
+bad = []
+for suffix in ("*.sh", "*.py"):
+    for path in Path(".").rglob(suffix):
+        if any(part in excluded for part in path.parts):
+            continue
+        try:
+            if b"\r" in path.read_bytes():
+                bad.append(path.as_posix())
+        except OSError as exc:
+            print(f"[CI] ERROR: CR-byte scan failed closed: {path}: {exc}", file=sys.stderr)
+            raise SystemExit(1)
+
+if bad:
+    print("[CI] ERROR: CR byte in shipped script", file=sys.stderr)
+    print("\n".join(sorted(set(bad))), file=sys.stderr)
+    raise SystemExit(1)
+PY_CR_SCAN
+fi
+
 CI_RC=0
 
 expected_toolchain="$(tr -d '\r\n' < lean-toolchain)"
