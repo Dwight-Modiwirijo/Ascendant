@@ -9,7 +9,7 @@ The philosophical foundation of the argument is the **Constitutive Triad** of gr
 
 Structurally, this is analogous to a compiler, whose coherent operation requires resolution, termination, and semantic preservation. Remove any one of these functions and the resulting system *no longer preserves semantically coherent output*. Likewise, a constitutive world-architecture that removes grounding, termination, or closure no longer preserves ICO.
 
-The successor-based grounding architecture provides a concrete realization of this structure. From it, the public Lean development kernel-verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-factory-for-positive-properties)).  
+The successor-based grounding architecture provides a concrete realization of this structure. From it, the public Lean development kernel-verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).  
 
 The resulting framework is philosophical before it is computational. Its primary claim concerns the ontological conditions under which contingent reality, truth, and intelligibility are possible. Its consequences for artificial intelligence follow downstream: an artificial reasoner seeking objective and coherent reasoning must operate within the same structural requirements of grounding, termination, and closure. 
 
@@ -222,7 +222,7 @@ Formally, we obtain:
 
 <a id="proposition-2-2-3-1"></a>
 
-> **[Proposition 2.2.3.1](#proposition-2-2-3-1) Successor termination in Ω**  
+> **Proposition 2.2.3.1 Successor termination in Ω**  
 > For any contingent state $g_0$ in Cont, any maximal successor chain  
 >   
 >   $g_0$, $g_1$, ..., $g_n$  
