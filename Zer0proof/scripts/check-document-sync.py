@@ -6,10 +6,68 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import re
 import sys
+from urllib.parse import unquote
 
 REPO = Path(__file__).resolve().parents[1]
 DOCS = ["Paper.md", "PUBLIC_SAFETY_CERTIFICATE.md", "README.md"]
+
+
+def markdown_content_lines(text: str) -> list[str]:
+    """Return lines outside fenced code blocks."""
+    lines: list[str] = []
+    fence_char: str | None = None
+    fence_length = 0
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if fence_char is not None:
+            closing = re.match(rf"^{re.escape(fence_char)}{{{fence_length},}}\s*$", stripped)
+            if closing:
+                fence_char = None
+                fence_length = 0
+            continue
+        opening = re.match(r"^(`{3,}|~{3,})", stripped)
+        if opening:
+            marker = opening.group(1)
+            fence_char = marker[0]
+            fence_length = len(marker)
+            continue
+        lines.append(line)
+    return lines
+
+
+def github_heading_targets(text: str) -> set[str]:
+    """Approximate GitHub's Unicode-aware Markdown heading IDs."""
+    content = "\n".join(markdown_content_lines(text))
+    targets = {
+        match.group(1)
+        for match in re.finditer(r'<a\s+[^>]*id=["\']([^"\']+)["\']', content)
+    }
+    seen: dict[str, int] = {}
+    for match in re.finditer(r"(?m)^#{1,6}\s+(.+?)\s*$", content):
+        heading = re.sub(r"\s+#+\s*$", "", match.group(1))
+        heading = re.sub(r"<[^>]+>", "", heading).lower()
+        base = re.sub(r"[^\w\s-]", "", heading)
+        base = re.sub(r"[ \t]", "-", base).strip("-")
+        if not base:
+            continue
+        duplicate = seen.get(base, 0)
+        seen[base] = duplicate + 1
+        targets.add(base if duplicate == 0 else f"{base}-{duplicate}")
+    return targets
+
+
+def broken_internal_links(text: str) -> tuple[list[str], int]:
+    content = "\n".join(markdown_content_lines(text))
+    links = sorted(
+        {
+            unquote(match.group(1))
+            for match in re.finditer(r"\]\(#([^)]+)\)", content)
+        }
+    )
+    targets = github_heading_targets(text)
+    return [link for link in links if link not in targets], len(links)
 
 
 def main() -> int:
@@ -122,6 +180,52 @@ def main() -> int:
         for needle in needles:
             if needle in texts[document]:
                 errors.append(f"{document}: stale claim remains: {needle}")
+
+    w16_current = [
+        "The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses.",
+        "| Route | Current status |",
+        "C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions.",
+        "If the actual grounding structure satisfies the complete C5 context Γ, then the kernel theorem applies to that intended interpretation.",
+        "Establishing $\\mathcal R\\models\\Gamma_{C5}$ is the paper's philosophical argument, not a consequence of Tarski, BHK, or Lean.",
+    ]
+    for needle in w16_current:
+        if needle not in texts["Paper.md"]:
+            errors.append(f"Paper.md: missing W16 current claim: {needle}")
+
+    protected_phrases = [
+        "The proof does not generate actuality but presupposes it",
+        "removes quotation marks; it does not mediate ontology",
+        "undeniable",
+        "modally impossible",
+        "Gödel and Turing as Ontological Premises",
+        "a primal halting program must exist",
+    ]
+    for needle in protected_phrases:
+        if needle not in texts["Paper.md"]:
+            errors.append(f"Paper.md: missing owner-protected phrase: {needle}")
+
+    w16_stale = [
+        "public export surface exposes a weaker $\\Box\\Diamond$-compatibility layer, while the private route carries the full $\\Box$-strength results",
+        "Strong statements—such as necessary existence, uniqueness, and rigidity of Ω—are intentionally excluded from the public export boundary.",
+        "Accordingly, this appendix certifies only the integrity and scope of the public API for the exported $\\square\\Diamond$-fragment",
+        "The public repository does not aim to expose `t` for the private theorem.",
+        "neither adds strength",
+        "This subsection records the axiom dependencies of the strongest internally proven Ω-claims",
+        "Gate 0 / JointModel: ongoing hardening",
+        "ongoing Gate 0 / assumption-manifest hardening items",
+        "Gate 0 hardening ongoing",
+        "hardening against adversarial instantiation is ongoing (Gate 0)",
+    ]
+    for needle in w16_stale:
+        if needle in texts["Paper.md"]:
+            errors.append(f"Paper.md: stale W16 claim remains: {needle}")
+
+    broken, link_count = broken_internal_links(texts["Paper.md"])
+    if broken:
+        for target in broken:
+            errors.append(f"Paper.md: broken internal anchor: #{target}")
+    else:
+        print(f"internal anchor check PASS: 0 broken of {link_count} internal links")
 
     if status["private_route"]["status"] != "NOT_DISTRIBUTED":
         errors.append("status: private route must be NOT_DISTRIBUTED")
