@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 800" role="img" aria-labelledby="title desc">
-  <title id="title">Public C5 verification, non-public routes, and the actuality bridge</title>
-  <desc id="desc">The public C5 GroundingChain supplies a public kernel term for the strong Omega conclusion from the complete C5 context. The private Successor Machine is not publicly audited and TI is conceptual in this paper. Applying the public theorem to reality additionally requires the philosophical claim that reality satisfies every C5 premise.</desc>
-  <!-- W15 publication hook: only after owner authorization, annotate the dashed lanes as "kernel-recheckable bundle". -->
+  <title id="title">Public C5 verification, the S-Machine contract, private TI, and the actuality bridge</title>
+  <desc id="desc">The public C5 GroundingChain supplies a public kernel term for the strong Omega conclusion from the complete C5 context. The S-Machine contract is publicly specified but has no public Lean endpoint theorem at this revision; its concrete Jump and the TI architecture remain private. Applying the public C5 theorem to reality additionally requires the philosophical claim that reality satisfies every C5 premise.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
       <path d="M0 0 L10 5 L0 10 Z" fill="#475569"/>
@@ -45,21 +44,21 @@
   <text class="status" x="245" y="205">SOURCE-REPRODUCIBLE · KERNEL-VERIFIED</text>
 
   <rect class="concept" x="485" y="75" width="220" height="160" rx="8"/>
-  <text class="label" x="595" y="108">SUCCESSOR MACHINE</text>
-  <text class="detail" x="595" y="141">Private route</text>
-  <text class="detail" x="595" y="166">Current build status unaudited</text>
-  <text class="status" x="595" y="205">PRIVATE — NOT PUBLICLY AUDITED</text>
+  <text class="label" x="595" y="108">S-MACHINE CONTRACT</text>
+  <text class="detail" x="595" y="141">Public abstract specification</text>
+  <text class="detail" x="595" y="166">No public Lean endpoint theorem</text>
+  <text class="status" x="595" y="205">CONCRETE JUMP PRIVATE</text>
 
   <rect class="unknown" x="735" y="75" width="210" height="160" rx="8"/>
   <text class="label" x="840" y="108">TI</text>
-  <text class="detail" x="840" y="141">Conceptual in this paper</text>
-  <text class="detail" x="840" y="166">No public end theorem</text>
-  <text class="status" x="840" y="205">CONCEPTUAL · NOT PUBLIC</text>
+  <text class="detail" x="840" y="141">Private architecture</text>
+  <text class="detail" x="840" y="166">No public source or theorem</text>
+  <text class="status" x="840" y="205">PRIVATE · NOT PUBLICLY AUDITED</text>
 
   <path class="flow" d="M245 235 V295"/>
   <path class="dash" d="M595 235 V282"/>
   <path class="dash" d="M840 235 V282"/>
-  <text class="detail" x="595" y="302">no public t : φ</text>
+  <text class="detail" x="595" y="302">contract only · no public t : φ</text>
   <text class="detail" x="840" y="302">no public t : φ</text>
 
   <rect class="public" x="35" y="325" width="420" height="160" rx="8"/>
