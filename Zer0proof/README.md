@@ -77,7 +77,7 @@ For direct Lean inspection inside the container:
 lake build
 lake -R env lean AscendantRoute/PublicCertificateAudit.lean
 lake -R env lean tests/NoExport_NecessaryExistence.lean
-cat FORMAL_STATUS.md
+cat dist/FORMAL_STATUS.md
 ```
 
 To build the same audit image locally from this repository:
