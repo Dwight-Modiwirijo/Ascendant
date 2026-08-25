@@ -108,7 +108,23 @@ docker build --build-arg ASCENDANT_COMMIT=$(git rev-parse HEAD) -t zer0proof-aud
 docker run --rm -it zer0proof-audit:local
 ```
 
-The build leaves the public distribution in `dist/`, including `formal-status.json`, `FORMAL_STATUS.md`, `PUBLIC_ALLOWLIST.txt`, `SCOPE.txt`, `SHA256SUMS`, and the shipped public `.olean` files.
+A run refreshes `dist/`, but you do not need to build anything to inspect it: the public distribution is tracked in this repository and arrives with a plain clone, so `dist/formal-status.json`, `FORMAL_STATUS.md`, `PUBLIC_ALLOWLIST.txt`, `SCOPE.txt`, `SHA256SUMS` and the compiled `.olean` files are already on disk after `git clone`.
+
+## Verifying without building
+
+Twelve compiled modules ship in this repository: nine under `dist/`, and the three of the Successor certificate under `certificates/successor-release/`. They are the objects a third party re-checks; the sources beside them are the cross-check. No account, no login and no build are required to confirm that what is published is what was audited:
+
+```bash
+cd Zer0proof/dist && sha256sum -c SHA256SUMS
+```
+
+The Successor bundle carries its own pins, which are relative to the bundle root — run them from there, or the paths will not resolve:
+
+```bash
+cd Zer0proof/certificates/successor-release && sha256sum -c ../successor-release.SHA256SUMS
+```
+
+`dist/formal-status.json` records the axiom footprint of every published declaration: the C5 route, the HyperModal results, and all twenty-three declarations of the Successor certificate. To go further and have the kernel replay the compiled modules, rather than trusting the hashes, run `scripts/check-successor-release.sh`.
 
 ## Audit Labels
 
