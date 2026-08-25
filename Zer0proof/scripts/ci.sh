@@ -5,7 +5,7 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
 lake_bin="${LAKE_BIN:-lake}"
-required_tools=(cat cp diff find grep mktemp mkdir rm tr xargs sha256sum sort git)
+required_tools=(bash cat cp diff find grep mktemp mkdir rm tr xargs sha256sum sort git)
 for tool in "${required_tools[@]}"; do
   command -v "$tool" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $tool" >&2; exit 1; }
 done
@@ -153,6 +153,8 @@ echo "[CI] Versions"
 "$lake_bin" --version
 "$lake_bin" env lean --version
 
+LAKE_BIN="$lake_bin" PYTHON_BIN="$python_bin" bash scripts/check-successor-release.sh
+
 hash_a="$(mktemp)"
 hash_b="$(mktemp)"
 staging=""
@@ -235,6 +237,8 @@ public_sources=(
   scripts/generate-formal-status.py
   scripts/check-document-sync.py
   scripts/check-public-dist.sh
+  scripts/check-successor-release.sh
+  scripts/run-successor-lean4checker.sh
 )
 for src in "${public_sources[@]}"; do
   cp "$src" "$staging/$src"

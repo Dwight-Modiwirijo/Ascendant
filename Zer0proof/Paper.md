@@ -9,7 +9,7 @@ The philosophical foundation is the **Constitutive Triad** of grounding, termina
 
 Structurally, this is analogous to a compiler, whose coherent operation requires resolution, termination, and semantic preservation. Remove any one of these functions and the resulting system *no longer preserves semantically coherent output*. Likewise, a constitutive world-architecture that removes grounding, termination, or closure no longer preserves ICO.
 
-The S-Machine is publicly presented as an abstract successor semantics and formal machine contract for this structure; it is not the proof engine of the current public theorem. At this HEAD the public Lean repository contains no S-Machine endpoint theorem, inhabited contract model, or axiom-footprint certificate, so it does not yet establish kernel-verified consequences of those Successor requirements. The concrete Jump construction and the internal Ascendant Route and TI proof architectures remain private. The current public proof engine is the relation-based C5 route. In that route, `C4a.identity` links terminus-existence to Ω-existence, while `C4a.unique` and `C4a.rigid` are explicit substantive premises carrying the uniqueness and rigidity conclusions. A public two-world model establishes joint satisfiability and non-collapse for C5, but not the truth of its premises in actuality. The latter is the paper's philosophical burden.
+The S-Machine is publicly presented as an abstract successor semantics and formal machine contract for this structure; it is not the proof engine of the current public modal theorem. A clean-room Release layer now supplies a core-only machine contract, a premise-free `Nat` countdown model, derived finite-termination and unique-terminal-Ω theorems, and an axiom-footprint certificate. The W15R release candidate has passed pinned plain-mode `lean4checker` replay, byte-identical source rebuilds, exact-closure checks, and fail-closed leak controls. It nevertheless remains owner-gated and is not yet a published or externally pinned public artifact at this HEAD. The concrete Jump construction, the internal Ascendant Route, and TI remain private. The relation-based C5 route remains the current public modal proof engine. In that route, `C4a.identity` links terminus-existence to Ω-existence, while `C4a.unique` and `C4a.rigid` are explicit substantive premises carrying the uniqueness and rigidity conclusions. A public two-world model establishes joint satisfiability and non-collapse for C5, but not the truth of its premises in actuality. The latter is the paper's philosophical burden.
 
 Within that stated boundary, the central philosophical conclusion remains: Ω is the necessary and unique Absolute Ground, philosophically identified in [§6](#6-theological-resonance) with God and the Ontological Singularity. Lean itself proves results about the selected predicate `Omega`; the theological identification and the claim that actuality realizes the complete C5 context are additional philosophical arguments. Classical perfection axioms are not the existence engine (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
 
@@ -26,7 +26,7 @@ This approach offers a bottom-up alternative to traditional ontological argument
 We distinguish our method through three components:
 
 1. A two-layer framework: a Lean-formalized Hyper-Minimal PSR/strict-grounding/Anti-Regress core with Core-Relative Positivity, and a philosophical Meta-Logical Closure thesis whose A5 formalization remains future work. Logical invariance (A4) is derived from the fixed modal background.
-2. A public, source-reproducible C5 proof of necessary existence, boxed uniqueness, and rigid identity relative to explicit premises, together with a public abstract S-Machine contract and a perfection schema articulated at the philosophical level.
+2. A public, source-reproducible C5 proof of necessary existence, boxed uniqueness, and rigid identity relative to explicit premises, together with a public abstract S-Machine contract and an owner-gated clean-room certificate candidate for its non-modal termination and unique-terminal consequences.
 3. A research hypothesis: a grounding-aware artificial reasoner may be able to operationalize parts of this structure; implementation and empirical evidence are still required.  
 
 This paper proceeds as follows:  
@@ -160,66 +160,47 @@ The successor architecture of [§2.2](#22-successor-based-grounding-architecture
 ---
 ### 2.2 Successor-Based Grounding Architecture
 
-This subsection publicly presents the S-Machine as an **abstract successor semantics and formal machine contract** for the grounding intuition. It specifies the guarded successor, well-founded decrease, successor coverage, and unique-zero requirements whose joint satisfaction would entail finite termination in the unique terminal state Ω. The current public Lean repository does not yet contain that endpoint theorem, an inhabited model of the complete contract, or its axiom-footprint audit; accordingly, this paper does not currently label the Successor consequence as kernel-verified. The concrete Jump construction and the internal Ascendant Route and TI proof architectures remain private. The current public theorem engine is the relation-based `AscendantRoute.GroundingChain`, and no public claim is made about the internal build or any `Final_*` declaration.
+This subsection publicly presents the S-Machine as an **abstract successor semantics and formal machine contract** for the grounding intuition. It specifies a total guarded successor, strict decrease above zero, terminal fixedness at zero, and uniqueness of the zero state. A clean-room Lean Release layer now derives finite termination and a unique terminal Ω from exactly those visible fields and instantiates the complete contract with a `Nat` countdown model. Its three core-only modules and 23 audited declarations have empty axiom footprints. The candidate has passed the amended W15R producer and isolated-consumer gates, but publication of the asset and its external Ascendant hash pins still requires the owner's explicit authorization. Until that event it is verified local release evidence, not a publicly downloadable certificate. The concrete Jump construction, the internal Ascendant Route, and TI remain private. The current public modal theorem engine is the relation-based `AscendantRoute.GroundingChain`, and no claim is made about the internal build or any `Final_*` declaration.
 
 #### 2.2.1 State space and successor
 
-Let $G$ be a non-empty set of *grounding states*. Each $g \in G$ represents a possible configuration of the world, or of a theory about the world, together with its current grounding structure.
+Let $G$ be a non-empty type of *grounding states*. Each $g \in G$ represents a possible configuration of the world, or of a theory about the world, together with its current grounding structure.
 
-The specification assumes:
+The clean-room contract contains a total successor
 
-1. a distinguished subset $Cont \subseteq G$ of **contingent states**;
-2. a distinguished element $\Omega \in G$, intended as the absolutely grounded state; and
-3. a successor function, total on contingent states,
+$$S:G\to G$$
 
-   $$S : Cont \to G,$$
-
-   which maps a contingent state to a strictly more grounded successor.
-
-The function is partial only when viewed on all of $G$: every member of $Cont$ has a successor, while a terminal non-contingent state need not.
+and a measure $meas:G\to\mathbb N$. Positive-measure states form the contract's non-terminal, successor-active zone. The step is guarded: it must strictly lower the measure only in that zone. Zero-measure states form the terminal zone and must be fixed by $S$. The predicate $\Omega(g)$ is defined by $meas(g)=0$; uniqueness of zero makes the terminal Ω-state unique.
 
 #### 2.2.2 A decreasing measure
 
-Equip $G$ with a grounding measure
+The specification requires three conditions over the well-founded order on $\mathbb N$:
 
-$$meas : G \to M,$$
-
-where $M$ is well-founded and linearly ordered. The specification requires three conditions:
-
-1. **Strict decrease.** For every $g \in Cont$,
+1. **Strict decrease above zero.** For every $g$ with $0<meas(g)$,
 
    $$meas(S(g)) < meas(g).$$
 
-2. **Unique zero.** There is a unique state $\Omega$ such that
+2. **Terminal fixedness.** If $meas(g)=0$, then $S(g)=g$.
 
-   $$meas(\Omega)=0,$$
+3. **Unique zero.** If $meas(x)=0$ and $meas(y)=0$, then $x=y$.
 
-   and $meas(g)=0 \to g=\Omega$.
-
-3. **Progress outside zero.** Every positive-measure state is contingent:
-
-   $$meas(g)>0 \to g\in Cont.$$
-
-The third condition closes the gap between well-foundedness and arrival at $\Omega$. Without it, a non-contingent positive-measure state could be terminal without being $\Omega$.
-
-Well-foundedness and strict decrease exclude an infinite successor sequence. Progress then excludes termination at positive measure. Consequently every maximal successor sequence terminates after finitely many steps at the unique zero-state $\Omega$. Here *terminates* is the exact claim; no topological limit or numerical convergence theorem is asserted.
+Natural-number induction and strict decrease exclude an infinite positive-measure successor sequence. Consequently, from every supplied start state $b_0$, some finite iterate reaches measure zero; unique zero identifies that reached state with every Ω-state, and terminal fixedness keeps it fixed. Here *terminates* is the exact claim; no topological limit or numerical convergence theorem is asserted.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
 The specification realizes the relevant functions as follows:
 
-- **HM-PSR role.** Progress makes $S(g)$ available whenever a state remains above zero.
-- **Anti-Regress role.** Well-foundedness plus strict decrease excludes infinite descent.
+- **HM-PSR role.** Totality makes $S(g)$ available whenever a state remains above zero.
+- **Anti-Regress role.** Natural-number well-foundedness plus strict decrease excludes infinite descent.
 - **Uniqueness role.** The unique-zero condition identifies the only possible endpoint.
 
 <a id="proposition-2-2-3-1"></a>
 
-> **Proposition 2.2.3.1 Successor termination in Ω**  
-> For any $g_0 \in Cont$, every maximal successor chain  
-> $g_0,g_1,\ldots,g_n$, with $g_{i+1}=S(g_i)$ and $S(g_n)$ undefined when viewed on all of $G$, satisfies $g_n=\Omega$.  
-> *Sketch.* Strict decrease in a well-founded order excludes an infinite sequence. If the final state had positive measure, progress would place it in $Cont$, where $S$ is defined, contradicting maximality. Hence it has measure zero and equals $\Omega$ by unique zero.
+> **Proposition 2.2.3.1 Successor termination and unique Ω**
+> For every start state $b_0$, there is an $N$ such that $\Omega(iterate(S,N,b_0))$; moreover every $y$ satisfying $\Omega(y)$ equals that reached state.
+> *Formal status.* The clean-room theorem `existsUniqueOmegaReached` proves this statement from the visible machine fields. `existsUniqueOmega` gives the corresponding explicit $\exists x\,(\Omega(x)\land\forall y\,(\Omega(y)\to y=x))$ result.
 
-This paper-level proposition follows from the stated abstract specification, but it is not currently a theorem in the public Lean repository. It therefore must not be cited as kernel-verified evidence or as the implementation behind `C5_NE`, `C5_BoxUnique`, or `C5_RigidWitness`. A future public certificate could verify exactly this conditional consequence while leaving the concrete Jump private.
+These are kernel-checked, non-modal consequences in the owner-gated W15R release candidate. They are not the implementation behind `C5_NE`, `C5_BoxUnique`, or `C5_RigidWitness`, do not prove $\Box\exists!x\,\Omega(x)$, and disclose no concrete Jump. Public reproducibility begins only after the asset and external hash pins are actually published.
 
 ---
 ### 2.3 Epistemic Recognition of Contingency
@@ -406,7 +387,7 @@ The argument has four layers whose status must remain visible:
 | Route | Current status |
 |---|---|
 | Public C5 / `GroundingChain` | Strong theorem types, source-reproducible, conditional on explicit premises |
-| S-Machine contract / private implementation | Public abstract specification; no public Lean endpoint theorem at this HEAD; concrete Jump and internal Ascendant implementation private |
+| S-Machine clean-room certificate candidate / private implementation | Core-only Lean termination and unique-terminal endpoint, inhabited `Nat` model, and empty footprints verified; asset and external pins still owner-gated; concrete Jump and internal implementation private |
 | TI | Private architecture; no public Lean source, assembly, or end theorem |
 
 The philosophical actuality bridge is separate from those proof routes: it argues that the intended reality $\mathcal R$ satisfies the full C5 context $\Gamma_{C5}$.
@@ -417,7 +398,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine lane records a public contract but no current public Lean endpoint theorem; its concrete implementation is private. TI is private and supplies no public end theorem. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The clean-room S-Machine candidate separately supplies a non-modal finite-termination and unique-terminal theorem; it neither inhabits $\varphi$ nor connects its machine predicate to actuality, and it is not yet a published artifact. Its concrete implementation is private. TI is private and supplies no public end theorem. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
 
 ---
 
@@ -432,9 +413,9 @@ This section is the technical bridge between the paper's argument and its formal
 
 **Kernel certification.** A theorem is *kernel-verified* when the Lean kernel accepts a proof term inhabiting its exact stated type relative to $\Gamma$ — a mechanical, type-checking fact. Every logical dependency of the proof — modal transitions, grounding relations, the definitions of contingency and necessity — is checked by the kernel, not asserted informally.
 
-**The `.olean` artifact.** Compilation produces binary Lean environment files only after the module has passed elaboration and kernel checking. The public C5 and HyperModal assemblies can be rebuilt from their supplied source under the pinned toolchain and compared by the CI hash audit. No private assembly is needed for the public certificate.
+**The `.olean` artifact.** Compilation produces binary Lean environment files only after the module has passed elaboration and kernel checking. The public C5 and HyperModal assemblies can be rebuilt from their supplied source under the pinned toolchain and compared by the CI hash audit. The clean-room Successor candidate likewise pairs every shipped source with its `.olean`; the consumer rebuilds all three modules and requires byte-identical hashes. A `.olean` is a packaging format, not an IP boundary: everything in that candidate is intentionally public-equivalent, while no private assembly is needed for either audit lane.
 
-**Public certificate / export surface.** The public repository exposes both the weak compatibility API and the strong source-reproducible C5 route: `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`. Their theorem types, explicit premise context, axiom footprints, joint model, negative guards, and packaged assemblies are independently auditable. The HyperModal core-relative layer is additional and does not supply premises to C5.
+**Public certificate / export surface.** The public repository exposes both the weak compatibility API and the strong source-reproducible C5 route: `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`. Their theorem types, explicit premise context, axiom footprints, joint model, negative guards, and packaged assemblies are independently auditable. The HyperModal core-relative layer is additional and does not supply premises to C5. The repository also contains an optional fail-closed consumer for the clean-room Successor bundle, but the release asset and its external hash pins are deliberately withheld until owner authorization.
 
 The development uses one shared world-indexed S5 semantics. Both `AscendantRoute.GroundingChain` and `HyperModal.lean` import `AscendantRoute.Interface` and use its explicit Kripke `Frame`, `Frame.Box`, and `Frame.Dia` definitions. HyperModal adds a primitive grounding relation $G$ and a visible `HyperModalSetting`; its positivity classifier is separate from, and absent from the premises of, the C5 theorems.
 
@@ -461,7 +442,7 @@ The result is tracked at four distinct levels:
 
 The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses. In Lean, the compatibility API is the separate, weaker $\Box\Diamond$ layer in `AscendantRoute.Interface`; it does not limit the strong public C5 proof surface.
 
-The private successor route is not distributed as source or theorem-bearing `.olean`. In agreement with `PUBLIC_SAFETY_CERTIFICATE.md` and `formal-status.json`, this paper makes no public claim about the current internal build status or footprints of `Final_NE_Proof`, `Final_BoxUnique_Proof`, or `Final_RigidWitness_Proof`. Those names are historical/private references, not evidence for the current public result.
+The concrete private successor route is not distributed as source or theorem-bearing `.olean`. The clean-room candidate is a new disclosure-bounded layer and imports none of that route. In agreement with `PUBLIC_SAFETY_CERTIFICATE.md` and `formal-status.json`, this paper makes no public claim about the current internal build status or footprints of `Final_NE_Proof`, `Final_BoxUnique_Proof`, or `Final_RigidWitness_Proof`. Those names are historical/private references, not evidence for either current result.
 
 ### 4.2 Certification Labels
 
@@ -473,7 +454,7 @@ To avoid conflating distinct claims, this paper uses three labels with fixed mea
 
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
-The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The S-Machine contract is publicly inspectable as a specification, but its termination consequence does not yet receive any of these Lean-certification labels. No corresponding public certification label is assigned to the private Jump implementation, the internal Ascendant Route, or TI.
+The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The clean-room S-Machine candidate is kernel-checked and has passed an isolated reproducible-build simulation, but it is not yet **publicly certified** or **publicly reproducible** because the asset and external repository pins have not been published. No corresponding public certification label is assigned to the concrete Jump implementation, the internal Ascendant Route, or TI.
 
 ---
 
@@ -1418,9 +1399,9 @@ If so, the measure introduced as an ontological component of the grounding archi
 
 ### A.1 Scope of Verification
 
-This appendix specifies the exact scope of the public Lean 4 verification. The current repository verifies the **relation-based C5 grounding route**, not a Successor implementation. `AscendantRoute.GroundingChain` proves necessary Ω-existence, boxed uniqueness, and a rigid Ω-witness at a selected datum world from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
+This appendix specifies the exact scope of the public Lean 4 verification. The default public proof surface verifies the **relation-based C5 grounding route**, not the private Successor implementation. `AscendantRoute.GroundingChain` proves necessary Ω-existence, boxed uniqueness, and a rigid Ω-witness at a selected datum world from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
 
-The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification with an explicit progress condition. The current public repository contains no S-Machine endpoint theorem, complete inhabited model, or footprint audit. Its concrete Jump implementation and the internal Ascendant Route are private, and their current internal status is not asserted. TI is private and likewise absent from the public verification surface.
+The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification. A separate clean-room Release candidate now contains its guarded `Nat`-measure contract, finite-termination and unique-terminal theorems, an inhabited countdown model, and an audit of 23 axiom-free declarations. It has passed production and fresh-clone consumption checks, but has not crossed the owner-controlled publication gate and therefore is not part of the current downloadable public verification surface. Its concrete Jump implementation and the internal Ascendant Route are private, and their current internal status is not asserted. TI is private and likewise absent from the public verification surface.
 
 ### A.2 Public Verification Surface and Scope Certificate
 
@@ -1429,7 +1410,7 @@ The public repository exposes one shared world-indexed S5 semantics, public Lean
 1. the **public compatibility API**, including `PosPossibility` and `necPossible_of_Pos`, which proves Ω-neutral possibility and necessary-possibility statements; and
 2. the **public C5 grounding proof surface**, including `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`, which proves the strong Ω-results from explicit hypotheses.
 
-The paper additionally publishes the S-Machine contract as a specification, without claiming a current public Lean endpoint theorem. The concrete Jump, internal Ascendant implementation, and TI architecture remain private; the public certificate makes no claim about their current build status.
+The paper additionally publishes the S-Machine contract as a specification and records the verified status of its disclosure-bounded Release candidate without presenting that candidate as already public. The concrete Jump, internal Ascendant implementation, and TI architecture remain private; neither the public C5 certificate nor the clean-room candidate makes a claim about their current build status.
 
 The strong C5 declarations are not leakage. They are intentional, source-reproducible public theorems. The no-export guard instead checks that private historical names such as `Final_NE_Proof` do not become public. The package manifest and leak scan enforce the declared distribution boundary without weakening the public C5 theorem surface.
 
@@ -1461,7 +1442,7 @@ Under Curry-Howard, a Lean theorem is represented by a proof term accepted by th
 
 Public certification adds engineering evidence: a pinned toolchain, public source and assemblies, theorem and axiom printing, model witnesses, fail-closed negative tests, a package allow-list, and a leak scan. It is stronger than signature inspection alone, while remaining distinct from metaphysical actuality.
 
-The IP boundary concerns the concrete Jump, the internal Ascendant Route, and TI. Their source, `.olean` files, proof objects, definitions, and transitive dependencies are not part of the public certificate. No private artifact is needed to audit the public C5 results, and no current private `Final_*` status is inferred from historical records. The public S-Machine contract exposes requirements and a paper-level consequence only; it does not disclose or certify the private implementation.
+The IP boundary concerns the concrete Jump, the internal Ascendant Route, and TI. Their source, `.olean` files, proof objects, definitions, and transitive dependencies are not part of either certificate lane. No private artifact is needed to audit the public C5 results or the clean-room Successor candidate, and no current private `Final_*` status is inferred from historical records. The clean-room layer exposes only the abstract contract, its non-modal consequences, a countdown witness, and their audit; its exact import closure contains those three core-only Release modules and nothing from the private implementation.
 
 #### A.2.3 Axiom Footprint Certificate (Lean Kernel Audit)
 
@@ -1475,6 +1456,8 @@ The IP boundary concerns the concrete Jump, the internal Ascendant Route, and TI
 
 C1 already contains the modal claim that each contingent proposition has a boxed ground. C3 and `GroundObtains` produce and transport an obtaining terminus; C1 is then used by `terminus_necessary`. C4a transfers terminus-existence to Ω-existence and explicitly supplies uniqueness and rigidity.
 
+The separate clean-room Successor certificate audits 23 declarations spanning the `Machine` requirements, iteration, termination, coverage, Ω-characterization, fixedness, unique-Ω consequences, the `NatMachine` witness, and its specialized theorems. Every one reports an empty axiom footprint. These non-modal theorems share neither the C5 context nor its classical footprint, and they do not establish a modal or actuality bridge.
+
 The private names `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWitness_Proof` are not part of this current certificate. Because the private successor route is not distributed, their present build status and footprints are **private/unknown from the public evidence**. The historical table is therefore not used as an actual-status table.
 
 #### A.2.4 Claim Traceability
@@ -1486,7 +1469,7 @@ The private names `Final_NE_Proof`, `Final_BoxUnique_Proof`, and `Final_RigidWit
 | `C5_RigidWitness`: $\exists x\,\Box_{w_0}\forall y(\Omega(y)\leftrightarrow y=x)$ | Public kernel theorem | Same model instantiates its context; `Unit` makes rigidity easy to realize | Same context; proof projects `identity`, explicit premise `rigid`, and `unique`; same footprint | Public source and build | `C4a.rigid` and `C4a.unique` must be justified for actuality |
 | $\Box\Diamond\exists x\,P(x)$ compatibility layer | Public kernel theorems `necPossible_of_Pos` and `somePosNecPossible_of_exists` | Public modal/positivity guards and models cover the stated fragment | `PosPossibility` is derived from `Positive.proper`, classical existence, reflexivity, and S5 axiom 5 | Public source and build | No Ω-actuality claim |
 | HyperModal A1/A3 core and Core-Relative Positivity | Public conditional theorems | `HyperModal.Model.setting_inhabited` is non-collapsed | Explicit `HyperModalSetting`; A5 absent; no Ω-existence field | Public source and build | Full Triad/ICO bridge remains philosophical |
-| S-Machine contract | Paper-level consequence of the stated abstract specification; no public Lean endpoint theorem at this HEAD | No public Lean joint model claimed | Guarded successor, well-founded strict decrease, successor coverage, unique zero | Specification public; concrete Jump and internal implementation private | Contract consequence not yet publicly kernel-certified |
+| S-Machine clean-room certificate candidate | Kernel-checked `terminates`, `existsUniqueOmegaReached`, and `existsUniqueOmega`; not yet a published public artifact | Premise-free `NatMachine` countdown witness | Total successor, guarded `Nat` decrease, terminal fixedness, unique zero; all 23 audited declarations footprint `[]` | Three source/`.olean` pairs passed pinned plain replay and byte-identical rebuild; asset and external pins owner-gated | Non-modal contract consequence only; no C5 or actuality bridge |
 | TI | No declaration in this public repository | Not publicly audited here | Unknown from public evidence | Private Lean source and assemblies not distributed | Private architecture; no public convergence theorem |
 | God/Logos identification and “undeniability” | Philosophical interpretation of Ω | N/A | Constitutive actuality argument plus theological identification | Argument inspectable; not a Lean build | Central philosophical claim: the actual necessary and unique Ω-ground is God |
 
@@ -1525,7 +1508,7 @@ The Peano comparison is therefore an interpretive analogy about well-founded str
 1. **Public formal C5 core.** `AscendantRoute.GroundingChain` proves necessary existence, boxed uniqueness, and a rigid witness from explicit C1, `GroundObtains`, C3, C4a, and datum-obtaining hypotheses. C4a's `unique` and `rigid` fields are substantive premises, not derived endpoints hidden by the structure name.
 2. **Public model and audits.** `GroundingModel` supplies joint satisfiability/non-collapse; `GroundingChainAudit` supplies single-premise non-entailment witnesses; `PublicCertificateAudit` prints theorem types and footprints.
 3. **Public HyperModal audit.** `HyperModalSetting`, Core-Relative Positivity, derived A4, the model, and historical refutations expose the exact A1/A3-layer status. A5 is absent.
-4. **Public contract and private boundaries.** The S-Machine contract is public, but no public Lean endpoint theorem or complete model currently certifies it. The concrete Jump, internal Ascendant Route, and TI are private and have no public proof-status verdict.
+4. **Clean-room Successor candidate and private boundaries.** The S-Machine contract now has a verified core-only endpoint theorem, complete `Nat` model, and empty-footprint audit in an owner-gated release candidate. It is not publicly downloadable or externally pinned yet. The concrete Jump, internal Ascendant Route, and TI remain private and receive no proof-status verdict from that candidate.
 5. **Philosophical bridge.** The full A1/A3/A5 argument, the claim $\mathcal R\models\Gamma_{C5}$, and the identification of Ω with God remain substantive philosophical work.
 
 ---
@@ -2006,7 +1989,7 @@ Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonan
 
 ## Appendix G: Successor Function of Grounding (Conceptual Sketch)
 
-**Scope note.** The `succGround` operator below is non-load-bearing pseudocode for the anti-regress intuition. It is not a declaration in `HyperModal.lean`, not the engine of the public C5 proof, and not the private Jump implementation. The active public formal object is the primitive relation $G$ together with the explicit setting field `AntiRegress G`; witness selection below is classical, not constructive.
+**Scope note.** The `succGround` operator below is non-load-bearing pseudocode for the anti-regress intuition. It is not a declaration in `HyperModal.lean`, not the engine of the public C5 proof, not the clean-room Release machine, and not the private Jump implementation. The active public HyperModal object is the primitive relation $G$ together with the explicit setting field `AntiRegress G`; witness selection below is classical, not constructive. The Release candidate instead uses a total state step and a decreasing `Nat` measure, as specified in [§2.2](#22-successor-based-grounding-architecture).
 
 In the repaired formal system, strict anti-regress is an explicit setting field:
 
@@ -2065,7 +2048,7 @@ p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, Ω.
 
 Each step represents an act of grounding — a logical successor in explanatory depth.
 
-Thus, `AntiRegress G` excludes infinite descent, while `succGround` only illustrates witness selection when a suitable edge is already known to exist. Arrival at Ω belongs to the stronger conceptual specification of [§2.2](#22-successor-based-grounding-architecture), not to this pseudocode or the public C5 implementation.
+Thus, `AntiRegress G` excludes infinite descent, while `succGround` only illustrates witness selection when a suitable edge is already known to exist. Arrival at Ω belongs to the stronger contract of [§2.2](#22-successor-based-grounding-architecture), whose non-modal consequence is kernel-checked in the owner-gated clean-room candidate; it does not follow from this pseudocode or the public C5 implementation.
 
 ---
 

@@ -22,6 +22,27 @@ Their explicit context is C1, `GroundObtains`, C3, C4a, and an obtaining datum a
 
 The private successor route is not distributed as source or theorem-bearing `.olean`, and no private assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, and distribution checks.
 
+### Optional Successor Certificate
+
+Once its owner-authorized asset and external SHA pins are published, the Successor release is a **publicly certified, kernel-recheckable distribution of the abstract Successor contract**. It contains only the clean-room API, the `Nat` countdown model, their derived consequences, and the certificate audit, each as source and `.olean`.
+
+A `.olean` is not an IP boundary. Everything in that optional bundle is public-equivalent; TI and the concrete Jump remain private and outside its mechanically checked import closure.
+
+Place the extracted payload and separately published trust-anchor file at:
+
+```text
+certificates/successor-release/
+certificates/successor-release.SHA256SUMS
+```
+
+Then run:
+
+```bash
+bash scripts/check-successor-release.sh
+```
+
+The optional stage verifies the external and internal hashes, pinned toolchain and provenance, `.olean` import compatibility, plain-mode `lean4checker` replay, isolated source rebuilds with byte comparison, certificate output, and leak guards. Without a bundle it prints one skip line and succeeds.
+
 ## HyperModal Core-Relative Layer
 
 `HyperModal.lean` uses the same `AscendantRoute.Interface` frame semantics as the C5 route and takes grounding as a primitive relation `G q p`, with the C5 argument order: the ground comes first. Its assumptions are bundled in `HyperModalSetting`; `triad_holds` derives the world-constant `T_core` predicate from that setting's A1 role, grounding strictness, and strict A3 role. There are no global `axiom` declarations in the module.

@@ -31,3 +31,6 @@ paper.pub
 
 # Reproducible public release output
 dist/
+
+# Owner-gated optional certificate payload
+certificates/successor-release/
