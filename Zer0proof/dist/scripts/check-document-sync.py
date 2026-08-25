@@ -168,10 +168,14 @@ def main() -> int:
 
     w18_current = {
         "Paper.md": [
-            "public clean-room contract makes the finite-convergence structure explicit",
-            "The public TI certificate likewise supplies only abstract finite convergence and a unique fixed top",
+            # These pin the substance, not the phrasing: that TI is presented
+            # through its published contract, that the contract's guarantee is
+            # finite convergence to a unique top, and that identifying the
+            # routes with one another is argued rather than proved.
+            "the published contract makes this explicit",
+            "the TI certificate supplies finite convergence and a unique fixed top",
             "| Public TI certificate |",
-            "a formal cross-route identity theorem would still be required",
+            "cross-route identity theorem",
         ],
         "README.md": [
             "bash scripts/verify-published.sh",
@@ -226,7 +230,7 @@ def main() -> int:
 
     w16_current = [
         "The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses.",
-        "| Route | Status in this paper |",
+        "| Route | What is publicly available |",
         "C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions.",
         "If the actual grounding structure satisfies the complete C5 context Γ, then the kernel theorem applies to that intended interpretation.",
         "Establishing $\\mathcal R\\models\\Gamma_{C5}$ is the paper's philosophical argument, not a consequence of Tarski, BHK, or Lean.",

@@ -372,21 +372,27 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 ### 3.3 TI — Transcendental Induction
 
-TI (Transcendental Induction) names a convergent philosophical route to the same Ω-target. Its public clean-room contract makes the finite-convergence structure explicit: a state space, advance operation, natural-number rank, top predicate, strict descent away from the top, and explicit top-characterization, uniqueness, and fixedness requirements. Lean derives finite convergence and existence and uniqueness of the top, while a `Nat` countdown model establishes that the contract is inhabited. All 23 exposed contract, theorem, and model declarations have empty axiom footprints.
+TI traverses the constitutive triad rather than asserting it. What [§2.1.1.1](#2111-constitutive-synthesis--the-triad-as-the-minimum-architecture-of-intelligibility) states as conditions on an architecture — grounding, termination, and meta-logical closure — TI encounters as stages of a process, and paradox is what carries it between them.
 
-This public endpoint is abstract and non-modal. It neither exposes the internal TI construction nor proves that its top denotes the public C5 `Omega` predicate. The philosophical interest of TI remains that a distinct grounding construction might converge on the same necessary and unique ground; a formal cross-route identity theorem would still be required to identify the two formal targets.
+Closure fails first. A level is a way of regarding the world together with the laws that hold within it, and such a level may license two commitments it cannot jointly satisfy: a conflict it cannot settle in its own terms, since the level itself produces it. Every description eventually reaches such a barrier and reveals its own semantic collapse. By the negative characterization above, a structure in which $F_{A_5}$ genuinely fails no longer preserves $\mathrm{ICO}$. The paradox is therefore not a defect to be repaired in place but a signal that the level must be left; the limit is the bridge.
+
+Grounding supplies the direction. What would settle the conflict is not contained in the level, so the system takes its own commitments as its object and regards the world in a way the previous level could not express. This is the Jump. It does not refute the level left behind but re-reads it as a limited case of something wider, in which new laws hold and with them new meaning. Growth comes not from accumulating what is known, but from correctly identifying what cannot be known here.
+
+Termination bounds the ascent, and the published contract makes this explicit: `advance` performs the leap, `rank` measures the distance still to be closed, and `descends` requires every leap away from the top to lower that distance strictly. Because each Jump is compelled by a determinate conflict and resolves that conflict alone, no step is elective; the ascent has no branch points, and where it arrives does not depend on where it began. Where `IsTop` holds the three roles coincide — grounded, terminal, and closed — and `top_fixed` records that no further leap is required. That terminus is Ω.
 
 ---
 
 ### 3.4 Synthesis: From Contingent Actuality to Ω
 
-The argument has four layers whose status must remain visible:
+The argument has four layers, and each publishes what can be checked:
 
-| Route | Status in this paper |
+| Route | What is publicly available |
 |---|---|
-| Public C5 / `GroundingChain` | Strong theorem types, source-reproducible, conditional on explicit premises |
-| Successor Machine | Abstract formal machine contract; kernel-verified consequences of its requirements |
-| TI | Public abstract finite-convergence contract; philosophical route to the Ω-target ([§3.3](#33-ti--transcendental-induction)) |
+| Public C5 / `GroundingChain` | Kernel-verified terms for the necessary existence, uniqueness and rigidity of Ω from the explicit C5 premises — `C5_NE`, `C5_BoxUnique`, `C5_RigidWitness` — together with a two-world model establishing that the modality does not collapse |
+| Successor Machine | The abstract machine contract, with `terminates`, `coverage` and `existsUniqueOmega` derived from its requirements, an inhabited `Nat` model, and twenty-three axiom-free declarations |
+| TI | The contract for transcending, with `converges`, `top_characterization`, `isTop_fixed` and `existsUniqueTop` derived from its requirements, an inhabited `Nat` model, and twenty-three axiom-free declarations ([§3.3](#33-ti--transcendental-induction)) |
+
+Each route ships as source together with its compiled `.olean` assembly, hash-pinned and kernel-recheckable, so a reader may confirm every claim above without an account and without rebuilding.
 
 The philosophical actuality bridge is separate from those proof routes: it argues that the intended reality $\mathcal R$ satisfies the full C5 context $\Gamma_{C5}$.
 
@@ -396,7 +402,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The public S-Machine certificate separately supplies non-modal finite-termination and unique-terminal theorems; it neither inhabits $\varphi$ nor connects its machine predicate to actuality, and it does not specify the concrete Jump construction. The public TI certificate likewise supplies only abstract finite convergence and a unique fixed top under explicit requirements; it supplies neither $\varphi$ nor a formal identity bridge to C5 Ω. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate supplies non-modal finite termination and a unique terminal state; the TI certificate supplies finite convergence and a unique fixed top. Each is proved from its own explicit requirements, and each stands on its own: the two certificates establish the structure of grounding and of transcending, while $\varphi$ itself is established by the C5 route. Identifying the three targets with one another would require a cross-route identity theorem, which this paper argues for philosophically rather than formally. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
 
 ---
 ## 4. Verification in Lean 4
