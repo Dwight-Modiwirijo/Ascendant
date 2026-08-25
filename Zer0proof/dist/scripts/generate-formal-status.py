@@ -160,6 +160,54 @@ def parse_axioms(output: str, name: str) -> list[str]:
     return [item.strip() for item in match.group(1).replace("\n", " ").split(",") if item.strip()]
 
 
+SUCCESSOR_BUNDLE = REPO / "certificates" / "successor-release"
+SUCCESSOR_CERTIFICATE = "AscendantRoute/Release/Successor/SuccessorCertificate.lean"
+SUCCESSOR_EXPECTED_DECLARATIONS = 23
+FOOTPRINT_RE = re.compile(
+    r"'([^']+)'\s+(?:(does not depend on any axioms)|depends on axioms:\s*\[([^]]*)\])",
+    re.S,
+)
+
+
+def successor_certificate_rows(lake: str):
+    """Axiom footprints of the published Successor contract.
+
+    The bundle has its own kernel-recheck lane, but its results never reached
+    the machine-readable status, which recorded only the C5 and HyperModal
+    routes. A reader comparing the paper's claims against formal-status.json
+    therefore found 23 published declarations missing. Record them here, from
+    the shipped bundle itself, so the status covers every public theorem.
+    """
+    source = SUCCESSOR_BUNDLE / SUCCESSOR_CERTIFICATE
+    if not source.is_file():
+        return None
+
+    output = run(
+        [lake, "-R", "env", "env", f"LEAN_PATH={SUCCESSOR_BUNDLE}", "lean", str(source)]
+    ).stdout
+    if "sorryAx" in output:
+        raise RuntimeError("successor certificate output contains sorryAx")
+
+    rows = []
+    for match in FOOTPRINT_RE.finditer(output):
+        name, axiom_free, axiom_list = match.group(1), match.group(2), match.group(3)
+        axioms = (
+            []
+            if axiom_free
+            else [item.strip() for item in axiom_list.replace("\n", " ").split(",") if item.strip()]
+        )
+        rows.append({"name": name, "axioms": axioms})
+
+    if len(rows) != SUCCESSOR_EXPECTED_DECLARATIONS:
+        raise RuntimeError(
+            f"expected {SUCCESSOR_EXPECTED_DECLARATIONS} successor declarations, parsed {len(rows)}"
+        )
+    non_empty = [row["name"] for row in rows if row["axioms"]]
+    if non_empty:
+        raise RuntimeError(f"successor declarations with nonempty footprint: {non_empty}")
+    return rows
+
+
 def parse_w12_list(output: str):
     text = block_text(output, "FORMAL_STATUS_W12_LIST_BEGIN", "FORMAL_STATUS_W12_LIST_END")
     lines = [line.strip() for line in text.splitlines() if line.strip()]
@@ -234,6 +282,18 @@ def markdown(status: dict) -> str:
     for theorem in status["hypermodal_theorems"]:
         footprint = ", ".join(theorem["axioms"]) or "none"
         lines.append(f"| `{theorem['name']}` | `{footprint}` |")
+
+    if status.get("successor_certificate"):
+        lines += [
+            "",
+            "## Successor Certificate",
+            "",
+            "| Declaration | Axiom footprint |",
+            "|---|---|",
+        ]
+        for theorem in status["successor_certificate"]:
+            footprint = ", ".join(theorem["axioms"]) or "none"
+            lines.append(f"| `{theorem['name']}` | `{footprint}` |")
 
     lines += [
         "",
@@ -334,6 +394,8 @@ def main() -> int:
         if result.returncode == 0 or expected not in result.stdout:
             raise RuntimeError(f"negative guard mismatch: {filename}\n{result.stdout}")
 
+    successor_rows = successor_certificate_rows(lake)
+
     lean_version = run([lake, "env", "lean", "--version"]).stdout.strip()
     toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
     commit = os.environ.get("FORMAL_STATUS_GIT_COMMIT", "").strip()
@@ -355,6 +417,7 @@ def main() -> int:
         "last_audit_date": dt.datetime.now(dt.timezone.utc).date().isoformat(),
         "public_theorems": theorem_rows,
         "hypermodal_theorems": hypermodal_rows,
+        "successor_certificate": successor_rows,
         "gates": {
             "gate_0": "PASS",
             "modal_non_collapse": "PASS",
@@ -391,6 +454,27 @@ def main() -> int:
 
     json_path = Path(args.output_json)
     md_path = Path(args.output_md)
+
+    # The distribution is tracked in git, so a run that establishes nothing new
+    # must not rewrite it. Commit hash and audit date change on every run by
+    # construction, which would dirty four tracked files after every green
+    # pipeline and invite unreviewed provenance commits. Keep the recorded
+    # values whenever the substantive audit result is unchanged; update them the
+    # moment anything else moves.
+    VOLATILE = ("git_commit", "last_audit_date")
+    if json_path.is_file():
+        try:
+            previous = json.loads(json_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            previous = None
+        if isinstance(previous, dict):
+            substantive_now = {k: v for k, v in status.items() if k not in VOLATILE}
+            substantive_before = {k: v for k, v in previous.items() if k not in VOLATILE}
+            if substantive_now == substantive_before:
+                for key in VOLATILE:
+                    if key in previous:
+                        status[key] = previous[key]
+
     json_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.write_text(json.dumps(status, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")

@@ -19,14 +19,36 @@ chmod +x "$lean_stub"
 PATH="$(dirname "$lean_stub"):$PATH"
 command -v lean >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: lean" >&2; exit 1; }
 
-python_bin="${PYTHON_BIN:-$(command -v python3 || command -v python)}"
+# Try every candidate rather than validating only the first one found. On
+# Windows the first `python3` on PATH is often the Microsoft Store shim, which
+# resolves but cannot execute; giving up there fails a machine that has a
+# perfectly good `python` one entry further along.
+python_bin=""
+python_candidates=()
+if [[ -n "${PYTHON_BIN:-}" ]]; then
+  python_candidates+=("$PYTHON_BIN")
+else
+  while IFS= read -r candidate; do
+    [[ -n "$candidate" ]] && python_candidates+=("$candidate")
+  done < <(type -aP python3 2>/dev/null; type -aP python 2>/dev/null)
+fi
+python_rejected=()
+for candidate in "${python_candidates[@]}"; do
+  if "$candidate" -c 'import sys' >/dev/null 2>&1; then
+    python_bin="$candidate"
+    break
+  fi
+  python_rejected+=("$candidate")
+done
 if [[ -z "$python_bin" ]]; then
-  echo "[CI] ERROR: required tool missing: python" >&2
+  echo "[CI] ERROR: no working python interpreter found" >&2
+  for candidate in "${python_rejected[@]}"; do
+    echo "[CI]   rejected: $candidate" >&2
+  done
   exit 1
 fi
-if ! "$python_bin" -c 'import sys'; then
-  echo "[CI] ERROR: python interpreter validation failed: $python_bin" >&2
-  exit 1
+if [[ ${#python_rejected[@]} -gt 0 ]]; then
+  echo "[CI] python: using $python_bin (skipped ${#python_rejected[@]} non-working candidate(s))"
 fi
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then

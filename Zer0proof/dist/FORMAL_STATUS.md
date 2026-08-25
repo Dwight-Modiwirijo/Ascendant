@@ -2,7 +2,7 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `58b7dc31d4f63cef02c3d822c2a9b24a7a1876f4`
+- Git commit: `ca0b4c26ffdbacc20a43907f62dbfe627ce1a753`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
 - Audit date: `2026-08-25`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**
@@ -34,6 +34,34 @@
 | `HyperModal.Model.omega_possible` | `none` |
 | `HyperModal.Model.grounding_nonempty` | `none` |
 | `HyperModal.Model.frame_not_collapsed` | `none` |
+
+## Successor Certificate
+
+| Declaration | Axiom footprint |
+|---|---|
+| `AscendantRoute.Release.Successor.Machine` | `none` |
+| `AscendantRoute.Release.Successor.Machine.State` | `none` |
+| `AscendantRoute.Release.Successor.Machine.S` | `none` |
+| `AscendantRoute.Release.Successor.Machine.meas` | `none` |
+| `AscendantRoute.Release.Successor.Machine.dec` | `none` |
+| `AscendantRoute.Release.Successor.Machine.terminal` | `none` |
+| `AscendantRoute.Release.Successor.Machine.zeroUnique` | `none` |
+| `AscendantRoute.Release.Successor.iterate` | `none` |
+| `AscendantRoute.Release.Successor.terminates` | `none` |
+| `AscendantRoute.Release.Successor.coverage` | `none` |
+| `AscendantRoute.Release.Successor.Omega` | `none` |
+| `AscendantRoute.Release.Successor.omega_iff` | `none` |
+| `AscendantRoute.Release.Successor.omega_fixed` | `none` |
+| `AscendantRoute.Release.Successor.existsUniqueOmegaReached` | `none` |
+| `AscendantRoute.Release.Successor.existsUniqueOmega` | `none` |
+| `AscendantRoute.Release.Successor.NatMachine` | `none` |
+| `AscendantRoute.Release.Successor.natStart` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_terminates` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_coverage` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_omega_iff` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_omega_fixed` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_existsUniqueOmegaReached` | `none` |
+| `AscendantRoute.Release.Successor.natMachine_existsUniqueOmega` | `none` |
 
 ## W12 Question-Begging Matrix
 

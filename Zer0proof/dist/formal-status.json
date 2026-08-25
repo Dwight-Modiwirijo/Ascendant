@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "git_commit": "58b7dc31d4f63cef02c3d822c2a9b24a7a1876f4",
+  "git_commit": "ca0b4c26ffdbacc20a43907f62dbfe627ce1a753",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, x86_64-w64-windows-gnu, commit b02228b03f65, Release)",
   "last_audit_date": "2026-08-25",
@@ -108,6 +108,100 @@
     },
     {
       "name": "HyperModal.Model.frame_not_collapsed",
+      "axioms": []
+    }
+  ],
+  "successor_certificate": [
+    {
+      "name": "AscendantRoute.Release.Successor.Machine",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.State",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.S",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.meas",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.dec",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.terminal",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Machine.zeroUnique",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.iterate",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.terminates",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.coverage",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.Omega",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.omega_iff",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.omega_fixed",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.existsUniqueOmegaReached",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.existsUniqueOmega",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.NatMachine",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natStart",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_terminates",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_coverage",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_omega_iff",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_omega_fixed",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_existsUniqueOmegaReached",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.Successor.natMachine_existsUniqueOmega",
       "axioms": []
     }
   ],
