@@ -2,7 +2,7 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `afd7ac79583a94f821695fc8979b6db8f7be33d4`
+- Git commit: `58b7dc31d4f63cef02c3d822c2a9b24a7a1876f4`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
 - Audit date: `2026-08-25`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**

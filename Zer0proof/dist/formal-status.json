@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "git_commit": "afd7ac79583a94f821695fc8979b6db8f7be33d4",
+  "git_commit": "58b7dc31d4f63cef02c3d822c2a9b24a7a1876f4",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, x86_64-w64-windows-gnu, commit b02228b03f65, Release)",
   "last_audit_date": "2026-08-25",
