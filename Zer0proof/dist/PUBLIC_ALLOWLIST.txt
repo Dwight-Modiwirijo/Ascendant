@@ -34,6 +34,8 @@ scripts/check-public-dist.sh
 scripts/check-successor-release.sh
 scripts/generate-formal-status.py
 scripts/run-successor-lean4checker.sh
+scripts/verify-published.py
+scripts/verify-published.sh
 tests/NoExport_HyperModalLegacy.lean
 tests/NoExport_NecessaryExistence.lean
 tests/Reject_BoxCollapse.lean

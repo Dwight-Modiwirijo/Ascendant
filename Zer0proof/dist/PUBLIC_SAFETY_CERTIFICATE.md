@@ -8,7 +8,7 @@ Compiled `.olean` files carry theorem declarations and proof terms. They support
 
 No public claim is made about the current internal build status of private `Final_*` declarations. Such a status requires separate non-public evidence and independent audit.
 
-The separately pinned Successor release is a **publicly certified, kernel-recheckable distribution of the abstract Successor contract**. It exposes a clean-room contract, countdown model, derived termination and unique-Omega consequences, and their audit surface as three source/`.olean` pairs plus a minimal consumer `lakefile.lean`. A `.olean` is not an IP boundary. TI and the concrete Jump remain private and are excluded from the release closure.
+The separately pinned Successor and TI releases are **publicly certified, kernel-recheckable distributions of abstract contracts**. Each exposes only a clean-room contract, a countdown model, derived consequences, and an audit surface as three source/`.olean` pairs plus a minimal consumer `lakefile.lean`. A `.olean` is not an IP boundary. The internal Successor and TI implementations and the concrete Jump are undistributed and excluded from both exact release closures.
 
 ## Modal semantics
 
@@ -20,6 +20,7 @@ The public interface defines an S5 Kripke `Frame` with an accessibility relation
 - **Public C5 grounding route:** `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`, each with footprint `propext, Classical.choice, Quot.sound`.
 - **Private successor route:** independent internal work, not distributed and not part of the public reproducibility claim.
 - **Public clean-room Successor release:** source-plus-`.olean` certification of the abstract contract only, accepted through external SHA pins, plain kernel replay, reproducible rebuild comparison, and leak checks.
+- **Public clean-room TI release:** source-plus-`.olean` certification of finite convergence to a unique fixed top under explicit contract requirements; it does not expose the internal TI implementation or establish a bridge to C5 `Omega`.
 
 The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining datum directly. Positivity is absent. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame.
 
@@ -53,7 +54,8 @@ The A5 component of the philosophical Triad is not formalized, and no `Triad -> 
 | 14 | Distribution leakage or drift | Explicit package allow-list, post-package leak scan, generated status, and document-sync checker. |
 | 15 | HyperModal variable capture | Four axiom-free historical refutation records plus `NoExport_HyperModalLegacy.lean`. |
 | 16 | Extensional grounding recreates forbidden edges | Primitive `G`, `Reject_NecGroundedInAnything.lean`, and the inhabited setting witness. |
-| 17 | Successor artifact substitution or private leakage | External repository pins, exact ten-file allow-list, plain-mode kernel replay, source rebuild byte comparison, and forbidden-symbol scans. |
+| 17 | Certificate artifact substitution or internal leakage | External repository pins, exact ten-file allow-lists, plain-mode kernel replay, source rebuild byte comparison, and forbidden-symbol scans for every discovered bundle. |
+| 18 | A verification command silently omits a route | `verify-published.sh` discovers every shipped `.olean` and every `*-release` bundle, then verifies all of them or exits non-zero. |
 
 ## Release policy
 
@@ -68,7 +70,8 @@ The release flow is:
 7. document-sync check;
 8. SHA-256 manifest generation and verification;
 9. post-package leak scan in the shipped environment.
-10. verify the published Successor bundle through the externally pinned kernel-replay and rebuild-comparison stage.
+10. verify every discovered certificate bundle through the externally pinned kernel-replay and rebuild-comparison stage;
+11. verify all shipped `dist` assemblies through the same route-agnostic one-command consumer.
 
 The post-package leak scan checks both paths and `.olean` strings for forbidden private names and then repeats the no-export test from `dist/`. No recursive “copy every `.olean`” rule exists.
 
@@ -78,4 +81,4 @@ The machine-generated status contains the exact Lean theorem types, axiom footpr
 
 ## Final statement
 
-The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The package discloses no private successor implementation or theorem-bearing private assembly. The public clean-room Successor release discloses only its abstract contract, model, consequences, and certificates; it discloses neither TI nor the concrete Jump. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.
+The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The clean-room Successor and TI releases disclose only their abstract contracts, models, consequences, and certificates; they disclose neither internal implementation nor the concrete Jump. The TI certificate proves finite convergence and a unique fixed top only within its explicit contract and supplies no identity bridge to the C5 `Omega` predicate. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.

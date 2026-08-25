@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "git_commit": "d959fda21bc45f25dbc83dbfa89944cce54d28cd",
+  "git_commit": "5f55309",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, commit b02228b03f65, Release)",
   "last_audit_date": "2026-08-25",
@@ -202,6 +202,100 @@
     },
     {
       "name": "AscendantRoute.Release.Successor.natMachine_existsUniqueOmega",
+      "axioms": []
+    }
+  ],
+  "ti_certificate": [
+    {
+      "name": "AscendantRoute.Release.TI.Contract",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.State",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.advance",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.rank",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.IsTop",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.descends",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.top_iff_zero",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.top_unique",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.Contract.top_fixed",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.iterate",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.iterate_zero",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.iterate_succ",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.iterate_succ_arg",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.converges",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.top_characterization",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.isTop_fixed",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.existsUniqueTop",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.NatContract",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.natOrigin",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.natContract_converges",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.natContract_top_characterization",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.natContract_top_fixed",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.natContract_existsUniqueTop",
       "axioms": []
     }
   ],

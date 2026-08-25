@@ -175,7 +175,7 @@ echo "[CI] Versions"
 "$lake_bin" --version
 "$lake_bin" env lean --version
 
-LAKE_BIN="$lake_bin" PYTHON_BIN="$python_bin" bash scripts/check-successor-release.sh
+LAKE_BIN="$lake_bin" PYTHON_BIN="$python_bin" bash scripts/verify-published.sh --bundles-only --skip-self-tests
 
 hash_a="$(mktemp)"
 hash_b="$(mktemp)"
@@ -261,6 +261,8 @@ public_sources=(
   scripts/check-public-dist.sh
   scripts/check-successor-release.sh
   scripts/run-successor-lean4checker.sh
+  scripts/verify-published.py
+  scripts/verify-published.sh
 )
 for src in "${public_sources[@]}"; do
   cp "$src" "$staging/$src"

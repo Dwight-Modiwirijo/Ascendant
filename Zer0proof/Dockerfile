@@ -41,6 +41,7 @@ COPY . .
 RUN elan toolchain install "$(tr -d '\r\n' < lean-toolchain)" \
   && (lake exe cache get || true) \
   && cp -a dist /published-dist \
+  && PYTHON_BIN=python3 bash scripts/verify-published.sh \
   && lake build \
   && PYTHON_BIN=python3 bash scripts/ci.sh \
   && diff -r /published-dist dist \

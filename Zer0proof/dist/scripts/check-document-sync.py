@@ -156,15 +156,47 @@ def main() -> int:
             if needle not in texts[document]:
                 errors.append(f"{document}: missing synchronized claim: {needle}")
 
-    successor_release_current = [
-        "publicly certified, kernel-recheckable distribution of the abstract Successor contract",
+    certificate_release_current = [
         "A `.olean` is not an IP boundary.",
-        "TI and the concrete Jump remain private",
+        "plain-mode",
+        "byte",
     ]
     for document in ("README.md", "PUBLIC_SAFETY_CERTIFICATE.md"):
-        for needle in successor_release_current:
+        for needle in certificate_release_current:
             if needle not in texts[document]:
-                errors.append(f"{document}: missing W15R claim: {needle}")
+                errors.append(f"{document}: missing certificate-release claim: {needle}")
+
+    w18_current = {
+        "Paper.md": [
+            "public clean-room contract makes the finite-convergence structure explicit",
+            "The public TI certificate likewise supplies only abstract finite convergence and a unique fixed top",
+            "| Public TI certificate |",
+            "a formal cross-route identity theorem would still be required",
+        ],
+        "README.md": [
+            "bash scripts/verify-published.sh",
+            "Public TI Certificate",
+            "Fifteen compiled modules ship",
+        ],
+        "PUBLIC_SAFETY_CERTIFICATE.md": [
+            "Public clean-room TI release",
+            "every discovered bundle",
+            "route-agnostic one-command consumer",
+        ],
+    }
+    for document, needles in w18_current.items():
+        for needle in needles:
+            if needle not in texts[document]:
+                errors.append(f"{document}: missing W18 claim: {needle}")
+
+    w18_stale = [
+        "TI is a philosophical route and supplies no public end theorem",
+        "TI remains a convergent philosophical route in this paper, without a claimed public end theorem",
+        "| TI | Philosophical route in this paper | N/A at the public formal level",
+    ]
+    for needle in w18_stale:
+        if needle in texts["Paper.md"]:
+            errors.append(f"Paper.md: stale W18 claim remains: {needle}")
 
 
     banned = {
@@ -261,7 +293,7 @@ def main() -> int:
         )
 
     synthesis = (REPO / "assets" / "synthesis.svg").read_text(encoding="utf-8")
-    for needle in ("FORMAL CONTRACT", "PHILOSOPHICAL ROUTE", "PUBLIC C5 / GroundingChain"):
+    for needle in ("FORMAL CONTRACT", "Finite convergence + unique top", "PUBLIC C5 / GroundingChain"):
         if needle not in synthesis:
             errors.append(f"assets/synthesis.svg: missing W16 lane label: {needle}")
     for needle in ("owner-gated", "VERIFIED CANDIDATE", "NOT PUBLICLY AUDITED"):
@@ -273,6 +305,12 @@ def main() -> int:
             errors.append(f"Paper.md: broken internal anchor: #{target}")
     else:
         print(f"internal anchor check PASS: 0 broken of {link_count} internal links")
+
+    ti_rows = status.get("ti_certificate")
+    if not isinstance(ti_rows, list) or len(ti_rows) != 23:
+        errors.append("status: TI certificate must contain exactly 23 declarations")
+    elif any(row.get("axioms") != [] for row in ti_rows):
+        errors.append("status: every TI certificate declaration must have an empty footprint")
 
     if status["private_route"]["status"] != "NOT_DISTRIBUTED":
         errors.append("status: private route must be NOT_DISTRIBUTED")

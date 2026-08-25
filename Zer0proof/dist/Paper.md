@@ -29,7 +29,7 @@ We distinguish our method through three components:
 
 This paper proceeds as follows:  
 - [Section 2](#2-framework-hyper-modal-grounding-principles) introduces the modal framework and axiomatic base.
-- [Section 3](#3-formal-modal-proof-of-ω) presents the formal modal proof of Ω, together with a paper-level conceptual description of the TI (Transcendental Induction) route ([§3.3](#33-ti--transcendental-induction)).
+- [Section 3](#3-formal-modal-proof-of-ω) presents the formal modal proof of Ω, together with the public abstract TI (Transcendental Induction) contract and its philosophical interpretation ([§3.3](#33-ti--transcendental-induction)).
 - [Section 4](#4-verification-in-lean-4) discusses Lean-based machine verification.
 - [Section 5](#5-objections-and-responses) addresses philosophical objections.
 - [Section 6](#6-theological-resonance) explores theological implications, particularly the resonance between Ω and classical theism.
@@ -372,9 +372,9 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 ### 3.3 TI — Transcendental Induction
 
-TI (Transcendental Induction) names a convergent philosophical route to the same Ω-target. In this paper it is presented conceptually; no public end theorem or cross-route identity theorem is claimed.
+TI (Transcendental Induction) names a convergent philosophical route to the same Ω-target. Its public clean-room contract makes the finite-convergence structure explicit: a state space, advance operation, natural-number rank, top predicate, strict descent away from the top, and explicit top-characterization, uniqueness, and fixedness requirements. Lean derives finite convergence and existence and uniqueness of the top, while a `Nat` countdown model establishes that the contract is inhabited. All 23 exposed contract, theorem, and model declarations have empty axiom footprints.
 
-The philosophical interest of TI is that a distinct grounding construction might converge on the same necessary and unique ground. A formal cross-route identity theorem would still be required to show that a TI witness and the public C5 `Omega` predicate denote the same object.
+This public endpoint is abstract and non-modal. It neither exposes the internal TI construction nor proves that its top denotes the public C5 `Omega` predicate. The philosophical interest of TI remains that a distinct grounding construction might converge on the same necessary and unique ground; a formal cross-route identity theorem would still be required to identify the two formal targets.
 
 ---
 
@@ -386,7 +386,7 @@ The argument has four layers whose status must remain visible:
 |---|---|
 | Public C5 / `GroundingChain` | Strong theorem types, source-reproducible, conditional on explicit premises |
 | Successor Machine | Abstract formal machine contract; kernel-verified consequences of its requirements |
-| TI | Convergent philosophical route ([§3.3](#33-ti--transcendental-induction)) |
+| TI | Public abstract finite-convergence contract; philosophical route to the Ω-target ([§3.3](#33-ti--transcendental-induction)) |
 
 The philosophical actuality bridge is separate from those proof routes: it argues that the intended reality $\mathcal R$ satisfies the full C5 context $\Gamma_{C5}$.
 
@@ -396,7 +396,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The public S-Machine certificate separately supplies non-modal finite-termination and unique-terminal theorems; it neither inhabits $\varphi$ nor connects its machine predicate to actuality, and it does not specify the concrete Jump construction. TI is a philosophical route and supplies no public end theorem. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The public S-Machine certificate separately supplies non-modal finite-termination and unique-terminal theorems; it neither inhabits $\varphi$ nor connects its machine predicate to actuality, and it does not specify the concrete Jump construction. The public TI certificate likewise supplies only abstract finite convergence and a unique fixed top under explicit requirements; it supplies neither $\varphi$ nor a formal identity bridge to C5 Ω. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
 
 ---
 ## 4. Verification in Lean 4
@@ -450,7 +450,7 @@ To avoid conflating distinct claims, this paper uses three labels with fixed mea
 
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
-The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The clean-room S-Machine certificate satisfies all three labels for its non-modal contract consequences. No corresponding public certification label is assigned here to the concrete Jump construction, the internal Ascendant implementation, or TI.
+The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The clean-room S-Machine and TI certificates satisfy all three labels for their respective non-modal contract consequences. No corresponding public certification label is assigned here to the concrete Jump construction, the internal Ascendant implementation, the internal TI construction, or any cross-route identity claim.
 
 ---
 ## 5. Objections and Responses
@@ -1397,7 +1397,7 @@ If so, the measure introduced as an ontological component of the grounding archi
 
 This appendix specifies the exact scope of the public Lean 4 verification. The default modal proof surface verifies the **relation-based C5 grounding route**; the separate public Successor certificate verifies non-modal consequences of an abstract machine contract. `AscendantRoute.GroundingChain` proves necessary Ω-existence, boxed uniqueness, and a rigid Ω-witness at a selected datum world from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
 
-The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification. Its published clean-room certificate contains the guarded `Nat`-measure contract, finite-termination and unique-terminal theorems, an inhabited countdown model, and an audit of 23 axiom-free declarations. Source and `.olean` pairs, the pinned toolchain, a minimal consumer build, provenance, and SHA-256 manifests make this non-modal certificate independently reproducible. It does not expose the concrete Jump or supply a modal bridge to the C5 predicate. TI remains a convergent philosophical route in this paper, without a claimed public end theorem.
+The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification. Its published clean-room certificate contains the guarded `Nat`-measure contract, finite-termination and unique-terminal theorems, an inhabited countdown model, and an audit of 23 axiom-free declarations. The TI route now has a parallel clean-room certificate for an explicit finite-convergence contract, a unique fixed top, and an inhabited `Nat` countdown model, likewise auditing 23 axiom-free declarations. Source and `.olean` pairs, pinned toolchains, minimal consumer builds, provenance, and SHA-256 manifests make both non-modal certificates independently reproducible. Neither exposes its internal construction or supplies a modal or identity bridge to the C5 predicate.
 
 ### A.2 Public Verification Surface and Scope Certificate
 
@@ -1438,7 +1438,7 @@ Under Curry-Howard, a Lean theorem is represented by a proof term accepted by th
 
 Public certification adds engineering evidence: a pinned toolchain, public source and assemblies, theorem and axiom printing, model witnesses, fail-closed negative tests, a package allow-list, and a leak scan. It is stronger than signature inspection alone, while remaining distinct from metaphysical actuality.
 
-The IP boundary concerns the concrete Jump, the internal Ascendant Route, and TI. Their implementation source, proof objects, definitions, and transitive dependencies are not part of either certificate lane. No undisclosed artifact is needed to audit the public C5 results or the public clean-room Successor certificate. The clean-room layer exposes only the abstract contract, its non-modal consequences, a countdown witness, and their audit; its exact import closure contains those three core-only Release modules and nothing from the internal implementation.
+The IP boundary concerns the concrete Jump and the internal Ascendant and TI implementations. Their implementation source, proof objects, definitions, and transitive dependencies are not part of either clean-room certificate lane. No undisclosed artifact is needed to audit the public C5 results or either public contract certificate. Each clean-room layer exposes only its abstract contract, non-modal consequences, countdown witness, and audit; each exact import closure contains its own three core-only Release modules and nothing from an internal implementation.
 
 #### A.2.3 Axiom Footprint Certificate (Lean Kernel Audit)
 
@@ -1466,7 +1466,7 @@ No historical internal certificate table is used as a current-status source. The
 | $\Box\Diamond\exists x\,P(x)$ compatibility layer | Public kernel theorems `necPossible_of_Pos` and `somePosNecPossible_of_exists` | Public modal/positivity guards and models cover the stated fragment | `PosPossibility` is derived from `Positive.proper`, classical existence, reflexivity, and S5 axiom 5 | Public source and build | No Ω-actuality claim |
 | HyperModal A1/A3 core and Core-Relative Positivity | Public conditional theorems | `HyperModal.Model.setting_inhabited` is non-collapsed | Explicit `HyperModalSetting`; A5 absent; no Ω-existence field | Public source and build | Full Triad/ICO bridge remains philosophical |
 | Public S-Machine certificate | Kernel theorems `terminates`, `existsUniqueOmegaReached`, and `existsUniqueOmega` | Premise-free `NatMachine` countdown witness | Total successor, guarded `Nat` decrease, terminal fixedness, unique zero; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Non-modal contract consequence only; no C5 or actuality bridge |
-| TI | Philosophical route in this paper | N/A at the public formal level | Conceptual convergence argument | Argument inspectable; no public end theorem claimed | No formal identity bridge to the C5 Ω is claimed |
+| Public TI certificate | Kernel theorems `converges`, `top_characterization`, `isTop_fixed`, and `existsUniqueTop` | Premise-free `NatContract` countdown witness | Explicit rank descent, top characterization, uniqueness, and fixedness; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Abstract non-modal endpoint only; no internal construction or identity bridge to the C5 Ω |
 | God/Logos identification and “undeniability” | Philosophical interpretation of Ω | N/A | Constitutive actuality argument plus theological identification | Argument inspectable; not a Lean build | Central philosophical claim: the actual necessary and unique Ω-ground is God |
 
 The table separates what the public kernel verifies, what the public models witness, what is conceptual, and what the paper argues about actuality.
@@ -1504,7 +1504,7 @@ The Peano comparison is therefore an interpretive analogy about well-founded str
 1. **Public formal C5 core.** `AscendantRoute.GroundingChain` proves necessary existence, boxed uniqueness, and a rigid witness from explicit C1, `GroundObtains`, C3, C4a, and datum-obtaining hypotheses. C4a's `unique` and `rigid` fields are substantive premises, not derived endpoints hidden by the structure name.
 2. **Public model and audits.** `GroundingModel` supplies joint satisfiability/non-collapse; `GroundingChainAudit` supplies single-premise non-entailment witnesses; `PublicCertificateAudit` prints theorem types and footprints.
 3. **Public HyperModal audit.** `HyperModalSetting`, Core-Relative Positivity, derived A4, the model, and historical refutations expose the exact A1/A3-layer status. A5 is absent.
-4. **Public Successor certificate and implementation boundary.** The S-Machine contract has a verified core-only endpoint theorem, complete `Nat` model, and empty-footprint audit in a publicly reproducible bundle. It does not disclose or certify the concrete Jump construction, the internal Ascendant implementation, or TI.
+4. **Public clean-room certificates and implementation boundary.** The S-Machine and TI contracts each have verified core-only endpoint theorems, complete `Nat` models, and empty-footprint audits in publicly reproducible bundles. They do not disclose or certify the concrete Jump construction, either internal implementation, or a cross-route identity theorem.
 5. **Philosophical bridge.** The full A1/A3/A5 argument, the claim $\mathcal R\models\Gamma_{C5}$, and the identification of Ω with God remain substantive philosophical work.
 
 ---

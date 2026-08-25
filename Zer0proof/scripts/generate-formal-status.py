@@ -208,6 +208,33 @@ SUCCESSOR_EXPECTED_DECLARATIONS = (
     "AscendantRoute.Release.Successor.natMachine_existsUniqueOmegaReached",
     "AscendantRoute.Release.Successor.natMachine_existsUniqueOmega",
 )
+TI_BUNDLE = REPO / "certificates" / "ti-release"
+TI_CERTIFICATE = "AscendantRoute/Release/TI/TICertificate.lean"
+TI_EXPECTED_DECLARATIONS = (
+    "AscendantRoute.Release.TI.Contract",
+    "AscendantRoute.Release.TI.Contract.State",
+    "AscendantRoute.Release.TI.Contract.advance",
+    "AscendantRoute.Release.TI.Contract.rank",
+    "AscendantRoute.Release.TI.Contract.IsTop",
+    "AscendantRoute.Release.TI.Contract.descends",
+    "AscendantRoute.Release.TI.Contract.top_iff_zero",
+    "AscendantRoute.Release.TI.Contract.top_unique",
+    "AscendantRoute.Release.TI.Contract.top_fixed",
+    "AscendantRoute.Release.TI.iterate",
+    "AscendantRoute.Release.TI.iterate_zero",
+    "AscendantRoute.Release.TI.iterate_succ",
+    "AscendantRoute.Release.TI.iterate_succ_arg",
+    "AscendantRoute.Release.TI.converges",
+    "AscendantRoute.Release.TI.top_characterization",
+    "AscendantRoute.Release.TI.isTop_fixed",
+    "AscendantRoute.Release.TI.existsUniqueTop",
+    "AscendantRoute.Release.TI.NatContract",
+    "AscendantRoute.Release.TI.natOrigin",
+    "AscendantRoute.Release.TI.natContract_converges",
+    "AscendantRoute.Release.TI.natContract_top_characterization",
+    "AscendantRoute.Release.TI.natContract_top_fixed",
+    "AscendantRoute.Release.TI.natContract_existsUniqueTop",
+)
 FOOTPRINT_RE = re.compile(
     r"'([^']+)'\s+(?:(does not depend on any axioms)|depends on axioms:\s*\[([^]]*)\])",
     re.S,
@@ -263,6 +290,50 @@ def successor_certificate_rows(lake: str):
     non_empty = [row["name"] for row in rows if row["axioms"]]
     if non_empty:
         raise RuntimeError(f"successor declarations with nonempty footprint: {non_empty}")
+    return rows
+
+
+def ti_certificate_rows(lake: str):
+    """Axiom footprints of the optional public TI contract certificate."""
+    if not TI_BUNDLE.exists():
+        print("[FORMAL-STATUS] optional TI certificate absent; skipping")
+        return []
+    if not TI_BUNDLE.is_dir():
+        raise RuntimeError(f"TI certificate path is not a directory: {TI_BUNDLE}")
+    source = TI_BUNDLE / TI_CERTIFICATE
+    if not source.is_file():
+        raise RuntimeError(f"missing TI certificate source: {source}")
+
+    output = run(
+        [lake, "-R", "env", "env", f"LEAN_PATH={TI_BUNDLE}", "lean", str(source)]
+    ).stdout
+    if "sorryAx" in output:
+        raise RuntimeError("TI certificate output contains sorryAx")
+
+    rows = []
+    for match in FOOTPRINT_RE.finditer(output):
+        name, axiom_free, axiom_list = match.group(1), match.group(2), match.group(3)
+        axioms = (
+            []
+            if axiom_free
+            else [item.strip() for item in axiom_list.replace("\n", " ").split(",") if item.strip()]
+        )
+        rows.append({"name": name, "axioms": axioms})
+
+    names = [row["name"] for row in rows]
+    duplicates = sorted({name for name in names if names.count(name) > 1})
+    if duplicates:
+        raise RuntimeError(f"duplicate TI declarations: {duplicates}")
+    expected = set(TI_EXPECTED_DECLARATIONS)
+    missing = sorted(expected - set(names))
+    unexpected = sorted(set(names) - expected)
+    if missing or unexpected:
+        raise RuntimeError(
+            f"TI certificate surface changed: missing={missing} unexpected={unexpected}"
+        )
+    non_empty = [row["name"] for row in rows if row["axioms"]]
+    if non_empty:
+        raise RuntimeError(f"TI declarations with nonempty footprint: {non_empty}")
     return rows
 
 
@@ -350,6 +421,18 @@ def markdown(status: dict) -> str:
             "|---|---|",
         ]
         for theorem in status["successor_certificate"]:
+            footprint = ", ".join(theorem["axioms"]) or "none"
+            lines.append(f"| `{theorem['name']}` | `{footprint}` |")
+
+    if status.get("ti_certificate"):
+        lines += [
+            "",
+            "## TI Certificate",
+            "",
+            "| Declaration | Axiom footprint |",
+            "|---|---|",
+        ]
+        for theorem in status["ti_certificate"]:
             footprint = ", ".join(theorem["axioms"]) or "none"
             lines.append(f"| `{theorem['name']}` | `{footprint}` |")
 
@@ -453,6 +536,7 @@ def main() -> int:
             raise RuntimeError(f"negative guard mismatch: {filename}\n{result.stdout}")
 
     successor_rows = successor_certificate_rows(lake)
+    ti_rows = ti_certificate_rows(lake)
 
     lean_version = normalize_lean_version(run([lake, "env", "lean", "--version"]).stdout)
     toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
@@ -476,6 +560,7 @@ def main() -> int:
         "public_theorems": theorem_rows,
         "hypermodal_theorems": hypermodal_rows,
         "successor_certificate": successor_rows,
+        "ti_certificate": ti_rows,
         "gates": {
             "gate_0": "PASS",
             "modal_non_collapse": "PASS",
