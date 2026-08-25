@@ -44,6 +44,21 @@ jobs:
             exit "$rc"
           fi
 
+      # The distribution is tracked, so a green run must leave the working tree
+      # untouched. Anything platform-dependent that leaks into a shipped file --
+      # a host target triple, a checksum mode -- shows up here as a diff. This
+      # runs on Linux precisely because the artifacts are produced on Windows:
+      # the failure mode it guards against is invisible on the authoring machine.
+      - name: Assert the pipeline is idempotent
+        if: steps.ci.outputs.rc == '0'
+        run: |
+          if ! git diff --exit-code --stat; then
+            echo "::error::a green pipeline modified tracked files; see the diff above"
+            git diff
+            exit 1
+          fi
+          echo "working tree unchanged after a green run"
+
       - name: Publish the distribution
         if: always() && hashFiles('Zer0proof/dist/SHA256SUMS') != ''
         uses: actions/upload-artifact@v4

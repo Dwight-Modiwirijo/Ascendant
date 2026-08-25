@@ -160,9 +160,54 @@ def parse_axioms(output: str, name: str) -> list[str]:
     return [item.strip() for item in match.group(1).replace("\n", " ").split(",") if item.strip()]
 
 
+TARGET_TRIPLE_RE = re.compile(r"^[A-Za-z0-9_]+(?:-[A-Za-z0-9_.]+){2,}$")
+
+
+def normalize_lean_version(raw: str) -> str:
+    """Drop the host target triple from `lean --version`.
+
+    The reported version embeds the platform it ran on
+    (`x86_64-w64-windows-gnu` versus `x86_64-unknown-linux-gnu`). Since the
+    distribution is tracked, that lone difference rewrote the status on every
+    run from a different platform, while saying nothing about the audit. The
+    Lean version and kernel commit are what identify the toolchain, and they
+    are platform-independent.
+    """
+    match = re.fullmatch(r"Lean \((.*)\)", raw.strip(), re.S)
+    if not match:
+        return raw.strip()
+    fields = [field.strip() for field in match.group(1).split(",")]
+    kept = [field for field in fields if not TARGET_TRIPLE_RE.fullmatch(field)]
+    return "Lean (" + ", ".join(kept) + ")"
+
+
 SUCCESSOR_BUNDLE = REPO / "certificates" / "successor-release"
 SUCCESSOR_CERTIFICATE = "AscendantRoute/Release/Successor/SuccessorCertificate.lean"
-SUCCESSOR_EXPECTED_DECLARATIONS = 23
+SUCCESSOR_EXPECTED_DECLARATIONS = (
+    "AscendantRoute.Release.Successor.Machine",
+    "AscendantRoute.Release.Successor.Machine.State",
+    "AscendantRoute.Release.Successor.Machine.S",
+    "AscendantRoute.Release.Successor.Machine.meas",
+    "AscendantRoute.Release.Successor.Machine.dec",
+    "AscendantRoute.Release.Successor.Machine.terminal",
+    "AscendantRoute.Release.Successor.Machine.zeroUnique",
+    "AscendantRoute.Release.Successor.iterate",
+    "AscendantRoute.Release.Successor.terminates",
+    "AscendantRoute.Release.Successor.coverage",
+    "AscendantRoute.Release.Successor.Omega",
+    "AscendantRoute.Release.Successor.omega_iff",
+    "AscendantRoute.Release.Successor.omega_fixed",
+    "AscendantRoute.Release.Successor.existsUniqueOmegaReached",
+    "AscendantRoute.Release.Successor.existsUniqueOmega",
+    "AscendantRoute.Release.Successor.NatMachine",
+    "AscendantRoute.Release.Successor.natStart",
+    "AscendantRoute.Release.Successor.natMachine_terminates",
+    "AscendantRoute.Release.Successor.natMachine_coverage",
+    "AscendantRoute.Release.Successor.natMachine_omega_iff",
+    "AscendantRoute.Release.Successor.natMachine_omega_fixed",
+    "AscendantRoute.Release.Successor.natMachine_existsUniqueOmegaReached",
+    "AscendantRoute.Release.Successor.natMachine_existsUniqueOmega",
+)
 FOOTPRINT_RE = re.compile(
     r"'([^']+)'\s+(?:(does not depend on any axioms)|depends on axioms:\s*\[([^]]*)\])",
     re.S,
@@ -180,7 +225,11 @@ def successor_certificate_rows(lake: str):
     """
     source = SUCCESSOR_BUNDLE / SUCCESSOR_CERTIFICATE
     if not source.is_file():
-        return None
+        # Fail closed. Returning None here would silently emit a status that
+        # claims nothing about the Successor route while still reporting
+        # success -- exactly the shape of an audit that passes because it did
+        # not look.
+        raise RuntimeError(f"missing successor certificate source: {source}")
 
     output = run(
         [lake, "-R", "env", "env", f"LEAN_PATH={SUCCESSOR_BUNDLE}", "lean", str(source)]
@@ -198,10 +247,19 @@ def successor_certificate_rows(lake: str):
         )
         rows.append({"name": name, "axioms": axioms})
 
-    if len(rows) != SUCCESSOR_EXPECTED_DECLARATIONS:
+    names = [row["name"] for row in rows]
+    duplicates = sorted({name for name in names if names.count(name) > 1})
+    if duplicates:
+        raise RuntimeError(f"duplicate successor declarations: {duplicates}")
+
+    expected = set(SUCCESSOR_EXPECTED_DECLARATIONS)
+    missing = sorted(expected - set(names))
+    unexpected = sorted(set(names) - expected)
+    if missing or unexpected:
         raise RuntimeError(
-            f"expected {SUCCESSOR_EXPECTED_DECLARATIONS} successor declarations, parsed {len(rows)}"
+            f"successor certificate surface changed: missing={missing} unexpected={unexpected}"
         )
+
     non_empty = [row["name"] for row in rows if row["axioms"]]
     if non_empty:
         raise RuntimeError(f"successor declarations with nonempty footprint: {non_empty}")
@@ -396,7 +454,7 @@ def main() -> int:
 
     successor_rows = successor_certificate_rows(lake)
 
-    lean_version = run([lake, "env", "lean", "--version"]).stdout.strip()
+    lean_version = normalize_lean_version(run([lake, "env", "lean", "--version"]).stdout)
     toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
     commit = os.environ.get("FORMAL_STATUS_GIT_COMMIT", "").strip()
     if not commit:

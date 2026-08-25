@@ -298,7 +298,11 @@ SCOPE
   cd "$staging"
   { find . -type f -printf '%P\n'; printf '%s\n' PUBLIC_ALLOWLIST.txt SHA256SUMS; } \
     | sort -u > PUBLIC_ALLOWLIST.txt
-  find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+  # -b explicitly: without it sha256sum picks its mode from the platform, so
+  # Windows writes "hash *./file" and Linux writes "hash  ./file" for identical
+  # bytes. The distribution is tracked, so that difference alone rewrote the
+  # manifest on every cross-platform run.
+  find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum -b > SHA256SUMS
   sha256sum -c SHA256SUMS
 )
 

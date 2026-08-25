@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "git_commit": "ca0b4c26ffdbacc20a43907f62dbfe627ce1a753",
+  "git_commit": "d959fda21bc45f25dbc83dbfa89944cce54d28cd",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
-  "lean_version": "Lean (version 4.20.0, x86_64-w64-windows-gnu, commit b02228b03f65, Release)",
+  "lean_version": "Lean (version 4.20.0, commit b02228b03f65, Release)",
   "last_audit_date": "2026-08-25",
   "public_theorems": [
     {
