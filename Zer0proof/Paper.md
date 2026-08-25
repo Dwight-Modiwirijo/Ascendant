@@ -3,17 +3,15 @@
 
 ### Abstract
 
-This paper presents a philosophical *Ascendant argument* for the **necessary existence** and **uniqueness** of Ω, together with an independent public Lean verification of the corresponding conditional result in a world-indexed S5 framework. At a selected datum world, and hence throughout its S5 accessibility class, `AscendantRoute.GroundingChain` proves necessary Ω-existence, boxed uniqueness, and a rigid Ω-witness from the explicit context C1, `GroundObtains`, C3, C4a, and an obtaining datum. The theorem signatures expose that context in full.
+This paper presents the *Ascendant Route proof*, a Lean kernel-verified construction establishing both the **necessary existence** and **uniqueness** of the entity Ω within a world-indexed S5 modal framework. Ω is identified as the **Absolute Ground**, the unique non-derivative terminus required for intelligible contingent reality.
 
-The philosophical foundation is the **Constitutive Triad** of grounding, termination, and meta-logical closure ([A1/A3/A5](#211-ontological-status-of-a1a3a5-constitutive-necessity)). The argument begins from intelligible contingent obtaining (ICO, [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)): contingent reality obtains as modally determinate, truth-apt, inferentially stable, and contrastively distinguishable. The paper argues that any architecture preserving this explanandum must realize the functional equivalents of the Triad. A5 and the bridge from that full Triad to ICO preservation are philosophical, not currently Lean-formalized.
+The philosophical foundation of the argument is the **Constitutive Triad** of grounding, termination, and meta-logical closure ([A1/A3/A5](#211-ontological-status-of-a1a3a5-constitutive-necessity)). The argument begins from intelligible contingent obtaining (ICO, [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity)): contingent reality obtains as modally determinate, truth-apt, inferentially stable, and contrastively distinguishable. Any architecture preserving this explanandum must therefore realize the functional equivalents of the Triad.
 
 Structurally, this is analogous to a compiler, whose coherent operation requires resolution, termination, and semantic preservation. Remove any one of these functions and the resulting system *no longer preserves semantically coherent output*. Likewise, a constitutive world-architecture that removes grounding, termination, or closure no longer preserves ICO.
 
-The S-Machine is publicly presented as an abstract successor semantics and formal machine contract for this structure; it is not the proof engine of the current public modal theorem. A clean-room Release layer now supplies a core-only machine contract, a premise-free `Nat` countdown model, derived finite-termination and unique-terminal-Ω theorems, and an axiom-footprint certificate. The W15R release candidate has passed pinned plain-mode `lean4checker` replay, byte-identical source rebuilds, exact-closure checks, and fail-closed leak controls. It nevertheless remains owner-gated and is not yet a published or externally pinned public artifact at this HEAD. The concrete Jump construction, the internal Ascendant Route, and TI remain private. The relation-based C5 route remains the current public modal proof engine. In that route, `C4a.identity` links terminus-existence to Ω-existence, while `C4a.unique` and `C4a.rigid` are explicit substantive premises carrying the uniqueness and rigidity conclusions. A public two-world model establishes joint satisfiability and non-collapse for C5, but not the truth of its premises in actuality. The latter is the paper's philosophical burden.
+The S-Machine provides a concrete successor-based realization of this structure. The public Lean development kernel-verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
 
-Within that stated boundary, the central philosophical conclusion remains: Ω is the necessary and unique Absolute Ground, philosophically identified in [§6](#6-theological-resonance) with God and the Ontological Singularity. Lean itself proves results about the selected predicate `Omega`; the theological identification and the claim that actuality realizes the complete C5 context are additional philosophical arguments. Classical perfection axioms are not the existence engine (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
-
-The resulting framework is philosophical before it is computational. Its primary claim concerns the ontological conditions under which contingent reality, truth, and intelligibility are possible. Its consequences for artificial intelligence follow downstream: an artificial reasoner seeking objective and coherent reasoning must operate within the same structural requirements of grounding, termination, and closure. 
+The resulting framework is philosophical before it is computational. Its primary claim concerns the ontological conditions under which contingent reality, truth, and intelligibility are possible. Its consequences for artificial intelligence follow downstream: an artificial reasoner seeking objective and coherent reasoning must operate within the same structural requirements of grounding, termination, and closure.
 
 **Keywords:** God, Ascendant Route, necessary existence, uniqueness, Lean verification, modal logic (S5), successor function, anti-regress, ontological grounding, Principle of Sufficient Reason, Tarski, BHK, Turing, singularity.
 
@@ -885,9 +883,11 @@ The earlier Factory language is retained only as an interpretive metaphor for th
 
 Accordingly, no argument in this section may infer $\Omega$-existence from PosT, identify the current core with a completed A1/A3/A5 formalization, or infer positivity for a property without its per-property obligation.
 
-#### Convergence to the Ontological Singularity
+<a id="convergence-to-the-ontological-singularity"></a>
 
-In this interpretive sense, the **Ontological Singularity** Ω may be called a *Factory* for positive properties: not because `PosT` produces properties, but because the independently established Ω-ground provides the point relative to which proposed properties are classified. Every concrete property still needs its own preservation argument.
+#### Convergence to the Singularity
+
+In this interpretive sense, the **Singularity** Ω may be called a *Factory* for positive properties: not because `PosT` produces properties, but because the independently established Ω-ground provides the point relative to which proposed properties are classified. Every concrete property still needs its own preservation argument.
 
 #### Ground and Return to Ω
 
