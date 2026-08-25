@@ -31,7 +31,7 @@ c521ca252d205af363a01d8f477768ed00c5a57f3f86c19ee4ba4772ebaf4180 *./lean-toolcha
 110163ed4e38dd27c89eb5f19362c59645465b1775e0225514ede5d2a32db1d1 *./scripts/check-document-sync.py
 3406e71a089a3539bdfcb8a0cfa7a4546d2ff9f061d4c83e7c2280449ba24f81 *./scripts/check-public-dist.sh
 c850c6fbdfb5a40497ab5ddde814433c355c981253376fd5024e400fd2f8078c *./scripts/check-successor-release.sh
-228c5308afd2d499e22e1d62dfa7d91cc9afe027989bb751b213fc7a26124f7c *./scripts/generate-formal-status.py
+48661a22e3a7100827f0d33ea4eccd30e6c79b866d6689c0a96b9b0d97f00a4b *./scripts/generate-formal-status.py
 e8aeb1bf77c5bafa5e0545760640c03b231a1b569620bc0bced565de044d48f8 *./scripts/run-successor-lean4checker.sh
 584569c5ae230f79a1e2ca6e84035af2f2c338456aee954e9e2d8c32643eac60 *./tests/NoExport_HyperModalLegacy.lean
 656f53efd2a6b240c4dfb2684031351707e8b3dfc1832c8cb1698b7b56ea37cc *./tests/NoExport_NecessaryExistence.lean

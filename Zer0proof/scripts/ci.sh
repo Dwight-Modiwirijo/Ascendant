@@ -283,7 +283,7 @@ cat > "$staging/SCOPE.txt" <<SCOPE
 Zer0proof public distribution
 
 toolchain: $expected_toolchain
-commit:    $(git rev-parse HEAD 2>/dev/null || echo unknown)
+commit:    $("$python_bin" -c 'import json,sys; print(json.load(open(sys.argv[1],encoding="utf-8"))["git_commit"])' "$staging/formal-status.json" 2>/dev/null || git rev-parse HEAD 2>/dev/null || echo unknown)
 
 Covered: the world-indexed public interface, compatibility API, public C5
 strong theorem route, individual-premise question-begging audit, non-collapsed

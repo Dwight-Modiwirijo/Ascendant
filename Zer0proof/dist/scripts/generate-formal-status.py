@@ -461,10 +461,14 @@ def main() -> int:
     # pipeline and invite unreviewed provenance commits. Keep the recorded
     # values whenever the substantive audit result is unchanged; update them the
     # moment anything else moves.
+    # The pipeline builds into a staging directory and swaps it in wholesale, so
+    # the output path is empty on every run. Compare against the tracked
+    # distribution instead -- that is the artifact whose churn matters.
     VOLATILE = ("git_commit", "last_audit_date")
-    if json_path.is_file():
+    reference = json_path if json_path.is_file() else REPO / "dist" / "formal-status.json"
+    if reference.is_file():
         try:
-            previous = json.loads(json_path.read_text(encoding="utf-8"))
+            previous = json.loads(reference.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
             previous = None
         if isinstance(previous, dict):
