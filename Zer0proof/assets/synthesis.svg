@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 800" role="img" aria-labelledby="title desc">
-  <title id="title">Public C5 verification, the owner-gated S-Machine certificate, private TI, and the actuality bridge</title>
-  <desc id="desc">The public C5 GroundingChain supplies a public kernel term for the strong modal Omega conclusion from the complete C5 context. The clean-room S-Machine release candidate kernel-checks a separate non-modal termination and unique-terminal result, but its asset and external pins remain owner-gated; the concrete Jump and TI architecture remain private. Applying the public C5 theorem to reality additionally requires the philosophical claim that reality satisfies every C5 premise.</desc>
+  <title id="title">Public C5 verification, the public S-Machine contract, TI as a philosophical route, and the actuality bridge</title>
+  <desc id="desc">The public C5 GroundingChain supplies a kernel term for the strong modal Omega conclusion from the complete C5 context. The public S-Machine contract separately certifies non-modal termination and a unique terminal state. TI is presented as a convergent philosophical route. Applying the public C5 theorem to reality additionally requires the philosophical claim that reality satisfies every C5 premise.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
       <path d="M0 0 L10 5 L0 10 Z" fill="#475569"/>
@@ -44,22 +44,22 @@
   <text class="status" x="245" y="205">SOURCE-REPRODUCIBLE · KERNEL-VERIFIED</text>
 
   <rect class="concept" x="485" y="75" width="220" height="160" rx="8"/>
-  <text class="label" x="595" y="108">S-MACHINE CERTIFICATE</text>
-  <text class="detail" x="595" y="141">Core-only theorem + Nat model</text>
-  <text class="detail" x="595" y="166">Release asset owner-gated</text>
-  <text class="status" x="595" y="205">VERIFIED CANDIDATE · JUMP PRIVATE</text>
+  <text class="label" x="595" y="108">S-MACHINE CONTRACT</text>
+  <text class="detail" x="595" y="141">Public certificate bundle</text>
+  <text class="detail" x="595" y="166">Termination + unique terminal</text>
+  <text class="status" x="595" y="205">FORMAL CONTRACT · KERNEL-VERIFIED</text>
 
   <rect class="unknown" x="735" y="75" width="210" height="160" rx="8"/>
   <text class="label" x="840" y="108">TI</text>
-  <text class="detail" x="840" y="141">Private architecture</text>
-  <text class="detail" x="840" y="166">No public source or theorem</text>
-  <text class="status" x="840" y="205">PRIVATE · NOT PUBLICLY AUDITED</text>
+  <text class="detail" x="840" y="141">Convergent philosophical route</text>
+  <text class="detail" x="840" y="166">No public end theorem claimed</text>
+  <text class="status" x="840" y="205">PHILOSOPHICAL ROUTE</text>
 
   <path class="flow" d="M245 235 V295"/>
   <path class="dash" d="M595 235 V282"/>
   <path class="dash" d="M840 235 V282"/>
-  <text class="detail" x="595" y="302">non-modal ∃! terminal Ω · not yet public</text>
-  <text class="detail" x="840" y="302">no public t : φ</text>
+  <text class="detail" x="595" y="302">non-modal ∃! terminal Ω · public certificate</text>
+  <text class="detail" x="840" y="302">conceptual convergence · no public t : φ</text>
 
   <rect class="public" x="35" y="325" width="420" height="160" rx="8"/>
   <text class="label" x="245" y="362">PUBLIC FORMAL RESULT</text>

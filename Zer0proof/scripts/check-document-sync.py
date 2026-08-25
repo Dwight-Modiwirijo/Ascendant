@@ -133,7 +133,7 @@ def main() -> int:
             "Gate 0 status: PASS",
             "public compatibility API",
             "public C5 grounding proof surface",
-            "private successor route",
+            "publicly certified, kernel-recheckable abstract S-Machine contract",
             "Classical Witness-Selecting Successor Sketch",
             "research blueprint, not the engine",
             "complexity consequence, not an IP protection mechanism",
@@ -194,10 +194,11 @@ def main() -> int:
 
     w16_current = [
         "The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses.",
-        "| Route | Current status |",
+        "| Route | Status in this paper |",
         "C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions.",
         "If the actual grounding structure satisfies the complete C5 context Γ, then the kernel theorem applies to that intended interpretation.",
         "Establishing $\\mathcal R\\models\\Gamma_{C5}$ is the paper's philosophical argument, not a consequence of Tarski, BHK, or Lean.",
+        "The S-Machine is publicly presented as an abstract successor semantics and formal machine contract.",
     ]
     for needle in w16_current:
         if needle not in texts["Paper.md"]:
@@ -231,6 +232,41 @@ def main() -> int:
         if needle in texts["Paper.md"]:
             errors.append(f"Paper.md: stale W16 claim remains: {needle}")
 
+    w16_hard_zero = [
+        "Final_NE_Proof",
+        "Final_BoxUnique_Proof",
+        "Final_RigidWitness_Proof",
+        "kernel-accepted proof terms",
+        "private kernel route",
+        "W15R",
+        "owner-gated",
+        "release candidate",
+        "hash pins",
+        "lean4checker",
+        "verified local release evidence",
+    ]
+    for needle in w16_hard_zero:
+        if re.search(re.escape(needle), texts["Paper.md"], flags=re.IGNORECASE):
+            errors.append(f"Paper.md: forbidden W16 process claim remains: {needle}")
+
+    approved_private_sentence = (
+        "The concrete Jump construction and the internal Ascendant Route and TI proof "
+        "architectures remain private."
+    )
+    private_count = len(re.findall(r"\bprivate\b", texts["Paper.md"], flags=re.IGNORECASE))
+    if texts["Paper.md"].count(approved_private_sentence) != 1 or private_count != 1:
+        errors.append(
+            "Paper.md: IP boundary must contain exactly the approved private sentence "
+            f"and exactly one 'private' token (found {private_count})"
+        )
+
+    synthesis = (REPO / "assets" / "synthesis.svg").read_text(encoding="utf-8")
+    for needle in ("FORMAL CONTRACT", "PHILOSOPHICAL ROUTE", "PUBLIC C5 / GroundingChain"):
+        if needle not in synthesis:
+            errors.append(f"assets/synthesis.svg: missing W16 lane label: {needle}")
+    for needle in ("owner-gated", "VERIFIED CANDIDATE", "NOT PUBLICLY AUDITED"):
+        if needle.lower() in synthesis.lower():
+            errors.append(f"assets/synthesis.svg: stale W16 status remains: {needle}")
     broken, link_count = broken_internal_links(texts["Paper.md"])
     if broken:
         for target in broken:
