@@ -32,9 +32,18 @@ RUN curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-ini
 WORKDIR /workspace/Zer0proof
 COPY . .
 
+# Keep the shipped distribution aside before the pipeline regenerates it, then
+# byte-compare. Without this the image would only prove that the sources build
+# on Linux; with it, the image proves that the .olean files published in the
+# repository are exactly what those sources produce. That is the claim a
+# stranger actually needs to check, and it fails the build if it ever stops
+# holding.
 RUN elan toolchain install "$(tr -d '\r\n' < lean-toolchain)" \
   && (lake exe cache get || true) \
+  && cp -a dist /published-dist \
   && lake build \
-  && PYTHON_BIN=python3 bash scripts/ci.sh
+  && PYTHON_BIN=python3 bash scripts/ci.sh \
+  && diff -r /published-dist dist \
+  && echo "[VERIFY] published distribution reproduced byte-for-byte on this platform"
 
 CMD ["/bin/bash"]

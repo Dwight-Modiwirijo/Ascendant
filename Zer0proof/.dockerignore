@@ -1,6 +1,8 @@
 .git
 .lake
-dist
+# dist is deliberately NOT ignored: the image compares the published .olean
+# files against the ones it builds, so the artifact under test is the one that
+# was actually shipped, not a fresh rebuild of it.
 *.zip
 *.tar
 *.tar.gz
