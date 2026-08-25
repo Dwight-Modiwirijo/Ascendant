@@ -399,8 +399,6 @@ $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route alone supplies a publicly inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The public S-Machine certificate separately supplies non-modal finite-termination and unique-terminal theorems; it neither inhabits $\varphi$ nor connects its machine predicate to actuality, and it does not specify the concrete Jump construction. TI is a philosophical route and supplies no public end theorem. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
 
 ---
-
----
 ## 4. Verification in Lean 4
 
 This section is the technical bridge between the paper's argument and its formal artifacts. It follows a single chain: the exact theorem object, its dependency context, kernel certification, the compiled `.olean` verification artifact, and the public certificate/export surface built on top of it.
@@ -453,8 +451,6 @@ To avoid conflating distinct claims, this paper uses three labels with fixed mea
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
 The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The clean-room S-Machine certificate satisfies all three labels for its non-modal contract consequences. No corresponding public certification label is assigned here to the concrete Jump construction, the internal Ascendant implementation, or TI.
-
----
 
 ---
 ## 5. Objections and Responses
