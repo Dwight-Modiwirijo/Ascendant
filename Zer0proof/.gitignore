@@ -32,5 +32,4 @@ paper.pub
 # Reproducible public release output
 dist/
 
-# Owner-gated optional certificate payload
-certificates/successor-release/
+# The disclosure-bounded Successor certificate payload is intentionally tracked.

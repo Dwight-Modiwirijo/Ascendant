@@ -6,7 +6,7 @@ Public paper and reproducible Lean 4 audit for the **Ascendant Route**.
 
 The accompanying paper presents the philosophical argument. The `Zer0proof`
 project provides the public Lean definitions, theorem statements, proof
-sources, model checks, negative controls, and audit tooling.
+sources, model checks, negative controls, audit tooling, and the disclosure-bounded Successor source/`.olean` certificate bundle.
 
 ## Start Here
 
@@ -14,6 +14,7 @@ sources, model checks, negative controls, and audit tooling.
 - [Lean audit and Docker instructions](Zer0proof/README.md)
 - [Public safety certificate](Zer0proof/PUBLIC_SAFETY_CERTIFICATE.md)
 - [AscendantRoute Lean modules](Zer0proof/AscendantRoute/)
+- [Public Successor certificate bundle](Zer0proof/certificates/successor-release/)
 
 `AscendantRoute` is the Lean namespace and public formalization of the
 Ascendant Route described in the paper.
@@ -45,6 +46,7 @@ docker run --rm dmodiwirijo/ascendant:4ed8dc9 bash scripts/ci.sh
 cd Zer0proof
 lake build
 bash scripts/ci.sh
+bash scripts/check-successor-release.sh
 ```
 
 ## Verification Scope
@@ -63,4 +65,6 @@ paper.
 - `Zer0proof/AscendantRoute/`: public Lean formalization
 - `Zer0proof/tests/`: negative and no-export tests
 - `Zer0proof/scripts/ci.sh`: complete public audit
+- `Zer0proof/certificates/successor-release/`: public clean-room Successor sources and `.olean` assemblies
+- `Zer0proof/certificates/successor-release.SHA256SUMS`: external repository trust anchor
 - `Zer0proof/Dockerfile`: reproducible audit environment

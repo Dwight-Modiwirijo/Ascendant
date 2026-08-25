@@ -1,14 +1,23 @@
-# Private certificate policy
+# Public certificate policy
 
-The public distribution does not accept or ship private theorem-bearing Lean
-assemblies. In particular, no private successor implementation, private proof
-source, or compiled private proof tree belongs in this directory.
+`successor-release/` is the disclosure-bounded, clean-room certificate bundle
+for the abstract S-Machine contract. It contains exactly three source/`.olean`
+pairs, a minimal consumer `lakefile.lean`, the pinned toolchain, structured provenance, and an internal manifest.
+`successor-release.SHA256SUMS` is the repository-controlled external trust
+anchor.
 
-The public strong Omega results are rebuilt from source through
-`AscendantRoute.GroundingChain`; `AscendantRoute.GroundingModel` supplies the public
-satisfiability witness. Any private successor route uses a separate internal CI
-and may publish only non-proof-bearing high-level metadata.
+Everything in this bundle is intentionally public-equivalent. A `.olean` is a
+packaging format, not an IP boundary. The concrete Jump implementation, the
+internal Ascendant Route, TI, private proof sources, and their assemblies are
+not distributed.
 
-`scripts/ci.sh` packages an explicit public allow-list. The resulting `dist/`
-is then checked by `scripts/check-public-dist.sh`, including a binary symbol
-scan and the no-export test in the actually shipped Lean environment.
+Run the complete fail-closed consumer with:
+
+```bash
+bash scripts/check-successor-release.sh
+```
+
+The consumer checks the exact ten-file allow-list, both manifests, pinned
+toolchain and provenance, `.olean` import compatibility, plain-mode kernel
+replay, byte-identical source rebuilds, 23 axiom footprints, and forbidden
+private symbols.

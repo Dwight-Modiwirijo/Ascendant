@@ -58,6 +58,7 @@ expected_files=(
   "AscendantRoute/Release/Successor/SuccessorModel.lean"
   "AscendantRoute/Release/Successor/SuccessorModel.olean"
   "SHA256SUMS"
+  "lakefile.lean"
   "lean-toolchain"
   "provenance.json"
 )
@@ -173,7 +174,9 @@ echo "[SUCCESSOR] olean header/toolchain compatibility PASS"
 LAKE_BIN="$lake_bin" bash scripts/run-successor-lean4checker.sh "$bundle_root"
 
 rebuild_root="$scratch/rebuild"
-mkdir -p "$rebuild_root"
+rebuild_work="$scratch/bundle"
+mkdir -p "$rebuild_root" "$rebuild_work"
+cp -a "$bundle_root/." "$rebuild_work/"
 for module_file in SuccessorAPI SuccessorModel SuccessorCertificate; do
   relative="AscendantRoute/Release/Successor/$module_file"
   rebuilt="$rebuild_root/$relative.olean"
@@ -182,7 +185,7 @@ for module_file in SuccessorAPI SuccessorModel SuccessorCertificate; do
   rebuild_rc=0
   set +e
   rebuild_output="$(
-    cd "$bundle_root"
+    cd "$rebuild_work"
     "$lake_bin" -R env env LEAN_PATH="$rebuild_root" lean -o "$rebuilt" "$relative.lean" 2>&1
   )"
   rebuild_rc=$?

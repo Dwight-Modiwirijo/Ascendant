@@ -20,15 +20,15 @@ Their explicit context is C1, `GroundObtains`, C3, C4a, and an obtaining datum a
 
 `AscendantRoute.Interface` defines one shared world-indexed S5 semantics. The public compatibility API proves the weak positivity compatibility result, while the public C5 grounding proof surface proves the strong Omega results from the explicit grounding context.
 
-The private successor route is not distributed as source or theorem-bearing `.olean`, and no private assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, and distribution checks.
+The private concrete successor route is not distributed as source or theorem-bearing `.olean`, and no private assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, distribution checks, and the separate disclosure-bounded clean-room Successor certificate.
 
-### Optional Successor Certificate
+### Public Successor Certificate
 
-Once its owner-authorized asset and external SHA pins are published, the Successor release is a **publicly certified, kernel-recheckable distribution of the abstract Successor contract**. It contains only the clean-room API, the `Nat` countdown model, their derived consequences, and the certificate audit, each as source and `.olean`.
+This repository includes a **publicly certified, kernel-recheckable distribution of the abstract Successor contract**. It contains only the clean-room API, the `Nat` countdown model, their derived consequences, and the certificate audit, each as source and `.olean`, plus a minimal dependency-free consumer `lakefile.lean`.
 
 A `.olean` is not an IP boundary. Everything in that optional bundle is public-equivalent; TI and the concrete Jump remain private and outside its mechanically checked import closure.
 
-Place the extracted payload and separately published trust-anchor file at:
+The payload and its separate repository-controlled trust anchor are at:
 
 ```text
 certificates/successor-release/
@@ -41,7 +41,7 @@ Then run:
 bash scripts/check-successor-release.sh
 ```
 
-The optional stage verifies the external and internal hashes, pinned toolchain and provenance, `.olean` import compatibility, plain-mode `lean4checker` replay, isolated source rebuilds with byte comparison, certificate output, and leak guards. Without a bundle it prints one skip line and succeeds.
+The stage verifies the external and internal hashes, pinned toolchain and provenance, `.olean` import compatibility, plain-mode `lean4checker` replay, isolated source rebuilds with byte comparison, certificate output, and leak guards. The published repository includes the bundle, so this stage runs as part of `scripts/ci.sh`.
 
 ## HyperModal Core-Relative Layer
 
@@ -62,7 +62,7 @@ lake -R env lean AscendantRoute/PublicCertificateAudit.lean
 bash scripts/ci.sh
 ```
 
-`scripts/ci.sh` performs two clean public builds, compares public `.olean` hashes, runs negative guards, generates `dist/formal-status.json` and `dist/FORMAL_STATUS.md`, checks document sync, stages an explicit package allow-list, and runs the post-package leak scan. A successful public run exits with code 0.
+`scripts/ci.sh` verifies the published Successor certificate, performs two clean public builds, compares public `.olean` hashes, runs negative guards, generates `dist/formal-status.json` and `dist/FORMAL_STATUS.md`, checks document sync, stages an explicit package allow-list, and runs the post-package leak scan. A successful public run exits with code 0.
 
 ## Docker Audit Image
 

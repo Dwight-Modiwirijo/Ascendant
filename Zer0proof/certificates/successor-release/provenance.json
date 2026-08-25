@@ -1,0 +1,25 @@
+{
+  "buildDate": "2026-08-25T11:39:11Z",
+  "freshReplay": "blocked upstream on v4.20.1, see diagnostic",
+  "lean4checker": {
+    "commit": "ba94ec4b7f5fde6579858f33598eff3e64b9492d",
+    "mode": "plain",
+    "repository": "https://github.com/leanprover/lean4checker.git"
+  },
+  "modules": [
+    "AscendantRoute.Release.Successor.SuccessorAPI",
+    "AscendantRoute.Release.Successor.SuccessorModel",
+    "AscendantRoute.Release.Successor.SuccessorCertificate"
+  ],
+  "producer": "TAR",
+  "producerDirty": false,
+  "projectLocalClosure": [
+    "AscendantRoute.Release.Successor.SuccessorAPI",
+    "AscendantRoute.Release.Successor.SuccessorModel",
+    "AscendantRoute.Release.Successor.SuccessorCertificate"
+  ],
+  "schemaVersion": 1,
+  "sourceDateEpoch": 1787657951,
+  "tarCommit": "b56c82db1c0f12f2922807e431948c7b970ce4a3",
+  "toolchain": "leanprover/lean4:v4.20.1"
+}

@@ -166,26 +166,6 @@ def main() -> int:
             if needle not in texts[document]:
                 errors.append(f"{document}: missing W15R claim: {needle}")
 
-    successor_paper_current = [
-        "owner-gated W15R release candidate",
-        "existsUniqueOmegaReached",
-        "23 audited declarations",
-        "not yet **publicly certified** or **publicly reproducible**",
-    ]
-    for needle in successor_paper_current:
-        if needle not in texts["Paper.md"]:
-            errors.append(f"Paper.md: missing W15R paper claim: {needle}")
-
-    successor_paper_stale = [
-        "no S-Machine endpoint theorem",
-        "no public Lean endpoint theorem",
-        "not currently a theorem in the public Lean repository",
-        "future public certificate could verify",
-        "termination consequence does not yet receive",
-    ]
-    for needle in successor_paper_stale:
-        if needle in texts["Paper.md"]:
-            errors.append(f"Paper.md: stale pre-W15R claim remains: {needle}")
 
     banned = {
         "Paper.md": [
