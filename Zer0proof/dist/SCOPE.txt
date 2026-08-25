@@ -1,7 +1,7 @@
 Zer0proof public distribution
 
 toolchain: leanprover/lean4:v4.20.1
-commit:    4d34d309177a19952c2c5934214c535e68542946
+commit:    afd7ac79583a94f821695fc8979b6db8f7be33d4
 
 Covered: the world-indexed public interface, compatibility API, public C5
 strong theorem route, individual-premise question-begging audit, non-collapsed
