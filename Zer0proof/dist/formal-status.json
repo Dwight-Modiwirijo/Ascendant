@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "git_commit": "4d34d309177a19952c2c5934214c535e68542946",
+  "lean_toolchain": "leanprover/lean4:v4.20.1",
+  "lean_version": "Lean (version 4.20.0, x86_64-w64-windows-gnu, commit b02228b03f65, Release)",
+  "last_audit_date": "2026-08-25",
+  "public_theorems": [
+    {
+      "name": "AscendantRoute.GroundingChain.C5_NE",
+      "type": "AscendantRoute.GroundingChain.C5_NE.{u, v} {W : Type u} {D : Type v} (F : AscendantRoute.Frame W)\n  (G : (W → Prop) → (W → Prop) → Prop) (Omega : D → W → Prop) (hC1 : AscendantRoute.GroundingChain.C1 F G)\n  (hGO : AscendantRoute.GroundingChain.GroundObtains G) (hC3 : AscendantRoute.GroundingChain.C3 G)\n  (hC4a : AscendantRoute.GroundingChain.C4a G Omega) (I : W → Prop) (w0 : W) (hI : I w0) :\n  F.Box (fun v => ∃ x, Omega x v) w0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "AscendantRoute.GroundingChain.C5_BoxUnique",
+      "type": "AscendantRoute.GroundingChain.C5_BoxUnique.{u, v} {W : Type u} {D : Type v} (F : AscendantRoute.Frame W)\n  (G : (W → Prop) → (W → Prop) → Prop) (Omega : D → W → Prop) (hC1 : AscendantRoute.GroundingChain.C1 F G)\n  (hGO : AscendantRoute.GroundingChain.GroundObtains G) (hC3 : AscendantRoute.GroundingChain.C3 G)\n  (hC4a : AscendantRoute.GroundingChain.C4a G Omega) (I : W → Prop) (w0 : W) (hI : I w0) :\n  F.Box (fun v => AscendantRoute.GroundingChain.UniqueAt Omega v) w0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "AscendantRoute.GroundingChain.C5_RigidWitness",
+      "type": "AscendantRoute.GroundingChain.C5_RigidWitness.{u, v} {W : Type u} {D : Type v} (F : AscendantRoute.Frame W)\n  (G : (W → Prop) → (W → Prop) → Prop) (Omega : D → W → Prop) (hC1 : AscendantRoute.GroundingChain.C1 F G)\n  (hGO : AscendantRoute.GroundingChain.GroundObtains G) (hC3 : AscendantRoute.GroundingChain.C3 G)\n  (hC4a : AscendantRoute.GroundingChain.C4a G Omega) (I : W → Prop) (w0 : W) (hI : I w0) :\n  ∃ x, F.Box (fun v => ∀ (y : D), Omega y v ↔ y = x) w0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "hypermodal_theorems": [
+    {
+      "name": "HyperModal.logic_necessity",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.meta_logic",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.posT_box",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "HyperModal.posT_iff_box",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "HyperModal.triad_holds",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.posT_box_core",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "HyperModal.posT_not_both",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "HyperModal.Historical.perfect_positivity_refutation",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Historical.consciousness_axiom_refutation",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Historical.anti_regress_refutation",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Historical.logic_material_trio_refutation",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Model.setting_inhabited",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Model.omega_possible",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Model.grounding_nonempty",
+      "axioms": []
+    },
+    {
+      "name": "HyperModal.Model.frame_not_collapsed",
+      "axioms": []
+    }
+  ],
+  "gates": {
+    "gate_0": "PASS",
+    "modal_non_collapse": "PASS",
+    "question_begging_individual_premises": "PASS",
+    "w12_premise_manifest_complete": "PASS",
+    "w12_question_begging_matrix_complete": "PASS",
+    "public_grounding_model": "PASS",
+    "hypermodal_setting_model": "PASS",
+    "hypermodal_legacy_guards": "PASS",
+    "public_reproducibility": "PASS",
+    "explicit_package_allow_list": "PASS",
+    "post_package_leak_scan": "PASS"
+  },
+  "private_route": {
+    "status": "NOT_DISTRIBUTED",
+    "publicly_reproducible": false,
+    "statement": "The private successor route is not distributed as source or theorem-bearing .olean; no public verdict about its current internal build is asserted."
+  },
+  "auditor_verdict": "PENDING_INDEPENDENT_REVIEW",
+  "public_model": {
+    "theorem": "AscendantRoute.GroundingModel.m_conclusion",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "non_collapsed": true
+  },
+  "w12_audit": {
+    "premise_names": [
+      "C1",
+      "GroundObtains",
+      "C3",
+      "C4a",
+      "datum_obtains"
+    ],
+    "target_names": [
+      "actual_omega",
+      "possible_omega",
+      "necessary_omega",
+      "possible_necessary_omega"
+    ],
+    "manifest": [
+      {
+        "premise": "C1",
+        "theorem": "AscendantRoute.GroundingChainAudit.c1_refutes_all"
+      },
+      {
+        "premise": "GroundObtains",
+        "theorem": "AscendantRoute.GroundingChainAudit.ground_obtains_refutes_all"
+      },
+      {
+        "premise": "C3",
+        "theorem": "AscendantRoute.GroundingChainAudit.c3_refutes_all"
+      },
+      {
+        "premise": "C4a",
+        "theorem": "AscendantRoute.GroundingChainAudit.c4a_refutes_all"
+      },
+      {
+        "premise": "datum_obtains",
+        "theorem": "AscendantRoute.GroundingChainAudit.datum_obtains_refutes_all"
+      }
+    ],
+    "matrix": [
+      {
+        "premise": "C1",
+        "target": "actual_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c1_not_actual",
+        "status": "PASS"
+      },
+      {
+        "premise": "C1",
+        "target": "possible_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c1_not_possible",
+        "status": "PASS"
+      },
+      {
+        "premise": "C1",
+        "target": "necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c1_not_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "C1",
+        "target": "possible_necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c1_not_possible_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "GroundObtains",
+        "target": "actual_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.ground_obtains_not_actual",
+        "status": "PASS"
+      },
+      {
+        "premise": "GroundObtains",
+        "target": "possible_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.ground_obtains_not_possible",
+        "status": "PASS"
+      },
+      {
+        "premise": "GroundObtains",
+        "target": "necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.ground_obtains_not_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "GroundObtains",
+        "target": "possible_necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.ground_obtains_not_possible_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "C3",
+        "target": "actual_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c3_not_actual",
+        "status": "PASS"
+      },
+      {
+        "premise": "C3",
+        "target": "possible_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c3_not_possible",
+        "status": "PASS"
+      },
+      {
+        "premise": "C3",
+        "target": "necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c3_not_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "C3",
+        "target": "possible_necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c3_not_possible_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "C4a",
+        "target": "actual_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c4a_not_actual",
+        "status": "PASS"
+      },
+      {
+        "premise": "C4a",
+        "target": "possible_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c4a_not_possible",
+        "status": "PASS"
+      },
+      {
+        "premise": "C4a",
+        "target": "necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c4a_not_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "C4a",
+        "target": "possible_necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.c4a_not_possible_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "datum_obtains",
+        "target": "actual_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.datum_not_actual",
+        "status": "PASS"
+      },
+      {
+        "premise": "datum_obtains",
+        "target": "possible_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.datum_not_possible",
+        "status": "PASS"
+      },
+      {
+        "premise": "datum_obtains",
+        "target": "necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.datum_not_necessary",
+        "status": "PASS"
+      },
+      {
+        "premise": "datum_obtains",
+        "target": "possible_necessary_omega",
+        "theorem": "AscendantRoute.GroundingChainAudit.datum_not_possible_necessary",
+        "status": "PASS"
+      }
+    ]
+  },
+  "negative_guards": [
+    {
+      "file": "tests/Reject_HostilePositiveEmpty.lean",
+      "expected": "fields missing: 'proper'",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_HostileModal.lean",
+      "expected": "fields missing: 'symm'",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_ForcedPositiveEmpty.lean",
+      "expected": "⊢ ¬True",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_ForcedHostileModal.lean",
+      "expected": "⊢ False",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_BoxCollapse.lean",
+      "expected": "Reject_BoxCollapse.box_collapse",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_DiaCollapse.lean",
+      "expected": "Reject_DiaCollapse.dia_collapse",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_NoContingency.lean",
+      "expected": "Reject_NoContingency.no_contingency_anywhere",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_CertificateCollapse.lean",
+      "expected": "Reject_CertificateCollapse.certificate_equals_existence",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/NoExport_NecessaryExistence.lean",
+      "expected": "unknown identifier 'Final_NE_Proof'",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/NoExport_HyperModalLegacy.lean",
+      "expected": "unknown identifier 'HyperModal.perfect_positivity'",
+      "status": "PASS"
+    },
+    {
+      "file": "tests/Reject_NecGroundedInAnything.lean",
+      "expected": "target is not an inductive datatype",
+      "status": "PASS"
+    }
+  ],
+  "public_assemblies": [
+    {
+      "path": "AscendantRoute/Interface.olean",
+      "sha256": "4bdf45cce915287f9acea5fb3a4af36daee98148da8073c230e06ea515b1d077"
+    },
+    {
+      "path": "AscendantRoute/PublicTests.olean",
+      "sha256": "8d03a65bf92bdb96d7d5c4c3d3e26800cd45610b4f05ddb9be460adac857d3f4"
+    },
+    {
+      "path": "AscendantRoute/TargetTypes.olean",
+      "sha256": "aa58421f1186336031d8ac37fcdd547006502d445ca10fc685414858aaaeba13"
+    },
+    {
+      "path": "AscendantRoute/GroundingAudit.olean",
+      "sha256": "b86bca7e94f18ff583e30d8fd5a3fddded678034e5e13f6137df2acec23ce1b3"
+    },
+    {
+      "path": "AscendantRoute/GroundingChain.olean",
+      "sha256": "c34dbcec21d880b2201c24089e3973d18fc5cf883d07b0b629b1150be85c4f59"
+    },
+    {
+      "path": "AscendantRoute/GroundingChainAudit.olean",
+      "sha256": "f8c5016550229f5819401177cc006a4dea9b73c918aa500385a1a7dc9c3ef92f"
+    },
+    {
+      "path": "AscendantRoute/GroundingModel.olean",
+      "sha256": "3cb8b95eee93ddead473e09f05edfa0f1dd1648f69eec640c93525627b02d3b6"
+    },
+    {
+      "path": "AscendantRoute/PublicCertificateAudit.olean",
+      "sha256": "96ae1bd2bdd0e8df2ca9c18a7422ae08d047fd3ac5b3ac18597b9f396b77aa4c"
+    },
+    {
+      "path": "HyperModal.olean",
+      "sha256": "fe838066bae6b4d7f60fd0fb75f69ac40a9e5b0694e3ccc02cddab29f1a4129c"
+    }
+  ]
+}

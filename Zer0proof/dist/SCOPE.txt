@@ -1,0 +1,13 @@
+Zer0proof public distribution
+
+toolchain: leanprover/lean4:v4.20.1
+commit:    4d34d309177a19952c2c5934214c535e68542946
+
+Covered: the world-indexed public interface, compatibility API, public C5
+strong theorem route, individual-premise question-begging audit, non-collapsed
+GroundingModel, public tests, HyperModal layer, generated formal status, and
+document-sync checks. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
+and every shipped file is covered by SHA256SUMS.
+
+Private successor source and theorem-bearing private .olean: NOT DISTRIBUTED.
+No public verdict about the current internal private build is asserted.

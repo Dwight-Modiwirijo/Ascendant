@@ -29,7 +29,9 @@ axioms.out
 paper
 paper.pub
 
-# Reproducible public release output
-dist/
+# Reproducible public release output: intentionally tracked, so that every
+# consumer can clone the compiled .olean libraries and verify them directly,
+# without a GitHub account. The build is byte-reproducible, so any drift here
+# is a real change and must show up as a diff.
 
 # The disclosure-bounded Successor certificate payload is intentionally tracked.
