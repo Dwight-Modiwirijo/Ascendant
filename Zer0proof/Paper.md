@@ -1,5 +1,5 @@
-# Formal Verification and Successor Grounding Semantics
-## The Absolute Ground for AI beyond Gödel-Turing Limits: An Ontological, Not Computational, Claim under Tarskian Truth
+# Formal Verification via Successor Semantics
+## The Absolute Ground for AI beyond Gödel-Turing Limits and Tarskian Truth
 
 ### Abstract
 
@@ -9,7 +9,7 @@ The philosophical foundation of the argument is the **Constitutive Triad** of gr
 
 Structurally, this is analogous to a compiler, whose coherent operation requires resolution, termination, and semantic preservation. Remove any one of these functions and the resulting system *no longer preserves semantically coherent output*. Likewise, a constitutive world-architecture that removes grounding, termination, or closure no longer preserves ICO.
 
-The S-Machine provides a concrete successor-based realization of this structure. The public Lean development kernel-verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
+The successor-based grounding architecture models grounding as a process in which each successor step reduces the remaining ungrounded complexity. Because that complexity cannot decrease indefinitely, the process terminates at the unique state Ω. This formal structure is the S-Machine. Lean 4 verifies this termination structure. In the world-indexed modal route, it also verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
 
 The resulting framework is philosophical before it is computational. Its primary claim concerns the ontological conditions under which contingent reality, truth, and intelligibility are possible. Its consequences for artificial intelligence follow downstream: an artificial reasoner seeking objective and coherent reasoning must operate within the same structural requirements of grounding, termination, and closure.
 
