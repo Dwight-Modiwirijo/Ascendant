@@ -150,6 +150,8 @@ The constitutive triad is therefore not an optional explanatory supplement to an
 
 A rival architecture may reject the terminology of A1, A3, or A5, but it cannot remove their functional roles while preserving the full explanandum. If those roles are realized under another description, the constitutive triad has been reinstantiated. If even one of them is genuinely absent, the resulting structure no longer preserves intelligible contingent obtaining in the sense defined here.
 
+[Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) demonstrates this constitutive structure within arithmetic: Peano generation is grounded in zero, predecessor descent is well-founded, and induction preserves arithmetic structure throughout the generated domain.
+
 The alternatives are therefore exhaustive:
 
 $$\boxed{\text{functional preservation of the triad} \;\lor\; \text{loss of ICO}}$$
@@ -184,6 +186,8 @@ The specification requires three conditions over the well-founded order on $\mat
 3. **Unique zero.** If $meas(x)=0$ and $meas(y)=0$, then $x=y$.
 
 Natural-number induction and strict decrease exclude an infinite positive-measure successor sequence. Consequently, from every supplied start state $b_0$, some finite iterate reaches measure zero; unique zero identifies that reached state with every Ω-state, and terminal fixedness keeps it fixed. Termination here means finite arrival at the unique fixed Terminus Ω.
+
+[Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops the arithmetic foundation of this measure and its reversed application in the S-Machine.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
@@ -491,6 +495,8 @@ Gödel identifies limits of derivability in sufficiently expressive formal syste
 **Objection:** Does the S-Machine's guaranteed termination conflict with Turing's proof that halting is undecidable for arbitrary computation?
 
 **Response:** Turing's halting result places a limit on deciding termination for arbitrary computation. The S-Machine reverses the engineering problem. Rather than asking whether an unrestricted process will halt, it restricts admissible transitions to a well-founded successor order in which every non-terminal step strictly reduces a natural-valued measure. Termination is therefore not predicted after the fact but imposed as a structural invariant of the machine. The inversion preserves Turing's result while changing the class of computation under consideration: from arbitrary computation whose halting behavior may be undecidable to grounded computation whose admissibility already includes a proof-relevant descent toward a terminal state.
+
+[Appendix G, §G.5](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops this inversion as the Primal Halting programme.
 
 ---
 ### 5.3 Ambiguity Between Necessity and Contingency
@@ -980,7 +986,7 @@ Gödel and Turing expose intrinsic limits of formal derivability and computation
 
 The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops the same ordering as a successor-oriented research programme. In the paper's philosophical interpretation, this primal Terminus is Ω.
+Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops this ordering through Peano arithmetic and its reversed application in the S-Machine. In the paper's philosophical interpretation, this primal Terminus is Ω.
 
 ---
 
@@ -1511,7 +1517,7 @@ The public C5 theorems carry the formal Ω-conclusion from an explicit grounding
 
 The four historical refutation records prove only that the former universal statements were untenable. They do not derive Ω, and the surviving setting-relative reductio lemmas prove contradictions only when a setting field is paired with its explicit negation.
 
-The Peano comparison is therefore an interpretive analogy about well-founded structure. It is not an additional theorem that Ω follows in every possible grounding architecture, nor a substitute for the explicit hypotheses of the C5 route.
+The Peano comparison is a local functional instantiation of the Constitutive Triad within arithmetic. Generation from zero supplies grounding, well-founded predecessor descent supplies termination, and equality, recursion, and induction preserve arithmetic structure. [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops how the S-Machine reverses this ordering toward Ω.
 
 ---
 
