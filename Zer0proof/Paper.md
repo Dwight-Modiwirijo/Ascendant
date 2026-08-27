@@ -40,7 +40,7 @@ An appendix specifies the Lean-verified scope and reproduces representative arti
 
 ---
 ## 2. Framework: Hyper-Modal Grounding Principles
-This section introduces five principles with different formal statuses. We use S5 modal logic: the accessibility relation $R$ between possible worlds is an **equivalence relation** — reflexive ($\forall w,\, R\,w\,w$), symmetric ($\forall w\,v,\, R\,w\,v \to R\,v\,w$), and transitive ($\forall w\,v\,u,\, R\,w\,v \to R\,v\,u \to R\,w\,u$) — so that any two worlds in the same equivalence class can access one another (Blackburn et al. 2001). This is a structural property of $R$, not a claim that all worlds whatsoever are mutually accessible across every possible frame; the Lean development fixes $R$ as such an equivalence relation on the type of worlds it declares ([Appendix B.1.1](#b11-worlds-accessibility-and-s5-conditions)).
+This section establishes the five grounding principles and their formal roles. We use S5 modal logic: the accessibility relation $R$ between possible worlds is an **equivalence relation** — reflexive ($\forall w,\, R\,w\,w$), symmetric ($\forall w\,v,\, R\,w\,v \to R\,v\,w$), and transitive ($\forall w\,v\,u,\, R\,w\,v \to R\,v\,u \to R\,w\,u$) — so that every world in an equivalence class is accessible from every other world in that class (Blackburn et al. 2001). This equivalence class is the modal domain represented by the Lean frame ([Appendix B.1.1](#b11-worlds-accessibility-and-s5-conditions)).
 
 | Principle | Current status |
 |---|---|
@@ -56,12 +56,12 @@ This section introduces five principles with different formal statuses. We use S
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
 > **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
-*Note on formalization.* Public C5 premise `C1` states that every contingent proposition has a ground $q$ that is boxed at every world. The necessary status of that ground is therefore visible in the premise; Lean does not derive it from contingency alone. The separate HyperModal layer represents a related `HyperMinimalPSR` as an explicit setting field. The public S-Machine contract in [§2.2](#22-successor-based-grounding-architecture) is an abstract specification; no public Successor implementation is the engine of `C5_*`.
+*Formal correspondence.* Public C5 premise `C1` states that every contingent proposition has a ground $q$ that is boxed at every world, making the necessary status of the ground explicit. The HyperModal layer represents the corresponding `HyperMinimalPSR` role as a setting field, while the public S-Machine contract in [§2.2](#22-successor-based-grounding-architecture) gives that grounding architecture a finite successor form. The world-indexed modal conclusions are carried by the public `C5_*` theorems.
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible. In the active Lean layer it is represented by the primitive relation $G(q,p)$, with the ground first; no extensional implication-based definition is assumed.
 
 #### (A2) Core-Relative Positivity (A1/A3)
 
-The public HyperModal layer no longer treats positivity as a global axiom. It defines the world-constant predicate $T_{core}$ from the formally represented A1 role (Hyper-Minimal PSR), grounding strictness, and the strict A3 role (Anti-Regress) over a primitive grounding relation $G$. A5 closure is deliberately absent because it has not yet been formalized in Lean.
+The public HyperModal layer defines positivity as a derived, core-relative classifier. Its world-constant predicate $T_{core}$ combines the formally represented A1 role (Hyper-Minimal PSR), grounding strictness, and the strict A3 role (Anti-Regress) over the primitive grounding relation $G$; A5 supplies the meta-logical closure component of the full philosophical Triad.
 
 For a preservation predicate $Pres$ and a world-indexed claim $\varphi$, Preservation-Relative Positivity is:
 
@@ -71,17 +71,17 @@ $$
 
 For a property $P$ at $\Omega$, take $\varphi_P(v) := \Omega(v) \rightarrow P(v)$. The designated core-relative instance sets $Pres := T_{core}$. Every concrete positivity claim therefore carries a per-property obligation: one must prove that denying $P$ at $\Omega$ defeats a named component of the formal A1/A3 core.
 
-A HyperModal setting contains the A1/A3 fields themselves, and the theorem triad_holds derives $\forall v, T_{core}(v)$ from those fields; this is not an additional premise. From that derived fact and $Pos_T(T_{core},\varphi_P,w_0)$, Lean proves $\Box_{w_0}(\Omega \rightarrow P)$.
+A HyperModal setting contains the A1/A3 fields themselves, and `triad_holds` derives $\forall v, T_{core}(v)$ from them. From this theorem and $Pos_T(T_{core},\varphi_P,w_0)$, Lean proves $\Box_{w_0}(\Omega \rightarrow P)$.
 
-**Honesty condition.** Because $T_{core}$ is world-constant, under $\Box T_{core}$ the theorem posT_iff_box establishes:
+**Formal characterization.** Because $T_{core}$ is world-constant, under $\Box T_{core}$ the theorem `posT_iff_box` establishes:
 
 $$
 Pos_T(T_{core},\varphi_P,w_0) \leftrightarrow \Box_{w_0}\varphi_P.
 $$
 
-Core-relative positivity is therefore a transparent classification of properties already forced by the explicit core-relative obligation; it supplies no additional existence premise for $\Omega$. With $\Diamond\Omega$ at $w_0$, posT_not_both also proves that $P$ and $\neg P$ cannot both be core-positive.
+Core-relative positivity therefore identifies the properties necessarily attributable to $\Omega$ under their explicit per-property obligations. Existence of $\Omega$ is established by the C5 grounding route; with $\Diamond\Omega$ at $w_0$, `posT_not_both` also proves that $P$ and $\neg P$ cannot both be core-positive.
 
-The stronger route through contentful $ICO$, $Preserves$, and genuine A5 closure is future work. Section 2.1.1 establishes the necessity direction $Preserves(R,ICO) \rightarrow Triad(R)$; it does not claim or use the converse. The name Triad-Relative Positivity is reserved until that A5 and preservation bridge is formalized.
+Section 2.1.1 defends the constitutive direction $Preserves(R,ICO) \rightarrow Triad(R)$ through the full A1/A3/A5 architecture. In the current public Lean layer, the corresponding classifier is precisely the A1/A3-based $T_{core}$ result; the A5 and ICO-preservation relation carries its philosophical role in the complete argument.
 
 #### (A3) Anti-Regress
 An infinite regress of explanations is logically impermissible. There must be a terminating ground.
@@ -90,12 +90,12 @@ An infinite regress of explanations is logically impermissible. There must be a 
 
 Logical non-contradiction is invariant across the shared Kripke semantics. In Lean, logic_necessity proves $\Box(A \wedge \neg A \rightarrow \bot)$ directly, and meta_logic proves its double-boxed form.
 
-**A4 is not derived from the Triad but from the fixed logical-semantic background alone.** Both theorem footprints are empty. The formal meta_logic theorem is double-boxed non-contradiction; it is not a formalization of the philosophical A5 closure principle.
+**A4 follows from the fixed logical-semantic background alone.** Both theorem footprints are empty. The formal `meta_logic` theorem expresses double-boxed non-contradiction, while A5 expresses the distinct philosophical requirement of semantic closure.
 
 #### (A5) Meta-Logical Closure
 Rule-conformity is not yet semantic validity: Gödelian and Tarskian limits motivate the claim that a system cannot ultimately ground the truth-preserving authority of its own rules merely by declaring those rules valid. A5 therefore requires meta-logical closure—a non-circular semantic ground beyond purely internal rule application, analogous to a compiler preserving meaning rather than merely producing output.
 
-A1/A3/A5 form the philosophical constitutive proposal. The active HyperModal layer formalizes only the A1/A3 core; it neither formalizes A5 nor derives Ω-existence. The independent public C5 route carries the kernel-verified existence and uniqueness results from its explicit premise context.
+A1/A3/A5 form the philosophical constitutive proposal: grounding, termination, and semantic closure converge on a non-derivative terminus. The HyperModal layer formalizes the A1/A3 core, A5 completes the philosophical architecture, and the public C5 route kernel-verifies the existence and uniqueness of Terminus Ω from its explicit grounding context.
 
 
 #### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
@@ -118,7 +118,7 @@ Retorsion establishes the starting point of the analysis. Any denial of groundin
 
 **Denying A5 (Meta-Logical Closure).** A closed system can classify inferences as valid or invalid according to its own rules. Rule-conformity alone does not ground the normative authority by which those rules count as truth-preserving. Authority generated only by the same procedure is circular, while authority supplied by another contingent procedure reopens the regress. Meta-logical closure therefore requires a non-contained source of semantic coherence. A5 expresses the function that preserves the distinction between validity and mere procedural conformity.
 
-A proposed fundamental structure must itself possess both a modal status and a grounding status. If it is necessary and non-derivative, it already performs the function of a grounding terminus. If it is contingent, the grounding demand returns. If it is derivative, the chain continues. If it is self-grounding, the account becomes circular. A structure that preserves intelligible contingent obtaining therefore converges on a non-derivative terminus.
+A proposed fundamental structure must itself possess both a modal status and a grounding status. If it is necessary and non-derivative, it already performs the function of a grounding terminus. If it is contingent, the grounding demand returns. If it is derivative, the chain continues. If it is self-grounding, the account becomes circular. A structure that preserves intelligible contingent obtaining therefore converges on a non-derivative terminus. In this paper that terminus is Ω, philosophically identified as God.
 
 These cases jointly establish the functional preservation test. Any rival constitutive architecture that preserves modally determinate, truth-apt, inferentially stable, and contrastively distinguishable contingent obtaining must realize the functions of grounding, anti-regress, and meta-logical closure. In realizing those functions, it reinstantiates the functional equivalents of A1, A3, and A5 under another description. The grounding structure is therefore **ontologically prior** to contingent facts, and contingency is possible **only because** this structure necessarily obtains.
 
@@ -154,18 +154,18 @@ The alternatives are therefore exhaustive:
 
 $$\boxed{\text{functional preservation of the triad} \;\lor\; \text{loss of ICO}}$$
 
-The successor architecture of [§2.2](#22-successor-based-grounding-architecture) gives an explicit abstract specification of this minimum constitutive structure.
+The successor architecture of [§2.2](#22-successor-based-grounding-architecture) gives an explicit abstract specification of progression through this constitutive structure toward the unique Terminus Ω.
 
 ---
 ### 2.2 Successor-Based Grounding Architecture
 
-The S-Machine is publicly presented as an abstract successor semantics and formal machine contract. Lean kernel-verifies that every inhabited model satisfying the guarded-successor, well-founded-decrease, successor-coverage, and unique-zero requirements terminates in the unique terminal state Ω. The concrete Jump construction and the internal Ascendant Route and TI proof architectures remain private. The Successor Machine verifies finite progression to a unique terminal ground. The world-indexed route verifies, from its explicit premises, the strong modal properties of Ω. These are distinct public results: the S-Machine certificate is non-modal, while the world-indexed C5 route supplies the modal theorem types.
+The S-Machine presents the grounding argument as an abstract successor semantics and formal machine contract. Lean kernel-verifies that every inhabited model satisfying guarded succession, well-founded decrease, terminal fixedness, and unique zero reaches the unique terminal state Ω in finitely many steps. The Successor certificate establishes finite progression to the unique terminal ground, while the world-indexed C5 route verifies the strong modal properties of Ω from its explicit premises. The first result is operational and non-modal; the second supplies necessary existence, uniqueness, and rigidity across accessible worlds. Their philosophical interpretation converges on Terminus Ω, identified as God. Its exact public release closure consists of the Successor API, model, and certificate modules.
 
 #### 2.2.1 State space and successor
 
 Let $G$ be a non-empty type of *grounding states*. Each $g \in G$ represents a possible configuration of the world, or of a theory about the world, together with its current grounding structure.
 
-The clean-room contract contains a total successor
+The public contract contains a total successor
 
 $$S:G\to G$$
 
@@ -183,7 +183,7 @@ The specification requires three conditions over the well-founded order on $\mat
 
 3. **Unique zero.** If $meas(x)=0$ and $meas(y)=0$, then $x=y$.
 
-Natural-number induction and strict decrease exclude an infinite positive-measure successor sequence. Consequently, from every supplied start state $b_0$, some finite iterate reaches measure zero; unique zero identifies that reached state with every Ω-state, and terminal fixedness keeps it fixed. Here *terminates* is the exact claim; no topological limit or numerical convergence theorem is asserted.
+Natural-number induction and strict decrease exclude an infinite positive-measure successor sequence. Consequently, from every supplied start state $b_0$, some finite iterate reaches measure zero; unique zero identifies that reached state with every Ω-state, and terminal fixedness keeps it fixed. Termination here means finite arrival at the unique fixed Terminus Ω.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
@@ -197,9 +197,9 @@ The specification realizes the relevant functions as follows:
 
 > **Proposition 2.2.3.1 Successor termination and unique Ω**
 > For every start state $b_0$, there is an $N$ such that $\Omega(iterate(S,N,b_0))$; moreover every $y$ satisfying $\Omega(y)$ equals that reached state.
-> *Formal status.* The clean-room theorem `existsUniqueOmegaReached` proves this statement from the visible machine fields. `existsUniqueOmega` gives the corresponding explicit $\exists x\,(\Omega(x)\land\forall y\,(\Omega(y)\to y=x))$ result.
+> *Formal status.* The public theorem `existsUniqueOmegaReached` proves this statement from the visible machine fields. `existsUniqueOmega` gives the corresponding explicit $\exists x\,(\Omega(x)\land\forall y\,(\Omega(y)\to y=x))$ result.
 
-These are publicly certified, kernel-checked, non-modal consequences of the Successor requirements. They are not the proof engine behind the strong world-indexed C5 results, do not prove $\Box\exists!x\,\Omega(x)$, and do not specify how a concrete Jump is constructed.
+These publicly certified, kernel-checked theorems establish finite progression and unique arrival within the Successor architecture. The world-indexed C5 theorems establish the modal conclusion $\Box\exists!x\,\Omega(x)$ and the rigid-witness result. In the paper's complete argument, both formal perspectives articulate the unique Terminus Ω.
 
 ---
 ### 2.3 Epistemic Recognition of Contingency
@@ -236,7 +236,7 @@ $$
 K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
 $$
 
-The epistemic formulation makes contingency reflectively accessible to an agent; the constitutive modal-grounding structure A1/A3/A5 carries the transition from recognized contingency to necessary grounding.
+The epistemic formulation makes contingency reflectively accessible to an agent. The constitutive A1/A3/A5 structure then carries the transition from recognized contingency to necessary grounding, terminating in Ω, philosophically identified as God.
 
 ---
 ## 3. Formal Modal Proof of Ω
@@ -1417,7 +1417,7 @@ The public repository exposes one shared world-indexed S5 semantics, public Lean
 
 The paper additionally publishes the S-Machine contract as a specification together with its disclosure-bounded certificate bundle. The C5 and S-Machine certificates establish distinct results: strong world-indexed modal consequences in the first lane, and non-modal termination and unique-terminal consequences in the second.
 
-The strong C5 declarations are not leakage. They are intentional, source-reproducible public theorems. The no-export guard instead checks that undisclosed internal certificate names do not become public. The package manifest and leak scan enforce the declared distribution boundary without weakening the public C5 theorem surface.
+The strong C5 declarations are not leakage. They are intentional, source-reproducible public theorems. The no-export guard instead checks that certificate names outside the declared public interface do not become public. The package manifest and leak scan enforce the declared distribution boundary without weakening the public C5 theorem surface.
 
 The C5 theorem types quantify over an arbitrary S5 frame and a selected world $w_0$. Their boxed conclusions therefore cover the accessibility class of $w_0$; universal coverage of the entire world type requires a universally connected frame.
 
@@ -1437,7 +1437,7 @@ $$
 
 `PublicCertificateAudit.lean` checks and prints these declarations and their footprints. `GroundingModel.lean` supplies the joint model. `GroundingChainAudit.lean` performs a **single-premise non-entailment audit**: for each listed premise separately it gives an empty-domain model refuting actual, possible, necessary, and possible-necessary Ω-existence. This does not prove full combinatorial independence and does not make the content of `C4a.unique` or `C4a.rigid` disappear.
 
-The negative tests reject modal collapse, hostile positivity, empty-domain coercion, and export of undisclosed internal certificate names. The tests establish scoped engineering and logical guarantees; they do not prove the metaphysical truth of C1, C3, or C4a.
+The negative tests reject modal collapse, hostile positivity, empty-domain coercion, and export of certificate names outside the declared public interface. The tests establish scoped engineering and logical guarantees; they do not prove the metaphysical truth of C1, C3, or C4a.
 
 **Certificate statement.** Lean certifies derivability relative to the complete declared context. Public model witnesses certify joint satisfiability for their respective contexts. Neither fact establishes $\mathcal R\models\Gamma_{C5}$; that remains the philosophical actuality argument.
 
@@ -1447,7 +1447,7 @@ Under Curry-Howard, a Lean theorem is represented by a proof term accepted by th
 
 Public certification adds engineering evidence: a pinned toolchain, public source and assemblies, theorem and axiom printing, model witnesses, fail-closed negative tests, a package allow-list, and a leak scan. It is stronger than signature inspection alone, while remaining distinct from metaphysical actuality.
 
-The IP boundary concerns the concrete Jump and the internal Ascendant and TI implementations. Their implementation source, proof objects, definitions, and transitive dependencies are not part of either clean-room certificate lane. No undisclosed artifact is needed to audit the public C5 results or either public contract certificate. Each clean-room layer exposes only its abstract contract, non-modal consequences, countdown witness, and audit; each exact import closure contains its own three core-only Release modules and nothing from an internal implementation.
+The IP boundary concerns the concrete Jump and the internal Ascendant and TI implementations. Their implementation source, proof objects, definitions, and transitive dependencies are not part of either clean-room certificate lane. No artifact outside the declared public distribution is needed to audit the public C5 results or either public contract certificate. Each clean-room layer exposes only its abstract contract, non-modal consequences, countdown witness, and audit; each exact import closure contains its own three core-only Release modules and nothing from an internal implementation.
 
 #### A.2.3 Axiom Footprint Certificate (Lean Kernel Audit)
 

@@ -30,7 +30,7 @@ The public `HyperModal.lean` layer has no global `axiom` declarations. It uses p
 
 `PosT` is **Preservation-Relative Positivity**; its designated `Pos_T` specialization is **Core-Relative Positivity (A1/A3)**. `posT_iff_box` records the honesty equivalence under explicit preservation, `posT_box_core` is the `T_core` specialization, and `posT_not_both` requires explicit `F.Dia Omega w0`. None of these declarations supplies an Omega-existence premise.
 
-The A5 component of the philosophical Triad is not formalized, and no `Triad -> Box PreservesICO` theorem is claimed. A4 is not derived from the Triad but from the fixed logical-semantic background alone. `meta_logic` is only double-boxed non-contradiction, not A5 closure.
+The A5 component of the philosophical Triad is not formalized, and no `Triad -> Box PreservesICO` theorem is claimed. A4 follows from the fixed logical-semantic background alone. `meta_logic` is only double-boxed non-contradiction, not A5 closure.
 
 `HyperModal.Model.setting_inhabited` is an axiom-free, non-collapsed two-world witness with an obtaining datum, contingent material, necessary logic, possible Omega, and non-empty `G`. Four historical refutation records document the deleted universal statements; the no-export and primitive-grounding negative guards prevent their accidental return.
 

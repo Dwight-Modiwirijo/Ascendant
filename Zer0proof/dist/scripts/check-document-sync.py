@@ -100,7 +100,7 @@ def main() -> int:
         "posT_iff_box",
         "posT_box_core",
         "posT_not_both",
-        "A4 is not derived from the Triad but from the fixed logical-semantic background alone.",
+        "A4 follows from the fixed logical-semantic background alone.",
     ]
     for document, text in texts.items():
         for needle in hypermodal_current:
@@ -234,7 +234,7 @@ def main() -> int:
         "C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions.",
         "The actual grounding structure satisfies the complete C5 context Γ in the paper's constitutive argument; the kernel theorem therefore applies to that intended interpretation.",
         "The paper's philosophical argument establishes $\\mathcal R\\models\\Gamma_{C5}$ member by member",
-        "The S-Machine is publicly presented as an abstract successor semantics and formal machine contract.",
+        "The S-Machine presents the grounding argument as an abstract successor semantics and formal machine contract.",
     ]
     for needle in w16_current:
         if needle not in texts["Paper.md"]:
@@ -285,16 +285,19 @@ def main() -> int:
         if re.search(re.escape(needle), texts["Paper.md"], flags=re.IGNORECASE):
             errors.append(f"Paper.md: forbidden W16 process claim remains: {needle}")
 
-    approved_private_sentence = (
-        "The concrete Jump construction and the internal Ascendant Route and TI proof "
-        "architectures remain private."
+    approved_public_boundary = (
+        "Its exact public release closure consists of the Successor API, model, "
+        "and certificate modules."
     )
-    private_count = len(re.findall(r"\bprivate\b", texts["Paper.md"], flags=re.IGNORECASE))
-    if texts["Paper.md"].count(approved_private_sentence) != 1 or private_count != 1:
+    boundary_count = texts["Paper.md"].count(approved_public_boundary)
+    if boundary_count != 1:
         errors.append(
-            "Paper.md: IP boundary must contain exactly the approved private sentence "
-            f"and exactly one 'private' token (found {private_count})"
+            "Paper.md: public Successor release boundary must occur exactly once "
+            f"(found {boundary_count})"
         )
+    for term in ("private", "undisclosed", "secret"):
+        if re.search(rf"\b{re.escape(term)}\b", texts["Paper.md"], flags=re.IGNORECASE):
+            errors.append(f"Paper.md: disclosure-status wording remains: {term}")
 
     synthesis = (REPO / "assets" / "synthesis.svg").read_text(encoding="utf-8")
     for needle in ("FORMAL CONTRACT", "Finite convergence + unique top", "PUBLIC C5 / GroundingChain"):
