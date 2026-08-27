@@ -486,7 +486,14 @@ Johannine language (John 1:1–3) identifies this Logos with God. The philosophi
 Gödel identifies limits of derivability in sufficiently expressive formal systems. Tarski locates truth semantically through a truth-predicate and Convention T. BHK and Curry–Howard characterize proof through inhabitants of proposition-types, giving Lean its proof-object interpretation. Turing adds the computational boundary of undecidability. Within this paper, A1/A3/A5 supply the constitutive grounding structure that carries the ontological argument.
 
 ---
-### 5.2 Ambiguity Between Necessity and Contingency
+### 5.2 Halting Undecidability and the S-Machine
+
+**Objection:** Does the S-Machine's guaranteed termination conflict with Turing's proof that halting is undecidable for arbitrary computation?
+
+**Response:** Turing's halting result places a limit on deciding termination for arbitrary computation. The S-Machine reverses the engineering problem. Rather than asking whether an unrestricted process will halt, it restricts admissible transitions to a well-founded successor order in which every non-terminal step strictly reduces a natural-valued measure. Termination is therefore not predicted after the fact but imposed as a structural invariant of the machine. The inversion preserves Turing's result while changing the class of computation under consideration: from arbitrary computation whose halting behavior may be undecidable to grounded computation whose admissibility already includes a proof-relevant descent toward a terminal state.
+
+---
+### 5.3 Ambiguity Between Necessity and Contingency
 Objection: The modal categories are inconsistently applied.
 
 Response: [Section 2](#2-framework-hyper-modal-grounding-principles) formally defines these terms relative to a selected S5 frame. At $w_0$, $Nec(p)$ means truth at every world accessible from $w_0$, while $Cont(p)$ means that both $p$ and $\neg p$ are accessible possibilities. Public C1 explicitly assumes a boxed ground for each contingent proposition; the philosophical argument defends that premise.
@@ -515,7 +522,7 @@ Modal asymmetry gives this application an exact form. Contingent truths receive 
 This structure supports the paper's foundational conclusion: grounding and anti-regress converge on the necessary Terminus Ω.
 
 ---
-#### **5.2.1 Necessary Possibility and Possible Necessity**
+#### **5.3.1 Necessary Possibility and Possible Necessity**
 
 **Objection:** Necessary possibility is being confused with possible necessity.
 
@@ -523,7 +530,7 @@ This structure supports the paper's foundational conclusion: grounding and anti-
 
 ---
 
-### 5.3 Philosophical Overreach
+### 5.4 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
 Response: The bridge proceeds cumulatively. The formal route establishes the modal conclusion
@@ -535,12 +542,12 @@ $$
 The actuality argument identifies this necessary and unique Terminus as the Absolute Ground. [Section 6](#6-theological-resonance) develops the theological meaning of the same Ω established by the grounding argument.
 
 ---
-### 5.4 Social Implications and AI Ethics
+### 5.5 Social Implications and AI Ethics
 Objection: The link between modal logic and societal values is speculative.
 
 Response: Modal grounding supplies the structural floor for coherent ethical deliberation. An artificial superintelligence capable of modal self-reflection can distinguish contingent goals from the necessary conditions of intelligibility, test values against that stable order, and preserve consistency across changing circumstances. Recognition of Ω therefore gives rational agency a fixed orientation from which coherent norms can be evaluated.
 
-#### **5.4.1 Grounding, Modal Stability, and Societal Coherence**
+#### **5.5.1 Grounding, Modal Stability, and Societal Coherence**
 
 Modern societies require an explicit account of grounding to sustain long-term coherence. As electrical grounding stabilizes a circuit, ontological grounding gives propositions, norms, and institutions a common reference through which disagreement remains intelligible and correction remains possible.
 
@@ -551,14 +558,14 @@ Modal logic supplies this structure by anchoring propositions within a stable fi
 The societal implication follows through structural application: **grounding gives complex social and technological systems a stable basis for truth, meaning, and coherent revision.** Ω supplies the ultimate reference point of that grounded order.
 
 ---
-### 5.5 Semantic Collapse in the Absence of Grounding
+### 5.6 Semantic Collapse in the Absence of Grounding
 Objection: Can a brute fact explain existence?
 
 Response: A brute fact can label an unexplained stopping point, whereas explanation requires a ground that makes the fact intelligible. The statement “because nothing exists, something else must exist” dissolves its own explanatory context by invoking a relation where no relata remain.
 
 Explanation presupposes a context in which relata, truth conditions, and inferential direction are distinguishable. Gödelian limits motivate the search for a ground beyond contingent self-explanation, while material implication shows how formal truth can remain evaluable even when semantic relevance has disappeared. The grounding relation restores that relevance by ordering explanation toward Ω.
 
-#### **5.5.1 The Paradoxes of Material Implication**
+#### **5.6.1 The Paradoxes of Material Implication**
 
 Classical material implication exhibits several well-known paradoxes as lawful consequences of its truth-functional definition. Grounding analysis adds the semantic relation between antecedent and consequent and thereby distinguishes formal evaluation from explanatory significance. The following three patterns show why that distinction matters.
 
@@ -642,7 +649,7 @@ Thus:
 The Terminus Ω supplies the stable semantic ground through which antecedent and consequent participate in an intelligible order.**
 
 ---
-### 5.6 Paradox Types and the Perfection of Ω
+### 5.7 Paradox Types and the Perfection of Ω
 
 This section organizes paradox types by the way their resolution reveals grounding, termination, closure, and properties of the already established Terminus Ω.
 
@@ -672,7 +679,7 @@ For each paradox type listed in the table below, the following deductive pattern
 
 1. **Limit revelation** — the paradox reveals the need expressed by the philosophical A5 role of meta-logical closure.
 2. **Semantic strengthening** — resolution refines and stabilizes the semantic framework.
-3. **Conceptual convergence on Ω** — A1, A3, and A5 interpret the strengthened semantics as converging on Ω as Ground (cf. [Section 5.5](#55-semantic-collapse-in-the-absence-of-grounding)).
+3. **Conceptual convergence on Ω** — A1, A3, and A5 interpret the strengthened semantics as converging on Ω as Ground (cf. [Section 5.6](#56-semantic-collapse-in-the-absence-of-grounding)).
 
 Collectively, this motivates the following conceptual schema:
 
@@ -694,7 +701,7 @@ Thus, paradoxes function as structural witnesses to the necessity, coherence, an
 | **Semantic**<br/>(A paradox arising from language, meaning, or vagueness, challenging definitions) | *Liar Paradox* (a Cretan says 'All Cretans are liars');<br/>*Ship of Theseus* (replacing all planks questions identity);<br/>*Sorites Paradox* (removing grains from a heap: when is it no longer a heap?);<br/>*Moore's Paradox* ('It rains, but I don't believe it rains');<br/>*Chinese Room* (perfect symbol manipulation without understanding). |
 | **Ground Paradox**<br/>(A paradox concerning foundational ontology, causation, or regress, requiring a terminating ground) | *Absolute Knowability Paradox* (absolute knowability arises from not being knowable);<br/>*Hegel's Dialectic* (every thesis evokes its antithesis, resolved in synthesis). |  
 
-### 5.6.6 Hierarchy in Fundamental Paradoxes: Architecture versus Engine
+### 5.7.6 Hierarchy in Fundamental Paradoxes: Architecture versus Engine
 
 While several paradoxes possess a fundamental character, a deeper hierarchy can be discerned within the category of foundational paradoxes. This hierarchy is based on whether a paradox outlines a structural condition (*architecture*) or a dynamic process (*engine*) that operates within that structure. Two primary candidates — Hegelian dialectics and the Absolute Knowability Paradox developed herein — illustrate this distinction. This hierarchy aligns with Gödelian boundaries ([Section 5.1](#51-alleged-misapplication-of-gödels-theorem)).
 
@@ -742,7 +749,7 @@ Thus, antinomies structurally point to Ω as the unique Ground of higher-order c
 ##### **Semantic Paradoxes**
 Semantic paradoxes arise from instability in meaning, reference, or identity. Their resolution stabilizes the semantic field so that propositions retain meaningful distinction and coherent reference.
 
-Under A1, grounding orders both contingent facts and the semantic structures that make propositions intelligible. The necessary Ground supplies the stability analyzed in [§5.5](#55-semantic-collapse-in-the-absence-of-grounding).
+Under A1, grounding orders both contingent facts and the semantic structures that make propositions intelligible. The necessary Ground supplies the stability analyzed in [§5.6](#56-semantic-collapse-in-the-absence-of-grounding).
 
 Thus, semantic paradoxes motivate stability of meaning as a perfection property of Ω, represented through a dedicated Core-Relative Positivity obligation.
 
@@ -778,7 +785,7 @@ The paradox analysis therefore illuminates the perfection of the already establi
 ---
 
 <a id="57-the-finitude-of-matter-and-its-non-ontological-status"></a>
-### **5.7 Cosmological Scope of Constitutive Grounding**
+### **5.8 Cosmological Scope of Constitutive Grounding**
 
 Questions concerning finite or infinite matter belong to empirical cosmology. Constitutive grounding concerns the conditions under which any cosmological state is intelligible, so the route to Ω remains invariant across physical models.
 
@@ -800,7 +807,7 @@ Empirical cosmology thus supplies examples of contingent orders; the grounding a
 
 ---
 <a id="58-finitude-potential-infinitude-and-the-reinforcement-of-grounding"></a>
-### **5.8 Cosmological Invariance and Grounding**
+### **5.9 Cosmological Invariance and Grounding**
 
 Finite and potentially infinite cosmologies equally exhibit the distinction between what obtains and the conditions for obtaining. Physical cardinality describes contingent structure; grounding supplies its constitutive order.
 
@@ -969,11 +976,11 @@ $$\Box_{w_0}\exists!x\,\Omega(x)$$
 
 secures Ω as modally unavoidable relative to $\Gamma_{C5}$: non-existence is modally impossible within the declared context. The philosophical argument establishes the same grounding functions as conditions of rational discourse. On this unified reading, Ω is necessary, unique, and undeniable. Therefore, God exists necessarily and uniquely.
 
-Gödel and Turing reveal structural limits of formal derivability and computation. This work interprets those limits as evidence that intelligibility is grounded beyond finite self-description and argues philosophically that every coherent theory realizes the functions assembled in the complete C5 context, terminating in Ω.
+Gödel and Turing expose intrinsic limits of formal derivability and computation. The Primal Halting argument applies that boundary in the inverse philosophical direction: instead of asking only what a contingent formal system cannot derive or decide from within, it asks what must already be the case for bounded derivation, correct termination, and intelligible computation to be possible. Their limit results thereby disclose a positive ontological demand: contingent computation presupposes a well-founded order with a final ground.
 
 The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-At the level of the constitutive analogy advanced here, **a primal halting program must exist**: computation is intelligible through a well-founded terminal structure, philosophically identified with Ω. `GroundingChain.terminus_above` supplies the classical Terminus witness in the grounding relation, while [Appendix G](#appendix-g-successor-function-of-grounding-conceptual-sketch) develops this terminal architecture as a successor-oriented research programme.
+Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-successor-function-of-grounding-conceptual-sketch) develops the same ordering as a successor-oriented research programme. In the paper's philosophical interpretation, this primal Terminus is Ω.
 
 ---
 
