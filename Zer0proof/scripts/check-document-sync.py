@@ -135,8 +135,8 @@ def main() -> int:
             "public C5 grounding proof surface",
             "publicly certified, kernel-recheckable abstract S-Machine contract",
             "Classical Witness-Selecting Successor Sketch",
-            "research blueprint, not the engine",
-            "complexity consequence, not an IP protection mechanism",
+            "implementation specification for Ω-directed reasoning",
+            "uniform polynomial-time Ω-search for exact Max-3-SAT would settle the open P versus NP problem",
         ],
         "PUBLIC_SAFETY_CERTIFICATE.md": [
             "explicit package allow-list",
@@ -241,7 +241,7 @@ def main() -> int:
             errors.append(f"Paper.md: missing W16 current claim: {needle}")
 
     protected_phrases = [
-        "The proof term and actuality bridge therefore converge on the same rigid Ω: God.",
+        "On this unified reading, Ω is necessary, unique, and undeniable. Therefore, God exists necessarily and uniquely.",
         "Convention T performs disquotation within an interpretation",
         "undeniable",
         "modally impossible",

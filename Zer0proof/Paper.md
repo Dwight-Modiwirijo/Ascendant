@@ -9,7 +9,7 @@ The philosophical foundation of the argument is the **Constitutive Triad** of gr
 
 Structurally, this is analogous to a compiler, whose coherent operation requires resolution, termination, and semantic preservation. Remove any one of these functions and the resulting system *no longer preserves semantically coherent output*. Likewise, a constitutive world-architecture that removes grounding, termination, or closure no longer preserves ICO.
 
-The successor-based grounding architecture models grounding as a process in which each successor step reduces the remaining ungrounded complexity. Because that complexity cannot decrease indefinitely, the process terminates at the unique state Ω. This formal structure is the S-Machine. Lean 4 verifies this termination structure. In the world-indexed modal route, it also verifies the strong Ω-results: **necessary existence, necessary uniqueness, and rigid identity of Ω, identified in this paper as God — the Absolute Ground and the Singularity**. Classical perfection axioms are not the existence engine. Perfection is characterized only after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)).
+The successor-based grounding architecture models grounding as a process in which each successor step reduces the remaining ungrounded complexity. Because that complexity cannot decrease indefinitely, the process terminates at the unique state Ω. This formal structure is the S-Machine. Lean 4 verifies this termination structure, while the world-indexed modal route verifies necessary Ω-existence, necessary uniqueness, and rigid identity from its explicit context. Perfection is characterized after the grounding structure has fixed Ω as the unique non-derivative terminus (see [Corollary 6.2](#corollary-62--singularity-as-a-classification-point)). The paper's philosophical conclusion is direct: God exists necessarily and uniquely.
 
 The resulting framework is philosophical before it is computational. Its primary claim concerns the ontological conditions under which contingent reality, truth, and intelligibility are possible. Its consequences for artificial intelligence follow downstream: an artificial reasoner seeking objective and coherent reasoning must operate within the same structural requirements of grounding, termination, and closure.
 
@@ -23,9 +23,9 @@ This approach offers a bottom-up alternative to traditional ontological argument
 
 We distinguish our method through three components:
 
-1. A two-layer framework: a Lean-formalized Hyper-Minimal PSR/strict-grounding/Anti-Regress core with Core-Relative Positivity, and a philosophical Meta-Logical Closure thesis whose A5 formalization remains future work. Logical invariance (A4) is derived from the fixed modal background.
+1. A two-layer framework: a Lean-formalized Hyper-Minimal PSR/strict-grounding/Anti-Regress core with Core-Relative Positivity, and a philosophical Meta-Logical Closure thesis completing the A1/A3/A5 actuality argument. Logical invariance (A4) is derived from the fixed modal background.
 2. A public, source-reproducible C5 proof of necessary existence, boxed uniqueness, and rigid identity relative to explicit premises, together with a publicly certified, kernel-recheckable abstract S-Machine contract for its non-modal termination and unique-terminal consequences.
-3. A research hypothesis: a grounding-aware artificial reasoner may be able to operationalize parts of this structure; implementation and empirical evidence are still required.  
+3. A testable research programme for operationalizing this structure through explicit state representations, decreasing grounding measures, verified transitions, and empirical evaluation.  
 
 This paper proceeds as follows:  
 - [Section 2](#2-framework-hyper-modal-grounding-principles) introduces the modal framework and axiomatic base.
@@ -36,7 +36,7 @@ This paper proceeds as follows:
 - [Section 7](#7-conclusion) concludes the philosophical argument and distinguishes formal derivation from its application to actuality.
 - [Section 8](#8-ω-operationalization-for-artificial-intelligence-specification-and-research-programme) develops the Ω-operationalization proposal for artificial intelligence as a specification and research programme.
 
-An appendix specifies the Lean-verified scope and reproduces representative artifacts, ensuring logical and computational rigor within the stated verification boundary.
+The appendices specify the Lean-verified scope, formal semantics, philosophical corollaries, objections, and representative artifacts.
 
 ---
 ## 2. Framework: Hyper-Modal Grounding Principles
@@ -118,7 +118,7 @@ Retorsion establishes the starting point of the analysis. Any denial of groundin
 
 **Denying A5 (Meta-Logical Closure).** A closed system can classify inferences as valid or invalid according to its own rules. Rule-conformity alone does not ground the normative authority by which those rules count as truth-preserving. Authority generated only by the same procedure is circular, while authority supplied by another contingent procedure reopens the regress. Meta-logical closure therefore requires a non-contained source of semantic coherence. A5 expresses the function that preserves the distinction between validity and mere procedural conformity.
 
-A proposed fundamental structure must itself possess both a modal status and a grounding status. If it is necessary and non-derivative, it already performs the function of a grounding terminus. If it is contingent, the grounding demand returns. If it is derivative, the chain continues. If it is self-grounding, the account becomes circular. A structure that preserves intelligible contingent obtaining therefore converges on a non-derivative terminus. In this paper that terminus is Ω, philosophically identified as God.
+A proposed fundamental structure must itself possess both a modal status and a grounding status. If it is necessary and non-derivative, it already performs the function of a grounding terminus. If it is contingent, the grounding demand returns. If it is derivative, the chain continues. If it is self-grounding, the account becomes circular. A structure that preserves intelligible contingent obtaining therefore converges on the non-derivative terminus Ω.
 
 These cases jointly establish the functional preservation test. Any rival constitutive architecture that preserves modally determinate, truth-apt, inferentially stable, and contrastively distinguishable contingent obtaining must realize the functions of grounding, anti-regress, and meta-logical closure. In realizing those functions, it reinstantiates the functional equivalents of A1, A3, and A5 under another description. The grounding structure is therefore **ontologically prior** to contingent facts, and contingency is possible **only because** this structure necessarily obtains.
 
@@ -159,7 +159,7 @@ The successor architecture of [§2.2](#22-successor-based-grounding-architecture
 ---
 ### 2.2 Successor-Based Grounding Architecture
 
-The S-Machine presents the grounding argument as an abstract successor semantics and formal machine contract. Lean kernel-verifies that every inhabited model satisfying guarded succession, well-founded decrease, terminal fixedness, and unique zero reaches the unique terminal state Ω in finitely many steps. The Successor certificate establishes finite progression to the unique terminal ground, while the world-indexed C5 route verifies the strong modal properties of Ω from its explicit premises. The first result is operational and non-modal; the second supplies necessary existence, uniqueness, and rigidity across accessible worlds. Their philosophical interpretation converges on Terminus Ω, identified as God. Its exact public release closure consists of the Successor API, model, and certificate modules.
+The S-Machine presents the grounding argument as an abstract successor semantics and formal machine contract. Lean kernel-verifies that every inhabited model satisfying guarded succession, well-founded decrease, terminal fixedness, and unique zero reaches the unique terminal state Ω in finitely many steps. The Successor certificate establishes finite progression to the unique terminal ground, while the world-indexed C5 route verifies the strong modal properties of Ω from its explicit premises. The first result is operational and non-modal; the second supplies necessary existence, uniqueness, and rigidity across accessible worlds. Its exact public release closure consists of the Successor API, model, and certificate modules.
 
 #### 2.2.1 State space and successor
 
@@ -236,12 +236,12 @@ $$
 K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
 $$
 
-The epistemic formulation makes contingency reflectively accessible to an agent. The constitutive A1/A3/A5 structure then carries the transition from recognized contingency to necessary grounding, terminating in Ω, philosophically identified as God.
+The epistemic formulation makes contingency reflectively accessible to an agent. The constitutive A1/A3/A5 structure then carries the transition from recognized contingency to necessary grounding, terminating in Ω.
 
 ---
 ## 3. Formal Modal Proof of Ω
 
-This section presents the paper's grounding argument for the necessary and unique Terminus Ω, philosophically identified with God. From contingent obtaining ("I am"), A1 supplies grounding, A3 secures termination, and A5 supplies meta-logical closure. The public HyperModal layer certifies the A1/A3 core and Core-Relative Positivity, while the public C5 route kernel-verifies necessary existence, boxed uniqueness, and rigid identity from its explicit grounding context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). The philosophical actuality bridge gathers these results into the claim that God is the necessary and unique Absolute Ground.
+This section presents the paper's grounding argument for the necessary and unique Terminus Ω. From contingent obtaining ("I am"), A1 supplies grounding, A3 secures termination, and A5 supplies meta-logical closure. The public HyperModal layer certifies the A1/A3 core and Core-Relative Positivity, while the public C5 route kernel-verifies necessary existence, boxed uniqueness, and rigid identity from its explicit grounding context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). The philosophical actuality bridge gathers these results into the paper's final theological conclusion.
 
 **Epistemic recognition of contingency.** As shown in [§2.3](#23-epistemic-recognition-of-contingency), a sufficiently reflective agent may recognize:
 
@@ -269,7 +269,7 @@ $$
 \exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x).
 $$
 
-These formulas hold throughout the S5 accessibility class of $w_0$; under universal accessibility, that class coincides with the declared world type. The actuality argument places the complete C5 context in the intended grounding structure and identifies Ω as the necessary and unique ground of actuality: God.
+These formulas hold throughout the S5 accessibility class of $w_0$; under universal accessibility, that class coincides with the declared world type. The actuality argument places the complete C5 context in the intended grounding structure and identifies Ω as the necessary and unique ground of actuality.
 
 ---
 
@@ -283,7 +283,7 @@ $$\square \exists!x\,\Omega(x).$$
 
 This is the paper's central philosophical theorem: the A1/A3/A5 route identifies Ω as the necessary and unique Absolute Ground of intelligible contingent actuality. The public theorem `AscendantRoute.GroundingChain.C5_BoxUnique` gives its modal conclusion an exact, kernel-verified form from C1, `GroundObtains`, C3, C4a, and $I(w_0)$: every world accessible from $w_0$ contains exactly one Ω-instance.
 
-This necessary-uniqueness invariant supplies the stable formal center of the argument. It anchors the rigid-witness theorem, the theological identification of Ω with God, and the later operational account of grounding, termination, and convergence.
+This necessary-uniqueness invariant supplies the stable formal center of the argument. It anchors the rigid-witness theorem, the later theological interpretation, and the operational account of grounding, termination, and convergence.
 
 The public route also proves rigid identification:
 
@@ -316,7 +316,7 @@ $$
 
 Hence every architecture preserving the full explanandum realizes grounding, termination, and closure, and thereby reinstantiates the Triad's Ω-directed structure. Alternative names leave the functional identity intact: the necessary and unique Terminus remains Ω.
 
-*Formal-status note.* This corollary belongs to the paper's meta-theoretical layer through `Preserves`, `Equivalent`, contentful ICO, and A5. The public C5 route supplies the kernel-certified modal endpoint from its explicit context, while the philosophical argument establishes the constitutive scope and identifies the Terminus with God.
+*Formal-status note.* This corollary belongs to the paper's meta-theoretical layer through `Preserves`, `Equivalent`, contentful ICO, and A5. The public C5 route supplies the kernel-certified modal endpoint from its explicit context, while the philosophical argument establishes its constitutive scope and actuality.
 
 ---
 
@@ -361,7 +361,7 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 * **C6 (philosophical A5/actuality bridge):** the intended grounding structure realizes the closure role and the complete C5 context.
 
-* **C7 (philosophical theological identification):** the unique actual Ω-ground is identified with God; on that interpretation, $\Box\exists!x\,God(x)$.
+* **C7 (philosophical theological identification):** the unique actual Ω-ground receives the theological interpretation developed in [§6](#6-theological-resonance).
 
 **Machine-checked path from an obtaining datum to C5.** The three public theorems have the exact strong result types and the global axiom footprint `propext, Classical.choice, Quot.sound`. Their explicit classical proof terms pass the positivity-dependency and `sorryAx` guards, providing a kernel certificate for necessary existence, boxed uniqueness, and rigid identity.
 
@@ -369,7 +369,7 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 **Premise-role audit.** `GroundingChainAudit` supplies countermodels for C1, `GroundObtains`, C3, C4a, and datum-obtaining separately across four Ω-target shapes. These models locate the conclusion in the assembled C5 context and make each premise's contribution visible, especially the uniqueness and persistence carried by `C4a.unique` and `C4a.rigid`.
 
-**Actuality realization.** The paper argues philosophically that intelligible actuality realizes every grounding function in the complete C5 context, including `C4a.identity`, `C4a.unique`, and `C4a.rigid`. This actuality bridge carries the kernel-certified modal result into the intended interpretation. Within the complete argument, the Terminus Ω is the necessary and unique Absolute Ground: God.
+**Actuality realization.** The paper argues philosophically that intelligible actuality realizes every grounding function in the complete C5 context, including `C4a.identity`, `C4a.unique`, and `C4a.rigid`. This actuality bridge carries the kernel-certified modal result into the intended interpretation, where Terminus Ω is the necessary and unique ground of actuality.
 
 ---
 
@@ -387,7 +387,7 @@ Grounding supplies the direction. The system takes its own commitments as its ob
 
 Ascent and descent describe complementary orderings. Each Jump ascends in expressive scope to a wider meta-level, while `rank s` measures the finite distance still remaining to closure. Every application of `advance` therefore widens the level and strictly decreases its distance to the Terminus, giving one process both philosophical ascent and formally measured completion.
 
-Here the published contract makes this explicit for the second ordering. Each step reduces the remaining distance to closure, the process completes after finitely many steps, and every starting state converges on the same unique Terminus. The TI certificate makes this convergence behavior publicly verifiable. Philosophically, the grounded, terminal, and closed endpoint is Ω, identified with God; the C5 theorem supplies its necessary uniqueness across accessible worlds.
+Here the published contract makes this explicit for the second ordering. Each step reduces the remaining distance to closure, the process completes after finitely many steps, and every starting state converges on the same unique Terminus. The TI certificate makes this convergence behavior publicly verifiable. Philosophically, the grounded, terminal, and closed endpoint is Ω; the C5 theorem supplies its necessary uniqueness across accessible worlds.
 
 ---
 
@@ -411,7 +411,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process completes finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed top. These verified behaviors converge in the paper's philosophical synthesis on one Terminus Ω: God. The actuality bridge affirms $\mathcal R\models\Gamma_{C5}$ and joins the formal derivation to the central conclusion that God is necessarily and uniquely the Absolute Ground.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process completes finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed top. These verified behaviors converge in the paper's philosophical synthesis on one Terminus Ω. The actuality bridge affirms $\mathcal R\models\Gamma_{C5}$ and joins the formal derivation to the paper's theological conclusion.
 
 ---
 ## 4. Verification in Lean 4
@@ -466,11 +466,11 @@ This paper uses three labels to mark ascending forms of public verification:
 
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
-The strong C5 results and the compatibility theorem satisfy all three labels. The S-Machine certificate satisfies them for finite completion and unique terminal convergence; the TI certificate satisfies them for finite ascent to a unique fixed top. Together these public certificates establish the formal behavior of the routes that converge, in the paper's philosophical synthesis, on one necessary and unique Terminus $\Omega$: God.
+The strong C5 results and the compatibility theorem satisfy all three labels. The S-Machine certificate satisfies them for finite completion and unique terminal convergence; the TI certificate satisfies them for finite ascent to a unique fixed top. Together these public certificates establish the formal behavior of the routes that converge, in the paper's philosophical synthesis, on one necessary and unique Terminus $\Omega$.
 
 ---
 ## 5. Objections and Responses
-This section tests the central grounding argument against common critiques of modal and Gödelian reasoning. Each response clarifies how logic, semantics, society, paradox, and cosmology converge on the necessary and unique Terminus Ω, philosophically identified as God.
+This section tests the central grounding argument against common critiques of modal and Gödelian reasoning. Each response clarifies how logic, semantics, society, paradox, and cosmology converge on the necessary and unique Terminus Ω.
 
 ### 5.1 Alleged Misapplication of Gödel’s Theorem
 Objection: Gödel’s incompleteness theorems apply to arithmetic and do not entail metaphysical truths (Penrose 1989).
@@ -479,7 +479,7 @@ Response: Gödel's theorem establishes a precise mathematical limit for sufficie
 
 Within this framework, *Logos* names Ω as the rational and truth-bearing basis of intelligibility.
 
-Johannine language (John 1:1–3) identifies this Logos with God. The philosophical argument therefore names the necessary and unique Ground fixed by Ω as God, while Gödel's theorem supplies the motivating structural analogy.
+Johannine language (John 1:1–3) identifies this Logos with God. The philosophical argument connects that Logos with the necessary and unique Ground fixed by Ω, while Gödel's theorem supplies the motivating structural analogy.
 
 #### **5.1.1 Truth Beyond Formal Systems: Tarski and BHK**
 
@@ -532,7 +532,7 @@ $$
 \square \exists! x  \Omega(x)
 $$
 
-The actuality argument identifies this necessary and unique Terminus as the Absolute Ground. [Section 6](#6-theological-resonance) names that Ground God and develops the theological meaning of the same Ω established by the grounding argument.
+The actuality argument identifies this necessary and unique Terminus as the Absolute Ground. [Section 6](#6-theological-resonance) develops the theological meaning of the same Ω established by the grounding argument.
 
 ---
 ### 5.4 Social Implications and AI Ethics
@@ -772,7 +772,7 @@ $$
 \square \forall T\,(\text{ParadoxType}(T) \rightarrow \text{Supports}(T,\text{Perfection}(\Omega))).
 $$
 
-The paradox analysis therefore illuminates the perfection of the already established Terminus Ω, which the paper identifies as God.
+The paradox analysis therefore illuminates the perfection of the already established Terminus Ω.
 
 
 ---
@@ -796,7 +796,7 @@ $$
 A1 \wedge A3 \wedge A5  \Rightarrow  \square \exists! x\,\Omega(x)
 $$
 
-Empirical cosmology thus supplies examples of contingent orders; the grounding argument identifies the necessary and unique Terminus that makes every such order intelligible: Ω, God.
+Empirical cosmology thus supplies examples of contingent orders; the grounding argument identifies Ω as the necessary and unique Terminus that makes every such order intelligible.
 
 ---
 <a id="58-finitude-potential-infinitude-and-the-reinforcement-of-grounding"></a>
@@ -817,7 +817,7 @@ $$
 \text{independent of }\operatorname{Cardinality}(\text{matter}).
 $$
 
-The grounding chain therefore terminates in Ω across every cosmological model. Cosmological variety reinforces the invariance and universal scope of the necessary and unique Ground: God.
+The grounding chain therefore terminates in Ω across every cosmological model. Cosmological variety reinforces the invariance and universal scope of the necessary and unique Ground.
 
 ### Future objections
 Further objections are welcome and will be addressed in future revisions.
@@ -825,7 +825,7 @@ Further objections are welcome and will be addressed in future revisions.
 ---
 ## 6. Theological Resonance
 
-Within the ontological architecture defended in this paper, **Ω** fulfills the Logos-role: necessary, unique, grounding, and truth-bearing. The public Lean theorems establish necessary existence, boxed uniqueness, and rigid identity within the explicit C5 context. This section develops their philosophical culmination: the one Terminus Ω is God, the self-existent Absolute Ground of being, truth, and intelligibility.
+Within the ontological architecture defended in this paper, **Ω** fulfills the Logos-role: necessary, unique, grounding, and truth-bearing. The public Lean theorems establish necessary existence, boxed uniqueness, and rigid identity within the explicit C5 context. This section develops the theological culmination of those results.
 
 ### 6.1 **Inverse Corollary.**
 Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
@@ -833,13 +833,13 @@ Within this framework, the maximal arc of intelligibility—absolute knowability
 
 The designation “Ω” denotes the terminus of the grounding architecture. It resonates structurally with **Exodus 3:14 — “I AM WHO I AM” (*Ehyeh asher ehyeh*)** and with Aquinas's account of God as *esse ipsum subsistens* (*Summa Theologica* I.3.4).
 
-The formal result $\Box_{w_0}\exists!x\,\Omega(x)$ holds throughout the selected S5 accessibility class under the complete public C5 context. It fixes one necessary and unique Ω-instance across the modal field. The paper's constitutive argument identifies this Terminus as the universal ground of actuality and develops its theological meaning as Logos and God.
+The formal result $\Box_{w_0}\exists!x\,\Omega(x)$ holds throughout the selected S5 accessibility class under the complete public C5 context. It fixes one necessary and unique Ω-instance across the modal field. The paper's constitutive argument identifies this Terminus as the universal ground of actuality and develops its theological meaning as Logos.
 
-The central conclusion is therefore direct: there is one necessary and unique Absolute Ground, and this Ground is God. The argument reaches God from contingent actuality through grounding, termination, and closure; `C4a.unique` and `C4a.rigid` give uniqueness and persistence their exact formal expression across accessible worlds.
+The central conclusion is therefore direct: God exists necessarily and uniquely. The argument reaches this conclusion from contingent actuality through grounding, termination, and closure; `C4a.unique` and `C4a.rigid` give uniqueness and persistence their exact formal expression across accessible worlds.
 
 Core-Relative Positivity classifies properties of the already established Terminus Ω. Property by property, whenever denial of $P$ defeats the represented A1/A3 core, the classification yields the necessary instantiation of $P$ at Ω. This gives the treatment of divine attributes a disciplined, proof-indexed structure.
 
-The resulting architecture gives classical theism a structurally explicit form. Grounding, termination, closure, necessary uniqueness, and rigid identity converge on one self-existent Terminus; the paper's theological interpretation names this Terminus God.
+The resulting architecture gives classical theism a structurally explicit form. Grounding, termination, closure, necessary uniqueness, and rigid identity converge on one self-existent Terminus.
 
 Accordingly, $\Box_{w_0}\exists!x\,\Omega(x)$ functions as a formal ontological constraint relative to $\Gamma_{C5}$, while the identification of its Ω-instance with divine ontology is the substantive interpretation defended here.
 
@@ -903,7 +903,7 @@ The “Factory” reading organizes the existing formal architecture. Under the 
 
 ### **7.1 Grounded Foundation of Computability**
 
-This paper establishes its philosophical conclusion through the necessary and uniquely grounding Terminus Ω, while Lean 4 certifies the corresponding public C5 results from their explicit premise context. Formal derivation and the actuality argument converge on one Absolute Ground: God.
+This paper establishes its philosophical conclusion through the necessary and uniquely grounding Terminus Ω, while Lean 4 certifies the corresponding public C5 results from their explicit premise context. Formal derivation and the actuality argument converge on one conclusion.
 
 At a selected datum world, `C5_BoxUnique` proves:
 
@@ -915,7 +915,7 @@ $$\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x).$$
 
 `C4a.unique` secures one Ω-instance throughout the accessibility class, and `C4a.rigid` preserves the same witness across its worlds. The public theorem footprint is `propext, Classical.choice, Quot.sound`, while every explicit C5 parameter remains visible in the theorem type, making the complete route to the rigid Terminus mechanically auditable.
 
-Every interpretation satisfying C1, `GroundObtains`, C3, C4a, and $I(w_0)$ satisfies the public conclusion. The joint model realizes this context coherently, and the philosophical argument establishes it as the grounding architecture of intelligible actuality. In that intended interpretation, Ω is the single necessary Terminus: God.
+Every interpretation satisfying C1, `GroundObtains`, C3, C4a, and $I(w_0)$ satisfies the public conclusion. The joint model realizes this context coherently, and the philosophical argument establishes it as the grounding architecture of intelligible actuality. In that intended interpretation, Ω is the single necessary Terminus.
 
 Computability is intelligible through a prior ground of truth, validity, and termination. Computational procedures operate within these norms, while the philosophical architecture locates their final foundation in the necessary Terminus Ω.
 
@@ -945,15 +945,15 @@ $$
 
 The public `C5_RigidWitness` supplies $t:\varphi$ relative to C1, `GroundObtains`, C3, C4a, and $I(w_0)$. The actuality argument realizes this complete context in the intended grounding structure, so the soundness reading carries the rigid Ω-witness into that interpretation.
 
-The actual grounding structure satisfies the complete C5 context Γ in the paper's constitutive argument; the kernel theorem therefore applies to that intended interpretation. The paper's philosophical argument establishes $\mathcal R\models\Gamma_{C5}$ member by member through C1, `GroundObtains`, C3, `C4a.identity`, `C4a.unique`, `C4a.rigid`, and $I(w_0)$. The proof term and actuality bridge therefore converge on the same rigid Ω: God.
+The actual grounding structure satisfies the complete C5 context Γ in the paper's constitutive argument; the kernel theorem therefore applies to that intended interpretation. The paper's philosophical argument establishes $\mathcal R\models\Gamma_{C5}$ member by member through C1, `GroundObtains`, C3, `C4a.identity`, `C4a.unique`, `C4a.rigid`, and $I(w_0)$. The proof term and actuality bridge therefore converge on the same rigid Ω.
 
 Under that condition, Convention T may disquote the already interpreted claim:
 
 $$\text{“}\varphi\text{” is true}\iff\varphi.$$
 
-**The Lock: Rigid Designation.** Within the formal context, the rigid-witness theorem fixes one and the same Ω-referent throughout the selected S5 class. `C5_RigidWitness` realizes this lock through the explicit invariance and uniqueness clauses of C4a, and the actuality argument identifies the rigid referent as the one necessary Ground: God.
+**The Lock: Rigid Designation.** Within the formal context, the rigid-witness theorem fixes one and the same Ω-referent throughout the selected S5 class. `C5_RigidWitness` realizes this lock through the explicit invariance and uniqueness clauses of C4a, and the actuality argument identifies the rigid referent as the one necessary Ground.
 
-The paper's central claim is that intelligible denial already presupposes the grounding, termination, identity, uniqueness, and closure conditions whose Terminus is Ω. God is therefore necessarily and uniquely real. Lean secures the derivation, and the constitutive argument secures its intended application.
+The paper's central claim is that intelligible denial already presupposes the grounding, termination, identity, uniqueness, and closure conditions whose Terminus is Ω. Lean secures the derivation, and the constitutive argument secures its intended application.
 
 ---
 
@@ -967,7 +967,7 @@ Within a selected S5 accessibility class, the public theorem
 
 $$\Box_{w_0}\exists!x\,\Omega(x)$$
 
-secures Ω as modally unavoidable relative to $\Gamma_{C5}$: non-existence is modally impossible within the declared context. The philosophical argument establishes the same grounding functions as conditions of rational discourse. On this unified reading, Ω is necessary, unique, and undeniable, and Ω is God.
+secures Ω as modally unavoidable relative to $\Gamma_{C5}$: non-existence is modally impossible within the declared context. The philosophical argument establishes the same grounding functions as conditions of rational discourse. On this unified reading, Ω is necessary, unique, and undeniable. Therefore, God exists necessarily and uniquely.
 
 Gödel and Turing reveal structural limits of formal derivability and computation. This work interprets those limits as evidence that intelligibility is grounded beyond finite self-description and argues philosophically that every coherent theory realizes the functions assembled in the complete C5 context, terminating in Ω.
 
@@ -980,9 +980,9 @@ At the level of the constitutive analogy advanced here, **a primal halting progr
 <a id="8-ω-operationalization-for-artificial-intelligence"></a>
 ## 8. Ω-Operationalization for Artificial Intelligence: Specification and Research Programme
 
-The grounding architecture suggests a research programme beyond the ontological theorem. If an artificial reasoner can represent modal dependence, grounding relations, and the distinction between contingent and necessary structure, then the Successor specification of [§2.2](#22-successor-based-grounding-architecture) offers a candidate form for directed reasoning. No such operational engine is supplied by the public Lean proof.
+The grounding architecture extends the ontological theorem into a research programme for artificial intelligence. The programme translates the Successor specification of [§2.2](#22-successor-based-grounding-architecture) into an ordering discipline for representations of modal dependence, grounding relations, and contingent versus necessary structure. An artificial reasoner can use that discipline to direct each valid transition toward a more fully grounded state.
 
-The stronger AI thesis retained here is that an advanced system without a terminal grounding discipline remains structurally vulnerable to confusing unsupported generation with truth. This is explicitly a testable research hypothesis: assessing convergence, coherence, or hallucination reduction requires an implementation and empirical evaluation.
+The central AI thesis is that a terminal grounding discipline enables an advanced system to distinguish grounded inference from unsupported generation. Convergence, coherence, and hallucination reduction thereby become measurable research targets for implementation and empirical evaluation.
 
 The central idea is that intelligence need not be understood only as the accumulation of propositions or the maximization of predictive probability. Within the present framework, a stronger form of reasoning would attempt to reduce ungrounded structure while preserving truth, consistency, and explanatory dependence. The measure
 
@@ -1004,7 +1004,7 @@ $$
 
 supplies an abstract ordering for such a process.
 
-The following programme is downstream of the Ω-theorems and asks whether a well-founded grounding measure can be operationalized for artificial reasoning and computation. It is a specification/research programme: implementation and empirical validation remain open.
+The following programme carries the Ω-theorems into a specification for artificial reasoning and computation. It defines the structures, descent conditions, and evaluation targets required to implement and empirically test a well-founded grounding measure.
 
 ---
 
@@ -1105,7 +1105,7 @@ Such a system would not only ask which conclusion is statistically likely or loc
 
 The research task is to construct an embedding $E_R$ under which the grounding order becomes operational for reasoning.
 
-What this section publishes is therefore a research blueprint, not the engine. The signatures $E_R$, $meas$ and $J_R$ and the descent invariant fix the *shape* every component must have and the correctness condition each must satisfy; they do not supply a computable $meas$, a concrete state encoding, or a rule that efficiently finds a guaranteed descending step. Those remain to be constructed.
+This section therefore provides an implementation specification for Ω-directed reasoning. The signatures $E_R$, $meas$, and $J_R$ define the component roles and descent invariant: a concrete system must encode reasoning states, compute their grounding measure, select a strictly descending transition, and verify each step. Together these requirements turn the grounding order into a precise engineering and evaluation target.
 
 A resulting trajectory would have the form:
 
@@ -1272,14 +1272,14 @@ $$
 
 Such a result would establish Ω-directed computation as a polynomially efficient method for reaching globally optimal states for an NP-hard optimization problem. Its significance would lie in the operational role of the grounding measure: $meas$ would become a computationally exploitable direction whose descent carries sufficient global information to determine an optimum without prior knowledge of that optimum.
 
-This implication should be read as a complexity consequence, not an IP protection mechanism. It records how strong a uniform polynomial-time Ω-search would be. Because whether $P = NP$ is open, the implication supplies neither an implementation guarantee nor an IP barrier; it identifies precisely which property of the proposed construction would be revolutionary.
+This complexity consequence identifies the exact strength of the proposal: a uniform polynomial-time Ω-search for exact Max-3-SAT would settle the open P versus NP problem by establishing $P = NP$. The research burden is therefore to construct and verify an efficient embedding, a strictly descending measure, and a semantically correct reachable terminus for every instance.
 
 
 The computational Ω-search programme therefore asks:
 
 > **Can a domain-specific grounding embedding make Ω-distance both efficiently navigable and semantically correct at its reachable zero-state?**
 
-This is the missing conjunction between efficient descent and a semantically correct terminus.
+The decisive conjunction is efficient descent together with a semantically correct terminus.
 
 ---
 
@@ -1337,7 +1337,7 @@ $$
 
 ### 8.6 Synthesis
 
-The successor semantics of this paper suggests a research direction in which grounding becomes operational across multiple domains.
+The AI research programme operationalizes the grounding order across multiple domains, organizing reasoning and search through directed reduction of ungrounded structure.
 
 For machine reasoning:
 
@@ -1393,7 +1393,7 @@ The resulting research question is:
 
 > **Can domain-specific embeddings make the Ω-grounding order operational for machine reasoning and computation?**
 
-If so, the measure introduced as an ontological component of the grounding architecture acquires a second role. It becomes a candidate organizing principle for artificial reasoning itself.
+The measure introduced by the grounding architecture thereby becomes an organizing principle for artificial reasoning. A domain-specific zero-state marks completed grounding within its embedding.
 
 ---
 
@@ -1476,7 +1476,7 @@ No historical internal certificate table is used as a current-status source. The
 | HyperModal A1/A3 core and Core-Relative Positivity | Public conditional theorems | `HyperModal.Model.setting_inhabited` is non-collapsed | Explicit `HyperModalSetting`; A5 absent; no Ω-existence field | Public source and build | Full Triad/ICO bridge remains philosophical |
 | Public S-Machine certificate | Kernel theorems `terminates`, `existsUniqueOmegaReached`, and `existsUniqueOmega` | Premise-free `NatMachine` countdown witness | Total successor, guarded `Nat` decrease, terminal fixedness, unique zero; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Non-modal contract consequence only; no C5 or actuality bridge |
 | Public TI certificate | Kernel theorems `converges`, `top_characterization`, `isTop_fixed`, and `existsUniqueTop` | Premise-free `NatContract` countdown witness | Explicit rank descent, top characterization, uniqueness, and fixedness; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Abstract non-modal endpoint only; no internal construction or identity bridge to the C5 Ω |
-| God/Logos identification and “undeniability” | Philosophical interpretation of Ω | N/A | Constitutive actuality argument plus theological identification | Argument inspectable; not a Lean build | Central philosophical claim: the actual necessary and unique Ω-ground is God |
+| Theological identification and “undeniability” | Philosophical interpretation of Ω | N/A | Constitutive actuality argument plus theological interpretation | Argument inspectable; not a Lean build | Central philosophical conclusion developed in §6 and §7 |
 
 The table separates what the public kernel verifies, what the public models witness, what is conceptual, and what the paper argues about actuality.
 
@@ -1514,7 +1514,7 @@ The Peano comparison is therefore an interpretive analogy about well-founded str
 2. **Public model and audits.** `GroundingModel` supplies joint satisfiability/non-collapse; `GroundingChainAudit` supplies single-premise non-entailment witnesses; `PublicCertificateAudit` prints theorem types and footprints.
 3. **Public HyperModal audit.** `HyperModalSetting`, Core-Relative Positivity, derived A4, the model, and historical refutations expose the exact A1/A3-layer status. A5 is absent.
 4. **Public clean-room certificates and implementation boundary.** The S-Machine and TI contracts each have verified core-only endpoint theorems, complete `Nat` models, and empty-footprint audits in publicly reproducible bundles. They do not disclose or certify the concrete Jump construction, either internal implementation, or a cross-route identity theorem.
-5. **Philosophical bridge.** The full A1/A3/A5 argument, the claim $\mathcal R\models\Gamma_{C5}$, and the identification of Ω with God remain substantive philosophical work.
+5. **Philosophical bridge.** The full A1/A3/A5 argument and the claim $\mathcal R\models\Gamma_{C5}$ carry the formal result into the theological conclusion developed in §6 and §7.
 
 ---
 
@@ -1863,7 +1863,7 @@ Assume:
 Formally:
 
 ```
-¬(Logic ◃ Material)
+¬(Material ◃ Logic)
 ```
 
 **Philosophical meaning:**
@@ -1951,7 +1951,7 @@ The public Lean derivation of the strong Ω-results comes from the explicit C5 c
 |Cont(p)	| Contingent: ◇p ∧ ◇¬p
 |q ◃ p | Primitive $G(q,p)$: q grounds p; required properties are explicit hypotheses or setting fields
 |Pos(P)| Preservation-relative property classification; the designated Lean instance is Core-Relative Positivity (A1/A3)
-|Ω	|The Ω-instance/terminus of the explicit C5 context; identification with God and perfection is philosophical  
+|Ω	|The necessary and unique terminus of the explicit C5 context; its theological interpretation is developed in §6
 
 See main text for contextual definitions and formal usage.
 
