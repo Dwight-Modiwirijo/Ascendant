@@ -134,7 +134,7 @@ def main() -> int:
             "public compatibility API",
             "public C5 grounding proof surface",
             "publicly certified, kernel-recheckable abstract S-Machine contract",
-            "Classical Witness-Selecting Successor Sketch",
+            "Peano Arithmetic as a Local Instance of the Constitutive Triad",
             "implementation specification for Ω-directed reasoning",
             "uniform polynomial-time Ω-search for exact Max-3-SAT would settle the open P versus NP problem",
         ],
@@ -247,6 +247,8 @@ def main() -> int:
         "modally impossible",
         "Gödel and Turing as Ontological Premises",
         "a primal halting program must exist",
+        "Peano arithmetic is a local instance of the Constitutive Triad's functional form.",
+        "Ontological ascent and arithmetic descent are therefore two coordinates of one terminating process.",
     ]
     for needle in protected_phrases:
         if needle not in texts["Paper.md"]:

@@ -980,7 +980,7 @@ Gödel and Turing expose intrinsic limits of formal derivability and computation
 
 The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-successor-function-of-grounding-conceptual-sketch) develops the same ordering as a successor-oriented research programme. In the paper's philosophical interpretation, this primal Terminus is Ω.
+Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops the same ordering as a successor-oriented research programme. In the paper's philosophical interpretation, this primal Terminus is Ω.
 
 ---
 
@@ -1999,71 +1999,178 @@ Reply: [Sections 2](#2-framework-hyper-modal-grounding-principles) and 5 use $Co
 Objection: The conclusion supports classical theism, undermining neutrality.  
 Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
 
-## Appendix G: Successor Function of Grounding (Conceptual Sketch)
+<a id="appendix-g-successor-function-of-grounding-conceptual-sketch"></a>
+<a id="appendix-g-peano-as-an-instantiation-of-the-constitutive-triad"></a>
+<a id="appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad"></a>
 
-**Scope note.** The `succGround` operator below is non-load-bearing pseudocode for the anti-regress intuition. It is not a declaration in `HyperModal.lean`, not the engine of the public C5 proof, not the clean-room Release machine, and not an implementation of the concrete Jump. The active public HyperModal object is the primitive relation $G$ together with the explicit setting field `AntiRegress G`; witness selection below is classical, not constructive. The public Release certificate instead uses a total state step and a decreasing `Nat` measure, as specified in [§2.2](#22-successor-based-grounding-architecture).
+## Appendix G: Peano Arithmetic as a Local Instance of the Constitutive Triad
 
-In the repaired formal system, strict anti-regress is an explicit setting field:
+Peano arithmetic is a local instance of the Constitutive Triad's functional form. Generation from zero supplies grounding, well-founded descent to zero supplies termination, and preservation of arithmetic identity under successor, recursion, equality, and induction supplies closure. The S-Machine transfers this architecture from arithmetic generation to ontological ascent toward Ω.
 
-```lean
-¬ ∃ f : Nat → (W → Prop), ∀ n, G (f (n + 1)) (f n)
-```
+Throughout this appendix, **Peano structure** denotes the inductive natural-number structure used by Lean: zero, successor, recursion, equality, and induction. The correspondence is functional: Peano arithmetic realizes the three constitutive roles locally within arithmetic, while A1/A3/A5 express them within grounding and intelligibility.
 
-It excludes an infinite strictly descending $G$-chain. It is not a global axiom and does not by itself construct a terminus. Finite arrival at Ω additionally needs the progress and unique-zero conditions stated in [§2.2](#22-successor-based-grounding-architecture).
+### G.1 The Triadic Structure of Natural Numbers
 
----
+Lean's natural numbers are inductively generated:
 
-### G.1 Analogy to the Peano Successor
+$$
+\mathbb N ::= 0 \mid S(\mathbb N).
+$$
 
-| Aspect    | Peano Successor            | Grounding Successor (Anti‑Regress)   |
-| --------- | -------------------------- | ------------------------------------ |
-| Domain    | Natural numbers (counting) | Grounds of explanation (ontological) |
-| Operator  | `succ n = n + 1`           | `f (n + 1)` grounds `f n`            |
-| Semantics | Expands indefinitely       | Terminates only under anti-regress plus progress and unique zero |
-| Goal      | Infinite construction      | Finite grounding leading to Ω        |
+Every natural number has a finite constructor ancestry rooted in zero. Successor opens the structure upward, while the predecessor order is well-founded downward. Induction closes the generated domain by extending a property from zero through every successor.
 
-The **successor‑like** pattern appears in the form `f (n + 1)` but serves the *opposite* purpose: it prohibits endless succession. Where Peano ensures openness of ℕ, the conceptual Successor specification aims at finite grounding closure only when anti-regress is combined with the progress and unique-zero conditions above.
+| Constitutive function | Peano / Lean `Nat` realization | Structural consequence |
+|---|---|---|
+| Grounding | `0` is the initial, non-derivative constructor | Every standard natural number is rooted in a finite construction from zero |
+| Termination | The strict predecessor order on `Nat` is well-founded | No infinite strictly descending natural-number chain exists |
+| Closure | Successor, recursion, equality, and induction preserve the generated arithmetic structure | Arithmetic identity and recursive meaning remain stable throughout `Nat` |
 
----
+Schematically, for any proposed realization $R$ of the standard natural-number structure:
 
-### G.2 Classical Witness-Selecting Successor Sketch
+$$
+\mathrm{Preserves}(R,\mathbb N_{\mathrm{std}})
+\rightarrow
+\bigl(
+\mathrm{Rooted}_0(R)
+\land \mathrm{WellFounded}_{<}(R)
+\land \mathrm{ArithmeticallyClosed}(R)
+\bigr).
+$$
 
-A witness-selecting operator can express this relationship explicitly. Note that `Classical.choose` performs classical witness selection from an existence proof; it is not a computable search procedure, and `#eval` extracts no algorithmic grounding engine from it:
+Equivalently:
 
-```lean
--- Conceptual pseudocode; not a compiled HyperModal declaration.
-noncomputable def succGround
-    (F : Frame W) (G : GroundRel W) (p : W → Prop) : Option (W → Prop) :=
-  if h : ∃ q, G q p ∧ ¬ Nec F q then
-    some (Classical.choose h)
-  else
-    none
-```
+$$
+\neg\bigl(
+\mathrm{Rooted}_0(R)
+\land \mathrm{WellFounded}_{<}(R)
+\land \mathrm{ArithmeticallyClosed}(R)
+\bigr)
+\rightarrow
+\neg\mathrm{Preserves}(R,\mathbb N_{\mathrm{std}}).
+$$
 
-
-
-**Comment:**
-
-* If the existential test succeeds, `succGround p` classically selects one non-necessary ground.
-* Returning `none` means only that no witness satisfies the coded test; it does not prove that `p` is Ω.
-* This classical witness-selection sketch illustrates one possible next-edge choice; it proves neither well-foundedness, progress, termination, nor arrival at Ω.
-
----
-
-### G.3 Conceptual Interpretation
-
-Under the additional anti-regress, progress, and unique-zero assumptions, an explanatory chain may be represented as a finite sequence:
-
-```
-p₀, p₁ = succGround(p₀), p₂ = succGround(p₁), …, Ω.
-```
-
-Each step represents an act of grounding — a logical successor in explanatory depth.
-
-Thus, `AntiRegress G` excludes infinite descent, while `succGround` only illustrates witness selection when a suitable edge is already known to exist. Arrival at Ω belongs to the stronger contract of [§2.2](#22-successor-based-grounding-architecture), whose non-modal consequence is kernel-checked in the public clean-room certificate; it does not follow from this pseudocode or the public C5 implementation.
+This is the arithmetic counterpart of the constitutive test in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity): preservation of the explanandum requires preservation of the functions that constitute it.
 
 ---
 
+### G.2 Constitutive Undeniability
+
+The analogy can therefore be stated more strongly. Standard natural-number reasoning already employs the three functions assembled by the Triad:
+
+1. **Grounding:** numerical construction begins from a non-derivative base.
+2. **Termination:** reverse movement through the predecessor order is well-founded.
+3. **Closure:** successor, recursion, equality, and induction preserve arithmetic identity and meaning throughout the generated domain.
+
+At the arithmetic level, closure is more than membership under successor: recursion, equality, and induction preserve arithmetic identity throughout the generated structure. At the ontological level, A5 extends this functional role to truth-preserving meta-logical closure. The domains differ, but the constitutive pattern is the same.
+
+A denial of the Triad that continues to rely on standard natural-number reasoning therefore reinstantiates the functions it denies. It relies on grounding in zero, termination through well-founded descent, and closure through stable arithmetic identity and induction. Alternative terminology leaves those roles intact.
+
+This yields the stronger structural thesis:
+
+> **Peano arithmetic is intelligible through the functional Triad, and the S-Machine makes that same Triad operational as a terminating successor architecture.**
+
+| Peano arithmetic | S-Machine |
+|---|---|
+| `0` is the generating base | Ω is the unique terminal base |
+| Successor constructs each number from zero | `S` advances each state toward Ω |
+| Every number lies at finite distance from zero | Every admitted state lies at finite distance from Ω |
+| Predecessor descent is well-founded | `meas` descent is strictly well-founded |
+| Equality, recursion, and induction preserve arithmetic structure | Terminal fixedness and unique zero close the process |
+
+The directions form a mirror:
+
+$$
+\text{Peano: }0\rightarrow n,
+\qquad
+\text{S-Machine: }b\rightarrow\Omega.
+$$
+
+Peano generates from the basis; the S-Machine reduces remaining distance to the basis while the state ascends toward complete grounding.  
+
+---
+
+### G.3 The S-Machine Contract
+
+The public S-Machine contract carries this arithmetic structure into a state-transition system:
+
+| Contract component | Formal role |
+|---|---|
+| `State` | Domain of grounding states |
+| `S : State → State` | Total successor on states |
+| `meas : State → Nat` | Remaining distance to completion |
+| `dec` | Every positive-measure successor strictly lowers `meas` |
+| `terminal` | Every zero-measure state is fixed by `S` |
+| `zeroUnique` | Any two zero-measure states are identical |
+
+Its decisive obligations are:
+
+$$
+0 < meas(b) \rightarrow meas(S(b)) < meas(b),
+$$
+
+$$
+meas(b)=0 \rightarrow S(b)=b,
+$$
+
+and
+
+$$
+meas(x)=0 \land meas(y)=0 \rightarrow x=y.
+$$
+
+Natural-number induction converts strict decrease into finite convergence:
+
+$$
+\forall b_0\;\exists N\; meas\bigl(S^N(b_0)\bigr)=0.
+$$
+
+With $\Omega_M(b) := meas(b)=0$, terminal fixedness and unique zero yield a unique reached Ω-state. The public theorems `terminates`, `omega_fixed`, `existsUniqueOmegaReached`, and `existsUniqueOmega` kernel-verify these consequences, while the published `NatMachine` supplies an inhabited countdown model. Their audited axiom footprints are empty.
+
+---
+
+### G.4 Ontological Ascent through Arithmetic Descent
+
+Peano succession constructs numerical rank upward from zero. The S-Machine uses such a rank as the amount of grounding distance still to be closed. Each permitted state-successor advances toward fuller grounding while its numerical rank decreases:
+
+$$
+b_0 \xrightarrow{S} b_1 \xrightarrow{S} \cdots \xrightarrow{S} b_N=\Omega,
+$$
+
+$$
+meas(b_0) > meas(b_1) > \cdots > meas(b_N)=0.
+$$
+
+There is no conflict between ascent and descent. They describe different coordinates of the same transition: the state ascends in grounding while the measure descends in remaining distance. Ontological ascent and arithmetic descent are therefore two coordinates of one terminating process.
+
+At the endpoint, zero signifies completed distance. The state is grounded, terminal, fixed, and unique. In the philosophical interpretation of the S-Machine, that Terminus is Ω.
+
+---
+
+### G.5 Primal Halting
+
+The relation to Turing's halting result is developed in [§5.2](#52-halting-undecidability-and-the-s-machine). Arbitrary computation asks whether an unrestricted process will halt. The S-Machine defines a class of grounded computation whose admissible transitions already carry a strict natural-number descent. Halting is consequently built into the architecture as a proof-relevant invariant.
+
+The **Primal Halting program** names this prior architecture of admissibility. A process belongs to it by supplying a state space, a total successor, a natural-number rank, strict descent away from zero, fixedness at zero, and uniqueness of zero. Every admitted process therefore converges finitely to the same unique fixed Terminus.
+
+> **A primal halting program must exist because intelligible computation already presupposes a grounded, well-founded, and closed order of admissible transition.**
+
+Gödel and Turing expose the boundary of derivation and computation from within a bounded formal process. The inverse constitutive application asks what makes such bounded derivation, correct termination, and intelligible computation possible. The S-Machine answers with finite convergence to Ω, and [§7.3](#73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises) identifies the ontological force of that answer.
+
+---
+
+### G.6 Certification and Philosophical Force
+
+The complete claim has three coordinated levels:
+
+| Level | Established result |
+|---|---|
+| Kernel-certified | Every machine satisfying the public contract reaches one unique fixed zero-measure state in finitely many steps |
+| Constitutive-arithmetic | Lean `Nat` realizes rooted generation, well-founded descent, and structure-preserving arithmetic closure |
+| Constitutive-ontological | Grounding, anti-regress, and meta-logical closure direct intelligible contingent obtaining toward the unique Terminus Ω |
+
+The kernel supplies the proof object for finite convergence and uniqueness. The Peano analysis identifies the triadic structure already present in the termination measure. The philosophical argument applies that same constitutive architecture to grounding and intelligibility. Together they express one directed order: grounded succession, finite closure, and arrival at Ω.
+
+---
 ## Appendix H : Epilogue
 >“A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory (as people often think) but a vice. Every genuine test of a theory is an attempt to falsify it, or refute it.” — Karl Popper
 
