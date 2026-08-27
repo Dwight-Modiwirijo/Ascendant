@@ -56,7 +56,7 @@ The release does not disclose the internal TI construction, its proof architectu
 
 ## HyperModal Core-Relative Layer
 
-`HyperModal.lean` uses the same `AscendantRoute.Interface` frame semantics as the C5 route and takes grounding as a primitive relation `G q p`, with the C5 argument order: the ground comes first. Its assumptions are bundled in `HyperModalSetting`; `triad_holds` derives the world-constant `T_core` predicate from that setting's A1 role, grounding strictness, and strict A3 role. There are no global `axiom` declarations in the module.
+`HyperModal.lean` uses the same `AscendantRoute.Interface` frame semantics as the C5 route and takes grounding as a primitive relation `G q p`, with the C5 argument order: the ground comes first. Its assumptions are bundled in `HyperModalSetting`; `triad_core_holds` derives the world-constant `T_core` predicate from that setting's A1 role, grounding strictness, and strict A3 role. The earlier `triad_holds` name remains as a deprecated compatibility alias. There are no global `axiom` declarations in the module.
 
 The generic **Preservation-Relative Positivity** predicate is `PosT`. Its designated `Pos_T` instance is **Core-Relative Positivity (A1/A3)** over `T_core`. Under the explicit preservation hypothesis, `posT_iff_box` shows that this classification is equivalent to the corresponding boxed property; `posT_box_core` specializes the result to `T_core`, and `posT_not_both` rejects simultaneous classification of `P` and `not P` when `F.Dia Omega w0` is supplied. This layer contributes no Omega-existence premise.
 

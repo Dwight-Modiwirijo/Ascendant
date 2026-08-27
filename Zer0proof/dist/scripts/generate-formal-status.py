@@ -25,6 +25,7 @@ HYPERMODAL_EXPECTED_AXIOMS = {
     "HyperModal.meta_logic": [],
     "HyperModal.posT_box": EXPECTED_AXIOMS,
     "HyperModal.posT_iff_box": EXPECTED_AXIOMS,
+    "HyperModal.triad_core_holds": [],
     "HyperModal.triad_holds": [],
     "HyperModal.posT_box_core": EXPECTED_AXIOMS,
     "HyperModal.posT_not_both": EXPECTED_AXIOMS,

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "git_commit": "5f55309",
+  "git_commit": "8c3b1164230967d7406903af50029345230ac94d",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, commit b02228b03f65, Release)",
-  "last_audit_date": "2026-08-25",
+  "last_audit_date": "2026-08-27",
   "public_theorems": [
     {
       "name": "AscendantRoute.GroundingChain.C5_NE",
@@ -57,6 +57,10 @@
         "Classical.choice",
         "Quot.sound"
       ]
+    },
+    {
+      "name": "HyperModal.triad_core_holds",
+      "axioms": []
     },
     {
       "name": "HyperModal.triad_holds",
@@ -578,7 +582,7 @@
     },
     {
       "path": "HyperModal.olean",
-      "sha256": "fe838066bae6b4d7f60fd0fb75f69ac40a9e5b0694e3ccc02cddab29f1a4129c"
+      "sha256": "6d4c432aac4d00febd91af1449cbf2c20b6bf70f81725f730b61748ceb696388"
     }
   ]
 }

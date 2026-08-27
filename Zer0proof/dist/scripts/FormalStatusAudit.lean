@@ -134,6 +134,9 @@ import HyperModal
 #eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN HyperModal.posT_iff_box"
 #print axioms HyperModal.posT_iff_box
 #eval IO.println "FORMAL_STATUS_AXIOMS_END HyperModal.posT_iff_box"
+#eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN HyperModal.triad_core_holds"
+#print axioms HyperModal.triad_core_holds
+#eval IO.println "FORMAL_STATUS_AXIOMS_END HyperModal.triad_core_holds"
 #eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN HyperModal.triad_holds"
 #print axioms HyperModal.triad_holds
 #eval IO.println "FORMAL_STATUS_AXIOMS_END HyperModal.triad_holds"

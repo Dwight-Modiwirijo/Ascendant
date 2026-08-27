@@ -26,7 +26,7 @@ The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining
 
 ## HyperModal repair boundary
 
-The public `HyperModal.lean` layer has no global `axiom` declarations. It uses primitive grounding `G q p` and packages its visible assumptions in `HyperModalSetting`. The derived theorem `triad_holds` supplies the world-constant `T_core` predicate from the setting's formal A1/A3 fields.
+The public `HyperModal.lean` layer has no global `axiom` declarations. It uses primitive grounding `G q p` and packages its visible assumptions in `HyperModalSetting`. The derived theorem `triad_core_holds` supplies the world-constant `T_core` predicate from the setting's formal A1/A3 fields. The deprecated `triad_holds` compatibility alias has the same empty footprint.
 
 `PosT` is **Preservation-Relative Positivity**; its designated `Pos_T` specialization is **Core-Relative Positivity (A1/A3)**. `posT_iff_box` records the honesty equivalence under explicit preservation, `posT_box_core` is the `T_core` specialization, and `posT_not_both` requires explicit `F.Dia Omega w0`. None of these declarations supplies an Omega-existence premise.
 

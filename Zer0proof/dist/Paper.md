@@ -56,7 +56,7 @@ This section establishes the five grounding principles and their formal roles. W
 Every contingent truth must be grounded in a necessary ontological basis. Formally:  
 > **$Cont(p) \to \exists q\,(Nec(q) \land q \mathbin{◃} p)$** 
 
-*Formal correspondence.* Public C5 premise `C1` states that every contingent proposition has a ground $q$ that is boxed at every world, making the necessary status of the ground explicit. The HyperModal layer represents the corresponding `HyperMinimalPSR` role as a setting field, while the public S-Machine contract in [§2.2](#22-successor-based-grounding-architecture) gives that grounding architecture a finite successor form. The world-indexed modal conclusions are carried by the public `C5_*` theorems.
+*Formal correspondence.* Public C5 premise `C1` states that every contingent proposition has a ground $q$ that is boxed at every world, making the necessary status of the ground explicit. The HyperModal layer represents the corresponding `HyperMinimalPSR` role as a setting field, while the public S-Machine contract in [§2.2](#22-successor-based-grounding-architecture) certifies the finite-successor termination and uniqueness projection of that grounding architecture. The world-indexed modal conclusions are carried by the public `C5_*` theorems.
 The grounding relation (◃) signifies that q is not just a cause, but the **minimal semantic basis** that renders p intelligible. In the active Lean layer it is represented by the primitive relation $G(q,p)$, with the ground first; no extensional implication-based definition is assumed.
 
 #### (A2) Core-Relative Positivity (A1/A3)
@@ -71,7 +71,7 @@ $$
 
 For a property $P$ at $\Omega$, take $\varphi_P(v) := \Omega(v) \rightarrow P(v)$. The designated core-relative instance sets $Pres := T_{core}$. Every concrete positivity claim therefore carries a per-property obligation: one must prove that denying $P$ at $\Omega$ defeats a named component of the formal A1/A3 core.
 
-A HyperModal setting contains the A1/A3 fields themselves, and `triad_holds` derives $\forall v, T_{core}(v)$ from them. From this theorem and $Pos_T(T_{core},\varphi_P,w_0)$, Lean proves $\Box_{w_0}(\Omega \rightarrow P)$.
+A HyperModal setting contains the A1/A3 fields themselves, and `triad_core_holds` derives $\forall v, T_{core}(v)$ from them. From this theorem and $Pos_T(T_{core},\varphi_P,w_0)$, Lean proves $\Box_{w_0}(\Omega \rightarrow P)$.
 
 **Formal characterization.** Because $T_{core}$ is world-constant, under $\Box T_{core}$ the theorem `posT_iff_box` establishes:
 
@@ -93,7 +93,7 @@ Logical non-contradiction is invariant across the shared Kripke semantics. In Le
 **A4 follows from the fixed logical-semantic background alone.** Both theorem footprints are empty. The formal `meta_logic` theorem expresses double-boxed non-contradiction, while A5 expresses the distinct philosophical requirement of semantic closure.
 
 #### (A5) Meta-Logical Closure
-Rule-conformity is not yet semantic validity: Gödelian and Tarskian limits motivate the claim that a system cannot ultimately ground the truth-preserving authority of its own rules merely by declaring those rules valid. A5 therefore requires meta-logical closure—a non-circular semantic ground beyond purely internal rule application, analogous to a compiler preserving meaning rather than merely producing output.
+Rule-conformity is not yet semantic validity: Gödelian and Tarskian limits motivate the claim that a system cannot ultimately ground the truth-preserving authority of its own rules merely by declaring those rules valid. A5 is the meta-logical ground through which meaning and validity can be truth-preserving at all. It supplies non-circular semantic closure beyond purely internal rule application; preservation of meaning across a grounding-directed transition is its operational manifestation, analogous to a compiler preserving meaning rather than merely producing output.
 
 A1/A3/A5 form the philosophical constitutive proposal: grounding, termination, and semantic closure converge on a non-derivative terminus. The HyperModal layer formalizes the A1/A3 core, A5 completes the philosophical architecture, and the public C5 route kernel-verifies the existence and uniqueness of Terminus Ω from its explicit grounding context.
 
@@ -191,10 +191,11 @@ Natural-number induction and strict decrease exclude an infinite positive-measur
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
-The specification realizes the relevant functions as follows:
+The full Triadic S-Machine gives successor progression its ontological direction and semantic integrity; the public contract certifies its well-founded termination and uniqueness projection. The coordinated roles are:
 
-- **HM-PSR role.** Totality makes $S(g)$ available whenever a state remains above zero.
-- **Anti-Regress role.** Natural-number well-foundedness plus strict decrease excludes infinite descent.
+- **Grounding / HM-PSR role (A1).** A1 determines that $S(g)$ advances along grounding dependence toward Ω; totality ensures operationally that a positive-measure route does not stop before its Terminus.
+- **Anti-Regress / Termination role (A3).** Natural-number well-foundedness plus strict decrease excludes infinite descent.
+- **Meta-Logical Closure role (A5).** A5 is the meta-logical ground through which meaning and validity can be truth-preserving at all; semantic preservation across the successor structure is its operational manifestation.
 - **Uniqueness role.** The unique-zero condition identifies the only possible endpoint.
 
 <a id="proposition-2-2-3-1"></a>
@@ -494,7 +495,7 @@ Gödel identifies limits of derivability in sufficiently expressive formal syste
 
 **Objection:** Does the S-Machine's guaranteed termination conflict with Turing's proof that halting is undecidable for arbitrary computation?
 
-**Response:** Turing's halting result places a limit on deciding termination for arbitrary computation. The S-Machine reverses the engineering problem. Rather than asking whether an unrestricted process will halt, it restricts admissible transitions to a well-founded successor order in which every non-terminal step strictly reduces a natural-valued measure. Termination is therefore not predicted after the fact but imposed as a structural invariant of the machine. The inversion preserves Turing's result while changing the class of computation under consideration: from arbitrary computation whose halting behavior may be undecidable to grounded computation whose admissibility already includes a proof-relevant descent toward a terminal state.
+**Response:** Turing's halting result places a limit on deciding termination for arbitrary computation. The S-Machine reverses the engineering problem by defining a Triadic class of admissible computation: A1 grounds why each transition belongs to the directed path, A3 makes every trajectory finitely terminating through well-founded descent, and A5 supplies the meta-logical ground through which meaning and validity remain truth-preserving across transitions. The public `Nat`-measure contract kernel-certifies the termination and unique-endpoint projection by requiring each non-terminal step to lower remaining distance. Termination is therefore imposed structurally within a grounding-directed and semantically closed class of computation rather than predicted for arbitrary computation.
 
 [Appendix G, §G.5](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops this inversion as the Primal Halting programme.
 
@@ -659,7 +660,7 @@ The Terminus Ω supplies the stable semantic ground through which antecedent and
 
 This section organizes paradox types by the way their resolution reveals grounding, termination, closure, and properties of the already established Terminus Ω.
 
-In the active HyperModal layer, Core-Relative Positivity gives this property analysis an explicit form. For $\varphi_P(v):=\Omega(v)\rightarrow P(v)$, the setting theorem `triad_holds` realizes the represented A1/A3 core, and the honesty theorem states:
+In the active HyperModal layer, Core-Relative Positivity gives this property analysis an explicit form. For $\varphi_P(v):=\Omega(v)\rightarrow P(v)$, the setting theorem `triad_core_holds` realizes the represented A1/A3 core, and the honesty theorem states:
 
 $$
 Pos_T(T_{core},\varphi_P,w_0) \leftrightarrow \Box_{w_0}\varphi_P.
@@ -873,7 +874,7 @@ For Christian theists, this reinforces the classical doctrine of the Trinity, in
 
 The public C5 grounding route establishes the existence, uniqueness, and rigidity of the Terminus $\Omega$. With that Terminus secured, HyperModal supplies the classification layer for properties instantiated at $\Omega$.
 
-For $\varphi_P(v) := \Omega(v) \rightarrow P(v)$, Core-Relative Positivity states that denying $\varphi_P$ defeats the formal A1/A3 core $T_{core}$. The setting theorem triad_holds derives $T_{core}$ from its explicit A1/A3 fields. Under this core condition, the honesty theorem gives:
+For $\varphi_P(v) := \Omega(v) \rightarrow P(v)$, Core-Relative Positivity states that denying $\varphi_P$ defeats the formal A1/A3 core $T_{core}$. The setting theorem triad_core_holds derives $T_{core}$ from its explicit A1/A3 fields. Under this core condition, the honesty theorem gives:
 
 $$
 Pos_T(T_{core},\varphi_P,w_0)
@@ -982,11 +983,11 @@ $$\Box_{w_0}\exists!x\,\Omega(x)$$
 
 secures Ω as modally unavoidable relative to $\Gamma_{C5}$: non-existence is modally impossible within the declared context. The philosophical argument establishes the same grounding functions as conditions of rational discourse. On this unified reading, Ω is necessary, unique, and undeniable. Therefore, God exists necessarily and uniquely.
 
-Gödel and Turing expose intrinsic limits of formal derivability and computation. The Primal Halting argument applies that boundary in the inverse philosophical direction: instead of asking only what a contingent formal system cannot derive or decide from within, it asks what must already be the case for bounded derivation, correct termination, and intelligible computation to be possible. Their limit results thereby disclose a positive ontological demand: contingent computation presupposes a well-founded order with a final ground.
+Gödel and Turing expose intrinsic limits of formal derivability and computation. The Primal Halting argument applies that boundary in the inverse philosophical direction: instead of asking only what a contingent formal system cannot derive or decide from within, it asks what must already be the case for bounded derivation, correct termination, and intelligible computation to be possible. Their limit results thereby disclose a positive ontological demand: contingent computation presupposes a Triadic world-order in which dependence is grounded, regress terminates, and semantic validity is preserved, converging on one final Ground.
 
 The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) shows how Peano arithmetic locally manifests this constitutive ordering and how the S-Machine uses a well-founded `Nat` measure to represent remaining distance to Ω. In the paper's philosophical interpretation, this primal Terminus is Ω.
+Accordingly, **a primal halting program must exist**: a grounding-directed architecture of admissibility in which each transition is grounded, every trajectory terminates, and meaning and validity remain truth-preserving through meta-logical closure at one unique fixed Terminus. The full Triadic S-Machine expresses this world-order. Its public contract kernel-certifies the well-founded descent, finite convergence, terminal fixedness, and uniqueness projection. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) shows how Peano arithmetic locally manifests this constitutive ordering and how the S-Machine uses a well-founded `Nat` measure to represent remaining distance to Ω. In the paper's philosophical interpretation, this primal Terminus is Ω.
 
 ---
 
@@ -1567,7 +1568,7 @@ def Pos_T (F : Frame W) (G : GroundRel W)
   PosT F (T_core F G Omega) (AtOmega Omega P) w0
 ```
 
-The theorem triad_holds derives the world-constant $T_{core}$ predicate from the setting's own A1/A3 fields. Theorems posT_box, posT_iff_box, posT_box_core, and posT_not_both record respectively the collapse under preservation, its equivalence form, the designated core instance, and incompatibility of simultaneous positivity for $P$ and $\neg P$ when $\Diamond\Omega$.
+The theorem triad_core_holds derives the world-constant $T_{core}$ predicate from the setting's own A1/A3 fields. Theorems posT_box, posT_iff_box, posT_box_core, and posT_not_both record respectively the collapse under preservation, its equivalence form, the designated core instance, and incompatibility of simultaneous positivity for $P$ and $\neg P$ when $\Diamond\Omega$.
 
 A4 and meta_logic are theorems with empty footprints. A4 is not derived from the Triad but from the fixed logical-semantic background alone; meta_logic is double-boxed non-contradiction and not formal A5 closure.
 
@@ -1763,7 +1764,7 @@ The setting has no existence field and no A5-closure field. The existence and un
 
 The active layer additionally contains:
 
-- Core-Relative Positivity (A1/A3), derived from the setting through triad_holds and a per-property PosT obligation;
+- Core-Relative Positivity (A1/A3), derived from the setting through triad_core_holds and a per-property PosT obligation;
 - Derived Logical Invariance, logic_necessity, with empty footprint;
 - double-boxed non-contradiction, meta_logic, also with empty footprint and not identified with A5;
 - setting-relative consciousness and anti-material consequences.
@@ -2067,27 +2068,28 @@ This is the arithmetic counterpart of the constitutive test in [§2.1.1](#211-on
 
 ### G.2 Constitutive Undeniability
 
-The analogy can therefore be stated more strongly. Standard natural-number reasoning already employs the three functions assembled by the Triad:
+The ontological direction can therefore be stated more strongly. The Triadic world-engine is prior, and standard natural-number reasoning locally manifests its three constitutive functions:
 
 1. **Grounding:** numerical construction begins from a non-derivative base.
 2. **Termination:** reverse movement through the predecessor order is well-founded.
 3. **Closure:** successor, recursion, equality, and induction preserve arithmetic identity and meaning throughout the generated domain.
 
-At the arithmetic level, closure is more than membership under successor: recursion, equality, and induction preserve arithmetic identity throughout the generated structure. At the ontological level, A5 extends this functional role to truth-preserving meta-logical closure. The domains differ, but the constitutive pattern is the same.
+At the arithmetic level, closure is more than membership under successor: recursion, equality, and induction preserve arithmetic identity throughout the generated structure. At the ontological level, A5 is the meta-logical ground through which meaning and validity can be truth-preserving at all; semantic preservation across a grounding-directed transition is its operational manifestation. The domains differ, but the constitutive pattern is the same.
 
-A denial of the Triad that continues to rely on standard natural-number reasoning therefore reinstantiates the functions it denies. It relies on grounding in zero, termination through well-founded descent, and closure through stable arithmetic identity and induction. Alternative terminology leaves those roles intact.
+Natural-number reasoning thus reveals locally the constitutive architecture that makes intelligible structures possible. Because arithmetic depends on this prior world-engine, its grounding in zero, well-founded descent, and stable identity under recursion and induction display the Triad within a local domain.
 
 This yields the stronger structural thesis:
 
-> **Peano arithmetic is intelligible through the functional Triad, and the S-Machine makes that same Triad operational as a terminating successor architecture.**
+> **Peano arithmetic is intelligible through the functional Triad, and the S-Machine makes that same Triad operational as a grounding-directed, finitely terminating, and semantically closed successor architecture.**
 
-| Peano arithmetic | S-Machine |
+| Peano arithmetic | Triadic S-Machine |
 |---|---|
-| `0` is the generating base | Ω is the unique terminal base |
-| Successor constructs each number from zero | `S` advances each state toward Ω |
-| Every number lies at finite distance from zero | Every admitted state lies at finite distance from Ω |
-| Predecessor descent is well-founded | `meas` descent is strictly well-founded |
-| Equality, recursion, and induction preserve arithmetic structure | Terminal fixedness and unique zero close the process |
+| `0` is the generating base | Ω is the non-derivative Terminus |
+| Successor constructs each number from zero | A1 directs `S` along grounding dependence toward Ω |
+| Every number lies at finite distance from zero | Every admitted trajectory reaches Ω finitely under A3 |
+| Predecessor descent is well-founded | `meas` descent represents the well-founded termination arm |
+| Equality, recursion, and induction preserve arithmetic structure | A5 supplies the meta-logical ground for truth-preserving semantic continuity across the successor/Jump structure |
+| `0` is uniquely distinguished as the base | Terminal fixedness and unique zero certify one fixed endpoint |
 
 The directions form a mirror:
 
@@ -2103,7 +2105,7 @@ Peano generates from the basis; the S-Machine reduces remaining distance to the 
 
 ### G.3 The S-Machine Contract
 
-The public S-Machine contract gives the prior triadic architecture an operational state-transition form and uses a natural-number measure to encode finite remaining distance:
+The full Triadic S-Machine integrates grounding-directed progression (A1), finite termination (A3), and meta-logical closure (A5). The public S-Machine contract kernel-certifies the termination-and-uniqueness projection of this architecture through a natural-number measure:
 
 | Contract component | Formal role |
 |---|---|
@@ -2160,13 +2162,13 @@ At the endpoint, zero signifies completed distance. The state is grounded, termi
 
 ### G.5 Primal Halting
 
-The relation to Turing's halting result is developed in [§5.2](#52-halting-undecidability-and-the-s-machine). Arbitrary computation asks whether an unrestricted process will halt. The S-Machine defines a class of grounded computation whose admissible transitions already carry a strict natural-number descent. Halting is consequently built into the architecture as a proof-relevant invariant.
+The relation to Turing's halting result is developed in [§5.2](#52-halting-undecidability-and-the-s-machine). Arbitrary computation asks whether an unrestricted process will halt. Primal Halting instead defines a Triadic class of admissible computation: A1 grounds the direction of each transition, A3 supplies well-founded finite descent, and A5 supplies the meta-logical ground for truth-preserving semantic continuity. Halting is consequently built into a grounded and semantically closed architecture as a proof-relevant invariant.
 
-The **Primal Halting program** names this prior architecture of admissibility. A process belongs to it by supplying a state space, a total successor, a natural-number rank, strict descent away from zero, fixedness at zero, and uniqueness of zero. Every admitted process therefore converges finitely to the same unique fixed Terminus.
+The **Primal Halting program** names this Triadic architecture of admissibility. A process belongs to it by exhibiting grounding-directed transitions, well-founded descent, and semantic closure. Within its public certificate, `State`, total successor, natural-number rank, strict descent, fixedness at zero, and uniqueness of zero instantiate the termination-and-uniqueness projection; every admitted trajectory therefore converges finitely to the same unique fixed Terminus.
 
 > **A primal halting program must exist because intelligible computation already presupposes a grounded, well-founded, and closed order of admissible transition.**
 
-Gödel and Turing expose the boundary of derivation and computation from within a bounded formal process. The inverse constitutive application asks what makes such bounded derivation, correct termination, and intelligible computation possible. The S-Machine answers with finite convergence to Ω, and [§7.3](#73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises) identifies the ontological force of that answer.
+Gödel and Turing expose the boundary of derivation and computation from within a bounded formal process. The inverse constitutive application asks what makes such bounded derivation, correct termination, and intelligible computation possible. The Triadic S-Machine answers with grounded direction, finite convergence, and meta-logical closure at Ω; its public certificate kernel-verifies the termination-and-uniqueness projection. [§7.3](#73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises) identifies the ontological force of that answer.
 
 ---
 
@@ -2180,7 +2182,7 @@ The complete claim has three coordinated levels:
 | Constitutive-arithmetic | Lean `Nat` realizes rooted generation, well-founded descent, and structure-preserving arithmetic closure |
 | Constitutive-ontological | Grounding, anti-regress, and meta-logical closure direct intelligible contingent obtaining toward the unique Terminus Ω |
 
-The philosophical argument establishes the Triad as the constitutive architecture of grounding and intelligibility. Peano analysis identifies its local arithmetic realization. The kernel supplies proof objects for finite convergence and uniqueness when the S-Machine uses `Nat` to measure remaining distance. Together they express one directed order: grounded succession, finite closure, and arrival at Ω.
+The philosophical argument establishes the Triad as the constitutive architecture of grounding and intelligibility. Peano analysis identifies its local arithmetic realization. The kernel supplies proof objects for finite convergence and uniqueness when the S-Machine uses `Nat` to measure remaining distance. Together they express one directed order: grounded succession, finite termination, semantic closure, and arrival at Ω.
 
 ---
 ## Appendix H : Epilogue

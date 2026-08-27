@@ -94,7 +94,7 @@ def main() -> int:
         "Preservation-Relative Positivity",
         "Core-Relative Positivity",
         "T_core",
-        "triad_holds",
+        "triad_core_holds",
         "HyperModalSetting",
         "setting_inhabited",
         "posT_iff_box",

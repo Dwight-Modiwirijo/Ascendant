@@ -2,9 +2,9 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `5f55309`
+- Git commit: `8c3b1164230967d7406903af50029345230ac94d`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
-- Audit date: `2026-08-25`
+- Audit date: `2026-08-27`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**
 
 ## Public Theorems
@@ -23,6 +23,7 @@
 | `HyperModal.meta_logic` | `none` |
 | `HyperModal.posT_box` | `propext, Classical.choice, Quot.sound` |
 | `HyperModal.posT_iff_box` | `propext, Classical.choice, Quot.sound` |
+| `HyperModal.triad_core_holds` | `none` |
 | `HyperModal.triad_holds` | `none` |
 | `HyperModal.posT_box_core` | `propext, Classical.choice, Quot.sound` |
 | `HyperModal.posT_not_both` | `propext, Classical.choice, Quot.sound` |
@@ -149,4 +150,4 @@ The private successor route is not distributed as source or theorem-bearing .ole
 | `AscendantRoute/GroundingChainAudit.olean` | `f8c5016550229f5819401177cc006a4dea9b73c918aa500385a1a7dc9c3ef92f` |
 | `AscendantRoute/GroundingModel.olean` | `3cb8b95eee93ddead473e09f05edfa0f1dd1648f69eec640c93525627b02d3b6` |
 | `AscendantRoute/PublicCertificateAudit.olean` | `96ae1bd2bdd0e8df2ca9c18a7422ae08d047fd3ac5b3ac18597b9f396b77aa4c` |
-| `HyperModal.olean` | `fe838066bae6b4d7f60fd0fb75f69ac40a9e5b0694e3ccc02cddab29f1a4129c` |
+| `HyperModal.olean` | `6d4c432aac4d00febd91af1449cbf2c20b6bf70f81725f730b61748ceb696388` |

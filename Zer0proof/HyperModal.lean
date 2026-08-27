@@ -148,11 +148,19 @@ structure HyperModalSetting (W : Type u) (F : Frame W)
 variable {F : Frame W} {G : GroundRel W}
 variable {Omega I_am Logic Material : W -> Prop} {w0 : W}
 
-theorem triad_holds
+/-- The explicit setting fields establish the represented A1/A3 core. -/
+theorem triad_core_holds
     (S : HyperModalSetting W F G Omega I_am Logic Material w0) :
     forall v : W, T_core F G Omega v := by
   intro _
   exact ⟨S.psr, S.g_strict, S.anti_regress⟩
+
+/-- Compatibility alias for consumers of the earlier public API. -/
+@[deprecated triad_core_holds (since := "2026-08-28")]
+theorem triad_holds
+    (S : HyperModalSetting W F G Omega I_am Logic Material w0) :
+    forall v : W, T_core F G Omega v :=
+  triad_core_holds S
 
 theorem posT_box_core (F : Frame W) (G : GroundRel W)
     (Omega P : W -> Prop) (w0 : W)
@@ -168,7 +176,7 @@ theorem posT_box_core_of_setting
     (S : HyperModalSetting W F G Omega I_am Logic Material w0)
     (P : W -> Prop) (hPos : Pos_T F G Omega P w0) :
     F.Box (AtOmega Omega P) w0 :=
-  posT_box_core F G Omega P w0 (triad_holds S) hPos
+  posT_box_core F G Omega P w0 (triad_core_holds S) hPos
 
 theorem posT_not_both (F : Frame W) (G : GroundRel W)
     (Omega P : W -> Prop) (w0 : W)
@@ -443,6 +451,7 @@ end Model
 #print axioms HyperModal.meta_logic
 #print axioms HyperModal.posT_box
 #print axioms HyperModal.posT_iff_box
+#print axioms HyperModal.triad_core_holds
 #print axioms HyperModal.triad_holds
 #print axioms HyperModal.posT_box_core
 #print axioms HyperModal.posT_box_core_of_setting
