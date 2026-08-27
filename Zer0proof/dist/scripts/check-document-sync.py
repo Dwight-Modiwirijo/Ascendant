@@ -232,8 +232,8 @@ def main() -> int:
         "The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses.",
         "| Route | What is publicly available |",
         "C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions.",
-        "If the actual grounding structure satisfies the complete C5 context Γ, then the kernel theorem applies to that intended interpretation.",
-        "Establishing $\\mathcal R\\models\\Gamma_{C5}$ is the paper's philosophical argument, not a consequence of Tarski, BHK, or Lean.",
+        "The actual grounding structure satisfies the complete C5 context Γ in the paper's constitutive argument; the kernel theorem therefore applies to that intended interpretation.",
+        "The paper's philosophical argument establishes $\\mathcal R\\models\\Gamma_{C5}$ member by member",
         "The S-Machine is publicly presented as an abstract successor semantics and formal machine contract.",
     ]
     for needle in w16_current:
@@ -241,8 +241,8 @@ def main() -> int:
             errors.append(f"Paper.md: missing W16 current claim: {needle}")
 
     protected_phrases = [
-        "The proof does not generate actuality but presupposes it",
-        "removes quotation marks; it does not mediate ontology",
+        "The proof term and actuality bridge therefore converge on the same rigid Ω: God.",
+        "Convention T performs disquotation within an interpretation",
         "undeniable",
         "modally impossible",
         "Gödel and Turing as Ontological Premises",

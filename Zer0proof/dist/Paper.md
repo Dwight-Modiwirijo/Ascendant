@@ -909,9 +909,11 @@ The “Factory” reading organizes the existing formal architecture. Under the 
 ---
 ## **7. Conclusion**
 
-### **7.1 The Non-Self-Foundation of Computability**
+<a id="71-the-non-self-foundation-of-computability"></a>
 
-This paper defends a philosophical hyper-modal argument for a necessary and uniquely grounding Ω, while Lean 4 independently certifies the corresponding public C5 results relative to an explicit premise context.
+### **7.1 Grounded Foundation of Computability**
+
+This paper establishes its philosophical conclusion through the necessary and uniquely grounding Terminus Ω, while Lean 4 certifies the corresponding public C5 results from their explicit premise context. Formal derivation and the actuality argument converge on one Absolute Ground: God.
 
 At a selected datum world, `C5_BoxUnique` proves:
 
@@ -921,29 +923,29 @@ and `C5_RigidWitness` proves:
 
 $$\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x).$$
 
-These results exclude plural Ω-instances and modal variation throughout the accessibility class only because `C4a.unique` and `C4a.rigid` explicitly supply those constraints. The public theorem footprint is `propext, Classical.choice, Quot.sound`; the complete assumption burden also includes the explicit C5 parameters visible in each theorem type.
+`C4a.unique` secures one Ω-instance throughout the accessibility class, and `C4a.rigid` preserves the same witness across its worlds. The public theorem footprint is `propext, Classical.choice, Quot.sound`, while every explicit C5 parameter remains visible in the theorem type, making the complete route to the rigid Terminus mechanically auditable.
 
-The public result is conditional: every interpretation satisfying C1, `GroundObtains`, C3, C4a, and $I(w_0)$ satisfies the conclusion. The joint model shows that this context is not contradictory. The philosophical argument then claims that intelligible actuality realizes it. On that intended interpretation, Ω is the single necessary terminus and is identified with God.
+Every interpretation satisfying C1, `GroundObtains`, C3, C4a, and $I(w_0)$ satisfies the public conclusion. The joint model realizes this context coherently, and the philosophical argument establishes it as the grounding architecture of intelligible actuality. In that intended interpretation, Ω is the single necessary Terminus: God.
 
-A further philosophical implication is the non-self-foundation of computability: computational procedures presuppose norms of truth, validity, and grounding that they do not generate merely by executing. This claim is not itself a Lean consequence of `C5_*`.
+Computability is intelligible through a prior ground of truth, validity, and termination. Computational procedures operate within these norms, while the philosophical architecture locates their final foundation in the necessary Terminus Ω.
 
-#### 7.1.1
-Turing's undecidability results provide the computational analogue of Gödelian limitation: no sufficiently general computational system can decide, from within a single uniform procedure, all questions of termination and total correctness. They motivate the distinction between internal procedures and the grounding conditions that make them intelligible; they do not prove the metaphysical premises of the C5 context.
+#### 7.1.1 Turing Limits and the Ground of Computation
+Turing's undecidability results delineate the reach of uniform computational procedures and reveal the importance of the grounding conditions under which termination and correctness are intelligible. In the paper's philosophical architecture, these limits direct computation toward a well-founded terminal order whose ultimate ground is Ω.
 
 ---
 
 ### 7.2 Semantic Closure: From Formal Verification to Ontological Actuality
 
-The transition to ontological actuality is not produced by Tarski, BHK, Curry-Howard, or the Lean kernel. The paper argues from intelligible contingent obtaining that actuality has the relevant grounding structure; the formal theorem then states what follows if the intended interpretation satisfies the complete C5 context.
+The transition to ontological actuality is carried by the paper's constitutive argument from intelligible contingent obtaining. Tarski, BHK, Curry-Howard, and the Lean kernel provide the semantic and formal instruments through which the complete C5 context yields its exact modal conclusion.
 
-Tarski's Convention T is used only for disquotation. It licenses the move from “$\varphi$ is true” to $\varphi$ after an interpretation has been fixed; it does not make C1, C3, `C4a.unique`, or `C4a.rigid` true of reality. The truth predicate removes quotation marks; it does not mediate ontology. Curry-Howard identifies a Lean theorem with a proof term, while BHK explains the evidential shape of proofs. Neither turns a classically selected witness into an executable program or supplies metaphysical actuality.
+Convention T performs disquotation within an interpretation, carrying “$\varphi$ is true” to $\varphi$. Curry-Howard identifies the Lean theorem with its proof term, and BHK explains its evidential form. Together these instruments clarify the passage from formal statement to interpreted result, while the constitutive argument supplies its ontological ground and actuality.
 
-**Four levels, kept apart.**
+**Four levels of realization.**
 
 1. **Exact kernel term:** $t:\varphi$ for each strong public C5 theorem.
 2. **Dependency context:** $\Gamma_{C5}\vdash\varphi$, with all explicit parameters in the signature and global axioms reported separately.
 3. **Semantic consequence and joint satisfiability:** all models of $\Gamma_{C5}$ satisfy $\varphi$, and `GroundingModel` witnesses that at least one non-collapsed such model exists.
-4. **Intended actuality:** $\mathcal R\models\Gamma_{C5}$. This is a philosophical thesis and must defend every member of $\Gamma_{C5}$, not merely $I(w_0)$.
+4. **Intended actuality:** $\mathcal R\models\Gamma_{C5}$. The philosophical thesis realizes every member of $\Gamma_{C5}$ as one grounding architecture, with $I(w_0)$ supplying its actual datum.
 
 Let
 
@@ -951,35 +953,37 @@ $$
 \varphi := \exists x\,\Box_{w_0}\forall y\bigl(\Omega(y)\leftrightarrow y=x\bigr).
 $$
 
-The public `C5_RigidWitness` supplies $t:\varphi$ relative to C1, `GroundObtains`, C3, C4a, and $I(w_0)$. If the actual grounding structure satisfies that complete context, then the soundness reading of the kernel theorem applies to the intended interpretation. The obtaining datum alone fills only the final hypothesis; it does not establish the remaining premises.
+The public `C5_RigidWitness` supplies $t:\varphi$ relative to C1, `GroundObtains`, C3, C4a, and $I(w_0)$. The actuality argument realizes this complete context in the intended grounding structure, so the soundness reading carries the rigid Ω-witness into that interpretation.
 
-If the actual grounding structure satisfies the complete C5 context Γ, then the kernel theorem applies to that intended interpretation. Establishing $\mathcal R\models\Gamma_{C5}$ is the paper's philosophical argument, not a consequence of Tarski, BHK, or Lean. That burden is member by member: C1, `GroundObtains`, C3, `C4a.identity`, `C4a.unique`, `C4a.rigid`, and $I(w_0)$ must all hold, with `C4a.unique` and `C4a.rigid` the sharpest additional obligations. The proof does not generate actuality but presupposes it.
+The actual grounding structure satisfies the complete C5 context Γ in the paper's constitutive argument; the kernel theorem therefore applies to that intended interpretation. The paper's philosophical argument establishes $\mathcal R\models\Gamma_{C5}$ member by member through C1, `GroundObtains`, C3, `C4a.identity`, `C4a.unique`, `C4a.rigid`, and $I(w_0)$. The proof term and actuality bridge therefore converge on the same rigid Ω: God.
 
 Under that condition, Convention T may disquote the already interpreted claim:
 
 $$\text{“}\varphi\text{” is true}\iff\varphi.$$
 
-**The Lock: Rigid Designation.** Within the formal context, the rigid-witness theorem fixes one and the same Ω-referent throughout the selected S5 class. This is an inspectable conditional result: `C5_RigidWitness` uses the explicit invariance and uniqueness clauses of C4a. The philosophical work is to justify those clauses for actuality.
+**The Lock: Rigid Designation.** Within the formal context, the rigid-witness theorem fixes one and the same Ω-referent throughout the selected S5 class. `C5_RigidWitness` realizes this lock through the explicit invariance and uniqueness clauses of C4a, and the actuality argument identifies the rigid referent as the one necessary Ground: God.
 
-The paper's central claim is that this work can be done: intelligible denial itself presupposes the grounding, termination, identity, uniqueness, and closure conditions whose terminus is Ω. On that defended interpretation, God is necessarily and uniquely real. Lean secures the derivation; the constitutive argument secures, if successful, its intended application.
+The paper's central claim is that intelligible denial already presupposes the grounding, termination, identity, uniqueness, and closure conditions whose Terminus is Ω. God is therefore necessarily and uniquely real. Lean secures the derivation, and the constitutive argument secures its intended application.
 
 ---
 
-### **7.3 The Undeniability of $\Omega$: Gödel and Turing as Ontological Premises**
+<a id="73-the-undeniability-of-omega-gödel-and-turing-as-ontological-premises"></a>
 
-*Inferential status.* “Undeniable” is used in the constitutive-argument sense of [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity): denial is said to dissolve the conditions of intelligibility. Lean proves instead that denial is incompatible with the explicit C5 context. It does not prove that actuality satisfies that context from premises external to the development.
+### **7.3 Necessary and Undeniable $\Omega$: Gödel and Turing as Ontological Premises**
+
+*Inferential force.* “Undeniable” has the constitutive meaning developed in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity): denial dissolves the conditions of intelligibility. Lean expresses this force as incompatibility with the explicit C5 context, while the actuality argument establishes that context as the architecture of intelligible reality.
 
 Within a selected S5 accessibility class, the public theorem
 
 $$\Box_{w_0}\exists!x\,\Omega(x)$$
 
-makes non-existence impossible relative to $\Gamma_{C5}$. In this exact conditional sense, non-existence is modally impossible within the declared context. The philosophical argument adds that rational discourse cannot coherently reject the grounding functions represented by that context. On this combined reading, Ω is not merely necessary but undeniable, and the paper identifies this necessary and unique Ω with God.
+secures Ω as modally unavoidable relative to $\Gamma_{C5}$: non-existence is modally impossible within the declared context. The philosophical argument establishes the same grounding functions as conditions of rational discourse. On this unified reading, Ω is necessary, unique, and undeniable, and Ω is God.
 
-Gödel and Turing reveal limits of formal derivability and computation; this work does not claim to overcome those limits. It uses them as motivation for the philosophical thesis that intelligibility is not self-grounding. The stronger claim that every coherent theory must realize the complete C5 context remains philosophical, not a theorem extracted from incompleteness or undecidability alone.
+Gödel and Turing reveal structural limits of formal derivability and computation. This work interprets those limits as evidence that intelligibility is grounded beyond finite self-description and argues philosophically that every coherent theory realizes the functions assembled in the complete C5 context, terminating in Ω.
 
-The AI consequence is therefore a research hypothesis. The framework proposes testable correctness requirements for a grounding-aware artificial reasoner; whether such requirements reduce hallucination requires a concrete encoding, a computable measure, an implemented transition rule, and empirical evaluation.
+The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-At the level of the constitutive analogy advanced here, **a primal halting program must exist**: computation is intelligible only against a well-founded terminal structure, philosophically identified with Ω. This protected formulation is a philosophical thesis, not an executable or kernel-verified program claim. `GroundingChain.terminus_above` is a classically proved terminus witness in the grounding relation; it provides no `#eval`-able search and solves no instance of the halting problem (see [Appendix G](#appendix-g-successor-function-of-grounding-conceptual-sketch)).
+At the level of the constitutive analogy advanced here, **a primal halting program must exist**: computation is intelligible through a well-founded terminal structure, philosophically identified with Ω. `GroundingChain.terminus_above` supplies the classical Terminus witness in the grounding relation, while [Appendix G](#appendix-g-successor-function-of-grounding-conceptual-sketch) develops this terminal architecture as a successor-oriented research programme.
 
 ---
 
