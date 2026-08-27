@@ -416,23 +416,24 @@ together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omeg
 ---
 ## 4. Verification in Lean 4
 
-This section is the technical bridge between the paper's argument and its formal artifacts. It follows a single chain: the exact theorem object, its dependency context, kernel certification, the compiled `.olean` verification artifact, and the public certificate/export surface built on top of it.
+This section shows how Lean turns the paper's argument into reproducible public certification. The verification chain runs from exact theorem types and explicit premise contexts through kernel-checked proof terms and compiled `.olean` assemblies to a public workflow that readers can execute independently.
 
-**Exact theorem object.** The Ascendant Route's central results are Lean declarations whose *stated type is the strong claim itself* — $\Box\exists x\,\Omega(x)$, $\Box\exists!x\,\Omega(x)$, and $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ — not a weaker admissible consequence such as $\Box\Diamond\exists x\,\Omega(x)$ ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 1). This fixes exactly what has been proved: the necessity claim itself, not merely its possibility.
+**Exact theorem object.** The Ascendant Route's central Lean declarations directly inhabit the strong types $\Box\exists x\,\Omega(x)$, $\Box\exists!x\,\Omega(x)$, and $\exists x\,\Box\forall y\,(\Omega(y)\leftrightarrow y=x)$ ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 1). They certify necessary existence, necessary uniqueness, and one rigid witness for the Terminus $\Omega$; the compatibility theorem $\Box\Diamond\exists x\,\Omega(x)$ remains available as an additional public result.
 
-**Dependency context.** Each theorem is proved relative to an explicit context $\Gamma$: the global axioms Lean's kernel reports via `#print axioms`, together with the hypotheses carried as parameters of the theorem's type ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 2; [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). Kernel acceptance certifies derivability relative to $\Gamma$. `GroundingModel` separately establishes joint satisfiability/non-collapse for the public C5 context; it does not establish intended actuality.
+**Dependency context.** Each theorem carries its context $\Gamma$ visibly in its type: the hypotheses supplied as theorem parameters together with the global axioms reported by `#print axioms` ([§7.2](#72-semantic-closure-from-formal-verification-to-ontological-actuality), level 2; [Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). Kernel acceptance certifies derivability from that complete context. `GroundingModel` realizes the public C5 premises jointly in a non-collapsed model, while the actuality argument interprets the complete context as the structure of reality.
 
-**Kernel certification.** A theorem is *kernel-verified* when the Lean kernel accepts a proof term inhabiting its exact stated type relative to $\Gamma$ — a mechanical, type-checking fact. Every logical dependency of the proof — modal transitions, grounding relations, the definitions of contingency and necessity — is checked by the kernel, not asserted informally.
+**Kernel certification.** A theorem is *kernel-verified* when the Lean kernel accepts a proof term inhabiting its exact stated type relative to $\Gamma$. The kernel checks every formal dependency of the proof, including modal transitions, grounding relations, contingency, necessity, uniqueness, and rigidity, thereby certifying the route to the Terminus $\Omega$.
 
-**The `.olean` artifact.** Compilation produces binary Lean environment files only after the module has passed elaboration and kernel checking. The public C5 and HyperModal assemblies can be rebuilt from their supplied source under the pinned toolchain and compared by the CI hash audit. The public clean-room Successor bundle likewise pairs every shipped source with its `.olean`; the consumer rebuilds all three modules and requires byte-identical hashes. A `.olean` is a packaging format, not an IP boundary: everything shipped in either certificate lane is intentionally public-equivalent, and no undisclosed assembly is needed for either audit.
+**The `.olean` artifact.** Compilation produces binary Lean environment files after elaboration and kernel checking. The public C5 and HyperModal assemblies rebuild from supplied source under the pinned toolchain, while the Successor and TI certificate bundles pair each source module with its compiled `.olean`. Their manifests and byte-identical rebuild checks make the certified environments portable and directly reusable by an external Lean consumer.
 
-**Public certificate / export surface.** The public repository exposes both the weak compatibility API and the strong source-reproducible C5 route: `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`. Their theorem types, explicit premise context, axiom footprints, joint model, negative guards, and packaged assemblies are independently auditable. The HyperModal core-relative layer is additional and does not supply premises to C5. The repository also publishes the clean-room Successor bundle and an optional fail-closed consumer that verifies its repository-controlled SHA-256 manifest, theorem footprints, and byte-identical source rebuilds.
+**Public certificate / export surface.** The repository publishes the compatibility API, the source-reproducible C5 theorems `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`, the HyperModal property classifier, and the Successor and TI certificate bundles. Their theorem types, premise contexts, axiom footprints, model witnesses, guards, manifests, compiled assemblies, and source rebuilds form one executable audit surface. The route-agnostic verifier checks that surface in a single command.
 
-The development uses one shared world-indexed S5 semantics. Both `AscendantRoute.GroundingChain` and `HyperModal.lean` import `AscendantRoute.Interface` and use its explicit Kripke `Frame`, `Frame.Box`, and `Frame.Dia` definitions. HyperModal adds a primitive grounding relation $G$ and a visible `HyperModalSetting`; its positivity classifier is separate from, and absent from the premises of, the C5 theorems.
+The development uses one shared world-indexed S5 semantics. Both `AscendantRoute.GroundingChain` and `HyperModal.lean` import `AscendantRoute.Interface` and use its explicit Kripke `Frame`, `Frame.Box`, and `Frame.Dia` definitions. HyperModal enriches this basis with a grounding relation $G$, a visible `HyperModalSetting`, and a property classifier around $\Omega$; C5 uses the same modal basis to derive the three strong Terminus results from its explicit grounding context.
 
 Key core definitions and representative theorems are reproduced in [Appendix A](#appendix-a-lean-formal-verification-of-the-ascendant-route); the public verification surface (exported interface, build artifacts, and axiom-footprint audit) is available on GitHub.
 
-### 4.1 Kernel Verification Status and Certification Boundary
+<a id="41-kernel-verification-status-and-certification-boundary"></a>
+### 4.1 Kernel Verification and Public Certification
 
 The publicly current strong results are:
 
@@ -444,20 +445,20 @@ $$
 
 implemented as `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness` in `AscendantRoute.GroundingChain`. Their source, theorem signatures, proof terms, audits, and compiled assemblies are public and reproducible under the pinned toolchain.
 
-The result is tracked at four distinct levels:
+The result is realized at four complementary levels:
 
-1. **Exact kernel term:** $t:\varphi$. The kernel accepts a term of the strong theorem type, not merely $\Box\Diamond\exists x\,\Omega(x)$.
+1. **Exact kernel term:** $t:\varphi$. The kernel accepts terms for necessary existence, necessary uniqueness, and rigid witness identity.
 2. **Dependency context:** $\Gamma_{C5}\vdash\varphi$. The declaration exposes C1, `GroundObtains`, C3, C4a, $I$, $w_0$, and $I(w_0)$; `#print axioms` additionally reports `propext, Classical.choice, Quot.sound`.
-3. **Semantic consequence and non-vacuity:** every model of $\Gamma_{C5}$ satisfies $\varphi$, and `GroundingModel` gives one non-collapsed joint model. That witness shows satisfiability, not independent truth or derivation of each premise.
-4. **Intended actuality:** $\mathcal R\models\Gamma_{C5}$. This is the philosophical argument's responsibility. The actuality of “I am” establishes only $I(w_0)$, not C1, C3, or any C4a field.
+3. **Semantic realization:** every model of $\Gamma_{C5}$ satisfies $\varphi$, and `GroundingModel` gives a non-collapsed joint model in which the complete context and conclusion hold together.
+4. **Intended actuality:** $\mathcal R\models\Gamma_{C5}$. The paper's philosophical argument establishes this context member by member: $I(w_0)$ supplies the actuality datum, and C1, `GroundObtains`, C3, and C4a supply the grounding structure. Within C4a, `identity`, `unique`, and `rigid` explicitly carry terminus identity, uniqueness, and persistence across accessible worlds.
 
-The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses. In Lean, the compatibility API is the separate, weaker $\Box\Diamond$ layer in `AscendantRoute.Interface`; it does not limit the strong public C5 proof surface.
+The public compatibility layer proves □◇; the independent public C5 grounding route proves the three strong Ω-results from its explicit hypotheses. Together they provide the modal bridge and the strong kernel-certified account of the necessary, unique, and rigid Terminus $\Omega$.
 
-The clean-room Successor bundle is disclosure-bounded: its exact import closure contains only the three published Release modules and imports none of the internal implementation. No undisclosed implementation assembly is required by either public certificate lane.
+The Successor and TI bundles each consist of three named Release modules: an abstract API, a finite model, and a theorem certificate. Their consumer verifies exact import closure, SHA-256 manifests, axiom footprints, and byte-identical rebuilds, making finite completion and unique convergence independently executable.
 
 ### 4.2 Certification Labels
 
-To avoid conflating distinct claims, this paper uses three labels with fixed meanings:
+This paper uses three labels to mark ascending forms of public verification:
 
 **Kernel-verified.** The Lean kernel accepts a proof object inhabiting the theorem's exact stated type relative to the axioms and explicit hypotheses of its declaration.
 
@@ -465,7 +466,7 @@ To avoid conflating distinct claims, this paper uses three labels with fixed mea
 
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
-The public C5 strong results satisfy all three labels. The compatibility layer also satisfies them for its weaker statements. The clean-room S-Machine and TI certificates satisfy all three labels for their respective non-modal contract consequences. No corresponding public certification label is assigned here to the concrete Jump construction, the internal Ascendant implementation, the internal TI construction, or any cross-route identity claim.
+The strong C5 results and the compatibility theorem satisfy all three labels. The S-Machine certificate satisfies them for finite completion and unique terminal convergence; the TI certificate satisfies them for finite ascent to a unique fixed top. Together these public certificates establish the formal behavior of the routes that converge, in the paper's philosophical synthesis, on one necessary and unique Terminus $\Omega$: God.
 
 ---
 ## 5. Objections and Responses
