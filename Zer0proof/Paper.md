@@ -835,7 +835,7 @@ Further objections are welcome and will be addressed in future revisions.
 ---
 ## 6. Theological Resonance
 
-Within the ontological architecture defended in this paper, **Ω** is interpreted as fulfilling the Logos-role: necessary, unique, grounding, and truth-bearing. The public Lean theorems establish the Ω-results conditionally within the explicit C5 context; they do not contain a predicate `God` or independently derive classical divine attributes. This section supplies the philosophical identification of that Ω-instance with God and develops its resonance with traditions that affirm a necessary, self-existent ground of being.
+Within the ontological architecture defended in this paper, **Ω** fulfills the Logos-role: necessary, unique, grounding, and truth-bearing. The public Lean theorems establish necessary existence, boxed uniqueness, and rigid identity within the explicit C5 context. This section develops their philosophical culmination: the one Terminus Ω is God, the self-existent Absolute Ground of being, truth, and intelligibility.
 
 ### 6.1 **Inverse Corollary.**
 Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
@@ -843,13 +843,13 @@ Within this framework, the maximal arc of intelligibility—absolute knowability
 
 The designation “Ω” denotes the terminus of the grounding architecture. It resonates structurally with **Exodus 3:14 — “I AM WHO I AM” (*Ehyeh asher ehyeh*)** and with Aquinas's account of God as *esse ipsum subsistens* (*Summa Theologica* I.3.4).
 
-The formal result $\Box_{w_0}\exists!x\,\Omega(x)$ is conditional on the complete public C5 context and holds throughout the selected S5 accessibility class. It proves a theorem about the chosen predicate `Omega`; it does not by itself prove that `Omega` means God, perfection, Logos, or universal grounding. The paper's constitutive argument supplies those interpretive bridges and argues that actuality realizes the premises.
+The formal result $\Box_{w_0}\exists!x\,\Omega(x)$ holds throughout the selected S5 accessibility class under the complete public C5 context. It fixes one necessary and unique Ω-instance across the modal field. The paper's constitutive argument identifies this Terminus as the universal ground of actuality and develops its theological meaning as Logos and God.
 
-On that philosophical reading, the result supports the central conclusion: there is one necessary and unique Absolute Ground, and this ground is God. The claim does not begin from a perfect-being existence axiom. `C4a.unique` and `C4a.rigid` are nevertheless explicit formal premises whose independent metaphysical defense remains part of the argument.
+The central conclusion is therefore direct: there is one necessary and unique Absolute Ground, and this Ground is God. The argument reaches God from contingent actuality through grounding, termination, and closure; `C4a.unique` and `C4a.rigid` give uniqueness and persistence their exact formal expression across accessible worlds.
 
-Core-Relative Positivity plays a downstream classificatory role. It states, property by property, what follows when denying a property at Ω defeats the represented A1/A3 core. It neither proves Ω-existence nor establishes a generic package of divine perfections.
+Core-Relative Positivity classifies properties of the already established Terminus Ω. Property by property, whenever denial of $P$ defeats the represented A1/A3 core, the classification yields the necessary instantiation of $P$ at Ω. This gives the treatment of divine attributes a disciplined, proof-indexed structure.
 
-For theists, the resulting architecture can be read as a structurally explicit confirmation of classical doctrine. For non-theists, it presents a conditional challenge: either reject one of the defended grounding premises or accept a uniquely necessary terminus structurally comparable to classical theism. The theological identification remains philosophical rather than kernel-generated.
+The resulting architecture gives classical theism a structurally explicit form. Grounding, termination, closure, necessary uniqueness, and rigid identity converge on one self-existent Terminus; the paper's theological interpretation names this Terminus God.
 
 Accordingly, $\Box_{w_0}\exists!x\,\Omega(x)$ functions as a formal ontological constraint relative to $\Gamma_{C5}$, while the identification of its Ω-instance with divine ontology is the substantive interpretation defended here.
 
@@ -859,16 +859,16 @@ Within this framework, the concept of the Logos provides an even deeper theologi
 
 The Logos represents rational, structuring order—one that is both expressive and constitutive of meaning, logic, and being. In philosophical terms, the Logos can be viewed as the ontological principle through which all semantic coherence, logical necessity, and contingent manifestation are made intelligible.
 
-This aligns with the necessity of Ω in our proof. Just as no truth within a formal system can be complete without appeal to something beyond it (as per Gödel’s theorems), no contingent being or proposition can possess intelligibility without grounding in the Logos. If Ω represents necessary being, the Logos represents necessary expression—truth made manifest in a rational form.
+This aligns with the necessity of Ω in our proof. In the paper's Gödelian interpretation, formal truth reaches toward a ground beyond finite self-description, while contingent being receives intelligibility through the Logos. Ω expresses necessary being; the Logos expresses that same necessity as rational, truth-bearing order.
 
 Thus, our modal proof supports a vision of divine reality where Logos and Ω converge: the necessary source of truth (Ω) and the rational, communicative order of that truth (Logos) are inseparable aspects of the same foundational reality.
 
-For Christian theists, this reinforces the classical doctrine of the Trinity, in which the Logos is co-eternal with God and the vehicle through which all things are made (John 1:3). Our conclusion, then, not only echoes metaphysical necessity but resonates with the theological heart of Christian ontology.
+For Christian theists, this reinforces the classical doctrine of the Trinity, in which the Logos is co-eternal with God and the vehicle through which all things are made (John 1:3). The conclusion joins metaphysical necessity with the theological heart of Christian ontology.
 
 ---
 ### 6.2 Ω and Core-Relative Positive Properties
 
-The existence, uniqueness, and rigidity of $\Omega$ come from the public C5 grounding route, not from positivity. Once that terminus has been established, HyperModal supplies a separate classification layer for properties at $\Omega$.
+The public C5 grounding route establishes the existence, uniqueness, and rigidity of the Terminus $\Omega$. With that Terminus secured, HyperModal supplies the classification layer for properties instantiated at $\Omega$.
 
 For $\varphi_P(v) := \Omega(v) \rightarrow P(v)$, Core-Relative Positivity states that denying $\varphi_P$ defeats the formal A1/A3 core $T_{core}$. The setting theorem triad_holds derives $T_{core}$ from its explicit A1/A3 fields. Under this core condition, the honesty theorem gives:
 
@@ -878,33 +878,33 @@ Pos_T(T_{core},\varphi_P,w_0)
 \Box_{w_0}(\Omega \rightarrow P).
 $$
 
-This equivalence is the formal result. It is a classification theorem, not a second proof that $\Omega$ exists and not a mechanism that generates arbitrary properties. Each concrete $P$ requires its own proof that its denial defeats a named core component. The additional guard $\Diamond\Omega$ ensures that both $P$ and $\neg P$ cannot receive that classification simultaneously.
+This equivalence is the formal classification result. Each concrete property $P$ enters the class through its own proof that denial of $P$ defeats a named core component. The guard $\Diamond\Omega$ keeps the classification coherent by excluding simultaneous admission of $P$ and $\neg P$.
 
 #### Corollary 6.2 — Singularity as a Classification Point
 
-> Let $\Omega$ be the unique necessary terminus established by the C5 grounding architecture. A property belongs to the core-relative positive class only when its denial is incompatible with the represented A1/A3 core. For every property admitted by such a proof, $\Omega$ instantiates that property necessarily in the selected S5 cluster.
+> Let $\Omega$ be the unique necessary Terminus established by the C5 grounding architecture. A property belongs to the core-relative positive class exactly through a proof that its denial conflicts with the represented A1/A3 core. Every property admitted by such a proof is instantiated necessarily by $\Omega$ throughout the selected S5 cluster.
 
-The earlier Factory language is retained only as an interpretive metaphor for this closure of a proved property class around an independently established terminus. Lean does not derive new properties merely from the label positive, and positivity contributes no existence premise.
+The Factory metaphor names the closure of a proved property class around the established Terminus. Each admitted property carries an explicit proof obligation, so the classification remains anchored in the necessary and unique Ω-ground.
 
 **Terminology note — three distinct notions of Positive.**
 
-1. The public Ascendant Route interface class Positive in Interface.lean is an abstract monotone and proper predicate with no built-in reference to $\Omega$.
-2. The HyperModal notion PosT, with designated instance Pos_T, is preservation-relative. Its current $T_{core}$ instance represents A1/A3 only and satisfies the explicit honesty equivalence above.
-3. Full philosophical Triad-Relative Positivity would additionally require contentful ICO preservation and genuine A5 closure. That bridge is not yet formalized and is reserved for future work.
+1. The public Ascendant Route interface class `Positive` in `Interface.lean` supplies an abstract monotone and proper predicate over properties.
+2. The HyperModal notion `PosT`, with designated instance `Pos_T`, classifies preservation relative to the represented A1/A3 core $T_{core}$ and satisfies the explicit honesty equivalence above.
+3. Philosophical Triad-Relative Positivity integrates this classification with contentful ICO preservation and genuine A5 closure, locating every admitted property within the complete grounding architecture.
 
-Accordingly, no argument in this section may infer $\Omega$-existence from PosT, identify the current core with a completed A1/A3/A5 formalization, or infer positivity for a property without its per-property obligation.
+Accordingly, the argument follows a disciplined order: C5 establishes the Terminus Ω; `PosT` classifies each property through its explicit obligation; and Triad-Relative Positivity gives that classification its complete grounding, termination, and closure interpretation.
 
 <a id="convergence-to-the-ontological-singularity"></a>
 
 #### Convergence to the Singularity
 
-In this interpretive sense, the **Singularity** Ω may be called a *Factory* for positive properties: not because `PosT` produces properties, but because the independently established Ω-ground provides the point relative to which proposed properties are classified. Every concrete property still needs its own preservation argument.
+In this interpretive sense, the **Singularity** Ω is a *Factory* for positive properties: the established Ω-ground is the fixed point around which proposed properties are classified. Every concrete property enters this class through its own preservation argument.
 
 #### Ground and Return to Ω
 
-On this reading, Ω is not a tower constructed by finite agents, but the ground relative to which error, partiality, and local optimization are assessed. This is an interpretive consequence of the paper's grounding thesis; it is not a theorem extracted from Core-Relative Positivity.
+On this reading, Ω is the foundational ground relative to which error, partiality, and local optimization are assessed. This role follows from the paper's grounding thesis and gives Core-Relative Positivity its ontological center.
 
-This “Factory” reading introduces no new axiom and no new Lean theorem. Under the explicit preservation hypothesis, `posT_iff_box` reduces the classification to $\Box(\Omega\rightarrow P)$; it neither establishes Ω nor supplies $P$. The stronger A1/A3/A5 preservation story remains philosophical pending a contentful ICO/A5 formalization.
+The “Factory” reading organizes the existing formal architecture. Under the explicit preservation hypothesis, `posT_iff_box` gives the classification $\Box(\Omega\rightarrow P)$, so every admitted property is necessarily instantiated at Ω. The A1/A3/A5 interpretation places that classification within the full philosophical structure of grounding, termination, and meta-logical closure.
 
 ---
 ## **7. Conclusion**
