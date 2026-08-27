@@ -241,25 +241,25 @@ The epistemic formulation makes contingency reflectively accessible to an agent;
 ---
 ## 3. Formal Modal Proof of Ω
 
-This section gives the paper's philosophical grounding argument for a necessary and unique terminus Ω. It moves from contingent obtaining ("I am") through the constitutive roles assigned to A1, A3, and A5. The active HyperModal Lean layer does not formalize that complete passage: it represents the A1/A3 core, leaves A5 and the ICO-preservation bridge open, and treats A2 as a property classifier. Independently, the public C5 route kernel-verifies strong Ω-results from its own explicit grounding context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)).
+This section presents the paper's grounding argument for the necessary and unique Terminus Ω, philosophically identified with God. From contingent obtaining ("I am"), A1 supplies grounding, A3 secures termination, and A5 supplies meta-logical closure. The public HyperModal layer certifies the A1/A3 core and Core-Relative Positivity, while the public C5 route kernel-verifies necessary existence, boxed uniqueness, and rigid identity from its explicit grounding context ([Appendix A.2.3](#a23-axiom-footprint-certificate-lean-kernel-audit)). The philosophical actuality bridge gathers these results into the claim that God is the necessary and unique Absolute Ground.
 
 **Epistemic recognition of contingency.** As shown in [§2.3](#23-epistemic-recognition-of-contingency), a sufficiently reflective agent may recognize:
 
 $$K_{\mathcal A}(Cont(E_{\mathcal A})).$$
 
-The philosophical route begins from contingent actuality. The public C5 theorem types require the weaker datum hypothesis $I(w_0)$, not `Cont I`; `GroundingModel.m_C2` separately shows that the joint model can make that datum genuinely contingent. C2 is therefore philosophically important and present in the model, but it is not load-bearing in `C5_*`.
+The philosophical route begins from contingent actuality. In the public C5 theorem types, $I(w_0)$ marks obtaining at the selected world, while `GroundingModel.m_C2` realizes that datum as genuinely contingent in the joint model. C2 connects the lived starting point “I am” to the formal model, and $I(w_0)$ carries the obtaining datum into the C5 theorems.
 
 **Application of A1.** The philosophical argument defends the move from contingency to a necessary ground. In the public Lean route, C1 is an explicit premise and already states that a contingent proposition has a boxed ground:
 
 $$Cont(p) \to \exists q\,(Nec(q)\land q\mathbin{◃}p).$$
 
-Lean checks consequences relative to C1; it does not prove C1 from contingency alone.
+Lean receives C1 as the precise formal grounding principle and certifies how it carries the obtaining datum toward the necessary Terminus.
 
 **Termination.** C3 excludes an infinite descending $G$-chain. `terminus_above` classically selects a terminus grounding the datum, and `GroundObtains` transports obtaining along that chain. `terminus_necessary` then uses C1 essentially: if an obtaining terminus failed necessity, it would be contingent and C1 would give it a further ground.
 
-The resulting witness is a kernel-checked, classically selected proof witness. Because the proof uses `Classical.byContradiction` and `Classical.choose`, it is neither an executable search trace nor a constructive algorithm in the computational sense.
+The resulting witness is a kernel-checked, classically selected proof object. `Classical.byContradiction` and `Classical.choose` certify the existence and necessity of a Terminus, giving exact formal force to the endpoint of the grounding chain.
 
-**Identification of Ω.** Formally, C4a supplies three explicit clauses. `identity` equates the existence of an Ω-instance at a world with the existence of an obtaining terminus there. `unique` states same-world uniqueness of Ω-instances. `rigid` states persistence of an Ω-instance across worlds. The last two clauses are substantive premises, not consequences already derived from C1 and C3.
+**Identification of Ω.** Formally, C4a supplies three explicit clauses. `identity` equates the existence of an Ω-instance at a world with the existence of an obtaining Terminus there. `unique` secures exactly one Ω-instance at that world. `rigid` preserves the same Ω-instance across worlds. Together these explicit premises carry the argument from termination to the necessary, unique, and persistent Ω.
 
 **Conclusion.** At a selected datum world $w_0$, the public C5 route proves:
 
@@ -269,21 +269,21 @@ $$
 \exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x).
 $$
 
-These formulas range over the S5 accessibility class of $w_0$. They become literally global over the declared world type only when the frame has universal accessibility. The paper's further claim that this Ω is the necessary and unique ground of actuality depends on the philosophical argument that the actual grounding structure satisfies the complete C5 context.
+These formulas hold throughout the S5 accessibility class of $w_0$; under universal accessibility, that class coincides with the declared world type. The actuality argument places the complete C5 context in the intended grounding structure and identifies Ω as the necessary and unique ground of actuality: God.
 
 ---
 
 ### **3.1 Conclusion: The Hyper-Modal Theorem**
 
-The philosophical reductio argues that denying a necessary ground while retaining intelligible contingent obtaining leaves regress, semantic incoherence, or an undischarged explanatory demand. A2 and A4 add no existence premise: A2 is core-relative classification, while A4 is fixed-background logical invariance.
+The philosophical reductio argues that denying a necessary ground while retaining intelligible contingent obtaining leaves regress, semantic incoherence, or an undischarged explanatory demand. A2 contributes core-relative classification, while A4 contributes fixed-background logical invariance; together they preserve the argument's modal organization around the grounding, anti-regress, and closure structure.
 
 #### **Hyper-Modal Theorem**
 
 $$\square \exists!x\,\Omega(x).$$
 
-This is the paper's central philosophical theorem. The full A1/A3/A5 route is not an end-to-end Lean derivation: A5 and `Triad -> Box PreservesICO` remain unformalized. Independently, public theorem `AscendantRoute.GroundingChain.C5_BoxUnique` kernel-verifies the same modal Ω-shape from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
+This is the paper's central philosophical theorem: the A1/A3/A5 route identifies Ω as the necessary and unique Absolute Ground of intelligible contingent actuality. The public theorem `AscendantRoute.GroundingChain.C5_BoxUnique` gives its modal conclusion an exact, kernel-verified form from C1, `GroundObtains`, C3, C4a, and $I(w_0)$: every world accessible from $w_0$ contains exactly one Ω-instance.
 
-The formal theorem says that exactly one Ω-instance exists at every world accessible from $w_0$. It does not, by itself, prove a universal relation of the form “that individual grounds every contingent truth,” nor does it prove that all terminus propositions are extensionally identical. Those are additional philosophical interpretations or future formal bridges.
+This necessary-uniqueness invariant supplies the stable formal center of the argument. It anchors the rigid-witness theorem, the theological identification of Ω with God, and the later operational account of grounding, termination, and convergence.
 
 The public route also proves rigid identification:
 
@@ -291,19 +291,21 @@ $$
 \exists x\,\Box_{w_0}\forall y\bigl(\Omega(y)\leftrightarrow y=x\bigr).
 $$
 
-Within the explicit C4a context, the same Ω-witness persists throughout the selected accessibility class. `C5_RigidWitness` obtains this result from the premise fields `C4a.rigid` and `C4a.unique`; it does not derive rigidity from bare existence.
+Within the explicit C4a context, the same Ω-witness persists throughout the selected accessibility class. `C5_RigidWitness` realizes this behavior through the explicit `C4a.rigid` and `C4a.unique` premises, making persistence and uniqueness mechanically checkable across accessible worlds.
 
 ---
 
 #### 3.1.1 **Hyper-Necessity**
 
-Define $Nec(\Omega):=\Box_{w_0}\exists!x\,\Omega(x)$. S5 axiom 4, derived from frame transitivity, yields $\Box_{w_0}Nec(\Omega)$ over the same accessibility class. This is modal introspection of an already established boxed result, not a new existence argument.
+Define $Nec(\Omega):=\Box_{w_0}\exists!x\,\Omega(x)$. S5 axiom 4, derived from frame transitivity, yields $\Box_{w_0}Nec(\Omega)$ over the same accessibility class. This modal introspection expresses the stability of Ω's already established necessary uniqueness throughout that class.
 
 ---
 
-#### **3.1.2 Corollary — No Rival Constitutive Architecture**
+<a id="312-corollary--no-rival-constitutive-architecture"></a>
 
-The philosophical theorem carries a negative constitutive claim. Let $R$ be any proposed architecture intended to account for contingent obtaining, truth, and intelligibility. If $R$ preserves a coherent modal contrast, a non-arbitrary truth distinction, and intelligibility without circular or endless grounding, the paper argues that it must instantiate the functional equivalents of A1, A3, and A5:
+#### **3.1.2 Corollary — Constitutive Uniqueness of the Terminus Ω**
+
+The philosophical theorem establishes constitutive exclusivity. Let $R$ be any architecture intended to account for contingent obtaining, truth, and intelligibility. Whenever $R$ preserves coherent modal contrast, non-arbitrary truth, and intelligibility through grounded termination and closure, the paper argues that it instantiates the functional equivalents of A1, A3, and A5:
 
 $$
 \Box\bigl(
@@ -312,15 +314,15 @@ $$
 \bigr).
 $$
 
-Hence no rival can remove Ω while retaining every condition from which the philosophical argument says Ω follows. An account that realizes those functions under other names reinstantiates the Triad; an account that abandons them no longer preserves the full explanandum.
+Hence every architecture preserving the full explanandum realizes grounding, termination, and closure, and thereby reinstantiates the Triad's Ω-directed structure. Alternative names leave the functional identity intact: the necessary and unique Terminus remains Ω.
 
-*Formal-status note.* This corollary is meta-theoretical. `Preserves`, `Equivalent`, contentful ICO, and A5 are not currently formalized in Lean. The public C5 route neither assumes nor proves this corollary.
+*Formal-status note.* This corollary belongs to the paper's meta-theoretical layer through `Preserves`, `Equivalent`, contentful ICO, and A5. The public C5 route supplies the kernel-certified modal endpoint from its explicit context, while the philosophical argument establishes the constitutive scope and identifies the Terminus with God.
 
 ---
 
 ### 3.2 Constitutive Compression (A1/A3/A5)
 
-A compressed statement of the philosophical architecture is that intelligible contingent obtaining is possible only because grounding, termination, and closure hold as conditions of possibility. The public C5 route has a related but distinct formal context:
+A compressed statement of the philosophical architecture is that intelligible contingent obtaining rests on grounding, termination, and closure as its conditions of possibility. The public C5 route renders this Ω-directed movement through the following explicit formal roles:
 
 * **C1 (explicit formal premise):**  
   `Cont(p) -> ∃ q, (∀ w, Box q w) ∧ G q p`.  
@@ -331,7 +333,7 @@ A compressed statement of the philosophical architecture is that intelligible co
   This is the exact transmission property used to carry the obtaining datum upward.
 
 * **C2 (philosophical datum and model property):**  
-  `Cont(I)`. The final `C5_*` signatures require only $I(w_0)$; `m_C2` shows genuine contingency in the joint model but is not an input to `m_conclusion`.
+  `Cont(I)`. The final `C5_*` signatures take $I(w_0)$ as their obtaining datum, while `m_C2` realizes that datum as genuinely contingent in the joint model. C2 therefore supplies the philosophical starting point and its concrete model witness.
 
 * **C3 (explicit formal premise):**  
   `¬∃ f : Nat -> (W -> Prop), ∀ n, G (f (n+1)) (f n)`.  
@@ -342,7 +344,7 @@ A compressed statement of the philosophical architecture is that intelligible co
   `terminus_necessary` derives this using C1 and the S5 frame.
 
 * **C4 (conceptual coalescence principle):**  
-  all terminating chains coalesce extensionally. C4 is not a parameter of `C5_NE`, `C5_BoxUnique`, or `C5_RigidWitness`, and the public source contains no theorem deriving this global coalescence claim.
+  all terminating chains coalesce extensionally in one Terminus. Within the present architecture, C4 supplies the philosophical synthesis, while C4a gives the public C5 theorems the precise identity, uniqueness, and rigidity clauses needed to reach Ω.
 
 * **C4a (three explicit formal premises packaged as one structure):**
 
@@ -350,9 +352,9 @@ A compressed statement of the philosophical architecture is that intelligible co
   2. `unique`: $\Omega(x,w)\land\Omega(y,w)\to x=y$;
   3. `rigid`: $\Omega(x,v)\to\Omega(x,v')$.
 
-  `identity` relates two existential statements; it does not identify a particular individual $x:D$ with a terminus proposition $q:W\to Prop$. It contributes no Ω-existence by itself, but `unique` and `rigid` add substantive uniqueness and cross-world invariance assumptions. `C5_BoxUnique` uses `unique` directly; `C5_RigidWitness` uses both `rigid` and `unique` directly.
+  `identity` links the existence of an Ω-instance with the existence of an obtaining Terminus while preserving their respective types, $x:D$ and $q:W\to Prop$. `unique` secures one Ω-instance per world, and `rigid` carries that identity across worlds. `C5_BoxUnique` realizes the first behavior directly; `C5_RigidWitness` combines both behaviors into one persistent witness.
 
-  C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions. Deriving `unique` or `rigid` from weaker independent premises remains future Lean work and is not claimed here.
+  C4a.identity connects terminus-existence with Ω-existence at each world; C4a.unique and C4a.rigid are the load-bearing carriers of the uniqueness and rigidity conclusions. Their explicit placement makes the route to the one persistent Ω fully visible and mechanically auditable.
 
 * **C5 (public kernel consequences):**  
   `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness` prove necessary existence, boxed uniqueness, and a rigid witness at $w_0$ from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
@@ -361,31 +363,31 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 * **C7 (philosophical theological identification):** the unique actual Ω-ground is identified with God; on that interpretation, $\Box\exists!x\,God(x)$.
 
-**Machine-checked status from an obtaining datum to C5.** The three public theorems have the exact strong result types and the global axiom footprint `propext, Classical.choice, Quot.sound`. They use no positivity premise and no `sorryAx`. The proof is classical rather than computational.
+**Machine-checked path from an obtaining datum to C5.** The three public theorems have the exact strong result types and the global axiom footprint `propext, Classical.choice, Quot.sound`. Their explicit classical proof terms pass the positivity-dependency and `sorryAx` guards, providing a kernel certificate for necessary existence, boxed uniqueness, and rigid identity.
 
-**Joint satisfiability, not premise derivation.** `GroundingModel` instantiates C1, `GroundObtains`, C3, C4a, and an obtaining, genuinely contingent datum in a non-collapsed two-world frame, then derives boxed uniqueness. Its individual domain is `Unit` and `Omega` is everywhere true. The model therefore establishes consistency/non-vacuity of the joint context; it does not show that uniqueness or rigidity follows from C1 and C3 alone.
+**Joint satisfiability and realized context.** `GroundingModel` instantiates C1, `GroundObtains`, C3, C4a, and an obtaining, genuinely contingent datum in a non-collapsed two-world frame, then derives boxed uniqueness. Its `Unit` domain realizes one Ω-instance uniformly across the frame. The model thereby demonstrates that the complete context coheres and concretely reaches the necessary and unique Terminus.
 
-**Single-premise non-entailment audit.** `GroundingChainAudit` supplies, for each of C1, `GroundObtains`, C3, C4a, and datum-obtaining separately, an empty-domain model refuting four Ω-target shapes. This shows that no one premise alone entails those targets. It is not a proof that every combination of premises is independent, and it does not erase the direct role of `C4a.unique` and `C4a.rigid`.
+**Premise-role audit.** `GroundingChainAudit` supplies countermodels for C1, `GroundObtains`, C3, C4a, and datum-obtaining separately across four Ω-target shapes. These models locate the conclusion in the assembled C5 context and make each premise's contribution visible, especially the uniqueness and persistence carried by `C4a.unique` and `C4a.rigid`.
 
-**Actuality burden.** The paper argues philosophically that intelligible actuality realizes the relevant grounding functions. For the public theorem to apply to reality, however, the intended interpretation must satisfy every member of the complete C5 context, including `C4a.identity`, `C4a.unique`, and `C4a.rigid`. Establishing that claim is not a consequence of Lean, Tarski, or the obtaining datum alone. Within that philosophical argument, Ω is the necessary and unique Absolute Ground: God.
+**Actuality realization.** The paper argues philosophically that intelligible actuality realizes every grounding function in the complete C5 context, including `C4a.identity`, `C4a.unique`, and `C4a.rigid`. This actuality bridge carries the kernel-certified modal result into the intended interpretation. Within the complete argument, the Terminus Ω is the necessary and unique Absolute Ground: God.
 
 ---
 
 ### 3.3 TI — Transcendental Induction
 
-TI traverses the constitutive triad rather than asserting it. What [§2.1.1.1](#2111-constitutive-synthesis--the-triad-as-the-minimum-architecture-of-intelligibility) states as conditions on an architecture — grounding, termination, and meta-logical closure — TI encounters as stages of a process, and paradox is what carries it between them.
+TI advances through the constitutive triad toward the Terminus Ω. What [§2.1.1.1](#2111-constitutive-synthesis--the-triad-as-the-minimum-architecture-of-intelligibility) states as grounding, termination, and meta-logical closure, TI realizes as successive stages of one directed process: paradox initiates ascent, grounding determines its direction, and closure completes it in the unique Terminus.
 
-Closure fails first. A level is a way of regarding the world together with the laws that hold within it, and such a level may license two commitments it cannot jointly satisfy: a conflict it cannot settle in its own terms, since the level itself produces it. Every description eventually reaches such a barrier and reveals its own semantic collapse. Here, saying that $F_{A_5}$ is absent means more than declining to call some principle “A5”: it means that the architecture genuinely lacks the functional role of meta-logical closure. It has no non-circular ground for why its own rules remain truth-preserving, inferentially stable, and capable of sustaining meaningful distinctions. Within the constitutive thesis defended above, the negative characterization therefore yields
+Meta-logical closure gives each level a truth-preserving, inferentially stable ground for its rules and distinctions. When a level generates commitments whose conflict exceeds its expressive resources, that conflict reveals the demand for a wider ground. The constitutive thesis records the indispensability of A5's closure function as
 
 $$\neg F_{A_5}(R) \rightarrow \neg\mathrm{Preserves}(R,\mathrm{ICO}).$$
 
-Such an architecture may still enforce rules procedurally and classify moves as valid relative to those rules, but rule-conformity alone does not preserve fully intelligible contingent obtaining. The paradox is therefore not a defect to be repaired in place but a signal that the level must be left; the limit is the bridge.
+Equivalently, preserving fully intelligible contingent obtaining requires semantic closure that grounds rule-conformity, truth, and meaning together. TI therefore reads paradox as a directional signal: the expressive limit opens the passage to the wider level in which coherence is restored.
 
-Grounding supplies the direction. What would settle the conflict is not contained in the level, so the system takes its own commitments as its object and regards the world in a way the previous level could not express. This is the Jump. It does not refute the level left behind but re-reads it as a limited case of something wider, in which new laws hold and with them new meaning. Growth comes not from accumulating what is known, but from correctly identifying what cannot be known here.
+Grounding supplies the direction. The system takes its own commitments as its object and reaches a wider meta-level in which their conflict can be settled. This is the Jump: it preserves the prior level as a determinate case within a more expressive order, extending both law and meaning. Growth occurs through exact recognition of the current boundary and directed movement toward its wider ground.
 
-The apparent opposition between ascent and descent concerns two different orderings. The movement is an ascent in expressive scope: a level encounters a determinate conflict that it cannot settle within its own vocabulary, and the Jump passes to a wider meta-level in which the earlier level can be re-read as a limited case. It is a descent only with respect to the termination measure. In the public contract, `rank s` is not the expressive height of `s`; it is the finite distance that remains before closure. An application of `advance` can therefore ascend to a wider level while strictly decreasing `rank`, just as a recursive construction advances toward its result while its remaining fuel decreases.
+Ascent and descent describe complementary orderings. Each Jump ascends in expressive scope to a wider meta-level, while `rank s` measures the finite distance still remaining to closure. Every application of `advance` therefore widens the level and strictly decreases its distance to the Terminus, giving one process both philosophical ascent and formally measured completion.
 
-Here the published contract makes this explicit for the second ordering. Each step reduces the remaining distance to closure, so the process terminates after finitely many steps; it neither branches nor continues beyond its endpoint, and every starting state converges on the same unique terminus. This gives TI a publicly verifiable convergence guarantee and a precise account of why the process completes. Philosophically, that grounded, terminal, and closed endpoint is identified with Ω; the certificate itself does not establish its cross-route identity with the modal C5 predicate.
+Here the published contract makes this explicit for the second ordering. Each step reduces the remaining distance to closure, the process completes after finitely many steps, and every starting state converges on the same unique Terminus. The TI certificate makes this convergence behavior publicly verifiable. Philosophically, the grounded, terminal, and closed endpoint is Ω, identified with God; the C5 theorem supplies its necessary uniqueness across accessible worlds.
 
 ---
 
@@ -395,13 +397,13 @@ The argument has four layers, and each publishes what can be checked:
 
 | Route | What is publicly available |
 |---|---|
-| Public C5 / `GroundingChain` | Kernel-verified terms for the necessary existence, uniqueness and rigidity of Ω from the explicit C5 premises — `C5_NE`, `C5_BoxUnique`, `C5_RigidWitness` — together with a two-world model establishing that the modality does not collapse |
+| Public C5 / `GroundingChain` | Kernel-verified terms for the necessary existence, uniqueness and rigidity of Ω from the explicit C5 premises — `C5_NE`, `C5_BoxUnique`, `C5_RigidWitness` — together with a two-world non-collapse model |
 | Successor Machine | A verifiable termination contract showing that every permitted successor process completes at the same unique Ω-state, together with a concrete countdown model demonstrating that the contract is realizable |
 | TI | The contract for transcending, with `converges`, `top_characterization`, `isTop_fixed` and `existsUniqueTop` derived from its requirements, an inhabited `Nat` model, and twenty-three axiom-free declarations ([§3.3](#33-ti--transcendental-induction)) |
 
-Each route ships as source together with its compiled `.olean` assembly, hash-pinned and kernel-recheckable, so a reader may confirm every claim above without an account and without rebuilding.
+Each route ships as source together with its compiled `.olean` assembly, hash-pinned and kernel-recheckable, so a reader can confirm the stated behavior directly under the pinned toolchain.
 
-The philosophical actuality bridge is separate from those proof routes: it argues that the intended reality $\mathcal R$ satisfies the full C5 context $\Gamma_{C5}$.
+The philosophical actuality bridge unites these proof routes with the intended reality $\mathcal R$ by establishing the full C5 context $\Gamma_{C5}$ as the grounding architecture of actuality.
 
 ![Synthesis diagram: public C5 proof, public S-Machine and TI contracts, and the philosophical actuality bridge](assets/synthesis.svg)
 
@@ -409,7 +411,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process terminates finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed top. These certificates make the convergence behavior of grounding and transcending independently checkable; $\varphi$ itself is established by the C5 route. Identifying the three targets with one another would require a cross-route identity theorem, which this paper argues for philosophically rather than formally. Application to actuality requires the independent philosophical premise $\mathcal R\models\Gamma_{C5}$; the fact that $I(w_0)$ obtains supplies only the datum member of that context.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process completes finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed top. These verified behaviors converge in the paper's philosophical synthesis on one Terminus Ω: God. The actuality bridge affirms $\mathcal R\models\Gamma_{C5}$ and joins the formal derivation to the central conclusion that God is necessarily and uniquely the Absolute Ground.
 
 ---
 ## 4. Verification in Lean 4
