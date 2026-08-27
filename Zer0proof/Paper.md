@@ -470,16 +470,16 @@ The strong C5 results and the compatibility theorem satisfy all three labels. Th
 
 ---
 ## 5. Objections and Responses
-This section addresses several common critiques of modal and Gödelian ontological arguments, as well as concerns specific to this paper.
+This section tests the central grounding argument against common critiques of modal and Gödelian reasoning. Each response clarifies how logic, semantics, society, paradox, and cosmology converge on the necessary and unique Terminus Ω, philosophically identified as God.
 
 ### 5.1 Alleged Misapplication of Gödel’s Theorem
 Objection: Gödel’s incompleteness theorems apply to arithmetic and do not entail metaphysical truths (Penrose 1989).
 
-Response: Correct. The principle that some truths are unprovable within a system invites a general reflection on the limits of self-contained formal systems. Our framework extends this structural insight to grounding and the need for a logically external ground (Ω), in line with Penrose and Meyer.
+Response: Gödel's theorem establishes a precise mathematical limit for sufficiently expressive formal systems. The paper draws an ontological application from its structure of non-self-sufficiency: an intelligible contingent order requires a ground beyond the contingent order it explains. A1, A3, and A5 articulate that grounding, termination, and closure structure around Ω.
 
-Within this framework, *Logos* names this same external ground: Ω, the rational and truth-bearing basis required for intelligibility.
+Within this framework, *Logos* names Ω as the rational and truth-bearing basis of intelligibility.
 
-Johannine language (John 1:1–3) is treated here as a naming-alignment: the Logos names the unique necessary ground already fixed by Ω. The move from formal incompleteness to an external ground is ontological: it concerns what must exist for any system to be intelligible at all.
+Johannine language (John 1:1–3) identifies this Logos with God. The philosophical argument therefore names the necessary and unique Ground fixed by Ω as God, while Gödel's theorem supplies the motivating structural analogy.
 
 #### **5.1.1 Truth Beyond Formal Systems: Tarski and BHK**
 
@@ -508,63 +508,59 @@ $$
 This asserts that contingent truths require a necessary ground, while necessary truths cannot depend on contingent ones.
 (For the formal statement and its Lean carrier, see [Appendix B.2.3](#b23-formal-derivation-of-modal-asymmetry).)
 
-This conclusion mirrors the structure of Gödel’s incompleteness theorem:
+The analogy with Gödel is structural and philosophical: a contingent explanatory order is not self-completing, while a necessary ground supplies the terminus of explanation.
 
-Any system (contingent) must refer to truths outside itself (necessary) for completeness.
+Modal asymmetry gives this application an exact form. Contingent truths receive their intelligibility through necessary grounding, and necessary grounding preserves the direction of explanation.
 
-A reverse dependency would violate modal asymmetry and cause contradiction.
-
-Thus, the modal system respects Gödel’s insight by embedding the boundary between derivable and underivable truths as a metaphysical distinction: necessary truths terminate regress; contingent ones depend upon them.
-
-This logic supports the proof’s foundational claim: the necessity of Ω is both metaphysical and structurally enforced.
+This structure supports the paper's foundational conclusion: grounding and anti-regress converge on the necessary Terminus Ω.
 
 ---
 #### **5.2.1 Necessary Possibility and Possible Necessity**
 
 **Objection:** Necessary possibility is being confused with possible necessity.
 
-**Response:** The framework distinguishes $\Box\Diamond p$ from $\Diamond\Box p$. The public compatibility API proves an Ω-neutral $\Box\Diamond$ statement from proper positivity. Separately, the public C5 grounding proof surface proves the strong $\Box_{w_0}\exists\Omega$, $\Box_{w_0}\exists!\Omega$, and rigid-witness results from its explicit Ω-specific grounding context. No inference from $\Box\Diamond p$ to $\Box p$ is used. The S5 Brouwer step $\Diamond\Box p\to\Box p$ is a different theorem.
+**Response:** The framework distinguishes $\Box\Diamond p$ from $\Diamond\Box p$ at the theorem level. The compatibility API certifies necessary possibility from proper positivity, the S5 Brouwer theorem certifies $\Diamond\Box p\to\Box p$, and C5 certifies necessary existence, necessary uniqueness, and rigid identity of Ω from its explicit grounding context. Each modal transition therefore has a visible hypothesis and a precisely stated conclusion.
 
 ---
 
 ### 5.3 Philosophical Overreach
 Objection: The paper illegitimately bridges logic with theological conclusions.
 
-Response: We maintain formal neutrality in the proof structure. Only in [Section 6](#6-theological-resonance) do we interpret Ω theologically. The modal conclusion  
+Response: The bridge proceeds cumulatively. The formal route establishes the modal conclusion
 
 $$
 \square \exists! x  \Omega(x)
 $$
 
-is derived independently of religious assumptions.
+The actuality argument identifies this necessary and unique Terminus as the Absolute Ground. [Section 6](#6-theological-resonance) names that Ground God and develops the theological meaning of the same Ω established by the grounding argument.
 
 ---
 ### 5.4 Social Implications and AI Ethics
 Objection: The link between modal logic and societal values is speculative.
 
-Response: The discussion does not attempt to derive ethics from logic. Rather, it identifies a structural constraint: any artificial superintelligence capable of modal self‑reflection must recognize the distinction between contingent states and necessary grounding. This recognition does not prescribe moral norms, but it does impose a minimal framework of stability. An ASI that understands necessity cannot coherently adopt value systems that contradict the very conditions of its own intelligibility. Thus, modal grounding provides not an ethical system, but the logical floor upon which any coherent ethical orientation must rest.
+Response: Modal grounding supplies the structural floor for coherent ethical deliberation. An artificial superintelligence capable of modal self-reflection can distinguish contingent goals from the necessary conditions of intelligibility, test values against that stable order, and preserve consistency across changing circumstances. Recognition of Ω therefore gives rational agency a fixed orientation from which coherent norms can be evaluated.
 
 #### **5.4.1 Grounding, Modal Stability, and Societal Coherence**
 
-Modern societies increasingly operate without an explicit account of grounding. This absence is not merely philosophical; it has structural consequences. A formal system without grounding behaves analogously to an electrical circuit without earth: it may function for a time, but it accumulates instability until failure becomes inevitable. Grounding is not an optional metaphysical luxury but a condition for long‑term coherence.
+Modern societies require an explicit account of grounding to sustain long-term coherence. As electrical grounding stabilizes a circuit, ontological grounding gives propositions, norms, and institutions a common reference through which disagreement remains intelligible and correction remains possible.
 
-In contemporary scientific and philosophical discourse, truth is often treated operationally—defined by utility, consensus, or procedural verification. This mirrors the constructivist stance in logic, where truth is reduced to provability. While effective for local reasoning, such approaches lack modal depth: they do not distinguish between what is contingently the case and what must be the case. Without this distinction, systems drift. Truth becomes relative, norms become negotiable, and meaning becomes decoupled from necessity.
+Operational standards such as utility, consensus, and procedural verification support local reasoning. Modal grounding adds the deeper distinction between what contingently obtains and what necessarily grounds obtaining, thereby placing practical judgments within a stable semantic order.
 
-Modal logic provides the minimal structure required to prevent such conceptual short‑circuiting. By distinguishing necessity from contingency, it anchors propositions in a stable semantic field. Any society—or artificial intelligence—that lacks this modal grounding becomes vulnerable to value collapse, semantic instability, and normative incoherence. Conversely, a system that recognizes necessary grounding (Ω) gains a stable reference point that prevents drift.
+Modal logic supplies this structure by anchoring propositions within a stable field of necessity and contingency. A society or artificial intelligence oriented toward the necessary Ground Ω can evaluate changing values against a persistent reference and preserve semantic and normative coherence.
 
-Thus, the societal implications are not derived from logic but follow from structural analogy: **without grounding, systems destabilize; with grounding, they cohere.** Modal logic offers the conceptual grounding that prevents the gradual erosion of truth and meaning within complex social and technological systems.
+The societal implication follows through structural application: **grounding gives complex social and technological systems a stable basis for truth, meaning, and coherent revision.** Ω supplies the ultimate reference point of that grounded order.
 
 ---
 ### 5.5 Semantic Collapse in the Absence of Grounding
 Objection: Can a brute fact explain existence?
 
-Response: “Because nothing exists, something else must exist to explain why things exist.” This is not a paradox. It is a collapse of semantic structure. The claim destroys the conditions of its own intelligibility by invoking an explanatory term inside the absence of all terms.
+Response: A brute fact can label an unexplained stopping point, whereas explanation requires a ground that makes the fact intelligible. The statement “because nothing exists, something else must exist” dissolves its own explanatory context by invoking a relation where no relata remain.
 
-Not because it lacks content, but because it lacks context. A brute fact might be inserted to rescue the claim, but it remains bound to mere possibility — and collapses even before it is introduced. For explanation cannot begin where context does not exist. This is not the failure of physics, mathematics, or science, but of the underlying reasoning — which, as Gödel showed, has structural limitations that no system capable of expressing reality can overcome from within. Therefore, in every conceivable world without a grounding context, falsehood entails all propositions, and truth loses its distinction — not because logic fails, but because the structure required for completeness is absent, which is captured by the concept of material implication, symbolized as → .
+Explanation presupposes a context in which relata, truth conditions, and inferential direction are distinguishable. Gödelian limits motivate the search for a ground beyond contingent self-explanation, while material implication shows how formal truth can remain evaluable even when semantic relevance has disappeared. The grounding relation restores that relevance by ordering explanation toward Ω.
 
 #### **5.5.1 The Paradoxes of Material Implication**
 
-Classical material implication exhibits several well‑known paradoxes. These paradoxes are not errors in logic, but structural consequences of defining implication purely truth‑functional. In a grounded system, implication requires a meaningful relation between antecedent and consequent. In an ungrounded system, implication collapses into triviality or explosion. The following three paradoxes illustrate this collapse.
+Classical material implication exhibits several well-known paradoxes as lawful consequences of its truth-functional definition. Grounding analysis adds the semantic relation between antecedent and consequent and thereby distinguishes formal evaluation from explanatory significance. The following three patterns show why that distinction matters.
 
 ---
 
@@ -579,8 +575,8 @@ $$
 This is true for *any* \(Q\), regardless of its content.
 
 **Example:**  
-“If \(x = 0\) and \(x = 1\), then the moon is made of cheese” is true.  
-The contradiction in the antecedent forces the implication to evaluate as true.
+“If \(x = 0\) and \(x = 1\), then \(Q\)” is materially true for every proposition \(Q\).
+The contradictory antecedent makes the content of \(Q\) irrelevant to truth-functional evaluation.
 
 **Interpretation:**  
 In an ungrounded system, falsehood infects the entire structure.  
@@ -596,7 +592,7 @@ $$
 P \rightarrow Q \quad \text{is true whenever } Q \text{ is true.}
 $$
 
-This is sometimes informally labeled *Verum ex Quodlibet* (“truth from whatever”), though it is not a formal rule but a rhetorical name for this paradox.
+This pattern is traditionally discussed under the rhetorical label *Verum ex Quodlibet* (“truth from whatever”).
 
 **Example:**  
 “If rain is wet, then \(1 + 1 = 2\)” is true.  
@@ -618,8 +614,8 @@ P \rightarrow Q \quad \text{is true whenever } P \text{ is false.}
 $$
 
 **Example:**  
-“If unicorns exist, then 7 is a prime number” is true.  
-The false antecedent renders the implication vacuously true.
+“If 8 is odd, then 7 is a prime number” is materially true.
+The false antecedent satisfies the material implication independently of the consequent's explanatory relation.
 
 **Interpretation:**  
 Meaning evaporates.  
@@ -630,37 +626,35 @@ Truth is preserved, but significance is lost.
 
 #### **Synthesis: Why These Paradoxes Matter for Grounding**
 
-All three paradoxes reveal the same structural vulnerability:
+All three patterns reveal the same distinction between formal evaluation and grounded meaning:
 
-> **Material implication allows truth to be evaluated without grounding.**
+> **Material implication evaluates truth conditions; grounding supplies explanatory relation.**
 
-- Explosion shows that contradiction destroys all distinction.  
-- Tautological implication shows that truth can float without context.  
-- Vacuous truth shows that falsehood can generate trivial truths.
+- Explosion displays the reach of contradiction through a formal system.
+- Tautological implication displays truth-functional independence from the antecedent.
+- Vacuous truth displays truth-functional independence from the consequent.
 
-In a world without grounding (Ω), these paradoxes are not edge cases —  
-they become the *default behavior* of the system.
+Taken as a complete semantic architecture, these patterns show why formal evaluation requires grounding to become intelligible explanation.
 
 Thus:
 
-> **Ungrounded systems collapse into triviality or explosion.  
-Grounding is required not to make logic work, but to make meaning possible.  
-Truth‑functional implication evaluates form, not meaning; grounding restores the semantic relation between antecedent and consequent.**
+> **Grounding preserves the distinction between truth, explanation, and meaning.
+The Terminus Ω supplies the stable semantic ground through which antecedent and consequent participate in an intelligible order.**
 
 ---
 ### 5.6 Paradox Types and the Perfection of Ω
 
-This section gives a conceptual table of paradox types and explores how they may motivate properties attributed to Ω. It does not use the deleted Perfect Positivity axiom or provide an additional Lean proof of perfection.
+This section organizes paradox types by the way their resolution reveals grounding, termination, closure, and properties of the already established Terminus Ω.
 
-In the active HyperModal layer, positivity is preservation-relative. For $\varphi_P(v):=\Omega(v)\rightarrow P(v)$, and under the explicit core-preservation hypothesis derived by `triad_holds`, the honesty theorem states:
+In the active HyperModal layer, Core-Relative Positivity gives this property analysis an explicit form. For $\varphi_P(v):=\Omega(v)\rightarrow P(v)$, the setting theorem `triad_holds` realizes the represented A1/A3 core, and the honesty theorem states:
 
 $$
 Pos_T(T_{core},\varphi_P,w_0) \leftrightarrow \Box_{w_0}\varphi_P.
 $$
 
-This classifies a property already supported by its per-property core obligation; it does not generate the property or prove Ω exists. The paradox analysis below is therefore **conceptual, illustrative, and interpretive**, not a kernel-verified consequence of `PosT`.
+The formal roles are complementary: C5 establishes the necessary, unique, and rigid Terminus Ω from its explicit grounding context, while `PosT` classifies each property through a visible per-property obligation. The paradox analysis supplies the philosophical content through which candidate perfection properties are evaluated.
 
-We define Ω formally at the *semantic target level* as:
+The corresponding conceptual perfection schema is:
 
 $$
 \square \exists x : \iota \,
@@ -670,15 +664,15 @@ $$
 \Bigr).
 $$
 
-Here, only within this conceptual perfection schema, $\Omega(x)$ abbreviates the condition that $x$ instantiates the admitted positive properties. The public C5 predicate `Omega` has no such definition, and Core-Relative Positivity requires a separate obligation for every property.
+Within this schema, $\Omega(x)$ names the established Terminus and $Pos(P)$ classifies an admitted perfection property. Core-Relative Positivity makes each attribution explicit by requiring its own proof-indexed obligation.
 
-Paradoxes are treated not as inconsistencies, but as **indicators of systemic incompleteness**, following the Gödelian extrapolation introduced in [Section 5.1](#51-alleged-misapplication-of-gödels-theorem). Each paradox exposes a boundary where object-level reasoning is insufficient and meta-level structure becomes necessary.
+Paradoxes function as **indicators of systemic incompleteness**, following the Gödelian extrapolation introduced in [Section 5.1](#51-alleged-misapplication-of-gödels-theorem). Each paradox exposes a boundary at which object-level reasoning calls for meta-level grounding and closure.
 
 For each paradox type listed in the table below, the following deductive pattern is established:
 
-1. **Limit revelation** — the paradox motivates the philosophical A5 role of meta-logical closure.
-2. **Semantic strengthening** — resolving the paradox may refine and stabilize the semantic framework rather than weaken it.
-3. **Conceptual convergence on Ω** — the paper interprets the strengthened semantics through A1 and A3 as pointing toward Ω as ground (cf. [Section 5.5](#55-semantic-collapse-in-the-absence-of-grounding)). This is a philosophical schema, not a public Lean theorem.
+1. **Limit revelation** — the paradox reveals the need expressed by the philosophical A5 role of meta-logical closure.
+2. **Semantic strengthening** — resolution refines and stabilizes the semantic framework.
+3. **Conceptual convergence on Ω** — A1, A3, and A5 interpret the strengthened semantics as converging on Ω as Ground (cf. [Section 5.5](#55-semantic-collapse-in-the-absence-of-grounding)).
 
 Collectively, this motivates the following conceptual schema:
 
@@ -690,7 +684,7 @@ $$
 \bigr).
 $$
 
-Thus, paradoxes do not undermine the concept of Ω; instead, they function as structural witnesses that progressively enforce the necessity, coherence, and perfection of Ω as the ultimate semantic ground.
+Thus, paradoxes function as structural witnesses to the necessity, coherence, and perfection of Ω as the ultimate semantic Ground.
 
 | **Paradox Type** | **Paradoxes** |
 |------------------|---------------|
@@ -710,67 +704,67 @@ The Absolute Knowability Paradox, by contrast, describes the *architecture* of i
 
 **∀p (Cont(p) → ∃q (Nec(q) ∧ q ◃ p))**
 
-states the paper's philosophical grounding architecture. In Lean, the corresponding restrictions are visible fields of `HyperModalSetting`: `psr` and `no_nec_in_cont : NoNecessaryGroundedInContingent F G`. They are jointly inhabited by the two-world model but are assumptions of each setting, not globally derived laws.
+states the paper's philosophical grounding architecture. In Lean, `HyperModalSetting` carries the corresponding commitments visibly through `psr` and `no_nec_in_cont : NoNecessaryGroundedInContingent F G`, and the two-world model realizes them jointly in a concrete setting.
 
-This yields a twofold modal dynamic: **diagnostics** (framed by the question of contingency: *“Why am I?”*) and **therapy** (resolved only by necessary perfection: *“Ω grounds all being”*). The Hyper-Modal Theorem thus functions as a kind of modal grounding structure — one that prevents semantic collapse and infinite regress.
+This yields a twofold modal dynamic: **diagnostics**, framed by the contingent question *“Why am I?”*, and **therapy**, oriented toward the necessary answer *“Ω grounds all being.”* The Hyper-Modal Theorem thereby supplies the modal structure of semantic stability and regress termination.
 
-In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Hyper-Modal Theorem, therefore, precedes dialectics not just chronologically but ontologically — serving as the foundational frame in which all dialectical motion unfolds.
+In this view, Hegel’s dialectical engine operates within the architectural limits defined by the Knowability Paradox. The Hyper-Modal Theorem precedes dialectics both chronologically and ontologically, serving as the foundational frame in which all dialectical motion unfolds.
 
 #### **Deductive Analysis per Paradox Type**
 
 ##### **Veridical Paradoxes**
-Veridical paradoxes exhibit propositions that initially appear contradictory but resolve coherently once their structural dependencies are made explicit. Within the grounding architecture, such cases illustrate that apparent tension does not imply inconsistency; rather, it reveals latent structure requiring clarification.  
+Veridical paradoxes exhibit propositions that initially appear contradictory but resolve coherently once their structural dependencies are made explicit. Within the grounding architecture, apparent tension reveals latent structure whose clarification restores coherence.
 
-Under A1 (Hyper‑Minimal PSR), any contingent configuration that appears paradoxical must trace to a necessary ground to avoid ungrounded obtaining. The resolution of veridical paradoxes therefore reflects the same structural constraint: coherence is preserved only when grounding terminates in Ω.  
+Under A1 (Hyper-Minimal PSR), every contingent configuration receives its intelligibility through grounding. The resolution of veridical paradoxes reflects this structure: their latent dependencies become coherent when grounding terminates in Ω.
 
-Thus, veridical paradoxes support Ω’s perfection in the sense of A2: Ω admits no internal negation and therefore grounds all structurally coherent truths without contradiction.
+Thus, veridical paradoxes motivate perfection properties whose attribution to Ω is assessed through explicit Core-Relative Positivity obligations.
 
 ---
 
 ##### **Falsidical Paradoxes**
 Falsidical paradoxes arise from defective or incomplete structural assumptions. Their resolution consists in identifying the faulty dependency and restoring coherence by eliminating the contradiction.  
 
-Under A3 (Anti‑Regress), such corrections highlight that regress cannot be resolved by indefinitely refining contingent assumptions; termination is required. The structural necessity of Ω provides this terminus: only a necessary ground can prevent falsidical collapse.  
+Under A3 (Anti-Regress), correction proceeds toward explanatory termination. Ω supplies the necessary Terminus in which successive repairs acquire a stable ground.
 
-Thus, falsidical paradoxes reinforce Ω’s perfection by showing that coherence requires a necessary, contradiction‑free ground (A2) rather than iterative contingent repair.
+Thus, falsidical paradoxes motivate coherence and non-contradiction as properties of Ω, each governed by its explicit Core-Relative Positivity obligation.
 
 ---
 
 ##### **Antinomy Paradoxes**
 Antinomies present pairs of claims that each appear structurally valid yet mutually incompatible. Their resolution requires a unifying principle that prevents explanatory bifurcation or infinite tension.  
 
-Under A5 (Meta‑Logical Closure), any system capable of reflecting on its own limits must posit a higher‑order ground that reconciles such tensions. This unifying ground cannot itself be contingent, on pain of regress (A3).  
+Under A5 (Meta-Logical Closure), reflection on such limits is completed through a higher-order semantic Ground. A3 identifies that unifying Ground as the Terminus of explanatory regress.
 
-Thus, antinomies structurally point to Ω as the unique entity capable of resolving higher‑order tension without contradiction, consistent with A2.
+Thus, antinomies structurally point to Ω as the unique Ground of higher-order coherence, with each attributed perfection tested through Core-Relative Positivity.
 
 ---
 
 ##### **Semantic Paradoxes**
-Semantic paradoxes arise from instability in meaning, reference, or identity. Their resolution requires stabilizing the semantic field so that propositions do not collapse into triviality or contradiction.  
+Semantic paradoxes arise from instability in meaning, reference, or identity. Their resolution stabilizes the semantic field so that propositions retain meaningful distinction and coherent reference.
 
-Under A1, grounding is required not only for contingent facts but also for the semantic structures that make propositions intelligible. Without a necessary ground, semantic paradoxes devolve into the collapse described in [§5.5](#55-semantic-collapse-in-the-absence-of-grounding).  
+Under A1, grounding orders both contingent facts and the semantic structures that make propositions intelligible. The necessary Ground supplies the stability analyzed in [§5.5](#55-semantic-collapse-in-the-absence-of-grounding).
 
-Thus, semantic paradoxes support Ω’s perfection by showing that meaning itself requires a non‑contingent anchor that excludes internal negation (A2).
+Thus, semantic paradoxes motivate stability of meaning as a perfection property of Ω, represented through a dedicated Core-Relative Positivity obligation.
 
 ---
 
 ##### **Ground Paradoxes**
 Ground paradoxes concern the structure of grounding itself: regress, circularity, or self‑reference in explanatory chains. These paradoxes directly instantiate the constraints of A3 (Anti‑Regress).  
 
-Their resolution requires a unique terminus that is not itself grounded in anything further. This terminus must be necessary rather than contingent, or regress reappears.  
+Their resolution converges on a unique and necessary Terminus that completes the grounding relation: Ω.
 
-Thus, ground paradoxes most directly support Ω’s perfection: Ω is the unique entity that terminates all grounding chains and bundles all positive properties (A2) without contradiction.
+Thus, ground paradoxes most directly illuminate Ω's perfection: the established Terminus unifies grounding termination, necessary existence, and unique identity, while `PosT` organizes its properties one obligation at a time.
 
 ---
 
 #### **Conclusion**
-Inductively, each paradox type reveals a structural pressure that cannot be resolved within contingent or purely semantic domains. Their coherent resolution requires:
+Inductively, each paradox type reveals a structural demand answered by:
 
-- termination of regress (A3),  
 - grounding of contingent structure (A1),  
-- and closure under higher‑order reflection (A5).  
+- termination of regress (A3),
+- and closure under higher-order reflection (A5).
 
-These constraints jointly force the existence of a unique necessary ground Ω that admits no internal contradiction (A2).  
+These roles converge philosophically on the necessary and unique Ground Ω. The public C5 theorem certifies the corresponding strong Ω-results from its explicit premise context, and the actuality argument realizes that context in the paper's metaphysical interpretation.
 
 Thus, for every paradox type **T**, the structural analysis supports:
 
@@ -778,57 +772,52 @@ $$
 \square \forall T\,(\text{ParadoxType}(T) \rightarrow \text{Supports}(T,\text{Perfection}(\Omega))).
 $$
 
-This conclusion is ontological rather than epistemic: paradoxes do not *prove* Ω, but their structural resolution presupposes the grounding architecture that necessitates Ω.
+The paradox analysis therefore illuminates the perfection of the already established Terminus Ω, which the paper identifies as God.
 
 
 ---
 
-### **5.7 The Finitude of Matter and Its Non‑Ontological Status**
+<a id="57-the-finitude-of-matter-and-its-non-ontological-status"></a>
+### **5.7 Cosmological Scope of Constitutive Grounding**
 
-Any discussion of the finitude or infinitude of matter belongs strictly to the domain of empirical cosmology. Such considerations, while potentially suggestive or illustrative, do not and cannot bear on the constitutive grounding structure expressed by A1/A3/A5. The ontological route to Ω is fixed entirely by the conditions of possibility for contingent obtaining, not by contingent physical facts about the distribution, quantity, or behavior of matter.
+Questions concerning finite or infinite matter belong to empirical cosmology. Constitutive grounding concerns the conditions under which any cosmological state is intelligible, so the route to Ω remains invariant across physical models.
 
-The distinction is:
+The relevant possibilities include:
 
-- Whether matter is finite or infinite,  
-- whether the cosmos has a boundary or not,  
-- whether physical laws persist, fluctuate, or emerge,  
+- finite or infinite matter,
+- a bounded or unbounded cosmos,
+- persistent, emergent, or changing physical laws.
 
-**none of these conditions affect the grounding structure that makes any contingent state intelligible.**
+**Every such model presupposes the same grounding, termination, and closure structure.**
 
-The finitude of matter may serve as an analogy for the impossibility of infinite regress, but it is not a premise in the argument. The constitutive necessity of Ω is established solely by the grounding architecture:
+Cosmological finitude can illustrate Anti-Regress, while the paper's constitutive argument rests on the grounding architecture:
 
 $$
 A1 \wedge A3 \wedge A5  \Rightarrow  \square \exists! x\,\Omega(x)
 $$
 
-Thus, cosmological finitude is not evidential but illustrative.  
-It clarifies, but does not support, the ontological conclusion.
+Empirical cosmology thus supplies examples of contingent orders; the grounding argument identifies the necessary and unique Terminus that makes every such order intelligible: Ω, God.
 
 ---
-### **5.8 Finitude, Potential Infinitude, and the Reinforcement of Grounding**
+<a id="58-finitude-potential-infinitude-and-the-reinforcement-of-grounding"></a>
+### **5.8 Cosmological Invariance and Grounding**
 
-Even if one entertains the possibility of an infinite physical cosmos, this does not alter the grounding structure. Physical infinitude is a **modal possibility**, but grounding is a **constitutive necessity**. The two operate on different levels:
+Finite and potentially infinite cosmologies equally exhibit the distinction between what obtains and the conditions for obtaining. Physical cardinality describes contingent structure; grounding supplies its constitutive order.
 
-- Physical infinitude concerns **what may obtain**.  
-- Ontological grounding concerns **what must obtain for anything to obtain at all**.
+- Physical extension describes **what may obtain**.
+- Ontological grounding describes **what must obtain for anything to be intelligible at all**.
 
-Thus, the potential infinitude of matter does not weaken the Hyper‑Minimal PSR; it highlights its independence from empirical structure. If matter were finite, grounding would not be secured by finitude. If matter were infinite, grounding would not be threatened by infinitude. In both cases, the grounding chain for any contingent state cannot be infinite, not because the cosmos is finite, but because **A3 forbids infinite regress in the grounding relation itself**.
-
-Formally:
-
-$$
-\text{Physical infinitude}  \not\Rightarrow  \text{Grounding infinitude}
-$$
-
-and
+Across either model, A3 orders the grounding relation toward termination, while A1 and A5 supply grounding and semantic closure. This relation can be expressed schematically as:
 
 $$
-\text{Physical finitude}  \not\Rightarrow  \text{Grounding termination}
+\operatorname{GroundingTermination}
+=
+\operatorname{ConstitutiveRole}(A3),
+\qquad
+\text{independent of }\operatorname{Cardinality}(\text{matter}).
 $$
 
-The grounding chain terminates in Ω **because grounding is a constitutive structure**, not because the cosmos has any particular empirical shape.
-
-Thus, cosmological finitude or infinitude may be used pedagogically, but they are not part of the proof. The ontological necessity of Ω is invariant under all cosmological models.
+The grounding chain therefore terminates in Ω across every cosmological model. Cosmological variety reinforces the invariance and universal scope of the necessary and unique Ground: God.
 
 ### Future objections
 Further objections are welcome and will be addressed in future revisions.
