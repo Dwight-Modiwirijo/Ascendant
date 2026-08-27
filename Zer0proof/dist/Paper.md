@@ -33,7 +33,8 @@ This paper proceeds as follows:
 - [Section 4](#4-verification-in-lean-4) discusses Lean-based machine verification.
 - [Section 5](#5-objections-and-responses) addresses philosophical objections.
 - [Section 6](#6-theological-resonance) explores theological implications, particularly the resonance between Ω and classical theism.
-- [Section 7](#7-conclusion) concludes with a reflection on future directions for both philosophy and artificial intelligence.
+- [Section 7](#7-conclusion) concludes the philosophical argument and distinguishes formal derivation from its application to actuality.
+- [Section 8](#8-ω-operationalization-for-artificial-intelligence-specification-and-research-programme) develops the Ω-operationalization proposal for artificial intelligence as a specification and research programme.
 
 An appendix specifies the Lean-verified scope and reproduces representative artifacts, ensuring logical and computational rigor within the stated verification boundary.
 
@@ -402,7 +403,7 @@ Each route ships as source together with its compiled `.olean` assembly, hash-pi
 
 The philosophical actuality bridge is separate from those proof routes: it argues that the intended reality $\mathcal R$ satisfies the full C5 context $\Gamma_{C5}$.
 
-![Synthesis diagram: public C5 proof and separate conceptual and philosophical routes](assets/synthesis.svg)
+![Synthesis diagram: public C5 proof, public S-Machine and TI contracts, and the philosophical actuality bridge](assets/synthesis.svg)
 
 Let
 
