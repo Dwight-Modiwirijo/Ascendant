@@ -187,7 +187,7 @@ The specification requires three conditions over the well-founded order on $\mat
 
 Natural-number induction and strict decrease exclude an infinite positive-measure successor sequence. Consequently, from every supplied start state $b_0$, some finite iterate reaches measure zero; unique zero identifies that reached state with every Ω-state, and terminal fixedness keeps it fixed. Termination here means finite arrival at the unique fixed Terminus Ω.
 
-[Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops the arithmetic foundation of this measure and its reversed application in the S-Machine.
+[Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) shows how Peano arithmetic locally instantiates the Triad and how the S-Machine reuses its well-founded structure as a measure.
 
 #### 2.2.3 Realising Hyper-Minimal PSR and Anti-Regress
 
@@ -986,7 +986,7 @@ Gödel and Turing expose intrinsic limits of formal derivability and computation
 
 The AI consequence is a concrete research programme. The framework supplies testable correctness requirements for a grounding-aware artificial reasoner, while a computable encoding, measurable grounding criterion, implemented transition rule, and empirical evaluation operationalize its effect on hallucination.
 
-Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops this ordering through Peano arithmetic and its reversed application in the S-Machine. In the paper's philosophical interpretation, this primal Terminus is Ω.
+Accordingly, **a primal halting program must exist**: a foundational ordering in which every permitted grounding-directed process descends finitely to one unique fixed Terminus. The S-Machine gives this architecture its public formal contract through strict decrease, finite convergence, terminal fixedness, and uniqueness. `GroundingChain.terminus_above` supplies the Terminus witness in the grounding relation, while [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) shows how Peano arithmetic locally manifests this constitutive ordering and how the S-Machine uses a well-founded `Nat` measure to represent remaining distance to Ω. In the paper's philosophical interpretation, this primal Terminus is Ω.
 
 ---
 
@@ -1517,7 +1517,7 @@ The public C5 theorems carry the formal Ω-conclusion from an explicit grounding
 
 The four historical refutation records prove only that the former universal statements were untenable. They do not derive Ω, and the surviving setting-relative reductio lemmas prove contradictions only when a setting field is paired with its explicit negation.
 
-The Peano comparison is a local functional instantiation of the Constitutive Triad within arithmetic. Generation from zero supplies grounding, well-founded predecessor descent supplies termination, and equality, recursion, and induction preserve arithmetic structure. [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) develops how the S-Machine reverses this ordering toward Ω.
+The Peano comparison is a local functional instantiation of the Constitutive Triad within arithmetic. Generation from zero supplies grounding, well-founded predecessor descent supplies termination, and equality, recursion, and induction preserve arithmetic structure. [Appendix G](#appendix-g-peano-arithmetic-as-a-local-instance-of-the-constitutive-triad) shows how the S-Machine uses a well-founded `Nat` measure to encode finite remaining distance toward Ω.
 
 ---
 
@@ -2011,7 +2011,13 @@ Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonan
 
 ## Appendix G: Peano Arithmetic as a Local Instance of the Constitutive Triad
 
-Peano arithmetic is a local instance of the Constitutive Triad's functional form. Generation from zero supplies grounding, well-founded descent to zero supplies termination, and preservation of arithmetic identity under successor, recursion, equality, and induction supplies closure. The S-Machine transfers this architecture from arithmetic generation to ontological ascent toward Ω.
+Ontologically, the dependency runs from the Constitutive Triad through world-architecture and intelligible structures to Peano arithmetic:
+
+$$
+\text{Triad}\rightarrow\text{world-architecture}\rightarrow\text{intelligible structures}\rightarrow\text{Peano arithmetic}.
+$$
+
+Peano arithmetic is a local instance of the Constitutive Triad's functional form. Generation from zero supplies grounding, well-founded descent to zero supplies termination, and preservation of arithmetic identity under successor, recursion, equality, and induction supplies closure. The S-Machine operationalizes the same prior triadic architecture, using `Nat` as a well-founded measure of remaining distance toward Ω.
 
 Throughout this appendix, **Peano structure** denotes the inductive natural-number structure used by Lean: zero, successor, recursion, equality, and induction. The correspondence is functional: Peano arithmetic realizes the three constitutive roles locally within arithmetic, while A1/A3/A5 express them within grounding and intelligibility.
 
@@ -2097,7 +2103,7 @@ Peano generates from the basis; the S-Machine reduces remaining distance to the 
 
 ### G.3 The S-Machine Contract
 
-The public S-Machine contract carries this arithmetic structure into a state-transition system:
+The public S-Machine contract gives the prior triadic architecture an operational state-transition form and uses a natural-number measure to encode finite remaining distance:
 
 | Contract component | Formal role |
 |---|---|
@@ -2174,7 +2180,7 @@ The complete claim has three coordinated levels:
 | Constitutive-arithmetic | Lean `Nat` realizes rooted generation, well-founded descent, and structure-preserving arithmetic closure |
 | Constitutive-ontological | Grounding, anti-regress, and meta-logical closure direct intelligible contingent obtaining toward the unique Terminus Ω |
 
-The kernel supplies the proof object for finite convergence and uniqueness. The Peano analysis identifies the triadic structure already present in the termination measure. The philosophical argument applies that same constitutive architecture to grounding and intelligibility. Together they express one directed order: grounded succession, finite closure, and arrival at Ω.
+The philosophical argument establishes the Triad as the constitutive architecture of grounding and intelligibility. Peano analysis identifies its local arithmetic realization. The kernel supplies proof objects for finite convergence and uniqueness when the S-Machine uses `Nat` to measure remaining distance. Together they express one directed order: grounded succession, finite closure, and arrival at Ω.
 
 ---
 ## Appendix H : Epilogue
