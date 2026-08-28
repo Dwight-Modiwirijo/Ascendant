@@ -1202,6 +1202,8 @@ $$
 \to
 \text{Embed}
 \to
+\text{Ground}
+\to
 \text{Measure}
 \to
 \text{Jump}
@@ -1209,7 +1211,7 @@ $$
 \text{Verify}.
 $$
 
-Generation proposes candidates. The grounding system determines their structural position and whether a proposed transition reduces Ω-distance.
+Generate produces informational candidates. Embed represents each information-bearing state in the grounding space. Ground determines its grounding relations and dependencies as the operational manifestation of A1. Measure evaluates remaining Ω-distance under the A3 well-founded order. Jump performs the grounding-directed transition. Verify checks validity, semantic preservation, and Ω-descent. This verification operationally tests the transition; A5 remains the meta-logical ground of truth-preserving semantic continuity across it.
 
 This suggests a general ASI principle:
 
