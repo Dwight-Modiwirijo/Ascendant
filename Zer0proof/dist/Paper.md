@@ -1311,7 +1311,7 @@ d_\Omega^F(x_k) = 0
 Q_F(x_k) = OPT(F).
 $$
 
-The construction and evaluation of $E_F$, $meas$, $x_0(F)$, and $J_F$ must be computable in polynomial time. Comparison in the measure space and recognition of zero must also be computable in polynomial time.
+The construction and evaluation of $E_F$, $meas$, $x_0(F)$, and $J_F$ must be computable in polynomial time. Comparison in the measure space and recognition of zero must also be computable in polynomial time. Ground and Verify, including any proof objects they construct or check, must keep the total cost of every transition polynomial. Strict descent alone establishes neither a polynomial path length nor polynomial work per step, and no component may use $OPT(F)$, an optimal assignment, an NP oracle, or an equivalent hidden solution procedure.
 
 The initial target considered for this programme is exact Max-3-SAT.
 
@@ -1344,6 +1344,50 @@ The computational Ω-search programme therefore asks:
 > **Can a domain-specific grounding embedding make Ω-distance both efficiently navigable and semantically correct at its reachable zero-state?**
 
 The decisive conjunction is efficient descent together with a semantically correct terminus.
+
+#### 8.4.2 Relation to Contemporary P-vs-NP Research
+
+The contemporary landscape around P versus NP includes circuit lower bounds, meta-complexity, proof complexity, algebraic and geometric complexity, and hardness of approximation (Clay Mathematics Institute 2025). These five are principally programmes for understanding hardness or separating complexity classes. Fine-grained and exact complexity and Polynomial Local Search (PLS) are adjacent algorithmic fields rather than identical separation programmes, but they provide especially direct tests of the computational claim made here.
+
+The Ω-directed programme differs from predominantly separational approaches in that its target is constructive: rather than deriving a lower bound that excludes efficient computation, it asks whether an efficiently computable grounding representation and strictly descending transition rule can direct every instance toward a semantically correct global optimum within polynomially bounded resources. This is presently a research target, not an established algorithm. The public S-Machine certificate proves abstract finite termination and uniqueness under its contract; it does not construct a polynomial-time $E_F$, $meas$, or $J_F$ for Max-3-SAT, bound the resulting trajectory polynomially, or prove that a domain-specific zero-state is globally optimal.
+
+| Research direction | Primary object and objective | Ω/Jump analogue | Critical difference | Burden on Ω |
+|---|---|---|---|---|
+| Circuit lower bounds | Circuits; prove an explicit function requires large circuits | Grounding structure | Separation versus algorithm construction | Produce and prove an exact algorithm, not an obstruction |
+| Meta-complexity | MCSP, time-bounded Kolmogorov measures, and complexity descriptions | $E_F$ and $meas$ | A mathematically valid meta-measure may itself be hard to compute | Evaluate representation and measure in polynomial time |
+| Proof complexity | Propositional proof systems and proof size | Verify | Few states do not imply short or cheaply constructible proofs | Keep proof construction and checking polynomial |
+| Algebraic/geometric complexity | Algebraic invariants and structural obstructions | $d_\Omega^F$ | Classification does not by itself provide navigable direction | Make the measure prescribe an efficient transition |
+| Hardness of approximation | Approximation gaps and conditional inapproximability | Exact Ω zero-state | The Ω target is exact, not approximate | Prove every reachable zero is a global optimum |
+| Fine-grained/exact complexity | Exact exponential running times under hypotheses such as ETH or SETH | Polynomial Ω trajectory | Exponent improvement versus crossing the P/NP boundary | Make the complete runtime polynomial |
+| PLS | Local potentials and improving moves | Strictly descending Jumps | Local optimum versus guaranteed global optimum | Prove a globally informative potential and polynomial path |
+
+Circuit lower-bound programmes seek explicit functions for which small circuits cannot exist; sufficiently strong bounds for an appropriate NP problem would support $P\neq NP$. Ω-search instead seeks an algorithm whose success on exact Max-3-SAT would establish $P=NP$. The directions are not incompatible: they investigate opposite possible outcomes of the same open problem. Algebraic and geometric programmes similarly seek invariants or obstructions (Mulmuley and Sohoni 2001), whereas $d_\Omega^F$ must be more than classificatory. It must expose an efficiently usable next transition.
+
+Meta-complexity supplies a particularly strong external test. MCSP and time-bounded Kolmogorov-complexity questions examine the difficulty of determining complexity properties of computational objects themselves (Allender 2020). An ideal Ω-distance is computationally useless if evaluating $meas(E_F(x))$ already solves the target NP-hard problem. Proof complexity adds a separate cost test at Verify: a polynomial number of states does not guarantee polynomial total work if the required proofs are super-polynomial to construct or represent (Cook and Reckhow 1979). Hardness-of-approximation results likewise sharpen the target: Ω-search requests the exact value $Q_F(x_k)=OPT(F)$, not an improved approximation ratio (Arora et al. 1998). Fine-grained research asks whether exponential algorithms can be made quantitatively faster or shown conditionally optimal; the Ω proposal instead asks whether the entire computation becomes polynomial (Nederlof 2026).
+
+PLS is the closest technical analogue. It formalizes finite local search with polynomially computable local information, a potential, and improving transitions, while its required solution is a local optimum (Johnson, Papadimitriou, and Yannakakis 1988). Ω-search requires more: every reachable zero-state must be the global semantic optimum, the path length must be polynomial, and every stage must be polynomial-time computable. A decreasing potential alone is therefore insufficient. The decisive claim would be that efficiently computable local direction is globally informative.
+
+##### No-Hidden-Optimum Condition
+
+The grounding measure must not obtain its direction by encoding a precomputed optimum or invoking a procedure computationally equivalent to solving the target problem. For every instance and current state,
+
+$$
+F,x
+\longmapsto
+E_F(x)
+\longmapsto
+meas(E_F(x))
+\longmapsto
+J_F(x)
+$$
+
+must be computable within the declared polynomial bound without access to $OPT(F)$, an optimal assignment, an NP oracle, or an equivalent hidden solution procedure. The same bound applies to Ground, comparison, zero recognition, and Verify. This is a computational admissibility condition, not a new axiom.
+
+The central scientific test is therefore:
+
+> **Does Ω-distance provide efficiently computable global direction without already encoding the solution?**
+
+[Appendix J](#appendix-j-omega-directed-computation-and-contemporary-complexity-research) develops the comparison, known proof barriers, and the complete burden of a valid Ω construction.
 
 ---
 
@@ -2273,6 +2317,181 @@ Some readers find it helpful to notice an analogy between (i) well-foundedness i
 Accordingly, no cosmological data, theory, or author is appealed to as support for $A1/A3/A5$ or for $\square\exists!x\,\Omega(x)$. The grounding architecture stands or falls independently of physics.
 
 ---
+
+<a id="appendix-j-omega-directed-computation-and-contemporary-complexity-research"></a>
+
+## Appendix J: Ω-Directed Computation and Contemporary Complexity Research
+
+### J.1 Position of the Ω Programme
+
+Contemporary P-versus-NP research contains several major programmes directed toward lower bounds or class separation. The 2025 Clay workshop identifies circuit lower bounds, meta-complexity, proof complexity, algebraic and geometric complexity, and hardness of approximation as central parts of that landscape (Clay Mathematics Institute 2025). The Ω-directed programme has a different target. It asks for a uniform constructive route from an encoded instance and current state to an exact global solution.
+
+That difference concerns the proposed outcome, not immunity from established complexity theory. The public S-Machine certificate establishes finite convergence and uniqueness for any abstract machine satisfying its stated contract. It does not supply the domain-specific embedding, measure, transition rule, complexity analysis, or semantic theorem required for Max-3-SAT. In particular, finite termination is weaker than polynomial-time termination: a finite descending trajectory can still contain exponentially many steps, and each step can itself require super-polynomial work.
+
+The proposed computational claim would begin only with a separately constructed family $E_F$, $meas$, $J_F$, and $x_0(F)$ whose total operation is polynomial and whose reachable zero-states are independently proved exact. This appendix positions that burden relative to established research rather than treating abstract descent as its discharge.
+
+### J.2 Circuit Lower Bounds
+
+Circuit lower-bound research studies the size or depth required for circuits computing explicit functions. A super-polynomial circuit lower bound for an appropriate explicit language in NP would show that NP is not contained in $P/poly$ and therefore that $P\neq NP$. The programme is principally obstructive: identify a hard function and prove that no circuit family below the stated resource bound computes it.
+
+The Ω target runs in the opposite constructive direction:
+
+$$
+F
+\longmapsto
+E_F(x)
+\longmapsto
+d_\Omega^F(x)
+\longmapsto
+J_F(x)
+\longmapsto
+x_k.
+$$
+
+Its successful endpoint would be an exact algorithm for every instance, not a proof that efficient algorithms cannot exist. A uniform polynomial-time construction for exact Max-3-SAT would establish $P=NP$. Circuit lower bounds and Ω-search are therefore compatible as investigations but target opposite resolutions of the open problem. Nothing in the Ω architecture weakens known lower-bound results or supplies the missing circuit construction.
+
+### J.3 Meta-Complexity
+
+Meta-complexity studies the complexity of determining complexity properties of computational objects. MCSP asks whether a Boolean function given by its truth table has a circuit below a stated size. Related work studies time-bounded Kolmogorov measures that combine description length with computational resources (Allender 2020). These are relevant because $E_F$ and $meas$ are themselves computational descriptions of structure.
+
+A mathematical definition of $d_\Omega^F(x)$ does not imply an efficient evaluator. The measure could conceal the original optimization problem: computing it might require finding an optimal assignment, deciding an NP-hard predicate, or reconstructing information equivalent to the answer. In that case the method would relocate hardness from Search to Measure.
+
+Meta-complexity therefore supplies one of the strongest external tests of Ω-directed computation. The construction must prove not only that a suitable measure exists, but also that its representation, evaluation, comparison, and zero test lie within the claimed polynomial bound. Oliveira's survey of formalization, feasible proof, and independence questions in complexity theory reinforces the need to distinguish a mathematical statement, an efficiently constructible witness, and a proof whose resource claims can themselves be formalized (Oliveira 2025).
+
+### J.4 Proof Complexity
+
+Proof complexity studies the resources required by propositional proof systems and connects lower bounds for hard tautologies with NP-versus-coNP questions (Cook and Reckhow 1979). Its direct point of contact with Ω-directed computation is the Verify stage:
+
+$$
+\text{Generate}
+\to
+\text{Embed}
+\to
+\text{Ground}
+\to
+\text{Measure}
+\to
+\text{Jump}
+\to
+\text{Verify}.
+$$
+
+Suppose the trajectory contains only polynomially many states. This alone does not bound total computation. A Jump may require a correctness certificate whose shortest representation is super-polynomial, or a proof may be easy to check once supplied but expensive to construct. Ground and Measure can incur analogous costs.
+
+A valid complexity claim must therefore account for proof-object size, construction time, checking time, and all intermediate representations. Verification cannot be treated as a cost-free semantic label. The polynomial bound applies to the complete transition, not merely to the number of transitions.
+
+### J.5 Algebraic and Geometric Complexity
+
+Algebraic and geometric complexity seek structural invariants and obstructions capable of distinguishing easy from hard computation. Geometric Complexity Theory, for example, recasts lower-bound questions using orbit structure, representation theory, and explicit obstructions (Mulmuley and Sohoni 2001).
+
+Ω-distance is also proposed as a structural quantity, but its required role is stronger than classification. An invariant may correctly distinguish two classes after a state has been presented without revealing how to move from that state to a solution. By contrast, $d_\Omega^F$ must be algorithmically navigable: its efficiently available structure must determine or support the computation of a next state with strictly smaller distance.
+
+The relevant distinction is therefore structural obstruction versus constructive navigation. An Ω-measure becomes computationally decisive only when it provides efficiently exploitable global direction rather than an after-the-fact description of progress.
+
+### J.6 Hardness of Approximation
+
+Hardness-of-approximation research identifies limits on efficiently attainable approximation guarantees for NP-hard optimization problems. PCP-based results show that, under standard complexity assumptions, even specified approximation ratios can be hard to achieve (Arora et al. 1998).
+
+The target in §8.4 is stronger than approximation. It requires:
+
+$$
+Q_F(x_k)=OPT(F)
+$$
+
+for the reachable Ω zero-state. An improved approximation ratio, even one beyond a previously known algorithmic threshold, would not satisfy this condition. Conversely, a proved uniform polynomial-time exact construction for Max-3-SAT would solve the underlying NP-hard optimization problem and imply $P=NP$.
+
+No present claim invalidates hardness-of-approximation results. They retain their force under their stated assumptions unless and until the required exact Ω construction and its correctness and complexity proofs are supplied.
+
+### J.7 Fine-Grained and Exact Complexity
+
+Fine-grained complexity of NP-complete problems and exact exponential algorithms ask how far running times can be improved below naive brute force and whether particular exponential bounds are conditionally optimal under hypotheses such as ETH or SETH (Nederlof 2026). Typical progress may replace $2^n$ by $c^n$ for a smaller constant $c$, improve an exponent, or establish that such an improvement would contradict a fine-grained hypothesis.
+
+The Ω target is categorically stronger. It requires a polynomial bound on the trajectory and on every operation used to construct and validate it. It is not a constant-factor improvement in an exponential exponent. If achieved uniformly for exact Max-3-SAT, it crosses the P/NP boundary.
+
+Consequently, the analysis must count the encoded sizes of states, grounding representations, measures, proof objects, and arithmetic operations. A polynomial number of abstract Jumps does not suffice when state growth, measure evaluation, or verification is exponential in the original input size.
+
+### J.8 Ω-Descent and Polynomial Local Search
+
+PLS is the closest established technical analogue to the Ω potential/descent architecture. In the framework of Johnson, Papadimitriou, and Yannakakis, a local-search problem provides polynomial procedures for producing an initial solution, evaluating a cost, and either finding an improving neighbor or certifying local optimality (Johnson, Papadimitriou, and Yannakakis 1988). The shared pattern is substantial:
+
+- a finite state or solution space;
+- polynomially accessible local information;
+- a potential or objective;
+- an improving transition;
+- termination when no improving transition remains.
+
+The differences are decisive. PLS asks for a local optimum. It does not generally guarantee that the local optimum is global, nor does membership in PLS guarantee that repeated improvement reaches a local optimum in polynomially many steps. An improvement path may be finite yet exponentially long.
+
+The Ω target requires all of the following simultaneously: a polynomially computable embedding and measure, an efficiently computable Jump, a polynomial path bound, polynomial zero recognition, and a proof that every reachable zero-state is the exact global optimum. It must also exclude non-global local minima and plateaus that block progress.
+
+Thus Ω-search is not PLS with renamed vocabulary. Its unproved additional claim is that local, efficiently computable direction carries enough global information to force exact convergence. Establishing that property without encoding the optimum is the central technical difficulty.
+
+### J.9 Known P-vs-NP Barriers
+
+Three barrier results delimit broad families of techniques.
+
+**Relativization.** Baker, Gill, and Solovay constructed oracles relative to which $P=NP$ and other oracles relative to which $P\neq NP$ (Baker, Gill, and Solovay 1975). A proof technique that relativizes uniformly cannot by itself resolve the unrelativized separation question. The relation of an eventual Ω proof method to relativization remains to be analyzed. If Ω supplied an explicit ordinary polynomial-time algorithm for an NP-complete problem together with valid correctness and complexity proofs, $P=NP$ would follow directly; this observation is not a claim that the proof avoids relativization.
+
+**Natural Proofs.** Razborov and Rudich identify, under standard pseudorandomness assumptions, a barrier to broad constructive and large combinatorial properties used for general circuit lower bounds (Razborov and Rudich 1997). This is principally a lower-bound barrier. It does not automatically apply to an explicit algorithmic construction establishing $P=NP$, and no Natural-Proofs immunity is claimed for Ω.
+
+**Algebrization.** Aaronson and Wigderson extend the relativization perspective to techniques that also use low-degree algebraic extensions, showing that many major questions require non-algebrizing methods (Aaronson and Wigderson 2009). Whether a future Ω correctness or complexity proof algebrizes depends on its actual mathematical form and is presently unresolved.
+
+These results neither refute the Ω research target nor certify it. Their proper status is methodological: relativization and algebrization must be tested where applicable, Natural Proofs must not be transferred mechanically from lower bounds to algorithm construction, and no barrier-immunity claim is warranted without a formal analysis.
+
+### J.10 Computational Burden of an Ω Construction
+
+For every encoded Max-3-SAT instance $F$, the programme must construct:
+
+$$
+E_F:X_F\to G,
+\qquad
+meas:G\to M,
+\qquad
+J_F:X_F\to X_F,
+\qquad
+x_0(F)\in X_F.
+$$
+
+A successful construction must prove all eight obligations:
+
+1. $E_F$, $meas$, $J_F$, and $x_0(F)$ are uniformly polynomial-time computable.
+2. Every reachable non-terminal Jump strictly decreases $d_\Omega^F$.
+3. The number of Jumps is bounded by a polynomial in $|F|$.
+4. Comparison and zero recognition are polynomial-time computable.
+5. Every reachable zero-state is semantically exact: $Q_F(x)=OPT(F)$.
+6. No component assumes, encodes, queries, or reconstructs prior access to $OPT(F)$, an optimal assignment, an NP oracle, or an equivalent solution procedure.
+7. The total cost of Embed, Ground, Measure, Jump, and Verify, including state and proof-object sizes, remains polynomial.
+8. Semantic correctness and the complexity bounds are proved from independently specified structure rather than assumed in the definitions.
+
+Obligations 5 and 6 form the central conjunction. A measure such as “distance to a known optimal assignment” can be mathematically coherent while computationally circular: obtaining the reference optimum already solves the problem. Likewise, defining zero to mean “globally optimal” does not provide an efficient zero test or a transition leading there.
+
+The No-Hidden-Optimum Condition therefore requires the complete map
+
+$$
+(F,x)
+\longmapsto
+E_F(x)
+\longmapsto
+meas(E_F(x))
+\longmapsto
+J_F(x)
+$$
+
+to operate from the instance and current state alone within the declared resource bound. The construction must expose global direction without importing the global answer.
+
+### J.11 Comparative Synthesis
+
+The five principal comparison programmes primarily investigate lower bounds, structural obstructions, proof resources, meta-computational difficulty, or approximation limits. Fine-grained complexity studies the exact quantitative frontier below brute force. PLS supplies the nearest local potential-search architecture.
+
+Ω-directed computation occupies a distinct proposed position: constructive exact global navigation. Its abstract certificate contributes one component, namely finite convergence and endpoint uniqueness for machines satisfying the contract. The unresolved scientific work is the domain-specific construction that makes the abstract roles efficiently computable and proves their zero-state globally exact.
+
+Accordingly, the current result is conditional and sharply bounded. No polynomial Ω algorithm for Max-3-SAT is presently established. No known P-versus-NP barrier is claimed to be overcome. Only a uniform construction satisfying all eight obligations, together with valid correctness and total-complexity proofs, would establish $P=NP$.
+
+The programme is therefore concentrated in one question:
+
+> **Can efficiently computable local grounding information provide globally correct direction without already containing the solution?**
+
+---
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content was reviewed, edited, and finalized by the author. No funding was received for this work.
 
@@ -2282,11 +2501,19 @@ The author gratefully acknowledges the assistance of several AI language models 
 
 (Chicago author-date with DOI)
 
+Aaronson, Scott, and Avi Wigderson. *Algebrization: A New Barrier in Complexity Theory.* ACM Transactions on Computation Theory 1, no. 1 (2009): Article 2. [https://doi.org/10.1145/1490270.1490272](https://doi.org/10.1145/1490270.1490272)
+
+Allender, Eric. *The New Complexity Landscape Around Circuit Minimization.* In Language and Automata Theory and Applications, LNCS 12038, 3–16. Springer, 2020. [https://doi.org/10.1007/978-3-030-40608-0_1](https://doi.org/10.1007/978-3-030-40608-0_1)
+
 Almeida, Michael J. *Freedom, God, and Worlds.* Oxford University Press, 2012. [https://doi.org/10.1093/acprof:oso/9780199640027.001.0001](https://doi.org/10.1093/acprof:oso/9780199640027.001.0001)
 
 Anderson, C. Anthony. *Some Emendations of Gödel’s Ontological Proof.* Faith and Philosophy 7, no. 3 (1990): 291–303. [https://doi.org/10.5840/faithphil19907325](https://doi.org/10.5840/faithphil19907325)
 
 Aquinas, Thomas. *Summa Theologica.* Translated by Fathers of the English Dominican Province. Benziger Bros., 1947. (Originally published 1265–1274).
+
+Arora, Sanjeev, Carsten Lund, Rajeev Motwani, Madhu Sudan, and Mario Szegedy. *Proof Verification and the Hardness of Approximation Problems.* Journal of the ACM 45, no. 3 (1998): 501–555. [https://doi.org/10.1145/278298.278306](https://doi.org/10.1145/278298.278306)
+
+Baker, Theodore, John Gill, and Robert Solovay. *Relativizations of the P =? NP Question.* SIAM Journal on Computing 4, no. 4 (1975): 431–442. [https://doi.org/10.1137/0204037](https://doi.org/10.1137/0204037)
 
 Benzmüller, Christoph, and Bruno Woltzenlogel Paleo. *Formalization, Mechanization and Automation of Gödel's Proof of God's Existence.* arXiv preprint arXiv:1308.4526 (2013). [https://doi.org/10.48550/arXiv.1308.4526](https://doi.org/10.48550/arXiv.1308.4526)
 
@@ -2294,11 +2521,17 @@ Blackburn, Patrick, Maarten de Rijke, and Yde Venema. *Modal Logic.* Cambridge U
 
 Buzzard, Kevin. *The Lean Theorem Prover and Its Application to Formalising Mathematics.* Proceedings of the ICM 2022, Vol. 1, 2022. [https://icm2022.org/proceedings](https://icm2022.org/proceedings)
 
+Clay Mathematics Institute. *P vs NP and Complexity Lower Bounds.* CRC Workshop, Mathematical Institute, University of Oxford, September 29–October 3, 2025. [https://www.claymath.org/events/p-vs-np-and-complexity-lower-bounds/](https://www.claymath.org/events/p-vs-np-and-complexity-lower-bounds/)
+
+Cook, Stephen A., and Robert A. Reckhow. *The Relative Efficiency of Propositional Proof Systems.* Journal of Symbolic Logic 44, no. 1 (1979): 36–50. [https://doi.org/10.2307/2273702](https://doi.org/10.2307/2273702)
+
 Fitting, Melvin. *Types, Tableaus, and Gödel’s God.* Springer, 2002. [https://doi.org/10.1007/978-94-010-0411-4](https://doi.org/10.1007/978-94-010-0411-4)
 
 Gödel, Kurt. *Ontological Proof.* In *Collected Works*, Vol. 3. Oxford University Press, 1995.
 
 Hawking, Stephen, and Leonard Mlodinow. *The Grand Design.* Bantam Books, 2010.
+
+Johnson, David S., Christos H. Papadimitriou, and Mihalis Yannakakis. *How Easy Is Local Search?* Journal of Computer and System Sciences 37, no. 1 (1988): 79–100. [https://doi.org/10.1016/0022-0000(88)90046-3](https://doi.org/10.1016/0022-0000(88)90046-3)
 
 Kripke, Saul A. *Naming and Necessity.* Cambridge, MA: Harvard University Press, 1980.
 
@@ -2307,6 +2540,12 @@ Leibniz, Gottfried Wilhelm. *Monadology.* 1714. Translated by Robert Latta. Oxfo
 Lemaître, Georges. *The Primeval Atom: An Essay on Cosmogony.* Van Nostrand, 1946; Lambert, Dominique. *Un Atome d’Univers: La Vie et l’Œuvre de Georges Lemaître.* Racine, 2000.
 
 Meyer, Stephen C. *Signature in the Cell: DNA and the Evidence for Intelligent Design.* HarperOne, 2009.
+
+Mulmuley, Ketan D., and Milind Sohoni. *Geometric Complexity Theory I: An Approach to the P vs. NP and Related Problems.* SIAM Journal on Computing 31, no. 2 (2001): 496–526. [https://doi.org/10.1137/S009753970038715X](https://doi.org/10.1137/S009753970038715X)
+
+Nederlof, Jesper. *An Invitation to Fine-Grained Complexity of NP-Complete Problems.* Computer Science Review 61 (2026): Article 100919. [https://doi.org/10.1016/j.cosrev.2026.100919](https://doi.org/10.1016/j.cosrev.2026.100919)
+
+Oliveira, Igor C. *Meta-Mathematics of Computational Complexity Theory.* Electronic Colloquium on Computational Complexity, Report TR25-041, 2025. [https://eccc.weizmann.ac.il/report/2025/041/](https://eccc.weizmann.ac.il/report/2025/041/)
 
 Oppy, Graham. *Ontological Arguments and Belief in God.* Cambridge University Press, 1996. [https://doi.org/10.1017/CBO9780511663840](https://doi.org/10.1017/CBO9780511663840)
 
@@ -2319,6 +2558,8 @@ Penzias, Arno A., and Robert W. Wilson. *A Measurement of Excess Antenna Tempera
 Plantinga, Alvin. *The Nature of Necessity.* Oxford University Press, 1974. [https://doi.org/10.1093/0198244142.001.0001](https://doi.org/10.1093/0198244142.001.0001)
 
 Popper, Karl. *The Logic of Scientific Discovery.* Routledge, 2002. (Originally published 1934).
+
+Razborov, Alexander A., and Steven Rudich. *Natural Proofs.* Journal of Computer and System Sciences 55, no. 1 (1997): 24–35. [https://doi.org/10.1006/jcss.1997.1494](https://doi.org/10.1006/jcss.1997.1494)
 
 Scholze, Peter. *Liquid Tensor Experiment – A Proof of the Direct Summand Conjecture.* Preprint, 2020. [https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/](https://xenaproject.wordpress.com/2020/12/05/liquid-tensor-experiment/)
 
