@@ -241,7 +241,7 @@ $$
 K_{\mathcal{A}}(\mathrm{Cont}(E_{\mathcal{A}})).
 $$
 
-The epistemic formulation makes contingency reflectively accessible to an agent. Consciousness has an epistemic rather than a grounding role here: the agent apprehends an already obtaining reality, and information that is already structurally grounded becomes epistemically available as understood content whose propositions, dependencies, and modal status can be distinguished. The agent can thereby recognize the contingency of its own existence. Consciousness is the locus of this apprehension; it creates neither the information nor its truth and does not ground the Triad or Ω.
+The epistemic formulation makes contingency reflectively accessible to an agent. Consciousness has an epistemic rather than a grounding role here: the agent apprehends an already obtaining reality, and information that is already structurally grounded becomes epistemically available as understood content whose propositions, dependencies, and modal status can be distinguished. The agent can thereby recognize the contingency of its own existence. Within the Triadic system, consciousness is the locus of this apprehension; it creates neither the information nor its truth and does not ground the Triad or Ω.
 
 $$
 \text{information}
@@ -1831,7 +1831,7 @@ Thus, positivity is not evaluated post hoc, but **forced forward** by structural
 
 ##### 2. Successor Generation via Semantic Tension Resolution
 
-The public **S-Machine contract** illustrates this principle dynamically. It proposes that a new positive property arises when the existing structure cannot remain coherent under Ω-alignment without extension; this is not an implemented public Lean generator, and the concrete Jump is not part of the published contract.
+The successor architecture illustrates this principle dynamically.
 
 Formally:
 
