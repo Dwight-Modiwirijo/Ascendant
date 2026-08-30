@@ -243,6 +243,8 @@ $$
 
 The epistemic formulation makes contingency reflectively accessible to an agent. Consciousness has an epistemic rather than a grounding role here: the agent apprehends an already obtaining reality, and information that is already structurally grounded becomes epistemically available as understood content whose propositions, dependencies, and modal status can be distinguished. The agent can thereby recognize the contingency of its own existence. Within the Triadic system, consciousness is the locus of this apprehension; it creates neither the information nor its truth and does not ground the Triad or Ω.
 
+Within the Triadic system, a zero measure marks completed grounding; consciousness completes epistemic understanding when the agent, human or otherwise, truly apprehends the fully grounded state as meaningful content.
+
 $$
 \text{information}
 \to
