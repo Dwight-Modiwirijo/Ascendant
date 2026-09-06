@@ -1600,7 +1600,7 @@ The main text develops a **hyper-modal grounding framework**:
 * Core-Relative Positivity (A1/A3),
 * Anti-Regress,
 * Derived Logical Invariance (A4), and
-* Meta-Logical Closure (A5, philosophical and not yet formalized).
+* Meta-Logical Closure (A5, the constitutive philosophical principle of semantic closure).
 
 This framework expresses, at a conceptual and metaphysical level, the well-foundedness, termination, and closure roles associated with the Ascendant Route. The public C5 Lean proof supplies the strong Ω-results from its explicit grounding context. The repaired `HyperModal.lean` layer has a narrower certified role: it makes the A1/A3 setting, core-relative classifier, model witness, and historical refutation records explicit.
 
