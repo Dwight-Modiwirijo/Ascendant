@@ -48,7 +48,7 @@ This section establishes the five grounding principles and their formal roles. W
 | A2 / Core-Relative Positivity | Defined classifier with derived theorems; no existence axiom |
 | A3 / Anti-Regress | Philosophically defended; an explicit C3 hypothesis or `HyperModalSetting` field |
 | A4 / Logical Invariance | Lean theorem from the fixed logical-semantic background alone |
-| A5 / Meta-Logical Closure | Philosophical principle; not currently formalized in Lean |
+| A5 / Meta-Logical Closure | Constitutive principle of semantic closure and truth-preserving intelligibility; see [Appendix A.3](#a3-relation-to-the-hyper-modal-framework-in-the-main-text). |
 
 ### 2.1 Hyper-Modal Axioms
 
@@ -1604,7 +1604,7 @@ The main text develops a **hyper-modal grounding framework**:
 
 This framework expresses, at a conceptual and metaphysical level, the well-foundedness, termination, and closure roles associated with the Ascendant Route. The public C5 Lean proof supplies the strong Ω-results from its explicit grounding context. The repaired `HyperModal.lean` layer has a narrower certified role: it makes the A1/A3 setting, core-relative classifier, model witness, and historical refutation records explicit.
 
-The full hyper-modal theorem is therefore the paper's **philosophical generalisation** of the public formal route. It extends the interpretation to A5, ICO, and broader metaphysical claims that the present HyperModal module does not kernel-verify.
+The full hyper-modal theorem integrates the public formal results with the constitutive argument for intelligible contingent obtaining (ICO). Within the Triad, A5 expresses why conformity to internal rules alone does not establish their truth-preserving authority: intelligibility requires semantic closure. When a framework generates a conflict it cannot resolve within its own resources, this requirement motivates TI's Jump to a metalevel where its commitments can be reassessed. A5 is defended through this philosophical argument, while Lean verifies the explicitly formalized consequences under their stated premises. Its philosophical role is deliberate; it neither presupposes a prohibition on formalizing metatheory nor derives its justification merely from standing outside the kernel.
 
 ---
 
