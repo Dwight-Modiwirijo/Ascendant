@@ -1,7 +1,6 @@
 FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG ASCENDANT_COMMIT=unknown
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -23,7 +22,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 ENV ELAN_HOME=/root/.elan
-ENV FORMAL_STATUS_GIT_COMMIT=${ASCENDANT_COMMIT}
 ENV PATH=/root/.elan/bin:/workspace/Zer0proof/.lake/build/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
@@ -31,6 +29,9 @@ RUN curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-ini
 
 WORKDIR /workspace/Zer0proof
 COPY . .
+
+ARG ASCENDANT_COMMIT=unknown
+ENV FORMAL_STATUS_GIT_COMMIT=${ASCENDANT_COMMIT}
 
 # Keep the shipped distribution aside before the pipeline regenerates it, then
 # byte-compare. Without this the image would only prove that the sources build

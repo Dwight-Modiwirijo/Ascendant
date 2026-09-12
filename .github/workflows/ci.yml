@@ -1,5 +1,11 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -73,3 +79,89 @@ jobs:
           cd dist
           sha256sum -c SHA256SUMS
           cat SCOPE.txt
+
+  docker:
+    name: Publish Docker audit image
+    needs: build
+    if: >-
+      github.repository == 'Dwight-Modiwirijo/Ascendant' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: dockerhub-ascendant-main
+      cancel-in-progress: false
+    env:
+      IMAGE: dmodiwirijo/ascendant
+    steps:
+      - name: Check out the verified revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Check whether this revision is still current
+        id: revision
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          main_head="$(git ls-remote origin refs/heads/main | cut -f1)"
+          if [ "$main_head" = "$BUILD_COMMIT" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::A newer main revision exists; skipping this image publication."
+          fi
+
+      - name: Check Docker Hub credentials and available storage
+        if: steps.revision.outputs.current == 'true'
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          if [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "::error::Set the DOCKERHUB_TOKEN repository Actions secret to a Docker Hub access token with write permission for dmodiwirijo/ascendant."
+            exit 1
+          fi
+          df -h /
+
+      - name: Set up Docker Buildx
+        if: steps.revision.outputs.current == 'true'
+        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4
+
+      - name: Log in to Docker Hub
+        if: steps.revision.outputs.current == 'true'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          username: dmodiwirijo
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build, verify and publish the commit image
+        if: steps.revision.outputs.current == 'true'
+        id: image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
+        with:
+          context: ./Zer0proof
+          file: ./Zer0proof/Dockerfile
+          platforms: linux/amd64
+          build-args: |
+            ASCENDANT_COMMIT=${{ github.sha }}
+          push: true
+          tags: ${{ env.IMAGE }}:sha-${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=registry,ref=${{ env.IMAGE }}:latest
+          cache-to: type=inline
+
+      - name: Promote the current verified image to latest
+        if: steps.revision.outputs.current == 'true'
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          IMAGE_DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          main_head="$(git ls-remote origin refs/heads/main | cut -f1)"
+          if [ "$main_head" != "$BUILD_COMMIT" ]; then
+            echo "::notice::Main advanced during the build; keeping the commit tag without replacing latest."
+            exit 0
+          fi
+          docker buildx imagetools create \
+            --tag "${IMAGE}:latest" \
+            "${IMAGE}@${IMAGE_DIGEST}"

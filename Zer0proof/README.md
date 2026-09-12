@@ -93,6 +93,20 @@ The public audit image is available from Docker Hub:
 docker.io/dmodiwirijo/ascendant:latest
 ```
 
+### Automatic publication from GitHub Actions
+
+After a push to `main`, the `CI` workflow first runs the existing public verification job. Only after that job succeeds does a separate job build and publish the Docker audit image. The Dockerfile runs the bundle verifier, CI and byte-for-byte distribution comparison during the image build.
+
+In this repository's **Settings → Secrets and variables → Actions**, add the repository secret `DOCKERHUB_TOKEN`: a Docker Hub access token for `dmodiwirijo` with write access to `dmodiwirijo/ascendant`. The token stays in Actions secrets and is not included in the image or source files.
+
+Successful builds publish `dmodiwirijo/ascendant:sha-<full-commit-sha>`. The job also updates `dmodiwirijo/ascendant:latest` after checking that the revision is still the current `main` tip. Publication jobs are serialized, and main is checked both before building and before promoting the image. Pull requests and pushes to other branches do not publish images.
+
+To rebuild the current main revision manually, select **Actions → CI → Run workflow → main**. The same verification and publication checks apply. A missing Docker Hub token fails the publication job with a setup message; the preceding public verification job remains separate.
+
+The Docker job uses a fresh Linux runner, builds `linux/amd64`, and imports cached layers from the previous `latest` image. Its inline cache is stored with the image in Docker Hub. The commit argument is introduced after the reusable base-image setup, so changing the source revision does not invalidate those base layers. Runner disk usage includes both the final image and temporary build data; the job prints available disk space before building.
+
+### Running the published image
+
 To download and start the published image:
 
 ```bash
