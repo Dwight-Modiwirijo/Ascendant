@@ -98,6 +98,8 @@ Rule-conformity is not yet semantic validity: Gödelian and Tarskian limits moti
 A1/A3/A5 form the philosophical constitutive proposal: grounding, termination, and semantic closure converge on a non-derivative terminus. The HyperModal layer formalizes the A1/A3 core, A5 completes the philosophical architecture, and the public C5 route kernel-verifies the existence and uniqueness of Terminus Ω from its explicit grounding context.
 
 
+**Content of closure.** A5 concerns the ground of semantic authority as well as continuity of content. A transition must specify what its assertions refer to, the truth conditions they retain, and why its consequence relation remains truth-preserving. A changed interpretation must be declared and justified; unchanged spelling alone does not establish unchanged meaning. These are operational obligations of the full closure thesis, not a replacement definition of its ontological ground. [Appendix A.3](#a5-closure-obligations) separates these obligations from their constitutive justification.
+
 #### **2.1.1 Ontological Status of A1/A3/A5 (Constitutive Necessity)**
 
 Axioms A1, A3, and A5 express **constitutive conditions of possibility** for any world in which contingent obtaining occurs.
@@ -159,6 +161,36 @@ $$\boxed{\text{functional preservation of the triad} \;\lor\; \text{loss of ICO}
 The successor architecture of [§2.2](#22-successor-based-grounding-architecture) gives an explicit abstract specification of progression through this constitutive structure toward the unique Terminus Ω.
 
 ---
+<a id="ico-preservation-criteria"></a>
+
+##### 2.1.1.2 Fixed Criteria for ICO Preservation
+
+The preservation test starts with the four ICO characteristics, before asking whether their realization requires the Triad. Modal determinacy requires a determinate distinction between obtaining and non-obtaining across the relevant possibilities. Truth-aptness requires an assertion with conditions under which it is true or false. Inferential stability requires consequence relations that preserve those truth conditions under the stated interpretation. Contrastive distinguishability requires that the alternatives remain distinguishable, including the content of the contrast between this obtaining and its alternative. These criteria identify what is to be explained; none defines ICO by mentioning A1, A3, A5, or Ω.
+
+For a proposed architecture R, `Preserves(R, ICO)` requires a specified interpretation of the same obtaining fact, the same relevant alternatives, and the same truth and consequence conditions. Renaming a fact, changing its interpretation during the argument, or replacing actual obtaining with the description of a model changes the test. Equally, an opponent of the necessity thesis need not assume the Triad or the C5 context in advance. The question is whether the proposed architecture preserves this explanandum while lacking one of the following functions.
+
+| Function | Evidence of its realization | What constitutes its absence |
+| --- | --- | --- |
+| A1: grounding | A dependence account for why the contingent obtaining and its contrast hold | The fact is stipulated as brute, with no such dependence account |
+| A3: anti-regress | Completion of derivative dependence in a non-derivative ground | Every proposed ground requires another, or the explanation returns to an unresolved dependency |
+| A5: closure | An account of truth-preserving authority and semantic identity that does not rest solely on the procedure it authorizes | Correctness is identified solely with rule-conformity, or its authorization remains circular or indefinitely deferred |
+
+The absence column classifies the proposed architecture independently of whether it succeeds in preserving ICO. Whether that absence destroys full intelligibility is the substantive constitutive argument. A successful counterexample would satisfy the independently stated ICO criteria and one absence condition; it cannot be dismissed merely by calling it an unnamed Triad. Conversely, an alternative that explicitly realizes the three functions is functionally equivalent in the stated respects, even if its vocabulary differs. `Equivalent` here denotes equivalence of these functions, not identity of every feature of the architectures.
+
+<a id="ico-constitutive-inference"></a>
+
+##### 2.1.1.3 From Actual Obtaining to Constitutive Grounding
+
+The argument concerns an obtaining fact and its intelligibility. A meaningful denial supplies an instance of semantic activity; its mere meaningfulness does not establish the truth or contingency of every proposition asserted. Actual obtaining and contingency are supplied separately through the recognition discussed in §2.3. The inference therefore does not begin by equating a condition of belief with a condition of being.
+
+**Grounding.** A valuation specifies where a proposition is true. The constitutive question asks what accounts for the actuality of the distinction it records. The paper's ontological intelligibility principle is that the contrast of a contingent obtaining must have an account in dependence, beyond its restatement as an unexplained distribution. This principle gives A1 its force. Truth-aptness alone does not syntactically entail that principle; the defense is that leaving the obtaining contrast brute leaves the very actuality under explanation unexplained. The disagreement with brute-fact accounts is therefore about whether such disclosure belongs to full intelligibility, rather than whether those accounts can assign truth values.
+
+**Completion.** Relative grounds explain locally by reference to further grounds. Iterating that reference does not make any derivative member non-derivative. A3 requires completion of the dependence being explained. The substantive anti-regress argument is that an account whose explanatory force remains borrowed at every stage has distributed the grounding demand without discharging it. This is an argument about the grounding relation, not about the impossibility of infinite mathematical objects or infinite membership structures.
+
+**Closure.** An account must preserve what its assertions mean and why its inferences count as truth-preserving. A rule's self-approval supplies another rule-governed assertion, while authorization by a further derivative procedure repeats the grounding demand. A5 closes that demand in a non-derivative source of semantic authority. The argument is developed independently of any claim that a theorem about formal incompleteness itself proves an ontological source.
+
+The three steps defend the necessity thesis by exposing what remains unaccounted for when each function is removed. They do not treat the repeated assertion of the thesis as its proof. The move from these functions to the exact formal requirements of C5 is made explicit in §3.2; the unity of the grounding architecture and its interpretation across worlds require their own arguments there.
+
 ### 2.2 Successor-Based Grounding Architecture
 
 The S-Machine presents the grounding argument as an abstract successor semantics and formal machine contract. Lean kernel-verifies that every inhabited model satisfying guarded succession, well-founded decrease, terminal fixedness, and unique zero reaches the unique terminal state Ω in finitely many steps. The Successor certificate establishes finite progression to the unique terminal ground, while the world-indexed C5 route verifies the strong modal properties of Ω from its explicit premises. The first result is operational and non-modal; the second supplies necessary existence, uniqueness, and rigidity across accessible worlds. Its exact public release closure consists of the Successor API, model, and certificate modules.
@@ -264,7 +296,7 @@ Lean receives C1 as the precise formal grounding principle and certifies how it 
 
 The resulting witness is a kernel-checked, classically selected proof object. `Classical.byContradiction` and `Classical.choose` certify the existence and necessity of a Terminus, giving exact formal force to the endpoint of the grounding chain.
 
-**Identification of Ω.** Formally, C4a supplies three explicit clauses. `identity` equates the existence of an Ω-instance at a world with the existence of an obtaining Terminus there. `unique` secures exactly one Ω-instance at that world. `rigid` preserves the same Ω-instance across worlds. Together these explicit premises carry the argument from termination to the necessary, unique, and persistent Ω.
+**Identification of Ω.** Formally, C4a supplies three explicit clauses. `identity` equates the existence of an Ω-instance at a world with the existence of an obtaining Terminus there. `unique` secures at most one Ω-instance at that world; the existence argument supplies an instance. `rigid` preserves the same Ω-instance across worlds. Together these explicit premises carry the argument from termination to the necessary, unique, and persistent Ω.
 
 **Conclusion.** At a selected datum world $w_0$, the public C5 route proves:
 
@@ -378,6 +410,32 @@ A compressed statement of the philosophical architecture is that intelligible co
 
 ---
 
+<a id="c4a-structural-justification"></a>
+
+**Structural justification of the three C4a clauses.** The clauses answer different questions and must not be conflated.
+
+1. **Identity:** `C4a.identity` relates an obtaining terminal proposition to an object satisfying Ω. A terminal proposition, a terminal machine state, and an entity have different types. Their correspondence requires an interpretation of which entity grounds the proposition and which state represents that entity. Equating their labels supplies no such interpretation. The philosophical identification is the non-derivative ground of obtaining; an application of C5 must establish the stated equivalence for its chosen grounding relation and object domain.
+2. **Uniqueness:** the structural TAR route proves `TI_top_unique` from deterministic parenthood and connectedness. Any two proposed tops share a predecessor in the creator component; determinism makes the two paths comparable, and a terminal state cannot continue to a different endpoint. Hence the tops coincide. Connectedness is an explicit structural requirement, not a consequence of decreasing rank alone. Philosophically, the paper applies it to the unified actuality being grounded: the co-obtaining of purportedly independent foundations and their determinate relation belongs to the same explanatory whole. The constitutive unity claim is that this whole also requires a common grounding account. Shared vocabulary alone would not establish that claim. A pluralist challenge therefore concerns this demand for a common account, and must be assessed at that point rather than excluded by a hidden uniqueness definition.
+3. **Rigidity:** one endpoint within a world does not by itself identify the endpoint in another world. The TAR interpretation `TIOmega` uses the same underlying structural top across worlds. For a supplied world-indexed Ω-predicate, a separate representation must be shown sound and complete at every world, using the same entity-to-object map. These uniform representation laws carry the cross-world identification. Their ontological defense is that Ω denotes the ground itself, whose identity is fixed by the grounding argument, rather than a world-dependent occupant of a replaceable role. Necessary existence by itself would not establish that identity.
+
+The supplementary TAR module `TAR/TI_Representation.lean` proves `represented_unique` and `represented_rigid` with the exact logical forms of the corresponding C4a clauses, from structural TI and explicit representation laws. It also proves necessary unique represented existence. This supplies a verified way to discharge those clauses; it does not silently replace the original C5 premise package or establish `C4a.identity` for every grounding relation.
+
+<a id="actuality-premise-map"></a>
+
+**Realizing the complete context in actuality.** The philosophical argument must supply the interpretation of each row, with the same facts, grounding relation, and Ω throughout:
+
+| Requirement | Its argumentative source and work |
+| --- | --- |
+| Actual obtaining and contingent contrast | §2.3: the recognized datum and its modal alternatives; the theorem uses obtaining at w₀ |
+| C1 | §2.1.1.3: grounding of the obtaining contrast; the formal premise requires a ground boxed at every world of the declared frame, so its necessary status must be justified over that whole domain |
+| `GroundObtains` | The ground is obtaining wherever the dependent fact it grounds obtains; this transports actuality without independently asserting that a ground exists |
+| C3 | Completion of derivative grounding, defended by the anti-regress argument |
+| `C4a.identity` | Identification of an obtaining terminal proposition with an instance of the same Absolute Ground |
+| `C4a.unique` | Constitutive unity of the grounding whole; structural TAR verifies uniqueness from connectedness and determinism |
+| `C4a.rigid` | Identity of the ground across worlds; the representation laws make this interpretive requirement explicit |
+
+The intended actuality claim is that these requirements are jointly realized, not merely separately satisfiable in unrelated models. Formal satisfaction, ontological justification, and identity of interpretation are coordinated in the one argument. The conditional Lean theorem supplies its exact consequence once this complete context is supplied; the constitutive argument establishes why the context belongs to intelligible actuality.
+
 ### 3.3 TI — Transcendental Induction
 
 TI advances through the constitutive triad toward the Terminus Ω. What [§2.1.1.1](#2111-constitutive-synthesis--the-triad-as-the-minimum-architecture-of-intelligibility) states as grounding, termination, and meta-logical closure, TI realizes as successive stages of one directed process: paradox initiates ascent, grounding determines its direction, and closure completes it in the unique Terminus.
@@ -398,6 +456,18 @@ A complete proof by mathematical induction, including the bound on successor ste
 
 ---
 
+<a id="ti-representation-correspondence"></a>
+
+**A checked representation between the routes.** Structural TAR derives one top `OmegaE A` from `TIArchitecture`. The public finite-rank TI contract supplies a state τ. To relate these to a supplied Ω-predicate, the supplementary representation module uses a state interpretation d and an entity-to-object map e. Its obligations are:
+
+$$\mathrm{IsTerminus}(s)\rightarrow\mathrm{IsTop}_A(d(s)).$$
+
+$$\mathrm{IsTop}_A(a)\rightarrow\Omega(e(a),w).$$
+
+$$\Omega(x,w)\rightarrow\exists a\,(\mathrm{IsTop}_A(a)\land e(a)=x).$$
+
+The latter two hold at every world with the same e. `terminal_identification` identifies the object represented by τ with the image of the structurally derived top; `omega_iff_designated` proves that Ω at any world designates exactly that image. `bounded_represented_convergence` combines this correspondence with the complete-induction bound from Appendix H. Its assumptions explicitly describe the representations to be supplied by an application. For C5, `C4a.identity` still additionally relates obtaining terminal propositions to that same predicate. The representation theorem therefore connects specified interpretations rather than asserting an untyped equality between a state and a predicate.
+
 ### 3.4 Synthesis: From Contingent Actuality to Ω
 
 The argument has four layers, and each publishes what can be checked:
@@ -410,7 +480,7 @@ The argument has four layers, and each publishes what can be checked:
 
 Each route ships as source together with its compiled `.olean` assembly, hash-pinned and kernel-recheckable, so a reader can confirm the stated behavior directly under the pinned toolchain.
 
-The philosophical actuality bridge unites these proof routes with the intended reality $\mathcal R$ by establishing the full C5 context $\Gamma_{C5}$ as the grounding architecture of actuality.
+The [premise-by-premise argument](#actuality-premise-map) and [typed representation](#ti-representation-correspondence) make the connections between these routes explicit. The philosophical actuality bridge unites these proof routes with the intended reality $\mathcal R$ by establishing the full C5 context $\Gamma_{C5}$ as the grounding architecture of actuality.
 
 ![Synthesis diagram: public C5 proof, public S-Machine and TI contracts, and the philosophical actuality bridge](assets/synthesis.svg)
 
@@ -841,6 +911,12 @@ Further objections are welcome and will be addressed in future revisions.
 
 Within the ontological architecture defended in this paper, **Ω** fulfills the Logos-role: necessary, unique, grounding, and truth-bearing. The public Lean theorems establish necessary existence, boxed uniqueness, and rigid identity within the explicit C5 context. This section develops the theological culmination of those results.
 
+<a id="omega-theological-identification"></a>
+
+**Why this Ground is identified as God.** The identification follows the attributes established in the argument: Ω is necessary, non-derivative, unique, and the ground of intelligible contingent actuality. Within the paper, “God” names that Absolute Ground, and the conclusion is the existential claim that this ground is actual, rather than a proposal to adopt a convenient vocabulary. A definition of the name alone would not establish existence; the grounding argument supplies the referent to which the name applies.
+
+This identification is metaphysical before the subsequent scriptural resonances are developed. Claims concerning Logos, personality, or particular theological doctrines receive their own supporting discussion; their content is not introduced into the Lean conclusion merely by substituting the word “God” for Ω. The central conclusion remains direct: **God exists necessarily and uniquely.** Its force rests on the constitutive argument and the verified formal consequences together, with the intended referent held fixed throughout.
+
 ### 6.1 **Inverse Corollary.**
 Within this framework, the maximal arc of intelligibility—absolute knowability within contingency—is a modal-ontological consequence of constitutive intelligibility. If contingency is intelligible at all, and if it is possible for a contingent instantiation to terminate in an absolutely knowable state whose maximal intelligibility holds necessarily, then the maximal arc is possible-as-necessary ($\Diamond\Box$). Under S5, the Brouwer step $\Diamond\Box p \to \Box p$ entails that the maximal arc holds necessarily. This stands as the inverse of the main theorem: whereas the theorem explicates the operation of maximal intelligibility *within* contingency, the inverse corollary establishes the modal stability of maximal intelligibility once a terminating witness exists. In Christian metaphysical language, the *incarnation and resurrection* name this structural pattern. This pattern is formally fixed by the inverse corollary itself: the existence of a terminating instantiation within contingency that renders maximal intelligibility possible-as-necessary.
 
@@ -978,6 +1054,8 @@ The actual grounding structure satisfies the complete C5 context Γ in the paper
 Under that condition, Convention T may disquote the already interpreted claim:
 
 $$\text{“}\varphi\text{” is true}\iff\varphi.$$
+
+The justification of this common interpretation is detailed in [§3.2](#actuality-premise-map); its semantic-authority obligations are developed in [Appendix A.3](#a5-closure-obligations).
 
 **The Lock: Rigid Designation.** Within the formal context, the rigid-witness theorem fixes one and the same Ω-referent throughout the selected S5 class. `C5_RigidWitness` realizes this lock through the explicit invariance and uniqueness clauses of C4a, and the actuality argument identifies the rigid referent as the one necessary Ground.
 
@@ -1592,6 +1670,8 @@ The table separates what the public kernel verifies, what the public models witn
 
 ---
 
+**Supplementary TAR certificates.** `TAR/TI_FullInduction.lean` and its audit verify the Appendix H induction. `TAR/TI_Representation.lean` and `TAR/TI_RepresentationAudit.lean` verify structural-top representation, uniqueness, rigidity, and bounded represented convergence. All eleven declarations checked by the representation audit have empty global axiom footprints. Their explicit inputs remain the structural TI architecture, sound and complete uniform representation, and, for state convergence, the public TI contract and terminal-state interpretation. These modules supplement the TAR build; they do not change the published three-module TI bundle, its 23-declaration audit, or the C5 signatures.
+
 ### A.3 Relation to the Hyper-Modal Framework in the Main Text
 
 The main text develops a **hyper-modal grounding framework**:
@@ -1607,6 +1687,14 @@ This framework expresses, at a conceptual and metaphysical level, the well-found
 The full hyper-modal theorem integrates the public formal results with the constitutive argument for intelligible contingent obtaining (ICO). Within the Triad, A5 expresses why conformity to internal rules alone does not establish their truth-preserving authority: intelligibility requires semantic closure. When a framework generates a conflict it cannot resolve within its own resources, this requirement motivates TI's Jump to a metalevel where its commitments can be reassessed. A5 is defended through this philosophical argument, while Lean verifies the explicitly formalized consequences under their stated premises. Its philosophical role is deliberate; it neither presupposes a prohibition on formalizing metatheory nor derives its justification merely from standing outside the kernel.
 
 ---
+
+<a id="a5-closure-obligations"></a>
+
+**Closure obligations and their justification.** The formal manifestation of A5 can be inspected through three obligations: reference is carried to the corresponding referent; declared truth conditions are preserved; and valid consequences remain valid under that interpretation. Preservation must compose along the route, so a chain cannot retain local correctness while silently replacing the initial subject. Extensions must state the fragment whose content is retained and the new distinctions introduced. An actual contradiction cannot simply be preserved together with all its old commitments in a consistent extension: the Jump must identify which commitment or interpretation is corrected and why.
+
+These requirements make semantic continuity assessable. A proof that a translation preserves satisfaction certifies that translation under its interpretation; it does not by itself ground the authority of that interpretation. A5 addresses the latter question through the non-circular closure argument in §2.1.1.3. Its full ontological content is therefore retained while its operational consequences are made explicit. The present representation lemmas verify endpoint correspondence and its uniformity under their stated laws; they are not a standalone Lean formalization of all of A5.
+
+The retorsive force concerns the critic's use of truth, reference, and valid inference in the act of criticism. Establishing that these functions are being used is the starting point. Establishing their required ontological ground is the subsequent constitutive argument. This distinction makes the inference examinable without reducing its conclusion to a requirement merely to believe in a ground.
 
 ### A.4 Corollary: Structural Necessity and the Peano Analogy
 
@@ -2128,9 +2216,25 @@ Reply: We use Gödel analogically, to highlight that any system capable of expre
 Objection: The modal distinction is inconsistently applied.  
 Reply: [Sections 2](#2-framework-hyper-modal-grounding-principles) and 5 use $Cont(p):=\Diamond p\wedge\Diamond\neg p$. The active HyperModal layer does not globally derive that every contingent truth has a necessary ground; `HyperModalSetting` states the corresponding PSR and modal-class restrictions explicitly, and its model proves that the package is jointly inhabitable.
 
+### Constitutive Necessity and Counterexamples
+Objection: Every successful alternative is simply renamed a Triad.
+Reply: §2.1.1.2 fixes ICO-preservation criteria and separate tests for absence of the functions before evaluating an alternative. An ICO-preserving architecture lacking one function would challenge the necessity thesis. The constitutive argument must show where that proposed preservation succeeds or fails; relabeling alone cannot decide it. Failure to meet a C5 premise is not by itself a refutation of an alternative offered to challenge that premise's necessity.
+
+### Actuality and the Complete C5 Context
+Objection: A conditional kernel theorem is treated as an unconditional conclusion about reality.
+Reply: The actuality-premise map in §3.2 identifies the argument required for each member of the context. Recognition of a datum, a model satisfying the context, and philosophical justification of the intended interpretation perform different tasks. The ontological conclusion uses the complete constitutive justification; it does not infer actual satisfaction from successful compilation alone. A criticism should identify the disputed implication or interpretation in this map.
+
+### Uniqueness, Rigidity, and Route Identity
+Objection: Uniqueness and rigidity are only the desired conclusions restated as premises.
+Reply: C5 exposes them as premises. Structural TAR independently derives top uniqueness from connectedness and determinism. The supplementary representation theorems transfer that result to an independently supplied Ω-predicate and derive its rigidity from uniform sound and complete representation. The unity of the grounding whole, uniform interpretation, and `C4a.identity` retain explicit argumentative roles. Fixedness of a trajectory is not substituted for cross-world identity.
+
+### Semantic Closure and Formal Limits
+Objection: A5 is inferred directly from Gödel or Tarski, or is reduced to a translation check.
+Reply: §2.1.1.3 supplies the non-circular authorization argument. Appendix A.3 identifies semantic preservation as an operational obligation of that thesis and separates it from the grounding of truth-preserving authority itself. Neither an appeal to a formal limit nor a successful translation alone supplies the whole A5 argument.
+
 ### Theological Overreach
 Objection: The conclusion supports classical theism, undermining neutrality.  
-Reply: [Section 6](#6-theological-resonance) frames this as interpretive resonance. The proof itself is formally neutral and deductively theological only under voluntary interpretation.  
+Reply: [Section 6](#omega-theological-identification) identifies the necessary, unique, non-derivative ground of intelligible actuality as God. This is the paper's argued metaphysical conclusion. The Lean theorems supply the formal consequences of their explicit grounding premises; the constitutive argument supplies their intended actuality and theological identification. The subsequent scriptural resonances develop that identification without replacing its grounding argument.  
 
 <a id="appendix-g-successor-function-of-grounding-conceptual-sketch"></a>
 <a id="appendix-g-peano-as-an-instantiation-of-the-constitutive-triad"></a>
@@ -2372,7 +2476,7 @@ This notation preserves the four characteristics stated in the paper. It is a sc
 
 Recognition of α and recognition of ICO play different roles. A meaningful statement is not, by itself, a true contingent fact. [§2.3](#23-epistemic-recognition-of-contingency) addresses recognition of actual obtaining and contingency.
 
-To apply TI, an ICO is represented in an admissible initial state s₀. Justifying this representation and its grounding conditions belongs to the constitutive argument.
+An actual assertion is itself an obtaining event; whether that event or its asserted content is contingent requires the modal contrast stated above. Thus α supplies semantic access, while actual obtaining and its contrast supply the ICO to be grounded. The [fixed preservation criteria](#ico-preservation-criteria) apply before the Triad-necessity argument. To apply TI, this ICO is represented in an admissible initial state s₀, with a total transition and a finite rank whose decrease is justified for that representation. General anti-regress alone is not a construction of a natural-number rank for every possible architecture; the rank and transition belong to the formal implementation of the grounding route.
 
 ### H.3 The TI contract
 
@@ -2612,6 +2716,8 @@ $$
 
 Induction establishes reachability; the uniqueness condition establishes the same endpoint; the fixedness condition establishes preservation of that endpoint.
 
+The separate TAR proof `TAR/TI_FullInduction.lean` follows H.4–H.7 explicitly: `baseCase`, `inductionStep`, `fullInduction`, `convergesWithinRank`, and `uniqueFixedTerminus`. Its audit verifies empty axiom footprints under the displayed TI contract. This additional proof does not invoke the existing convergence theorem as its justification.
+
 ### H.8 Connection with the Triad and the ontological Ω
 
 In the paper’s philosophical architecture, the Triad functions play the following roles:
@@ -2622,7 +2728,7 @@ In the paper’s philosophical architecture, the Triad functions play the follow
 
 The public TI contract makes finite progression and terminal properties precisely checkable. The induction proof above uses the explicit contract conditions for this purpose.
 
-The notation τ denotes the terminal TI state. The paper philosophically connects this operational endpoint with the ontological Ω. That connection belongs to the synthesis of the proof routes; the public TI contract itself contains no identification theorem between its states and the C5 predicate Ω.
+The notation τ denotes the terminal TI state. The supplementary TAR representation theorem connects this state to an entity satisfying a supplied world-indexed Ω-predicate, using the explicit state and entity representations in [§3.3](#ti-representation-correspondence). `terminal_identification` and `bounded_represented_convergence` are kernel-checked in `TAR/TI_Representation.lean`. The unchanged public TI contract supplies convergence; the supplementary module supplies the typed correspondence under its representation laws. Application to the C5 grounding relation also requires the proposition-to-entity identification expressed by `C4a.identity`.
 
 The C5 route specifies its own complete grounding context, including:
 
