@@ -2,9 +2,9 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `8c3b1164230967d7406903af50029345230ac94d`
+- Git commit: `a76de38efb58dec0712cd267afe5d8621a5833e8`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
-- Audit date: `2026-08-27`
+- Audit date: `2026-09-12`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**
 
 ## Public Theorems
@@ -72,25 +72,25 @@
 | `AscendantRoute.Release.TI.Contract.State` | `none` |
 | `AscendantRoute.Release.TI.Contract.advance` | `none` |
 | `AscendantRoute.Release.TI.Contract.rank` | `none` |
-| `AscendantRoute.Release.TI.Contract.IsTop` | `none` |
+| `AscendantRoute.Release.TI.Contract.IsTerminus` | `none` |
 | `AscendantRoute.Release.TI.Contract.descends` | `none` |
-| `AscendantRoute.Release.TI.Contract.top_iff_zero` | `none` |
-| `AscendantRoute.Release.TI.Contract.top_unique` | `none` |
-| `AscendantRoute.Release.TI.Contract.top_fixed` | `none` |
+| `AscendantRoute.Release.TI.Contract.terminus_iff_zero` | `none` |
+| `AscendantRoute.Release.TI.Contract.terminus_unique` | `none` |
+| `AscendantRoute.Release.TI.Contract.terminus_fixed` | `none` |
 | `AscendantRoute.Release.TI.iterate` | `none` |
 | `AscendantRoute.Release.TI.iterate_zero` | `none` |
 | `AscendantRoute.Release.TI.iterate_succ` | `none` |
 | `AscendantRoute.Release.TI.iterate_succ_arg` | `none` |
 | `AscendantRoute.Release.TI.converges` | `none` |
-| `AscendantRoute.Release.TI.top_characterization` | `none` |
-| `AscendantRoute.Release.TI.isTop_fixed` | `none` |
-| `AscendantRoute.Release.TI.existsUniqueTop` | `none` |
+| `AscendantRoute.Release.TI.terminus_characterization` | `none` |
+| `AscendantRoute.Release.TI.isTerminus_fixed` | `none` |
+| `AscendantRoute.Release.TI.existsUniqueTerminus` | `none` |
 | `AscendantRoute.Release.TI.NatContract` | `none` |
 | `AscendantRoute.Release.TI.natOrigin` | `none` |
 | `AscendantRoute.Release.TI.natContract_converges` | `none` |
-| `AscendantRoute.Release.TI.natContract_top_characterization` | `none` |
-| `AscendantRoute.Release.TI.natContract_top_fixed` | `none` |
-| `AscendantRoute.Release.TI.natContract_existsUniqueTop` | `none` |
+| `AscendantRoute.Release.TI.natContract_terminus_characterization` | `none` |
+| `AscendantRoute.Release.TI.natContract_terminus_fixed` | `none` |
+| `AscendantRoute.Release.TI.natContract_existsUniqueTerminus` | `none` |
 
 ## W12 Question-Begging Matrix
 

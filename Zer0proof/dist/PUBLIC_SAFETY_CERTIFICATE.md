@@ -20,7 +20,7 @@ The public interface defines an S5 Kripke `Frame` with an accessibility relation
 - **Public C5 grounding route:** `C5_NE`, `C5_BoxUnique`, and `C5_RigidWitness`, each with footprint `propext, Classical.choice, Quot.sound`.
 - **Private successor route:** independent internal work, not distributed and not part of the public reproducibility claim.
 - **Public clean-room Successor release:** source-plus-`.olean` certification of the abstract contract only, accepted through external SHA pins, plain kernel replay, reproducible rebuild comparison, and leak checks.
-- **Public clean-room TI release:** source-plus-`.olean` certification of finite convergence to a unique fixed top under explicit contract requirements; it does not expose the internal TI implementation or establish a bridge to C5 `Omega`.
+- **Public clean-room TI release:** source-plus-`.olean` certification of finite convergence to a unique fixed terminus under explicit contract requirements; it does not expose the internal TI implementation or establish a bridge to C5 `Omega`.
 
 The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining datum directly. Positivity is absent. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame.
 
@@ -81,4 +81,4 @@ The machine-generated status contains the exact Lean theorem types, axiom footpr
 
 ## Final statement
 
-The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The clean-room Successor and TI releases disclose only their abstract contracts, models, consequences, and certificates; they disclose neither internal implementation nor the concrete Jump. The TI certificate proves finite convergence and a unique fixed top only within its explicit contract and supplies no identity bridge to the C5 `Omega` predicate. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.
+The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The clean-room Successor and TI releases disclose only their abstract contracts, models, consequences, and certificates; they disclose neither internal implementation nor the concrete Jump. The TI certificate proves finite convergence and a unique fixed terminus only within its explicit contract and supplies no identity bridge to the C5 `Omega` predicate. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.

@@ -45,14 +45,14 @@ The stage verifies the external and internal hashes, pinned toolchain and proven
 
 ### Public TI Certificate
 
-The TI release is a separate clean-room contract, not the internal TI implementation. Its visible requirements are a state type, an advance operation, a natural-number rank, a top predicate, strict rank decrease away from the top, top characterization, uniqueness, and fixedness. Lean derives finite convergence and existence and uniqueness of the top; a `Nat` countdown model establishes non-vacuity. The exact three-module closure is shipped as source and `.olean` pairs with separate repository-controlled pins:
+The TI release is a separate clean-room contract, not the internal TI implementation. Its visible requirements are a state type, an advance operation, a natural-number rank, a terminus predicate (`IsTerminus`), strict rank decrease away from the terminus, terminus characterization, uniqueness, and fixedness. Lean derives finite convergence and existence and uniqueness of the terminus; a `Nat` countdown model establishes non-vacuity. The exact three-module closure is shipped as source and `.olean` pairs with separate repository-controlled pins:
 
 ```text
 certificates/ti-release/
 certificates/ti-release.SHA256SUMS
 ```
 
-The release does not disclose the internal TI construction, its proof architecture, modal bridge theorems, or any identity theorem connecting its top to the C5 `Omega` predicate.
+The release does not disclose the internal TI construction, its proof architecture, modal bridge theorems, or any identity theorem connecting its terminus to the C5 `Omega` predicate.
 
 ## HyperModal Core-Relative Layer
 
