@@ -394,6 +394,8 @@ Ascent and descent describe complementary orderings. Each Jump ascends in expres
 
 Here the published contract makes this explicit for the second ordering. Each step reduces the remaining distance to closure, the process completes after finitely many steps, and every starting state converges on the same unique Terminus. The TI certificate makes this convergence behavior publicly verifiable. Philosophically, the grounded, terminal, and closed endpoint is Ω; the C5 theorem supplies its necessary uniqueness across accessible worlds.
 
+A complete proof by mathematical induction, including the bound on successor steps and the roles of uniqueness and fixedness, is given in [Appendix H](#appendix-h-full-mathematical-induction-for-ti-convergence).
+
 ---
 
 ### 3.4 Synthesis: From Contingent Actuality to Ω
@@ -2311,16 +2313,362 @@ The complete claim has three coordinated levels:
 The philosophical argument establishes the Triad as the constitutive architecture of grounding and intelligibility. Peano analysis identifies its local arithmetic realization. The kernel supplies proof objects for finite convergence and uniqueness when the S-Machine uses `Nat` to measure remaining distance. Together they express one directed order: grounded succession, finite termination, semantic closure, and arrival at Ω.
 
 ---
-## Appendix H : Epilogue
->“A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory (as people often think) but a vice. Every genuine test of a theory is an attempt to falsify it, or refute it.” — Karl Popper
+<a id="appendix-h-full-mathematical-induction-for-ti-convergence"></a>
 
-Where Popper grounded science in falsifiability, I ground truth in modality.
+## Appendix H: Retorsion and Full Mathematical Induction for TI Convergence
 
-Absolute truths — such as 1 + 1 = 2, or the necessary existence of a purely positive Being — are not derived from observation or emergence. They exist necessarily and universally.
+This appendix gives a complete proof by mathematical induction of finite convergence under the TI contract described in [§3.3](#33-ti--transcendental-induction). The proof establishes an explicit bound for every admissible initial state and then derives convergence to one fixed terminus using the contract's uniqueness and fixedness conditions.
 
-Only modal logic allows us to formally express and analyze such necessity (□P). Without it, truth collapses — not merely into paradox or triviality, but into semantic dissolution itself.
+The definitions correspond to the public [TI contract and convergence proof](https://github.com/Dwight-Modiwirijo/Ascendant/blob/main/Zer0proof/certificates/ti-release/AscendantRoute/Release/TI/TIAPI.lean). Retorsion supplies the semantic starting point for the philosophical argument; the mathematical induction proceeds over the natural-number rank.
 
-If we are to build systems that not only compute, but truly understand, modality must be their foundation.
+### H.1 The semantic starting point: α
+
+Define:
+
+$$
+\alpha:=\exists w\,\exists p\;\mathrm{Meaningful}(p,w).
+$$
+
+Thus α states that there is some meaning somewhere. Its absolute denial is:
+
+$$
+\neg\alpha\equiv
+\forall w\,\forall p\;\neg\mathrm{Meaningful}(p,w).
+$$
+
+Let d be a meaningful assertion of this denial. In the world where d is meaningfully asserted:
+
+$$
+\mathrm{Meaningful}(d,w)\rightarrow\alpha.
+$$
+
+The content of d denies α, while the meaningful assertion itself instantiates α. This is the retorsive structure developed in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity).
+
+The constitutive argument addresses why intelligible contingent obtaining requires grounding, anti-regress, and meta-logical closure. Here α marks semantic access to that argument. The mathematical base case is P(0), established in §H.5 from the TI contract's rank-zero condition.
+
+### H.2 The actual starting point: ICO
+
+Let the following abbreviation jointly express the four ICO characteristics:
+
+$$
+\begin{aligned}
+\mathcal I(p,w):={}&
+\mathrm{ModallyDeterminate}(p,w)\\
+&\land\mathrm{TruthApt}(p,w)\\
+&\land\mathrm{InferentiallyStable}(p,w)\\
+&\land\mathrm{ContrastivelyDistinguishable}(p,w).
+\end{aligned}
+$$
+
+We can then express ICO schematically as:
+
+$$
+\mathrm{ICO}(p,w_0):=
+p(w_0)
+\land\Diamond_{w_0}p
+\land\Diamond_{w_0}\neg p
+\land\mathcal I(p,w_0).
+$$
+
+This notation preserves the four characteristics stated in the paper. It is a schematic explication for this appendix.
+
+Recognition of α and recognition of ICO play different roles. A meaningful statement is not, by itself, a true contingent fact. [§2.3](#23-epistemic-recognition-of-contingency) addresses recognition of actual obtaining and contingency.
+
+To apply TI, an ICO is represented in an admissible initial state s₀. Justifying this representation and its grounding conditions belongs to the constitutive argument.
+
+### H.3 The TI contract
+
+Take a state space S with a total successor function and a natural-number rank:
+
+$$
+\mathrm{advance}:S\rightarrow S,
+\qquad
+\mathrm{rank}:S\rightarrow\mathbb N.
+$$
+
+In the philosophical interpretation, rank represents the remaining grounding distance. Formally, rank is a measure that strictly decreases at every non-terminal step.
+
+In this appendix, we use the name:
+
+$$
+\mathrm{IsTerminus}(s).
+$$
+
+**IsTerminus denotes the terminal state in the TI contract.** An intermediate ground need not be a terminus.
+
+The contract specifies four separate conditions.
+
+#### Strict decrease
+
+$$
+0<\mathrm{rank}(s)
+\rightarrow
+\mathrm{rank}(\mathrm{advance}(s))<\mathrm{rank}(s).
+$$
+
+#### Characterization of the terminus
+
+$$
+\mathrm{IsTerminus}(s)
+\iff
+\mathrm{rank}(s)=0.
+$$
+
+#### Uniqueness
+
+$$
+\mathrm{IsTerminus}(s)\land\mathrm{IsTerminus}(t)
+\rightarrow s=t.
+$$
+
+#### Fixedness
+
+$$
+\mathrm{IsTerminus}(s)
+\rightarrow
+\mathrm{advance}(s)=s.
+$$
+
+Uniqueness and fixedness are explicit, distinct conditions. Strict decrease and the rank-zero characterization support the termination proof; uniqueness makes every trajectory converge to the same terminal state, and fixedness preserves that state.
+
+### H.4 The induction property
+
+Write repeated application of the successor function as:
+
+$$
+\mathrm{advance}^{0}(s)=s,
+$$
+
+$$
+\mathrm{advance}^{N+1}(s)
+=
+\mathrm{advance}^{N}(\mathrm{advance}(s)).
+$$
+
+Define:
+
+$$
+P(n):=
+\forall s\in S,\quad
+\mathrm{rank}(s)\leq n
+\rightarrow
+\exists N\in\mathbb N,\quad
+N\leq n
+\land
+\mathrm{IsTerminus}(\mathrm{advance}^{N}(s)).
+$$
+
+P(n) states:
+
+> Every state of rank at most n reaches a terminal state within at most n steps.
+
+We prove by mathematical induction:
+
+$$
+\forall n\in\mathbb N,\;P(n).
+$$
+
+Including the upper bound in P(n) makes the proof establish both finiteness and a bound on the number of steps required.
+
+### H.5 Base case: P(0)
+
+Take a state s with:
+
+$$
+\mathrm{rank}(s)\leq 0.
+$$
+
+Since rank is a natural number:
+
+$$
+\mathrm{rank}(s)=0.
+$$
+
+By the contract condition:
+
+$$
+\mathrm{IsTerminus}(s).
+$$
+
+Choose N = 0. Then:
+
+$$
+\mathrm{advance}^{0}(s)=s,
+\qquad
+N\leq 0.
+$$
+
+The state is already terminal. Hence P(0) holds.
+
+### H.6 Inductive step: from P(n) to P(n+1)
+
+#### Induction hypothesis
+
+Assume P(n):
+
+$$
+\forall s,\quad
+\mathrm{rank}(s)\leq n
+\rightarrow
+\exists N\leq n,\quad
+\mathrm{IsTerminus}(\mathrm{advance}^{N}(s)).
+$$
+
+#### Goal
+
+Take an arbitrary state s with:
+
+$$
+\mathrm{rank}(s)\leq n+1.
+$$
+
+We distinguish two cases.
+
+#### Case 1: rank(s) ≤ n
+
+P(n) directly implies that s reaches a terminal state within at most n steps.
+
+Since n ≤ n+1, s also satisfies the bound required for P(n+1).
+
+#### Case 2: rank(s) = n+1
+
+The rank is positive. The total successor function supplies:
+
+$$
+s'=\mathrm{advance}(s).
+$$
+
+By strict decrease:
+
+$$
+\mathrm{rank}(s')<\mathrm{rank}(s)=n+1.
+$$
+
+Therefore:
+
+$$
+\mathrm{rank}(s')\leq n.
+$$
+
+Apply the induction hypothesis to s'. There is a k ≤ n such that:
+
+$$
+\mathrm{IsTerminus}(\mathrm{advance}^{k}(s')).
+$$
+
+Since s advances to s' in one step:
+
+$$
+\mathrm{advance}^{k+1}(s)
+=
+\mathrm{advance}^{k}(s').
+$$
+
+Choose N = k+1. Then:
+
+$$
+N\leq n+1
+$$
+
+and:
+
+$$
+\mathrm{IsTerminus}(\mathrm{advance}^{N}(s)).
+$$
+
+Both cases satisfy P(n+1). This proves the inductive step.
+
+### H.7 Finite convergence to one fixed terminus
+
+The base case and inductive step establish:
+
+$$
+\forall n\in\mathbb N,\;P(n).
+$$
+
+For each state s, take the bound n = rank(s). Then:
+
+$$
+\forall s\in S,\quad
+\exists N\leq\mathrm{rank}(s),\quad
+\mathrm{IsTerminus}(\mathrm{advance}^{N}(s)).
+$$
+
+**Every admissible state reaches a terminus within at most its initial rank in steps.** Rank need not decrease by exactly one at each step; a larger decrease is allowed.
+
+Now take the given initial state s₀. The convergence result supplies a terminal state. Denote it by τ:
+
+$$
+\mathrm{IsTerminus}(\tau).
+$$
+
+By the explicit uniqueness condition, every other terminal state equals τ. Hence:
+
+$$
+\forall s\in S,\quad
+\exists N\leq\mathrm{rank}(s),\quad
+\mathrm{advance}^{N}(s)=\tau.
+$$
+
+Fixedness also gives:
+
+$$
+\mathrm{advance}(\tau)=\tau.
+$$
+
+Induction establishes reachability; the uniqueness condition establishes the same endpoint; the fixedness condition establishes preservation of that endpoint.
+
+### H.8 Connection with the Triad and the ontological Ω
+
+In the paper’s philosophical architecture, the Triad functions play the following roles:
+
+- **A1:** ontological grounding and the direction of the grounding inquiry;
+- **A3:** exclusion of an infinite grounding regress;
+- **A5:** meta-logical closure and the justification of meaning and truth-preserving validity.
+
+The public TI contract makes finite progression and terminal properties precisely checkable. The induction proof above uses the explicit contract conditions for this purpose.
+
+The notation τ denotes the terminal TI state. The paper philosophically connects this operational endpoint with the ontological Ω. That connection belongs to the synthesis of the proof routes; the public TI contract itself contains no identification theorem between its states and the C5 predicate Ω.
+
+The C5 route specifies its own complete grounding context, including:
+
+- **C4a.identity:** the connection between the existence of an obtaining terminus and the existence of an Ω-instance;
+- **C4a.unique:** uniqueness of the Ω-instance at each world;
+- **C4a.rigid:** preservation of the same Ω-instance across worlds.
+
+The full C5 context yields the modal conclusion:
+
+$$
+\Box_{w_0}\exists!x\,\Omega(x).
+$$
+
+The rigidity route additionally establishes the persistent identity of the Ω-instance. The constitutive actuality argument justifies applying this context to reality.
+
+In the paper’s ontological and theological interpretation, Ω is the Absolute Ground, identified as God.
+
+### H.9 Behaviour and utility of the grounding route
+
+#### Progress at every step
+
+As long as an admissible state is not terminal, every successor step lowers its rank. The decrease may exceed one. An initial rank of five, for example, means that the terminus is reached within at most five steps; earlier completion is possible.
+
+This rank decrease provides a precise criterion for progress. A step that leaves the rank unchanged or increases it while the state remains non-terminal does not satisfy the contract. A cycle among non-terminal states is therefore excluded.
+
+#### Bounded termination
+
+Every admissible initial state has a natural-number rank and reaches a terminus within that bound. The number of steps required is therefore bounded for each initial state. Different initial states may have different upper bounds.
+
+This property makes finite trajectories assessable: there is an explicit bound within which the route must complete. The bound concerns successor steps; the execution time of an individual step requires its own cost measure.
+
+#### Unambiguous and stable completion
+
+Within the same contract, all admissible initial states reach the same unique terminus. There, rank is zero and IsTerminus holds. Every further application of the successor function leaves that state unchanged.
+
+This gives the route an unambiguous completion criterion. After completion, further application of the same successor function produces no new state and initiates no new grounding chain.
+
+#### Use in design and assessment
+
+The route supplies concrete criteria for designing and assessing a grounding process: strict progress while the process is active, termination within the initial rank, convergence to one endpoint, and preservation of the completed state. These criteria make it possible to locate failures of progress, violations of the step bound, and instability after completion precisely.
 
 ---
 
@@ -2508,6 +2856,21 @@ The programme is therefore concentrated in one question:
 > **Can efficiently computable local grounding information provide globally correct direction without already containing the solution?**
 
 ---
+<a id="appendix-h--epilogue"></a>
+
+## Appendix K: Epilogue
+>“A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory (as people often think) but a vice. Every genuine test of a theory is an attempt to falsify it, or refute it.” — Karl Popper
+
+Where Popper grounded science in falsifiability, I ground truth in modality.
+
+Absolute truths — such as 1 + 1 = 2, or the necessary existence of a purely positive Being — are not derived from observation or emergence. They exist necessarily and universally.
+
+Only modal logic allows us to formally express and analyze such necessity (□P). Without it, truth collapses — not merely into paradox or triviality, but into semantic dissolution itself.
+
+If we are to build systems that not only compute, but truly understand, modality must be their foundation.
+
+---
+
 ## Acknowledgments
 The author gratefully acknowledges the assistance of several AI language models in the development of this paper, including Grok4 (xAI), ChatGPT (OpenAI), Claude Opus (Anthropic), Gemini (Google), Ernie (Baidu), Minimax (SenseTime), and Deepseek (DeepSeek AI). These tools were used for idea generation, drafting sections, refining arguments, and providing feedback on structure and references. All content was reviewed, edited, and finalized by the author. No funding was received for this work.
 
