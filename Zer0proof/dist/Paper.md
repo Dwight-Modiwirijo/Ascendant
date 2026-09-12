@@ -826,9 +826,7 @@ Finite and potentially infinite cosmologies equally exhibit the distinction betw
 Across either model, A3 orders the grounding relation toward termination, while A1 and A5 supply grounding and semantic closure. This relation can be expressed schematically as:
 
 $$
-\operatorname{GroundingTermination}
-=
-\operatorname{ConstitutiveRole}(A3),
+\operatorname{GroundingTermination} = \operatorname{ConstitutiveRole}(A3),
 \qquad
 \text{independent of }\operatorname{Cardinality}(\text{matter}).
 $$
@@ -2440,9 +2438,7 @@ $$
 $$
 
 $$
-\mathrm{advance}^{N+1}(s)
-=
-\mathrm{advance}^{N}(\mathrm{advance}(s)).
+\mathrm{advance}^{N+1}(s) = \mathrm{advance}^{N}(\mathrm{advance}(s)).
 $$
 
 Define:
@@ -2559,9 +2555,7 @@ $$
 Since s advances to s' in one step:
 
 $$
-\mathrm{advance}^{k+1}(s)
-=
-\mathrm{advance}^{k}(s').
+\mathrm{advance}^{k+1}(s) = \mathrm{advance}^{k}(s').
 $$
 
 Choose N = k+1. Then:
