@@ -170,10 +170,10 @@ def main() -> int:
         "Paper.md": [
             # These pin the substance, not the phrasing: that TI is presented
             # through its published contract, that the contract's guarantee is
-            # finite convergence to a unique top, and that identifying the
+            # finite convergence to a unique terminus, and that identifying the
             # routes with one another is argued rather than proved.
             "the published contract makes this explicit",
-            "the TI certificate supplies finite convergence and a unique fixed top",
+            "the TI certificate supplies finite convergence and a unique fixed terminus",
             "| Public TI certificate |",
             "cross-route identity theorem",
         ],
@@ -302,7 +302,7 @@ def main() -> int:
             errors.append(f"Paper.md: disclosure-status wording remains: {term}")
 
     synthesis = (REPO / "assets" / "synthesis.svg").read_text(encoding="utf-8")
-    for needle in ("FORMAL CONTRACT", "Finite convergence + unique top", "PUBLIC C5 / GroundingChain"):
+    for needle in ("FORMAL CONTRACT", "Finite convergence + unique terminus", "PUBLIC C5 / GroundingChain"):
         if needle not in synthesis:
             errors.append(f"assets/synthesis.svg: missing W16 lane label: {needle}")
     for needle in ("owner-gated", "VERIFIED CANDIDATE", "NOT PUBLICLY AUDITED"):

@@ -48,7 +48,7 @@ This section establishes the five grounding principles and their formal roles. W
 | A2 / Core-Relative Positivity | Defined classifier with derived theorems; no existence axiom |
 | A3 / Anti-Regress | Philosophically defended; an explicit C3 hypothesis or `HyperModalSetting` field |
 | A4 / Logical Invariance | Lean theorem from the fixed logical-semantic background alone |
-| A5 / Meta-Logical Closure | Philosophical principle; not currently formalized in Lean |
+| A5 / Meta-Logical Closure | Constitutive principle of semantic closure and truth-preserving intelligibility; see [Appendix A.3](#a3-relation-to-the-hyper-modal-framework-in-the-main-text). |
 
 ### 2.1 Hyper-Modal Axioms
 
@@ -404,7 +404,7 @@ The argument has four layers, and each publishes what can be checked:
 |---|---|
 | Public C5 / `GroundingChain` | Kernel-verified terms for the necessary existence, uniqueness and rigidity of Ω from the explicit C5 premises — `C5_NE`, `C5_BoxUnique`, `C5_RigidWitness` — together with a two-world non-collapse model |
 | Successor Machine | A verifiable termination contract showing that every permitted successor process completes at the same unique Ω-state, together with a concrete countdown model demonstrating that the contract is realizable |
-| TI | The contract for transcending, with `converges`, `top_characterization`, `isTop_fixed` and `existsUniqueTop` derived from its requirements, an inhabited `Nat` model, and twenty-three axiom-free declarations ([§3.3](#33-ti--transcendental-induction)) |
+| TI | The contract for transcending, with `converges`, `terminus_characterization`, `isTerminus_fixed` and `existsUniqueTerminus` derived from its requirements, an inhabited `Nat` model, and twenty-three axiom-free declarations ([§3.3](#33-ti--transcendental-induction)) |
 
 Each route ships as source together with its compiled `.olean` assembly, hash-pinned and kernel-recheckable, so a reader can confirm the stated behavior directly under the pinned toolchain.
 
@@ -416,7 +416,7 @@ Let
 
 $$\varphi := \Box_{w_0}\exists!x\,\Omega(x),$$
 
-together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process completes finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed top. These verified behaviors converge in the paper's philosophical synthesis on one Terminus Ω. The actuality bridge affirms $\mathcal R\models\Gamma_{C5}$ and joins the formal derivation to the paper's theological conclusion.
+together with the public rigidity result $\exists x\,\Box_{w_0}\forall y\,(\Omega(y)\leftrightarrow y=x)$. The public C5 route supplies an inspectable term $t:\varphi$ and $\Gamma_{C5}\vdash\varphi$. The S-Machine certificate shows that every permitted successor process completes finitely at the same unique terminal Ω-state, while the TI certificate supplies finite convergence and a unique fixed terminus. These verified behaviors converge in the paper's philosophical synthesis on one Terminus Ω. The actuality bridge affirms $\mathcal R\models\Gamma_{C5}$ and joins the formal derivation to the paper's theological conclusion.
 
 ---
 ## 4. Verification in Lean 4
@@ -471,7 +471,7 @@ This paper uses three labels to mark ascending forms of public verification:
 
 **Publicly reproducible.** A third party can rebuild and re-run the specific public artifact under the pinned toolchain.
 
-The strong C5 results and the compatibility theorem satisfy all three labels. The S-Machine certificate satisfies them for finite completion and unique terminal convergence; the TI certificate satisfies them for finite ascent to a unique fixed top. Together these public certificates establish the formal behavior of the routes that converge, in the paper's philosophical synthesis, on one necessary and unique Terminus $\Omega$.
+The strong C5 results and the compatibility theorem satisfy all three labels. The S-Machine certificate satisfies them for finite completion and unique terminal convergence; the TI certificate satisfies them for finite ascent to a unique fixed terminus. Together these public certificates establish the formal behavior of the routes that converge, in the paper's philosophical synthesis, on one necessary and unique Terminus $\Omega$.
 
 ---
 ## 5. Objections and Responses
@@ -1516,7 +1516,7 @@ The measure introduced by the grounding architecture thereby becomes an organizi
 
 This appendix specifies the exact scope of the public Lean 4 verification. The default modal proof surface verifies the **relation-based C5 grounding route**; the separate public Successor certificate verifies non-modal consequences of an abstract machine contract. `AscendantRoute.GroundingChain` proves necessary Ω-existence, boxed uniqueness, and a rigid Ω-witness at a selected datum world from C1, `GroundObtains`, C3, C4a, and $I(w_0)$.
 
-The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification. Its published clean-room certificate contains the guarded `Nat`-measure contract, finite-termination and unique-terminal theorems, an inhabited countdown model, and an audit of 23 axiom-free declarations. The TI route now has a parallel clean-room certificate for an explicit finite-convergence contract, a unique fixed top, and an inhabited `Nat` countdown model, likewise auditing 23 axiom-free declarations. Source and `.olean` pairs, pinned toolchains, minimal consumer builds, provenance, and SHA-256 manifests make both non-modal certificates independently reproducible. Neither exposes its internal construction or supplies a modal or identity bridge to the C5 predicate.
+The S-Machine in [§2.2](#22-successor-based-grounding-architecture) is a public abstract specification. Its published clean-room certificate contains the guarded `Nat`-measure contract, finite-termination and unique-terminal theorems, an inhabited countdown model, and an audit of 23 axiom-free declarations. The TI route now has a parallel clean-room certificate for an explicit finite-convergence contract, a unique fixed terminus, and an inhabited `Nat` countdown model, likewise auditing 23 axiom-free declarations. Source and `.olean` pairs, pinned toolchains, minimal consumer builds, provenance, and SHA-256 manifests make both non-modal certificates independently reproducible. Neither exposes its internal construction or supplies a modal or identity bridge to the C5 predicate.
 
 ### A.2 Public Verification Surface and Scope Certificate
 
@@ -1585,7 +1585,7 @@ No historical internal certificate table is used as a current-status source. The
 | $\Box\Diamond\exists x\,P(x)$ compatibility layer | Public kernel theorems `necPossible_of_Pos` and `somePosNecPossible_of_exists` | Public modal/positivity guards and models cover the stated fragment | `PosPossibility` is derived from `Positive.proper`, classical existence, reflexivity, and S5 axiom 5 | Public source and build | No Ω-actuality claim |
 | HyperModal A1/A3 core and Core-Relative Positivity | Public conditional theorems | `HyperModal.Model.setting_inhabited` is non-collapsed | Explicit `HyperModalSetting`; A5 absent; no Ω-existence field | Public source and build | Full Triad/ICO bridge remains philosophical |
 | Public S-Machine certificate | Kernel theorems `terminates`, `existsUniqueOmegaReached`, and `existsUniqueOmega` | Premise-free `NatMachine` countdown witness | Total successor, guarded `Nat` decrease, terminal fixedness, unique zero; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Non-modal contract consequence only; no C5 or actuality bridge |
-| Public TI certificate | Kernel theorems `converges`, `top_characterization`, `isTop_fixed`, and `existsUniqueTop` | Premise-free `NatContract` countdown witness | Explicit rank descent, top characterization, uniqueness, and fixedness; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Abstract non-modal endpoint only; no internal construction or identity bridge to the C5 Ω |
+| Public TI certificate | Kernel theorems `converges`, `terminus_characterization`, `isTerminus_fixed`, and `existsUniqueTerminus` | Premise-free `NatContract` countdown witness | Explicit rank descent, terminus characterization, uniqueness, and fixedness; all 23 audited declarations footprint `[]` | Public source/`.olean` pairs, pinned toolchain, SHA-256 manifests, kernel replay, and byte-identical rebuild | Abstract non-modal endpoint only; no internal construction or identity bridge to the C5 Ω |
 | Theological identification and “undeniability” | Philosophical interpretation of Ω | N/A | Constitutive actuality argument plus theological interpretation | Argument inspectable; not a Lean build | Central philosophical conclusion developed in §6 and §7 |
 
 The table separates what the public kernel verifies, what the public models witness, what is conceptual, and what the paper argues about actuality.
@@ -1600,11 +1600,11 @@ The main text develops a **hyper-modal grounding framework**:
 * Core-Relative Positivity (A1/A3),
 * Anti-Regress,
 * Derived Logical Invariance (A4), and
-* Meta-Logical Closure (A5, philosophical and not yet formalized).
+* Meta-Logical Closure (A5, the constitutive philosophical principle of semantic closure).
 
 This framework expresses, at a conceptual and metaphysical level, the well-foundedness, termination, and closure roles associated with the Ascendant Route. The public C5 Lean proof supplies the strong Ω-results from its explicit grounding context. The repaired `HyperModal.lean` layer has a narrower certified role: it makes the A1/A3 setting, core-relative classifier, model witness, and historical refutation records explicit.
 
-The full hyper-modal theorem is therefore the paper's **philosophical generalisation** of the public formal route. It extends the interpretation to A5, ICO, and broader metaphysical claims that the present HyperModal module does not kernel-verify.
+The full hyper-modal theorem integrates the public formal results with the constitutive argument for intelligible contingent obtaining (ICO). Within the Triad, A5 expresses why conformity to internal rules alone does not establish their truth-preserving authority: intelligibility requires semantic closure. When a framework generates a conflict it cannot resolve within its own resources, this requirement motivates TI's Jump to a metalevel where its commitments can be reassessed. A5 is defended through this philosophical argument, while Lean verifies the explicitly formalized consequences under their stated premises. Its philosophical role is deliberate; it neither presupposes a prohibition on formalizing metatheory nor derives its justification merely from standing outside the kernel.
 
 ---
 

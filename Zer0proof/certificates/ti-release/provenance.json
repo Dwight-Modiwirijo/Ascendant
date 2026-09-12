@@ -1,5 +1,5 @@
 {
-  "buildDate": "2026-08-25T20:32:32Z",
+  "buildDate": "2026-09-12T10:15:42Z",
   "freshReplay": "blocked upstream on v4.20.1, see diagnostic",
   "lean4checker": {
     "commit": "ba94ec4b7f5fde6579858f33598eff3e64b9492d",
@@ -19,7 +19,7 @@
     "AscendantRoute.Release.TI.TICertificate"
   ],
   "schemaVersion": 1,
-  "sourceDateEpoch": 1787689952,
-  "tarCommit": "efc0f9ae83221927ee6791bd12cb52d1b4a00ecc",
+  "sourceDateEpoch": 1789208142,
+  "tarCommit": "be809a859c16855c05ca2fe106a499769528f928",
   "toolchain": "leanprover/lean4:v4.20.1"
 }

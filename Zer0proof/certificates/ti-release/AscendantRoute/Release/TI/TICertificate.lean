@@ -8,50 +8,50 @@ namespace AscendantRoute.Release.TI
 #check Contract.State
 #check Contract.advance
 #check Contract.rank
-#check Contract.IsTop
+#check Contract.IsTerminus
 #check Contract.descends
-#check Contract.top_iff_zero
-#check Contract.top_unique
-#check Contract.top_fixed
+#check Contract.terminus_iff_zero
+#check Contract.terminus_unique
+#check Contract.terminus_fixed
 #check iterate
 #check iterate_zero
 #check iterate_succ
 #check iterate_succ_arg
 #check converges
-#check top_characterization
-#check isTop_fixed
-#check existsUniqueTop
+#check terminus_characterization
+#check isTerminus_fixed
+#check existsUniqueTerminus
 
 #print axioms Contract
 #print axioms Contract.State
 #print axioms Contract.advance
 #print axioms Contract.rank
-#print axioms Contract.IsTop
+#print axioms Contract.IsTerminus
 #print axioms Contract.descends
-#print axioms Contract.top_iff_zero
-#print axioms Contract.top_unique
-#print axioms Contract.top_fixed
+#print axioms Contract.terminus_iff_zero
+#print axioms Contract.terminus_unique
+#print axioms Contract.terminus_fixed
 #print axioms iterate
 #print axioms iterate_zero
 #print axioms iterate_succ
 #print axioms iterate_succ_arg
 #print axioms converges
-#print axioms top_characterization
-#print axioms isTop_fixed
-#print axioms existsUniqueTop
+#print axioms terminus_characterization
+#print axioms isTerminus_fixed
+#print axioms existsUniqueTerminus
 
 #check NatContract
 #check natOrigin
 #check natContract_converges
-#check natContract_top_characterization
-#check natContract_top_fixed
-#check natContract_existsUniqueTop
+#check natContract_terminus_characterization
+#check natContract_terminus_fixed
+#check natContract_existsUniqueTerminus
 
 #print axioms NatContract
 #print axioms natOrigin
 #print axioms natContract_converges
-#print axioms natContract_top_characterization
-#print axioms natContract_top_fixed
-#print axioms natContract_existsUniqueTop
+#print axioms natContract_terminus_characterization
+#print axioms natContract_terminus_fixed
+#print axioms natContract_existsUniqueTerminus
 
 end AscendantRoute.Release.TI

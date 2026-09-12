@@ -16,11 +16,11 @@ structure Contract where
   State : Type u
   advance : State -> State
   rank : State -> Nat
-  IsTop : State -> Prop
+  IsTerminus : State -> Prop
   descends : (x : State) -> 0 < rank x -> rank (advance x) < rank x
-  top_iff_zero : (x : State) -> IsTop x <-> rank x = 0
-  top_unique : (x y : State) -> IsTop x -> IsTop y -> x = y
-  top_fixed : (x : State) -> IsTop x -> advance x = x
+  terminus_iff_zero : (x : State) -> IsTerminus x <-> rank x = 0
+  terminus_unique : (x y : State) -> IsTerminus x -> IsTerminus y -> x = y
+  terminus_fixed : (x : State) -> IsTerminus x -> advance x = x
 
 /-- Apply the public advance operation exactly `n` times. -/
 def iterate (T : Contract) : Nat -> T.State -> T.State
@@ -41,20 +41,20 @@ theorem iterate_succ_arg (T : Contract) (n : Nat) (x : T.State) :
 
 private theorem convergesUpTo (T : Contract) :
     (m : Nat) -> (x : T.State) -> T.rank x <= m ->
-      Exists fun n => n <= m /\ T.IsTop (iterate T n x) := by
+      Exists fun n => n <= m /\ T.IsTerminus (iterate T n x) := by
   intro m
   induction m with
   | zero =>
       intro x hx
       have hzero : T.rank x = 0 := Nat.eq_zero_of_le_zero hx
       exact Exists.intro 0
-        (And.intro (Nat.zero_le _) ((T.top_iff_zero x).2 hzero))
+        (And.intro (Nat.zero_le _) ((T.terminus_iff_zero x).2 hzero))
   | succ m ih =>
       intro x hx
       by_cases hzero : T.rank x = 0
       case pos =>
         exact Exists.intro 0
-          (And.intro (Nat.zero_le _) ((T.top_iff_zero x).2 hzero))
+          (And.intro (Nat.zero_le _) ((T.terminus_iff_zero x).2 hzero))
       case neg =>
         have hpos : 0 < T.rank x := Nat.pos_of_ne_zero hzero
         have hdec : T.rank (T.advance x) < T.rank x := T.descends x hpos
@@ -67,29 +67,29 @@ private theorem convergesUpTo (T : Contract) :
           rw [iterate_succ_arg]
           exact hn.right
 
-/-- Every state reaches the top in finitely many public advance steps. -/
+/-- Every state reaches the terminus in finitely many public advance steps. -/
 theorem converges (T : Contract) (start : T.State) :
-    Exists fun n => T.IsTop (iterate T n start) := by
+    Exists fun n => T.IsTerminus (iterate T n start) := by
   cases convergesUpTo T (T.rank start) start (Nat.le_refl _) with
   | intro n hn => exact Exists.intro n hn.right
 
-/-- The top states are exactly the rank-zero states. -/
-theorem top_characterization (T : Contract) (x : T.State) :
-    T.IsTop x <-> T.rank x = 0 :=
-  T.top_iff_zero x
+/-- The terminal states are exactly the rank-zero states. -/
+theorem terminus_characterization (T : Contract) (x : T.State) :
+    T.IsTerminus x <-> T.rank x = 0 :=
+  T.terminus_iff_zero x
 
-/-- A top state is stable under the public advance operation. -/
-theorem isTop_fixed (T : Contract) (x : T.State) (h : T.IsTop x) :
+/-- A terminal state is stable under the public advance operation. -/
+theorem isTerminus_fixed (T : Contract) (x : T.State) (h : T.IsTerminus x) :
     T.advance x = x :=
-  T.top_fixed x h
+  T.terminus_fixed x h
 
-/-- Finite convergence supplies a top, and the explicit contract field makes it unique. -/
-theorem existsUniqueTop (T : Contract) (start : T.State) :
-    Exists fun x => T.IsTop x /\ ((y : T.State) -> T.IsTop y -> y = x) := by
+/-- Finite convergence supplies a terminus, and the explicit contract field makes it unique. -/
+theorem existsUniqueTerminus (T : Contract) (start : T.State) :
+    Exists fun x => T.IsTerminus x /\ ((y : T.State) -> T.IsTerminus y -> y = x) := by
   cases converges T start with
-  | intro n htop =>
-    refine Exists.intro (iterate T n start) (And.intro htop ?_)
+  | intro n hterminus =>
+    refine Exists.intro (iterate T n start) (And.intro hterminus ?_)
     intro y hy
-    exact T.top_unique y (iterate T n start) hy htop
+    exact T.terminus_unique y (iterate T n start) hy hterminus
 
 end AscendantRoute.Release.TI
