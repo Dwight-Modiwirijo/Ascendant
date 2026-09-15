@@ -19,6 +19,19 @@ REPO = Path(__file__).resolve().parents[1]
 CHECKER_REPOSITORY = "https://github.com/leanprover/lean4checker.git"
 CHECKER_COMMIT = "ba94ec4b7f5fde6579858f33598eff3e64b9492d"
 EXPECTED_TOOLCHAIN = "leanprover/lean4:v4.20.1"
+EXPECTED_BUNDLE_MODULES = {
+    "successor-release": [
+        "AscendantRoute.Release.Successor.SuccessorAPI",
+        "AscendantRoute.Release.Successor.SuccessorModel",
+        "AscendantRoute.Release.Successor.SuccessorCertificate",
+    ],
+    "ti-release": [
+        "AscendantRoute.Release.TI.TIAPI",
+        "AscendantRoute.Release.TI.TIInduction",
+        "AscendantRoute.Release.TI.TIModel",
+        "AscendantRoute.Release.TI.TICertificate",
+    ],
+}
 FORBIDDEN = (
     "PosPossibility", "ConstantDomain", "sorryAx", "Final_NE_Proof",
     "Final_BoxUnique_Proof", "Final_RigidWitness_Proof", "TI_", "NE_Run",
@@ -227,8 +240,14 @@ def verify_bundle(bundle: Path, checker: Path, lean: str) -> None:
         raise VerificationError(f"invalid provenance: {provenance_path}: {error}") from error
     modules = provenance.get("modules")
     closure = provenance.get("projectLocalClosure")
-    if not isinstance(modules, list) or len(modules) != 3 or not all(isinstance(x, str) for x in modules):
-        raise VerificationError(f"bundle must declare exactly three modules: {bundle}")
+    expected_modules = EXPECTED_BUNDLE_MODULES.get(bundle.name)
+    if expected_modules is None:
+        raise VerificationError(f"unrecognized certificate bundle: {bundle}")
+    if modules != expected_modules:
+        raise VerificationError(
+            f"bundle module list mismatch: {bundle}: "
+            f"expected={expected_modules} actual={modules}"
+        )
     if closure != modules:
         raise VerificationError(f"project-local closure differs from module list: {bundle}")
     if provenance.get("producer") != "TAR" or provenance.get("producerDirty") is not False:

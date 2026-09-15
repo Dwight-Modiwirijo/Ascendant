@@ -2,9 +2,9 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `a76de38efb58dec0712cd267afe5d8621a5833e8`
+- Git commit: `dd961949572759a61e7accf6e21d8d4fb3014280`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
-- Audit date: `2026-09-12`
+- Audit date: `2026-09-15`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**
 
 ## Public Theorems
@@ -85,6 +85,14 @@
 | `AscendantRoute.Release.TI.terminus_characterization` | `none` |
 | `AscendantRoute.Release.TI.isTerminus_fixed` | `none` |
 | `AscendantRoute.Release.TI.existsUniqueTerminus` | `none` |
+| `AscendantRoute.Release.TI.InductionProperty` | `none` |
+| `AscendantRoute.Release.TI.baseCase` | `none` |
+| `AscendantRoute.Release.TI.inductionStep` | `none` |
+| `AscendantRoute.Release.TI.fullInduction` | `none` |
+| `AscendantRoute.Release.TI.convergesWithinRank` | `none` |
+| `AscendantRoute.Release.TI.iterateTerminus` | `none` |
+| `AscendantRoute.Release.TI.staysAtTerminus` | `none` |
+| `AscendantRoute.Release.TI.uniqueFixedTerminus` | `none` |
 | `AscendantRoute.Release.TI.NatContract` | `none` |
 | `AscendantRoute.Release.TI.natOrigin` | `none` |
 | `AscendantRoute.Release.TI.natContract_converges` | `none` |

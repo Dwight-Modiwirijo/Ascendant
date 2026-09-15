@@ -45,7 +45,7 @@ The stage verifies the external and internal hashes, pinned toolchain and proven
 
 ### Public TI Certificate
 
-The TI release is a separate clean-room contract, not the internal TI implementation. Its visible requirements are a state type, an advance operation, a natural-number rank, a terminus predicate (`IsTerminus`), strict rank decrease away from the terminus, terminus characterization, uniqueness, and fixedness. Lean derives finite convergence and existence and uniqueness of the terminus; a `Nat` countdown model establishes non-vacuity. The exact three-module closure is shipped as source and `.olean` pairs with separate repository-controlled pins:
+The TI release is a separate clean-room contract, not the internal TI implementation. Its visible requirements are a state type, an advance operation, a natural-number rank, a terminus predicate (`IsTerminus`), strict rank decrease away from the terminus, terminus characterization, uniqueness, and fixedness. Lean derives finite convergence, an explicit rank bound by full mathematical induction, and existence and uniqueness of the fixed terminus; a `Nat` countdown model establishes non-vacuity. The exact four-module closure is shipped as source and `.olean` pairs with separate repository-controlled pins:
 
 ```text
 certificates/ti-release/

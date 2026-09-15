@@ -7,6 +7,7 @@ package tiRelease
 lean_lib TIRelease where
   roots := #[
     `AscendantRoute.Release.TI.TIAPI,
+    `AscendantRoute.Release.TI.TIInduction,
     `AscendantRoute.Release.TI.TIModel,
     `AscendantRoute.Release.TI.TICertificate,
   ]

@@ -316,8 +316,8 @@ def main() -> int:
         print(f"internal anchor check PASS: 0 broken of {link_count} internal links")
 
     ti_rows = status.get("ti_certificate")
-    if not isinstance(ti_rows, list) or len(ti_rows) != 23:
-        errors.append("status: TI certificate must contain exactly 23 declarations")
+    if not isinstance(ti_rows, list) or len(ti_rows) != 31:
+        errors.append("status: TI certificate must contain exactly 31 declarations")
     elif any(row.get("axioms") != [] for row in ti_rows):
         errors.append("status: every TI certificate declaration must have an empty footprint")
 

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "git_commit": "a76de38efb58dec0712cd267afe5d8621a5833e8",
+  "git_commit": "dd961949572759a61e7accf6e21d8d4fb3014280",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, commit b02228b03f65, Release)",
-  "last_audit_date": "2026-09-12",
+  "last_audit_date": "2026-09-15",
   "public_theorems": [
     {
       "name": "AscendantRoute.GroundingChain.C5_NE",
@@ -276,6 +276,38 @@
     },
     {
       "name": "AscendantRoute.Release.TI.existsUniqueTerminus",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.InductionProperty",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.baseCase",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.inductionStep",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.fullInduction",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.convergesWithinRank",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.iterateTerminus",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.staysAtTerminus",
+      "axioms": []
+    },
+    {
+      "name": "AscendantRoute.Release.TI.uniqueFixedTerminus",
       "axioms": []
     },
     {

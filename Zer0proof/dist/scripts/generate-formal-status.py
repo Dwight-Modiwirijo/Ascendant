@@ -229,6 +229,14 @@ TI_EXPECTED_DECLARATIONS = (
     "AscendantRoute.Release.TI.terminus_characterization",
     "AscendantRoute.Release.TI.isTerminus_fixed",
     "AscendantRoute.Release.TI.existsUniqueTerminus",
+    "AscendantRoute.Release.TI.InductionProperty",
+    "AscendantRoute.Release.TI.baseCase",
+    "AscendantRoute.Release.TI.inductionStep",
+    "AscendantRoute.Release.TI.fullInduction",
+    "AscendantRoute.Release.TI.convergesWithinRank",
+    "AscendantRoute.Release.TI.iterateTerminus",
+    "AscendantRoute.Release.TI.staysAtTerminus",
+    "AscendantRoute.Release.TI.uniqueFixedTerminus",
     "AscendantRoute.Release.TI.NatContract",
     "AscendantRoute.Release.TI.natOrigin",
     "AscendantRoute.Release.TI.natContract_converges",
@@ -248,7 +256,7 @@ def successor_certificate_rows(lake: str):
     The bundle has its own kernel-recheck lane, but its results never reached
     the machine-readable status, which recorded only the C5 and HyperModal
     routes. A reader comparing the paper's claims against formal-status.json
-    therefore found 23 published declarations missing. Record them here, from
+    therefore found published declarations missing. Record them here, from
     the shipped bundle itself, so the status covers every public theorem.
     """
     source = SUCCESSOR_BUNDLE / SUCCESSOR_CERTIFICATE

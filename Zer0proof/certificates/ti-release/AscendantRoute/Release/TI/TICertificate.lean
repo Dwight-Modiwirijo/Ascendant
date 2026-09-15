@@ -1,3 +1,4 @@
+import AscendantRoute.Release.TI.TIInduction
 import AscendantRoute.Release.TI.TIModel
 
 set_option autoImplicit false
@@ -21,6 +22,14 @@ namespace AscendantRoute.Release.TI
 #check terminus_characterization
 #check isTerminus_fixed
 #check existsUniqueTerminus
+#check InductionProperty
+#check baseCase
+#check inductionStep
+#check fullInduction
+#check convergesWithinRank
+#check iterateTerminus
+#check staysAtTerminus
+#check uniqueFixedTerminus
 
 #print axioms Contract
 #print axioms Contract.State
@@ -39,6 +48,14 @@ namespace AscendantRoute.Release.TI
 #print axioms terminus_characterization
 #print axioms isTerminus_fixed
 #print axioms existsUniqueTerminus
+#print axioms InductionProperty
+#print axioms baseCase
+#print axioms inductionStep
+#print axioms fullInduction
+#print axioms convergesWithinRank
+#print axioms iterateTerminus
+#print axioms staysAtTerminus
+#print axioms uniqueFixedTerminus
 
 #check NatContract
 #check natOrigin
