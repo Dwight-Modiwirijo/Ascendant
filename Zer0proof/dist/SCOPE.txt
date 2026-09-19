@@ -5,9 +5,12 @@ commit:    dd961949572759a61e7accf6e21d8d4fb3014280
 
 Covered: the world-indexed public interface, compatibility API, public C5
 strong theorem route, individual-premise question-begging audit, non-collapsed
-GroundingModel, public tests, HyperModal layer, generated formal status, and
-document-sync checks. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
+GroundingModel, public tests, HyperModal layer, generated formal status,
+document-sync checks, and the disclosure-bounded Successor and TI bundles
+produced by TAR. TAR_PROVENANCE.json binds their producer commits and manifests
+to this distribution. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
 and every shipped file is covered by SHA256SUMS.
 
-Private successor source and theorem-bearing private .olean: NOT DISTRIBUTED.
-No public verdict about the current internal private build is asserted.
+Concrete private Successor/TI source, Jump implementations, modal bridges, and
+private final assemblies: NOT DISTRIBUTED. Only the audited release contracts
+and their theorem-bearing release .olean files are shipped.

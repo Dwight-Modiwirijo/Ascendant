@@ -1,0 +1,29 @@
+{
+  "bundles": [
+    {
+      "externalPinsSha256": "6c3aac2b600c2dd625a444755bbc7d352732ac27151b576cd30a00a8c28113af",
+      "internalManifestSha256": "0e8d294e06d1c59862f0d660717bd2865511345d1d3b949d471531e4893cac4b",
+      "modules": [
+        "AscendantRoute.Release.Successor.SuccessorAPI",
+        "AscendantRoute.Release.Successor.SuccessorModel",
+        "AscendantRoute.Release.Successor.SuccessorCertificate"
+      ],
+      "name": "successor-release",
+      "tarCommit": "b56c82db1c0f12f2922807e431948c7b970ce4a3"
+    },
+    {
+      "externalPinsSha256": "50d287afda68e82d5466be7b094a1e9d819d864d07f77760a5d45cf473aa2364",
+      "internalManifestSha256": "956bf6074a6c6b3a6ad74b17bb1009f04829e8732a9f2931e2ee819ef938bbe7",
+      "modules": [
+        "AscendantRoute.Release.TI.TIAPI",
+        "AscendantRoute.Release.TI.TIInduction",
+        "AscendantRoute.Release.TI.TIModel",
+        "AscendantRoute.Release.TI.TICertificate"
+      ],
+      "name": "ti-release",
+      "tarCommit": "41e3d51c203a255fbf989122e61ec40e819c4711"
+    }
+  ],
+  "schemaVersion": 1,
+  "toolchain": "leanprover/lean4:v4.20.1"
+}

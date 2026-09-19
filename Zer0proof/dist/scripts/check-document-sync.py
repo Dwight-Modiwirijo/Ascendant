@@ -141,13 +141,15 @@ def main() -> int:
         "PUBLIC_SAFETY_CERTIFICATE.md": [
             "explicit package allow-list",
             "post-package leak scan",
-            "not distributed as source or theorem-bearing `.olean`",
+            "concrete private Successor and TI routes are not distributed",
+            "TAR-to-dist provenance",
             "GroundingChainAudit",
         ],
         "README.md": [
             "explicit package allow-list",
             "post-package leak scan",
-            "not distributed as source or theorem-bearing `.olean`",
+            "concrete successor route is not distributed",
+            "TAR_PROVENANCE.json",
             "formal-status.json",
         ],
     }
@@ -180,7 +182,7 @@ def main() -> int:
         "README.md": [
             "bash scripts/verify-published.sh",
             "Public TI Certificate",
-            "Fifteen compiled modules ship",
+            "Sixteen distinct compiled modules ship",
         ],
         "PUBLIC_SAFETY_CERTIFICATE.md": [
             "Public clean-room TI release",

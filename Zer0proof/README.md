@@ -20,7 +20,7 @@ Their explicit context is C1, `GroundObtains`, C3, C4a, and an obtaining datum a
 
 `AscendantRoute.Interface` defines one shared world-indexed S5 semantics. The public compatibility API proves the weak positivity compatibility result, while the public C5 grounding proof surface proves the strong Omega results from the explicit grounding context.
 
-The internal concrete successor route is not distributed as source or theorem-bearing `.olean`, and no internal assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, distribution checks, and two disclosure-bounded clean-room certificates: Successor and TI.
+The internal concrete successor route is not distributed as source or `.olean`, and no internal assembly is required for the public audit. Public assurance is supplied by the public C5 source route, generated status files, distribution checks, and two disclosure-bounded clean-room release certificates: Successor and TI. Their release `.olean` files are included in both `certificates/` and the published `dist/`; `dist/TAR_PROVENANCE.json` binds them to their clean TAR producer commits and manifests.
 
 ### Public Successor Certificate
 
@@ -153,7 +153,7 @@ A run refreshes `dist/`, but you do not need to build anything to inspect it: th
 
 ## Verifying without building
 
-Fifteen compiled modules ship in this repository: nine under `dist/`, three in the Successor certificate, and three in the TI certificate. They are the objects a third party re-checks; the sources beside them are the cross-check. No account or login is required to confirm their pinned hashes:
+Sixteen distinct compiled modules ship in this repository: nine public C5/HyperModal modules, three in the Successor certificate, and four in the TI certificate. `dist/` contains the complete public set, including byte-identical copies of both TAR-produced certificate bundles. They are the objects a third party re-checks; the sources beside them are the cross-check. No account or login is required to confirm their pinned hashes:
 
 ```bash
 cd Zer0proof/dist && sha256sum -c SHA256SUMS
@@ -166,7 +166,7 @@ Each certificate bundle carries internal pins and a separate repository-controll
 (cd Zer0proof/certificates/ti-release && sha256sum -c ../ti-release.SHA256SUMS)
 ```
 
-`dist/formal-status.json` records the axiom footprints of the C5 route, HyperModal results, and all twenty-three declarations in each clean-room certificate. Run `bash scripts/verify-published.sh` for pinned kernel replay and byte-identical source rebuilds of all fifteen shipped assemblies.
+`dist/formal-status.json` records the axiom footprints of the C5 route, HyperModal results, all twenty-three Successor certificate declarations, and all thirty-one TI certificate declarations. Run `bash scripts/verify-published.sh` for pinned kernel replay and byte-identical source rebuilds of all sixteen distinct shipped assemblies.
 
 ## Audit Labels
 

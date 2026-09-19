@@ -4,7 +4,7 @@
 
 This repository publishes a source-reproducible public verification route. It includes the world-indexed S5 interface, the C5 grounding theorems, the individual-premise audit, a joint non-collapsed model, negative guards, and an explicitly allow-listed distribution.
 
-Compiled `.olean` files carry theorem declarations and proof terms. They support rebuild and integrity checks, but they are not an IP disclosure boundary. The private successor route is not distributed as source or theorem-bearing `.olean`; public kernel assurance for the strong Omega claims is supplied independently by `AscendantRoute.GroundingChain.C5_*`.
+Compiled `.olean` files carry theorem declarations and proof terms. They support rebuild and integrity checks, but they are not an IP disclosure boundary. The concrete private Successor and TI routes are not distributed as source or `.olean`; only their disclosure-bounded release contracts and theorem-bearing release `.olean` files are public. Public kernel assurance for the strong Omega claims is supplied independently by `AscendantRoute.GroundingChain.C5_*`.
 
 No public claim is made about the current internal build status of private `Final_*` declarations. Such a status requires separate non-public evidence and independent audit.
 
@@ -21,6 +21,7 @@ The public interface defines an S5 Kripke `Frame` with an accessibility relation
 - **Private successor route:** independent internal work, not distributed and not part of the public reproducibility claim.
 - **Public clean-room Successor release:** source-plus-`.olean` certification of the abstract contract only, accepted through external SHA pins, plain kernel replay, reproducible rebuild comparison, and leak checks.
 - **Public clean-room TI release:** source-plus-`.olean` certification of finite convergence to a unique fixed terminus under explicit contract requirements; it does not expose the internal TI implementation or establish a bridge to C5 `Omega`.
+- **TAR-to-dist provenance:** both clean-room bundles are embedded byte-identically in `dist/`; `TAR_PROVENANCE.json` records their clean TAR producer commits and manifest hashes.
 
 The C5 theorem parameters expose C1, `GroundObtains`, C3, C4a, and the obtaining datum directly. Positivity is absent. `GroundingModel` jointly instantiates the premise chain in a non-collapsed two-world frame.
 

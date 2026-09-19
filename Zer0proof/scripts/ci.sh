@@ -233,7 +233,8 @@ echo "[CI] Public assembly reproducibility PASS"
 
 echo "[CI] Stage explicit public allow-list"
 staging="$(mktemp -d "${TMPDIR:-/tmp}/zer0proof-dist.XXXXXX")"
-mkdir -p "$staging/AscendantRoute" "$staging/tests" "$staging/scripts"
+mkdir -p "$staging/AscendantRoute" "$staging/tests" "$staging/scripts" \
+  "$staging/certificates"
 
 public_sources=(
   AscendantRoute/Interface.lean
@@ -257,6 +258,7 @@ public_sources=(
   tests/Reject_NecGroundedInAnything.lean
   scripts/FormalStatusAudit.lean
   scripts/generate-formal-status.py
+  scripts/generate-dist-provenance.py
   scripts/check-document-sync.py
   scripts/check-public-dist.sh
   scripts/check-successor-release.sh
@@ -271,6 +273,19 @@ cp HyperModal.lean Paper.md README.md PUBLIC_SAFETY_CERTIFICATE.md LICENSE \
   lean-toolchain lake-manifest.json "$staging/"
 cp scripts/dist-lakefile.lean "$staging/lakefile.lean"
 
+for bundle in successor-release ti-release; do
+  [[ -d "certificates/$bundle" ]] || {
+    echo "[CI] ERROR: required TAR certificate bundle missing: certificates/$bundle" >&2
+    exit 1
+  }
+  [[ -f "certificates/$bundle.SHA256SUMS" ]] || {
+    echo "[CI] ERROR: required TAR certificate pins missing: certificates/$bundle.SHA256SUMS" >&2
+    exit 1
+  }
+  cp -a "certificates/$bundle" "$staging/certificates/"
+  cp "certificates/$bundle.SHA256SUMS" "$staging/certificates/"
+done
+
 for module in "${public_modules[@]}"; do
   cp ".lake/build/lib/lean/AscendantRoute/$module.olean" "$staging/AscendantRoute/"
 done
@@ -280,21 +295,29 @@ LAKE_BIN="${lake_bin}" "$python_bin" scripts/generate-formal-status.py --reprodu
   --output-json "$staging/formal-status.json" \
   --output-md "$staging/FORMAL_STATUS.md"
 "$python_bin" scripts/check-document-sync.py "$staging/formal-status.json"
+"$python_bin" "$staging/scripts/generate-dist-provenance.py" \
+  --certificates "$staging/certificates" \
+  --output "$staging/TAR_PROVENANCE.json"
+
+dist_commit="$("$python_bin" -c 'import json,sys; print(json.load(open(sys.argv[1],encoding="utf-8"))["git_commit"])' "$staging/formal-status.json")"
 
 cat > "$staging/SCOPE.txt" <<SCOPE
 Zer0proof public distribution
 
 toolchain: $expected_toolchain
-commit:    $("$python_bin" -c 'import json,sys; print(json.load(open(sys.argv[1],encoding="utf-8"))["git_commit"])' "$staging/formal-status.json" 2>/dev/null || git rev-parse HEAD 2>/dev/null || echo unknown)
+commit:    $dist_commit
 
 Covered: the world-indexed public interface, compatibility API, public C5
 strong theorem route, individual-premise question-begging audit, non-collapsed
-GroundingModel, public tests, HyperModal layer, generated formal status, and
-document-sync checks. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
+GroundingModel, public tests, HyperModal layer, generated formal status,
+document-sync checks, and the disclosure-bounded Successor and TI bundles
+produced by TAR. TAR_PROVENANCE.json binds their producer commits and manifests
+to this distribution. Every shipped path is explicit in PUBLIC_ALLOWLIST.txt
 and every shipped file is covered by SHA256SUMS.
 
-Private successor source and theorem-bearing private .olean: NOT DISTRIBUTED.
-No public verdict about the current internal private build is asserted.
+Concrete private Successor/TI source, Jump implementations, modal bridges, and
+private final assemblies: NOT DISTRIBUTED. Only the audited release contracts
+and their theorem-bearing release .olean files are shipped.
 SCOPE
 (
   cd "$staging"
@@ -304,7 +327,7 @@ SCOPE
   # Windows writes "hash *./file" and Linux writes "hash  ./file" for identical
   # bytes. The distribution is tracked, so that difference alone rewrote the
   # manifest on every cross-platform run.
-  find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum -b > SHA256SUMS
+  find . -type f ! -path './SHA256SUMS' -print0 | sort -z | xargs -0 sha256sum -b > SHA256SUMS
   sha256sum -c SHA256SUMS
 )
 

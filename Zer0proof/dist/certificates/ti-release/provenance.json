@@ -1,0 +1,27 @@
+{
+  "buildDate": "2026-09-15T22:28:02Z",
+  "freshReplay": "blocked upstream on v4.20.1, see diagnostic",
+  "lean4checker": {
+    "commit": "ba94ec4b7f5fde6579858f33598eff3e64b9492d",
+    "mode": "plain",
+    "repository": "https://github.com/leanprover/lean4checker.git"
+  },
+  "modules": [
+    "AscendantRoute.Release.TI.TIAPI",
+    "AscendantRoute.Release.TI.TIInduction",
+    "AscendantRoute.Release.TI.TIModel",
+    "AscendantRoute.Release.TI.TICertificate"
+  ],
+  "producer": "TAR",
+  "producerDirty": false,
+  "projectLocalClosure": [
+    "AscendantRoute.Release.TI.TIAPI",
+    "AscendantRoute.Release.TI.TIInduction",
+    "AscendantRoute.Release.TI.TIModel",
+    "AscendantRoute.Release.TI.TICertificate"
+  ],
+  "schemaVersion": 1,
+  "sourceDateEpoch": 1789511282,
+  "tarCommit": "41e3d51c203a255fbf989122e61ec40e819c4711",
+  "toolchain": "leanprover/lean4:v4.20.1"
+}

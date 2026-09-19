@@ -302,31 +302,50 @@ def public_modules(dist: Path) -> list[str]:
     modules = [
         ".".join(path.relative_to(dist).with_suffix("").parts)
         for path in dist.rglob("*.olean")
+        if path.relative_to(dist).parts[0] != "certificates"
     ]
     if not modules:
         raise VerificationError("no published assemblies found in dist")
     return topological_modules(dist, modules)
 
 
-def verify_dist(dist: Path, checker: Path, lean: str) -> None:
+def verify_dist(dist: Path, checker: Path, lean: str) -> list[Path]:
     files = {path.relative_to(dist).as_posix() for path in dist.rglob("*") if path.is_file()}
     verify_manifest(dist / "SHA256SUMS", dist, exact=files - {"SHA256SUMS"})
     run(["bash", "scripts/check-public-dist.sh", str(dist)])
+    embedded_bundles = discover_bundles(dist / "certificates")
+    run([
+        sys.executable,
+        str(dist / "scripts" / "generate-dist-provenance.py"),
+        "--certificates", str(dist / "certificates"),
+        "--output", str(dist / "TAR_PROVENANCE.json"),
+        "--check",
+    ])
+    for bundle in embedded_bundles:
+        verify_bundle(bundle, checker, lean)
     modules = public_modules(dist)
     replay(checker, dist, modules)
     rebuild(lean, dist, modules)
-    log(f"public distribution PASS: {len(modules)} compiled modules")
+    log(
+        f"public distribution PASS: {len(modules)} public modules and "
+        f"{len(embedded_bundles)} TAR bundles"
+    )
+    return embedded_bundles
 
 
 def discover_bundles(root: Path) -> list[Path]:
     if not root.exists():
-        log("optional certificate root absent; skipping all bundles")
-        return []
+        raise VerificationError(f"required certificate root absent: {root}")
     if not root.is_dir():
         raise VerificationError(f"certificate root is not a directory: {root}")
     bundles = sorted(path for path in root.glob("*-release") if path.is_dir())
-    if not bundles:
-        log("optional certificate bundles absent; skipping")
+    expected = set(EXPECTED_BUNDLE_MODULES)
+    actual = {path.name for path in bundles}
+    if actual != expected:
+        raise VerificationError(
+            f"certificate bundle set mismatch: {root}: "
+            f"missing={sorted(expected - actual)} unexpected={sorted(actual - expected)}"
+        )
     return bundles
 
 
@@ -365,9 +384,12 @@ def self_tests(dist: Path, bundles: list[Path]) -> None:
 
         empty = scratch / "empty-certificates"
         empty.mkdir()
-        if discover_bundles(empty):
-            raise VerificationError("negative control failed: empty bundle root did not skip")
-        log("negative control PASS: bundle removed -> green skip")
+        try:
+            discover_bundles(empty)
+        except VerificationError as error:
+            log(f"negative control PASS: missing required bundle rejected: {error}")
+        else:
+            raise VerificationError("negative control failed: missing required bundle accepted")
 
 
 def main() -> int:
