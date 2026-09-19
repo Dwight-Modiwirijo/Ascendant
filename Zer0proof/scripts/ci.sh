@@ -10,13 +10,6 @@ for tool in "${required_tools[@]}"; do
   command -v "$tool" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $tool" >&2; exit 1; }
 done
 command -v "$lake_bin" >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: $lake_bin" >&2; exit 1; }
-lean_stub="$(mktemp -t zer0proof-lean-wrapper.XXXXXX)"
-cat > "$lean_stub" <<"EOF_LEAN_WRAPPER"
-#!/usr/bin/env bash
-"$lake_bin" -R env lean "$@"
-EOF_LEAN_WRAPPER
-chmod +x "$lean_stub"
-PATH="$(dirname "$lean_stub"):$PATH"
 command -v lean >/dev/null 2>&1 || { echo "[CI] ERROR: required tool missing: lean" >&2; exit 1; }
 
 # Try every candidate rather than validating only the first one found. On
@@ -168,6 +161,9 @@ snapshot_public_assemblies() {
     sha256sum ".lake/build/lib/lean/AscendantRoute/$module.olean" >> "$output"
   done
   sha256sum ".lake/build/lib/lean/HyperModal.olean" >> "$output"
+  for module in SemanticGrounding SemanticGroundingModel SemanticGroundingAudit; do
+    sha256sum ".lake/build/lib/lean/$module.olean" >> "$output"
+  done
   sort -o "$output" "$output"
 }
 
@@ -182,7 +178,6 @@ hash_b="$(mktemp)"
 staging=""
 negative_control_workspace=""
 cleanup() {
-  [[ -z "${lean_stub:-}" ]] || rm -f "$lean_stub"
   rm -f "$hash_a" "$hash_b"
   [[ -z "$staging" ]] || rm -rf "$staging"
   [[ -z "$negative_control_workspace" ]] || rm -rf "$negative_control_workspace"
@@ -207,6 +202,7 @@ fi
 "$lake_bin" -R env lean AscendantRoute/GroundingChainAudit.lean
 "$lake_bin" -R env lean AscendantRoute/GroundingModel.lean
 "$lake_bin" -R env lean HyperModal.lean
+"$lake_bin" -R env lean SemanticGroundingAudit.lean
 
 echo "[CI] Negative guards"
 run_negative_test tests/Reject_HostilePositiveEmpty.lean "fields missing: 'proper'"
@@ -237,6 +233,9 @@ mkdir -p "$staging/AscendantRoute" "$staging/tests" "$staging/scripts" \
   "$staging/certificates"
 
 public_sources=(
+  SemanticGrounding.lean
+  SemanticGroundingModel.lean
+  SemanticGroundingAudit.lean
   AscendantRoute/Interface.lean
   AscendantRoute/PublicTests.lean
   AscendantRoute/TargetTypes.lean
@@ -290,6 +289,9 @@ for module in "${public_modules[@]}"; do
   cp ".lake/build/lib/lean/AscendantRoute/$module.olean" "$staging/AscendantRoute/"
 done
 cp ".lake/build/lib/lean/HyperModal.olean" "$staging/"
+for module in SemanticGrounding SemanticGroundingModel SemanticGroundingAudit; do
+  cp ".lake/build/lib/lean/$module.olean" "$staging/"
+done
 
 LAKE_BIN="${lake_bin}" "$python_bin" scripts/generate-formal-status.py --reproducible \
   --output-json "$staging/formal-status.json" \

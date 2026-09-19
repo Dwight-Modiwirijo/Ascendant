@@ -24,6 +24,12 @@ Paper.md
 README.md
 SCOPE.txt
 SHA256SUMS
+SemanticGrounding.lean
+SemanticGrounding.olean
+SemanticGroundingAudit.lean
+SemanticGroundingAudit.olean
+SemanticGroundingModel.lean
+SemanticGroundingModel.olean
 TAR_PROVENANCE.json
 certificates/successor-release.SHA256SUMS
 certificates/successor-release/AscendantRoute/Release/Successor/SuccessorAPI.lean

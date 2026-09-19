@@ -153,7 +153,7 @@ A run refreshes `dist/`, but you do not need to build anything to inspect it: th
 
 ## Verifying without building
 
-Sixteen distinct compiled modules ship in this repository: nine public C5/HyperModal modules, three in the Successor certificate, and four in the TI certificate. `dist/` contains the complete public set, including byte-identical copies of both TAR-produced certificate bundles. They are the objects a third party re-checks; the sources beside them are the cross-check. No account or login is required to confirm their pinned hashes:
+Nineteen distinct compiled modules ship in this repository: nine public C5/HyperModal modules, three independent semantic-grounding modules, three in the Successor certificate, and four in the TI certificate. `dist/` contains the complete public set, including byte-identical copies of both TAR-produced certificate bundles. They are the objects a third party re-checks; the sources beside them are the cross-check. No account or login is required to confirm their pinned hashes:
 
 ```bash
 cd Zer0proof/dist && sha256sum -c SHA256SUMS
@@ -166,10 +166,21 @@ Each certificate bundle carries internal pins and a separate repository-controll
 (cd Zer0proof/certificates/ti-release && sha256sum -c ../ti-release.SHA256SUMS)
 ```
 
-`dist/formal-status.json` records the axiom footprints of the C5 route, HyperModal results, all twenty-three Successor certificate declarations, and all thirty-one TI certificate declarations. Run `bash scripts/verify-published.sh` for pinned kernel replay and byte-identical source rebuilds of all sixteen distinct shipped assemblies.
+`dist/formal-status.json` records the axiom footprints of the C5 route, HyperModal results, both semantic-grounding theorems, all twenty-three Successor certificate declarations, and all thirty-one TI certificate declarations. Run `bash scripts/verify-published.sh` for pinned kernel replay and byte-identical source rebuilds of all nineteen distinct shipped assemblies.
 
 ## Audit Labels
 
 - **Kernel-verified:** Lean accepts the proof term at the printed theorem type, relative to its explicit hypotheses and reported axioms.
 - **Publicly reproducible:** a third party can rebuild the public source route and compare the generated hashes.
 - **Private/internal:** not publicly reproducible unless separately disclosed and audited.
+
+## Semantic Grounding
+
+`SemanticGrounding.lean` separates data, semantic content, intrinsic status,
+realization, and conscious subjects. Semantic decomposition and well-foundedness
+imply reachability of an intrinsic source. Realizer existence and the universal
+consciousness bridge are separate explicit premises. Both main theorems have
+empty axiom footprints. `SemanticGroundingModel.lean` supplies eight models;
+`SemanticGroundingAudit.lean` checks orientation, cycles, composition, and kernel
+axiom dependencies. These modules import no C5, HyperModal, Successor, or TI
+implementation and establish neither source uniqueness nor machine consciousness.

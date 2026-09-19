@@ -115,6 +115,9 @@ ASSEMBLIES = [
     "AscendantRoute/GroundingModel.olean",
     "AscendantRoute/PublicCertificateAudit.olean",
     "HyperModal.olean",
+    "SemanticGrounding.olean",
+    "SemanticGroundingModel.olean",
+    "SemanticGroundingAudit.olean",
 ]
 
 
@@ -421,6 +424,12 @@ def markdown(status: dict) -> str:
         footprint = ", ".join(theorem["axioms"]) or "none"
         lines.append(f"| `{theorem['name']}` | `{footprint}` |")
 
+    lines += ["", "## Semantic Grounding", "",
+              "| Declaration | Axiom footprint |", "|---|---|"]
+    for theorem in status["semantic_grounding_theorems"]:
+        footprint = ", ".join(theorem["axioms"]) or "none"
+        lines.append(f"| `{theorem['name']}` | `{footprint}` |")
+
     if status.get("successor_certificate"):
         lines += [
             "",
@@ -501,6 +510,14 @@ def main() -> int:
             raise RuntimeError(f"unexpected footprint for {name}: {axioms}")
         theorem_rows.append({"name": name, "type": block(audit, "TYPE", name), "axioms": axioms})
 
+    semantic_rows = []
+    for name in ("SemanticGrounding.semantic_reaches_intrinsic",
+                 "SemanticGrounding.semantic_reaches_conscious_realizer"):
+        axioms = parse_axioms(audit, name)
+        if axioms:
+            raise RuntimeError(f"unexpected semantic grounding footprint: {name}: {axioms}")
+        semantic_rows.append({"name": name, "type": block(audit, "TYPE", name), "axioms": axioms})
+
     hypermodal_rows = []
     hypermodal_source = (REPO / "HyperModal.lean").read_text(encoding="utf-8")
     if re.search(r"(?m)^\s*axiom\b", hypermodal_source):
@@ -568,6 +585,7 @@ def main() -> int:
         "last_audit_date": dt.datetime.now(dt.timezone.utc).date().isoformat(),
         "public_theorems": theorem_rows,
         "hypermodal_theorems": hypermodal_rows,
+        "semantic_grounding_theorems": semantic_rows,
         "successor_certificate": successor_rows,
         "ti_certificate": ti_rows,
         "gates": {
@@ -577,6 +595,7 @@ def main() -> int:
             "w12_premise_manifest_complete": "PASS",
             "w12_question_begging_matrix_complete": "PASS",
             "public_grounding_model": "PASS",
+            "semantic_grounding_models_and_audit": "PASS",
             "hypermodal_setting_model": "PASS",
             "hypermodal_legacy_guards": "PASS",
             "public_reproducibility": "PASS",

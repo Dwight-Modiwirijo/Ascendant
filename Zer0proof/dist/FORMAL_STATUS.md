@@ -2,9 +2,9 @@
 
 > Generated from current Lean/CI output. Do not edit by hand.
 
-- Git commit: `dd961949572759a61e7accf6e21d8d4fb3014280`
+- Git commit: `a82e348988914e841f41a4d58a5ac2b1930431f0`
 - Lean toolchain: `leanprover/lean4:v4.20.1`
-- Audit date: `2026-09-15`
+- Audit date: `2026-09-19`
 - Auditor verdict: **PENDING_INDEPENDENT_REVIEW**
 
 ## Public Theorems
@@ -35,6 +35,13 @@
 | `HyperModal.Model.omega_possible` | `none` |
 | `HyperModal.Model.grounding_nonempty` | `none` |
 | `HyperModal.Model.frame_not_collapsed` | `none` |
+
+## Semantic Grounding
+
+| Declaration | Axiom footprint |
+|---|---|
+| `SemanticGrounding.semantic_reaches_intrinsic` | `none` |
+| `SemanticGrounding.semantic_reaches_conscious_realizer` | `none` |
 
 ## Successor Certificate
 
@@ -136,6 +143,7 @@
 - W12 Premise Manifest Complete: **PASS**
 - W12 Question Begging Matrix Complete: **PASS**
 - Public Grounding Model: **PASS**
+- Semantic Grounding Models And Audit: **PASS**
 - Hypermodal Setting Model: **PASS**
 - Hypermodal Legacy Guards: **PASS**
 - Public Reproducibility: **PASS**
@@ -159,3 +167,6 @@ The private successor route is not distributed as source or theorem-bearing .ole
 | `AscendantRoute/GroundingModel.olean` | `3cb8b95eee93ddead473e09f05edfa0f1dd1648f69eec640c93525627b02d3b6` |
 | `AscendantRoute/PublicCertificateAudit.olean` | `96ae1bd2bdd0e8df2ca9c18a7422ae08d047fd3ac5b3ac18597b9f396b77aa4c` |
 | `HyperModal.olean` | `6d4c432aac4d00febd91af1449cbf2c20b6bf70f81725f730b61748ceb696388` |
+| `SemanticGrounding.olean` | `432a7e5269901add080a2325435e74ba56cddf1e827e0b2ada4ea5e2b2fa6f04` |
+| `SemanticGroundingModel.olean` | `97b4a76a2d9fd4a74a3ad729158350ca47e20da3ee65218e68a6cd642260756d` |
+| `SemanticGroundingAudit.olean` | `d077072710d51af73f474030c380c4a16d114ae2f3dc9b9e96c9ebd13a72369a` |

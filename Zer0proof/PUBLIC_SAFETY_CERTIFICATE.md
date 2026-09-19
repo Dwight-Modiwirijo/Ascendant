@@ -83,3 +83,15 @@ The machine-generated status contains the exact Lean theorem types, axiom footpr
 ## Final statement
 
 The public package kernel-verifies and reproduces the C5 strong Omega route relative to its explicit premise context. The model establishes non-vacuity of that public context. The clean-room Successor and TI releases disclose only their abstract contracts, models, consequences, and certificates; they disclose neither internal implementation nor the concrete Jump. The TI certificate proves finite convergence and a unique fixed terminus only within its explicit contract and supplies no identity bridge to the C5 `Omega` predicate. Philosophical actuality of the premise context remains an argument of the paper rather than a Lean theorem.
+
+## Independent semantic grounding
+
+The three `SemanticGrounding` modules extend the explicit package allow-list and
+reproducible assembly comparison. The two main results use no global axioms.
+The eight models include a positive derived chain, an unread letter, two
+independent sources, and countermodels separating data, decomposition,
+well-foundedness, and the universal consciousness bridge. The audit checks actual
+kernel dependencies for every semantic declaration; only Lean-generated
+constructor `injEq` helpers may use `propext`. No main theorem or model witness
+uses these helpers. Consciousness remains an explicit premise about realizers of
+intrinsic content, with no receiver, zero-measure, or reverse-Ω implication.

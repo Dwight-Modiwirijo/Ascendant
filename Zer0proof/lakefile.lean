@@ -16,6 +16,9 @@ require mathlib from git
   `AscendantRoute.GroundingChainAudit,
   `AscendantRoute.GroundingModel,
   `HyperModal,
+  `SemanticGrounding,
+  `SemanticGroundingModel,
+  `SemanticGroundingAudit,
   `AscendantRoute.PublicCertificateAudit
   ]
 

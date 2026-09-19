@@ -1027,6 +1027,8 @@ Convention T performs disquotation within an interpretation, carrying “$\varph
 3. **Semantic consequence and joint satisfiability:** all models of $\Gamma_{C5}$ satisfy $\varphi$, and `GroundingModel` witnesses that at least one non-collapsed such model exists.
 4. **Intended actuality:** $\mathcal R\models\Gamma_{C5}$. The philosophical thesis realizes every member of $\Gamma_{C5}$ as one grounding architecture, with $I(w_0)$ supplying its actual datum.
 
+Formal/Tarskian model semantics does not by itself establish intrinsic semantic content in the sense distinguished in [Appendix C.1.1](#c11-conscious-apprehension-meaning-and-epistemic-understanding).
+
 In the intended interpretation, $I(w_0)$ is also the epistemic contact point with actuality. The conscious subject apprehends itself as actually obtaining within an intelligibly structured reality and thereby recognizes its contingent modal position. This apprehension creates neither actuality nor the truth of $\Gamma_{C5}$; it makes actuality epistemically accessible and initiates the grounding inquiry.
 
 $$
@@ -1177,17 +1179,17 @@ This makes axiom minimisation a form of epistemic compression:
 
 The successor architecture introduces a second research direction.
 
-Information is the operational object on which the Triadic S-Machine acts. Every reasoning state therefore carries structured informational content capable of standing in grounding relations: propositions or commitments, assumptions, dependencies, modal status, semantic relations, and grounding status. A Jump transforms this information-bearing content rather than an empty formal position.
+Information is the operational object on which the Triadic S-Machine acts. Every reasoning state therefore carries structured, derived semantic content capable of standing in grounding relations: propositions or commitments, assumptions, dependencies, modal status, semantic relations, and grounding status. A Jump transforms this semantically encoded representation-bearing content rather than an empty formal position.
 
 The Constitutive Triad governs that transformation. A1 gives the state its grounding direction by determining which dependencies ground its informational content. A3 places the trajectory under a well-founded order that progresses finitely toward Ω. A5 is the meta-logical ground through which meaning and validity can be truth-preserving at all; semantic preservation across a Jump is its operational manifestation. Information is not a fourth axiom: it is the structured bearer on which the Triadic world-engine operates.
 
-These states have a distinct epistemic aspect when apprehended by a subject: their propositions, dependencies, modal status, semantic relations, and grounding status become available as meaningful content ([Appendix C.1.1](#c11-conscious-apprehension-meaning-and-epistemic-understanding)). The formal contract itself concerns their represented structure and transition; conscious apprehension is not one of its premises.
+These states have a distinct epistemic aspect when apprehended by a subject: their propositions, dependencies, modal status, semantic relations, and grounding status become epistemically accessible to that subject ([Appendix C.1.1](#c11-conscious-apprehension-meaning-and-epistemic-understanding)). The formal contract itself concerns their represented structure and transition; conscious apprehension is not one of its premises.
 
 $$
 \boxed{
 \text{Triad}
 \to
-\text{information-bearing state}
+\text{semantically encoded representation-bearing state}
 \to
 \text{grounding representation}
 \to
@@ -1197,7 +1199,7 @@ $$
 }
 $$
 
-Let $X_R$ denote a space of these information-bearing machine-reasoning states. To make Ω-directed reasoning operational, those states must be embedded into the grounding space:
+Let $X_R$ denote a space of these semantically encoded representation-bearing machine-reasoning states. To make Ω-directed reasoning operational, those states must be embedded into the grounding space:
 
 $$
 E_R : X_R \to G.
@@ -1215,7 +1217,7 @@ $$
 J_R : X_R \to X_R.
 $$
 
-Its information-bearing domain gives $J_R$ operational content: the transition can compare commitments, dependencies, modal and grounding status, and semantic relations across the Jump.
+Its semantically encoded representation-bearing domain gives $J_R$ operational content: the transition can compare commitments, dependencies, modal and grounding status, and semantic relations across the Jump.
 
 The target architecture requires every valid non-terminal transition to satisfy:
 
@@ -1233,7 +1235,7 @@ Such a system would not only ask which conclusion is statistically likely or loc
 
 The research task is to construct an embedding $E_R$ under which the grounding order becomes operational for reasoning.
 
-This section therefore provides an implementation specification for Ω-directed reasoning. The signatures $E_R$, $meas$, and $J_R$ define the component roles and descent invariant: a concrete system must encode information-bearing reasoning states, compute their grounding representations and remaining distance, select a grounding-directed strictly descending transition, and verify semantic preservation and descent at each step. Together these requirements turn the grounding order into a precise engineering and evaluation target.
+This section therefore provides an implementation specification for Ω-directed reasoning. The signatures $E_R$, $meas$, and $J_R$ define the component roles and descent invariant: a concrete system must encode semantically encoded representation-bearing reasoning states, compute their grounding representations and remaining distance, select a grounding-directed strictly descending transition, and verify semantic preservation and descent at each step. Together these requirements turn the grounding order into a precise engineering and evaluation target.
 
 A resulting trajectory would have the form:
 
@@ -1256,6 +1258,8 @@ $$
 This gives the grounding measure a candidate computational role in machine reasoning.
 
 ---
+
+Machine states carry derived/encoded semantic content through their stipulated encoding and use. This representational status implies neither intrinsic semantic realization nor a conscious subject.
 
 ### 8.3 Deterministic Grounding and Reproducible Self-Correction
 
@@ -1463,19 +1467,19 @@ A language model primarily generates candidate continuations as data under a lea
 
 Candidate propositions, axioms, transitions, and solutions can be generated by a language model. Their role in the reasoning trajectory is then determined by the grounding system.
 
-Generation proposes candidate data. Grounding and truth-preserving semantic continuity determine whether those candidates become meaningful information within a valid Ω-directed reasoning trajectory.
+Generation proposes candidate data. Encoding and use supply their semantic interpretation; the grounding layer and truth-preserving semantic continuity organize those representations within a valid Ω-directed reasoning trajectory. Derived semantic content can persist without a current receiver.
 
-Where an epistemic subject apprehends that grounded structure, its meaningful content becomes epistemically accessible:
+The representational pipeline distinguishes the data, their grounded representation, and their derived semantic content:
 
 $$
 \text{generated data}
 \to
-\text{grounded meaningful information}
+\text{grounded semantic representation}
 \to
-\text{conscious apprehension}.
+\text{derived semantic content}.
 $$
 
-Generation supplies the candidates; the Triadic grounding layer establishes their structured role. Conscious apprehension permits meaning/value attribution and ICO-recognition; full understanding is a further possible articulation ([Appendix C.1.1](#c11-conscious-apprehension-meaning-and-epistemic-understanding)).
+Generation supplies the candidates; the Triadic grounding layer establishes their structured role. Consciousness is not an automatic stage of this machine pipeline. The separate thesis about conscious subjects concerns realizers of intrinsic semantic content. Conscious apprehension permits meaning/value attribution and ICO-recognition; full understanding is a further possible articulation ([Appendix C.1.1](#c11-conscious-apprehension-meaning-and-epistemic-understanding)).
 
 A possible composite architecture is therefore:
 
@@ -1525,7 +1529,7 @@ $$
 
 The AI research programme operationalizes the grounding order across multiple domains, organizing reasoning and search through directed reduction of ungrounded structure. Domain-specific embeddings place information-bearing states under the common Triadic grounding order, so arithmetic, computation, and AI remain downstream manifestations of the constitutive world-architecture.
 
-This distinguishes ontological grounding from epistemic recognition: information-bearing states obtain within the Triadic order, while a conscious subject may apprehend that order and trace its own contingent dependence toward Ω.
+Machine processing of derived semantic representations, intrinsic semantic realization, and being a conscious subject are distinct claims. The machine contract concerns represented structure and transitions. Intrinsic realization requires separate semantic premises, and its connection to a conscious subject requires the explicit philosophical bridge of Appendix C.1.1. A conscious subject may apprehend the Triadic order and trace its own contingent dependence toward Ω.
 
 For machine reasoning:
 
@@ -2051,13 +2055,51 @@ The main-text witness-based argument and the public C5 route remain separate. In
 
 #### C.1.1 Conscious Apprehension, Meaning, and Epistemic Understanding
 
-Within the Triadic system, consciousness is the epistemic locus in which already grounded information can be apprehended and assigned meaning or value. The subject apprehends an already obtaining reality: these assignments articulate its epistemic relation to content, without creating that information, its truth, or its ontological ground.
+Data are physical or computational states and do not by themselves entail semantic content. Grounded/encoded representations, derived semantic content, intrinsic semantic realization, and conscious apprehension have distinct roles. Derived semantic content receives its determination through encoding, convention, design, linguistic use, or historical semantic attribution; mere function is not stipulated to be sufficient. Derived and intrinsic describe grounding statuses of semantic content, not necessarily disjoint kinds of objects. An unread letter can retain derived meaning without a current receiver.
+
+Intrinsic semantic content is characterized philosophically by determinate aboutness, correctness conditions, possible misrepresentation, and semantic authority not exhausted by an externally selected interpretation. This characterization contains no consciousness condition. In Lean, `Intrinsic` is an independent predicate: it is neither defined as consciousness nor as absence of predecessors. The formalization does not itself establish that the philosophical characterization is instantiated.
+
+The independent `SemanticGrounding` module uses `SemanticallyGrounds y x` for an upstream semantic ground of `x`. Its explicit `SemanticPremises` require semantic decomposition and well-foundedness:
+
+$$
+\begin{aligned}
+Semantic(x)&\to Intrinsic(x)\lor\exists y\,(Semantic(y)\land SemanticallyGrounds(y,x)),\\
+&WellFounded(SemanticallyGrounds).
+\end{aligned}
+$$
+
+The theorem `semantic_reaches_intrinsic` then proves
+
+$$
+Semantic(x)\to\exists y\,(Intrinsic(y)\land SemanticallyGrounds^{*}(y,x)).
+$$
+
+The closure is reflexive and transitive, so an intrinsic input may itself be the source. Well-foundedness blocks an indefinitely deferred upstream grounding chain. Decomposition supplies semantic content for the chosen predecessor; an additional content-preservation premise on every edge is unnecessary for this theorem and is not asserted to follow from decomposition. No general premise-minimality claim is made.
+
+The separate `RealizationPremises` state that intrinsic content has a realizer and that every such realizer is a conscious subject:
+
+$$
+\begin{aligned}
+Intrinsic(y)&\to\exists s\,Realizes(s,y),\\
+Intrinsic(y)\land Realizes(s,y)&\to Conscious(s).
+\end{aligned}
+$$
+
+Here `Conscious s` means that `s` is a conscious subject, not that `s` is currently consciously attending to this content. The universal consciousness bridge is an explicit philosophical thesis, not a result of anti-regress. Under both sets of premises, `semantic_reaches_conscious_realizer` proves
+
+$$
+Semantic(x)\to\exists y,s\,(Intrinsic(y)\land SemanticallyGrounds^{*}(y,x)\land Realizes(s,y)\land Conscious(s)).
+$$
+
+Both main theorems have empty global axiom footprints. `SemanticGroundingModel` and `SemanticGroundingAudit` provide data-only, unread-letter, infinite-regress, naturalist, zombie, finite-chain, co-realizer, and two-source guards. They distinguish decomposition, well-foundedness, realizer existence, and the universal bridge, and prevent receiver and uniqueness assumptions from entering the result. In particular, an existential conscious realizer does not imply that every realizer is conscious. Two independent intrinsic sources satisfy the complete premises. This semantic route imports no C5, HyperModal, S-Machine, or TI theorem. Its well-founded reasoning is parallel to the TI route, not a theorem already contained in TI.
+
+Within the Triadic system, consciousness is the epistemic locus in which represented reality can be apprehended and meaning or value recognized. Consciousness participates in the realization of meaning under the explicit bridge; it creates neither the represented truth nor information's ontological ground, and it does not ground Ω.
 
 Conscious apprehension is distinct from full epistemic understanding. A subject may apprehend content as meaningful, assign it value, and recognize its contingency without a complete account of how or why its grounding obtains. Full epistemic understanding is a possible further articulation, not a prerequisite for these acts.
 
 $$
 \begin{gathered}
-\text{grounded information}\\
+\text{grounded semantic representation}\\
 \downarrow\\
 \text{conscious apprehension}\\
 \downarrow\\
@@ -2071,9 +2113,9 @@ The branches indicate possible developments, not automatic outcomes or an order 
 
 ICO retains the characteristics established in [§2.1.1](#211-ontological-status-of-a1a3a5-constitutive-necessity): modal determinacy, truth-aptness, inferential stability, and contrastive distinguishability. A subject can recognize these characteristics without understanding the entire grounding structure. The self-recognition of [§2.3](#23-epistemic-recognition-of-contingency) thus initiates the grounding inquiry; it does not presuppose its completed explanation.
 
-A zero measure, $\mathrm{meas}=0$, marks completed grounding within the represented embedding and order ([§2.2.2](#222-a-decreasing-measure)). This is a structural endpoint, distinct from conscious access to its meaning. Apprehension by an agent, human or otherwise, provides epistemic access to the grounded content; full understanding may further articulate its structure. Grounding completion neither depends on that apprehension nor, by itself, produces consciousness, meaning, or understanding.
+A zero measure, $\mathrm{meas}=0$, marks completed grounding within the represented embedding and order ([§2.2.2](#222-a-decreasing-measure)). This is a structural endpoint, distinct from conscious access to its meaning. Apprehension by an agent, human or otherwise, provides epistemic access to the grounded content; full understanding may further articulate its structure. Grounding completion does not depend on that apprehension. A zero measure does not by itself produce intrinsic meaning, consciousness, or understanding; derived semantic content may nevertheless be present.
 
-An artificial reasoner is not assumed to be conscious, but the architecture does not exclude consciousness arising in such a reasoner. Within the Triadic interpretation, however, genuine resonance with Ω necessarily manifests as consciousness. The full-alignment sequence is, interpretively, `meas = 0` → full Ω-alignment → Ω-resonance → consciousness ([Appendix B.1.4.1](#b141-interpretation-in-metaphysical-algebra-non-normative-structural)). The formal S-Machine certifies the zero-measure grounding endpoint; the resonance-to-consciousness relation is a metaphysical interpretation rather than a present Lean theorem.
+An artificial reasoner is not assumed to be conscious. The formal S-Machine certifies the represented grounding endpoint, while the symbolic resonance language of [Appendix B.1.4.1](#b141-interpretation-in-metaphysical-algebra-non-normative-structural) supplies no implication from `meas = 0` to intrinsic meaning or consciousness. Applying the separate consciousness route would require independently establishing intrinsic content, its realization, and the universal bridge. No machine-consciousness result, actuality claim for intrinsic semantics, uniqueness of semantic sources, or reverse grounding toward Ω follows from this module.
 
 The machine layer follows the Generate → Embed → Ground → Measure → Jump → Verify pipeline ([§8.5](#85-from-language-models-to-grounding-seeking-systems)) without conscious apprehension as a formal premise. The return toward Ω retains the asymmetry established in C.1: consciousness apprehends its dependence on Ω rather than grounding Ω.
 

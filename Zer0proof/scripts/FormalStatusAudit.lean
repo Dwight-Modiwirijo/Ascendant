@@ -1,5 +1,6 @@
 import AscendantRoute.PublicCertificateAudit
 import HyperModal
+import SemanticGroundingAudit
 
 #eval IO.println "FORMAL_STATUS_TYPE_BEGIN AscendantRoute.GroundingChain.C5_NE"
 #check AscendantRoute.GroundingChain.C5_NE
@@ -170,3 +171,17 @@ import HyperModal
 #eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN HyperModal.Model.frame_not_collapsed"
 #print axioms HyperModal.Model.frame_not_collapsed
 #eval IO.println "FORMAL_STATUS_AXIOMS_END HyperModal.Model.frame_not_collapsed"
+
+#eval IO.println "FORMAL_STATUS_TYPE_BEGIN SemanticGrounding.semantic_reaches_intrinsic"
+#check SemanticGrounding.semantic_reaches_intrinsic
+#eval IO.println "FORMAL_STATUS_TYPE_END SemanticGrounding.semantic_reaches_intrinsic"
+#eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN SemanticGrounding.semantic_reaches_intrinsic"
+#print axioms SemanticGrounding.semantic_reaches_intrinsic
+#eval IO.println "FORMAL_STATUS_AXIOMS_END SemanticGrounding.semantic_reaches_intrinsic"
+
+#eval IO.println "FORMAL_STATUS_TYPE_BEGIN SemanticGrounding.semantic_reaches_conscious_realizer"
+#check SemanticGrounding.semantic_reaches_conscious_realizer
+#eval IO.println "FORMAL_STATUS_TYPE_END SemanticGrounding.semantic_reaches_conscious_realizer"
+#eval IO.println "FORMAL_STATUS_AXIOMS_BEGIN SemanticGrounding.semantic_reaches_conscious_realizer"
+#print axioms SemanticGrounding.semantic_reaches_conscious_realizer
+#eval IO.println "FORMAL_STATUS_AXIOMS_END SemanticGrounding.semantic_reaches_conscious_realizer"

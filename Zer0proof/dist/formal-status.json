@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "git_commit": "dd961949572759a61e7accf6e21d8d4fb3014280",
+  "git_commit": "a82e348988914e841f41a4d58a5ac2b1930431f0",
   "lean_toolchain": "leanprover/lean4:v4.20.1",
   "lean_version": "Lean (version 4.20.0, commit b02228b03f65, Release)",
-  "last_audit_date": "2026-09-15",
+  "last_audit_date": "2026-09-19",
   "public_theorems": [
     {
       "name": "AscendantRoute.GroundingChain.C5_NE",
@@ -112,6 +112,18 @@
     },
     {
       "name": "HyperModal.Model.frame_not_collapsed",
+      "axioms": []
+    }
+  ],
+  "semantic_grounding_theorems": [
+    {
+      "name": "SemanticGrounding.semantic_reaches_intrinsic",
+      "type": "SemanticGrounding.semantic_reaches_intrinsic.{u_1, u_2} {C : Type u_1} {U : Type u_2}\n  (S : SemanticGrounding.Setting C U) (P : SemanticGrounding.SemanticPremises S) (x : C) (hx : S.Semantic x) :\n  ∃ y, S.Intrinsic y ∧ SemanticGrounding.SemanticGroundingClosure S.SemanticallyGrounds y x",
+      "axioms": []
+    },
+    {
+      "name": "SemanticGrounding.semantic_reaches_conscious_realizer",
+      "type": "SemanticGrounding.semantic_reaches_conscious_realizer.{u_1, u_2} {C : Type u_1} {U : Type u_2}\n  (S : SemanticGrounding.Setting C U) (P : SemanticGrounding.SemanticPremises S)\n  (R : SemanticGrounding.RealizationPremises S) (x : C) (hx : S.Semantic x) :\n  ∃ y s,\n    S.Intrinsic y ∧\n      SemanticGrounding.SemanticGroundingClosure S.SemanticallyGrounds y x ∧ S.Realizes s y ∧ S.Conscious s",
       "axioms": []
     }
   ],
@@ -342,6 +354,7 @@
     "w12_premise_manifest_complete": "PASS",
     "w12_question_begging_matrix_complete": "PASS",
     "public_grounding_model": "PASS",
+    "semantic_grounding_models_and_audit": "PASS",
     "hypermodal_setting_model": "PASS",
     "hypermodal_legacy_guards": "PASS",
     "public_reproducibility": "PASS",
@@ -615,6 +628,18 @@
     {
       "path": "HyperModal.olean",
       "sha256": "6d4c432aac4d00febd91af1449cbf2c20b6bf70f81725f730b61748ceb696388"
+    },
+    {
+      "path": "SemanticGrounding.olean",
+      "sha256": "432a7e5269901add080a2325435e74ba56cddf1e827e0b2ada4ea5e2b2fa6f04"
+    },
+    {
+      "path": "SemanticGroundingModel.olean",
+      "sha256": "97b4a76a2d9fd4a74a3ad729158350ca47e20da3ee65218e68a6cd642260756d"
+    },
+    {
+      "path": "SemanticGroundingAudit.olean",
+      "sha256": "d077072710d51af73f474030c380c4a16d114ae2f3dc9b9e96c9ebd13a72369a"
     }
   ]
 }

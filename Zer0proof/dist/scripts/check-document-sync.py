@@ -182,7 +182,7 @@ def main() -> int:
         "README.md": [
             "bash scripts/verify-published.sh",
             "Public TI Certificate",
-            "Sixteen distinct compiled modules ship",
+            "Nineteen distinct compiled modules ship",
         ],
         "PUBLIC_SAFETY_CERTIFICATE.md": [
             "Public clean-room TI release",
