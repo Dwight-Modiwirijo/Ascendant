@@ -1,19 +1,19 @@
 {
   "bundles": [
     {
-      "externalPinsSha256": "6c3aac2b600c2dd625a444755bbc7d352732ac27151b576cd30a00a8c28113af",
-      "internalManifestSha256": "0e8d294e06d1c59862f0d660717bd2865511345d1d3b949d471531e4893cac4b",
+      "externalPinsSha256": "faf22da6b186ce125256088cb9d08b9ab2923d0a0eae60de74233d3f489574c1",
+      "internalManifestSha256": "48300751a94a4dde09f2f1b65f7f4f41dcaba999bfbf110cb5bcf0720c85fa81",
       "modules": [
         "AscendantRoute.Release.Successor.SuccessorAPI",
         "AscendantRoute.Release.Successor.SuccessorModel",
         "AscendantRoute.Release.Successor.SuccessorCertificate"
       ],
       "name": "successor-release",
-      "tarCommit": "b56c82db1c0f12f2922807e431948c7b970ce4a3"
+      "tarCommit": "1c964397ba2c8722ce3bd8bdd03362bc0c6a638a"
     },
     {
-      "externalPinsSha256": "50d287afda68e82d5466be7b094a1e9d819d864d07f77760a5d45cf473aa2364",
-      "internalManifestSha256": "956bf6074a6c6b3a6ad74b17bb1009f04829e8732a9f2931e2ee819ef938bbe7",
+      "externalPinsSha256": "bcb2998504f436e65b2443a4368da1a512b22a567475afb5347b2330578c9321",
+      "internalManifestSha256": "7eca11dc7787441871247809862dcacb372901a8b240874b91e9daed5b6ad89e",
       "modules": [
         "AscendantRoute.Release.TI.TIAPI",
         "AscendantRoute.Release.TI.TIInduction",
@@ -21,7 +21,7 @@
         "AscendantRoute.Release.TI.TICertificate"
       ],
       "name": "ti-release",
-      "tarCommit": "41e3d51c203a255fbf989122e61ec40e819c4711"
+      "tarCommit": "1c964397ba2c8722ce3bd8bdd03362bc0c6a638a"
     }
   ],
   "schemaVersion": 1,
